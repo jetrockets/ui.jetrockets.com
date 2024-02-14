@@ -1,0 +1,35 @@
+{
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.23.10",
+    "@jetrockets/eslint-config-base": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
+    "cssnano": "^6.0.3",
+    "eslint": "^8.56.0",
+    "postcss": "^8.4.35",
+    "postcss-cli": "^11.0.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.0.0",
+    "postcss-nesting": "^12.0.2",
+    "postcss-preset-env": "^9.3.0",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.2",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-ruby": "^5.0.0",
+    "vite-plugin-stimulus-hmr": "^3.0.0"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.2",
+    "@rails/request.js": "^0.0.9",
+    "stimulus-library": "^1.0.6",
+    "stimulus-use": "^0.52.2",
+    "tailwindcss-stimulus-components": "^4.0.4"
+  },
+  "scripts": {
+    "dev": "bin\\/vite dev",
+    "build": "bin\\/vite build",
+    "lint": "eslint ./app/assets --ext .js --quiet --fix --ignore-path ./.gitignore"
+  }
+}

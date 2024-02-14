@@ -1,0 +1,29 @@
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+require:
+ - rubocop-faker
+ - rubocop-rspec
+ - rubocop-md
+
+AllCops:
+  TargetRubyVersion: 3.3
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+  NewCops: enable
+
+Layout/ClassStructure:
+  Enabled: true
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+
+Layout/MultilineAssignmentLayout:
+  Enabled: true
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
