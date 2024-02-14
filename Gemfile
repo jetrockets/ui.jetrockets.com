@@ -5,9 +5,9 @@ ruby "3.1.2"
 
 gem "bootsnap", require: false
 
-
 gem "discard", "~> 1.2"
 
+gem "meta-tags"
 
 gem "pg"
 gem "propshaft"

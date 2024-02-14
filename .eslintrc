@@ -1,7 +1,0 @@
-{
-  "parser": "@babel/eslint-parser",
-  "extends": "@jetrockets/eslint-config-base",
-  "globals": {
-    "Turbo": true
-  }
-}

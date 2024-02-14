@@ -1,4 +1,4 @@
-import './stimulus';
-import './turbo';
+import './stimulus'
+import './turbo'
 
-export { stimulus } from './stimulus';
+export { stimulus } from './stimulus'

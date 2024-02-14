@@ -1,2 +1,2 @@
-import '~/init';
-import '~/controllers/application';
+import '~/init'
+import '~/controllers'

@@ -113,12 +113,15 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
+    content_disposition (1.0.0)
     crass (1.0.6)
     date (3.3.4)
     descriptive_statistics (2.5.1)
     discard (1.3.0)
       activerecord (>= 4.2, < 8)
     docile (1.4.0)
+    down (5.3.1)
+      addressable (~> 2.8)
     dry-cli (1.0.0)
     erb_lint (0.5.0)
       activesupport
@@ -147,6 +150,9 @@ GEM
     hirb (0.7.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
     launchy (2.5.2)
@@ -171,7 +177,10 @@ GEM
       map (~> 6.6, >= 6.6.0)
     map (6.6.0)
     marcel (1.0.2)
+    meta-tags (2.20.0)
+      actionpack (>= 6.0.0, < 7.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.5)
     minitest (5.22.2)
     msgpack (1.7.2)
@@ -302,11 +311,16 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     ruby_parser (3.21.0)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
     sexp_processor (4.17.1)
+    shrine (3.4.0)
+      content_disposition (~> 1.0)
+      down (~> 5.1)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -366,7 +380,9 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   ffaker
+  image_processing
   letter_opener
+  meta-tags
   pg
   propshaft
   pry
@@ -379,6 +395,7 @@ DEPENDENCIES
   rubocop-md
   rubocop-rails-omakase
   rubocop-rspec
+  shrine
   simplecov
   strong_migrations
   turbo-rails

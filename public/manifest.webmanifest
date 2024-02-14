@@ -1,0 +1,6 @@
+{
+  "name": "Name of the company",
+  "icons": [
+    { "src": "/favicon-192x192.png", "type": "image/png", "sizes": "192x192" }
+  ]
+}

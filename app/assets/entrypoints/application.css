@@ -1,3 +1,8 @@
-@import "~/stylesheets/tailwindcss";
-@import "~/stylesheets/components";
+@import "tailwindcss/base";
+@import "~/stylesheets/base";
 @import "~/stylesheets/vendors";
+
+@import "tailwindcss/components";
+@import "~/stylesheets/components";
+
+@import "tailwindcss/utilities";
