@@ -1,7 +1,11 @@
 module MetaTagsHelper
+  def site_title
+    "Company Name"
+  end
+
   def default_meta_tags
     {
-      title: "Name of the company",
+      title: site_title,
       description: "Company description",
       keywords: "Keywords",
       canonical: @canonical || request.original_url,
@@ -15,7 +19,7 @@ module MetaTagsHelper
           height: 630
         },
         url: request.url,
-        site_name: "Name of the company",
+        site_name: site_title,
         locale: :en_US
       },
       twitter: {

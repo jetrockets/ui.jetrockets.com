@@ -7,7 +7,10 @@ gem "bootsnap", require: false
 
 gem "discard", "~> 1.2"
 
+gem "inline_svg"
+
 gem "meta-tags"
+gem "mjml-rails"
 
 gem "pg"
 gem "propshaft"
