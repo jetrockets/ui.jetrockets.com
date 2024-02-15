@@ -1,7 +1,7 @@
 module MetaTagsHelper
   def default_meta_tags
-    og_title = meta_tags["title"] || default_title
-    og_description = meta_tags["description"] || default_description
+    og_title = meta_tags[:title] || default_title
+    og_description = meta_tags[:description] || default_description
 
     {
       site: "Site Name",

@@ -1,0 +1,9 @@
+@layer components {
+  .wrapper {
+    @apply px-3 mx-auto max-w-7xl sm:px-6;
+  }
+
+  .wrapper-narrow {
+    @apply max-w-4xl
+  }
+}

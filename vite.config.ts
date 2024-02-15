@@ -1,12 +1,8 @@
 import { defineConfig } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
-import StimulusHMR from 'vite-plugin-stimulus-hmr';
-import compression from 'vite-plugin-compression';
+import ViteRails from 'vite-plugin-rails'
 
 export default defineConfig({
   plugins: [
-    RubyPlugin(),
-    StimulusHMR(),
-    compression()
-  ],
+    ViteRails()
+  ]
 })
