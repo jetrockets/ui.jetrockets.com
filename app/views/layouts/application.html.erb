@@ -14,11 +14,9 @@
     <%= vite_stylesheet_tag "application", data: { turbo_track: "reload" } %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag "application", data: { turbo_track: "reload" }, async: true %>
-
     <%= turbo_refreshes_with method: :morph, scroll: :reset %>
 
     <%= render partial: "layouts/shared/analytics" if Rails.env.production? %>
-
     <%= yield(:head) %>
   </head>
 
