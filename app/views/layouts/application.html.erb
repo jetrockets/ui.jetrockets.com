@@ -3,7 +3,7 @@
 <html lang="<%= I18n.locale %>">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= display_meta_tags(default_meta_tags) %>
 
     <%= render partial: "layouts/shared/favicons" %>
@@ -22,5 +22,7 @@
 
   <body>
     <%= yield %>
+
+    <%= component "ui/flash" %>
   </body>
 </html>
