@@ -11,24 +11,21 @@
     <h1>
       Hello from JetRockets
     </h1>
-
-    <h3>Form example</h3>
-    <%= form_with url: root_path do |f| %>
-      <div class="grid grid-cols-2 gap-4">
-        <%= f.text_field :first_name, autofocus: true %>
-        <%= f.text_field :last_name, help: "Invalid email or password" %>
-      </div>
-
-      <%= f.email_field :email %>
-      <%= f.password_field :password %>
-
-      <%= f.label :is_active do %>
-        <%= f.check_box :is_active %>
-      <% end %>
-
-      <%# Without Form Group %>
-      <%#= f.label :first_name %>
-      <%#= f.text_field :first_name, simple: true %>
-    <% end %>
   </article>
+
+  <%= form_with url: root_path do |f| %>
+    <div class="grid grid-cols-2 gap-4">
+      <%= f.text_field :first_name, autofocus: true %>
+      <%= f.text_field :last_name, help: "Invalid email or password" %>
+    </div>
+
+    <%= f.email_field :email %>
+    <%= f.password_field :password %>
+    <%= f.check_box :free_shipping, hint: "For orders shipped from $25 in books or $29 in other categories" %>
+    <%#= f.radio_button :text, :true %>
+
+    <%# Without Form Group %>
+    <%#= f.label :first_name %>
+    <%#= f.text_field :first_name, simple: true %>
+  <% end %>
 </div>

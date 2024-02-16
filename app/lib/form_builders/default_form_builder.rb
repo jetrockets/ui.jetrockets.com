@@ -24,6 +24,63 @@ module FormBuilders
       end
     end
 
+   def check_box(method, options = {})
+      input_classes = class_names(
+        "form__checkbox",
+        { "form__checkbox-errored": @object&.errors&.any },
+        options.delete(:class)
+      )
+
+      if options[:simple] == true
+        super(method, options.reverse_merge(class: input_classes))
+      else
+        group_options = options.delete(:group) || {}
+        group(group_options) do
+          label_options = options.delete(:label) || {}
+          @template.content_tag(:div, class: "flex items-start") do
+            @template.content_tag(:div, class: "leading-none") do
+              super(method, options.reverse_merge(class: input_classes))
+            end +
+            @template.content_tag(:div, class: "pl-2") do
+              label(method, label_options.merge({ class: "form__label-checkbox" })) +
+              @template.content_tag(:p, class: "form__hint") do
+                options[:hint]
+              end
+            end
+          end
+        end
+      end
+    end
+
+    # def radio_button(method, value, options = {})
+    #   input_classes = class_names(
+    #     "form__radio",
+    #     { "form__radio-errored": @object&.errors&.any },
+    #     options.delete(:class)
+    #   )
+
+    #   if options[:simple] == true
+    #     super(method, options.reverse_merge(class: input_classes))
+    #   else
+    #     group_options = options.delete(:group) || {}
+    #     group(group_options) do
+    #       label_options = options.delete(:label) || {}
+    #       @template.content_tag(:div, class: "flex items-start") do
+    #         @template.content_tag(:div, class: "leading-none") do
+    #           super(method, options.reverse_merge(class: input_classes))
+    #         end +
+    #         @template.content_tag(:div, class: "pl-2") do
+    #           label(method, label_options.merge({ class: "form__label-radio" })) +
+    #           @template.content_tag(:p, class: "form__hint") do
+    #             options[:hint]
+    #           end
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
+
+
     def label(method, options = {})
       text = label_text(options)
 
