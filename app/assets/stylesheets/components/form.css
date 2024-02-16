@@ -1,0 +1,25 @@
+@layer components {
+  .form {
+
+  }
+
+  .form__group {
+    @apply mb-4;
+  }
+
+  .form__label {
+    @apply block mb-1 text-gray-700;
+  }
+
+  .form__input {
+    @apply block w-full px-3 py-2 border-gray-300 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+
+  .form__input-errored {
+    @apply border-red-300 ring-red-200;
+  }
+
+  .form__help {
+    @apply mt-1 text-xs md:text-sm text-gray_300;
+  }
+}

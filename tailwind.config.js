@@ -6,10 +6,13 @@ module.exports = {
     './app/services/**/*.rb',
     './app/helpers/**/*.rb',
     './app/assets/**/*.js',
+    './app/lib/form_builders/**/*.rb',
     './config/locales/**/*.yml'
   ],
   theme: {
-    extend: {}
+    extend: {
+
+    }
   },
   plugins: [
     require('@tailwindcss/typography'),

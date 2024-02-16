@@ -1,1 +1,5 @@
-@import "./components/wrapper.css"
+@import "./components/body.css";
+@import "./components/form.css";
+@import "./components/navbar.css";
+@import "./components/wrapper.css";
+@import "./components/wysiwyg.css";

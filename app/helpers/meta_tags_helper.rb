@@ -4,7 +4,7 @@ module MetaTagsHelper
     og_description = meta_tags[:description] || default_description
 
     {
-      site: "Site Name",
+      site: site_name,
       title: default_title,
       description: default_description,
       keywords: default_keywords,
@@ -20,7 +20,7 @@ module MetaTagsHelper
           height: 630
         },
         url: request.url,
-        site_name: default_title,
+        site_name: site_name,
         locale: :en_US
       },
       twitter: {
@@ -35,6 +35,10 @@ module MetaTagsHelper
   end
 
   private
+
+  def site_name
+    "Site Name"
+  end
 
   def default_title
     "Default Title"

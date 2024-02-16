@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="navbar__inner">
+    <%= link_to inline_svg_vite_tag("images/logo.svg", class: "navbar__logo", alt: "JetRockets"), root_path, class: "navbar__link", aria: { label: "JetRockets" } %>
+    <div class="navbar__menu">
+      <%= link_to "Privacy Policy", privacy_path, class: "navbar__link #{"navbar__link-active" if current_page?(privacy_path)}" %>
+      <%= link_to "Terms and conditions", terms_path, class: "navbar__link #{"navbar__link-active" if current_page?(terms_path)}" %>
+    </div>
+
+    <div class="navbar__right">
+      <%= link_to "Login", "#", class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+</nav>

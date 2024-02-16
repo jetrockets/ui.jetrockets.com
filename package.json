@@ -3,6 +3,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.2",
     "@rails/request.js": "^0.0.9",
+    "mjml": "^4.15.3",
     "stimulus-rails-autosave": "^5.1.0",
     "stimulus-textarea-autogrow": "^4.1.0",
     "stimulus-use": "^0.52.2",

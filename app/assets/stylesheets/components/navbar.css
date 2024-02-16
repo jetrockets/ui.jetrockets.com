@@ -1,0 +1,25 @@
+@layer components {
+  .navbar {
+    @apply sticky top-0 transition-all bg-white shadow-sm bg-opacity-90 backdrop-blur-sm;
+  }
+
+  .navbar__logo {
+    @apply w-auto h-7;
+  }
+
+  .navbar__inner {
+    @apply flex items-center wrapper;
+  }
+
+  .navbar__menu{
+    @apply flex flex-1 ml-8 space-x-6;
+  }
+
+  .navbar__link {
+    @apply flex items-center justify-between py-4 text-base font-semibold text-black hover:text-gray-500;
+  }
+
+  .navbar__link-active {
+    @apply text-gray-500;
+  }
+}

@@ -7,9 +7,16 @@
 %>
 
 <div class="wrapper">
-  <%= inline_svg_vite_tag("images/logo.svg", class: "h-8 w-auto") %>
+  <article class="wysiwyg">
+    <h1>
+      Hello from JetRockets
+    </h1>
+  </article>
 
-  <h1 class="mt-4 text-3xl font-bold">
-    Hello from JetRockets
-  </h1>
+  <div class="w-full md:w-6/12">
+    <%= form_with url: root_path do |f| %>
+      <%= f.text_field :first_name, autofocus: true %>
+      <%= f.text_field :last_name %>
+    <% end %>
+  </div>
 </div>

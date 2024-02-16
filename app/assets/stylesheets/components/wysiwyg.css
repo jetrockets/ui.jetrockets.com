@@ -1,0 +1,6 @@
+@layer components {
+  .wysiwyg {
+    /* https://tailwindcss.com/docs/typography-plugin */
+    @apply prose;
+  }
+}
