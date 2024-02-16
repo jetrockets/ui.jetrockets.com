@@ -18,7 +18,11 @@ module FormBuilders
           group_options = options.delete(:group) || {}
           group(group_options) do
             label_options = options.delete(:label) || {}
-            label(method, label_options) + super(method, options.reverse_merge(class: input_classes))
+            # FIXME
+            label(method, label_options) + super(method, options.reverse_merge(class: input_classes)) +
+            @template.content_tag(:p, class: "form__help") do
+              options[:help]
+            end
           end
         end
       end
@@ -42,6 +46,7 @@ module FormBuilders
               super(method, options.reverse_merge(class: input_classes))
             end +
             @template.content_tag(:div, class: "pl-2") do
+              # FIXME
               label(method, label_options.merge({ class: "form__label-checkbox" })) +
               @template.content_tag(:p, class: "form__hint") do
                 options[:hint]
