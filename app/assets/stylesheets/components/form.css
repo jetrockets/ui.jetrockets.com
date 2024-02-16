@@ -1,8 +1,4 @@
 @layer components {
-  .form {
-
-  }
-
   .form__group {
     @apply mb-4;
   }
@@ -16,7 +12,7 @@
   }
 
   .form__input-errored {
-    @apply border-red-300 ring-red-200;
+    @apply border-red-300 ring-red-200 focus:border-red-300 focus:ring-red-200;
   }
 
   .form__help {

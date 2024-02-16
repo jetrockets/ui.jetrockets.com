@@ -2,13 +2,7 @@ module FormBuilders
   class DefaultFormBuilder < ActionView::Helpers::FormBuilder
     include ActionView::Helpers::TagHelper
 
-    INPUT_HELPERS = field_helpers - [ :check_box, :radio_button, :fields_for, :fields, :hidden_field, :file_field, :email ]
-
-    def group(options = {}, &block)
-      @template.content_tag :div, class: "form__group", **options do
-        block.call
-      end
-    end
+    INPUT_HELPERS = %w[text_field password_field text_area color_field search_field telephone_field phone_field date_field time_field datetime_field datetime_local_field month_field week_field url_field email_field number_field range_field]
 
     INPUT_HELPERS.each do |field_method|
       define_method("#{field_method}") do |method, options = {}|
@@ -18,37 +12,51 @@ module FormBuilders
           options.delete(:class)
         )
 
-        unless options[:label] == false
-          form_group(method, options) do
-            field_label(method, options) + super(method, options.reverse_merge(class: input_classes))
-          end
-        else
+        if options[:simple] == true
           super(method, options.reverse_merge(class: input_classes))
+        else
+          group_options = options.delete(:group) || {}
+          group(group_options) do
+            label_options = options.delete(:label) || {}
+            label(method, label_options) + super(method, options.reverse_merge(class: input_classes))
+          end
         end
       end
     end
 
-    def label(method, text = nil, options = {})
+    def label(method, options = {})
+      text = label_text(options)
+
       classes = class_names(
         "form__label",
-        options.delete(:class)
+        options.is_a?(Hash) && options.delete(:class)
       )
 
-      super(method, text, options.merge({ class: classes }))
+      if options.is_a?(Hash)
+        super(method, text, options.merge({ class: classes }))
+      else
+        super(method, text, { class: classes })
+      end
     end
 
-    def form_group(*args, &block)
-      # **options.except(:add_control_col_class, :append, :control_col, :floating, :help, :icon, :id, :input_group_class, :label, :label_col, :layout, :prepend
+    def group(options = {}, &block)
+      classes = class_names(
+        "form__group",
+        options&.delete(:class)
+      )
 
-      @template.content_tag(:div, class: "form__group") do
+      @template.content_tag(:div, class: classes, **options) do
         block.call
       end
     end
 
     private
 
-    def field_label(method, options)
-      label(method, options[:label])
+    def label_text(options)
+      text = options[:text] if options.is_a?(Hash)
+      text ||= options if options.is_a?(String)
+      text
+      # || @object&.class&.human_attribute_name(method)
     end
   end
 end
