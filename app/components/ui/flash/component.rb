@@ -7,10 +7,10 @@ class Ui::Flash::Component < ApplicationComponent
 
   def tailwind_classes_for(flash_type)
     {
-      notice: "bg-green-100 border-green-300",
-      success: "bg-green-100 border-green-300",
-      alert: "bg-red-100 border-red-300",
-      error: "bg-red-100 border-red-300"
+      notice: "bg-green-100",
+      success: "bg-green-100",
+      alert: "bg-red-100",
+      error: "bg-red-100"
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
 end

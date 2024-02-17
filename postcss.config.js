@@ -1,13 +1,12 @@
-const cssnano = require('cssnano')({ preset: 'default' })
-
 const environment = {
-  plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
+  plugins: {
+    tailwindcss: {},
+    '@csstools/postcss-oklab-function': { preserve: true },
+    autoprefixer: {},
     ...process.env.NODE_ENV === 'production'
-      ? [cssnano]
+      ? ['cssnano']
       : []
-  ]
+  }
 }
 
 module.exports = environment

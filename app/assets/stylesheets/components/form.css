@@ -21,11 +21,11 @@
   }
 
   .form__hint {
-    @apply text-xs font-normal text-gray-500 dark:text-gray-300
+    @apply text-sm font-normal text-gray-600
   }
 
   .form__help {
-    @apply mt-1 text-sm text-gray-500
+    @apply mt-1 text-sm text-gray-600
   }
 
   .form__radio,

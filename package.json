@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "@evilmartians/harmony": "^1.2.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.2",
     "@rails/request.js": "^0.0.9",
+    "flowbite": "^2.3.0",
     "mjml": "^4.15.3",
     "stimulus-rails-autosave": "^5.1.0",
     "stimulus-textarea-autogrow": "^4.1.0",
@@ -10,6 +12,7 @@
     "tailwindcss-stimulus-components": "^4.0.4"
   },
   "devDependencies": {
+    "@csstools/postcss-oklab-function": "^3.0.9",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.17",

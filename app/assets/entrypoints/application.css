@@ -6,3 +6,5 @@
 @import "../stylesheets/components.css";
 
 @import "tailwindcss/utilities";
+
+@config "../../../tailwind.config.js";

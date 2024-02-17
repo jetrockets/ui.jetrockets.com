@@ -19,6 +19,51 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@csstools/color-helpers@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/color-helpers/-/color-helpers-4.0.0.tgz#a1d6ffcefe5c1d389cbcca15f46da3cdaf241443"
+  integrity sha512-wjyXB22/h2OvxAr3jldPB7R7kjTUEzopvjitS8jWtyd8fN6xJ8vy1HnHu0ZNfEkqpBJgQ76Q+sBDshWcMvTa/w==
+
+"@csstools/css-calc@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@csstools/css-calc/-/css-calc-1.1.6.tgz#2d4e16725c3f981f7c6e469c306bcb1f490e1082"
+  integrity sha512-YHPAuFg5iA4qZGzMzvrQwzkvJpesXXyIUyaONflQrjtHB+BcFFbgltJkIkb31dMGO4SE9iZFA4HYpdk7+hnYew==
+
+"@csstools/css-color-parser@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@csstools/css-color-parser/-/css-color-parser-1.5.1.tgz#bddf5513a7327c511c9e1ec682419dcad1f91869"
+  integrity sha512-x+SajGB2paGrTjPOUorGi8iCztF008YMKXTn+XzGVDBEIVJ/W1121pPerpneJYGOe1m6zWLPLnzOPaznmQxKFw==
+  dependencies:
+    "@csstools/color-helpers" "^4.0.0"
+    "@csstools/css-calc" "^1.1.6"
+
+"@csstools/css-parser-algorithms@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-2.5.0.tgz#0c03cd5418a9f404a05ff2ffcb1b69d04e8ec532"
+  integrity sha512-abypo6m9re3clXA00eu5syw+oaPHbJTPapu9C4pzNsJ4hdZDzushT50Zhu+iIYXgEe1CxnRMn7ngsbV+MLrlpQ==
+
+"@csstools/css-tokenizer@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-2.2.3.tgz#b099d543ea57b64f495915a095ead583866c50c6"
+  integrity sha512-pp//EvZ9dUmGuGtG1p+n17gTHEOqu9jO+FiCUjNN3BDmyhdA2Jq9QsVeR7K8/2QCK17HSsioPlTW9ZkzoWb3Lg==
+
+"@csstools/postcss-oklab-function@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-oklab-function/-/postcss-oklab-function-3.0.9.tgz#26e462e0ec18222f08e285afd6d9c9261ab55ee4"
+  integrity sha512-l639gpcBfL3ogJe+og1M5FixQn8iGX8+29V7VtTSCUB37VzpzOC05URfde7INIdiJT65DkHzgdJ64/QeYggU8A==
+  dependencies:
+    "@csstools/css-color-parser" "^1.5.1"
+    "@csstools/css-parser-algorithms" "^2.5.0"
+    "@csstools/css-tokenizer" "^2.2.3"
+    "@csstools/postcss-progressive-custom-properties" "^3.0.3"
+
+"@csstools/postcss-progressive-custom-properties@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-progressive-custom-properties/-/postcss-progressive-custom-properties-3.0.3.tgz#8e0b61c204e80a3b4f82818f9738accb06894a06"
+  integrity sha512-WipTVh6JTMQfeIrzDV4wEPsV9NTzMK2jwXxyH6CGBktuWdivHnkioP/smp1x/0QDPQyx7NTS14RB+GV3zZZYEw==
+  dependencies:
+    postcss-value-parser "^4.2.0"
+
 "@esbuild/aix-ppc64@0.19.12":
   version "0.19.12"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.19.12.tgz#d1bc06aedb6936b3b6d313bf809a5a40387d2b7f"
@@ -166,6 +211,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.56.0.tgz#ef20350fec605a7f7035a01764731b2de0f3782b"
   integrity sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==
 
+"@evilmartians/harmony@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@evilmartians/harmony/-/harmony-1.2.0.tgz#35d1ae4c2f052078123538293ea0164e36d21127"
+  integrity sha512-Ua8gpC+28Eo9D2/xynTrrZIrSawgtobwtRLLYq4wH8N19qoMspWZ1vqfsDDVPgQFa+iHsVAk/SbdmoPAj6OH1g==
+
 "@hotwired/stimulus@^3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.2.2.tgz#071aab59c600fed95b97939e605ff261a4251608"
@@ -277,6 +327,11 @@
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
+
+"@popperjs/core@^2.9.3":
+  version "2.11.8"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
+  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
 "@rails/actioncable@^7.0":
   version "7.1.3"
@@ -1515,6 +1570,14 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
+flowbite@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/flowbite/-/flowbite-2.3.0.tgz#0730e35d8b0d1dcdea26bb27d848bd9c0141cde1"
+  integrity sha512-pm3JRo8OIJHGfFYWgaGpPv8E+UdWy0Z3gEAGufw+G/1dusaU/P1zoBLiQpf2/+bYAi+GBQtPVG86KYlV0W+AFQ==
+  dependencies:
+    "@popperjs/core" "^2.9.3"
+    mini-svg-data-uri "^1.4.3"
+
 for-each@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/for-each/-/for-each-0.3.3.tgz#69b447e88a0a5d32c3e7084f3f1710034b21376e"
@@ -2225,7 +2288,7 @@ mime@^2.4.6:
   resolved "https://registry.yarnpkg.com/mime/-/mime-2.6.0.tgz#a2a682a95cd4d0cb1d6257e28f83da7e35800367"
   integrity sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==
 
-mini-svg-data-uri@^1.2.3:
+mini-svg-data-uri@^1.2.3, mini-svg-data-uri@^1.4.3:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
   integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
