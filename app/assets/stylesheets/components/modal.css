@@ -1,6 +1,7 @@
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0 h-[calc(100%-1rem)] max-h-full;
+    animation: modalTransition 0.3s ease-in-out;
   }
 
   .modal__container {

@@ -1,0 +1,11 @@
+@layer base {
+  @keyframes modalTransition {
+    from {
+      @apply opacity-0 -top-40
+    }
+
+    to {
+      @apply top-0 opacity-100
+    }
+  }
+}
