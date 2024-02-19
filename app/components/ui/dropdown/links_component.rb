@@ -1,13 +1,19 @@
 class Ui::Dropdown::LinksComponent < ApplicationComponent
-  def initialize(name:, href:, **options)
+  def initialize(name:, href: nil, **options)
     @name = name
     @href = href
     @options = options
   end
 
   erb_template <<~ERB
-    <li>
-      <%= link_to @name, @href, class: "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white", **@options %>
+    <li class="dropdown__item">
+      <% if @href %>
+        <%= link_to @name, @href, class: "dropdown__link", **@options %>
+      <% else %>
+        <strong class="dropdown__title">
+          <%= @name %>
+        </strong>
+      <% end %>
     </li>
   ERB
 end

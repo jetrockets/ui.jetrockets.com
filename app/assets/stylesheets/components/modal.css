@@ -1,18 +1,18 @@
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full
   }
 
   .modal__container {
-    @apply relative w-full max-w-2xl max-h-full mx-auto
+    @apply relative w-full max-h-full max-w-2xl mx-auto
   }
 
   .modal__content {
-    @apply relative bg-white rounded-lg shadow dark:bg-gray-700
+    @apply relative bg-white shadow dark:bg-gray-700 rounded-lg
   }
 
   .modal__header {
-    @apply flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600
+    @apply flex items-start justify-between p-4 border-b dark:border-gray-600
   }
 
   .modal__title {
@@ -20,18 +20,22 @@
   }
 
   .modal__subtitle {
-    @apply text-sm text-gray-600
+    @apply mt-1 text-sm text-gray-600
   }
 
   .modal__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white
+    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-100 hover:text-gray-600
   }
 
   .modal__body {
-    @apply p-6 space-y-6
+    @apply pt-6 px-6 space-y-6 overflow-auto rounded-lg
   }
 
   .modal__footer {
-    @apply flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600;
+    @apply flex items-center p-6 py-4 space-x-2 border-t border-gray-200
+  }
+
+  .modal__footer-sticky {
+    @apply sticky bottom-0 bg-white rounded-b-lg
   }
 }

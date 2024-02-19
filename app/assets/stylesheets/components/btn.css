@@ -1,13 +1,13 @@
 @layer components {
   .btn {
-    @apply flex items-center bg-gray-50 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center space-x-3 border border-transparent focus:outline-none focus:ring focus:ring-gray-200 focus:ring-opacity-50;
+    @apply flex items-center bg-white font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center space-x-3 border border-gray-300 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-30;
   }
 
   .btn-primary {
-    @apply text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-indigo-200
+    @apply text-white bg-indigo-700 hover:bg-indigo-800 hover:text-white border-transparent
   }
 
   .btn-sm {
-    @apply py-1.5 px-3
+    @apply py-1.5 px-3.5 rounded-md
   }
 }
