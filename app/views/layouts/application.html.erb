@@ -29,7 +29,7 @@
 
     <%= render partial: "layouts/shared/footer" %>
 
-    <%= component "ui/flash" %>
-    <%#= component "ui/modal" %>
+    <%= component "flash" %>
+    <%= turbo_frame_tag :modal %>
   </body>
 </html>

@@ -1,9 +1,9 @@
-class Ui::Flash::Component < ApplicationComponent
+class Flash::Component < ApplicationComponent
   DISMISS_AFTER = 5000
   REMOVE_DELAY = 6000
   SHOW_DELAY = 0
 
-  protected
+  private
 
   def tailwind_classes_for(flash_type)
     {

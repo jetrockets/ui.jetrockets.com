@@ -1,6 +1,6 @@
 @layer components {
   .navbar {
-    @apply sticky top-0 transition-all bg-white shadow-sm bg-opacity-90 backdrop-blur-sm;
+    @apply sticky top-0 z-40 transition-all bg-white shadow-sm bg-opacity-90 backdrop-blur-sm;
   }
 
   .navbar__logo {

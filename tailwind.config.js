@@ -4,7 +4,7 @@ module.exports = {
   mode: 'jit',
   content: [
     './app/views/**/*.html.erb',
-    './app/components/**/*.{html.erb,rb}',
+    './app/components/**/*.{html.erb,rb,js}',
     './app/services/**/*.rb',
     './app/helpers/**/*.rb',
     './app/assets/**/*.js',

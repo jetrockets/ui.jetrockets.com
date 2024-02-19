@@ -1,5 +1,5 @@
 <%= turbo_frame_tag :flash,
-                    class: "fixed flex flex-col space-y-2 top-12 right-3 sm:right-6 w-fit",
+                    class: "fixed flex flex-col space-y-2 top-12 right-3 sm:right-6 w-fit z-[100]",
                     data: { turbo_temporary: "true" } do %>
   <% flash.each do |key, message| %>
     <div

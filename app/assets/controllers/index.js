@@ -15,6 +15,6 @@ stimulus.register('modal-sync', Modal)
 stimulus.register('toggle', Toggle)
 stimulus.register('textarea-autogrow', TextareaAutogrow)
 
-const controllers = import.meta.glob('./**/*_controller.js', { eager: true })
+// const controllers = import.meta.glob('./**/*_controller.js', { eager: true })
 
-registerControllers(stimulus, controllers)
+// registerControllers(stimulus, controllers)
