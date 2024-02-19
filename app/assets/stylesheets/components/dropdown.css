@@ -1,0 +1,9 @@
+@layer components {
+  .dropdown {
+    @apply hidden bg-white divide-y divide-gray-200 rounded-lg shadow-md min-w-44
+  }
+
+  .dropdown__wrapper {
+    @apply py-2 text-sm text-gray-700
+  }
+}

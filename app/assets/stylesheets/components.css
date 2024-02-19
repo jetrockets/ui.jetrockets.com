@@ -1,6 +1,11 @@
+@import "./components/accordion.css";
 @import "./components/body.css";
+@import "./components/btn.css";
+@import "./components/dropdown.css";
 @import "./components/form.css";
+@import "./components/link.css";
 @import "./components/modal.css";
 @import "./components/navbar.css";
+@import "./components/typography.css";
 @import "./components/wrapper.css";
 @import "./components/wysiwyg.css";

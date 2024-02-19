@@ -6,36 +6,35 @@
   )
 %>
 
-<div class="wrapper">
-  <article class="wysiwyg">
-    <h1>Terms of Service</h1>
-    <p>Use this for your Terms of Service</p>
+<%= component "modal", title: "Terms of Service", subtitle: "Use this for your Terms of Service" do %>
+  <div class="modal__body">
+    <article class="wysiwyg">
+      <h2 class="mt-0">Five Reasons Why Your Website Needs a Terms of Use Agreement</h2>
 
-    <h2>Five Reasons Why Your Website Needs a Terms of Use Agreement</h2>
+      <h3>1. Limiting Liability From Errors</h3>
+      <p>Protecting yourself and your business is one of the most important reasons to have a terms of use agreement. Most agreements contain a clause or disclaimer aiming to lessen the website owner’s liability from errors in the website’s content. In theory, this reduces the strength of any case a website visitor could make for injury or property damage if allegedly impacted by erroneous information.</p>
 
-    <h3>1. Limiting Liability From Errors</h3>
-    <p>Protecting yourself and your business is one of the most important reasons to have a terms of use agreement. Most agreements contain a clause or disclaimer aiming to lessen the website owner’s liability from errors in the website’s content. In theory, this reduces the strength of any case a website visitor could make for injury or property damage if allegedly impacted by erroneous information.</p>
+      <p>The internet is full of websites with flawed information. The American legal system makes it relatively easy for businesses and consumers to sue each other in court over a negative experience or impact. It’s also relatively common for companies to be sued over baseless claims even at times when no wrongdoing occurred. Website owners should be prepared for this and take seriously the inherent (and sometimes unfair) risks of operating in such a public way.</p>
 
-    <p>The internet is full of websites with flawed information. The American legal system makes it relatively easy for businesses and consumers to sue each other in court over a negative experience or impact. It’s also relatively common for companies to be sued over baseless claims even at times when no wrongdoing occurred. Website owners should be prepared for this and take seriously the inherent (and sometimes unfair) risks of operating in such a public way.</p>
+      <h3>2. Limiting Liability From User Content</h3>
+      <p>If your website involves user interactions such as a comments section, social media functions, chat rooms or forums, a terms of use agreement can serve to insulate the website from user-generated content. This is especially important if users can freely upload digital media of their own to an online platform.</p>
 
-    <h3>2. Limiting Liability From User Content</h3>
-    <p>If your website involves user interactions such as a comments section, social media functions, chat rooms or forums, a terms of use agreement can serve to insulate the website from user-generated content. This is especially important if users can freely upload digital media of their own to an online platform.</p>
+      <p>While a terms of use agreement may set rules about what content is and isn’t allowed, it’s just as important to explicitly define users as third parties whose content the website is not responsible for. Even a site such as a blog that centrally reviews its content before posting may clarify that the website or company itself isn’t represented by and doesn’t endorse views expressed by contributors.
 
-    <p>While a terms of use agreement may set rules about what content is and isn’t allowed, it’s just as important to explicitly define users as third parties whose content the website is not responsible for. Even a site such as a blog that centrally reviews its content before posting may clarify that the website or company itself isn’t represented by and doesn’t endorse views expressed by contributors.
+      <p>Limiting liability from user content via a terms of use agreement doesn’t necessarily excuse a website from the responsibility to monitor and moderate user content.</p>
 
-    <p>Limiting liability from user content via a terms of use agreement doesn’t necessarily excuse a website from the responsibility to monitor and moderate user content.</p>
+      <h3>3. Protecting Content</h3>
+      <p>Websites and companies use terms of use agreements to communicate rules about the copying and reproduction of their web content. “Protected content” can, of course, include media such as images, music and videos, but it also applies to logos, written commentary, data and other forms of digital media.
 
-    <h3>3. Protecting Content</h3>
-    <p>Websites and companies use terms of use agreements to communicate rules about the copying and reproduction of their web content. “Protected content” can, of course, include media such as images, music and videos, but it also applies to logos, written commentary, data and other forms of digital media.
+      <p>Language addressing these issues often takes the form of an intellectual property clause claiming ownership of content and informs visitors of protection by copyright, trademark, patent, trade secret or other intellectual property laws. Some terms of use also include language on “permitted use” that speaks to what visitors can do with its content.</p>
 
-    <p>Language addressing these issues often takes the form of an intellectual property clause claiming ownership of content and informs visitors of protection by copyright, trademark, patent, trade secret or other intellectual property laws. Some terms of use also include language on “permitted use” that speaks to what visitors can do with its content.</p>
+      <h3>4. Preventing Abuse</h3>
+      <p>Many terms of use agreements ban malware, bots and spiders from accessing a website. Websites with user interactions usually also attempt to ban spamming or other malicious user activity often considered abuse. It’s common for a terms of use agreement to include a termination clause describing what it takes to be banned for abusive conduct.</p>
 
-    <h3>4. Preventing Abuse</h3>
-    <p>Many terms of use agreements ban malware, bots and spiders from accessing a website. Websites with user interactions usually also attempt to ban spamming or other malicious user activity often considered abuse. It’s common for a terms of use agreement to include a termination clause describing what it takes to be banned for abusive conduct.</p>
+      <h3>5. Declaring Governing Law</h3>
+      <p>A terms of use agreement should state under which country and state or province laws the website aims to operate. In the event of a legal dispute, this can be especially important for websites representing businesses with international reach, as complications arise when a site facilitates transactions and other interactions among people from different countries.</p>
 
-    <h3>5. Declaring Governing Law</h3>
-    <p>A terms of use agreement should state under which country and state or province laws the website aims to operate. In the event of a legal dispute, this can be especially important for websites representing businesses with international reach, as complications arise when a site facilitates transactions and other interactions among people from different countries.</p>
-
-    <p>A “governing law clause” or “choice of law provision” in a terms of use agreement merely expresses a preference for which laws will apply to the website’s activity, but courts do tend to value these declarations and treat them favorably. While courts examine the issue from all angles in a dispute, a governing law clause can be an important factor.</p>
-  </article>
-</div>
+      <p>A “governing law clause” or “choice of law provision” in a terms of use agreement merely expresses a preference for which laws will apply to the website’s activity, but courts do tend to value these declarations and treat them favorably. While courts examine the issue from all angles in a dispute, a governing law clause can be an important factor.</p>
+    </article>
+  </div>
+<% end %>

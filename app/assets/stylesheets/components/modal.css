@@ -4,7 +4,7 @@
   }
 
   .modal__container {
-    @apply relative w-full max-w-2xl max-h-full
+    @apply relative w-full max-w-2xl max-h-full mx-auto
   }
 
   .modal__content {
