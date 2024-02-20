@@ -1,13 +1,55 @@
 @layer components {
   .btn {
-    @apply flex items-center bg-white font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center space-x-3 border border-gray-300 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-30
+    @apply px-5 py-2.5 inline-flex items-center font-medium rounded-md text-sm text-center text-gray-700 border bg-gray-100 border-gray-100 hover:bg-gray-200 hover:border-gray-200 hover:text-indigo-800 focus:ring focus:outline-none focus:ring-indigo-300 focus:ring-opacity-30
   }
 
   .btn-primary {
-    @apply text-white bg-indigo-700 hover:bg-indigo-800 hover:text-white border-transparent focus:ring-indigo-300 focus:ring-opacity-30
+    @apply text-white bg-indigo-700 border-indigo-700 hover:text-white hover:bg-indigo-800 hover:border-indigo-800 focus:ring-indigo-300 focus:ring-opacity-30
+  }
+
+  .btn-secondary {
+    @apply text-white bg-blue-700 border-blue-700 hover:text-white hover:bg-blue-800 hover:border-blue-800 focus:ring-blue-300 focus:ring-opacity-30
+  }
+
+  .btn-danger {
+    @apply text-white bg-red-700 hover:bg-red-800 hover:text-white border-red-700 hover:border-red-800 focus:ring-red-300 focus:ring-opacity-30
+  }
+
+  /* Outlined */
+  .btn-outlined {
+    @apply bg-white border-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-800
+  }
+
+  .btn-primary.btn-outlined {
+    @apply text-indigo-700 border-indigo-700 hover:text-white hover:bg-indigo-700 hover:border-indigo-700
+  }
+
+  .btn-secondary.btn-outlined {
+    @apply text-blue-700 border-blue-700 hover:text-white hover:bg-blue-700 hover:border-blue-700
+  }
+
+  .btn-danger.btn-outlined {
+    @apply text-red-700 border-red-700 hover:text-white hover:bg-red-700 hover:border-red-700
+  }
+
+  /* Sizes */
+  .btn-xs {
+    @apply py-2 px-3 text-xs
   }
 
   .btn-sm {
-    @apply py-1.5 px-3.5 rounded-md
+    @apply px-3 py-2 text-sm
+  }
+
+  .btn-md {
+    @apply px-5 py-2.5 text-sm
+  }
+
+  .btn-lg {
+    @apply px-5 py-3 text-base
+  }
+
+  .btn-xl {
+    @apply px-6 py-3.5 text-base
   }
 }
