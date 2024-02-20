@@ -16,7 +16,9 @@ module.exports = {
   theme: {
     colors: harmonyPalette,
     extend: {
-
+      animation: {
+        slideDown: 'slideDown 0.3s ease-in-out'
+      }
     }
   },
   plugins: [

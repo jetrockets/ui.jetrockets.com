@@ -11,9 +11,7 @@ export default class ModalController extends Controller {
       // backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
       closable: true,
       onHide: () => {
-        setTimeout(() => {
-          // this.element.remove()
-        }, 300)
+        this.element.remove()
       }
       // onShow: () => {
       //   console.log('modal is shown')

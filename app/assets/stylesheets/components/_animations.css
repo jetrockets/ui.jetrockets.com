@@ -1,7 +1,16 @@
 @layer base {
-  @keyframes modalTransition {
+  @keyframes fadeIn {
     from {
-      @apply opacity-0 -top-40
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      @apply opacity-0 -top-12
     }
 
     to {

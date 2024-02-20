@@ -5,8 +5,14 @@ class Ui::Dropdown::ButtonComponent < ApplicationComponent
     @options = options
   end
 
+  private
+
+  def attrs
+    @options.deep_merge(data: { dropdown_toggle: "dropdown" })
+  end
+
   erb_template <<~ERB
-    <%= content_tag :button, data: { dropdown_toggle: "dropdown" }, type: "button", **@options do %>
+    <%= content_tag :button, type: "button", **attrs do %>
       <span>
         <%= @title %>
       </span>

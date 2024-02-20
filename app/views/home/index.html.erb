@@ -11,16 +11,34 @@
 
   <div class="md:w-6/12">
     <%= component "ui/accordion" do |accordion| %>
-      <%= accordion.with_item(title: "Form Builder", id: 'form_builder') do %>
-        <%= form_with url: root_path do |f| %>
-          <div class="grid gap-x-4 md:grid-cols-2">
-            <%= f.text_field :first_name, autofocus: true %>
-            <%= f.text_field :last_name %>
-          </div>
-          <%= f.email_field :email, autocomplete: "email" %>
-          <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
-          <%= f.check_box :free_shipping, hint: "For orders shipped from $25 in books or $29 in other categories" %>
+      <%= accordion.with_item(title: "Alerts", id: 'alerts') do %>
+        <%= component "ui/alert", type: :info do |alert| %>
+          <strong>Info alert!</strong> Change a few things up and try submitting again.
         <% end %>
+
+        <%= component "ui/alert", type: :error do |alert| %>
+          <strong>Danger alert!</strong> Change a few things up and try submitting again.
+        <% end %>
+
+        <%= component "ui/alert", type: :success do |alert| %>
+          <strong>Success alert!</strong> Change a few things up and try submitting again.
+        <% end %>
+
+        <%= component "ui/alert", type: :warning do |alert| %>
+          <strong>Warning alert!</strong> Change a few things up and try submitting again.
+        <% end %>
+
+        <%= component "ui/alert" do |alert| %>
+          <strong>Deafault alert!</strong> Change a few things up and try submitting again.
+        <% end %>
+      <% end %>
+
+      <%= accordion.with_item(title: "Async Modal", id: 'modal') do %>
+        <p class="mb-2 text-gray-600 dark:text-gray-400">
+          By continuing, I agree to <%= site_name %>
+          <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link" %>,
+          <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
+        </p>
       <% end %>
 
       <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown") do %>
@@ -35,12 +53,16 @@
         <% end %>
       <% end %>
 
-      <%= accordion.with_item(title: "Async Modal", id: 'modal') do %>
-        <p class="mb-2 text-gray-600 dark:text-gray-400">
-          By continuing, I agree to <%= site_name %>
-          <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link" %>,
-          <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
-        </p>
+      <%= accordion.with_item(title: "Form Builder", id: 'form_builder') do %>
+        <%= form_with url: root_path do |f| %>
+          <div class="grid gap-x-4 md:grid-cols-2">
+            <%= f.text_field :first_name, autofocus: true %>
+            <%= f.text_field :last_name %>
+          </div>
+          <%= f.email_field :email, autocomplete: "email" %>
+          <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
+          <%= f.check_box :free_shipping, hint: "For orders shipped from $25 in books or $29 in other categories" %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

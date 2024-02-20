@@ -11,11 +11,12 @@
     @apply rounded-t-xl
   }
 
-  .accordion__header:last-of-type[aria-expanded="false"] {
+  .accordion__header:last-of-type,
+  .accordion__body:last-of-type {
     @apply rounded-b-xl
   }
 
-  .accordion__body:last-of-type {
-    @apply rounded-b-xl
+  .accordion__header:last-of-type[aria-expanded="true"] {
+    @apply rounded-b-none
   }
 }
