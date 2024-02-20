@@ -1,20 +1,19 @@
 class Ui::Alert::Component < ApplicationComponent
-  TYPES = %w[info error success warning default]
+  TYPES = %i[info error success warning default]
   DEFAULT_TYPE = :default
 
   def initialize(type: DEFAULT_TYPE, **options)
-    @type = type
+    @type = TYPES.include?(type) ? type : DEFAULT_TYPE
+    @options = options
   end
 
-  erb_template <<~ERB
-    <div class="<%= classes %>" role="alert" **options>
-      <%= content %>
-    </div>
-  ERB
+  def call
+    content_tag :div, content, class: classes, role: "alert", **@options
+  end
 
   def classes
     class_names(
-      "p-4 mb-4 text-sm rounded-lg",
+      "p-4 text-sm rounded-lg",
       "text-blue-800 bg-blue-50 bg-blue-50": @type == :info,
       "text-red-800 bg-red-50 bg-red-50": @type == :error,
       "text-green-800 bg-green-50 bg-green-50": @type == :success,
