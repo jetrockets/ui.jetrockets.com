@@ -145,7 +145,7 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     hirb (0.7.3)
-    i18n (1.14.1)
+    i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     inline_svg (1.9.0)
       activesupport (>= 3.0)
@@ -216,7 +216,7 @@ GEM
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (2.2.8)
+    rack (2.2.8.1)
     rack-livereload (0.5.2)
       rack (< 3)
     rack-protection (3.2.0)
@@ -327,7 +327,7 @@ GEM
     smart_properties (1.17.0)
     strong_migrations (1.7.0)
       activerecord (>= 5.2)
-    thor (1.3.0)
+    thor (1.3.1)
     tilt (2.3.0)
     timeout (0.4.1)
     turbo-rails (2.0.2)
@@ -397,7 +397,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.2.3p157
 
 BUNDLED WITH
-   2.4.1
+   2.5.6

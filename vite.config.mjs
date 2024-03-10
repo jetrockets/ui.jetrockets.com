@@ -1,8 +1,14 @@
+import gzipPlugin from 'rollup-plugin-gzip'
 import { defineConfig } from 'vite'
-import ViteRails from 'vite-plugin-rails'
+import FullReload from 'vite-plugin-full-reload'
+import RubyPlugin from 'vite-plugin-ruby'
+import StimulusHMR from 'vite-plugin-stimulus-hmr'
 
 export default defineConfig({
   plugins: [
-    ViteRails()
+    RubyPlugin(),
+    gzipPlugin(),
+    StimulusHMR(),
+    FullReload(['config/routes.rb', 'app/views/**/*'])
   ]
 })
