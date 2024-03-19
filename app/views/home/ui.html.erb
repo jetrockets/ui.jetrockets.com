@@ -88,14 +88,15 @@
         </div>
       <% end %>
 
-      <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown") do %>
+      <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", opened: true) do %>
+        <%= button_tag class: "btn btn-primary btn-iconed", data: { dropdown_toggle: "dropdown" } do %>
+          Default Dropdown
+          <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+          </svg>
+        <% end %>
+
         <%= component "ui/dropdown", id: "dropdown" do |dropdown| %>
-          <%= dropdown.with_button class: "btn btn-primary btn-iconed" do %>
-            Dropdown Button
-            <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
-            </svg>
-          <% end %>
           <%= dropdown.with_links([
             { name: "Dashboard", href: "#" },
             { name: "Settings", href: "#" },
@@ -103,9 +104,32 @@
             { name: "Privacy Policy", href: privacy_path, data: { turbo_frame: :modal } },
           ]) %>
         <% end %>
+
+        <%= button_tag class: "btn btn-primary btn-iconed", data: { dropdown_toggle: "dropdown2" } do %>
+          Custom Dropdown
+          <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+          </svg>
+        <% end %>
+        <%= component "ui/dropdown", id: "dropdown2" do |dropdown| %>
+          <ul class="dropdown__wrapper">
+            <li>
+              <%= link_to "Test 1", "#", class: "dropdown__link" %>
+            </li>
+            <li>
+              <%= link_to "Test 2", "#", class: "dropdown__link" %>
+            </li>
+            <li>
+              <%= link_to "Test 3", "#", class: "dropdown__link" %>
+            </li>
+            <li>
+              <%= link_to "Test 4", "#", class: "dropdown__link" %>
+            </li>
+          </ul>
+        <% end %>
       <% end %>
 
-      <%= accordion.with_item(title: "Form Builder", id: "form_builder", opened: true) do %>
+      <%= accordion.with_item(title: "Form Builder", id: "form_builder") do %>
         <%= form_with url: root_path do |f| %>
           <div class="grid gap-x-4 md:grid-cols-2">
             <div class="form__group">
@@ -129,12 +153,14 @@
           </div>
 
           <div class="form__group">
-            <div class="flex items-start">
-              <%= f.check_box :free_shipping, class: "form__checkbox" %>
-              <div class="pl-2">
-                <%= f.label :free_shipping, class: "form__label form__label-checkbox" %>
-                <p class="form__hint">For orders shipped from $25 in books or $29 in other categories</p>
-              </div>
+            <%= f.check_box :free_shipping %>
+          </div>
+
+          <div class="form__group">
+            <div class="flex flex-col gap-y-2">
+              <%= f.radio_button :radio, '1', label: 'Radio 1', checked: true %>
+              <%= f.radio_button :radio, '2' %>
+              <%= f.radio_button :radio, '3' %>
             </div>
           </div>
         <% end %>
@@ -142,6 +168,18 @@
 
       <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
         <%= button_to "Delete", "#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
+      <% end %>
+
+      <%= accordion.with_item(title: "Popover", id: "popover") do %>
+        <%= button_tag "Default popover", class: "btn", data: { popover_target: "popover_top" }, type: :button %>
+        <%= component "ui/popover", id: "popover_top", title: "Popover Title", placement: "right" do %>
+          <p>And here's some amazing content. It's very engaging.</p>
+        <% end %>
+
+        <%= button_tag "Popover Right", class: "btn btn-primary", data: { popover_target: "popover_right", popover_placement: "right" }, type: :button %>
+        <%= component "ui/popover", id: "popover_right", title: "Popover Title", placement: "right" do %>
+          <p>And here's some amazing content. It's very engaging.</p>
+        <% end %>
       <% end %>
     <% end %>
   </div>
