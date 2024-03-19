@@ -55,49 +55,42 @@
 
       <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
         <div class="gap-1">
-          <%= component "ui/button", title: "Button XS", size: :xs %>
-          <%= component "ui/button", title: "Button SM", size: :sm %>
-          <%= component "ui/button", title: "Button MD", size: :md %>
-          <%= component "ui/button", title: "Button LG", size: :lg %>
-          <%= component "ui/button", title: "Button XL", size: :xl %>
+          <%= link_to "Button XS", "#", class: "btn btn-xs" %>
+          <%= link_to "Button SM", "#",class: "btn btn-sm" %>
+          <%= link_to "Button MD", "#",class: "btn btn-md" %>
+          <%= link_to "Button LG", "#",class: "btn btn-lg" %>
+          <%= link_to "Button XL", "#",class: "btn btn-xl" %>
         </div>
 
         <div class="gap-1">
-          <%= component "ui/button", title: "Default XS" %>
-          <%= component "ui/button", title: "Primary SM", variant: :primary %>
-          <%= component "ui/button", title: "Secondary MD", variant: :secondary %>
-          <%= component "ui/button", title: "Danger LG", variant: :danger %>
+          <%= link_to "Default", "#", class: "btn" %>
+          <%= link_to "Primary", "#", class: "btn btn-primary" %>
+          <%= link_to "Secondary", "#", class: "btn btn-secondary" %>
+          <%= link_to "Danger", "#", class: "btn btn-danger" %>
         </div>
 
         <div class="gap-1">
-          <%= component "ui/button", title: "Default Outlined", outlined: true %>
-          <%= component "ui/button", title: "Primary Outlined", variant: :primary, outlined: true %>
-          <%= component "ui/button", title: "Secondary Outlined", variant: :secondary, outlined: true %>
-          <%= component "ui/button", title: "Danger Outlined", variant: :danger, outlined: true %>
+          <%= link_to "Default Outlined", "#", class: "btn btn-outlined" %>
+          <%= link_to "Primary Outlined", "#", class: "btn btn-primary btn-outlined" %>
+          <%= link_to "Secondary Outlined", "#", class: "btn btn-secondary btn-outlined" %>
+          <%= link_to "Danger Outlined", "#", class: "btn btn-danger btn-outlined" %>
         </div>
 
         <div class="flex items-center gap-1">
-          <%= component "ui/button", title: "Primary", variant: :primary %>
-          <%= component "ui/button", title: "Secondary", variant: :secondary %>
-          <%= component "ui/button" do %>
+          <%= link_to "Primary", "#", class: "btn btn-primary" %>
+          <%= link_to "Secondary", "#", class: "btn btn-secondary" %>
+          <%= link_to "#", class: "btn btn-iconed" do %>
             <svg class="w-4 h-4 me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
             </svg>
             <span>Iconed</span>
           <% end %>
         </div>
-
-        <div>
-          <strong class="block mt-6 mb-2 font-bold">Links</strong>
-          <div class="space-x-2">
-            <%= component "ui/button", title: "Terms and conditions", href: terms_path, data: { turbo_frame: :modal } %>
-          </div>
-        </div>
       <% end %>
 
-      <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown") do %>
+      <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", opened: true) do %>
         <%= component "ui/dropdown", id: "dropdown" do |dropdown| %>
-          <%= dropdown.with_button(variant: :primary) do %>
+          <%= dropdown.with_button class: "btn btn-primary btn-iconed" do %>
             Dropdown Button
             <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
