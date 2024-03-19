@@ -5,14 +5,6 @@
     @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-2 focus-visible:ring-offset-2;
     @apply active:scale-95;
 
-    transition: buttonPop 0 ease-out;
-    transition-property: color, background-color, border-color, opacity, transform;
-
-    &:active,
-    &:hover {
-      transition: buttonPop 2s ease-out;
-    }
-
     &.btn-outlined {
       @apply bg-transparent border-gray-300;
       @apply hover:text-white hover:bg-gray-900 hover:bg-opacity-90 hover:border-transparent;
@@ -47,7 +39,7 @@
   }
 
   .btn-ghost {
-    @apply text-blue-700 bg-transparent border-transparent;
+    @apply text-black bg-transparent border-transparent;
   }
 
   /* Sizes */
