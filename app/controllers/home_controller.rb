@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
-    flash.now[:success] = "Flash message example"
   end
 
   def ui
+    flash.now[:success] = "Flash message example"
   end
 end
