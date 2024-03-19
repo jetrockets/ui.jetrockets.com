@@ -7,6 +7,8 @@ gem "bootsnap", require: false
 
 gem "discard", "~> 1.2"
 
+gem 'erb_lint', require: false
+
 gem "inline_svg"
 
 gem "gretel"
