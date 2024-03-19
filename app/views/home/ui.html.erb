@@ -192,51 +192,53 @@
         <% end %>
 
         <%= accordion.with_item(title:"Table", id:"table") do %>
-          <table class="table table-full">
-            <thead class="table__thead">
-              <tr>
-                <th class="table__th">
-                  Name
-                </th>
-                <th class="table__th whitespace-nowrap">
-                  Created At
-                </th>
-                <th />
-                <th />
-              </tr>
-            </thead>
-
-            <tbody class="table__tbody">
-              <% 4.times.each do |index| %>
+          <div class="overflow-x-auto">
+            <table class="table table-full">
+              <thead class="table__thead">
                 <tr>
-                  <td class="w-3/5 table__td">
-                    <ul>
-                      <li>
-                        User Name
-                      </li>
-                      <li class="text-sm font-normal text-gray-600">
-                        user_name@gmail.com
-                      </li>
-                    </ul>
-                  </td>
-                  <td class="table__td table__td-center">
-                    <%= component"ui/badge", title:"Active", type: :green %>
-                  </td>
-                  <td class="table__td whitespace-nowrap">
-                    <%= date_format(Time.zone.now, :full_month) %>
-                  </td>
-                  <td class="table__td table__td-actions">
-                    <%= link_to"Edit","#", class:"link" %>
-                  </td>
+                  <th class="table__th">
+                    Name
+                  </th>
+                  <th class="table__th whitespace-nowrap">
+                    Created At
+                  </th>
+                  <th />
+                  <th />
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody class="table__tbody">
+                <% 4.times.each do |index| %>
+                  <tr>
+                    <td class="w-3/5 table__td">
+                      <ul>
+                        <li>
+                          User Name
+                        </li>
+                        <li class="text-sm font-normal text-gray-600">
+                          user_name@gmail.com
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="table__td table__td-center">
+                      <%= component"ui/badge", title:"Active", type: :green %>
+                    </td>
+                    <td class="table__td whitespace-nowrap">
+                      <%= date_format(Time.zone.now, :full_month) %>
+                    </td>
+                    <td class="table__td table__td-actions">
+                      <%= link_to"Edit","#", class:"link" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         <% end %>
 
         <%= accordion.with_item(title:"Tabs", id:"tabs") do %>
           <div class="tabs">
-            <ul class="tabs__list" id="default-tab" data-tabs-toggle="#default-tab-content" data-tabs-active-classes="tabs__link-active" role="tablist">
+            <ul class="tabs__list" id="default-tab" data-tabs-toggle="#default-tab-content" data-tabs-active-classes="tabs__link-active" data-tabs-inactive-classes="tabs__link" role="tablist">
               <li class="tabs__item" role="presentation">
                 <button class="tabs__link" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
               </li>
@@ -250,19 +252,20 @@
                 <button class="tabs__link" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Contacts</button>
               </li>
             </ul>
-          </div>
-          <div id="default-tab-content">
-            <div class="hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-            </div>
-            <div class="hidden" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-              <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-            </div>
-            <div class="hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-              <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-            </div>
-            <div class="hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-              <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+
+            <div class="tabs__content" id="default-tab-content">
+              <div class="hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+              </div>
+              <div class="hidden" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+              </div>
+              <div class="hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+              </div>
+              <div class="hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+              </div>
             </div>
           </div>
         <% end %>
