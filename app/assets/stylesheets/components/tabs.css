@@ -1,18 +1,18 @@
 @layer components {
   .tabs {
-    @apply flex flex-row md:flex-col;
+    @apply flex flex-row md:flex-col gap-x-8 md:gap-x-0;
   }
 
   .tabs__list {
-    @apply flex flex-wrap mb-4 text-sm font-medium text-center border-b border-gray-200;
+    @apply flex flex-wrap mb-4 text-sm font-medium md:text-center md:border-b md:border-gray-200 gap-y-2 md:gap-y-0;
   }
 
   .tabs__item {
-    @apply -mb-px me-2;
+    @apply md:-mb-px md:me-2;
   }
 
   .tabs__link {
-    @apply inline-block p-4 text-gray-600 border-b-2 border-transparent rounded-t-lg border-b-transparent hover:text-gray-800 hover:border-gray-300;
+    @apply inline-block py-1 text-gray-600 border-b-2 border-transparent rounded-t-lg md:p-4 border-b-transparent hover:text-gray-800 hover:border-gray-300;
   }
 
   .tabs__link-active {
