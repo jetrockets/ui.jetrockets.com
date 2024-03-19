@@ -24,6 +24,8 @@
     <%= render partial: "layouts/shared/navbar" %>
 
     <main class="body__main" data-navbar-target="main">
+      <%= breadcrumbs separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "wrapper mb-4" %>
+
       <%= yield %>
     </main>
 

@@ -9,6 +9,8 @@ gem "discard", "~> 1.2"
 
 gem "inline_svg"
 
+gem "gretel"
+
 gem "meta-tags"
 gem "mjml-rails"
 

@@ -1,0 +1,17 @@
+@layer components {
+  .breadcrumbs {
+    @apply flex text-sm;
+  }
+
+  .breadcrumbs__separator {
+    @apply mx-2;
+  }
+
+  .breadcrumb__tab_current {
+    @apply text-gray-600;
+  }
+
+  .current {
+    @apply text-gray-600;
+  }
+}

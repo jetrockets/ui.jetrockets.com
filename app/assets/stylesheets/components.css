@@ -1,6 +1,7 @@
 @import "./components/_animations.css";
 @import "./components/accordion.css";
 @import "./components/body.css";
+@import "./components/breadcrumbs.css";
 @import "./components/btn.css";
 @import "./components/dropdown.css";
 @import "./components/form.css";

@@ -144,6 +144,9 @@ GEM
       sexp_processor (~> 4.8)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    gretel (5.0.0)
+      actionview (>= 5.1, < 7.2)
+      railties (>= 5.1, < 7.2)
     hirb (0.7.3)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
@@ -374,6 +377,7 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   ffaker
+  gretel
   inline_svg
   letter_opener
   meta-tags
