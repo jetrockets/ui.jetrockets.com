@@ -1,5 +1,6 @@
 module ApplicationHelper
   include Pagy::Frontend
+  ActionView::Base.default_form_builder = FormBuilders::DefaultFormBuilder
 
   def component(name, *args, **kwargs, &block)
     component = name.to_s.camelize.constantize::Component

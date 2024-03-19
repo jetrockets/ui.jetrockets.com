@@ -109,32 +109,34 @@
         <%= form_with url: root_path do |f| %>
           <div class="grid gap-x-4 md:grid-cols-2">
             <div class="form__group">
-              <%= f.label :first_name, class: "form__label" %>
-              <%= f.text_field :first_name, autofocus: true, class: "form__input" %>
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, autofocus: true %>
             </div>
             <div class="form__group">
-              <%= f.label :last_name, class: "form__label" %>
-              <%= f.text_field :last_name, class: "form__input" %>
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name %>
             </div>
           </div>
 
           <div class="form__group">
-            <%= f.label :email, class: "form__label" %>
-            <%= f.email_field :email, autocomplete: "email", class: "form__input" %>
+            <%= f.label :email %>
+            <%= f.email_field :email, autocomplete: "email" %>
           </div>
 
           <div class="form__group">
-            <%= f.label :password, class: "form__label" %>
-            <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password", class: "form__input" %>
+            <%= f.label :password %>
+            <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
           </div>
 
           <div class="form__group">
-            <div class="flex items-start">
-              <%= f.check_box :free_shipping, class: "form__checkbox" %>
-              <div class="pl-2">
-                <%= f.label :free_shipping, class: "form__label form__label-checkbox" %>
-                <p class="form__hint">For orders shipped from $25 in books or $29 in other categories</p>
-              </div>
+            <%= f.check_box :free_shipping, label: 'Free Shipping', hint: 'For orders shipped from $25 in books or $29 in other categories' %>
+          </div>
+
+          <div class="form__group">
+            <div class="flex flex-col gap-y-2">
+              <%= f.radio_button :radio, '1', label: 'Radio 1', checked: true %>
+              <%= f.radio_button :radio, '2' %>
+              <%= f.radio_button :radio, '3' %>
             </div>
           </div>
         <% end %>
