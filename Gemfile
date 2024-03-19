@@ -12,6 +12,7 @@ gem "inline_svg"
 gem "meta-tags"
 gem "mjml-rails"
 
+gem "pagy"
 gem "pg"
 gem "propshaft"
 gem "puma"
