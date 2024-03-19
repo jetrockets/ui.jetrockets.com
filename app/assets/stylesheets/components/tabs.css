@@ -1,0 +1,21 @@
+@layer components {
+  .tabs {
+    @apply mb-4 border-b border-gray-200;
+  }
+
+  .tabs__list {
+    @apply flex flex-wrap -mb-px text-sm font-medium text-center;
+  }
+
+  .tabs__item {
+    @apply me-2;
+  }
+
+  .tabs__link {
+    @apply inline-block p-4 border-b-2 rounded-t-lg;
+  }
+
+  .tabs__link-active {
+    @apply text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500
+  }
+}
