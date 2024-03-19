@@ -20,10 +20,10 @@
     <%= yield(:head) %>
   </head>
 
-  <body class="body">
+  <body class="body" data-controller="navbar">
     <%= render partial: "layouts/shared/navbar" %>
 
-    <main class="body__main">
+    <main class="body__main" data-navbar-target="main">
       <%= yield %>
     </main>
 

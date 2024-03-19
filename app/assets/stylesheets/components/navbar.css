@@ -1,25 +1,80 @@
 @layer components {
+  :root {
+    --nav-height: 54px;
+  }
+
   .navbar {
-    @apply sticky top-0 z-40 transition-all bg-white shadow-sm bg-opacity-90 backdrop-blur-sm;
+    @apply sticky top-0 z-40 flex items-center justify-between bg-white shadow-sm bg-opacity-90 backdrop-blur-sm h-nav;
+  }
+
+  .navbar-active .navbar__backgrop {
+    @apply visible opacity-60;
   }
 
   .navbar__logo {
-    @apply w-auto h-7;
+    @apply w-28;
   }
 
   .navbar__inner {
-    @apply flex items-center wrapper;
+    @apply flex items-center justify-between flex-1;
   }
 
-  .navbar__menu{
-    @apply flex flex-1 ml-8 space-x-6;
+  .navbar__menu {
+    @apply fixed inset-0 invisible w-screen h-0 pt-4 overflow-auto duration-300 translate-y-full bg-blue-700 opacity-0;
+    transition-property: opacity, transform;
+
+    @screen md {
+      @apply relative top-0 flex justify-center flex-1 visible w-auto h-auto pt-0 space-x-6 translate-y-0 bg-transparent opacity-100;
+    }
+  }
+
+  .navbar__menu-active {
+    @apply visible translate-y-0 opacity-100 top-nav h-[calc(100vh-var(--nav-height))];
+
+    @screen md {
+      @apply top-auto h-auto
+    }
   }
 
   .navbar__link {
-    @apply flex items-center justify-between py-4 text-base font-semibold text-black hover:text-gray-500;
+    @apply flex items-center px-6 py-3 text-3xl font-bold leading-tight text-white;
+
+    @screen md {
+      @apply relative block px-0 py-2 text-base font-normal leading-none text-gray-600 hover:text-black;
+    }
   }
 
   .navbar__link-active {
-    @apply text-gray-500;
+    @apply text-blue-700 bg-white;
+
+    @screen md {
+      @apply text-black bg-transparent;
+    }
+  }
+
+  .navbar__right {
+    @apply flex items-center gap-x-3;
+  }
+
+  .navbar__close {
+    @apply invisible transition-all opacity-0;
+  }
+
+  .navbar__open {
+    @apply visible transition-all opacity-100;
+  }
+
+  .navbar__burger {
+    @apply md:hidden
+  }
+
+  .navbar__burger-opened {
+    .navbar__close {
+      @apply visible opacity-100;
+    }
+
+    .navbar__open {
+      @apply invisible opacity-0;
+    }
   }
 }

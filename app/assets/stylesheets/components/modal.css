@@ -1,6 +1,6 @@
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0 h-[calc(100%-1rem)] max-h-full animate-slideDown;
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full px-4 pt-4 overflow-x-hidden overflow-y-auto bottom-0 h-[calc(100%-1rem)] max-h-full animate-modalPop justify-end;
   }
 
   .modal__container {

@@ -1,6 +1,7 @@
 @layer components {
   .accordion__header {
-    @apply flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-600 border border-gray-200 focus:ring-4 focus:ring-gray-200 focus:outline-none -mt-px
+    @apply flex items-center justify-between w-full gap-3 p-5 -mt-px font-medium text-gray-600 border border-gray-200;
+    @apply focus-visible:ring-4 focus-visible:ring-gray-200 focus-visible:outline-none
   }
 
   .accordion__body {

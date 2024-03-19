@@ -1,13 +1,24 @@
 <nav class="navbar">
-  <div class="navbar__inner">
-    <%= link_to inline_svg_vite_tag("images/logo.svg", class: "navbar__logo", alt: "JetRockets"), root_path, class: "navbar__link", aria: { label: "JetRockets" } %>
-    <div class="navbar__menu">
-      <%= link_to "Privacy Policy", privacy_path, class: "navbar__link #{"navbar__link-active" if current_page?(privacy_path)}" %>
-      <%= link_to "Terms and conditions", terms_path, class: "navbar__link #{"navbar__link-active" if current_page?(terms_path)}" %>
-    </div>
+  <div class="navbar__inner wrapper">
+    <%= link_to inline_svg_vite_tag("images/logo.svg", class: "navbar__logo", alt: "JetRockets"), root_path, aria: { label: "JetRockets" } %>
+    <ul class="navbar__menu" data-navbar-target="menu">
+      <li>
+        <%= link_to "Privacy Policy", privacy_path, class: "navbar__link #{"navbar__link-active" if current_page?(privacy_path)}" %>
+      </li>
+      <li>
+        <%= link_to "Terms and conditions", terms_path, class: "navbar__link #{"navbar__link-active" if current_page?(terms_path)}" %>
+      </li>
+    </ul>
 
     <div class="navbar__right">
       <%= component "ui/button", href: "#", size: :sm, variant: :primary, title: "Login" %>
+
+      <%= component "ui/button", size: :sm,variant: :link, class: "navbar__burger", data: { action: "click->navbar#toggle", navbar_target: "burger" } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" class="navbar__open" />
+          <path stroke-linecap="round" stroke-width="2" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" class="navbar__close" />
+        </svg>
+      <% end %>
     </div>
   </div>
 </nav>

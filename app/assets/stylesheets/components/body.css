@@ -3,8 +3,20 @@
     @apply flex flex-col min-h-screen;
   }
 
+  .body-overflow {
+    @apply relative overflow-hidden;
+
+    &:after {
+      @apply content-[''] bg-black absolute inset-0 bg-opacity-60;
+    }
+  }
+
   .body__main {
-    @apply flex-1 pt-6;
+    @apply flex-1 pt-6 transition-all duration-300;
+  }
+
+  .body__main-overflowed {
+    @apply overflow-hidden scale-90 opacity-30 md:opacity-100 md:scale-100 md:overflow-auto;
   }
 
   .body__footer {
