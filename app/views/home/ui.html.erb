@@ -12,7 +12,7 @@
 
   <div class="md:w-8/12">
     <%= component "ui/accordion" do |accordion| %>
-      <%= accordion.with_item(title: "Alerts", id: 'alerts', class: "space-y-2") do %>
+      <%= accordion.with_item(title: "Alerts", id: "alerts", class: "space-y-2") do %>
         <%= component "ui/alert", type: :info do |alert| %>
           <strong>Info alert!</strong> Change a few things up and try submitting again.
         <% end %>
@@ -34,7 +34,7 @@
         <% end %>
       <% end %>
 
-      <%= accordion.with_item(title: "Async Modal", id: 'modal') do %>
+      <%= accordion.with_item(title: "Async Modal", id: "modal") do %>
         <p class="mb-2 text-gray-600 dark:text-gray-400">
           By continuing, I agree to <%= site_name %>
           <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link" %>,
@@ -42,7 +42,7 @@
         </p>
       <% end %>
 
-      <%= accordion.with_item(title: "Badges", id: 'bages', class: "space-x-2") do %>
+      <%= accordion.with_item(title: "Badges", id: "bages", class: "space-x-2") do %>
         <%= component "ui/badge", title: "Default" %>
         <%= component "ui/badge", title: "Blue", type: :blue %>
         <%= component "ui/badge", title: "Red", type: :red %>
@@ -53,7 +53,7 @@
         <%= component "ui/badge", title: "Pink", type: :pink %>
       <% end %>
 
-      <%= accordion.with_item(title: "Buttons", id: 'buttons', class: "space-y-4") do %>
+      <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
         <div class="gap-1">
           <%= component "ui/button", title: "Button XS", size: :xs %>
           <%= component "ui/button", title: "Button SM", size: :sm %>
@@ -112,7 +112,7 @@
         <% end %>
       <% end %>
 
-      <%= accordion.with_item(title: "Form Builder", id: 'form_builder') do %>
+      <%= accordion.with_item(title: "Form Builder", id: "form_builder") do %>
         <%= form_with url: root_path do |f| %>
           <div class="grid gap-x-4 md:grid-cols-2">
             <%= f.text_field :first_name, autofocus: true %>
@@ -122,6 +122,10 @@
           <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
           <%= f.check_box :free_shipping, hint: "For orders shipped from $25 in books or $29 in other categories" %>
         <% end %>
+      <% end %>
+
+      <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
+        <%= button_to "Delete", "#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
       <% end %>
     <% end %>
   </div>
