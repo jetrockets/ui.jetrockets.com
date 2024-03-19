@@ -190,6 +190,49 @@
             <p>And here's some amazing content. It's very engaging.</p>
           <% end %>
         <% end %>
+
+        <%= accordion.with_item(title: "Table", id: "table") do %>
+          <table class="table table-full">
+            <thead class="table__thead">
+              <tr>
+                <th class="table__th">
+                  Name
+                </th>
+                <th class="table__th whitespace-nowrap">
+                  Created At
+                </th>
+                <th />
+                <th />
+              </tr>
+            </thead>
+
+            <tbody class="table__tbody">
+              <% 4.times.each do |index| %>
+                <tr>
+                  <td class="w-3/5 table__td">
+                    <ul>
+                      <li>
+                        User Name
+                      </li>
+                      <li class="text-sm font-normal text-gray-600">
+                        user_name@gmail.com
+                      </li>
+                    </ul>
+                  </td>
+                  <td class="table__td table__td-center">
+                    <%= component "ui/badge", title: "Active", type: :green %>
+                  </td>
+                  <td class="table__td whitespace-nowrap">
+                    <%= date_format(Time.zone.now, :full_month) %>
+                  </td>
+                  <td class="table__td table__td-actions">
+                    <%= link_to "Edit", "#", class: "link" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       <% end %>
     </div>
   </section>
