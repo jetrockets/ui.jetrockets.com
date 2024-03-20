@@ -1,5 +1,41 @@
 @layer components {
   .h1 {
+    @apply text-5xl font-extrabold;
+  }
 
+  .h2 {
+    @apply text-4xl font-bold;
+  }
+
+  .h3 {
+    @apply text-3xl font-bold;
+  }
+
+  .h4 {
+    @apply text-2xl font-bold;
+  }
+
+  .h5 {
+    @apply text-xl font-bold;
+  }
+
+  .h6 {
+    @apply text-lg font-bold;
+  }
+
+  .p {
+    @apply mb-3;
+  }
+
+  .ul {
+    @apply space-y-1 list-disc list-inside;
+  }
+
+  .ol {
+    @apply space-y-1 list-decimal list-inside;
+  }
+
+  .hr {
+    @apply h-px my-8 bg-gray-200 border-0;
   }
 }

@@ -39,6 +39,16 @@ module FormBuilders
       end
     end
 
+    def toggle(method, options = {})
+      label_text = options.delete(:label) || method.to_s.humanize
+
+      @template.content_tag :label, class: "inline-flex items-center cursor-pointer" do
+        @template.concat @template.check_box(@object_name, method, merge_class(options, "sr-only peer"))
+        @template.concat @template.content_tag(:div, "", class: "form__toggle peer")
+        @template.concat @template.content_tag(:span, label_text, class: "form__label form__label-checkbox")
+      end
+    end
+
     def radio_button(method, tag_value, options = {})
       label_text = options.delete(:label)
       hint = options.delete(:hint)
@@ -60,6 +70,16 @@ module FormBuilders
 
       @template.content_tag(:div, class: classes, **options) do
         block.call
+      end
+    end
+
+    private
+
+    def merge_class(options, new_class)
+      if options[:class].present?
+        options.merge(class: "#{options[:class]} #{new_class}")
+      else
+        options.merge(class: new_class)
       end
     end
   end

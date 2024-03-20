@@ -171,10 +171,14 @@
 
             <div class="form__group">
               <div class="flex flex-col gap-y-2">
-                <%= f.radio_button :radio, '1', label: 'Radio 1', checked: true %>
-                <%= f.radio_button :radio, '2' %>
-                <%= f.radio_button :radio, '3' %>
+                <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
+                <%= f.radio_button :radio, "2" %>
+                <%= f.radio_button :radio, "3" %>
               </div>
+            </div>
+
+            <div class="form__group">
+              <%= f.toggle :toggle, label: "Toggle me" %>
             </div>
           <% end %>
         <% end %>
