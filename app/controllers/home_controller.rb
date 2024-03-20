@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   end
 
   def ui
-    flash.now[:success] = "Flash message example"
+
   end
 end

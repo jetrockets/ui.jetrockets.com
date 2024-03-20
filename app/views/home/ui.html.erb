@@ -1,281 +1,41 @@
-<%
-  set_meta_tags(
-    title:"Homepage",
-    description:"Our homepage is the best place to find out what we do and how we can help you.",
-    keywords:"Site, Login, Members"
-  )
-%>
-<% breadcrumb :ui %>
 
 <article class="space-y-8 wrapper">
-  <section class="wysiwyg">
-    <h1>Component Examples</h1>
-    <p>
-      We based on <%= link_to"Flowbite","https://flowbite.com/", target: :_blank, ref:"nofollow noopener noreferrer", class:"link" %>. So if you need more components, you can find them there and implement them in your project.
-    </p>
-    <%= component"ui/alert", type: :info do |alert| %>
-      <strong>Don't hesitate!</strong> It's just a template, you can change every component, or delete it if you don't need it.
-    <% end %>
-  </section>
-
-  <section class="space-y-8">
-    <div class="md:w-8/12">
-      <%= component"ui/accordion" do |accordion| %>
-        <%= accordion.with_item(title:"Alerts", id:"alerts", class:"space-y-2") do %>
-          <%= component"ui/alert", type: :info do |alert| %>
-            <strong>Info alert!</strong> Change a few things up and try submitting again.
-          <% end %>
-
-          <%= component"ui/alert", type: :error do |alert| %>
-            <strong>Danger alert!</strong> Change a few things up and try submitting again.
-          <% end %>
-
-          <%= component"ui/alert", type: :success do |alert| %>
-            <strong>Success alert!</strong> Change a few things up and try submitting again.
-          <% end %>
-
-          <%= component"ui/alert", type: :warning do |alert| %>
-            <strong>Warning alert!</strong> Change a few things up and try submitting again.
-          <% end %>
-
-          <%= component"ui/alert" do |alert| %>
-            <strong>Deafault alert!</strong> Change a few things up and try submitting again.
-          <% end %>
-        <% end %>
-
-        <%= accordion.with_item(title:"Async Modal", id:"modal") do %>
-          <p class="mb-2 text-gray-600">
-            By continuing, I agree to <%= site_name %>
-            <%= link_to"Terms of Service", terms_path, data: { turbo_frame: :modal }, class:"link" %>,
-            <%= link_to"Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class:"link" %> and I confirm I am 18 years old.
-          </p>
-        <% end %>
-
-        <%= accordion.with_item(title:"Badges", id:"bages", class:"space-x-2") do %>
-          <%= component"ui/badge", title:"Default" %>
-          <%= component"ui/badge", title:"Blue", type: :blue %>
-          <%= component"ui/badge", title:"Red", type: :red %>
-          <%= component"ui/badge", title:"Green", type: :green %>
-          <%= component"ui/badge", title:"Yellow", type: :yellow %>
-          <%= component"ui/badge", title:"Indigo", type: :indigo %>
-          <%= component"ui/badge", title:"Purple", type: :purple %>
-          <%= component"ui/badge", title:"Pink", type: :pink %>
-        <% end %>
-
-        <%= accordion.with_item(title:"Buttons", id:"buttons", class:"space-y-4") do %>
-          <div class="gap-1">
-            <%= link_to"Button XS","#", class:"btn btn-xs" %>
-            <%= link_to"Button SM","#",class:"btn btn-sm" %>
-            <%= link_to"Button MD","#",class:"btn btn-md" %>
-            <%= link_to"Button LG","#",class:"btn btn-lg" %>
-            <%= link_to"Button XL","#",class:"btn btn-xl" %>
-          </div>
-
-          <div class="gap-1">
-            <%= link_to"Default","#", class:"btn" %>
-            <%= link_to"Primary","#", class:"btn btn-primary" %>
-            <%= link_to"Secondary","#", class:"btn btn-secondary" %>
-            <%= link_to"Danger","#", class:"btn btn-danger" %>
-          </div>
-
-          <div class="gap-1">
-            <%= link_to"Default Outlined","#", class:"btn btn-outlined" %>
-            <%= link_to"Primary Outlined","#", class:"btn btn-primary btn-outlined" %>
-            <%= link_to"Secondary Outlined","#", class:"btn btn-secondary btn-outlined" %>
-            <%= link_to"Danger Outlined","#", class:"btn btn-danger btn-outlined" %>
-          </div>
-
-          <div class="flex items-center gap-1">
-            <%= link_to"Primary","#", class:"btn btn-primary" %>
-            <%= link_to"Secondary","#", class:"btn btn-secondary" %>
-            <%= link_to"#", class:"btn btn-iconed" do %>
-              <svg class="w-4 h-4 me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
-              </svg>
-              <span>Iconed</span>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%= accordion.with_item(title:"Confirm Dialog", id:"clipboard") do %>
-          <%= button_to"Delete","#", class:"btn btn-danger", data: { turbo_confirm:"Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
-        <% end %>
-
-        <%= accordion.with_item(title:"Dropdown Example", id:"accordion_dropdown") do %>
-          <%= button_tag class:"btn btn-primary btn-iconed", data: { dropdown_toggle:"dropdown" } do %>
-            Default Dropdown
-            <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
-            </svg>
-          <% end %>
-
-          <%= component"ui/dropdown", id:"dropdown" do |dropdown| %>
-            <%= dropdown.with_links([
-              { name:"Dashboard", href:"#" },
-              { name:"Settings", href:"#" },
-              { name:"Terms of Service", href: terms_path, data: { turbo_frame: :modal } },
-              { name:"Privacy Policy", href: privacy_path, data: { turbo_frame: :modal } },
-            ]) %>
-          <% end %>
-
-          <%= button_tag class:"btn btn-primary btn-iconed", data: { dropdown_toggle:"dropdown2" } do %>
-            Custom Dropdown
-            <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
-            </svg>
-          <% end %>
-          <%= component"ui/dropdown", id:"dropdown2" do |dropdown| %>
-            <ul class="dropdown__wrapper">
-              <li>
-                <%= link_to"Test 1","#", class:"dropdown__link" %>
-              </li>
-              <li>
-                <%= link_to"Test 2","#", class:"dropdown__link" %>
-              </li>
-              <li>
-                <%= link_to"Test 3","#", class:"dropdown__link" %>
-              </li>
-              <li>
-                <%= link_to"Test 4","#", class:"dropdown__link" %>
-              </li>
-            </ul>
-          <% end %>
-        <% end %>
-
-        <%= accordion.with_item(title:"Form Builder", id:"form_builder") do %>
-          <%= form_with url: root_path do |f| %>
-            <div class="grid gap-x-4 md:grid-cols-2">
-              <div class="form__group">
-                <%= f.label :first_name %>
-                <%= f.text_field :first_name, autofocus: true %>
-              </div>
-              <div class="form__group">
-                <%= f.label :last_name %>
-                <%= f.text_field :last_name %>
-              </div>
-            </div>
-
-            <div class="form__group">
-              <%= f.label :email %>
-              <%= f.email_field :email, autocomplete:"email" %>
-            </div>
-
-            <div class="form__group">
-              <%= f.label :password %>
-              <%= f.password_field :password, help:"Password should contain at least 8 characters, including at least one letter and one number.", autocomplete:"current-password" %>
-            </div>
-
-            <div class="form__group">
-              <%= f.check_box :free_shipping %>
-            </div>
-
-            <div class="form__group">
-              <div class="flex flex-col gap-y-2">
-                <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
-                <%= f.radio_button :radio, "2" %>
-                <%= f.radio_button :radio, "3" %>
-              </div>
-            </div>
-
-            <div class="form__group">
-              <%= f.toggle :toggle, label: "Toggle me" %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <%= accordion.with_item(title:"Popover", id:"popover") do %>
-          <%= button_tag"Default popover", class:"btn", data: { popover_target:"popover_top" }, type: :button %>
-          <%= component"ui/popover", id:"popover_top", title:"Popover Title", placement:"right" do %>
-            <p>And here's some amazing content. It's very engaging.</p>
-          <% end %>
-
-          <%= button_tag"Popover Right", class:"btn btn-primary", data: { popover_target:"popover_right", popover_placement:"right" }, type: :button %>
-          <%= component"ui/popover", id:"popover_right", title:"Popover Title", placement:"right" do %>
-            <p>And here's some amazing content. It's very engaging.</p>
-          <% end %>
-        <% end %>
-
-        <%= accordion.with_item(title:"Table", id:"table") do %>
-          <div class="overflow-x-auto">
-            <table class="table table-full">
-              <thead class="table__thead">
-                <tr>
-                  <th class="table__th">
-                    Name
-                  </th>
-                  <th class="table__th whitespace-nowrap">
-                    Created At
-                  </th>
-                  <th />
-                  <th />
-                </tr>
-              </thead>
-
-              <tbody class="table__tbody">
-                <% 4.times.each do |index| %>
-                  <tr>
-                    <td class="w-3/5 table__td">
-                      <ul>
-                        <li>
-                          User Name
-                        </li>
-                        <li class="text-sm font-normal text-gray-600">
-                          user_name@gmail.com
-                        </li>
-                      </ul>
-                    </td>
-                    <td class="table__td table__td-center">
-                      <%= component"ui/badge", title:"Active", type: :green %>
-                    </td>
-                    <td class="table__td whitespace-nowrap">
-                      <%= date_format(Time.zone.now, :full_month) %>
-                    </td>
-                    <td class="table__td table__td-actions">
-                      <%= link_to"Edit","#", class:"link" %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        <% end %>
-
-        <%= accordion.with_item(title:"Tabs", id:"tabs") do %>
-          <div class="tabs">
-            <div class="tabs__container">
-              <ul class="tabs__list" id="default-tab" data-tabs-toggle="#default-tab-content" data-tabs-active-classes="tabs__link-active" data-tabs-inactive-classes="tabs__link" role="tablist">
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-                </li>
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
-                </li>
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
-                </li>
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Contacts</button>
-                </li>
-              </ul>
-            </div>
-
-            <div class="tabs__content" id="default-tab-content">
-              <div class="hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-              <div class="hidden" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-              <div class="hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-              <div class="hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+  <%= form_with url: root_path do |f| %>
+    <div class="grid gap-x-4 md:grid-cols-2">
+      <div class="form__group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true %>
+      </div>
+      <div class="form__group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
     </div>
-  </section>
+
+    <div class="form__group">
+      <%= f.label :email %>
+      <%= f.email_field :email, autocomplete:"email" %>
+    </div>
+
+    <div class="form__group">
+      <%= f.label :password %>
+      <%= f.password_field :password, help:"Password should contain at least 8 characters, including at least one letter and one number.", autocomplete:"current-password" %>
+    </div>
+
+    <div class="form__group">
+      <%= f.check_box :free_shipping %>
+    </div>
+
+    <div class="form__group">
+      <div class="flex flex-col gap-y-2">
+        <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
+        <%= f.radio_button :radio, "2" %>
+        <%= f.radio_button :radio, "3" %>
+      </div>
+    </div>
+
+    <div class="form__group">
+      <%= f.toggle :toggle, label: "Toggle me" %>
+    </div>
+  <% end %>
 </article>

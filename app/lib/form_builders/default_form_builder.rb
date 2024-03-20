@@ -26,12 +26,12 @@ module FormBuilders
       super
     end
 
-    def check_box(method, options = {})
+    def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
       label_text = options.delete(:label)
       hint = options.delete(:hint)
 
       @template.content_tag :div, class: "flex items-start" do
-        @template.concat super(method, options.merge(class: "form__checkbox"))
+        @template.concat super(method, options.merge(class: "form__checkbox"), checked_value, unchecked_value)
         @template.concat @template.content_tag(:div, class: "pl-2") {
           @template.concat label(method, label_text, class: "form__label-checkbox")
           @template.concat @template.content_tag(:p, hint, class: "form__hint") if hint
@@ -39,13 +39,13 @@ module FormBuilders
       end
     end
 
-    def toggle(method, options = {})
+    def toggle(method, options = {}, checked_value = "1", unchecked_value = "0")
       label_text = options.delete(:label) || method.to_s.humanize
 
       @template.content_tag :label, class: "inline-flex items-center cursor-pointer" do
-        @template.concat @template.check_box(@object_name, method, merge_class(options, "sr-only peer"))
-        @template.concat @template.content_tag(:div, "", class: "form__toggle peer")
-        @template.concat @template.content_tag(:span, label_text, class: "form__label form__label-checkbox")
+        @template.concat @template.check_box(@object_name, method, options.merge(class: "peer hidden"), checked_value, unchecked_value)
+        @template.concat @template.content_tag(:div, "", class: "relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600")
+        @template.concat @template.content_tag(:span, label_text, class: "text-sm font-medium text-gray-900 ms-3 dark:text-gray-300")
       end
     end
 
