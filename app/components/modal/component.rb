@@ -20,7 +20,7 @@ class Modal::Component < ApplicationComponent
     if helpers.turbo_frame_request?
       turbo_frame_tag :modal do
         content_tag :div, id: "modalContainer", tabindex: "-1", data: { controller: "modal" }, aria: { hidden: "true" }, class: "modal" do
-          content_tag :div, class: modal__container_classes do
+          turbo_frame_tag :modalWindow, class: modal__container_classes do
             yield
           end
         end

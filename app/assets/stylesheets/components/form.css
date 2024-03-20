@@ -28,6 +28,10 @@
     @apply mt-1 text-sm text-gray-600
   }
 
+  .form__error {
+    @apply mt-1 text-sm text-red-600
+  }
+
   .form__radio,
   .form__checkbox {
     @apply w-5 h-5 border-gray-300 rounded-md;

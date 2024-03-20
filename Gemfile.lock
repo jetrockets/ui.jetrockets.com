@@ -68,6 +68,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    after_commit_everywhere (1.3.1)
+      activerecord (>= 4.2)
+      activesupport
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -86,6 +89,7 @@ GEM
     attractor-ruby (0.3.0)
       attractor (~> 2.0)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     better_html (2.0.2)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -93,6 +97,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
+    bigdecimal (3.1.6)
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
@@ -147,6 +152,7 @@ GEM
     gretel (5.0.0)
       actionview (>= 5.1, < 7.2)
       railties (>= 5.1, < 7.2)
+    hashie (5.0.0)
     hirb (0.7.3)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
@@ -198,6 +204,10 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
+    omniauth (2.1.1)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
     pagy (6.4.3)
     parallel (1.24.0)
     parser (3.3.0.5)
@@ -269,6 +279,24 @@ GEM
       connection_pool
     regexp_parser (2.9.0)
     rexml (3.2.6)
+    roda (3.77.0)
+      rack
+    rodauth (2.33.0)
+      roda (>= 2.6.0)
+      sequel (>= 4)
+    rodauth-model (0.2.1)
+      rodauth (~> 2.0)
+    rodauth-omniauth (0.3.3)
+      omniauth (~> 2.0)
+      rodauth (~> 2.13)
+    rodauth-rails (1.13.0)
+      bcrypt
+      railties (>= 5.0, < 8)
+      roda (~> 3.73)
+      rodauth (~> 2.30)
+      rodauth-model (~> 0.2)
+      sequel-activerecord_connection (~> 1.1)
+      tilt
     rubocop (1.60.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -316,6 +344,12 @@ GEM
     ruby_parser (3.21.0)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
+    sequel (5.77.0)
+      bigdecimal
+    sequel-activerecord_connection (1.3.1)
+      activerecord (>= 4.2, < 8)
+      after_commit_everywhere (~> 1.1)
+      sequel (~> 5.38)
     sexp_processor (4.17.1)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -391,6 +425,8 @@ DEPENDENCIES
   rack (~> 2.2)
   rails (~> 7.0.8)
   redis (~> 5.0)
+  rodauth-omniauth
+  rodauth-rails
   rubocop-faker
   rubocop-md
   rubocop-rails-omakase

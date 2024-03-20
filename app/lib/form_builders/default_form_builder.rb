@@ -12,7 +12,7 @@ module FormBuilders
           options.delete(:class)
         )
 
-        super(method, options.reverse_merge(class: input_classes))
+        super(method, options.reverse_merge(class: input_classes)) + inline_errors_for(method)
       end
     end
 
@@ -35,6 +35,7 @@ module FormBuilders
         @template.concat @template.content_tag(:div, class: "pl-2") {
           @template.concat label(method, label_text, class: "form__label-checkbox")
           @template.concat @template.content_tag(:p, hint, class: "form__hint") if hint
+          @template.concat inline_errors_for(method)
         }
       end
     end
@@ -46,6 +47,7 @@ module FormBuilders
         @template.concat @template.check_box(@object_name, method, { class: "sr-only peer" }.merge(options), checked_value, unchecked_value)
         @template.concat @template.content_tag(:div, "", class: "form__toggle")
         @template.concat @template.content_tag(:span, label_text, class: "form__label form__label-checkbox")
+        @template.concat inline_errors_for(method)
       end
     end
 
@@ -58,6 +60,7 @@ module FormBuilders
         @template.concat @template.content_tag(:div, class: "pl-2") {
           @template.concat label("#{method}_#{tag_value}", label_text, class: "form__label-radio")
           @template.concat @template.content_tag(:p, hint, class: "form__hint") if hint
+          @template.concat inline_errors_for(method)
         }
       end
     end
@@ -65,6 +68,7 @@ module FormBuilders
     def group(options = {}, &block)
       classes = class_names(
         "form__group",
+        { "form__group-errored": @object&.errors&.any? },
         options&.delete(:class)
       )
 
@@ -75,12 +79,10 @@ module FormBuilders
 
     private
 
-    def merge_class(options, new_class)
-      if options[:class].present?
-        options.merge(class: "#{options[:class]} #{new_class}")
-      else
-        options.merge(class: new_class)
-      end
+    def inline_errors_for(method)
+      return unless @object&.errors&.any?
+
+      content_tag(:p, @object&.errors[method.to_sym]&.first&.capitalize, class: "form__error")
     end
   end
 end

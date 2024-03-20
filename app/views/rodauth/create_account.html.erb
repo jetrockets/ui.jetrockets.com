@@ -1,0 +1,10 @@
+<%
+  set_meta_tags(
+    title: "Sign up",
+    description: "Create your #{site_name}'s account"
+  )
+%>
+
+<%= render Modal::Component.new(title: "Sign up", subtitle: "Create your #{site_name}'s account", size: :md) do %>
+  <%= render partial: "rodauth/shared/create_account_form" %>
+<% end %>
