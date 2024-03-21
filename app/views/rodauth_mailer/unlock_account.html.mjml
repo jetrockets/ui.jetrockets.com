@@ -1,0 +1,23 @@
+<mj-text>
+  <strong class="title">
+    Hey!
+  </strong>
+</mj-text>
+
+<mj-text>
+  Someone has requested a that the account with this email be unlocked, and you can do this through the link below.
+</mj-text>
+
+<mj-button href="<%= @rodauth.unlock_account_email_link %>">
+  Unlock account
+</mj-button>
+
+<mj-text>
+  If you DID NOT request the unlocking of this account, please ignore this message.
+</mj-text>
+
+<mj-text mj-class="footer">
+  Button doesn’t work? Copy the following link to your browser address bar: <%=
+  link_to @rodauth.unlock_account_email_link,
+  @rodauth.unlock_account_email_link, class: "text-gray" %>
+</mj-text>
