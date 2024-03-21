@@ -1,5 +1,8 @@
-<div class="flex-1 space-y-4">
-  <%== rodauth.login_form_header %>
-  <%== rodauth.render_multi_phase_login_forms %>
-  <%== rodauth.login_form_footer %>
-</div>
+<% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
+
+<%= render Modal::Component.new(title: "Sign In", subtitle: "Welcome back to #{site_name}. Please Sign in to access your account", size: :md) do %>
+  <div class="modal_body">
+    <%== rodauth.render_multi_phase_login_forms %>
+    <%== rodauth.login_form_footer %>
+  </div>
+<% end %>

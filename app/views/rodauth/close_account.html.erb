@@ -1,11 +1,25 @@
-<%= form_with url: rodauth.close_account_path, method: :post, data: { turbo: false }, class: "w-full max-w-sm" do |form| %>
-  <% if rodauth.close_account_requires_password? %>
-    <div class="mb-6">
-      <%= form.label "password", rodauth.password_label, class: "block text-sm font-semibold" %>
-      <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 #{rodauth.field_error(rodauth.password_param) ? "border-red-600 focus:ring-red-600 focus:border-red-600 dark:border-red-400 dark:focus:ring-red-400" : "border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400" }", aria: ({ invalid: true, describedby: "password_error_message" } if rodauth.field_error(rodauth.password_param)) %>
-      <%= content_tag(:span, rodauth.field_error(rodauth.password_param), class: "block mt-1 text-red-600 text-xs dark:text-red-400", id: "password_error_message") if rodauth.field_error(rodauth.password_param) %>
-    </div>
-  <% end %>
+<% set_meta_tags(title: "Are you sure?") %>
 
-  <%= form.submit rodauth.close_account_button, class: "w-full px-8 py-3 cursor-pointer font-semibold text-sm rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 dark:bg-red-400 dark:hover:bg-red-500 dark:text-gray-900 dark:focus:ring-red-400 dark:focus:ring-offset-current" %>
+<%= render Modal::Component.new(title: "Are you sure?", size: :md) do %>
+  <div class="modal__body">
+    <%= component"ui/alert", type: :warning, class: "mb-2" do |alert| %>
+      <strong>Deleting an account</strong> is a permanent action that cannot be undone.
+    <% end %>
+
+    <%= form_with url: rodauth.close_account_path, method: :post, class: "form" do |form| %>
+      <% if rodauth.close_account_requires_password? %>
+        <div class="form__group">
+          <%= form.label "password", rodauth.password_label %>
+          <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.password_param)}" %>
+          <% if rodauth.field_error(rodauth.password_param) %>
+            <%= content_tag(:span, rodauth.field_error(rodauth.password_param), class: "form__error") %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="form__actions">
+        <%= form.submit rodauth.close_account_button, class: "btn btn-danger btn-outlined btn-block" %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

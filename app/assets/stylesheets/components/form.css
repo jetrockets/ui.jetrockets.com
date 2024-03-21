@@ -51,4 +51,8 @@
     @apply peer-checked:after:border-white peer-checked:bg-blue-500;
     @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
   }
+
+  .form__actions {
+    @apply mt-8;
+  }
 }

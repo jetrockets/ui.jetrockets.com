@@ -60,7 +60,6 @@ module FormBuilders
         @template.concat @template.content_tag(:div, class: "pl-2") {
           @template.concat label("#{method}_#{tag_value}", label_text, class: "form__label-radio")
           @template.concat @template.content_tag(:p, hint, class: "form__hint") if hint
-          @template.concat inline_errors_for(method)
         }
       end
     end

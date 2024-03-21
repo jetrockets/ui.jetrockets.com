@@ -1,5 +1,39 @@
-<div class="flex-1 space-y-4">
-  <%== rodauth.login_form_header %>
-  <%= render "login_form" %>
-  <%== rodauth.login_form_footer %>
-</div>
+<% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
+
+<%= render Modal::Component.new(title: "Sign In", subtitle: "Welcome back to #{site_name}. Please Sign in to access your account", size: :md) do %>
+  <div class="modal__body">
+    <%= form_with url: rodauth.login_path, method: :post, class: "form" do |form| %>
+      <% if rodauth.skip_login_field_on_login? %>
+        <div class="form__group">
+          <%= form.label "login", rodauth.login_label %>
+          <%= form.email_field rodauth.login_param, autofocus: true, value: params[rodauth.login_param], id: "login", readonly: true %>
+        </div>
+      <% else %>
+        <div class="form__group">
+          <%= form.label "login", rodauth.login_label %>
+          <%= form.email_field rodauth.login_param, autofocus: true, value: params[rodauth.login_param], id: "login", autocomplete: rodauth.login_field_autocomplete_value, required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.login_param)}" %>
+
+          <% if rodauth.field_error(rodauth.login_param) %>
+            <%= content_tag(:span, rodauth.field_error(rodauth.login_param), class: "form__error") %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% unless rodauth.skip_password_field_on_login? %>
+        <div class="form__group">
+          <%= form.label "password", rodauth.password_label %>
+          <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.password_param)}" %>
+          <% if rodauth.field_error(rodauth.password_param) %>
+            <%= content_tag(:span, rodauth.field_error(rodauth.password_param), class: "form__error") %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="mb-6 form__actions">
+        <%= form.submit rodauth.login_button, class: "btn btn-primary btn-block" %>
+      </div>
+
+      <%== rodauth.login_form_footer %>
+    <% end %>
+  </div>
+<% end %>
