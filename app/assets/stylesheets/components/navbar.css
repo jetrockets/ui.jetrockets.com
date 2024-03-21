@@ -4,7 +4,7 @@
   }
 
   .navbar {
-    @apply sticky top-0 z-40 flex items-center justify-between bg-white shadow-sm bg-opacity-90 backdrop-blur-sm h-nav;
+    @apply sticky top-0 z-40 flex flex-col items-center justify-between bg-white shadow-sm bg-opacity-90 backdrop-blur-sm h-nav;
   }
 
   .navbar-active .navbar__backgrop {
@@ -24,7 +24,7 @@
     transition-property: opacity, transform;
 
     @screen md {
-      @apply relative top-0 flex justify-center flex-1 visible w-auto h-auto pt-0 space-x-6 translate-y-0 bg-transparent opacity-100;
+      @apply relative top-0 flex justify-center flex-1 visible w-auto h-auto pt-0 space-x-6 overflow-visible translate-y-0 bg-transparent opacity-100;
     }
   }
 

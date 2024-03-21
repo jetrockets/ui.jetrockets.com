@@ -17,7 +17,7 @@ module.exports = {
     colors: harmonyPalette,
     extend: {
       animation: {
-        modalPop: 'modalPop 0.2s ease-out'
+        modalPop: 'modalPop .2s ease-out'
       },
       height: {
         nav: 'var(--nav-height)'

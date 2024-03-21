@@ -1,0 +1,16 @@
+<% set_meta_tags(title: "Please verify your account") %>
+
+<%= render Modal::Component.new(title: "Please verify your account") do %>
+  <div class="modal__body">
+    <p class="mb-3 text-gray-600">
+      By clicking button below you will update your email address to
+      <strong>
+        <%= rodauth.verify_login_change_new_login %>
+      </strong>.
+    </p>
+
+    <%= form_with url: rodauth.verify_login_change_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
+      <%= form.submit rodauth.verify_login_change_button, class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
+<% end %>

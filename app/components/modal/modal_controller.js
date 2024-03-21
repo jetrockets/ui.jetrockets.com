@@ -1,13 +1,10 @@
 import { Controller } from '@hotwired/stimulus'
-
-// import { Modal } from 'flowbite'
 import { stimulus } from '~/init'
 
 export default class ModalController extends Controller {
   connect () {
     const options = {
-      // placement: 'bottom-right',
-      // backdrop: 'dynamic',
+      placement: 'center-center',
       backdropClasses: 'bg-gray-900 bg-opacity-50 fixed inset-0 z-40',
       closable: true,
       onHide: () => {

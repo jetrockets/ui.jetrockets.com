@@ -1,0 +1,15 @@
+<% set_meta_tags(title: "Logout", description: "Logout from #{site_name}") %>
+
+<%= render Modal::Component.new(title: "Logout", subtitle: "Logout from #{site_name}", size: :md) do %>
+  <%= form_with url: rodauth.logout_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
+    <div class="modal__body">
+      <% if rodauth.features.include?(:active_sessions) %>
+        <div class="form__group">
+          <%= form.check_box rodauth.global_logout_param, id: "global-logout", include_hidden: false, label: rodauth.global_logout_label %>
+        </div>
+      <% end %>
+
+      <%= form.submit rodauth.logout_button, class: "btn btn-primary btn-block" %>
+    </div>
+  <% end %>
+<% end %>

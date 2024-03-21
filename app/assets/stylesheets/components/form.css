@@ -28,6 +28,10 @@
     @apply mt-1 text-sm text-gray-600
   }
 
+  .form__error {
+    @apply mt-1 text-sm text-red-600
+  }
+
   .form__radio,
   .form__checkbox {
     @apply w-5 h-5 border-gray-300 rounded-md;
@@ -46,5 +50,9 @@
     @apply relative h-6 mr-2 bg-gray-200 rounded-full w-11 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-300 peer-checked:after:translate-x-full;
     @apply peer-checked:after:border-white peer-checked:bg-blue-500;
     @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
+  }
+
+  .form__actions {
+    @apply mt-8;
   }
 }

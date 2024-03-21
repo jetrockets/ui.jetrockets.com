@@ -1,6 +1,6 @@
 @layer components {
   .breadcrumbs {
-    @apply flex text-sm;
+    @apply flex mb-3.5 -mt-2 md:-mt-4 text-sm;
   }
 
   .breadcrumbs__separator {
