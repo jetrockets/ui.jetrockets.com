@@ -5,18 +5,10 @@
 
   .body-overflow {
     @apply relative overflow-hidden;
-
-    &:after {
-      @apply content-[''] bg-black absolute inset-0 bg-opacity-60;
-    }
   }
 
   .body__main {
-    @apply flex flex-col items-center flex-1 py-12 transition-all duration-300;
-  }
-
-  .body__main-overflowed {
-    @apply overflow-hidden scale-90 opacity-30 md:opacity-100 md:scale-100 md:overflow-auto;
+    @apply flex flex-col items-center flex-1 py-6 transition-all duration-300 md:py-12;
   }
 
   .body__footer {

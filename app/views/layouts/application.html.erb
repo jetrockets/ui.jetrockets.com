@@ -23,7 +23,7 @@
   <body class="body" data-controller="navbar">
     <%= render partial: "layouts/shared/navbar" %>
 
-    <main class="<%= body_classes %>" data-navbar-target="main">
+    <main class="<%= body_classes %>">
       <%= breadcrumbs separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "wrapper mb-4" %>
 
       <%= yield %>
