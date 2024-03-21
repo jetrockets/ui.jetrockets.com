@@ -3,13 +3,9 @@
     @apply fixed top-0 bottom-0 left-0 right-0 z-50 justify-end hidden w-full max-h-full pt-4 overflow-x-hidden overflow-y-auto md:h-screen animate-modalPop;
   }
 
-  .modal-open {
-
-  }
-
   .modal__container {
-    @apply relative w-full max-w-2xl max-h-full mx-auto rounded-xl;
-    @apply flex flex-col h-full justify-stretch md:h-auto md:justify-start;
+    @apply relative flex flex-col w-full h-full max-w-2xl max-h-full mx-auto justify-stretch rounded-xl;
+    @apply md:h-auto md:justify-start;
   }
 
   .modal__close {
@@ -17,8 +13,8 @@
   }
 
   .modal__content {
-    @apply relative px-6 py-6 bg-white shadow shadow-2xl dark:bg-gray-700 rounded-xl md:px-12 md:py-8;
-    @apply flex flex-col flex-1;
+    @apply relative flex flex-col flex-1 px-6 py-6 bg-white shadow shadow-2xl dark:bg-gray-700 rounded-xl;
+    @apply md:px-12 md:py-10;
   }
 
   .modal__header {

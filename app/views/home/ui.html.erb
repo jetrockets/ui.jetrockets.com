@@ -11,7 +11,7 @@
   <section class="wysiwyg">
     <h1>Component Examples</h1>
     <p>
-      We based on <%= link_to"Flowbite","https://flowbite.com/", target: :_blank, ref:"nofollow noopener noreferrer", class:"link" %>. So if you need more components, you can find them there and implement them in your project.
+      We based on <%= link_to "Flowbite","https://flowbite.com/", target: :_blank, ref:"nofollow noopener noreferrer", class:"link" %>. So if you need more components, you can find them there and implement them in your project.
     </p>
     <%= component"ui/alert", type: :info do |alert| %>
       <strong>Don't hesitate!</strong> It's just a template, you can change every component, or delete it if you don't need it.
@@ -46,8 +46,8 @@
         <%= accordion.with_item(title:"Async Modal", id:"modal") do %>
           <p class="mb-2 text-gray-600">
             By continuing, I agree to <%= site_name %>
-            <%= link_to"Terms of Service", terms_path, data: { turbo_frame: :modal }, class:"link" %>,
-            <%= link_to"Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class:"link" %> and I confirm I am 18 years old.
+            <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class:"link" %>,
+            <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class:"link" %> and I confirm I am 18 years old.
           </p>
         <% end %>
 
@@ -64,31 +64,31 @@
 
         <%= accordion.with_item(title:"Buttons", id:"buttons", class:"space-y-4") do %>
           <div class="gap-1">
-            <%= link_to"Button XS","#", class:"btn btn-xs" %>
-            <%= link_to"Button SM","#",class:"btn btn-sm" %>
-            <%= link_to"Button MD","#",class:"btn btn-md" %>
-            <%= link_to"Button LG","#",class:"btn btn-lg" %>
-            <%= link_to"Button XL","#",class:"btn btn-xl" %>
+            <%= link_to "Button XS","#", class:"btn btn-xs" %>
+            <%= link_to "Button SM","#",class:"btn btn-sm" %>
+            <%= link_to "Button MD","#",class:"btn btn-md" %>
+            <%= link_to "Button LG","#",class:"btn btn-lg" %>
+            <%= link_to "Button XL","#",class:"btn btn-xl" %>
           </div>
 
           <div class="gap-1">
-            <%= link_to"Default","#", class:"btn" %>
-            <%= link_to"Primary","#", class:"btn btn-primary" %>
-            <%= link_to"Secondary","#", class:"btn btn-secondary" %>
-            <%= link_to"Danger","#", class:"btn btn-danger" %>
+            <%= link_to "Default","#", class:"btn" %>
+            <%= link_to "Primary","#", class:"btn btn-primary" %>
+            <%= link_to "Secondary","#", class:"btn btn-secondary" %>
+            <%= link_to "Danger","#", class:"btn btn-danger" %>
           </div>
 
           <div class="gap-1">
-            <%= link_to"Default Outlined","#", class:"btn btn-outlined" %>
-            <%= link_to"Primary Outlined","#", class:"btn btn-primary btn-outlined" %>
-            <%= link_to"Secondary Outlined","#", class:"btn btn-secondary btn-outlined" %>
-            <%= link_to"Danger Outlined","#", class:"btn btn-danger btn-outlined" %>
+            <%= link_to "Default Outlined","#", class:"btn btn-outlined" %>
+            <%= link_to "Primary Outlined","#", class:"btn btn-primary btn-outlined" %>
+            <%= link_to "Secondary Outlined","#", class:"btn btn-secondary btn-outlined" %>
+            <%= link_to "Danger Outlined","#", class:"btn btn-danger btn-outlined" %>
           </div>
 
           <div class="flex items-center gap-1">
-            <%= link_to"Primary","#", class:"btn btn-primary" %>
-            <%= link_to"Secondary","#", class:"btn btn-secondary" %>
-            <%= link_to"#", class:"btn btn-iconed" do %>
+            <%= link_to "Primary","#", class:"btn btn-primary" %>
+            <%= link_to "Secondary","#", class:"btn btn-secondary" %>
+            <%= link_to "#", class:"btn btn-iconed" do %>
               <svg class="w-4 h-4 me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
               </svg>
@@ -127,16 +127,16 @@
           <%= component"ui/dropdown", id:"dropdown2" do |dropdown| %>
             <ul class="dropdown__wrapper">
               <li>
-                <%= link_to"Test 1","#", class:"dropdown__link" %>
+                <%= link_to "Test 1","#", class:"dropdown__link" %>
               </li>
               <li>
-                <%= link_to"Test 2","#", class:"dropdown__link" %>
+                <%= link_to "Test 2","#", class:"dropdown__link" %>
               </li>
               <li>
-                <%= link_to"Test 3","#", class:"dropdown__link" %>
+                <%= link_to "Test 3","#", class:"dropdown__link" %>
               </li>
               <li>
-                <%= link_to"Test 4","#", class:"dropdown__link" %>
+                <%= link_to "Test 4","#", class:"dropdown__link" %>
               </li>
             </ul>
           <% end %>
@@ -231,7 +231,7 @@
                       <%= date_format(Time.zone.now, :full_month) %>
                     </td>
                     <td class="table__td table__td-actions">
-                      <%= link_to"Edit","#", class:"link" %>
+                      <%= link_to "Edit","#", class:"link" %>
                     </td>
                   </tr>
                 <% end %>
