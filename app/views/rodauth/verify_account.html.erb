@@ -1,3 +1,5 @@
+<% set_meta_tags(title: "Please verify your account", description: rodauth.verify_account_resend_explanatory_text) %>
+
 <%= render Modal::Component.new(title: "Please verify your account", size: :md) do %>
   <div class="modal__body">
     <%= form_with url: rodauth.verify_account_path, method: :post, data: { turbo: false }, class: "w-full max-w-sm" do |form| %>
