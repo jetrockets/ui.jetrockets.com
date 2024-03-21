@@ -3,6 +3,5 @@ class HomeController < ApplicationController
   end
 
   def ui
-
   end
 end

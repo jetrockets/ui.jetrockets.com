@@ -26,8 +26,11 @@ class Modal::Component < ApplicationComponent
         end
       end
     else
-      content_tag :div, class: modal__container_classes do
-        yield
+      helpers.set_body_class("bg-gray-100")
+      content_tag :div, class: "flex-1" do
+        content_tag :div, class: modal__container_classes do
+          yield
+        end
       end
     end
   end

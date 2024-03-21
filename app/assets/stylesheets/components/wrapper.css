@@ -1,6 +1,6 @@
 @layer components {
   .wrapper {
-    @apply px-3 mx-auto max-w-7xl sm:px-6;
+    @apply w-full px-3 max-w-7xl sm:px-6;
   }
 
   .wrapper-narrow {

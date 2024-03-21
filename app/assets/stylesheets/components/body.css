@@ -12,7 +12,7 @@
   }
 
   .body__main {
-    @apply flex-1 pt-6 transition-all duration-300;
+    @apply flex flex-col items-center flex-1 py-12 transition-all duration-300;
   }
 
   .body__main-overflowed {
@@ -20,6 +20,6 @@
   }
 
   .body__footer {
-    @apply py-8 text-gray-600;
+    @apply flex justify-center py-8 text-gray-600 bg-gray-800 lg:py-16;
   }
 }

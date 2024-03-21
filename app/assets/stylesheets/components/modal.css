@@ -1,38 +1,38 @@
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full px-4 pt-4 overflow-x-hidden overflow-y-auto bottom-0 h-[calc(100%-1rem)] max-h-full animate-modalPop justify-end;
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full pt-4 overflow-x-hidden overflow-y-auto bottom-0 h-[calc(100%-1rem)] max-h-full animate-modalPop justify-end;
   }
 
   .modal__container {
-    @apply relative w-full max-h-full max-w-2xl mx-auto
+    @apply relative w-full max-h-full max-w-2xl mx-auto rounded-xl
+  }
+
+  .modal__close {
+    @apply absolute right-5 top-5 inline-flex items-center p-2 ml-auto text-sm text-gray-400 bg-transparent rounded-lg bg-gray-100 hover:bg-gray-200 hover:text-gray-600 rounded-full
   }
 
   .modal__content {
-    @apply relative bg-white shadow dark:bg-gray-700 rounded-lg
+    @apply relative px-6 py-6 bg-white shadow shadow-2xl dark:bg-gray-700 rounded-xl md:px-12 md:py-8
   }
 
   .modal__header {
-    @apply flex items-start justify-between p-4 border-b dark:border-gray-600
+    @apply flex items-start justify-between;
   }
 
   .modal__title {
-    @apply text-xl font-semibold leading-tight text-gray-900 dark:text-white
+    @apply text-xl font-semibold leading-tight text-gray-900
   }
 
   .modal__subtitle {
     @apply mt-1 text-sm text-gray-600
   }
 
-  .modal__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-100 hover:text-gray-600
-  }
-
   .modal__body {
-    @apply py-6 px-6 overflow-auto rounded-lg
+    @apply rounded-lg pt-6
   }
 
   .modal__footer {
-    @apply flex items-center p-6 py-4 space-x-2 border-t border-gray-200
+    @apply flex items-center pt-6 space-x-2 border-gray-200
   }
 
   .modal__footer-sticky {

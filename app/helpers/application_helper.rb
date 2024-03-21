@@ -2,6 +2,14 @@ module ApplicationHelper
   include Pagy::Frontend
   ActionView::Base.default_form_builder = FormBuilders::DefaultFormBuilder
 
+  def set_body_class(classes)
+    @body_class = classes
+  end
+
+  def body_classes
+    class_names("body__main", @body_class)
+  end
+
   def component(name, *args, **kwargs, &block)
     component = name.to_s.camelize.constantize::Component
     render(component.new(*args, **kwargs), &block)
