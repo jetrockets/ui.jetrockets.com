@@ -1,10 +1,10 @@
 @layer components {
   .modal {
-    @apply fixed top-0 bottom-0 left-0 right-0 z-50 justify-end hidden w-full max-h-full pt-12 overflow-x-hidden overflow-y-auto md:pt-4 animate-modalPop;
+    @apply fixed top-0 bottom-0 left-0 right-0 z-50 justify-end hidden w-full max-h-full pt-12 overflow-x-hidden overflow-y-auto md:py-4 animate-modalPop;
   }
 
   .modal__container {
-    @apply relative flex flex-col w-full h-full max-w-2xl max-h-full mx-auto justify-stretch rounded-xl;
+    @apply relative flex flex-col w-full h-full max-w-2xl max-h-full mx-auto justify-stretch rounded-t-xl md:rounded-xl;
     @apply md:h-auto md:justify-start;
   }
 
@@ -13,7 +13,7 @@
   }
 
   .modal__content {
-    @apply relative flex flex-col flex-1 px-6 py-6 bg-white shadow shadow-2xl dark:bg-gray-700 rounded-xl;
+    @apply relative flex flex-col flex-1 px-6 py-6 bg-white shadow shadow-2xl dark:bg-gray-700 rounded-t-xl md:rounded-xl;
     @apply md:px-12 md:py-10;
   }
 
