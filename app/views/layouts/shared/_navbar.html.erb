@@ -14,7 +14,12 @@
     </ul>
 
     <div class="navbar__right">
-      <%= link_to "Login", "#", class: "btn btn-primary btn-sm" %>
+      <% if rodauth.logged_in? %>
+        <%= button_to "Sign Out", rodauth.logout_path, data: { turbo: false, turbo_method: :post }, class: "btn btn-primary btn-outlined btn-sm" %>
+      <% else %>
+        <%= link_to "Sign In", rodauth.login_path, class: "btn btn-primary btn-outlined btn-sm", data: { turbo_frame: :modal } %>
+        <%= link_to "Sign Up", rodauth.create_account_path, class: "btn btn-primary btn-sm", data: { turbo_frame: :modal } %>
+      <% end %>
 
       <%= button_tag class: "btn btn-link btn-sm navbar__burger", data: { action: "click->navbar#toggle", navbar_target: "burger" } do %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

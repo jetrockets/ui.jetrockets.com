@@ -1,0 +1,23 @@
+<mj-text>
+  <strong class="title">
+    Hey!
+  </strong>
+</mj-text>
+
+<mj-text>
+  Someone has created an account with this email address.
+</mj-text>
+
+<mj-text>
+  If you created this account, please activate your account as soon as possible, clicking the button below.
+</mj-text>
+
+<mj-button href="<%= @rodauth.verify_account_email_link %>">
+  Verify account
+</mj-button>
+
+
+<mj-text mj-class="footer">
+  Button doesn’t work? Copy the following link to your browser address bar:
+  <%= link_to @rodauth.verify_account_email_link, @rodauth.verify_account_email_link, class: "text-gray" %>
+</mj-text>

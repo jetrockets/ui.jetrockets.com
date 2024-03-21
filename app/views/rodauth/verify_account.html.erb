@@ -1,0 +1,36 @@
+<% set_meta_tags(title: "Please verify your account", description: rodauth.verify_account_resend_explanatory_text) %>
+
+<%= render Modal::Component.new(title: "Please verify your account", size: :md) do %>
+  <div class="modal__body">
+    <%= form_with url: rodauth.verify_account_path, method: :post, data: { turbo: false }, class: "w-full max-w-sm" do |form| %>
+      <% if rodauth.verify_account_set_password? %>
+        <p>
+          Now it's just a matter of a few things. Create a strong password for your account.
+        </p>
+        <p class="mt-3 text-sm text-gray-500">
+          Make sure your password is at least 8 characters long and includes at least one number and one special character.
+        </p>
+
+        <div class="form__group">
+          <%= form.label "password", rodauth.password_label %>
+          <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.password_param)}" %>
+          <% if rodauth.field_error(rodauth.password_param) %>
+            <%= content_tag(:p, rodauth.field_error(rodauth.password_param), class: "form__error") %>
+          <% end %>
+        </div>
+
+        <% if rodauth.require_password_confirmation? %>
+          <div class="form__group">
+            <%= form.label "password-confirm", rodauth.password_confirm_label, class: "block text-sm font-semibold" %>
+            <%= form.password_field rodauth.password_confirm_param, value: "", id: "password-confirm", autocomplete: "new-password", required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.password_confirm_param)}" %>
+            <% if rodauth.field_error(rodauth.password_confirm_param) %>
+              <%= content_tag(:span, rodauth.field_error(rodauth.password_confirm_param), class: "form__error") %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= form.submit rodauth.verify_account_button, class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
+<% end %>

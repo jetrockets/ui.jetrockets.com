@@ -64,10 +64,10 @@
   }
 
   .btn-link {
-    @apply p-0 text-blue-700 bg-transparent border-transparent;
+    @apply p-0 text-blue-700 bg-transparent border-transparent
   }
 
   .btn-block {
-    @apply block
+    @apply block w-full
   }
 }
