@@ -1,15 +1,19 @@
 <% set_meta_tags(title: "Remember Me") %>
 
 <%= render Modal::Component.new(title: "Remember Me", size: :md) do %>
-  <div class="form__body">
+  <div class="modal__body">
     <%= form_with url: rodauth.remember_path, method: :post, class: "form" do |form| %>
-      <fieldset class="flex flex-col gap-y-2">
-        <%= f.radio_button rodauth.remember_param, rodauth.remember_remember_param_value, id: "remember-remember", label: rodauth.remember_remember_label %>
-        <%= f.radio_button rodauth.remember_param, rodauth.remember_forget_param_value, id: "remember-forget", label: rodauth.remember_forget_label %>
-        <%= f.radio_button rodauth.remember_param, rodauth.remember_disable_param_value, id: "remember-disable", label: rodauth.remember_disable_label %>
-      </fieldset>
+      <div class="form__group">
+        <fieldset class="flex flex-col gap-y-2">
+          <%= form.radio_button rodauth.remember_param, rodauth.remember_remember_param_value, id: "remember-remember", label: rodauth.remember_remember_label %>
+          <%= form.radio_button rodauth.remember_param, rodauth.remember_forget_param_value, id: "remember-forget", label: rodauth.remember_forget_label %>
+          <%= form.radio_button rodauth.remember_param, rodauth.remember_disable_param_value, id: "remember-disable", label: rodauth.remember_disable_label %>
+        </fieldset>
+      </div>
 
-      <%= form.submit rodauth.remember_button, class: "btn btn-primary btn-block" %>
+      <div class="form__actions">
+        <%= form.submit rodauth.remember_button, class: "btn btn-primary btn-block" %>
+      </div>
     <% end %>
   </div>
 <% end %>

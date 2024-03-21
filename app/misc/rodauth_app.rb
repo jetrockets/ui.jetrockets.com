@@ -17,7 +17,7 @@ class RodauthApp < Rodauth::Rails::App
 
       flash[:alert] = "You are already logged in"
 
-      r.redirect rails_routes.root_url
+      r.redirect "/"
     end
 
     r.rodauth # route rodauth requests

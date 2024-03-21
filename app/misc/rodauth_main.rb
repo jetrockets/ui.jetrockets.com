@@ -51,7 +51,6 @@ class RodauthMain < Rodauth::Rails::Auth
     create_account_set_password? true
     require_password_confirmation? false
     require_login_confirmation? false
-    use_multi_phase_login? false
 
     # Change some default param keys.
     login_param "email"
