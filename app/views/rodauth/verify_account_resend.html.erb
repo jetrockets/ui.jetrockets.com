@@ -7,11 +7,11 @@
 
 <%= render Modal::Component.new(title: "Please verify your email", subtitle: rodauth.verify_account_resend_explanatory_text, size: :md) do %>
   <div class="modal__body">
-    <%= form_with url: rodauth.verify_account_resend_path, method: :post, class: "form" do |form| %>
+    <%= form_with url: rodauth.verify_account_resend_path, data: { turbo: false }, method: :post, class: "form" do |form| %>
       <% if params[rodauth.login_param] %>
         <%= form.hidden_field rodauth.login_param, value: params[rodauth.login_param] %>
       <% else %>
-        <div class="mb-6">
+        <div class="mb-8 form__group">
           <%= form.label "login", rodauth.login_label %>
           <%= form.email_field rodauth.login_param, value: params[rodauth.login_param], id: "login", autocomplete: "email", required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.login_param)}" %>
           <% if rodauth.field_error(rodauth.login_param) %>
@@ -20,7 +20,7 @@
         </div>
       <% end %>
 
-      <div class="mb-6 form__actions">
+      <div class="mb-6">
         <%= form.submit rodauth.verify_account_resend_button, class: "btn btn-primary btn-block" %>
       </div>
 

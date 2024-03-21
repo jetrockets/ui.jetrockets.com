@@ -32,6 +32,8 @@ class RodauthMain < Rodauth::Rails::Auth
     # Use path prefix for all routes.
     # prefix "/auth"
 
+    create_account_autologin? false
+
     # Specify the controller used for view rendering, CSRF, and callbacks.
     rails_controller { RodauthController }
 
@@ -57,7 +59,7 @@ class RodauthMain < Rodauth::Rails::Auth
     # password_confirm_param "confirm_password"
 
     # Redirect back to originally requested location after authentication.
-    # login_return_to_requested_location? true
+    login_return_to_requested_location? true
     # two_factor_auth_return_to_requested_location? true # if using MFA
 
     # Autologin the user after they have reset their password.
@@ -107,7 +109,7 @@ class RodauthMain < Rodauth::Rails::Auth
     # flash_error_key :error # default is :alert
 
     # Override default flash messages.
-    # create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
+    create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
     # require_login_error_flash "Login is required for accessing this page"
     # login_notice_flash nil
 
@@ -162,6 +164,8 @@ class RodauthMain < Rodauth::Rails::Auth
     # end
 
     # ==> Redirects
+    create_account_redirect { verify_account_resend_path }
+
     # Redirect to home page after logout.
     logout_redirect { rails_routes.root_path }
 

@@ -2,7 +2,7 @@
 
 <%= render Modal::Component.new(title: "Sign In", subtitle: "Welcome back to #{site_name}. Please Sign in to access your account", size: :md) do %>
   <div class="modal__body">
-    <%= form_with url: rodauth.login_path, method: :post, class: "form" do |form| %>
+    <%= form_with url: rodauth.login_path, method: :post, data: { controller: "turbo-form-redirect" }, class: "form" do |form| %>
       <% if rodauth.skip_login_field_on_login? %>
         <div class="form__group">
           <%= form.label "login", rodauth.login_label %>

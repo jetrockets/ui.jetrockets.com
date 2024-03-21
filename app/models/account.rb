@@ -8,6 +8,7 @@ end
 # Table name: accounts
 #
 #  id            :bigint           not null, primary key
+#  admin         :boolean          default(FALSE), not null
 #  email         :citext           not null
 #  password_hash :string
 #  status        :integer          default("unverified"), not null

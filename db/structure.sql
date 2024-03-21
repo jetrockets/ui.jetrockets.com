@@ -158,7 +158,8 @@ CREATE TABLE public.accounts (
     id bigint NOT NULL,
     status integer DEFAULT 1 NOT NULL,
     email public.citext NOT NULL,
-    password_hash character varying
+    password_hash character varying,
+    admin boolean DEFAULT false NOT NULL
 );
 
 
@@ -339,6 +340,7 @@ ALTER TABLE ONLY public.account_password_reset_keys
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20240320152026');
+('20240320152026'),
+('20240321113306');
 
 
