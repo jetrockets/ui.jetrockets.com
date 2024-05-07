@@ -8,7 +8,7 @@ module FormBuilders
       define_method("#{field_method}") do |method, options = {}|
         input_classes = class_names(
           "form__input",
-          { "form__input-errored": @object&.errors&.any? },
+          { "form__input-errored": errors_for?(method) },
           options.delete(:class)
         )
 
@@ -23,6 +23,17 @@ module FormBuilders
       )
 
       options[:class] = input_classes
+      super
+    end
+
+    def select(method, choices = nil, options = {}, html_options = {}, &block)
+      input_classes = class_names(
+        "form__input",
+        { "form__input-errored": @object&.errors&.any? },
+        html_options.delete(:class)
+      )
+
+      html_options[:class] = input_classes
       super
     end
 
@@ -41,13 +52,26 @@ module FormBuilders
     end
 
     def toggle(method, options = {}, checked_value = "1", unchecked_value = "0")
-      label_text = options.delete(:label) || method.to_s.humanize
+      checked = @object && @object[method.to_sym] || options[:checked]
+      label_text = options.delete(:label) || @object && @object.class.human_attribute_name(method)
 
-      @template.content_tag :label, class: "inline-flex items-center cursor-pointer" do
-        @template.concat @template.check_box(@object_name, method, { class: "sr-only peer" }.merge(options), checked_value, unchecked_value)
+      hint = options.delete(:hint)
+
+      if hint.is_a?(String)
+        hint_content = hint
+      else
+        hint_content = content_tag(:span, hint[:on], class: "#{"hidden" unless checked}", data: { form_toggle_target: "on_hint" }) +
+        content_tag(:span, hint[:off], class: "#{"hidden" if checked}", data: { form_toggle_target: "off_hint" })
+      end
+
+      @template.content_tag :label, class: "inline-flex items-start cursor-pointer gap-y-2", data: { controller: "form-toggle" } do
+        @template.concat @template.check_box(@object_name, method, { checked: checked, class: "sr-only peer", data: { action: "change->form-toggle#toggle" } }.merge(options), checked: "true", unchecked: "false")
         @template.concat @template.content_tag(:div, "", class: "form__toggle")
-        @template.concat @template.content_tag(:span, label_text, class: "form__label form__label-checkbox")
-        @template.concat inline_errors_for(method)
+        @template.concat @template.content_tag(:div) {
+          @template.concat @template.content_tag(:span, label_text, class: "form__label form__label-toggle")
+          @template.concat @template.content_tag(:p, hint_content, class: "form__hint mt-0") if hint
+          @template.concat inline_errors_for(method)
+        }
       end
     end
 
@@ -67,7 +91,7 @@ module FormBuilders
     def group(options = {}, &block)
       classes = class_names(
         "form__group",
-        { "form__group-errored": @object&.errors&.any? },
+        { "form__group-errored": errors_for?(method) },
         options&.delete(:class)
       )
 
@@ -78,8 +102,12 @@ module FormBuilders
 
     private
 
+    def errors_for?(method)
+      @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
+    end
+
     def inline_errors_for(method)
-      return unless @object&.errors&.any?
+      return unless errors_for?(method)
 
       content_tag(:p, @object&.errors[method.to_sym]&.first&.capitalize, class: "form__error")
     end

@@ -5,21 +5,31 @@ export default class ModalController extends Controller {
   connect () {
     const options = {
       placement: 'center-center',
-      backdropClasses: 'bg-gray-900 bg-opacity-50 fixed inset-0 z-40',
-      closable: true,
+      // backdrop: 'dynamic',
+      // backdropClasses: 'bg-slate-950 bg-opacity-50 fixed inset-0 z-40',
+      // closable: this.data.get('closable') === 'true',
       onHide: () => {
         this.element.remove()
+        window.modal = undefined
       }
-      // onShow: () => {
-      //   console.log('modal is shown')
-      // }
-      // onToggle: () => {
-      //   console.log('modal has been toggled')
-      // }
     }
 
-    const modal = new window.Modal(this.element, options)
-    modal.show()
+    const instanceOptions = {
+      id: 'modalContainer',
+      override: false
+    }
+
+    this.modal = new window.Modal(this.element, options, instanceOptions)
+    window.modal = this.modal
+    this.modal.show()
+  }
+
+  close () {
+    this.modal.hide()
+  }
+
+  disconnect () {
+    this.element.remove()
   }
 }
 
