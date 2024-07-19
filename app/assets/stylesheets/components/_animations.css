@@ -1,23 +1,21 @@
 @layer base {
   @keyframes fadeIn {
     from {
-      opacity: 0;
+      @apply opacity-0;
     }
 
     to {
-      opacity: 1;
+      @apply opacity-100;
     }
   }
 
-  @keyframes modalPop {
-    0% {
-      opacity: 0;
-      transform: scale(0.9);
+  @keyframes slideDown {
+    from {
+      @apply opacity-0 -top-12;
     }
 
-    100% {
-      opacity: 100;
-      transform: scale(1);
+    to {
+      @apply top-0 opacity-100;
     }
   }
 }

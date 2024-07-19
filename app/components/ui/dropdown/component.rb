@@ -1,21 +1,23 @@
 class Ui::Dropdown::Component < ApplicationComponent
+  renders_one :button, Ui::Dropdown::ButtonComponent
   renders_many :links, Ui::Dropdown::LinksComponent
 
-  def initialize(id:, **options)
-    @id = id
+  def initialize(**options)
+    super
+    @options = options
   end
 
   erb_template <<~ERB
-    <div id="<%= @id %>" class="dropdown">
-      <% if links.any? %>
+    <div class="relative" data-controller="dropdown" **@options>
+      <%= button %>
+
+      <div class="dropdown" data-dropdown-target="menu">
         <ul class="dropdown__wrapper">
           <% links.each do |link| %>
             <%= link %>
           <% end %>
         </ul>
-      <% else %>
-        <%= content %>
-      <% end %>
+      </div>
     </div>
   ERB
 end

@@ -4,6 +4,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-prefetch" content="false">
+    <meta name="turbo-cache-control" content="no-cache">
+
     <%= display_meta_tags(default_meta_tags) %>
 
     <%= render partial: "layouts/shared/favicons" %>
@@ -14,7 +17,7 @@
     <%= vite_stylesheet_tag "application", data: { turbo_track: "reload" } %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag "application", data: { turbo_track: "reload" }, async: true %>
-    <%= turbo_refreshes_with method: :morph, scroll: :reset %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
 
     <%= render partial: "layouts/shared/analytics" if Rails.env.production? %>
     <%= yield(:head) %>
@@ -31,7 +34,7 @@
 
     <%= render partial: "layouts/shared/footer" %>
 
-    <%= component "flash" %>
+    <%= component :flash %>
     <%= turbo_frame_tag :modal %>
     <%= render partial: "layouts/shared/turbo_confirm" %>
   </body>
