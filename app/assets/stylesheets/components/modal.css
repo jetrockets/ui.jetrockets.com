@@ -28,7 +28,7 @@
   }
 
   .modal__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm transition-all duration-300 bg-transparent rounded-full text-gray hover:bg-gray-100 hover:text-gray;
+    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full hover:bg-gray-100 hover:text-gray-400;
   }
 
   .modal__body {

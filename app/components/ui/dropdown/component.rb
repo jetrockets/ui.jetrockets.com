@@ -1,5 +1,5 @@
 class Ui::Dropdown::Component < ApplicationComponent
-  renders_one :button, Ui::Dropdown::ButtonComponent
+  renders_one :button
   renders_many :links, Ui::Dropdown::LinksComponent
 
   def initialize(**options)

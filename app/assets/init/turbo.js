@@ -13,7 +13,7 @@ document.addEventListener('turbo:frame-missing', event => {
 
 Turbo.setConfirmMethod((message) => {
   const dialog = document.getElementById('turbo-confirm')
-  dialog.querySelector('h3').textContent = message
+  dialog.querySelector('p').textContent = message
   dialog.showModal()
 
   return new Promise((resolve) => {

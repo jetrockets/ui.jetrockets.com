@@ -1,10 +1,10 @@
 <% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
 <%= render Modal::Component.new(title: "Sign In", size: :md) do %>
-  <p class="modal__subtitle">
-    By continuing, you agree to our <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link no-underline", data: { turbo: false }, target: :_blank %>, and acknowledge that you understand the <%= link_to "Privacy Policy", privacy_path, class: "link no-underline", data: { turbo: false }, target: :_blank %>.
-  </p>
-
   <div class="modal__body">
+    <p class="mb-4 text-gray-500">
+      By continuing, you agree to our <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link no-underline", data: { turbo: false }, target: :_blank %>, and acknowledge that you understand the <%= link_to "Privacy Policy", privacy_path, class: "link no-underline", data: { turbo: false }, target: :_blank %>.
+    </p>
+
     <%= form_with url: rodauth.login_path, method: :post, class: "form" do |form| %>
       <% if rodauth.skip_login_field_on_login? %>
         <div class="form__group">
