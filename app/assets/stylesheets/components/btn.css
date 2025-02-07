@@ -1,73 +1,71 @@
-@layer components {
-  .btn {
-    @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-gray-700 border bg-gray-200 border-transparent ring-gray-200 cursor-pointer duration-200;
-    @apply hover:text-blue-800 hover:bg-opacity-80;
-    @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-2 focus-visible:ring-offset-2;
-    @apply active:scale-95;
+@utility btn {
+  @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-gray-700 border bg-gray-200 border-transparent ring-gray-200 cursor-pointer duration-200;
+  @apply hover:text-blue-800 hover:bg-gray-200/80;
+  @apply focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-2 focus-visible:ring-offset-2;
+  @apply active:scale-95;
 
-    &.btn-outlined {
-      @apply bg-transparent border-gray-300;
-      @apply hover:text-white hover:bg-gray-900 hover:bg-opacity-90 hover:border-transparent;
-    }
+  &.btn-outlined {
+    @apply bg-transparent border-gray-300;
+    @apply hover:text-white hover:bg-gray-900/90 hover:border-transparent;
   }
+}
 
-  .btn-primary {
-    @apply text-white bg-blue-700 ring-blue-700;
-    @apply hover:text-white hover:bg-blue-700 hover:bg-opacity-90 hover:border-transparent !important;
+@utility btn-primary {
+  @apply text-white bg-blue-700 ring-blue-700;
+  @apply hover:text-white! hover:bg-blue-700/90! hover:border-transparent!;
 
-    &.btn-outlined {
-      @apply text-blue-700 bg-transparent border-blue-700;
-    }
+  &.btn-outlined {
+    @apply text-blue-700 bg-transparent border-blue-700;
   }
+}
 
-  .btn-secondary {
-    @apply text-white bg-indigo-700 ring-indigo-700;
-    @apply hover:text-white hover:bg-indigo-700 hover:bg-opacity-90 hover:border-transparent !important;
+@utility btn-secondary {
+  @apply text-white bg-indigo-700 ring-indigo-700;
+  @apply hover:text-white! hover:bg-indigo-700/90! hover:border-transparent!;
 
-    &.btn-outlined {
-      @apply text-indigo-900 bg-transparent border-indigo-700;
-    }
+  &.btn-outlined {
+    @apply text-indigo-900 bg-transparent border-indigo-700;
   }
+}
 
-  .btn-danger {
-    @apply text-white bg-red-700 ring-red-700;
-    @apply hover:text-white hover:bg-red-700 hover:bg-opacity-90 hover:border-transparent !important;
+@utility btn-danger {
+  @apply text-white bg-red-700 ring-red-700;
+  @apply hover:text-white! hover:bg-red-700/90! hover:border-transparent!;
 
-    &.btn-outlined {
-      @apply text-red-700 bg-transparent border-red-700;
-    }
+  &.btn-outlined {
+    @apply text-red-700 bg-transparent border-red-700;
   }
+}
 
-  .btn-ghost {
-    @apply text-black bg-transparent border-transparent;
-  }
+@utility btn-ghost {
+  @apply text-black bg-transparent border-transparent;
+}
 
+@utility btn-xs {
   /* Sizes */
-  .btn-xs {
-    @apply py-0.5 px-2.5 text-xs
-  }
+  @apply py-0.5 px-2.5 text-xs;
+}
 
-  .btn-sm {
-    @apply px-3 py-2 text-sm
-  }
+@utility btn-sm {
+  @apply px-3 py-2 text-sm;
+}
 
-  .btn-md {
-    @apply px-5 py-2.5 text-sm
-  }
+@utility btn-md {
+  @apply px-5 py-2.5 text-sm;
+}
 
-  .btn-lg {
-    @apply px-5 py-3 text-base
-  }
+@utility btn-lg {
+  @apply px-5 py-3 text-base;
+}
 
-  .btn-xl {
-    @apply px-6 py-3.5 text-base
-  }
+@utility btn-xl {
+  @apply px-6 py-3.5 text-base;
+}
 
-  .btn-link {
-    @apply p-0 text-blue-700 bg-transparent border-transparent
-  }
+@utility btn-link {
+  @apply p-0 text-blue-700 bg-transparent border-transparent;
+}
 
-  .btn-block {
-    @apply block w-full
-  }
+@utility btn-block {
+  @apply block w-full;
 }

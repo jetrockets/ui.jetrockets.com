@@ -1,17 +1,15 @@
-@layer components {
-  .breadcrumbs {
-    @apply flex mb-3.5 -mt-2 md:-mt-4 text-sm;
-  }
+@utility breadcrumbs {
+  @apply flex mb-3.5 -mt-2 md:-mt-4 text-sm;
+}
 
-  .breadcrumbs__separator {
-    @apply mx-2;
-  }
+@utility breadcrumbs__separator {
+  @apply mx-2;
+}
 
-  .breadcrumb__tab_current {
-    @apply text-gray-600;
-  }
+@utility breadcrumb__tab_current {
+  @apply text-gray-600;
+}
 
-  .current {
-    @apply text-gray-600;
-  }
+@utility current {
+  @apply text-gray-600;
 }

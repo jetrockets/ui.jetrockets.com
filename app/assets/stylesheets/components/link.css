@@ -1,5 +1,3 @@
-@layer components {
-  .link {
-    @apply text-blue-600 underline hover:no-underline underline-offset-2
-  }
+@utility link {
+  @apply text-blue-600 underline hover:no-underline underline-offset-2;
 }

@@ -1,6 +1,4 @@
-@layer components {
-  .wysiwyg {
-    /* https://tailwindcss.com/docs/typography-plugin */
-    @apply prose prose-a:link
-  }
+@utility wysiwyg {
+  /* https://tailwindcss.com/docs/typography-plugin */
+  @apply prose prose-a:link;
 }

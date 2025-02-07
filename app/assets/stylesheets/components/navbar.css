@@ -1,80 +1,88 @@
-@layer components {
-  :root {
-    --nav-height: 54px;
-  }
+@utility navbar {
+  @apply sticky top-0 z-40 flex flex-col items-center justify-between shadow-xs bg-white/90 backdrop-blur-xs h-nav;
+}
 
-  .navbar {
-    @apply sticky top-0 z-40 flex flex-col items-center justify-between bg-white shadow-sm bg-opacity-90 backdrop-blur-sm h-nav;
-  }
-
-  .navbar-active .navbar__backgrop {
+@utility navbar-active {
+  & .navbar__backgrop {
     @apply visible opacity-60;
   }
+}
 
-  .navbar__logo {
-    @apply w-28;
+@utility navbar__backgrop {
+  .navbar-active & {
+    @apply visible opacity-60;
   }
+}
 
-  .navbar__inner {
-    @apply flex items-center justify-between flex-1;
+@utility navbar__logo {
+  @apply w-28;
+}
+
+@utility navbar__inner {
+  @apply flex items-center justify-between flex-1;
+}
+
+@utility navbar__menu {
+  @apply fixed inset-0 invisible w-screen h-0 pt-4 overflow-auto duration-300 translate-y-full bg-blue-700 opacity-0;
+  transition-property: opacity, transform;
+
+  @media (width >= theme(--breakpoint-md)) {
+    @apply relative top-0 flex justify-center flex-1 visible w-auto h-auto pt-0 space-x-6 overflow-visible translate-y-0 bg-transparent opacity-100;
   }
+}
 
-  .navbar__menu {
-    @apply fixed inset-0 invisible w-screen h-0 pt-4 overflow-auto duration-300 translate-y-full bg-blue-700 opacity-0;
-    transition-property: opacity, transform;
+@utility navbar__menu-active {
+  @apply visible translate-y-0 opacity-100 top-nav h-[calc(100vh-var(--nav-height))];
 
-    @screen md {
-      @apply relative top-0 flex justify-center flex-1 visible w-auto h-auto pt-0 space-x-6 overflow-visible translate-y-0 bg-transparent opacity-100;
-    }
+  @media (width >= theme(--breakpoint-md)) {
+    @apply top-auto h-auto;
   }
+}
 
-  .navbar__menu-active {
-    @apply visible translate-y-0 opacity-100 top-nav h-[calc(100vh-var(--nav-height))];
+@utility navbar__link {
+  @apply flex items-center px-6 py-3 text-3xl font-bold leading-tight text-white;
 
-    @screen md {
-      @apply top-auto h-auto
-    }
+  @media (width >= theme(--breakpoint-md)) {
+    @apply relative block px-0 py-2 text-base font-normal leading-none text-gray-600 hover:text-black;
   }
+}
 
-  .navbar__link {
-    @apply flex items-center px-6 py-3 text-3xl font-bold leading-tight text-white;
+@utility navbar__link-active {
+  @apply text-blue-700 bg-white;
 
-    @screen md {
-      @apply relative block px-0 py-2 text-base font-normal leading-none text-gray-600 hover:text-black;
-    }
+  @media (width >= theme(--breakpoint-md)) {
+    @apply text-black bg-transparent;
   }
+}
 
-  .navbar__link-active {
-    @apply text-blue-700 bg-white;
+@utility navbar__right {
+  @apply flex items-center gap-x-3;
+}
 
-    @screen md {
-      @apply text-black bg-transparent;
-    }
-  }
+@utility navbar__close {
+  @apply invisible transition-all opacity-0;
+}
 
-  .navbar__right {
-    @apply flex items-center gap-x-3;
-  }
+@utility navbar__open {
+  @apply visible transition-all opacity-100;
+}
 
+@utility navbar__burger {
+  @apply md:hidden;
+}
+
+@utility navbar__burger-opened {
   .navbar__close {
-    @apply invisible transition-all opacity-0;
+    @apply visible opacity-100;
   }
 
   .navbar__open {
-    @apply visible transition-all opacity-100;
+    @apply invisible opacity-0;
   }
+}
 
-  .navbar__burger {
-    @apply md:hidden
-  }
-
-  .navbar__burger-opened {
-    .navbar__close {
-      @apply visible opacity-100;
-    }
-
-    .navbar__open {
-      @apply invisible opacity-0;
-    }
+@layer components {
+  :root {
+    --nav-height: 54px;
   }
 }

@@ -1,23 +1,24 @@
-@layer components {
-  .accordion__header {
-    @apply flex items-center justify-between w-full gap-3 p-5 -mt-px font-medium text-gray-600 border border-gray-200;
-    @apply focus-visible:ring-4 focus-visible:ring-gray-200 focus-visible:outline-none
+@utility accordion__header {
+  @apply flex items-center justify-between w-full gap-3 p-5 -mt-px font-medium text-gray-600 border border-gray-200;
+  @apply focus-visible:ring-4 focus-visible:ring-gray-200 focus-visible:outline-hidden;
+
+  &:first-of-type {
+    @apply rounded-t-xl;
   }
 
-  .accordion__body {
-    @apply p-5 border border-gray-200 -mt-px
+  &:last-of-type {
+    @apply rounded-b-xl;
   }
 
-  .accordion__header:first-of-type {
-    @apply rounded-t-xl
+  &:last-of-type[aria-expanded='true'] {
+    @apply rounded-b-none;
   }
+}
 
-  .accordion__header:last-of-type,
-  .accordion__body:last-of-type {
-    @apply rounded-b-xl
-  }
+@utility accordion__body {
+  @apply p-5 border border-gray-200 -mt-px;
 
-  .accordion__header:last-of-type[aria-expanded="true"] {
-    @apply rounded-b-none
+  &:last-of-type {
+    @apply rounded-b-xl;
   }
 }

@@ -1,7 +1,6 @@
 import harmonyPalette from '@evilmartians/harmony/tailwind'
 
 module.exports = {
-  mode: 'jit',
   content: [
     './app/views/**/*.html.erb',
     './app/components/**/*.{html.erb,rb,js}',
@@ -16,10 +15,6 @@ module.exports = {
   theme: {
     colors: harmonyPalette,
     extend: {
-      animation: {
-        slideDown: 'slideDown 0.3s ease-in-out',
-        fadeIn: 'fadeIn 0.15s ease-in-out'
-      },
       height: {
         nav: 'var(--nav-height)'
       },

@@ -1,21 +1,26 @@
+@theme {
+  --animation-slide-down: slideDown 0.3s ease-in-out;
+  --animation-fade-in: fadeIn 0.15s ease-in-out;
+}
+
 @layer base {
   @keyframes fadeIn {
     from {
-      @apply opacity-0;
+      opacity: 0;
     }
-
     to {
-      @apply opacity-100;
+      opacity: 1;
     }
   }
 
   @keyframes slideDown {
     from {
-      @apply opacity-0 -top-12;
+      opacity: 0;
+      transform: translateY(-3rem);
     }
-
     to {
-      @apply top-0 opacity-100;
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

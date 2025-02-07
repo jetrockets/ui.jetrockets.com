@@ -14,7 +14,7 @@ class Ui::Badge::Component < ApplicationComponent
 
   def classes
     class_names(
-      "text-sm font-medium px-2.5 py-0.5 rounded",
+      "text-sm font-medium px-2.5 py-0.5 rounded-sm",
       @options.delete(:class),
       "bg-gray-100 text-gray-800": @type == :default,
       "bg-blue-100 text-blue-800": @type == :blue,

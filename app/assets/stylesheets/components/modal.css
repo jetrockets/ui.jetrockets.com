@@ -1,49 +1,48 @@
-@layer components {
-  .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slideDown;
-
-    .modal__container {
-      @apply mt-0;
-    }
-  }
+@utility modal {
+  @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0;
+  animation: var(--animation-slide-down);
 
   .modal__container {
-    @apply relative w-full max-h-full max-w-2xl mx-auto mt-6
+    @apply mt-0;
   }
+}
 
-  .modal__content {
-    @apply relative bg-white shadow-lg rounded-lg
-  }
+@utility modal__container {
+  @apply relative w-full max-h-full max-w-2xl mx-auto mt-6;
+}
 
-  .modal__header {
-    @apply flex items-center justify-between p-4 px-6 border-b
-  }
+@utility modal__content {
+  @apply relative bg-white shadow-lg rounded-lg;
+}
 
-  .modal__title {
-    @apply text-xl font-semibold leading-tight text-gray-900
-  }
+@utility modal__header {
+  @apply flex items-center justify-between p-4 px-6 border-b;
+}
 
-  .modal__subtitle {
-    @apply mt-1 text-sm text-gray-600
-  }
+@utility modal__title {
+  @apply text-xl font-semibold leading-tight text-gray-900;
+}
 
-  .modal__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full hover:bg-gray-100 hover:text-gray-400;
-  }
+@utility modal__subtitle {
+  @apply mt-1 text-sm text-gray-600;
+}
 
-  .modal__body {
-    @apply py-6 px-6 rounded-lg
-  }
+@utility modal__close {
+  @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full hover:bg-gray-100 hover:text-gray-400;
+}
 
-  .modal__footer {
-    @apply flex items-center p-6 py-4 space-x-3 border-t border-gray-200
-  }
+@utility modal__body {
+  @apply py-6 px-6 rounded-lg;
+}
 
-  .modal__footer-end {
-    @apply justify-end;
-  }
+@utility modal__footer {
+  @apply flex items-center p-6 py-4 space-x-3 border-t border-gray-200;
+}
 
-  .modal__footer-sticky {
-    @apply sticky bottom-0 bg-white rounded-b-lg
-  }
+@utility modal__footer-end {
+  @apply justify-end;
+}
+
+@utility modal__footer-sticky {
+  @apply sticky bottom-0 bg-white rounded-b-lg;
 }

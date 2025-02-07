@@ -1,58 +1,60 @@
-@layer components {
-  .form__group {
-    @apply mb-4;
-  }
+@utility form__group {
+  @apply mb-4;
+}
 
-  .form__label {
-    @apply block mb-1 text-sm font-medium text-gray-700;
-  }
+@utility form__label {
+  @apply block mb-1 text-sm font-medium text-gray-700;
+}
 
-  .form__label-checkbox,
-  .form__label-radio {
-    @apply mb-0;
-  }
+@utility form__label-checkbox {
+  @apply mb-0;
+}
 
-  .form__input {
-    @apply block w-full px-3 py-2 border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
-  }
+@utility form__label-radio {
+  @apply mb-0;
+}
 
-  .form__input-errored {
-    @apply border-red-300 ring-red-200 focus:border-red-300 focus:ring-red-200;
-  }
+@utility form__input {
+  @apply block w-full px-3 py-2 border-gray-300 rounded-md focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
+}
 
-  .form__hint {
-    @apply text-sm font-normal text-gray-600
-  }
+@utility form__input-errored {
+  @apply border-red-300 ring-red-200 focus:border-red-300 focus:ring-red-200;
+}
 
-  .form__help {
-    @apply mt-1 text-sm text-gray-600
-  }
+@utility form__hint {
+  @apply text-sm font-normal text-gray-600;
+}
 
-  .form__error {
-    @apply mt-1 text-sm text-red-600
-  }
+@utility form__help {
+  @apply mt-1 text-sm text-gray-600;
+}
 
-  .form__radio,
-  .form__checkbox {
-    @apply w-5 h-5 border-gray-300 rounded-md;
-    @apply focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50 checked:hover:bg-blue-500 focus:border-blue-300 checked:focus:border-blue-500 checked:focus:bg-blue-500 checked:bg-blue-500 checked:border-blue-500;
-  }
+@utility form__error {
+  @apply mt-1 text-sm text-red-600;
+}
 
-  .form__radio {
-    @apply rounded-full;
-  }
+@utility form__radio {
+  @apply w-5 h-5 border-gray-300 rounded-md;
+  @apply focus:ring-3 focus:ring-offset-0 focus:ring-blue-200/50 checked:hover:bg-blue-500 focus:border-blue-300 checked:focus:border-blue-500 checked:focus:bg-blue-500 checked:bg-blue-500 checked:border-blue-500;
+  @apply rounded-full;
+}
 
-  .form__checkbox-errored {
-    @apply border-red-300 focus:ring-red-200 focus:border-red-300;
-  }
+@utility form__checkbox {
+  @apply w-5 h-5 border-gray-300 rounded-md;
+  @apply focus:ring-3 focus:ring-offset-0 focus:ring-blue-200/50 checked:hover:bg-blue-500 focus:border-blue-300 checked:focus:border-blue-500 checked:focus:bg-blue-500 checked:bg-blue-500 checked:border-blue-500;
+}
 
-  .form__toggle {
-    @apply relative h-6 mr-2 bg-gray-200 rounded-full w-11 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-300 peer-checked:after:translate-x-full;
-    @apply peer-checked:after:border-white peer-checked:bg-blue-500;
-    @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
-  }
+@utility form__checkbox-errored {
+  @apply border-red-300 focus:ring-red-200 focus:border-red-300;
+}
 
-  .form__actions {
-    @apply mt-8;
-  }
+@utility form__toggle {
+  @apply relative h-6 mr-2 bg-gray-200 rounded-full w-11 peer-focus-visible:outline-hidden peer-focus-visible:ring-4 peer-focus-visible:ring-blue-300 peer-checked:after:translate-x-full;
+  @apply peer-checked:after:border-white peer-checked:bg-blue-500;
+  @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
+}
+
+@utility form__actions {
+  @apply mt-8;
 }

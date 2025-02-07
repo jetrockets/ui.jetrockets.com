@@ -1,33 +1,31 @@
-@layer components {
-  .table {
-    @apply w-auto;
-  }
+@utility table {
+  @apply w-auto;
+}
 
-  .table-full {
-    @apply min-w-full;
-  }
+@utility table-full {
+  @apply min-w-full;
+}
 
-  .table__thead {
-    @apply bg-gray-50;
-  }
+@utility table__thead {
+  @apply bg-gray-50;
+}
 
-  .table__th {
-    @apply px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase;
-  }
+@utility table__th {
+  @apply px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase;
+}
 
-  .table__tbody {
-    @apply divide-y divide-gray-200;
-  }
+@utility table__tbody {
+  @apply divide-y divide-gray-200;
+}
 
-  .table__td {
-    @apply px-6 py-3 text-sm;
-  }
+@utility table__td {
+  @apply px-6 py-3 text-sm;
+}
 
-  .table__td-center {
-    @apply text-center;
-  }
+@utility table__td-center {
+  @apply text-center;
+}
 
-  .table__td-actions {
-    @apply text-right;
-  }
+@utility table__td-actions {
+  @apply text-right;
 }
