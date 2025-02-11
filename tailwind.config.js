@@ -15,14 +15,6 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: harmonyPalette,
-    extend: {
-      height: {
-        nav: 'var(--nav-height)'
-      },
-      spacing: {
-        nav: 'var(--nav-height)'
-      }
-    }
   },
   plugins: [
     require('@tailwindcss/typography'),
