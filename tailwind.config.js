@@ -16,10 +16,6 @@ module.exports = {
   theme: {
     colors: harmonyPalette,
     extend: {
-      animation: {
-        slideDown: 'slideDown 0.3s ease-in-out',
-        fadeIn: 'fadeIn 0.15s ease-in-out'
-      },
       height: {
         nav: 'var(--nav-height)'
       },

@@ -1,5 +1,5 @@
 @layer components {
   .link {
-    @apply text-blue-600 underline hover:no-underline underline-offset-2
+    @apply text-[var(--link-color)] underline hover:no-underline underline-offset-[var(--link-offset)]
   }
 }
