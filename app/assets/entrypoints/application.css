@@ -1,8 +1,8 @@
+@import '../stylesheets/_variables.css';
 @import 'tailwindcss';
 @import '../stylesheets/base.css';
 @import '../stylesheets/vendors.css';
 @import '../stylesheets/components.css';
-@import '../stylesheets/variables.css';
 
 @config "../../../tailwind.config.js";
 
