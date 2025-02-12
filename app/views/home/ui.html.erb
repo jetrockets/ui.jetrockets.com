@@ -22,24 +22,34 @@
 
       <%= render Ui::Accordion::Component.new do |accordion| %>
         <%= accordion.with_item(title: "Alerts", id: "alerts", class: "space-y-2") do %>
-          <%= render Ui::Alert::Component.new type: :info do |alert| %>
-            <strong>Info alert!</strong> Change a few things up and try submitting again.
+          <%= render Ui::Alert::Component.new type: :info, title: "Info alert" do |alert| %>
+            <ul>
+              <li>Change a few things up and try submitting again.</li>
+            </ul>
           <% end %>
 
-          <%= render Ui::Alert::Component.new type: :error do |alert| %>
-            <strong>Danger alert!</strong> Change a few things up and try submitting again.
+          <%= render Ui::Alert::Component.new type: :error, title: "Danger alert!" do |alert| %>
+            <ul>
+              <li>Change a few things up and try submitting again.</li>
+            </ul>
           <% end %>
 
-          <%= render Ui::Alert::Component.new type: :success do |alert| %>
-            <strong>Success alert!</strong> Change a few things up and try submitting again.
+          <%= render Ui::Alert::Component.new type: :success, title: "Success alert!" do |alert| %>
+            <ul>
+              <li>Change a few things up and try submitting again.</li>
+            </ul>
           <% end %>
 
-          <%= render Ui::Alert::Component.new type: :warning do |alert| %>
-            <strong>Warning alert!</strong> Change a few things up and try submitting again.
+          <%= render Ui::Alert::Component.new type: :warning, title: "Warning alert!" do |alert| %>
+            <ul>
+              <li>Change a few things up and try submitting again.</li>
+            </ul>
           <% end %>
 
-          <%= render Ui::Alert::Component.new do |alert| %>
-            <strong>Deafault alert!</strong> Change a few things up and try submitting again.
+          <%= render Ui::Alert::Component.new title: "Default alert!" do |alert| %>
+            <ul>
+              <li>Change a few things up and try submitting again.</li>
+            </ul>
           <% end %>
         <% end %>
 

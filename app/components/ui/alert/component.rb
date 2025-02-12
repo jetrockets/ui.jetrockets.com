@@ -2,13 +2,22 @@ class Ui::Alert::Component < ApplicationComponent
   TYPES = %i[info error success warning default]
   DEFAULT_TYPE = :default
 
-  def initialize(type: DEFAULT_TYPE, **options)
+  def initialize(type: DEFAULT_TYPE, title: nil, **options)
     @type = TYPES.include?(type) ? type : DEFAULT_TYPE
+    @title = title
     @options = options
   end
 
   def call
-    content_tag :div, content, class: classes, role: "alert", **@options
+    content_tag :div, content, class: classes, role: "alert", **@options do
+      concat(title_tag) 
+      concat(content)
+    end
+  end
+
+  def title_tag
+    return unless @title
+    content_tag :h3, @title, class: "font-bold"
   end
 
   def classes
