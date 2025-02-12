@@ -1,5 +1,5 @@
 class Ui::Badge::Component < ApplicationComponent
-  TYPES = %i[default blue red green yellow indigo purple pink]
+  TYPES = %i[default blue red green yellow]
   DEFAULT_TYPE = :default
 
   def initialize(type: DEFAULT_TYPE, title:, **options)
@@ -20,10 +20,7 @@ class Ui::Badge::Component < ApplicationComponent
       "bg-blue-100 text-blue-800": @type == :blue,
       "bg-red-100 text-red-800": @type == :red,
       "bg-green-100 text-green-800": @type == :green,
-      "bg-yellow-100 text-yellow-800": @type == :yellow,
-      "bg-indigo-100 text-indigo-800": @type == :indigo,
-      "bg-purple-100 text-purple-800": @type == :purple,
-      "bg-pink-100 text-pink-800": @type == :pink
+      "bg-yellow-100 text-yellow-800": @type == :yellow
     )
   end
 end

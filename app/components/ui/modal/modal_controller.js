@@ -6,7 +6,7 @@ export default class ModalController extends Controller {
     const options = {
       placement: 'center-center',
       // backdrop: 'dynamic',
-      // backdropClasses: 'bg-slate-950 bg-opacity-50 fixed inset-0 z-40',
+      // backdropClasses: 'bg-gray-950 bg-opacity-50 fixed inset-0 z-40',
       // closable: this.data.get('closable') === 'true',
       onHide: () => {
         this.element.remove()

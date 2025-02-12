@@ -1,7 +1,7 @@
 @layer components {
   .btn {
     @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-gray-700 border bg-gray-200 border-transparent ring-gray-200 cursor-pointer duration-200;
-    @apply hover:text-blue-800 hover:bg-gray-200/80;
+    @apply hover:text-primary-800 hover:bg-gray-200/80;
     @apply focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-2 focus-visible:ring-offset-2;
     @apply active:scale-95;
 
@@ -12,20 +12,20 @@
   }
 
   .btn-primary {
-    @apply text-white bg-blue-700 ring-blue-700;
-    @apply hover:text-white! hover:bg-blue-700/90! hover:border-transparent!;
+    @apply text-white bg-primary-700 ring-primary-700;
+    @apply hover:text-white! hover:bg-primary-700/90! hover:border-transparent!;
 
     &.btn-outlined {
-      @apply text-blue-700 bg-transparent border-blue-700;
+      @apply bg-transparent text-primary-700 border-primary-700;
     }
   }
 
   .btn-secondary {
-    @apply text-white bg-indigo-700 ring-indigo-700;
-    @apply hover:text-white! hover:bg-indigo-700/90! hover:border-transparent!;
+    @apply text-white bg-secondary-700 ring-secondary-700;
+    @apply hover:text-white! hover:bg-secondary-700/90! hover:border-transparent!;
 
     &.btn-outlined {
-      @apply text-indigo-900 bg-transparent border-indigo-700;
+      @apply bg-transparent text-secondary-900 border-secondary-700;
     }
   }
 
@@ -64,7 +64,7 @@
   }
 
   .btn-link {
-    @apply p-0 text-blue-700 bg-transparent border-transparent
+    @apply p-0 text-primary-700 bg-transparent border-transparent
   }
 
   .btn-block {
