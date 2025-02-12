@@ -1,17 +1,13 @@
 module.exports = {
-  mode: 'jit',
   content: [
-    './app/views/**/*.html.erb',
-    './app/components/**/*.{html.erb,rb,js}',
-    './app/services/**/*.rb',
     './app/helpers/**/*.rb',
     './app/assets/**/*.js',
-    './app/lib/form_builders/**/*.rb',
-    './config/locales/**/*.yml',
-    './node_modules/flowbite/**/*.js'
+    './app/views/**/*',
+    './app/components/**/*',
+    './app/lib/form_builders/**/*.rb'
   ],
-  darkMode: 'class',
   plugins: [
+    require('@tailwindcss/forms')(),
     require('flowbite/plugin')
   ]
 }

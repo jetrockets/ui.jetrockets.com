@@ -3,7 +3,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.2",
     "@rails/request.js": "^0.0.9",
-    "flowbite": "^2.3.0",
+    "flowbite": "^3.1.2",
     "mjml": "^4.15.3",
     "stimulus-rails-autosave": "^5.1.0",
     "stimulus-textarea-autogrow": "^4.1.0",
@@ -11,6 +11,7 @@
     "tailwindcss-stimulus-components": "^4.0.4"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/vite": "^4.0.6",
     "rollup-plugin-gzip": "^3.1.1",
     "standard": "^17.1.0",
