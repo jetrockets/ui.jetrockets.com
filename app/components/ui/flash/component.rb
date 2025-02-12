@@ -1,4 +1,4 @@
-class Flash::Component < ApplicationComponent
+class Ui::Flash::Component < ApplicationComponent
   DISMISS_AFTER = 5000
   REMOVE_DELAY = 6000
   SHOW_DELAY = 0

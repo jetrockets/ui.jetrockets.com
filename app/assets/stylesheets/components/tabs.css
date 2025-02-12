@@ -20,6 +20,6 @@
   }
 
   .tabs__link-active {
-    @apply tabs__link text-blue-600 hover:text-blue-600 border-blue-600 hover:border-blue-600
+    @apply text-blue-600 hover:text-blue-600 border-blue-600 hover:border-blue-600
   }
 }

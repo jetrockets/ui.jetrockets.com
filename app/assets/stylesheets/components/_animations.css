@@ -1,21 +1,36 @@
-@layer base {
+@theme {
+  --animate-fade-in: fadeIn 0.15s ease-in-out;
+  --animate-slide-down: slideDown 0.3s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-in-out;
+
   @keyframes fadeIn {
     from {
-      @apply opacity-0;
+      opacity: 0;
     }
-
     to {
-      @apply opacity-100;
+      opacity: 1;
     }
   }
 
   @keyframes slideDown {
     from {
-      @apply opacity-0 -top-12;
+      opacity: 0;
+      transform: translateY(-2rem);
     }
-
     to {
-      @apply top-0 opacity-100;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

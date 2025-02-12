@@ -1,8 +1,8 @@
 <% set_meta_tags(title: "Are you sure?") %>
 
-<%= render Modal::Component.new(title: "Are you sure?", size: :md) do %>
+<%= render Ui::Modal::Component.new(title: "Are you sure?", size: :md) do %>
   <div class="modal__body">
-    <%= component"ui/alert", type: :info, class: "mb-4" do |alert| %>
+    <%= render Ui::Alert::Component.new type: :info, class: "mb-4" do |alert| %>
       <strong>Deleting an account</strong> is a permanent action that cannot be undone.
     <% end %>
 

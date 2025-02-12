@@ -1,35 +1,12 @@
-import harmonyPalette from '@evilmartians/harmony/tailwind'
-
 module.exports = {
-  mode: 'jit',
   content: [
-    './app/views/**/*.html.erb',
-    './app/components/**/*.{html.erb,rb,js}',
-    './app/services/**/*.rb',
     './app/helpers/**/*.rb',
     './app/assets/**/*.js',
-    './app/lib/form_builders/**/*.rb',
-    './config/locales/**/*.yml',
-    './node_modules/flowbite/**/*.js'
+    './app/views/**/*',
+    './app/components/**/*',
+    './app/lib/form_builders/**/*.rb'
   ],
-  darkMode: 'class',
-  theme: {
-    colors: harmonyPalette,
-    extend: {
-      animation: {
-        slideDown: 'slideDown 0.3s ease-in-out',
-        fadeIn: 'fadeIn 0.15s ease-in-out'
-      },
-      height: {
-        nav: 'var(--nav-height)'
-      },
-      spacing: {
-        nav: 'var(--nav-height)'
-      }
-    }
-  },
   plugins: [
-    require('@tailwindcss/typography'),
     require('@tailwindcss/forms')(),
     require('flowbite/plugin')
   ]

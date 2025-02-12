@@ -1,10 +1,6 @@
 @layer components {
-  :root {
-    --nav-height: 54px;
-  }
-
   .navbar {
-    @apply sticky top-0 z-40 flex flex-col items-center justify-between bg-white shadow-sm bg-opacity-90 backdrop-blur-sm h-nav;
+    @apply sticky top-0 z-40 flex flex-col items-center justify-between shadow-xs bg-white/90 backdrop-blur-xs h-[var(--nav-height)];
   }
 
   .navbar-active .navbar__backgrop {
@@ -23,33 +19,25 @@
     @apply fixed inset-0 invisible w-screen h-0 pt-4 overflow-auto duration-300 translate-y-full bg-blue-700 opacity-0;
     transition-property: opacity, transform;
 
-    @screen md {
-      @apply relative top-0 flex justify-center flex-1 visible w-auto h-auto pt-0 space-x-6 overflow-visible translate-y-0 bg-transparent opacity-100;
-    }
+    @apply md:relative md:top-0 md:flex md:justify-center md:flex-1 md:visible md:w-auto md:h-auto md:pt-0 md:space-x-6 md:overflow-visible md:translate-y-0 md:bg-transparent md:opacity-100;
   }
 
   .navbar__menu-active {
-    @apply visible translate-y-0 opacity-100 top-nav h-[calc(100vh-var(--nav-height))];
+    @apply visible translate-y-0 opacity-100 top-[var(--nav-height)] h-[calc(100vh-var(--nav-height))];
 
-    @screen md {
-      @apply top-auto h-auto
-    }
+    @apply md:top-auto md:h-auto;
   }
 
   .navbar__link {
     @apply flex items-center px-6 py-3 text-3xl font-bold leading-tight text-white;
 
-    @screen md {
-      @apply relative block px-0 py-2 text-base font-normal leading-none text-gray-600 hover:text-black;
-    }
+    @apply md:relative md:block md:px-0 md:py-2 md:text-base md:font-normal md:leading-none md:text-gray-600 md:hover:text-black;
   }
 
   .navbar__link-active {
     @apply text-blue-700 bg-white;
 
-    @screen md {
-      @apply text-black bg-transparent;
-    }
+    @apply md:text-black md:bg-transparent;
   }
 
   .navbar__right {

@@ -1,10 +1,12 @@
-@import "tailwindcss/base";
-@import "../stylesheets/base.css";
-@import "../stylesheets/vendors";
-
-@import "tailwindcss/components";
-@import "../stylesheets/components.css";
-
-@import "tailwindcss/utilities";
+@import 'tailwindcss';
+@import '../stylesheets/base.css';
+@import '../stylesheets/vendors.css';
+@import '../stylesheets/components.css';
 
 @config "../../../tailwind.config.js";
+
+:root {
+  --link-color: #2563eb;
+  --link-offset: 2px;
+  --nav-height: 54px;
+}

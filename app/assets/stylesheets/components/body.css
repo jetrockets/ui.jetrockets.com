@@ -1,6 +1,6 @@
 @layer components {
   .body {
-    @apply flex flex-col min-h-screen;
+    @apply relative flex flex-col min-h-[100svh];
   }
 
   .body-overflow {
@@ -8,7 +8,7 @@
   }
 
   .body__main {
-    @apply flex flex-col items-center flex-1 py-6 transition-all duration-300 md:py-8;
+    @apply flex flex-col items-center flex-1 py-6 md:py-8;
   }
 
   .body__footer {

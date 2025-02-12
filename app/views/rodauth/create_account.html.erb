@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Sign up", description: "Create your #{site_name}'s account") %>
 
-<%= render Modal::Component.new(title: "Sign Up", subtitle: "Create your #{site_name}'s account", size: :md) do %>
+<%= render Ui::Modal::Component.new(title: "Sign Up", subtitle: "Create your #{site_name}'s account", size: :md) do %>
   <div class="modal__body">
     <%= form_with url: rodauth.create_account_path, method: :post, class: "form" do |form| %>
       <div class="form__group">

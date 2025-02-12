@@ -1,9 +1,17 @@
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-full px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slideDown;
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-screen px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-[var(--animate-slide-up)];
 
     .modal__container {
       @apply mt-0;
+    }
+  }
+
+  .modal-dialog {
+    @apply p-0 m-auto rounded-lg shadow-lg h-fit w-fit backdrop:bg-gray-900/50;
+
+    &[open] {
+      @apply block;
     }
   }
 
@@ -16,7 +24,7 @@
   }
 
   .modal__header {
-    @apply flex items-center justify-between p-4 px-6 border-b
+    @apply flex items-center justify-between p-4 px-6 border-b border-gray-200
   }
 
   .modal__title {
@@ -28,7 +36,7 @@
   }
 
   .modal__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full hover:bg-gray-100 hover:text-gray-400;
+    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full cursor-pointer hover:bg-gray-100 hover:text-gray-400;
   }
 
   .modal__body {
