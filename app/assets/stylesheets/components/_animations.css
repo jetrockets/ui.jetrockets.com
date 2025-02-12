@@ -1,6 +1,7 @@
 @theme {
   --animate-fade-in: fadeIn 0.15s ease-in-out;
   --animate-slide-down: slideDown 0.3s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-in-out;
 
   @keyframes fadeIn {
     from {
@@ -14,7 +15,18 @@
   @keyframes slideDown {
     from {
       opacity: 0;
-      transform: translateY(-3rem);
+      transform: translateY(-2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
     }
     to {
       opacity: 1;

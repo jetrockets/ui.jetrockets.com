@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Modal::Component < ApplicationComponent
+class Ui::Modal::Component < ApplicationComponent
   # If you need a drawer instead of modal, you can prepare component for that.
   # Please copy the modal component, rename it to drawer and use it the same way.
   # https://flowbite.com/docs/components/drawer/

@@ -1,5 +1,3 @@
-import harmonyPalette from '@evilmartians/harmony/tailwind'
-
 module.exports = {
   mode: 'jit',
   content: [
@@ -13,12 +11,7 @@ module.exports = {
     './node_modules/flowbite/**/*.js'
   ],
   darkMode: 'class',
-  theme: {
-    colors: harmonyPalette,
-  },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms')(),
     require('flowbite/plugin')
   ]
 }

@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Remember Me") %>
 
-<%= render Modal::Component.new(title: "Remember Me", size: :md) do %>
+<%= render Ui::Modal::Component.new(title: "Remember Me", size: :md) do %>
   <div class="modal__body">
     <%= form_with url: rodauth.remember_path, method: :post, class: "form" do |form| %>
       <div class="form__group">

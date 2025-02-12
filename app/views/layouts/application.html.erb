@@ -34,7 +34,7 @@
 
     <%= render partial: "layouts/shared/footer" %>
 
-    <%= component :flash %>
+    <%= render Ui::Flash::Component.new %>
     <%= turbo_frame_tag :modal %>
     <%= render partial: "layouts/shared/turbo_confirm" %>
   </body>

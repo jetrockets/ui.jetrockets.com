@@ -8,7 +8,7 @@ class Ui::Dropdown::Component < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <div class="relative" data-controller="dropdown" **@options>
+    <div data-controller="dropdown" **@options>
       <%= button %>
 
       <div class="dropdown" data-dropdown-target="menu">

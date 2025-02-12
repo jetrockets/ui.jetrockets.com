@@ -16,29 +16,29 @@
 
   <section class="space-y-8">
     <div class="md:w-8/12">
-      <%= component "ui/alert", type: :info, class: "mb-4" do |alert| %>
+      <%= render Ui::Alert::Component.new type: :info, class: "mb-4" do |alert| %>
         <strong>Don't hesitate!</strong> It's just a template, you can change every component, or delete it if you don't need it.
       <% end %>
 
-      <%= component "ui/accordion" do |accordion| %>
+      <%= render Ui::Accordion::Component.new do |accordion| %>
         <%= accordion.with_item(title: "Alerts", id: "alerts", class: "space-y-2") do %>
-          <%= component "ui/alert", type: :info do |alert| %>
+          <%= render Ui::Alert::Component.new type: :info do |alert| %>
             <strong>Info alert!</strong> Change a few things up and try submitting again.
           <% end %>
 
-          <%= component "ui/alert", type: :error do |alert| %>
+          <%= render Ui::Alert::Component.new type: :error do |alert| %>
             <strong>Danger alert!</strong> Change a few things up and try submitting again.
           <% end %>
 
-          <%= component "ui/alert", type: :success do |alert| %>
+          <%= render Ui::Alert::Component.new type: :success do |alert| %>
             <strong>Success alert!</strong> Change a few things up and try submitting again.
           <% end %>
 
-          <%= component "ui/alert", type: :warning do |alert| %>
+          <%= render Ui::Alert::Component.new type: :warning do |alert| %>
             <strong>Warning alert!</strong> Change a few things up and try submitting again.
           <% end %>
 
-          <%= component "ui/alert" do |alert| %>
+          <%= render Ui::Alert::Component.new do |alert| %>
             <strong>Deafault alert!</strong> Change a few things up and try submitting again.
           <% end %>
         <% end %>
@@ -52,14 +52,14 @@
         <% end %>
 
         <%= accordion.with_item(title: "Badges", id: "bages", class: "space-x-2") do %>
-          <%= component "ui/badge", title: "Default" %>
-          <%= component "ui/badge", title: "Blue", type: :blue %>
-          <%= component "ui/badge", title: "Red", type: :red %>
-          <%= component "ui/badge", title: "Green", type: :green %>
-          <%= component "ui/badge", title: "Yellow", type: :yellow %>
-          <%= component "ui/badge", title: "Indigo", type: :indigo %>
-          <%= component "ui/badge", title: "Purple", type: :purple %>
-          <%= component "ui/badge", title: "Pink", type: :pink %>
+          <%= render Ui::Badge::Component.new title: "Default" %>
+          <%= render Ui::Badge::Component.new title: "Blue", type: :blue %>
+          <%= render Ui::Badge::Component.new title: "Red", type: :red %>
+          <%= render Ui::Badge::Component.new title: "Green", type: :green %>
+          <%= render Ui::Badge::Component.new title: "Yellow", type: :yellow %>
+          <%= render Ui::Badge::Component.new title: "Indigo", type: :indigo %>
+          <%= render Ui::Badge::Component.new title: "Purple", type: :purple %>
+          <%= render Ui::Badge::Component.new title: "Pink", type: :pink %>
         <% end %>
 
         <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
@@ -102,7 +102,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
-          <%= component "ui/dropdown" do |dropdown| %>
+          <%= render Ui::Dropdown::Component.new do |dropdown| %>
             <%= dropdown.with_button do %>
               <%= button_tag class: "btn btn-primary btn-iconed", data: { dropdown_target: "trigger" } do %>
               Default Dropdown
@@ -190,12 +190,12 @@
 
         <%= accordion.with_item(title: "Popover", id: "popover") do %>
           <%= button_tag"Default popover", class: "btn", data: { popover_target: "popover_top" }, type: :button %>
-          <%= component "ui/popover", id: "popover_top", title: "Popover Title", placement: "right" do %>
+          <%= render Ui::Popover::Component.new id: "popover_top", title: "Popover Title", placement: "right" do %>
             <p>And here's some amazing content. It's very engaging.</p>
           <% end %>
 
           <%= button_tag"Popover Right", class: "btn btn-primary", data: { popover_target: "popover_right", popover_placement: "right" }, type: :button %>
-          <%= component "ui/popover", id: "popover_right", title: "Popover Title", placement: "right" do %>
+          <%= render Ui::Popover::Component.new id: "popover_right", title: "Popover Title", placement: "right" do %>
             <p>And here's some amazing content. It's very engaging.</p>
           <% end %>
         <% end %>
@@ -230,7 +230,7 @@
                       </ul>
                     </td>
                     <td class="table__td table__td-center">
-                      <%= component "ui/badge", title: "Active", type: :green %>
+                      <%= render Ui::Badge::Component.new title: "Active", type: :green %>
                     </td>
                     <td class="table__td whitespace-nowrap">
                       <%= date_format(Time.zone.now, :full_month) %>

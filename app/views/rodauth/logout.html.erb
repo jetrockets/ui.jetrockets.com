@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Logout", description: "Logout from #{site_name}") %>
 
-<%= render Modal::Component.new(title: "Logout", subtitle: "Logout from #{site_name}", size: :md) do %>
+<%= render Ui::Modal::Component.new(title: "Logout", subtitle: "Logout from #{site_name}", size: :md) do %>
   <%= form_with url: rodauth.logout_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
     <div class="modal__body">
       <% if rodauth.features.include?(:active_sessions) %>
