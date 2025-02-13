@@ -1,8 +1,8 @@
 class Ui::Badge::Component < ApplicationComponent
   TYPES = %i[default blue red green yellow]
   DEFAULT_TYPE = :default
-  SIZES = %i[default xs sm md lg]
-  DEFAULT_SIZE = :md
+  SIZES = %i[xs sm md lg]
+  DEFAULT_SIZE = :sm
 
   def initialize(title:, type: DEFAULT_TYPE, size: DEFAULT_SIZE,  **options)
     @type = TYPES.include?(type) ? type : DEFAULT_TYPE
@@ -17,17 +17,17 @@ class Ui::Badge::Component < ApplicationComponent
 
   def classes
     class_names(
-      "font-medium inline-flex items-center justify-center rounded",
+      "font-medium inline-flex items-center rounded-md ring-1 ring-inset",
       @options.delete(:class),
-      "bg-gray-100 text-gray-800": @type == :default,
-      "bg-blue-100 text-blue-800": @type == :blue,
-      "bg-red-100 text-red-800": @type == :red,
-      "bg-green-100 text-green-800": @type == :green,
-      "bg-yellow-100 text-yellow-800": @type == :yellow,
-      "text-xs px-2.5 py-1.5": @size == :xs,
-      "text-sm px-3 py-1.5": @size == :sm,
-      "text-md px-2.5 py-1.5": @size == :md,
-      "text-lg px-2.5 py-1.5": @size == :lg,
+      "bg-gray-100 text-gray-800 ring-gray-800/20": @type == :default,
+      "bg-blue-100 text-blue-800 ring-blue-800/20": @type == :blue,
+      "bg-red-100 text-red-800 ring-red-800/20": @type == :red,
+      "bg-green-100 text-green-800 ring-green-800/20": @type == :green,
+      "bg-yellow-100 text-yellow-800 ring-yellow-800/20": @type == :yellow,
+      "px-1.5 py-0.5 text-xs": @size == :xs,
+      "px-2 py-1 text-xs": @size == :sm,
+      "px-3 py-1 text-sm": @size == :md,
+      "text-sm px-4 py-2": @size == :lg,
     )
   end
 end
