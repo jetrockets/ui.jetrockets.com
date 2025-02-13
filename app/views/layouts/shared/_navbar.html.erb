@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar__inner wrapper">
-    <%= link_to inline_svg_vite_tag("images/logo.svg", class: "navbar__logo", alt: "JetRockets"), root_path, aria: { label: "JetRockets" } %>
+    <%= link_to vite_svg_tag("images/logo.svg", class: "navbar__logo", alt: "JetRockets"), root_path, aria: { label: "JetRockets" } %>
     <ul class="navbar__menu" data-navbar-target="menu">
       <li>
         <%= link_to "UI elements", ui_path, class: "navbar__link #{"navbar__link-active" if current_page?(ui_path)}" %>

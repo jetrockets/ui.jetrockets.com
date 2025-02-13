@@ -27,7 +27,7 @@ class Ui::Alert::Component < ApplicationComponent
 
   def icon
     if @icon_path
-      helpers.inline_svg_vite_tag @icon_path, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
+      helpers.vite_svg_tag @icon_path, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
     end
   end
 end

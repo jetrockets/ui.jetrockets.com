@@ -13,12 +13,12 @@ class Ui::Dropdown::LinksComponent < ApplicationComponent
     <li class="dropdown__item">
       <% if @as == :link %>
         <%= link_to @href, class: classes, **@options do %>
-          <%= helpers.inline_svg_vite_tag(@icon_path, class: "dropdown__icon") if @icon_path %>
+          <%= helpers.vite_svg_tag(@icon_path, class: "dropdown__icon") if @icon_path %>
           <span><%= @name %></span>
         <% end %>
       <% elsif @as == :button %>
         <%= content_tag :span, class: classes, **@options do %>
-          <%= helpers.inline_svg_vite_tag(@icon_path, class: "dropdown__icon") if @icon_path %>
+          <%= helpers.vite_svg_tag(@icon_path, class: "dropdown__icon") if @icon_path %>
           <span><%= @name %></span>
         <% end %>
       <% elsif @as == :title %>
