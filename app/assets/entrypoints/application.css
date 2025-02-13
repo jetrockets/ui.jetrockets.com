@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../stylesheets/_tailwindcss_variables.css';
 @import '../stylesheets/_variables.css';
 
 @import '../stylesheets/base.css';
@@ -6,9 +7,3 @@
 @import '../stylesheets/components.css';
 
 @config "../../../tailwind.config.js";
-
-:root {
-  --link-color: #2563eb;
-  --link-offset: 2px;
-  --nav-height: 54px;
-}
