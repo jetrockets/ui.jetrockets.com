@@ -1,23 +1,23 @@
 @layer components {
   .btn {
-    @apply inline-flex items-center px-3 py-2 text-sm font-medium text-center border border-transparent rounded-md outline-none cursor-pointer h-11 ring-offset-2;
-    @apply text-gray-700 bg-gray-200 ring-gray-700/20;
+    @apply inline-flex items-center h-10 px-3 py-2 text-sm font-medium text-center border border-transparent rounded-md outline-none cursor-pointer;
+    @apply text-gray-700 bg-gray-200 ring-gray-200/30;
     @apply hover:bg-gray-200/80;
-    @apply focus-visible:ring-2;
+    @apply focus-visible:ring-4;
   }
 
   .btn-primary {
-    @apply text-white bg-primary-700 ring-primary-700/40;
-    @apply hover:text-white hover:bg-primary-700/90;
+    @apply text-white bg-primary-700 ring-primary-700/30;
+    @apply hover:bg-primary-700/90 hover:text-white;
   }
 
   .btn-secondary {
-    @apply text-white bg-secondary-700 ring-secondary-700/40;
+    @apply text-white bg-secondary-700 ring-secondary-700/30;
     @apply hover:text-white hover:bg-secondary-700/90;
   }
 
   .btn-danger {
-    @apply text-white bg-red-700 ring-red-700/40;
+    @apply text-white bg-red-700 ring-red-700/30;
     @apply hover:text-white hover:bg-red-700/90;
   }
 
