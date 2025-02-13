@@ -1,8 +1,7 @@
 @layer components {
   .btn {
     @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-(--color-gray-700) bg-(--color-gray-200)  border border-transparent cursor-pointer duration-200;
-    @apply active:scale-95;
-    @apply focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-2;
+    @apply focus-visible:outline-none;
   }
 
   .btn-primary {
