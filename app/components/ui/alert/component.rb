@@ -12,16 +12,20 @@ class Ui::Alert::Component < ApplicationComponent
   def call
     content_tag :div, class: classes, role: "alert", **@options do
       if @icon_path
-        concat(content_tag(:div, helpers.inline_svg_vite_tag(@icon_path)))
+        concat(content_tag(:div, helpers.inline_svg_vite_tag(@icon_path), class: "shrink-0 inline w-4 h-4 mr-3"))
       end
-      concat(content_tag(:strong, @title))
-      concat(content)
+      concat(
+        content_tag(:div, class: "flex flex-col") do
+          concat(content_tag(:strong, @title))
+          concat(content)
+        end
+      )
     end
   end
 
   def classes
     class_names(
-      "p-4 text-sm rounded-lg",
+      "flex p-4 text-sm rounded-lg",
       @options.delete(:class),
       "text-blue-800 bg-blue-50 bg-blue-50": @type == :info,
       "text-red-800 bg-red-50 bg-red-50": @type == :error,
