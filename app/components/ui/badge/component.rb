@@ -27,7 +27,7 @@ class Ui::Badge::Component < ApplicationComponent
       "px-1.5 py-0.5 text-xs": @size == :xs,
       "px-2 py-1 text-xs": @size == :sm,
       "px-3 py-1 text-sm": @size == :md,
-      "text-sm px-4 py-2": @size == :lg,
+      "px-4 py-2 text-sm": @size == :lg,
     )
   end
 end

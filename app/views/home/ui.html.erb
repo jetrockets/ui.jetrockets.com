@@ -50,22 +50,27 @@
         <% end %>
 
         <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
-          <div class="gap-1">
-            <%= link_to "Button XS","#", class: "btn btn-xs" %>
-            <%= link_to "Button SM","#",class: "btn btn-sm" %>
-            <%= link_to "Button MD","#",class: "btn btn-md" %>
-            <%= link_to "Button LG","#",class: "btn btn-lg" %>
-            <%= link_to "Button XL","#",class: "btn btn-xl" %>
+          <div class="flex flex-wrap items-center gap-1">
+            <%= link_to "Button XS", "#", class: "btn btn-xs" %>
+            <%= link_to "Button SM", "#",class: "btn btn-sm" %>
+            <%= link_to "Button MD", "#",class: "btn btn-md" %>
+            <%= link_to "Button LG", "#",class: "btn btn-lg" %>
+            <%= link_to "Button XL", "#",class: "btn btn-xl" %>
           </div>
 
-          <div class="gap-1">
+          <div class="flex flex-wrap items-center gap-1">
+            <%= link_to "Button Ghost", "#" ,class: "btn btn-ghost" %>
+            <%= link_to "Button Link", "#" ,class: "btn btn-link" %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
             <%= link_to "Default","#", class: "btn" %>
             <%= link_to "Primary","#", class: "btn btn-primary" %>
             <%= link_to "Secondary","#", class: "btn btn-secondary" %>
             <%= link_to "Danger","#", class: "btn btn-danger" %>
           </div>
 
-          <div class="gap-1">
+          <div class="flex flex-wrap items-center gap-1">
             <%= link_to "Default Outlined","#", class: "btn btn-outlined" %>
             <%= link_to "Primary Outlined","#", class: "btn btn-primary btn-outlined" %>
             <%= link_to "Secondary Outlined","#", class: "btn btn-secondary btn-outlined" %>

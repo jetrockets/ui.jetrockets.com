@@ -1,54 +1,57 @@
 @layer components {
   .btn {
-    @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-gray-700 bg-gray-200 border border-transparent cursor-pointer duration-200;
-    @apply focus-visible:outline-none;
+    @apply inline-flex items-center px-3 py-2 text-sm font-medium text-center border border-transparent rounded-md outline-none cursor-pointer h-11 ring-offset-2;
+    @apply text-gray-700 bg-gray-200 ring-gray-700/20;
+    @apply hover:bg-gray-200/80;
+    @apply focus-visible:ring-2;
   }
 
   .btn-primary {
-    @apply text-white bg-primary-700;
-    @apply hover:text-white hover:bg-primary-700/90 hover:border-transparent;
+    @apply text-white bg-primary-700 ring-primary-700/40;
+    @apply hover:text-white hover:bg-primary-700/90;
   }
 
   .btn-secondary {
-    @apply text-white bg-secondary-700;
-    @apply hover:text-white hover:bg-secondary-700/90 hover:border-transparent;
+    @apply text-white bg-secondary-700 ring-secondary-700/40;
+    @apply hover:text-white hover:bg-secondary-700/90;
   }
 
   .btn-danger {
-    @apply text-white bg-red-700;
-    @apply hover:text-white hover:bg-red-700/90 hover:border-transparent;
+    @apply text-white bg-red-700 ring-red-700/40;
+    @apply hover:text-white hover:bg-red-700/90;
   }
 
   .btn-ghost {
-    @apply text-black bg-transparent border-transparent;
+    @apply text-black bg-transparent;
   }
 
   /* Sizes */
   .btn-xs {
-    @apply py-0.5 px-2.5 text-xs
+    @apply py-0.5 px-2 text-xs h-6;
   }
 
   .btn-sm {
-    @apply px-3 py-2 text-sm
+    @apply px-2 py-1.5 h-8;
   }
 
   .btn-md {
-    @apply px-5 py-2.5 text-sm
+    @apply px-3 py-2.5 h-10;
   }
 
   .btn-lg {
-    @apply px-5 py-3 text-base
+    @apply h-auto px-4 py-3 text-base;
   }
 
   .btn-xl {
-    @apply px-6 py-3.5 text-base
+    @apply px-5 py-3.5 text-base h-auto;
   }
 
   .btn-link {
-    @apply p-0 text-primary-700 bg-transparent border-transparent
+    @apply p-0 bg-transparent border-transparent text-primary-700;
+    @apply hover:bg-transparent hover:text-primary-800;
   }
 
   .btn-block {
-    @apply block w-full
+    @apply block w-full;
   }
 }
