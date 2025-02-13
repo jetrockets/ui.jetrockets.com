@@ -43,10 +43,10 @@
 
         <%= accordion.with_item(title: "Badges", id: "bages", class: "space-x-2") do %>
           <%= render Ui::Badge::Component.new title: "Default" %>
-          <%= render Ui::Badge::Component.new title: "Blue", type: :blue %>
-          <%= render Ui::Badge::Component.new title: "Red", type: :red %>
-          <%= render Ui::Badge::Component.new title: "Green", type: :green %>
-          <%= render Ui::Badge::Component.new title: "Yellow", type: :yellow %>
+          <%= render Ui::Badge::Component.new title: "Blue", type: :blue, size: :xs %>
+          <%= render Ui::Badge::Component.new title: "Red", type: :red, size: :sm %>
+          <%= render Ui::Badge::Component.new title: "Green", type: :green, size: :md %>
+          <%= render Ui::Badge::Component.new title: "Yellow", type: :yellow, size: :lg %>
         <% end %>
 
         <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
