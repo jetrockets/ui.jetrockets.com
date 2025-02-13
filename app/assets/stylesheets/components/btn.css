@@ -25,6 +25,16 @@
     @apply text-black bg-transparent;
   }
 
+  .btn-rounded {
+    @apply text-gray-900 bg-white border border-gray-200 rounded-full;
+    @apply hover:bg-primary-700/90 hover:text-white;
+  }
+
+  .btn-circle {
+    @apply border border-transparent rounded-full;
+    @apply hover:bg-secondary-700/90 hover:text-white;
+  }
+
   /* Sizes */
   .btn-xs {
     @apply py-0.5 px-2 text-xs h-6;
