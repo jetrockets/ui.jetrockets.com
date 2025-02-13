@@ -1,26 +1,26 @@
 @layer components {
   .btn {
-    @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-(--color-gray-700) bg-(--color-gray-200)  border border-transparent cursor-pointer duration-200;
+    @apply px-5 py-2.5 inline-flex items-center font-semibold rounded-md text-sm text-center text-gray-700 bg-gray-200 border border-transparent cursor-pointer duration-200;
     @apply focus-visible:outline-none;
   }
 
   .btn-primary {
-    @apply text-(--color-white) bg-(--color-primary-700);
-    @apply hover:text-(--color-white)! hover:bg-(--color-primary-700)/90! hover:border-transparent!;
+    @apply text-white bg-primary-700;
+    @apply hover:text-white hover:bg-primary-700/90 hover:border-transparent;
   }
 
   .btn-secondary {
-    @apply text-(--color-white) bg-(--color-secondary-700);
-    @apply hover:text-(--color-white)! hover:bg-(--color-secondary-700)/90! hover:border-transparent!;
+    @apply text-white bg-secondary-700;
+    @apply hover:text-white hover:bg-secondary-700/90 hover:border-transparent;
   }
 
   .btn-danger {
-    @apply text-(--color-white) bg-(--color-red-700);
-    @apply hover:text-(--color-white)! hover:bg-(--color-red-700)/90! hover:border-transparent!;
+    @apply text-white bg-red-700;
+    @apply hover:text-white hover:bg-red-700/90 hover:border-transparent;
   }
 
   .btn-ghost {
-    @apply text-(--color-black) bg-transparent border-transparent;
+    @apply text-black bg-transparent border-transparent;
   }
 
   /* Sizes */
