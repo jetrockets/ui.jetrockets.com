@@ -16,43 +16,21 @@
 
   <section class="space-y-8">
     <div class="md:w-8/12">
-      <%= render Ui::Alert::Component.new(type: :info, title: "Don't hesitate!", class: "mb-4") do |alert| %>
-        <ul>
-          <li>It's just a template, you can change every component, or delete it if you don't need it.</li>
-        </ul>
-      <% end %>
-
       <%= render Ui::Accordion::Component.new do |accordion| %>
         <%= accordion.with_item(title: "Alerts", id: "alerts", class: "space-y-2") do %>
-          <%= render Ui::Alert::Component.new type: :info, title: "Info alert", icon_path: "images/icons/alert.svg" do |alert| %>
-            <ul>
-              <li>Change a few things up and try submitting again.</li>
+          <%= render Ui::Alert::Component.new(type: :info, title: "Info Alert", icon_path: "images/icons/alert.svg", class: "mb-4") do %>
+            <ul class="pl-3 text-xs list-disc">
+              <li>It's just a template, you can change every component.</li>
+              <li>It's just a template, you can change every component.</li>
+              <li>It's just a template, you can change every component.</li>
+              <li>It's just a template, you can change every component.</li>
             </ul>
           <% end %>
 
-          <%= render Ui::Alert::Component.new type: :error, title: "Danger alert!" do |alert| %>
-            <ul>
-              <li>Change a few things up and try submitting again.</li>
-            </ul>
-          <% end %>
-
-          <%= render Ui::Alert::Component.new type: :success, title: "Success alert!" do |alert| %>
-            <ul>
-              <li>Change a few things up and try submitting again.</li>
-            </ul>
-          <% end %>
-
-          <%= render Ui::Alert::Component.new type: :warning, title: "Warning alert!" do |alert| %>
-            <ul>
-              <li>Change a few things up and try submitting again.</li>
-            </ul>
-          <% end %>
-
-          <%= render Ui::Alert::Component.new title: "Default alert!" do |alert| %>
-            <ul>
-              <li>Change a few things up and try submitting again.</li>
-            </ul>
-          <% end %>
+          <%= render Ui::Alert::Component.new type: :error, title: "Danger alert!" %>
+          <%= render Ui::Alert::Component.new type: :success, title: "Success alert!" %>
+          <%= render Ui::Alert::Component.new type: :warning, title: "Warning alert!" %>
+          <%= render Ui::Alert::Component.new title: "Default alert!" %>
         <% end %>
 
         <%= accordion.with_item(title: "Async Modal", id: "modal") do %>

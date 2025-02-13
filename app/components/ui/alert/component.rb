@@ -9,19 +9,9 @@ class Ui::Alert::Component < ApplicationComponent
     @options = options
   end
 
-  def call
-    content_tag :div, class: classes, role: "alert", **@options do
-      if @icon_path
-        concat(content_tag(:div, helpers.inline_svg_vite_tag(@icon_path), class: "shrink-0 inline w-4 h-4 mr-3"))
-      end
-      concat(
-        content_tag(:div, class: "flex flex-col") do
-          concat(content_tag(:strong, @title))
-          concat(content)
-        end
-      )
-    end
-  end
+  private
+
+  attr_reader :title, :options
 
   def classes
     class_names(
@@ -33,5 +23,11 @@ class Ui::Alert::Component < ApplicationComponent
       "text-yellow-800 bg-yellow-50 bg-yellow-50": @type == :warning,
       "text-gray-800 bg-gray-50 bg-gray-50": @type == :default
     )
+  end
+
+  def icon
+    if @icon_path
+      helpers.inline_svg_vite_tag @icon_path, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
+    end
   end
 end
