@@ -13,7 +13,11 @@
   }
 
   .form__input {
-    @apply block w-full px-3 py-2 border-gray-300 rounded-md focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
+    @apply block w-full h-10 px-3 py-2 border-gray-300 rounded-md focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
+  }
+
+  .form__input-sm {
+    @apply h-9;
   }
 
   .form__input-errored {

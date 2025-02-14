@@ -1,4 +1,5 @@
 @theme {
+  --font-sans: 'Helvetica', Arial, sans-serif;
   --nav-height: 54px;
 
   --color-primary: var(--color-primary-600);
