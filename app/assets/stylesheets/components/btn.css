@@ -51,14 +51,12 @@
   }
 
   .btn-rounded {
-    @apply text-gray-900 bg-white border border-gray-200 rounded-full;
+    @apply rounded-full;
   }
 
   .btn-circle {
-    @apply text-white bg-blue-700 rounded-full;
-    @apply hover:bg-blue-700/90;
+    @apply rounded-full;
   }
-
 
   /* Sizes */
   .btn-xs {
@@ -84,4 +82,24 @@
   .btn-block {
     @apply block w-full;
   }
+}
+
+.btn-circle.btn-xs {
+  @apply w-6 h-6;
+}
+
+.btn-circle.btn-sm {
+  @apply w-8 h-8;
+}
+
+.btn-circle.btn-md {
+  @apply w-10 h-10;
+}
+
+.btn-circle.btn-lg {
+  @apply w-12 h-12;
+}
+
+.btn-circle.btn-xl {
+  @apply w-14 h-14;
 }
