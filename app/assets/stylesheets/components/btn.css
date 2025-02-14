@@ -7,7 +7,7 @@
 
     &.btn-outlined {
       @apply bg-transparent border-gray-300;
-      @apply hover:text-white hover:bg-gray-900/90 hover:border-transparent;
+      @apply hover:bg-gray-200/90 hover:border-transparent;
     }
   }
 
