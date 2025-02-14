@@ -61,45 +61,45 @@
   /* Sizes */
   .btn-xs {
     @apply py-0.5 px-2 text-xs h-6;
+
+    &.btn-circle {
+      @apply w-6 h-6;
+    }
   }
 
   .btn-sm {
     @apply px-2 py-1.5 h-8;
+
+    &.btn-circle {
+      @apply w-8 h-8;
+    }
   }
 
   .btn-md {
     @apply px-3 py-2.5 h-10;
+
+    &.btn-circle {
+      @apply w-10 h-10;
+    }
   }
 
   .btn-lg {
     @apply h-auto px-4 py-3 text-base;
+
+    &.btn-circle {
+      @apply w-12 h-12;
+    }
   }
 
   .btn-xl {
     @apply px-5 py-3.5 text-base h-auto;
+
+    &.btn-circle {
+      @apply w-14 h-14;
+    }
   }
 
   .btn-block {
     @apply block w-full;
   }
-}
-
-.btn-circle.btn-xs {
-  @apply w-6 h-6;
-}
-
-.btn-circle.btn-sm {
-  @apply w-8 h-8;
-}
-
-.btn-circle.btn-md {
-  @apply w-10 h-10;
-}
-
-.btn-circle.btn-lg {
-  @apply w-12 h-12;
-}
-
-.btn-circle.btn-xl {
-  @apply w-14 h-14;
 }
