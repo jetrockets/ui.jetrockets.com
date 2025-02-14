@@ -51,70 +51,39 @@
 
         <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
           <div class="flex flex-wrap items-center gap-1">
-            <%= link_to "Button XS", "#", class: "btn btn-xs" %>
-            <%= link_to "Button SM", "#",class: "btn btn-sm" %>
-            <%= link_to "Button MD", "#",class: "btn btn-md" %>
-            <%= link_to "Button LG", "#",class: "btn btn-lg" %>
-            <%= link_to "Button XL", "#",class: "btn btn-xl" %>
+            <%= render Ui::Button::Component.new title: "Button XS", size: :xs %>
+            <%= render Ui::Button::Component.new title: "Button SM", size: :sm %>
+            <%= render Ui::Button::Component.new title: "Button MD", size: :md %>
+            <%= render Ui::Button::Component.new title: "Button LG", size: :lg %>
+            <%= render Ui::Button::Component.new title: "Button XL", size: :xl %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= link_to "Button Ghost", "#" ,class: "btn btn-ghost" %>
-            <%= link_to "Button Link", "#" ,class: "btn btn-link" %>
+            <%= render Ui::Button::Component.new title: "Button Ghost", type: :ghost %>
+            <%= render Ui::Button::Component.new title: "Button Link", type: :link %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= link_to "Default","#", class: "btn" %>
-            <%= link_to "Primary","#", class: "btn btn-primary" %>
-            <%= link_to "Secondary","#", class: "btn btn-secondary" %>
-            <%= link_to "Danger","#", class: "btn btn-danger" %>
+            <%= render Ui::Button::Component.new title: "Default" %>
+            <%= render Ui::Button::Component.new title: "Primary", type: :primary %>
+            <%= render Ui::Button::Component.new title: "Secondary", type: :secondary %>
+            <%= render Ui::Button::Component.new title: "Danger", type: :danger %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= link_to "Default Outlined","#", class: "btn btn-outlined" %>
-            <%= link_to "Primary Outlined","#", class: "btn btn-primary btn-outlined" %>
-            <%= link_to "Secondary Outlined","#", class: "btn btn-secondary btn-outlined" %>
-            <%= link_to "Danger Outlined","#", class: "btn btn-danger btn-outlined" %>
+            <%= render Ui::Button::Component.new title: "Default Outlined", outlined: true %>
+            <%= render Ui::Button::Component.new title: "Primary Outlined", type: :primary, outlined: true %>
+            <%= render Ui::Button::Component.new title: "Secondary Outlined", type: :secondary, outlined: true %>
+            <%= render Ui::Button::Component.new title: "Danger Outlined", type: :danger, outlined: true %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= link_to "Primary","#", class: "btn btn-primary" %>
-            <%= link_to "Secondary","#", class: "btn btn-secondary" %>
-            <%= link_to "#", class: "btn btn-iconed" do %>
-              <svg class="w-4 h-4 me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
-              </svg>
-              <span>Iconed</span>
-            <% end %>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-1">
-            <%= link_to "Rounded","#", class: "btn btn-primary btn-rounded" %>
-            <%= link_to "#", class: "btn btn-circle btn-xs" do %>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-            <% end %>
-            <%= link_to "#", class: "btn btn-primary btn-circle btn-sm" do %>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-            <% end %>
-            <%= link_to "#", class: "btn btn-primary btn-circle btn-md" do %>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-            <% end %>
-            <%= link_to "#", class: "btn btn-secondary btn-circle btn-lg" do %>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-            <% end %>
-            <%= link_to "#", class: "btn btn-secondary btn-circle btn-xl" do %>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-            <% end %>
+            <%= render Ui::Button::Component.new title: "Rounded", type: :primary, rounded: true %>
+            <%= render Ui::Button::Component.new circle: true, size: :xs %>
+            <%= render Ui::Button::Component.new type: :primary, circle: true, size: :sm %>
+            <%= render Ui::Button::Component.new type: :primary, circle: true, size: :md %>
+            <%= render Ui::Button::Component.new type: :secondary, circle: true, size: :lg %>
+            <%= render Ui::Button::Component.new type: :secondary, circle: true, size: :xl %>
           </div>
         <% end %>
 
