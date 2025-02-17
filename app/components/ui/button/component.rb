@@ -5,12 +5,8 @@ class Ui::Button::Component < ApplicationComponent
   VARIANTS = %i[btn primary secondary danger ghost link]
   DEFAULT_VARIANT = :btn
 
-  TYPES = %i[button submit reset]
-  DEFAULT_TYPE = :button
-
-  def initialize(variant: DEFAULT_VARIANT, type: DEFAULT_TYPE, size: DEFAULT_SIZE, title: nil, icon_path: nil, rounded: false, circle: false, outlined: false, **options)
+  def initialize(variant: DEFAULT_VARIANT, size: DEFAULT_SIZE, title: nil, icon_path: nil, rounded: false, circle: false, outlined: false, **options)
     @variant = variant
-    @type = type
     @title = title
     @icon_path = icon_path
     @size = size
@@ -21,12 +17,8 @@ class Ui::Button::Component < ApplicationComponent
   end
 
   def call
-    content_tag(:button, type: @type, class: classes, **@options) do
-      if icon
-        concat(content_tag(:div, class: "flex items-center justify-center #{'mr-2' if @title} w-full h-full p-0 m-0") do
-          concat(icon)
-        end)
-      end
+    content_tag(:button, class: classes, **@options) do
+      concat(icon) if @icon_path
       concat(@title) if @title
     end
   end
@@ -37,11 +29,12 @@ class Ui::Button::Component < ApplicationComponent
     class_names(
       "btn",
       variant_class,
-      size_class,
-      rounded_class,
-      circle_class,
-      outlined_class,
-      @options.delete(:class)
+      "btn-#{@size}",
+      ("btn-rounded" if @rounded),
+      ("btn-circle" if @circle),
+      ("btn-outlined" if @outlined),
+      @options.delete(:class),
+      ("gap-2" if @icon_path && @title),
     )
   end
 
@@ -57,40 +50,7 @@ class Ui::Button::Component < ApplicationComponent
       "btn-ghost"
     when :link
       "btn-link"
-    when :btn
-      "btn"
-    else
-      "btn"
     end
-  end
-
-  def size_class
-    case @size
-    when :xs
-      "btn-xs"
-    when :sm
-      "btn-sm"
-    when :md
-      "btn-md"
-    when :lg
-      "btn-lg"
-    when :xl
-      "btn-xl"
-    else
-      "btn-sm"
-    end
-  end
-
-  def rounded_class
-    @rounded ? "btn-rounded" : ""
-  end
-
-  def circle_class
-    @circle ? "btn-circle" : ""
-  end
-
-  def outlined_class
-    @outlined ? "btn-outlined" : ""
   end
 
   def icon

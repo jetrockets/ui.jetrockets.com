@@ -55,7 +55,7 @@
   }
 
   .btn-circle {
-    @apply rounded-full;
+    @apply rounded-full p-0 justify-center;
   }
 
   /* Sizes */
