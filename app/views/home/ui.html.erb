@@ -79,11 +79,11 @@
 
           <div class="flex flex-wrap items-center gap-1">
             <%= render Ui::Button::Component.new title: "Rounded", variant: :primary, rounded: true %>
-            <%= render Ui::Button::Component.new circle: true, size: :xs %>
-            <%= render Ui::Button::Component.new variant: :primary, circle: true, size: :sm %>
-            <%= render Ui::Button::Component.new variant: :primary, circle: true, size: :md %>
-            <%= render Ui::Button::Component.new variant: :secondary, circle: true, size: :lg %>
-            <%= render Ui::Button::Component.new variant: :secondary, circle: true, size: :xl %>
+            <%= render Ui::Button::Component.new circle: true, size: :xs, icon_path:"images/icons/arrow.svg" %>
+            <%= render Ui::Button::Component.new variant: :primary, circle: true, size: :sm, icon_path:"images/icons/arrow.svg" %>
+            <%= render Ui::Button::Component.new variant: :primary, circle: true, size: :md, icon_path:"images/icons/arrow.svg" %>
+            <%= render Ui::Button::Component.new variant: :secondary, circle: true, size: :lg, icon_path:"images/icons/arrow.svg" %>
+            <%= render Ui::Button::Component.new variant: :secondary, circle: true, size: :xl, icon_path:"images/icons/arrow.svg" %>
           </div>
         <% end %>
 

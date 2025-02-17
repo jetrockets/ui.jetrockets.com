@@ -8,10 +8,11 @@ class Ui::Button::Component < ApplicationComponent
   TYPES = %i[button submit reset]
   DEFAULT_TYPE = :button
 
-  def initialize(variant: DEFAULT_VARIANT, type: DEFAULT_TYPE, size: DEFAULT_SIZE, title: nil, rounded: false, circle: false, outlined: false, **options)
-    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
-    @type = TYPES.include?(type) ? type : DEFAULT_TYPE
+  def initialize(variant: DEFAULT_VARIANT, type: DEFAULT_TYPE, size: DEFAULT_SIZE, title: nil, icon_path: nil, rounded: false, circle: false, outlined: false, **options)
+    @variant = variant
+    @type = type
     @title = title
+    @icon_path = icon_path
     @size = size
     @rounded = rounded
     @circle = circle
@@ -20,7 +21,14 @@ class Ui::Button::Component < ApplicationComponent
   end
 
   def call
-    content_tag(:button, @title, type: @type, class: classes, **@options)
+    content_tag(:button, type: @type, class: classes, **@options) do
+      if icon
+        concat(content_tag(:div, class: "flex items-center justify-center #{'mr-2' if @title} w-full h-full p-0 m-0") do
+          concat(icon)
+        end)
+      end
+      concat(@title) if @title
+    end
   end
 
   private
@@ -45,8 +53,6 @@ class Ui::Button::Component < ApplicationComponent
       "btn-secondary"
     when :danger
       "btn-danger"
-    when :outlined
-      "btn-outlined"
     when :ghost
       "btn-ghost"
     when :link
@@ -85,5 +91,11 @@ class Ui::Button::Component < ApplicationComponent
 
   def outlined_class
     @outlined ? "btn-outlined" : ""
+  end
+
+  def icon
+    if @icon_path
+      helpers.vite_svg_tag @icon_path, class: "shrink-0"
+    end
   end
 end
