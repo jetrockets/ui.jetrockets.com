@@ -1,10 +1,15 @@
 class Ui::Button::Component < ApplicationComponent
   SIZES = %i[xs sm md lg xl]
   DEFAULT_SIZE = :sm
-  TYPES = %i[primary secondary danger ghost link]
-  DEFAULT_TYPE = :default
 
-  def initialize(type: DEFAULT_TYPE, size: DEFAULT_SIZE, title: nil, rounded: false, circle: false, outlined: false, **options)
+  VARIANTS = %i[primary secondary danger ghost link]
+  DEFAULT_VARIANT = :default
+
+  TYPES = %i[button submit reset]
+  DEFAULT_TYPE = :button
+
+  def initialize(variant: DEFAULT_VARIANT, type: DEFAULT_TYPE, size: DEFAULT_SIZE, title: nil, rounded: false, circle: false, outlined: false, **options)
+    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
     @type = TYPES.include?(type) ? type : DEFAULT_TYPE
     @title = title
     @size = size
@@ -15,7 +20,7 @@ class Ui::Button::Component < ApplicationComponent
   end
 
   def call
-    content_tag(:button, @title, class: classes, **@options)
+    content_tag(:button, @title, type: @type, class: classes, **@options)
   end
 
   private
@@ -23,7 +28,7 @@ class Ui::Button::Component < ApplicationComponent
   def classes
     class_names(
       "btn",
-      type_class,
+      variant_class,
       size_class,
       rounded_class,
       circle_class,
@@ -32,8 +37,8 @@ class Ui::Button::Component < ApplicationComponent
     )
   end
 
-  def type_class
-    case @type
+  def variant_class
+    case @variant
     when :primary
       "btn-primary"
     when :secondary
