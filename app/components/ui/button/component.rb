@@ -2,8 +2,8 @@ class Ui::Button::Component < ApplicationComponent
   SIZES = %i[xs sm md lg xl]
   DEFAULT_SIZE = :sm
 
-  VARIANTS = %i[primary secondary danger ghost link]
-  DEFAULT_VARIANT = :default
+  VARIANTS = %i[btn primary secondary danger ghost link]
+  DEFAULT_VARIANT = :btn
 
   TYPES = %i[button submit reset]
   DEFAULT_TYPE = :button
@@ -51,7 +51,7 @@ class Ui::Button::Component < ApplicationComponent
       "btn-ghost"
     when :link
       "btn-link"
-    when :default
+    when :btn
       "btn"
     else
       "btn"
