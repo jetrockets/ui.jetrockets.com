@@ -22,7 +22,7 @@ class Ui::Button::Component < ApplicationComponent
 
   def classes
     class_names(
-      'btn',
+      "btn",
       type_class,
       size_class,
       rounded_class,
@@ -35,50 +35,50 @@ class Ui::Button::Component < ApplicationComponent
   def type_class
     case @type
     when :primary
-      'btn-primary'
+      "btn-primary"
     when :secondary
-      'btn-secondary'
+      "btn-secondary"
     when :danger
-      'btn-danger'
+      "btn-danger"
     when :outlined
-      'btn-outlined'
+      "btn-outlined"
     when :ghost
-      'btn-ghost'
+      "btn-ghost"
     when :link
-      'btn-link'
+      "btn-link"
     when :default
-      'btn'
+      "btn"
     else
-      'btn'
+      "btn"
     end
   end
 
   def size_class
     case @size
     when :xs
-      'btn-xs'
+      "btn-xs"
     when :sm
-      'btn-sm'
+      "btn-sm"
     when :md
-      'btn-md'
+      "btn-md"
     when :lg
-      'btn-lg'
+      "btn-lg"
     when :xl
-      'btn-xl'
+      "btn-xl"
     else
-      'btn-sm'
+      "btn-sm"
     end
   end
 
   def rounded_class
-    @rounded ? 'btn-rounded' : ''
+    @rounded ? "btn-rounded" : ""
   end
 
   def circle_class
-    @circle ? 'btn-circle' : ''
+    @circle ? "btn-circle" : ""
   end
 
   def outlined_class
-    @outlined ? 'btn-outlined' : ''
+    @outlined ? "btn-outlined" : ""
   end
 end
