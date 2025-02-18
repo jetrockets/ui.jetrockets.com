@@ -41,19 +41,16 @@ class Ui::Button::Component < ApplicationComponent
     }
   end
 
+  VARIANT_CLASSES = {
+    primary: "btn-primary",
+    secondary: "btn-secondary",
+    danger: "btn-danger",
+    ghost: "btn-ghost",
+    link: "btn-link"
+  }.freeze
+
   def variant_class
-    case @variant
-    when :primary
-      "btn-primary"
-    when :secondary
-      "btn-secondary"
-    when :danger
-      "btn-danger"
-    when :ghost
-      "btn-ghost"
-    when :link
-      "btn-link"
-    end
+    VARIANT_CLASSES[@variant]
   end
 
   def icon_classes
