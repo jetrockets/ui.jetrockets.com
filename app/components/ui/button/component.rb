@@ -1,25 +1,25 @@
 class Ui::Button::Component < ApplicationComponent
+  renders_one :icon
+
   SIZES = %i[xs sm md lg xl]
-  DEFAULT_SIZE = :sm
+  DEFAULT_SIZE = :md
 
-  VARIANTS = %i[btn primary secondary danger ghost link]
-  DEFAULT_VARIANT = :btn
+  VARIANTS = %i[primary secondary danger ghost link]
 
-  def initialize(variant: DEFAULT_VARIANT, size: DEFAULT_SIZE, title: nil, icon_path: nil, rounded: false, circle: false, outlined: false, **options)
+  def initialize(variant: nil, size: DEFAULT_SIZE, rounded: false, block: false, circle: false, outlined: false, **options)
     @variant = variant
-    @title = title
-    @icon_path = icon_path
     @size = size
     @rounded = rounded
     @circle = circle
     @outlined = outlined
+    @block = block
     @options = options
   end
 
   def call
-    content_tag(:button, class: classes, **@options) do
-      concat(icon) if @icon_path
-      concat(@title) if @title
+    button_tag class: classes, **@options do
+      concat(content_tag(:span, content)) if content?
+      concat(helpers.vite_svg_tag(icon, class: icon_classes)) if icon?
     end
   end
 
@@ -30,11 +30,10 @@ class Ui::Button::Component < ApplicationComponent
       "btn",
       variant_class,
       "btn-#{@size}",
-      ("btn-rounded" if @rounded),
-      ("btn-circle" if @circle),
-      ("btn-outlined" if @outlined),
-      @options.delete(:class),
-      ("gap-2" if @icon_path && @title),
+      "btn-block": @block,
+      "btn-rounded": @rounded,
+      "btn-circle": @circle,
+      "btn-outlined": @outlined
     )
   end
 
@@ -53,9 +52,14 @@ class Ui::Button::Component < ApplicationComponent
     end
   end
 
-  def icon
-    if @icon_path
-      helpers.vite_svg_tag @icon_path, class: "shrink-0"
-    end
+  def icon_classes
+    class_names(
+      "btn__icon",
+      "btn__icon-xs": @size == :xs,
+      "btn__icon-sm": @size == :sm,
+      "btn__icon-md": @size == :md,
+      "btn__icon-lg": @size == :lg,
+      "btn__icon-xl": @size == :xl
+    )
   end
 end
