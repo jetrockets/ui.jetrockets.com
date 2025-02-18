@@ -96,9 +96,7 @@
           <div class="flex flex-wrap items-center gap-1">
             <%= render Ui::Button::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("images/icons/arrow.svg") %>
           </div>
-        <% end %>
 
-        <%= accordion.with_item(title: "Links", id: "links", class: "space-y-4") do %>
           <div class="space-y-2">
             <%= render Ui::Button::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
             <%= render Ui::Button::Component.new(href: root_path, variant: :link).with_content "Link" %>
