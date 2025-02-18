@@ -100,9 +100,9 @@
 
         <%= accordion.with_item(title: "Links", id: "links", class: "space-y-4") do %>
           <div class="space-y-2">
-            <%= render Ui::Link::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
-            <%= render Ui::Link::Component.new(href: root_path, variant: :link).with_content "Link Button" %>
-            <%= render Ui::Link::Component.new(href: root_path, variant: :ghost).with_content "Link Button" %>
+            <%= render Ui::Button::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
+            <%= render Ui::Button::Component.new(href: root_path, variant: :link).with_content "Link" %>
+            <%= render Ui::Button::Component.new(href: root_path, variant: :ghost).with_content "Link Ghost" %>
           </div>
         <% end %>
 
@@ -194,6 +194,9 @@
             <div class="form__group">
               <%= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
             </div>
+
+            <%= f.submit "Save" %>
+            <%#= render Ui::Button::Component.new(variant: :primary, type: :submit).with_content "Save" %>
           <% end %>
         <% end %>
 

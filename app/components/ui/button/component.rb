@@ -6,24 +6,34 @@ class Ui::Button::Component < ApplicationComponent
 
   VARIANTS = %i[primary secondary danger ghost link]
 
-  def initialize(variant: nil, size: DEFAULT_SIZE, rounded: false, block: false, circle: false, outlined: false, **options)
+  def initialize(variant: nil, href: nil, size: DEFAULT_SIZE, rounded: false, block: false, circle: false, outlined: false, **options)
     @variant = variant
+    @href = href
     @size = size
     @rounded = rounded
+    @block = block
     @circle = circle
     @outlined = outlined
-    @block = block
     @options = options
   end
 
   def call
-    button_tag(**button_attributes) do
-      concat(content_tag(:span, content)) if content?
-      concat(helpers.vite_svg_tag(icon, class: icon_classes)) if icon?
+    if @href
+      link_to component_content, @href, **button_attributes
+    else
+      button_tag component_content, **button_attributes
     end
   end
 
   private
+
+  def component_content
+    safe_join([ content, icon_content ].compact)
+  end
+
+  def icon_content
+    helpers.vite_svg_tag(icon, class: icon_classes) if icon?
+  end
 
   def button_attributes
     {
