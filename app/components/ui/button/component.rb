@@ -17,7 +17,7 @@ class Ui::Button::Component < ApplicationComponent
   end
 
   def call
-    button_tag class: classes, **@options do
+    button_tag(**button_attributes) do
       concat(content_tag(:span, content)) if content?
       concat(helpers.vite_svg_tag(icon, class: icon_classes)) if icon?
     end
@@ -25,16 +25,20 @@ class Ui::Button::Component < ApplicationComponent
 
   private
 
-  def classes
-    class_names(
-      "btn",
-      variant_class,
-      "btn-#{@size}",
-      "btn-block": @block,
-      "btn-rounded": @rounded,
-      "btn-circle": @circle,
-      "btn-outlined": @outlined
-    )
+  def button_attributes
+    {
+      class: class_names(
+        "btn",
+        variant_class,
+        @options.delete(:class),
+        "btn-#{@size}",
+        "btn-block": @block,
+        "btn-rounded": @rounded,
+        "btn-circle": @circle,
+        "btn-outlined": @outlined
+      ),
+      **@options
+    }
   end
 
   def variant_class

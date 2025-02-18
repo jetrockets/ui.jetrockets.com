@@ -98,6 +98,12 @@
           </div>
         <% end %>
 
+        <%= accordion.with_item(title: "Links", id: "links", class: "space-y-4") do %>
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Link::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
+          </div>
+        <% end %>
+
         <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
           <%= button_to"Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
         <% end %>
