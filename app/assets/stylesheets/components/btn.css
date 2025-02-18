@@ -84,7 +84,7 @@
   }
 
   .btn-lg {
-    @apply h-auto px-4 py-3 text-base;
+    @apply h-12 px-4 py-3 text-base;
 
     &.btn-circle {
       @apply w-12 h-12;
@@ -92,7 +92,7 @@
   }
 
   .btn-xl {
-    @apply px-5 py-3.5 text-base h-auto;
+    @apply px-5 py-3.5 text-base h-14;
 
     &.btn-circle {
       @apply w-14 h-14;
