@@ -41,16 +41,16 @@ class Ui::Button::Component < ApplicationComponent
     }
   end
 
-  VARIANT_CLASSES = {
-    primary: "btn-primary",
-    secondary: "btn-secondary",
-    danger: "btn-danger",
-    ghost: "btn-ghost",
-    link: "btn-link"
-  }.freeze
-
   def variant_class
-    VARIANT_CLASSES[@variant]
+    variant_classes = {
+      primary: "btn-primary",
+      secondary: "btn-secondary",
+      danger: "btn-danger",
+      ghost: "btn-ghost",
+      link: "btn-link"
+    }.freeze
+
+    variant_classes[@variant]
   end
 
   def icon_classes

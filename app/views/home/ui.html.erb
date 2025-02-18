@@ -99,8 +99,10 @@
         <% end %>
 
         <%= accordion.with_item(title: "Links", id: "links", class: "space-y-4") do %>
-          <div class="flex flex-wrap items-center gap-1">
+          <div class="space-y-2">
             <%= render Ui::Link::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
+            <%= render Ui::Link::Component.new(href: root_path, variant: :link).with_content "Link Button" %>
+            <%= render Ui::Link::Component.new(href: root_path, variant: :ghost).with_content "Link Button" %>
           </div>
         <% end %>
 
