@@ -1,0 +1,21 @@
+@reference "~/entrypoints/application.css";
+
+.btn_group {
+  @apply flex items-center;
+
+  .btn:first-of-type {
+    @apply rounded-r-none
+  }
+
+  .btn:last-of-type {
+    @apply rounded-l-none
+  }
+
+  .btn:not(:first-of-type):not(:last-of-type) {
+    @apply rounded-none;
+  }
+
+  .btn {
+    @apply -ml-px hover:z-10;
+  }
+}

@@ -1,3 +1,5 @@
+@reference "~/entrypoints/application.css";
+
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center h-10 gap-2 px-3 py-2 text-sm font-medium text-center border border-transparent rounded-md outline-none cursor-pointer;

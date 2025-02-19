@@ -51,57 +51,65 @@
 
         <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new(size: :xs).with_content "Button XS" %>
-            <%= render Ui::Button::Component.new(size: :sm).with_content "Button SM" %>
-            <%= render Ui::Button::Component.new(size: :md).with_content "Button MD" %>
-            <%= render Ui::Button::Component.new(size: :lg).with_content "Button LG" %>
-            <%= render Ui::Button::Component.new(size: :xl).with_content "Button XL" %>
+            <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
+            <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
+            <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
+            <%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %>
+            <%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new(variant: :ghost).with_content "Button Ghost" %>
-            <%= render Ui::Button::Component.new(variant: :link).with_content "Button Link" %>
-            <%= render Ui::Button::Component.new(variant: :primary, rounded: true).with_content "Rounded" %>
+            <%= render Ui::Btn::Component.new(variant: :ghost).with_content "Button Ghost" %>
+            <%= render Ui::Btn::Component.new(variant: :link).with_content "Button Link" %>
+            <%= render Ui::Btn::Component.new(variant: :primary, rounded: true).with_content "Rounded" %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new.with_content "Default" %>
-            <%= render Ui::Button::Component.new(variant: :primary).with_content "Primary" %>
-            <%= render Ui::Button::Component.new(variant: :secondary).with_content "Secondary" %>
-            <%= render Ui::Button::Component.new(variant: :danger).with_content "Danger" %>
+            <%= render Ui::Btn::Component.new.with_content "Default" %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %>
+            <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %>
+            <%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new.with_content("Default").with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/arrow.svg") %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new(outlined: true).with_content "Default Outlined" %>
-            <%= render Ui::Button::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
-            <%= render Ui::Button::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
-            <%= render Ui::Button::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %>
+            <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
+            <%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
+            <%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
+            <%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new(circle: true, size: :xs).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :primary, circle: true, size: :sm).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :secondary, circle: true, size: :md).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Button::Component.new(variant: :primary, outlined: true, circle: true, size: :xl).with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(circle: true, size: :xs).with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, circle: true, size: :sm).with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :secondary, circle: true, size: :md).with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, outlined: true, circle: true, size: :xl).with_icon_content("images/icons/arrow.svg") %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Button::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("images/icons/arrow.svg") %>
           </div>
 
           <div class="space-y-2">
-            <%= render Ui::Button::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
-            <%= render Ui::Button::Component.new(href: root_path, variant: :link).with_content "Link" %>
-            <%= render Ui::Button::Component.new(href: root_path, variant: :ghost).with_content "Link Ghost" %>
+            <%= render Ui::Btn::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
+            <%= render Ui::Btn::Component.new(href: root_path, variant: :link).with_content "Link" %>
+            <%= render Ui::Btn::Component.new(href: root_path, variant: :ghost).with_content "Link Ghost" %>
           </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Button Group", id: "btnGroup") do %>
+          <%= render Ui::BtnGroup::Component.new do |component| %>
+            <% component.with_button(variant: :primary, outlined: true) { "Button First" } %>
+            <% component.with_button(variant: :primary, outlined: true) { "Button Second" } %>
+            <% component.with_button(variant: :primary, outlined: true) { "Button Third" } %>
+          <% end %>
         <% end %>
 
         <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
@@ -194,7 +202,7 @@
             </div>
 
             <%= f.submit "Save" %>
-            <%#= render Ui::Button::Component.new(variant: :primary, type: :submit).with_content "Save" %>
+            <%#= render Ui::Btn::Component.new(variant: :primary, type: :submit).with_content "Save" %>
           <% end %>
         <% end %>
 

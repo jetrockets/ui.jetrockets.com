@@ -1,4 +1,4 @@
-class Ui::Button::Component < ApplicationComponent
+class Ui::Btn::Component < ApplicationComponent
   renders_one :icon
 
   SIZES = %i[xs sm md lg xl]
