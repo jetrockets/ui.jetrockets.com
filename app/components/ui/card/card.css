@@ -2,12 +2,12 @@
 
 @layer components {
   .card {
-    @apply block max-w-sm p-6 rounded-lg shadow-sm text-sm cursor-pointer;
+    @apply block max-w-sm p-6 rounded-lg shadow-sm text-sm;
     @apply bg-white border border-gray-200 text-gray-700
   }
 
   .card__header {
-    @apply mb-4;
+    @apply mb-4 text-lg;
   }
 
   .card__footer {

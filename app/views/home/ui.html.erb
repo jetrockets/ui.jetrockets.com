@@ -113,7 +113,15 @@
         <% end %>
 
         <%= accordion.with_item(title: "Card", id: "card") do %>
-          <%= render Ui::Card::Component.new(title: "Header", body: "Body", footer: "Footer") %>
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Card::Component.new do |component| %>
+              <% component.with_header do %>Card Header<% end %>
+              <% component.with_body do %>This is the body of the card<% end %>
+              <% component.with_footer do %>
+                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/arrow.svg") %>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
 
         <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
