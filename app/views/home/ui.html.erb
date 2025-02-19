@@ -105,12 +105,10 @@
         <% end %>
 
         <%= accordion.with_item(title: "Button-Group", id: "button-group") do %>
-          <%= render(Ui::ButtonGroup::Component.new) do |component| %>
-            <% component.with_buttons([
-              { variant: :primary, content: "Button First" },
-              { variant: :primary, content: "Button Second" },
-              { variant: :primary, content: "Button Third" }
-            ]) %>
+          <%= render Ui::ButtonGroup::Component.new do |component| %>
+            <% component.with_button(variant: :primary) { "Button First" } %>
+            <% component.with_button(variant: :primary) { "Button Second" } %>
+            <% component.with_button(variant: :primary) { "Button Third" } %>
           <% end %>
         <% end %>
 

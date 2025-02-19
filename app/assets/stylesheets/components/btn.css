@@ -58,6 +58,26 @@
     @apply justify-center p-0 rounded-full;
   }
 
+  .btn-group {
+    @apply flex items-center
+  }
+
+  .btn-group .btn:first-of-type {
+    @apply rounded-r-none
+  }
+
+  .btn-group .btn:last-of-type {
+    @apply rounded-l-none
+  }
+
+  .btn-group .btn:not(:first-of-type):not(:last-of-type) {
+    @apply rounded-none;
+  }
+
+  .btn-group .btn {
+    @apply -ml-px hover:z-10;
+  }
+
   /* Sizes */
   .btn-xs {
     @apply py-0.5 px-2 text-xs h-6;
