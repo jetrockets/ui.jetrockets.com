@@ -104,6 +104,16 @@
           </div>
         <% end %>
 
+        <%= accordion.with_item(title: "Button-Group", id: "button-group") do %>
+          <%= render(Ui::ButtonGroup::Component.new) do |component| %>
+            <% component.with_buttons([
+              { variant: :primary, content: "Button First" },
+              { variant: :primary, content: "Button Second" },
+              { variant: :primary, content: "Button Third" }
+            ]) %>
+          <% end %>
+        <% end %>
+
         <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
           <%= button_to"Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
         <% end %>
