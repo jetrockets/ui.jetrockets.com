@@ -1,0 +1,19 @@
+.btn_group {
+  @apply flex items-center
+}
+
+.btn_group .btn:first-of-type {
+  @apply rounded-r-none
+}
+
+.btn_group .btn:last-of-type {
+  @apply rounded-l-none
+}
+
+.btn_group .btn:not(:first-of-type):not(:last-of-type) {
+  @apply rounded-none;
+}
+
+.btn_group .btn {
+  @apply -ml-px hover:z-10;
+}
