@@ -114,19 +114,19 @@
 
         <%= accordion.with_item(title: "Card", id: "card") do %>
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Card::Component.new do |component| %>
-              <% component.with_header do %>Card Header<% end %>
+            <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+              <% component.with_header(classes: "card__header--center") do %>Card Header<% end %>
               <% component.with_body do %>This is the body of the card<% end %>
-              <% component.with_footer do %>
-                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/arrow.svg") %>
+              <% component.with_footer(classes: "card__footer--right") do %>
+                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary") %>
               <% end %>
             <% end %>
 
-            <%= render Ui::Card::Component.new(align: :center) do |component| %>
-              <% component.with_header do %>Card Header<% end %>
+            <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+              <% component.with_header(classes: "card__header--center") do %>Card Header<% end %>
               <% component.with_body do %>This is the body of the card<% end %>
-              <% component.with_footer do %>
-                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary") %>
+              <% component.with_footer(classes: "card__footer--right") do %>
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/arrow.svg") %>
               <% end %>
             <% end %>
           </div>

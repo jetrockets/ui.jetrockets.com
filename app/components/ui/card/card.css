@@ -3,29 +3,41 @@
 @layer components {
   .card {
     @apply flex flex-col p-6 rounded-lg text-sm bg-white text-gray-700;
+  }
 
-    &.card-bordered {
-      @apply border border-gray-200 shadow-sm;
-    }
-
-    &.card-left {
-      @apply items-start;
-    }
-
-    &.card-center {
-      @apply items-center;
-    }
-
-    &.card-right {
-      @apply items-end;
-    }
+  .card-bordered {
+    @apply border border-gray-200 shadow-sm;
   }
 
   .card__header {
-    @apply mb-4 text-lg;
+    @apply mb-4 text-lg flex;
+  }
+
+  .card__header--left {
+    @apply text-left;
+  }
+
+  .card__header--center {
+    @apply text-center;
+  }
+
+  .card__header--right {
+    @apply text-right;
   }
 
   .card__footer {
-    @apply mt-4;
+    @apply mt-4 flex;
+  }
+
+  .card__footer--left {
+    @apply justify-start;
+  }
+
+  .card__footer--center {
+    @apply justify-center;
+  }
+
+  .card__footer--right {
+    @apply justify-end;
   }
 }

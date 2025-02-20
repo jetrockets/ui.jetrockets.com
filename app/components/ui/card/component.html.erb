@@ -1,13 +1,9 @@
 <div class="<%= card_classes %>">
-  <div class="card__header">
-    <strong class="block font-semibold">
-      <%= header %>
-    </strong>
-  </div>
+  <strong class="block font-semibold">
+    <%= header if header %>
+  </strong>
   <div class="card__body">
     <%= body %>
   </div>
-  <div class="card__footer">
-    <%= footer %>
-  </div>
+  <%= footer if footer %>
 </div>
