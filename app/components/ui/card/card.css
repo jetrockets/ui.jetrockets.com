@@ -2,8 +2,23 @@
 
 @layer components {
   .card {
-    @apply block max-w-sm p-6 rounded-lg shadow-sm text-sm;
-    @apply bg-white border border-gray-200 text-gray-700
+    @apply flex flex-col p-6 rounded-lg text-sm bg-white text-gray-700;
+
+    &.card-bordered {
+      @apply border border-gray-200 shadow-sm;
+    }
+
+    &.card-left {
+      @apply items-start;
+    }
+
+    &.card-center {
+      @apply items-center;
+    }
+
+    &.card-right {
+      @apply items-end;
+    }
   }
 
   .card__header {

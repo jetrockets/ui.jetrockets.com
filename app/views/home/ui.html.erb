@@ -121,6 +121,14 @@
                 <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/arrow.svg") %>
               <% end %>
             <% end %>
+
+            <%= render Ui::Card::Component.new(align: :center) do |component| %>
+              <% component.with_header do %>Card Header<% end %>
+              <% component.with_body do %>This is the body of the card<% end %>
+              <% component.with_footer do %>
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary") %>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
 
