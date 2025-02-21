@@ -10,34 +10,10 @@
   }
 
   .card__header {
-    @apply mb-4 text-lg flex;
-  }
-
-  .card__header--left {
-    @apply text-left;
-  }
-
-  .card__header--center {
-    @apply text-center;
-  }
-
-  .card__header--right {
-    @apply text-right;
+    @apply mb-4 text-lg flex flex-col;
   }
 
   .card__footer {
-    @apply mt-4 flex;
-  }
-
-  .card__footer--left {
-    @apply justify-start;
-  }
-
-  .card__footer--center {
-    @apply justify-center;
-  }
-
-  .card__footer--right {
-    @apply justify-end;
+    @apply mt-4 flex flex-col;
   }
 }

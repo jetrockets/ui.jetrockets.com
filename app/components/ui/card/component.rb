@@ -17,32 +17,40 @@ class Ui::Card::Component < ApplicationComponent
   end
 
   class Ui::Card::Header < ApplicationComponent
-    attr_reader :classes
-
-    def initialize(classes: "card__header", **options)
-      @classes = classes
+    def initialize(align: :left, **options)
+      @align = align
       @options = options
     end
 
     def call
-      content_tag(:div, class: class_names("card__header", @classes), **@options) do
-        content
-      end
+      content_tag(:div, content, class: class_names("card__header", align_class), **@options)
+    end
+
+    def align_class
+      {
+        left: "items-start",
+        center: "items-center",
+        right: "items-end"
+      }[@align]
     end
   end
 
   class Ui::Card::Footer < ApplicationComponent
-    attr_reader :classes
-
-    def initialize(classes: "card__footer", **options)
-      @classes = classes
+    def initialize(align: :right, **options)
+      @align = align
       @options = options
     end
 
     def call
-      content_tag(:div, class: class_names("card__footer", @classes), **@options) do
-        content
-      end
+      content_tag(:div, content, class: class_names("card__footer", align_class), **@options)
+    end
+
+    def align_class
+      {
+        left: "items-start",
+        center: "items-center",
+        right: "items-end"
+      }[@align]
     end
   end
 end
