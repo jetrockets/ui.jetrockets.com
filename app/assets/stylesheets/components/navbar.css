@@ -52,10 +52,6 @@
     @apply visible transition-all opacity-100;
   }
 
-  .navbar__burger {
-    @apply md:hidden
-  }
-
   .navbar__burger-opened {
     .navbar__close {
       @apply visible opacity-100;
