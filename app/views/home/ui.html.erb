@@ -239,48 +239,14 @@
         <% end %>
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
-          <div class="overflow-x-auto">
-            <table class="table table-full">
-              <thead class="table__thead">
-                <tr>
-                  <th class="table__th">
-                    Name
-                  </th>
-                  <th />
-                  <th class="table__th whitespace-nowrap">
-                    Created At
-                  </th>
-                  <th />
-                </tr>
-              </thead>
-
-              <tbody class="table__tbody">
-                <% 4.times.each do |index| %>
-                  <tr>
-                    <td class="w-3/5 table__td">
-                      <ul>
-                        <li>
-                          User Name
-                        </li>
-                        <li class="text-sm font-normal text-gray-600">
-                          user_name@gmail.com
-                        </li>
-                      </ul>
-                    </td>
-                    <td class="table__td table__td-center">
-                      <%= render Ui::Badge::Component.new title: "Active", type: :green %>
-                    </td>
-                    <td class="table__td whitespace-nowrap">
-                      <%= date_format(Time.zone.now, :full_month) %>
-                    </td>
-                    <td class="table__td table__td-actions">
-                      <%= link_to "Edit","#", class: "link" %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
+          <%= render Ui::Table::Component.new(
+            rows: [
+              {name: "User 1", email: "user1@gmail.com", status: render(Ui::Badge::Component.new(title: "Active", variant: :green)), created_at: Time.zone.now, edit_link: "#"},
+              { name: "User 2", email: "user2@gmail.com", status: render(Ui::Badge::Component.new(title: "Inactive", variant: :red)), created_at: Time.zone.now, edit_link: "#"},
+              { name: "User 3", email: "user3@gmail.com", status: render(Ui::Badge::Component.new(title: "Active", variant: :green)), created_at: Time.zone.now, edit_link: "#"},
+              { name: "User 4", email: "user4@gmail.com", status: render(Ui::Badge::Component.new(title: "Inactive", variant: :red)), created_at: Time.zone.now, edit_link: "#"}
+            ],headers: ["Name", "", "Created At", ""]
+          ) %>
         <% end %>
 
         <%= accordion.with_item(title: "Sync Tabs", id: "tabs") do %>
