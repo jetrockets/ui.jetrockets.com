@@ -239,14 +239,12 @@
         <% end %>
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
-          <%= render Ui::Table::Component.new(
-            rows: [
-              {name: "User 1", email: "user1@gmail.com", status: render(Ui::Badge::Component.new(title: "Active", variant: :green)), created_at: Time.zone.now, edit_link: "#"},
-              { name: "User 2", email: "user2@gmail.com", status: render(Ui::Badge::Component.new(title: "Inactive", variant: :red)), created_at: Time.zone.now, edit_link: "#"},
-              { name: "User 3", email: "user3@gmail.com", status: render(Ui::Badge::Component.new(title: "Active", variant: :green)), created_at: Time.zone.now, edit_link: "#"},
-              { name: "User 4", email: "user4@gmail.com", status: render(Ui::Badge::Component.new(title: "Inactive", variant: :red)), created_at: Time.zone.now, edit_link: "#"}
-            ],headers: ["Name", "", "Created At", ""]
-          ) %>
+          <%= render Ui::Table::Component.new(headers: ["Name", "", "Created At", ""]) do |table| %>
+            <% table.with_row( name: "User 1", email: "user1@gmail.com", status: render(Ui::Badge::Component.new(title: "Active", variant: :green)), created_at: Time.zone.now, full_month: Time.zone.now.strftime("%B"), edit_button: render(Ui::Btn::Component.new(variant: :link, href: "#").with_content("Edit")) ) %>
+            <% table.with_row( name: "User 2", email: "user2@gmail.com", status: render(Ui::Badge::Component.new(title: "Inactive", variant: :red)), created_at: Time.zone.now, full_month: Time.zone.now.strftime("%B"), edit_button: render(Ui::Btn::Component.new(variant: :link, href: "#").with_content("Edit")) ) %>
+            <% table.with_row( name: "User 3", email: "user3@gmail.com", status: render(Ui::Badge::Component.new(title: "Active", variant: :green)), created_at: Time.zone.now, full_month: Time.zone.now.strftime("%B"), edit_button: render(Ui::Btn::Component.new(variant: :link, href: "#").with_content("Edit")) ) %>
+            <% table.with_row( name: "User 4", email: "user4@gmail.com", status: render(Ui::Badge::Component.new(title: "Inactive", variant: :red)), created_at: Time.zone.now, full_month: Time.zone.now.strftime("%B"), edit_button: render(Ui::Btn::Component.new(variant: :link, href: "#").with_content("Edit")) ) %>
+          <% end %>
         <% end %>
 
         <%= accordion.with_item(title: "Sync Tabs", id: "tabs") do %>

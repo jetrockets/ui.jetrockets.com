@@ -13,18 +13,18 @@
         <tr>
           <td class="table__td">
             <ul>
-              <li><%= row[:name] %></li>
-              <li><%= row[:email] %></li>
+              <li><%= row.name %></li>
+              <li><%= row.email %></li>
             </ul>
           </td>
           <td class="table__td table__td-center">
-            <%= row[:status] %>
+            <%= row.status %>
           </td>
           <td class="table__td">
-            <%= helpers.date_format(row[:created_at], :full_month) %>
+            <%= helpers.date_format(row.created_at, :full_month) %>
           </td>
           <td class="table__td table__td-actions">
-            <%= render Ui::Btn::Component.new(variant: :link, href: row[:edit_link]).with_content("Edit") %>
+            <%= row.edit_button %>
           </td>
         </tr>
       <% end %>
