@@ -1,10 +1,12 @@
 class Ui::Icon::Component < ApplicationComponent
-  def initialize(filename:, **options)
-    @filename = filename
+  def initialize(icon_path:, **options)
+    @icon_path = icon_path
     @options = options
   end
 
   def call
-    helpers.inline_svg_tag(@filename, **@options)
+    with_asset_finder(InlineSvg::ViteAssetFinder) do
+      render_inline_svg(@icon_path, @options)
+    end
   end
 end
