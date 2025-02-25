@@ -112,6 +112,30 @@
           <% end %>
         <% end %>
 
+        <%= accordion.with_item(title: "Card", id: "card") do %>
+          <div class="flex flex-wrap items-center gap-4">
+            <%= render Ui::Card::Component.new do |component| %>
+              <% component.with_header align: :left, title: "Noteworthy technology acquisitions 2021" %>
+              <% component.with_body do %>
+                <p>This is the body of the card. You can put any content here.</p>
+              <% end %>
+              <% component.with_footer(align: :left) do %>
+                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary") %>
+              <% end %>
+            <% end %>
+
+            <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+              <% component.with_header align: :center, title: "Noteworthy technology acquisitions 2021" %>
+              <% component.with_body do %>
+                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+              <% end %>
+              <% component.with_footer(align: :right) do %>
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/arrow.svg") %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+
         <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
           <%= button_to"Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
         <% end %>
@@ -206,6 +230,12 @@
           <% end %>
         <% end %>
 
+        <%= accordion.with_item(title: "Icons", id: "icons", class: "flex items-center gap-4") do %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-4" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-6" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-8 text-primary" %>
+        <% end %>
+
         <%= accordion.with_item(title: "Popover", id: "popover") do %>
           <%= button_tag"Default popover", class: "btn", data: { popover_target: "popover_top" }, type: :button %>
           <%= render Ui::Popover::Component.new id: "popover_top", title: "Popover Title", placement: "right" do %>
@@ -219,7 +249,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
-          <div class="overflow-x-auto">
+          <div class="scroller scroller-x scroller-shadowed">
             <table class="table table-full">
               <thead class="table__thead">
                 <tr>
@@ -230,12 +260,14 @@
                   <th class="table__th whitespace-nowrap">
                     Created At
                   </th>
-                  <th />
+                  <th class="table__th">
+                    Actions
+                  </th>
                 </tr>
               </thead>
 
               <tbody class="table__tbody">
-                <% 4.times.each do |index| %>
+                <% 12.times.each do |index| %>
                   <tr>
                     <td class="w-3/5 table__td">
                       <ul>
@@ -247,14 +279,17 @@
                         </li>
                       </ul>
                     </td>
-                    <td class="table__td table__td-center">
+                    <td class="table__td">
                       <%= render Ui::Badge::Component.new title: "Active", type: :green %>
                     </td>
                     <td class="table__td whitespace-nowrap">
                       <%= date_format(Time.zone.now, :full_month) %>
                     </td>
                     <td class="table__td table__td-actions">
-                      <%= link_to "Edit","#", class: "link" %>
+                      <div class="table__actions">
+                        <%= render Ui::Btn::Component.new(href: "#", size: :sm, outlined: true).with_content("Show") %>
+                        <%= render Ui::Btn::Component.new(href: "#", size: :sm, outlined: true).with_content("Edit") %>
+                      </div>
                     </td>
                   </tr>
                 <% end %>

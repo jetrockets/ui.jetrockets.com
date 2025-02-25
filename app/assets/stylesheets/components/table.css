@@ -12,7 +12,7 @@
   }
 
   .table__th {
-    @apply px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase;
+    @apply px-3 py-2 text-xs font-medium tracking-wider text-left text-gray-600 uppercase;
   }
 
   .table__tbody {
@@ -20,7 +20,7 @@
   }
 
   .table__td {
-    @apply px-6 py-3 text-sm;
+    @apply px-3 py-2 text-sm;
   }
 
   .table__td-center {
@@ -29,5 +29,9 @@
 
   .table__td-actions {
     @apply text-right;
+  }
+
+  .table__actions {
+    @apply flex items-center justify-end gap-2;
   }
 }

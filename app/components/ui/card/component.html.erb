@@ -1,0 +1,11 @@
+<%= content_tag :div, class: "card", **options do %>
+  <%= header %>
+
+  <% if body %>
+    <div class="card__body">
+      <%= body %>
+    </div>
+  <% end %>
+
+  <%= footer %>
+<% end %>

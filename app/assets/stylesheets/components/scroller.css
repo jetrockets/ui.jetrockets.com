@@ -1,0 +1,23 @@
+@layer components {
+  .scroller {
+    @apply mb-6;
+  }
+
+  .scroller-shadowed {
+    @apply border border-gray-200 rounded-lg shadow-md;
+  }
+
+  .scroller-x {
+    @apply relative overflow-x-auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .scroller-x::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scroller-x::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+}
