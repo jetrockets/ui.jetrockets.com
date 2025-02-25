@@ -2,18 +2,30 @@
 
 @layer components {
   .card {
-    @apply flex flex-col p-6 rounded-lg text-sm bg-white text-gray-700;
-  }
-
-  .card-bordered {
-    @apply border border-gray-200 shadow-sm;
+    @apply block w-full bg-white border border-gray-200 rounded-lg;
   }
 
   .card__header {
-    @apply mb-4 text-lg flex flex-col;
+    @apply relative flex flex-col flex-wrap items-start gap-2 px-4 pt-3;
+  }
+
+  .card__header-bordered {
+    @apply pb-3 border-b border-gray-200;
+  }
+
+  .card__title {
+    @apply text-lg font-semibold;
+  }
+
+  .card__body {
+    @apply px-4 py-3;
   }
 
   .card__footer {
-    @apply mt-4 flex flex-col;
+    @apply flex flex-col px-4 pb-3;
+  }
+
+  .card__footer-bordered {
+    @apply pt-3 border-t border-gray-200;
   }
 }

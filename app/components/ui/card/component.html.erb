@@ -1,9 +1,11 @@
-<div class="<%= card_classes %>">
-  <strong class="block font-semibold">
-    <%= header if header %>
-  </strong>
-  <div class="card__body">
-    <%= body %>
-  </div>
-  <%= footer if footer %>
-</div>
+<%= content_tag :div, class: "card", **options do %>
+  <%= header %>
+
+  <% if body %>
+    <div class="card__body">
+      <%= body %>
+    </div>
+  <% end %>
+
+  <%= footer %>
+<% end %>
