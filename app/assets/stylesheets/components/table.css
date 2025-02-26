@@ -35,13 +35,17 @@
     @apply flex items-center justify-end gap-2;
   }
 
-  .table-hovered .table__tbody tr {
-    @apply hover:bg-gray-100;
+  .table-hovered tr:hover {
+    @apply bg-gray-100;
+
+    .table__td-sticky {
+      @apply bg-gray-100;
+    }
   }
 
-  .table-bordered .table__th:not(:last-child),
-  .table-bordered .table__td:not(:last-child) {
-    @apply border-r border-gray-200;
+  .table-bordered .table__th,
+  .table-bordered .table__td {
+    @apply border border-gray-200;
   }
 
   .table__th-sticky {
