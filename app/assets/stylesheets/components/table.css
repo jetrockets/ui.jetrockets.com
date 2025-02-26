@@ -34,4 +34,57 @@
   .table__actions {
     @apply flex items-center justify-end gap-2;
   }
+
+  .table-hovered .table__tbody tr {
+    @apply hover:bg-gray-100;
+  }
+
+  .table-bordered .table__th:not(:last-child),
+  .table-bordered .table__td:not(:last-child) {
+    @apply border-r border-gray-200;
+  }
+
+  .table__th-sticky {
+    @apply sticky left-0 z-10 bg-gray-50;
+  }
+
+  .table__th-sticky_right {
+    @apply sticky right-0 z-10 bg-gray-50;
+  }
+
+  .table__td-sticky {
+    @apply sticky left-0 z-10 bg-white;
+  }
+
+  .table__td-sticky_right {
+    @apply sticky right-0 z-10 bg-white;
+  }
+
+  /*Sizes*/
+
+  .table__th-xs
+  .table__td-xs {
+    @apply py-2;
+  }
+
+
+  .table__th-sm,
+  .table__td-sm {
+    @apply py-2.5;
+  }
+
+  .table__th-md,
+  .table__td-md {
+    @apply py-3.5;
+  }
+
+  .table__th-lg
+  .table__td-lg {
+    @apply py-4;
+  }
+
+  .table__th-xl
+  .table__td-xl {
+    @apply py-5;
+  }
 }

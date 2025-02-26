@@ -250,13 +250,13 @@
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
           <div class="scroller scroller-x scroller-shadowed">
-            <table class="table table-full">
+            <table class="table table-full table-hovered table-bordered">
               <thead class="table__thead">
                 <tr>
-                  <th class="table__th">
+                  <th class="table__th table__th-sticky">
                     Name
                   </th>
-                  <th />
+                  <th class="table__th" />
                   <th class="table__th whitespace-nowrap">
                     Created At
                   </th>
@@ -269,7 +269,7 @@
               <tbody class="table__tbody">
                 <% 12.times.each do |index| %>
                   <tr>
-                    <td class="w-3/5 table__td">
+                    <td class="w-3/5 table__td table__td-sticky">
                       <ul>
                         <li>
                           User Name
