@@ -20,4 +20,8 @@
   .tabs__link {
     @apply inline-block py-1 text-gray-600 border-b-2 border-transparent rounded-t-lg md:p-4 hover:text-gray-800 hover:border-gray-300;
   }
+
+  .tabs__link-active {
+    @apply text-blue-600 hover:text-blue-600 border-blue-600 hover:border-blue-600
+  }
 }
