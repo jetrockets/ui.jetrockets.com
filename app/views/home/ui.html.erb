@@ -335,7 +335,7 @@
         <%= accordion.with_item(title: "Tabs", id: "tabs") do %>
           <%= render Ui::Tabs::Component.new do |tabs| %>
             <% tabs.with_item(title: "Profile", href: ui_path) %>
-            <% tabs.with_item(title: "Dashboard", href: ui_path) %>
+            <% tabs.with_item(title: "Dashboard", href: ui_path, active: true) %>
             <% tabs.with_item(title: "Settings", href: ui_path) %>
             <% tabs.with_item(title: "Contacts", href: ui_path) %>
           <% end %>
