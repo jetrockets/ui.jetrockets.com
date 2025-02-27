@@ -1,13 +1,13 @@
 class Ui::Tabs::ItemComponent < ApplicationComponent
-  def initialize(title:, id:, **options)
+  attr_reader :title, :href, :options
+
+  def initialize(title:, href:, **options)
     @title = title
-    @id = id
+    @href = href
     @options = options
   end
 
   erb_template <<~ERB
-    <a class="tabs__link" id="<%= @id %>-tab" href="#<%= @id %>">
-      <%= @title %>
-    </a>
+    <%= link_to title, href, class: "tabs__link", **options %>
   ERB
 end

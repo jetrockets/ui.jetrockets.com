@@ -300,10 +300,10 @@
 
         <%= accordion.with_item(title: "Sync Tabs", id: "tabs") do %>
           <%= render Ui::Tabs::Component.new do |tabs| %>
-            <% tabs.with_item(title: "Profile", id: "profile") %>
-            <% tabs.with_item(title: "Dashboard", id: "dashboard") %>
-            <% tabs.with_item(title: "Settings", id: "settings") %>
-            <% tabs.with_item(title: "Contacts", id: "contacts") %>
+            <% tabs.with_item(title: "Profile", href: "profile") %>
+            <% tabs.with_item(title: "Dashboard", href: "dashboard") %>
+            <% tabs.with_item(title: "Settings", href: "settings") %>
+            <% tabs.with_item(title: "Contacts", href: "contacts") %>
           <% end %>
         <% end %>
       <% end %>
