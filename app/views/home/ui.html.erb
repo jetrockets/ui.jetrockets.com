@@ -263,9 +263,12 @@
                 <thead>
                   <tr>
                     <th>
-                      Name
+                      Payment
                     </th>
                     <th />
+                    <th class="whitespace-nowrap">
+                      Amount
+                    </th>
                     <th class="whitespace-nowrap">
                       Created At
                     </th>
@@ -276,13 +279,16 @@
                 </thead>
 
                 <tbody>
-                  <% 4.times.each do |index| %>
+                  <% 2.times.each do |index| %>
                     <tr>
                       <td class="w-3/5">
-                        User Name
+                        Payment Name
                       </td>
                       <td>
                         <%= render Ui::Badge::Component.new title: "Active", variant: :green %>
+                      </td>
+                      <td>
+                        <%= number_to_currency(1200) %>
                       </td>
                       <td class="whitespace-nowrap">
                         <%= date_format(Time.zone.now, :full_month) %>
@@ -300,11 +306,11 @@
 
                 <tfoot>
                   <tr>
-                    <td>
+                    <td colspan="2">
                       Total:
                     </td>
-                    <td class="" colspan="3">
-                      $2,400.00
+                    <td colspan="3">
+                      <%= number_to_currency(2400) %>
                     </td>
                   </tr>
                 </tfoot>
@@ -316,9 +322,12 @@
                 <thead>
                   <tr>
                     <th>
-                      Name
+                      Payment
                     </th>
                     <th />
+                    <th class="whitespace-nowrap">
+                      Amount
+                    </th>
                     <th class="whitespace-nowrap">
                       Created At
                     </th>
@@ -332,10 +341,13 @@
                   <% 4.times.each do |index| %>
                     <tr>
                       <td class="w-3/5">
-                        User Name
+                        Payment Name
                       </td>
                       <td>
                         <%= render Ui::Badge::Component.new title: "Active", variant: :green %>
+                      </td>
+                      <td>
+                        <%= number_to_currency(1200) %>
                       </td>
                       <td class="whitespace-nowrap">
                         <%= date_format(Time.zone.now, :full_month) %>
@@ -353,11 +365,11 @@
 
                 <tfoot>
                   <tr>
-                    <td>
+                    <td colspan="2">
                       Total:
                     </td>
-                    <td class="" colspan="3">
-                      $2,400.00
+                    <td colspan="3">
+                      <%= number_to_currency(2400) %>
                     </td>
                   </tr>
                 </tfoot>

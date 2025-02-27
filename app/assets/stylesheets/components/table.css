@@ -21,7 +21,7 @@
     }
 
     tfoot {
-      @apply bg-gray-100;
+      @apply font-semibold uppercase bg-gray-100;
     }
   }
 
