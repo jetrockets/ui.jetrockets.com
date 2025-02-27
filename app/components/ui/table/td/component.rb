@@ -1,6 +1,7 @@
 class Ui::Table::Td::Component < ApplicationComponent
-  def initialize(actions: false, **options)
+  def initialize(actions: false, sticky: false, **options)
     @actions = actions
+    @sticky = sticky
     @options = options
   end
 
@@ -12,7 +13,11 @@ class Ui::Table::Td::Component < ApplicationComponent
 
   def classes
     class_names(
-      "table__actions": @actions
+      @options.delete(:class),
+      "table__actions": @actions,
+      "table__td_sticky": @sticky,
+      "table__td_sticky-left": @sticky == :left,
+      "table__td_sticky-right": @sticky == :right
     )
   end
 end
