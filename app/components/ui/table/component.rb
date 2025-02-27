@@ -6,10 +6,11 @@ class Ui::Table::Component < ApplicationComponent
   SIZES = %i[xs sm md lg]
   DEFAULT_SIZE = :md
 
-  def initialize(bordered: false, full: true, size: DEFAULT_SIZE, **options)
+  def initialize(bordered: false, full: true, size: DEFAULT_SIZE, hovered: false, **options)
     @bordered = bordered
     @full = full
     @size = size
+    @hovered = hovered
     @options = options
   end
 
@@ -20,6 +21,7 @@ class Ui::Table::Component < ApplicationComponent
       "table",
       "table-bordered": @bordered,
       "table-full": @full,
+      "table-hovered": @hovered,
       "table-#{@size}": @size.present?
     )
   end

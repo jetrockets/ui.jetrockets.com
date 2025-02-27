@@ -258,7 +258,43 @@
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
           <div class="flex flex-col gap-8">
-            <%= render Ui::Table::Component.new size: :xs, bordered: true do |table| %>
+            <%= render Ui::Table::Component.new size: :xs, bordered: true, hovered: true do |table| %>
+              <%= table.with_thead do |thead| %>
+                <%= thead.with_tr do |tr| %>
+                  <%= tr.with_th { "Payment" } %>
+                  <%= tr.with_th { "Status" } %>
+                  <%= tr.with_th { "Amount" } %>
+                  <%= tr.with_th { "Created At" } %>
+                  <%= tr.with_th { "Actions" } %>
+                <% end %>
+              <% end %>
+
+              <%= table.with_tbody do |tbody| %>
+                <% 2.times.each do |index| %>
+                  <%= tbody.with_tr do |tr| %>
+                    <%= tr.with_td( class: "w-4/12") { "Payment Name" } %>
+                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Active", variant: :green) } %>
+                    <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
+                    <%= tr.with_td(class: "whitespace-nowrap") { date_format(Time.zone.now, :full_month) } %>
+                    <%= tr.with_td(actions: true) do %>
+                      <%= render Ui::BtnGroup::Component.new do |component| %>
+                        <% component.with_button(size: :sm, outlined: true) { "Show" } %>
+                        <% component.with_button(size: :sm, outlined: true) { "Edit" } %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+              <%= table.with_tfoot do |tfoot| %>
+                <%= tfoot.with_tr do |tr| %>
+                  <%= tr.with_td(colspan: 2) { "Total" } %>
+                  <%= tr.with_td(colspan: 3) { number_to_currency(2400) } %>
+                <% end %>
+              <% end %>
+            <% end %>
+
+            <%= render Ui::Table::Component.new size: :lg do |table| %>
               <%= table.with_thead do |thead| %>
                 <%= thead.with_tr do |tr| %>
                   <%= tr.with_th { "Payment" } %>
