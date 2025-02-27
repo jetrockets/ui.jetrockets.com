@@ -1,14 +1,6 @@
 @layer components {
-  .scroller {
-    @apply mb-6;
-  }
-
-  .scroller-shadowed {
-    @apply border border-gray-200 rounded-lg shadow-md;
-  }
-
   .scroller-x {
-    @apply relative overflow-x-auto;
+    @apply overflow-x-auto;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
   }

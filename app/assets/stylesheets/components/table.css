@@ -7,31 +7,29 @@
     @apply min-w-full;
   }
 
-  .table thead {
-    @apply bg-gray-50;
+  .table {
+    thead {
+      @apply bg-gray-50;
+    }
+
+    th, td {
+      @apply px-3 py-2;
+    }
+
+    th {
+      @apply text-xs font-medium text-left text-gray-700 uppercase;
+    }
+
+    td {
+      @apply text-sm;
+    }
   }
 
-  .table th {
-    @apply px-3 py-2 text-xs font-medium tracking-wider text-left text-gray-600 uppercase;
+  .tabe__actions {
+    @apply w-0 text-right;
   }
 
-  .table tbody {
-    @apply divide-y divide-gray-200;
-  }
-
-  .table td {
-    @apply px-3 py-2 text-sm;
-  }
-
-  .text-center {
-    @apply text-center;
-  }
-
-  .text-right {
-    @apply text-right;
-  }
-
-  .table__actions {
+  .table__btns {
     @apply flex items-center justify-end gap-2;
   }
 

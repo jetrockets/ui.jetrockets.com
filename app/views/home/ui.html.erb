@@ -105,11 +105,19 @@
         <% end %>
 
         <%= accordion.with_item(title: "Button Group", id: "btnGroup") do %>
-          <%= render Ui::BtnGroup::Component.new do |component| %>
-            <% component.with_button(variant: :primary, outlined: true) { "Button First" } %>
-            <% component.with_button(variant: :primary, outlined: true) { "Button Second" } %>
-            <% component.with_button(variant: :primary, outlined: true) { "Button Third" } %>
-          <% end %>
+          <div class="flex flex-col gap-4">
+            <%= render Ui::BtnGroup::Component.new do |component| %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button First" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button Second" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button Third" } %>
+            <% end %>
+
+            <%= render Ui::BtnGroup::Component.new with_gap: true do |component| %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+            <% end %>
+          </div>
         <% end %>
 
         <%= accordion.with_item(title: "Card", id: "card") do %>
@@ -249,7 +257,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
-          <div class="scroller scroller-x scroller-shadowed">
+          <div class="scroller scroller-x">
             <table class="table table-full table-hovered table-bordered">
               <thead>
                 <tr>
@@ -267,7 +275,7 @@
               </thead>
 
               <tbody>
-                <% 12.times.each do |index| %>
+                <% 4.times.each do |index| %>
                   <tr>
                     <td class="w-3/5">
                       <ul>
@@ -285,17 +293,26 @@
                     <td class="whitespace-nowrap">
                       <%= date_format(Time.zone.now, :full_month) %>
                     </td>
-                    <td class="text-right">
-                      <div class="table__actions">
-                        <%= render Ui::Btn::Component.new(href: "#", size: :sm, outlined: true).with_content("Show") %>
-                        <%= render Ui::Btn::Component.new(href: "#", size: :sm, outlined: true).with_content("Edit") %>
-                      </div>
+
+                    <td class="tabe__actions">
+                      <%= render Ui::BtnGroup::Component.new with_gap: true do |component| %>
+                        <% component.with_button(size: :sm, outlined: true) { "Show" } %>
+                        <% component.with_button(size: :sm, outlined: true) { "Edit" } %>
+                      <% end %>
                     </td>
                   </tr>
                 <% end %>
               </tbody>
 
               <tfoot>
+                <tr>
+                  <td>
+                    Total:
+                  </td>
+                  <td class="" colspan="3">
+                    $2,400.00
+                  </td>
+                </tr>
               </tfoot>
             </table>
           </div>

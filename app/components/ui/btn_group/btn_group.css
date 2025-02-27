@@ -1,7 +1,11 @@
 @reference "~/entrypoints/application.css";
 
 .btn_group {
-  @apply flex items-center;
+  @apply inline-flex items-center gap-2;
+}
+
+.btn_group-sticky {
+  @apply gap-0;
 
   .btn:first-of-type {
     @apply rounded-r-none
