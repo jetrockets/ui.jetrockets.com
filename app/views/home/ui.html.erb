@@ -298,40 +298,13 @@
           </div>
         <% end %>
 
-        <%= accordion.with_item(title: "Sync Tabs", id: "tabs") do %>
-          <div class="tabs">
-            <div class="tabs__container">
-              <ul class="tabs__list" id="default-tab" data-tabs-toggle="#default-tab-content" data-tabs-active-classes="tabs__link-active" data-tabs-inactive-classes="tabs__link" role="tablist">
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link tabs__link-active" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-                </li>
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link tabs__link-active" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
-                </li>
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link tabs__link-active" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
-                </li>
-                <li class="tabs__item" role="presentation">
-                  <button class="tabs__link tabs__link-active" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Contacts</button>
-                </li>
-              </ul>
-            </div>
-
-            <div class="tabs__content" id="default-tab-content">
-              <div class="hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-              <div class="hidden" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-              <div class="hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-              <div class="hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                <p class="text-sm text-gray-500">This is some placeholder content the <strong class="font-medium text-gray-800">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-              </div>
-            </div>
-          </div>
+        <%= accordion.with_item(title: "Tabs", id: "tabs") do %>
+          <%= render Ui::Tabs::Component.new do |tabs| %>
+            <% tabs.with_item(title: "Profile", href: ui_path) %>
+            <% tabs.with_item(title: "Dashboard", href: ui_path) %>
+            <% tabs.with_item(title: "Settings", href: ui_path) %>
+            <% tabs.with_item(title: "Contacts", href: ui_path) %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
