@@ -100,6 +100,16 @@ module FormBuilders
       end
     end
 
+    def submit(value = nil, options = {})
+      classes = class_names(
+        "btn",
+        "btn-primary",
+        options.delete(:class)
+      )
+
+      super(value, options.merge(class: classes))
+    end
+
     private
 
     def errors_for?(method)
