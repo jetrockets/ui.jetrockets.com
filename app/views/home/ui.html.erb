@@ -273,7 +273,7 @@
                 <% 2.times.each do |index| %>
                   <%= tbody.with_tr do |tr| %>
                     <%= tr.with_td( class: "w-4/12") { "Payment Name" } %>
-                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Active", variant: :green) } %>
+                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Paid", variant: :green) } %>
                     <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
                     <%= tr.with_td(class: "whitespace-nowrap") { date_format(Time.zone.now, :full_month) } %>
                     <%= tr.with_td(actions: true) do %>
@@ -309,7 +309,7 @@
                 <% 2.times.each do |index| %>
                   <%= tbody.with_tr do |tr| %>
                     <%= tr.with_td( class: "w-4/12") { "Payment Name" } %>
-                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Active", variant: :green) } %>
+                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Paid", variant: :green) } %>
                     <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
                     <%= tr.with_td(class: "whitespace-nowrap") { date_format(Time.zone.now, :full_month) } %>
                     <%= tr.with_td(actions: true) do %>
