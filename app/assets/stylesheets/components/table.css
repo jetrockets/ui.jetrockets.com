@@ -1,37 +1,104 @@
 @layer components {
   .table {
     @apply w-auto;
+
+    thead {
+      @apply bg-gray-50;
+    }
+
+    th, td {
+      @apply px-3 py-3 border-b border-gray-200;
+    }
+
+    th {
+      @apply text-xs font-medium text-left text-gray-700 uppercase;
+    }
+
+    tfoot {
+      @apply font-semibold uppercase bg-gray-100;
+    }
   }
 
   .table-full {
     @apply min-w-full;
   }
 
-  .table__thead {
-    @apply bg-gray-50;
+  /* Hovered */
+  .table-hovered {
+    tr:hover {
+      @apply bg-gray-50;
+
+      .sticky-td {
+        @apply bg-gray-50;
+      }
+    }
   }
 
-  .table__th {
-    @apply px-3 py-2 text-xs font-medium tracking-wider text-left text-gray-600 uppercase;
+  /* Bordered */
+  .table-bordered {
+    th, td {
+      @apply border border-gray-200;
+    }
   }
 
-  .table__tbody {
-    @apply divide-y divide-gray-200;
+  /* Sticky */
+  .table__th_sticky {
+    @apply sticky z-10 bg-gray-50;
   }
 
-  .table__td {
-    @apply px-3 py-2 text-sm;
+  .table__th_sticky-left {
+    @apply left-0;
   }
 
-  .table__td-center {
-    @apply text-center;
+  .table__th_sticky-right {
+    @apply right-0;
   }
 
-  .table__td-actions {
-    @apply text-right;
+  .table__td_sticky {
+    @apply sticky bg-white;
   }
 
+  .table__td_sticky-left {
+    @apply left-0;
+  }
+
+  .table__td_sticky-right {
+    @apply right-0;
+  }
+
+  /* Sizes */
+  .table-xs {
+    th, td {
+      @apply px-2 py-2;
+    }
+    td {
+      @apply text-sm;
+    }
+  }
+
+  .table-sm {
+    th, td {
+      @apply px-3 py-2.5 text-sm;
+    }
+    td {
+      @apply text-sm;
+    }
+  }
+
+  .table-md {
+    th, td {
+      @apply px-3 py-3;
+    }
+  }
+
+  .table-lg {
+    th, td {
+      @apply px-3.5 py-4;
+    }
+  }
+
+  /* Actions */
   .table__actions {
-    @apply flex items-center justify-end gap-2;
+    @apply w-0 text-right;
   }
 }
