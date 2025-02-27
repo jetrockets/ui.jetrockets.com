@@ -13,37 +13,32 @@
     }
 
     th, td {
-      @apply px-3 py-2;
+      @apply px-3 py-3;
     }
 
     th {
       @apply text-xs font-medium text-left text-gray-700 uppercase;
     }
 
-    td {
-      @apply text-sm;
-    }
-  }
-
-  .tabe__actions {
-    @apply w-0 text-right;
-  }
-
-  .table__btns {
-    @apply flex items-center justify-end gap-2;
-  }
-
-  .table-hovered tr:hover {
-    @apply bg-gray-100;
-
-    .sticky-td {
+    tfoot {
       @apply bg-gray-100;
     }
   }
 
-  .table-bordered th,
-  .table-bordered td {
-    @apply border border-gray-200;
+  .table-hovered {
+    tr:hover {
+      @apply bg-gray-50;
+
+      .sticky-td {
+        @apply bg-gray-50;
+      }
+    }
+  }
+
+  .table-bordered {
+    th, td {
+      @apply border border-gray-200;
+    }
   }
 
   .sticky-th {
@@ -64,23 +59,37 @@
 
   /*Sizes*/
 
-  .tabl-xs {
-    @apply py-2;
+  .table-xs {
+    th, td {
+      @apply px-2 py-2;
+    }
+    td {
+      @apply text-sm;
+    }
   }
 
   .table-sm {
-    @apply py-2.5;
+    th, td {
+      @apply px-3 py-2.5 text-sm;
+    }
+    td {
+      @apply text-sm;
+    }
   }
 
   .table-md {
-    @apply py-3.5;
+    th, td {
+      @apply px-3 py-3;
+    }
   }
 
   .table-lg {
-    @apply py-4;
+    th, td {
+      @apply px-3.5 py-4;
+    }
   }
 
-  .table-xl {
-    @apply py-5;
+  .tabe__actions {
+    @apply w-0 text-right;
   }
 }
