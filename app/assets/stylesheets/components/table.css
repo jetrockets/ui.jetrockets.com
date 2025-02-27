@@ -1,19 +1,13 @@
 @layer components {
   .table {
     @apply w-auto;
-  }
 
-  .table-full {
-    @apply min-w-full;
-  }
-
-  .table {
     thead {
       @apply bg-gray-50;
     }
 
     th, td {
-      @apply px-3 py-3;
+      @apply px-3 py-3 border-b border-gray-200;
     }
 
     th {
@@ -25,6 +19,11 @@
     }
   }
 
+  .table-full {
+    @apply min-w-full;
+  }
+
+  /* Hovered */
   .table-hovered {
     tr:hover {
       @apply bg-gray-50;
@@ -35,30 +34,39 @@
     }
   }
 
+  /* Bordered */
   .table-bordered {
     th, td {
       @apply border border-gray-200;
     }
   }
 
-  .sticky-th {
-    @apply sticky left-0 z-10 bg-gray-50;
+  /* Sticky */
+  .table__th_sticky {
+    @apply sticky z-10 bg-gray-50;
   }
 
-  .sticky_right-th {
-    @apply sticky right-0 z-10 bg-gray-50;
+  .table__th_sticky-left {
+    @apply left-0;
   }
 
-  .sticky-td {
-    @apply sticky left-0 z-10 bg-white;
+  .table__th_sticky-right {
+    @apply right-0;
   }
 
-  .sticky_right-td {
-    @apply sticky right-0 z-10 bg-white;
+  .table__td_sticky {
+    @apply sticky bg-white;
   }
 
-  /*Sizes*/
+  .table__td_sticky-left {
+    @apply left-0;
+  }
 
+  .table__td_sticky-right {
+    @apply right-0;
+  }
+
+  /* Sizes */
   .table-xs {
     th, td {
       @apply px-2 py-2;
@@ -89,7 +97,8 @@
     }
   }
 
-  .tabe__actions {
+  /* Actions */
+  .table__actions {
     @apply w-0 text-right;
   }
 }
