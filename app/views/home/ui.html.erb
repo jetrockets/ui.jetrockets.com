@@ -251,25 +251,25 @@
         <%= accordion.with_item(title: "Table", id: "table") do %>
           <div class="scroller scroller-x scroller-shadowed">
             <table class="table table-full table-hovered table-bordered">
-              <thead class="table__thead">
+              <thead>
                 <tr>
-                  <th class="table__th table__th-sticky">
+                  <th>
                     Name
                   </th>
-                  <th class="table__th" />
-                  <th class="table__th whitespace-nowrap">
+                  <th />
+                  <th class="whitespace-nowrap">
                     Created At
                   </th>
-                  <th class="table__th">
+                  <th>
                     Actions
                   </th>
                 </tr>
               </thead>
 
-              <tbody class="table__tbody">
+              <tbody>
                 <% 12.times.each do |index| %>
                   <tr>
-                    <td class="w-3/5 table__td table__td-sticky">
+                    <td class="w-3/5">
                       <ul>
                         <li>
                           User Name
@@ -279,13 +279,13 @@
                         </li>
                       </ul>
                     </td>
-                    <td class="table__td">
+                    <td>
                       <%= render Ui::Badge::Component.new title: "Active", variant: :green %>
                     </td>
-                    <td class="table__td whitespace-nowrap">
+                    <td class="whitespace-nowrap">
                       <%= date_format(Time.zone.now, :full_month) %>
                     </td>
-                    <td class="table__td table__td-actions">
+                    <td class="text-right">
                       <div class="table__actions">
                         <%= render Ui::Btn::Component.new(href: "#", size: :sm, outlined: true).with_content("Show") %>
                         <%= render Ui::Btn::Component.new(href: "#", size: :sm, outlined: true).with_content("Edit") %>
@@ -294,6 +294,9 @@
                   </tr>
                 <% end %>
               </tbody>
+
+              <tfoot>
+              </tfoot>
             </table>
           </div>
         <% end %>
