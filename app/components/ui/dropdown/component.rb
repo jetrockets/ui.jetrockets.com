@@ -1,5 +1,5 @@
 class Ui::Dropdown::Component < ApplicationComponent
-  renders_one :button
+  renders_one :trigger, Ui::Dropdown::TriggerComponent
   renders_many :links, Ui::Dropdown::LinksComponent
 
   def initialize(**options)
@@ -9,7 +9,7 @@ class Ui::Dropdown::Component < ApplicationComponent
 
   erb_template <<~ERB
     <div data-controller="dropdown" **@options>
-      <%= button %>
+      <%= trigger %>
 
       <div class="dropdown" data-dropdown-target="menu">
         <ul class="dropdown__wrapper">
