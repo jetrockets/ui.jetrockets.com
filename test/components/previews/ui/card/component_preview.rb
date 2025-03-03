@@ -8,7 +8,7 @@ class Ui::CardComponentPreview < ViewComponent::Preview
       end
 
       component.with_footer(align: :left) do
-        render Ui::Btn::Component.new(variant: :secondary).with_content("Primary")
+        Ui::Btn::Component.new(variant: :primary).with_content("Primary").call
       end
     end
   end
@@ -22,7 +22,7 @@ class Ui::CardComponentPreview < ViewComponent::Preview
       end
 
       component.with_footer(align: :right) do
-        render Ui::Btn::Component.new(variant: :secondary).with_content("Primary")
+        Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").call
       end
     end
   end
