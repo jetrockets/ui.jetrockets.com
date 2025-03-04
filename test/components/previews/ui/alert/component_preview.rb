@@ -1,18 +1,21 @@
 class Ui::Alert::ComponentPreview < ViewComponent::Preview
+  # @param title
+  # @param type select :type_options
+  # @param icon_path
+  # @param content
 
-  def danger_alert
-    render(Ui::Alert::Component.new(type: :error, title: "Danger alert!"))
+  def default(title: "Default alert!", type: :default, icon_path: "images/icons/alert.svg", content: nil)
+    render Ui::Alert::Component.new(title:, type:, icon_path:) do
+      content
+    end
   end
 
-  def success_alert
-    render(Ui::Alert::Component.new(type: :success, title: "Success alert!"))
-  end
+  private
 
-  def warning_alert
-    render(Ui::Alert::Component.new(type: :warning, title: "Warning alert!"))
-  end
-
-  def default_alert
-    render(Ui::Alert::Component.new(title: "Default alert!"))
+  def type_options
+    {
+      choices: %i[success warning error],
+      include_blank: :default
+    }
   end
 end

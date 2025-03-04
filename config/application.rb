@@ -37,5 +37,6 @@ module Ui
     config.view_component.show_previews = true
     config.view_component.preview_paths << "#{Rails.root}/test/components/previews"
 
+    config.view_component.default_preview_layout = "component_preview"
   end
 end
