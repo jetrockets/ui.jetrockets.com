@@ -7,8 +7,8 @@ class Ui::Card::ComponentPreview < ViewComponent::Preview
         content_tag(:p, "This is the body of the card. You can put any content here.")
       end
 
-      component.with_footer(align: :left) do
-        Ui::Btn::Component.new(variant: :primary).with_content("Primary").call
+      component.with_footer(align: :left) do |footer|
+        footer.render Ui::Btn::Component.new(variant: :primary).with_content("Primary")
       end
     end
   end
@@ -21,8 +21,8 @@ class Ui::Card::ComponentPreview < ViewComponent::Preview
         content_tag(:p, "This is the body of the card. You can put any content here.")
       end
 
-      component.with_footer(align: :right) do
-        Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").call
+      component.with_footer(align: :right) do |footer|
+        footer.render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary")
       end
     end
   end

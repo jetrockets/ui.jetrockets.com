@@ -1,7 +1,6 @@
 class Ui::BtnGroup::ComponentPreview < ViewComponent::Preview
   def default
     render(Ui::BtnGroup::Component.new) do |component|
-      component.with_button(variant: :primary, outlined: true) { "Button First" }
       component.with_button(variant: :primary, outlined: true) { "Button Second" }
       component.with_button(variant: :primary, outlined: true) { "Button Third" }
     end
