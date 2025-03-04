@@ -1,4 +1,4 @@
-class Ui::CardComponentPreview < ViewComponent::Preview
+class Ui::Card::ComponentPreview < ViewComponent::Preview
   def button_left
     render Ui::Card::Component.new do |component|
       component.with_header align: :left, title: "Noteworthy technology acquisitions 2021"
