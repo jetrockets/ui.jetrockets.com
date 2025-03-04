@@ -1,21 +1,23 @@
 class Ui::Badge::ComponentPreview < ViewComponent::Preview
-  def blue_xs
-    render(Ui::Badge::Component.new(title: "Blue XS", variant: :blue, size: :xs))
+  # @param title
+  # @param variant select :variant_options
+  # @param size select :size_options
+
+  def default(title: "Badge", variant: :default, size: :sm)
+    render(Ui::Badge::Component.new(title: title, variant: variant, size: size))
   end
 
-  def default
-    render(Ui::Badge::Component.new(title: "Default"))
+  private
+
+  def variant_options
+    {
+      choices: %i[default blue red green yellow],
+    }
   end
 
-  def red_sm
-    render(Ui::Badge::Component.new(title: "Red SM", variant: :red, size: :sm))
-  end
-
-  def green_md
-    render(Ui::Badge::Component.new(title: "Green MD", variant: :green, size: :md))
-  end
-
-  def yellow_lg
-    render(Ui::Badge::Component.new(title: "Yellow LG", variant: :yellow, size: :lg))
+  def size_options
+    {
+      choices: %i[xs sm md lg],
+    }
   end
 end
