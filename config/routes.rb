@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   get "/ui", to: "home#ui"
   root "home#index"
+
+  if Rails.env.development?
+    mount Lookbook::Engine, at: "/lookbook"
+  end
 end
