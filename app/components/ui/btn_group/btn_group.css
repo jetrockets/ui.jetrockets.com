@@ -8,11 +8,15 @@
   @apply gap-0;
 
   .btn:first-of-type {
-    @apply rounded-r-none
+    @apply rounded-r-none;
   }
 
   .btn:last-of-type {
-    @apply rounded-l-none
+    @apply rounded-l-none;
+  }
+
+  .btn:not(:last-of-type) {
+    @apply border-r-0;
   }
 
   .btn:not(:first-of-type):not(:last-of-type) {
@@ -20,6 +24,6 @@
   }
 
   .btn {
-    @apply -ml-px hover:z-10;
+    @apply hover:z-10;
   }
 }
