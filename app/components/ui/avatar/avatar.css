@@ -1,0 +1,67 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .avatar {
+    @apply inline-flex items-center justify-center bg-gray-200 text-gray-400;
+    @apply overflow-hidden;
+  }
+
+  .avatar-rounded {
+    @apply rounded-lg;
+  }
+
+  .avatar-circle {
+    @apply rounded-full;
+  }
+
+  .avatar-bordered {
+    @apply border-2 border-gray-300;
+  }
+
+  .avatar__icon {
+    @apply w-4 h-4 shrink-0;
+  }
+
+  /* Sizes */
+  .avatar-xs {
+    @apply w-6 h-6;
+  }
+
+  .avatar-sm {
+    @apply w-8 h-8;
+  }
+
+  .avatar-md {
+    @apply w-10 h-10;
+  }
+
+  .avatar-lg {
+    @apply w-12 h-12;
+  }
+
+  .avatar-xl {
+    @apply w-14 h-14;
+  }
+
+  /* Icon Sizes */
+
+  .avatar__icon-xs {
+    @apply w-4 h-4;
+  }
+
+  .avatar__icon-sm {
+    @apply w-5 h-5;
+  }
+
+  .avatar__icon-md {
+    @apply w-6 h-6;
+  }
+
+  .avatar__icon-lg {
+    @apply w-7 h-7;
+  }
+
+  .avatar__icon-xl {
+    @apply w-8 h-8;
+  }
+}

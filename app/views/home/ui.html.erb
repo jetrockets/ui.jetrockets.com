@@ -41,6 +41,34 @@
           </p>
         <% end %>
 
+        <%= accordion.with_item(title: "Avatars", id: "avatars", class: "space-y-4") do %>
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(size: :xs).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :sm).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :md).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :lg).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :xl).with_icon_content("images/icons/user.svg") %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(size: :xs, circle: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :sm, circle: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :md, circle: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :lg, circle: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :xl, circle: true).with_icon_content("images/icons/user.svg") %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(size: :md, rounded: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :md, circle: true).with_icon_content("images/icons/user.svg") %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(size: :lg, rounded: true, bordered: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(size: :lg, circle: true, bordered: true).with_icon_content("images/icons/user.svg") %>
+          </div>
+        <% end %>
+
         <%= accordion.with_item(title: "Badges", id: "bages", class: "space-x-2") do %>
           <%= render Ui::Badge::Component.new title: "Blue XS", variant: :blue, size: :xs %>
           <%= render Ui::Badge::Component.new title: "Default" %>
