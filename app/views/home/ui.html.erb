@@ -215,6 +215,60 @@
           <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-8 text-primary" %>
         <% end %>
 
+        <%= accordion.with_item(title: "Pagination", id: "pagination") do %>
+          <div class="flex flex-col gap-4">
+            <%= render Ui::Pagination::Component.new(size: :xs) do |pagination| %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
+              <% pagination.with_item(title: "1") %>
+              <% pagination.with_item(title: "2") %>
+              <% pagination.with_item(title: "3", active: true) %>
+              <% pagination.with_item(title: "4") %>
+              <% pagination.with_item(title: "5") %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
+            <% end %>
+
+            <%= render Ui::Pagination::Component.new(size: :sm) do |pagination| %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
+              <% pagination.with_item(title: "1") %>
+              <% pagination.with_item(title: "2") %>
+              <% pagination.with_item(title: "3", active: true) %>
+              <% pagination.with_item(title: "4") %>
+              <% pagination.with_item(title: "5") %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
+            <% end %>
+
+            <%= render Ui::Pagination::Component.new(size: :md) do |pagination| %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
+              <% pagination.with_item(title: "1") %>
+              <% pagination.with_item(title: "2") %>
+              <% pagination.with_item(title: "3", active: true) %>
+              <% pagination.with_item(title: "4") %>
+              <% pagination.with_item(title: "5") %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
+            <% end %>
+
+            <%= render Ui::Pagination::Component.new(size: :lg) do |pagination| %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
+              <% pagination.with_item(title: "1") %>
+              <% pagination.with_item(title: "2") %>
+              <% pagination.with_item(title: "3", active: true) %>
+              <% pagination.with_item(title: "4") %>
+              <% pagination.with_item(title: "5") %>
+              <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
+            <% end %>
+
+            <%= render Ui::Pagination::Component.new do |pagination| %>
+              <% pagination.with_item(title: "Previous") %>
+              <% pagination.with_item(title: "1") %>
+              <% pagination.with_item(title: "2") %>
+              <% pagination.with_item(title: "3", active: true) %>
+              <% pagination.with_item(title: "4") %>
+              <% pagination.with_item(title: "5") %>
+              <% pagination.with_item(title: "Next") %>
+            <% end %>
+          </div>
+        <% end %>
+
         <%= accordion.with_item(title: "Popover", id: "popover") do %>
           <%= button_tag"Default popover", class: "btn", data: { popover_target: "popover_top" }, type: :button %>
           <%= render Ui::Popover::Component.new id: "popover_top", title: "Popover Title", placement: "right" do %>
