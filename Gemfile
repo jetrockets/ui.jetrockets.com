@@ -65,6 +65,7 @@ group :development do
 
 
   gem "web-console"
+  gem "lookbook"
 end
 
 group :test do
