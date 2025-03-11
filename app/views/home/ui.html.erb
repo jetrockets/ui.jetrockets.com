@@ -167,45 +167,39 @@
         <% end %>
 
         <%= accordion.with_item(title: "Form Builder", id: "form_builder") do %>
-          <%= form_with url: root_path do |f| %>
+          <%= render Ui::Form::Component.new do |form| %>
             <div class="grid gap-x-4 md:grid-cols-2">
-              <div class="form__group">
-                <%= f.label :first_name %>
-                <%= f.text_field :first_name, autofocus: true %>
-              </div>
-              <div class="form__group">
-                <%= f.label :last_name %>
-                <%= f.text_field :last_name %>
-              </div>
+              <%= form.with_field(label: "First Name") do |field| %>
+                <%= field.with_input(size: :sm) %>
+              <% end %>
+
+              <%= form.with_field(label: "Last Name") do |field| %>
+                <%= field.with_input(size: :sm) %>
+              <% end %>
             </div>
 
-            <div class="form__group">
-              <%= f.label :email %>
-              <%= f.email_field :email, autocomplete: "email" %>
-            </div>
+            <%= form.with_field(label: "Email") do |field| %>
+              <%= field.with_input(size: :sm, type: :email) %>
+            <% end %>
 
-            <div class="form__group">
-              <%= f.label :password %>
-              <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
-            </div>
+            <%= form.with_field(label: "Password") do |field| %>
+              <%= field.with_input(size: :sm, type: :password) %>
+            <% end %>
 
-            <div class="form__group">
-              <%= f.check_box :free_shipping %>
-            </div>
+            <%= form.with_field(label: "Free Shipping") do |field| %>
+              <%= field.with_checkbox(checked: false) %>
+            <% end %>
 
-            <div class="form__group">
-              <fieldset class="flex flex-col gap-y-2">
-                <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
-                <%= f.radio_button :radio, "2" %>
-                <%= f.radio_button :radio, "3" %>
-              </fieldset>
-            </div>
+            <%= form.with_field do |field| %>
+              <%= field.with_radio(label: "Radio 1", value: "1", checked: true, name: "radio_group") %>
+              <%= field.with_radio(label: "Radio 2", value: "2", name: "radio_group") %>
+              <%= field.with_radio(label: "Radio 3", value: "3", name: "radio_group") %>
+            <% end %>
 
-            <div class="form__group">
-              <%= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
-            </div>
-
-            <%= f.submit "Save" %>
+            <%= form.with_field do |field| %>
+              <%= field.with_toggle(label: "Label", hint: { on: "ON hint", off: "OFF hint" }, checked: false) %>
+            <% end %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content("Save") %>
           <% end %>
         <% end %>
 

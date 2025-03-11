@@ -1,0 +1,70 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .form__group {
+    @apply mb-4;
+  }
+
+  .form__label {
+    @apply block mb-1 text-sm font-medium text-gray-700;
+  }
+
+  .form__label-checkbox,
+  .form__label-radio {
+    @apply mb-0;
+  }
+
+  .form__input {
+    @apply block w-full h-10 px-3 py-2 border-gray-300 rounded-md focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
+  }
+
+  .form__input-errored {
+    @apply border-red-300 ring-red-200 focus:border-red-300 focus:ring-red-200;
+  }
+
+  .form__hint {
+    @apply text-sm font-normal text-gray-600;
+  }
+
+  .form__help {
+    @apply mt-1 text-sm text-gray-600;
+  }
+
+  .form__error {
+    @apply mt-1 text-sm text-red-600;
+  }
+
+  .form__radio,
+  .form__checkbox {
+    @apply w-5 h-5 border-gray-300 rounded-md cursor-pointer;
+    @apply focus:ring focus:ring-offset-0 focus:ring-blue-200/50 checked:hover:bg-blue-500 focus:border-blue-300 checked:focus:border-blue-500 checked:focus:bg-blue-500 checked:bg-blue-500 checked:border-blue-500;
+  }
+
+  .form__radio {
+    @apply rounded-full;
+  }
+
+  .form__toggle {
+    @apply relative h-6 mr-2 cursor-pointer bg-gray-200 rounded-full w-11 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-300 peer-checked:after:translate-x-full;
+    @apply peer-checked:after:border-white peer-checked:bg-blue-500;
+    @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
+  }
+
+  /* Sizes */
+
+  .form__input-xs {
+    @apply h-8;
+  }
+
+  .form__input-sm {
+    @apply h-9;
+  }
+
+  .form__input-md {
+    @apply h-10;
+  }
+
+  .form__input-lg {
+    @apply h-12;
+  }
+}
