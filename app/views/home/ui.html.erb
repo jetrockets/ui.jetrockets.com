@@ -51,6 +51,14 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :xs, circle: true) %>
+            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :sm, circle: true) %>
+            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :md, circle: true) %>
+            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :lg, circle: true) %>
+            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :xl, circle: true) %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
             <%= render Ui::Avatar::Component.new(size: :xs, circle: true).with_icon_content("images/icons/user.svg") %>
             <%= render Ui::Avatar::Component.new(size: :sm, circle: true).with_icon_content("images/icons/user.svg") %>
             <%= render Ui::Avatar::Component.new(size: :md, circle: true).with_icon_content("images/icons/user.svg") %>

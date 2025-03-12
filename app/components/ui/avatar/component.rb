@@ -4,8 +4,9 @@ class Ui::Avatar::Component < ApplicationComponent
   SIZES = %i[xs sm md lg xl]
   DEFAULT_SIZE = :md
 
-  def initialize(size: DEFAULT_SIZE, rounded: false, circle: false, bordered: false, **options)
+  def initialize(size: DEFAULT_SIZE, name: nil, rounded: false, circle: false, bordered: false, **options)
     @size = size
+    @name = name
     @rounded = rounded
     @circle = circle
     @bordered = bordered
@@ -19,7 +20,15 @@ class Ui::Avatar::Component < ApplicationComponent
   private
 
   def icon_content
-    helpers.vite_svg_tag(icon, class: icon_classes) if icon?
+    if icon?
+      helpers.vite_svg_tag(icon, class: icon_classes)
+    elsif @name.present?
+      initials
+    end
+  end
+
+  def initials
+    @name.split.map { |word| word[0] }.join.upcase[0..1]
   end
 
   def avatar_classes
