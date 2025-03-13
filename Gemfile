@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.3"
 
-gem "avo"
-
 gem "bootsnap", require: false
 
 gem "discard", "~> 1.2"
