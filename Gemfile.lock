@@ -450,6 +450,7 @@ DEPENDENCIES
   attractor
   attractor-ruby
   avo
+  bcrypt
   bootsnap
   brakeman
   bundler-audit

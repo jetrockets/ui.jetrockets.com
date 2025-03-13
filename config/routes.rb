@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     if defined?(Avo::Engine)
       mount Avo::Engine, at: Avo.configuration.root_path
     end
+    get "/accounts", to: "avo/accounts#index"
   end
 
   get "/privacy", to: "home#privacy"

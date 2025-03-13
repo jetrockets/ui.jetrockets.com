@@ -25,6 +25,7 @@ gem "puma"
 
 # attractor uses Sinatra for web interface, which requires rack < 3.0 as of 2023-12-05
 gem "rack", "~> 2.2"
+gem "bcrypt"
 gem "rodauth-rails"
 gem "rodauth-omniauth"
 
