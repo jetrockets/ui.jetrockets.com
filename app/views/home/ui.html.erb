@@ -216,7 +216,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Pagy", id: "pagy") do %>
-          <% pagy, accounts = pagy(Account.all, items: 10) %>
+          <% pagy, accounts = pagy(Account.all, limit: 20) %>
           <%= render Ui::Pagy::Component.new(pagy:) %>
         <% end %>
 
