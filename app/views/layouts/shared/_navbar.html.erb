@@ -2,9 +2,11 @@
   <div class="navbar__inner wrapper">
     <%= link_to vite_svg_tag("images/logo.svg", class: "navbar__logo", alt: "JetRockets"), root_path, aria: { label: "JetRockets" } %>
     <ul class="navbar__menu" data-navbar-target="menu">
-      <li>
-        <%= link_to "UI elements", ui_path, class: "navbar__link #{"navbar__link-active" if current_page?(ui_path)}" %>
-      </li>
+      <% if Rails.env.development? %>
+        <li>
+          <%= link_to "Lookbook", lookbook_path, class: "navbar__link #{"navbar__link-active" if current_page?(lookbook_path)}" %>
+        </li>
+      <% end %>
       <li>
         <%= link_to "Privacy Policy", privacy_path, class: "navbar__link #{"navbar__link-active" if current_page?(privacy_path)}" %>
       </li>
