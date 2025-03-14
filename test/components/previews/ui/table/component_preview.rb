@@ -83,13 +83,13 @@ class Ui::Table::ComponentPreview < ViewComponent::Preview
 
   def size_options
     {
-      choices: %i[xs sm md lg],
+      choices: %i[xs sm md lg]
     }
   end
 
   def badge_variant_options
     {
-      choices: %i[green red],
+      choices: %i[green red]
     }
   end
 
@@ -102,7 +102,7 @@ class Ui::Table::ComponentPreview < ViewComponent::Preview
 
   def button_size_options
     {
-      choices: %i[xs sm md lg xl],
+      choices: %i[xs sm md lg xl]
     }
   end
 end

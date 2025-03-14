@@ -1,5 +1,3 @@
-Account.destroy_all
-
 100.times do |i|
   Account.create!(
     email: "user#{i + 1}@test.com",

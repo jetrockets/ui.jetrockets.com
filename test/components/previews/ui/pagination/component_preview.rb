@@ -40,13 +40,13 @@ class Ui::Pagination::ComponentPreview < ViewComponent::Preview
 
   def page_count_options
     {
-      choices: [5, 6]
+      choices: [ 5, 6 ]
     }
   end
 
   def active_page_options
     {
-      choices: [0, 1, 2, 3, 4]
+      choices: [ 0, 1, 2, 3, 4 ]
     }
   end
 end
