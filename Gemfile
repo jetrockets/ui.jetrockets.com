@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.3"
 
-gem "avo"
-
 gem "bootsnap", require: false
 
 gem "discard", "~> 1.2"
@@ -18,13 +16,14 @@ gem "gretel"
 gem "meta-tags"
 gem "mjml-rails"
 
-gem "pagy"
+gem "pagy", "~> 9.3.4"
 gem "pg"
 gem "propshaft"
 gem "puma"
 
 # attractor uses Sinatra for web interface, which requires rack < 3.0 as of 2023-12-05
 gem "rack", "~> 2.2"
+gem "bcrypt"
 gem "rodauth-rails"
 gem "rodauth-omniauth"
 

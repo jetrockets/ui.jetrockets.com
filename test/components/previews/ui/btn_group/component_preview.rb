@@ -9,9 +9,9 @@ class Ui::BtnGroup::ComponentPreview < ViewComponent::Preview
   # @param icon
 
   def default(content: "Button", button_count: 3, variant: :primary, size: :md, with_gap: false, outlined: true, href: nil, icon: nil)
-    render(Ui::BtnGroup::Component.new(with_gap: )) do |component|
+    render(Ui::BtnGroup::Component.new(with_gap:)) do |component|
       button_count.to_i.times do |i|
-        component.with_button(variant:, size:, outlined:, href: ).with_content(content).with_icon_content(icon)
+        component.with_button(variant:, size:, outlined:, href:).with_content(content).with_icon_content(icon)
       end
     end
   end
@@ -33,7 +33,7 @@ class Ui::BtnGroup::ComponentPreview < ViewComponent::Preview
 
   def button_count_options
     {
-      choices: [2, 3, 4, 5]
+      choices: [ 2, 3, 4, 5 ]
     }
   end
 end

@@ -19,7 +19,7 @@ class Ui::Card::ComponentPreview < ViewComponent::Preview
     button_content: "Button"
   )
     render(Ui::Card::Component.new) do |card|
-      card.with_header( title: header_title, align: header_align, bordered: header_bordered)
+      card.with_header(title: header_title, align: header_align, bordered: header_bordered)
 
       card.with_body do
         content_tag(:p, body_content)

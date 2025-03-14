@@ -72,10 +72,10 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/chevron-left.svg") %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
@@ -86,15 +86,15 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Btn::Component.new(circle: true, size: :xs).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :primary, circle: true, size: :sm).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :secondary, circle: true, size: :md).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("images/icons/arrow.svg") %>
-            <%= render Ui::Btn::Component.new(variant: :primary, outlined: true, circle: true, size: :xl).with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(circle: true, size: :xs).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, circle: true, size: :sm).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :secondary, circle: true, size: :md).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, outlined: true, circle: true, size: :xl).with_icon_content("images/icons/chevron-left.svg") %>
           </div>
 
           <div class="flex flex-wrap items-center gap-1">
-            <%= render Ui::Btn::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("images/icons/arrow.svg") %>
+            <%= render Ui::Btn::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("images/icons/chevron-left.svg") %>
           </div>
 
           <div class="space-y-2">
@@ -138,7 +138,7 @@
                 Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
               <% end %>
               <% component.with_footer(align: :right) do %>
-                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/arrow.svg") %>
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
               <% end %>
             <% end %>
           </div>
@@ -210,9 +210,14 @@
         <% end %>
 
         <%= accordion.with_item(title: "Icons", id: "icons", class: "flex items-center gap-4") do %>
-          <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-4" %>
-          <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-6" %>
-          <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-8 text-primary" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-6" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-8 text-primary" %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Pagy", id: "pagy") do %>
+          <% pagy = Pagy.new(count: 100, page: 1) %>
+          <%= render Ui::Pagy::Component.new(pagy:) %>
         <% end %>
 
         <%= accordion.with_item(title: "Popover", id: "popover") do %>
@@ -305,10 +310,10 @@
 
         <%= accordion.with_item(title: "Tabs", id: "tabs") do %>
           <%= render Ui::Tabs::Component.new do |tabs| %>
-            <% tabs.with_item(title: "Profile", href: ui_path, icon_path: "images/icons/alert.svg") %>
-            <% tabs.with_item(title: "Dashboard", href: ui_path, active: true, icon_path: "images/icons/alert.svg") %>
-            <% tabs.with_item(title: "Settings", href: ui_path, icon_path: "images/icons/alert.svg") %>
-            <% tabs.with_item(title: "Contacts", href: ui_path, icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Profile", href: "#", icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Dashboard", href: "#", active: true, icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Settings", href: "#", icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Contacts", href: "#", icon_path: "images/icons/alert.svg") %>
           <% end %>
         <% end %>
       <% end %>

@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <h1 class="mb-4 text-lg font-bold">Accounts</h1>
+
+  <%= render Ui::Table::Component.new(bordered: true, size: :md) do |table| %>
+    <% table.with_thead do |thead| %>
+      <% thead.with_tr do |tr| %>
+        <% tr.with_th { "Email" } %>
+        <% tr.with_th { "Status" } %>
+        <% tr.with_th { "Admin" } %>
+      <% end %>
+    <% end %>
+
+    <% table.with_tbody do |tbody| %>
+      <% accounts.each do |account| %>
+        <% tbody.with_tr do |tr| %>
+          <% tr.with_td { account.email } %>
+          <% tr.with_td { account.status } %>
+          <% tr.with_td { account.admin ? "Yes" : "No" } %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= render Ui::Pagy::Component.new(pagy:) %>
+</div>

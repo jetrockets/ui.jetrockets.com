@@ -11,13 +11,13 @@ class Ui::Badge::ComponentPreview < ViewComponent::Preview
 
   def variant_options
     {
-      choices: %i[default blue red green yellow],
+      choices: %i[default blue red green yellow]
     }
   end
 
   def size_options
     {
-      choices: %i[xs sm md lg],
+      choices: %i[xs sm md lg]
     }
   end
 end

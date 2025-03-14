@@ -29,6 +29,8 @@
   --color-secondary-900: oklch(0.21 0.034 264.665);
   --color-secondary-950: oklch(0.13 0.028 261.692);
 
+  --icon-arrow: url('/images/icons/chevron-left.svg');
+
   @keyframes fadeIn {
     from {
       opacity: 0;

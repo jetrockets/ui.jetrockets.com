@@ -9,7 +9,7 @@ class Ui::Tabs::ComponentPreview < ViewComponent::Preview
     render(Ui::Tabs::Component.new) do |tabs|
       item_count.to_i.times do |i|
         is_active = (i == active_index.to_i)
-        tabs.with_item(title:, href:, active: is_active, icon_path: )
+        tabs.with_item(title:, href:, active: is_active, icon_path:)
       end
     end
   end
@@ -18,13 +18,13 @@ class Ui::Tabs::ComponentPreview < ViewComponent::Preview
 
   def item_count_options
     {
-      choices: [3, 4]
+      choices: [ 3, 4 ]
     }
   end
 
   def active_index_options
     {
-      choices: [0, 1, 2, 3]
+      choices: [ 0, 1, 2, 3 ]
     }
   end
 end

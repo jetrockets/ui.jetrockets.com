@@ -1,5 +1,5 @@
 require "pagy/extras/overflow"
 
 Pagy::DEFAULT[:overflow] = :last_page
-Pagy::DEFAULT[:items] = 20
-Pagy::DEFAULT[:size] = [ 1, 1, 1, 1 ]
+Pagy::DEFAULT[:limit] = 20
+Pagy::DEFAULT[:size] = 4
