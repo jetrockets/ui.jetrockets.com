@@ -38,6 +38,10 @@
     @apply rounded-none;
   }
 
+  .pagination__link-disabled {
+    @apply bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none;
+  }
+
   /* Sizes */
 
   .pagination-xs .pagination__link {
