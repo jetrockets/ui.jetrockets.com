@@ -1,17 +1,19 @@
 class Ui::Pagination::ComponentPreview < ViewComponent::Preview
   # @param href
   # @param use_arrows toggle
+  # @param disabled_prev toggle
+  # @param disabled_next toggle
   # @param arrow_icon_path
   # @param page_count select :page_count_options
   # @param active_page select :active_page_options
   # @param size select :size_options
 
-  def default(href: "#", use_arrows: true, arrow_icon_path: "images/icons/arrow.svg", page_count: 5, active_page: 2, size: :md)
+  def default(href: "#", use_arrows: true, arrow_icon_path: "images/icons/arrow.svg", page_count: 5, active_page: 2, size: :md, disabled_prev: false, disabled_next: false)
     render(Ui::Pagination::Component.new(size:)) do |pagination|
       if use_arrows
-        pagination.with_item(href:, icon_path: arrow_icon_path, direction: :left)
+        pagination.with_item(href:, icon_path: arrow_icon_path, direction: :left, disabled: disabled_prev)
       else
-        pagination.with_item(title: "Previous")
+        pagination.with_item(title: "Previous", disabled: disabled_prev)
       end
 
       page_count.to_i.times do |i|
@@ -21,9 +23,9 @@ class Ui::Pagination::ComponentPreview < ViewComponent::Preview
       end
 
       if use_arrows
-        pagination.with_item(href:, icon_path: arrow_icon_path, direction: :right)
+        pagination.with_item(href:, icon_path: arrow_icon_path, direction: :right, disabled: disabled_next)
       else
-        pagination.with_item(title: "Next")
+        pagination.with_item(title: "Next", disabled: disabled_next)
       end
     end
   end
