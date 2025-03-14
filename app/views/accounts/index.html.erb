@@ -22,9 +22,7 @@
 
 <% if @pagy.pages > 1 %>
   <%= render Ui::Pagination::Component.new(size: :md, class: "mt-4") do |pagination| %>
-    <% if @pagy.prev %>
-      <% pagination.with_item(icon_path: "images/icons/arrow.svg", href: url_for(page: @pagy.prev), direction: :left) %>
-    <% end %>
+    <% pagination.with_item(icon_path: "images/icons/arrow.svg", href: @pagy.prev ? url_for(page: @pagy.prev) : "#", direction: :left, disabled: !@pagy.prev) %>
 
     <% pagination.with_item(title: "1", href: url_for(page: 1), active: @pagy.page == 1) %>
 
@@ -48,8 +46,6 @@
       <% pagination.with_item(title: @pagy.pages.to_s, href: url_for(page: @pagy.pages), active: @pagy.page == @pagy.pages) %>
     <% end %>
 
-    <% if @pagy.next %>
-      <% pagination.with_item(icon_path: "images/icons/arrow.svg", href: url_for(page: @pagy.next), direction: :right) %>
-    <% end %>
+    <% pagination.with_item(icon_path: "images/icons/arrow.svg", href: @pagy.next ? url_for(page: @pagy.next) : "#", direction: :right, disabled: !@pagy.next) %>
   <% end %>
 <% end %>
