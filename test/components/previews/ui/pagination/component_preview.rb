@@ -1,4 +1,4 @@
-class Ui::Pagination::ComponentPreview < ViewComponent::Preview
+class Ui::Pagy::ComponentPreview < ViewComponent::Preview
   # @param href
   # @param use_arrows toggle
   # @param disabled_prev toggle
@@ -9,7 +9,7 @@ class Ui::Pagination::ComponentPreview < ViewComponent::Preview
   # @param size select :size_options
 
   def default(href: "#", use_arrows: true, arrow_icon_path: "images/icons/arrow.svg", page_count: 5, active_page: 2, size: :md, disabled_prev: false, disabled_next: false)
-    render(Ui::Pagination::Component.new(size:)) do |pagination|
+    render(Ui::Pagy::Component.new(size:)) do |pagination|
       if use_arrows
         pagination.with_item(href:, icon_path: arrow_icon_path, direction: :left, disabled: disabled_prev)
       else

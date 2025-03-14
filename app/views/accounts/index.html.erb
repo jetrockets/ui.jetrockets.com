@@ -1,51 +1,25 @@
-<h1 class="text-lg font-bold mb-4">Accounts</h1>
+<div class="wrapper">
+  <h1 class="mb-4 text-lg font-bold">Accounts</h1>
 
-<%= render Ui::Table::Component.new(bordered: true, size: :md) do |table| %>
-  <% table.with_thead do |thead| %>
-    <% thead.with_tr do |tr| %>
-      <% tr.with_th { "Email" } %>
-      <% tr.with_th { "Status" } %>
-      <% tr.with_th { "Admin" } %>
-    <% end %>
-  <% end %>
-
-  <% table.with_tbody do |tbody| %>
-    <% @accounts.each do |account| %>
-      <% tbody.with_tr do |tr| %>
-        <% tr.with_td { account.email } %>
-        <% tr.with_td { account.status } %>
-        <% tr.with_td { account.admin ? 'Yes' : 'No' } %>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<% if @pagy.pages > 1 %>
-  <%= render Ui::Pagination::Component.new(size: :md, class: "mt-4") do |pagination| %>
-    <% pagination.with_item(icon_path: "images/icons/arrow.svg", href: @pagy.prev ? url_for(page: @pagy.prev) : "#", direction: :left, disabled: !@pagy.prev) %>
-
-    <% pagination.with_item(title: "1", href: url_for(page: 1), active: @pagy.page == 1) %>
-
-    <% if @pagy.page > 3 %>
-      <% ellipsis_page = (@pagy.page - 2) / 2 %>
-      <% pagination.with_item(title: "...", href: url_for(page: ellipsis_page)) %>
-    <% end %>
-
-    <% (@pagy.page - 2..@pagy.page + 2).each do |num| %>
-      <% if num > 1 && num < @pagy.pages %>
-        <% pagination.with_item(title: num.to_s, href: url_for(page: num), active: @pagy.page == num) %>
+  <%= render Ui::Table::Component.new(bordered: true, size: :md) do |table| %>
+    <% table.with_thead do |thead| %>
+      <% thead.with_tr do |tr| %>
+        <% tr.with_th { "Email" } %>
+        <% tr.with_th { "Status" } %>
+        <% tr.with_th { "Admin" } %>
       <% end %>
     <% end %>
 
-    <% if @pagy.page < @pagy.pages - 2 %>
-      <% ellipsis_page = (@pagy.page + 2 + @pagy.pages) / 2 %>
-      <% pagination.with_item(title: "...", href: url_for(page: ellipsis_page)) %>
+    <% table.with_tbody do |tbody| %>
+      <% accounts.each do |account| %>
+        <% tbody.with_tr do |tr| %>
+          <% tr.with_td { account.email } %>
+          <% tr.with_td { account.status } %>
+          <% tr.with_td { account.admin ? "Yes" : "No" } %>
+        <% end %>
+      <% end %>
     <% end %>
-
-    <% if @pagy.pages > 1 %>
-      <% pagination.with_item(title: @pagy.pages.to_s, href: url_for(page: @pagy.pages), active: @pagy.page == @pagy.pages) %>
-    <% end %>
-
-    <% pagination.with_item(icon_path: "images/icons/arrow.svg", href: @pagy.next ? url_for(page: @pagy.next) : "#", direction: :right, disabled: !@pagy.next) %>
   <% end %>
-<% end %>
+
+  <%= render Ui::Pagy::Component.new(pagy:) %>
+</div>

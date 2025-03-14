@@ -217,7 +217,7 @@
 
         <%= accordion.with_item(title: "Pagination", id: "pagination") do %>
           <div class="flex flex-col gap-4">
-            <%= render Ui::Pagination::Component.new(size: :xs) do |pagination| %>
+            <%= render Ui::Pagy::Component.new(size: :xs) do |pagination| %>
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left, disabled: true) %>
               <% pagination.with_item(title: "1", active: true) %>
               <% pagination.with_item(title: "2") %>
@@ -227,7 +227,7 @@
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
             <% end %>
 
-            <%= render Ui::Pagination::Component.new(size: :sm) do |pagination| %>
+            <%= render Ui::Pagy::Component.new(size: :sm) do |pagination| %>
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
               <% pagination.with_item(title: "1") %>
               <% pagination.with_item(title: "2", active: true) %>
@@ -237,7 +237,7 @@
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
             <% end %>
 
-            <%= render Ui::Pagination::Component.new(size: :md) do |pagination| %>
+            <%= render Ui::Pagy::Component.new(size: :md) do |pagination| %>
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
               <% pagination.with_item(title: "1") %>
               <% pagination.with_item(title: "2") %>
@@ -247,7 +247,7 @@
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
             <% end %>
 
-            <%= render Ui::Pagination::Component.new(size: :lg) do |pagination| %>
+            <%= render Ui::Pagy::Component.new(size: :lg) do |pagination| %>
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :left) %>
               <% pagination.with_item(title: "1") %>
               <% pagination.with_item(title: "2") %>
@@ -257,7 +257,7 @@
               <% pagination.with_item(icon_path: "images/icons/arrow.svg", direction: :right) %>
             <% end %>
 
-            <%= render Ui::Pagination::Component.new do |pagination| %>
+            <%= render Ui::Pagy::Component.new do |pagination| %>
               <% pagination.with_item(title: "Previous") %>
               <% pagination.with_item(title: "1") %>
               <% pagination.with_item(title: "2") %>

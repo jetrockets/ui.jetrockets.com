@@ -1,0 +1,33 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .pagy {
+    @apply inline-flex;
+    a:not(.gap) {
+      @apply relative flex items-center justify-center w-8 h-8 -ml-px text-gray-600 border border-gray-200 hover:bg-gray-100 hover:border-gray-200;
+      @apply first:rounded-l-md last:rounded-r-md last:text-transparent first:text-transparent;
+
+
+      &:first-child::before, &:last-child::before {
+        @apply absolute w-4 h-4 bg-center bg-no-repeat content-[''] bg-(image:--icon-arrow);
+      }
+
+      &:last-child::before {
+        transform: rotate(180deg);
+      }
+
+      &:not([href]) { /* disabled links */
+        @apply relative inline-flex items-center h-8 px-2 cursor-not-allowed hover:bg-none;
+      }
+      &.current {
+        @apply relative flex items-center justify-center w-8 h-8 font-medium text-white cursor-default bg-primary border-primary;
+      }
+    }
+    label {
+      @apply inline-block whitespace-nowrap bg-gray-200 px-3 py-0.5;
+      input {
+        @apply bg-gray-100 border;
+      }
+    }
+  }
+}

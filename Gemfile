@@ -16,7 +16,7 @@ gem "gretel"
 gem "meta-tags"
 gem "mjml-rails"
 
-gem "pagy"
+gem "pagy", "~> 9.3.4"
 gem "pg"
 gem "propshaft"
 gem "puma"

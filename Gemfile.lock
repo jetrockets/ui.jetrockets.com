@@ -224,7 +224,7 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    pagy (6.4.3)
+    pagy (9.3.4)
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
@@ -437,7 +437,7 @@ DEPENDENCIES
   lookbook
   meta-tags
   mjml-rails
-  pagy
+  pagy (~> 9.3.4)
   pg
   propshaft
   pry
