@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   def index
-    @pagy, @accounts = pagy(Account.all, items: 10)
+    @pagy, @accounts = pagy(Account.all, limit: 20)
 
     render locals: {
       pagy: @pagy,

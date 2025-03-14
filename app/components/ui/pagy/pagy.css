@@ -4,9 +4,12 @@
   .pagy {
     @apply inline-flex;
     a:not(.gap) {
-      @apply relative flex items-center justify-center w-8 h-8 -ml-px text-gray-600 border border-gray-200 hover:bg-gray-100 hover:border-gray-200;
+      @apply relative flex items-center justify-center w-8 h-8 text-gray-600 border border-gray-200 hover:bg-gray-100 hover:border-gray-200;
       @apply first:rounded-l-md last:rounded-r-md last:text-transparent first:text-transparent;
 
+      &:not(:last-child) {
+        @apply border-r-0;
+      }
 
       &:first-child::before, &:last-child::before {
         @apply absolute w-4 h-4 bg-center bg-no-repeat content-[''] bg-(image:--icon-arrow);
@@ -20,7 +23,7 @@
         @apply relative inline-flex items-center h-8 px-2 cursor-not-allowed hover:bg-none;
       }
       &.current {
-        @apply relative flex items-center justify-center w-8 h-8 font-medium text-white cursor-default bg-primary border-primary;
+        @apply relative flex items-center justify-center w-8 h-8 font-medium text-white cursor-default bg-primary border-primary z-10;
       }
     }
     label {

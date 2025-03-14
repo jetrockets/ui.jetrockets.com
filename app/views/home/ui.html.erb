@@ -215,7 +215,7 @@
           <%= render Ui::Icon::Component.new icon_path: "images/icons/arrow.svg", class: "size-8 text-primary" %>
         <% end %>
 
-        <%= accordion.with_item(title: "Pagination", id: "pagination") do %>
+        <%= accordion.with_item(title: "Pagy", id: "pagy") do %>
           <% pagy, accounts = pagy(Account.all, items: 10) %>
           <%= render Ui::Pagy::Component.new(pagy:) %>
         <% end %>
