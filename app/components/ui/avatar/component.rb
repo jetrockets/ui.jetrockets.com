@@ -23,7 +23,7 @@ class Ui::Avatar::Component < ApplicationComponent
     if icon?
       helpers.vite_svg_tag(icon, class: icon_classes)
     elsif @name.present?
-      initials
+      content_tag(:span, initials, class: name_classes)
     end
   end
 
@@ -46,6 +46,16 @@ class Ui::Avatar::Component < ApplicationComponent
     class_names(
       "avatar__icon",
       "avatar__icon-#{@size}"
+    )
+  end
+
+  def name_classes
+    class_names(
+      "text-xs": @size == :xs,
+      "text-sm": @size == :sm,
+      "text-base": @size == :md,
+      "text-lg": @size == :lg,
+      "text-xl": @size == :xl
     )
   end
 end
