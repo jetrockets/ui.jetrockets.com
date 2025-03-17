@@ -21,13 +21,13 @@ class Ui::Breadcrumb::ComponentPreview < ViewComponent::Preview
 
   def item_count_options
     {
-      choices: [3, 4]
+      choices: [ 3, 4 ]
     }
   end
 
   def active_index_options
     {
-      choices: [0, 1, 2]
+      choices: [ 0, 1, 2 ]
     }
   end
 end
