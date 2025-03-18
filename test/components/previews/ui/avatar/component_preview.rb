@@ -1,17 +1,10 @@
 class Ui::Avatar::ComponentPreview < ViewComponent::Preview
-  # @param name text
-  # @param icon_path
+  # @param full_name text
   # @param size select :size_options
-  # @param rounded toggle
-  # @param circle toggle
-  # @param bordered toggle
+  # @param variant select :variant_options
 
-  def default(size: :md, name: "John Doe", icon_path: "images/icons/user.svg", rounded: false, circle: true, bordered: false)
-    render(Ui::Avatar::Component.new(size:, name:, rounded:, circle:, bordered:)) do |avatar|
-      if icon_path
-        avatar.with_icon_content(icon_path)
-      end
-    end
+  def default(size: :md, full_name: "John Doe", variant: :circle)
+    render(Ui::Avatar::Component.new(size:, full_name:, variant:))
   end
 
   private
@@ -19,6 +12,12 @@ class Ui::Avatar::ComponentPreview < ViewComponent::Preview
   def size_options
     {
       choices: %i[xs sm md lg xl]
+    }
+  end
+
+  def variant_options
+    {
+      choices: %i[rounded circle]
     }
   end
 end

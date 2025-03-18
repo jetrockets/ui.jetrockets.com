@@ -2,7 +2,7 @@
 
 @layer components {
   .avatar {
-    @apply inline-flex items-center justify-center bg-gray-200 text-gray-400;
+    @apply inline-flex items-center justify-center text-gray-400 bg-gray-200;
     @apply overflow-hidden;
   }
 
@@ -12,10 +12,6 @@
 
   .avatar-circle {
     @apply rounded-full;
-  }
-
-  .avatar-bordered {
-    @apply border-2 border-gray-300;
   }
 
   .avatar__icon {

@@ -43,37 +43,19 @@
 
         <%= accordion.with_item(title: "Avatars", id: "avatars", class: "space-y-4") do %>
           <div class="flex flex-wrap items-center gap-2">
-            <%= render Ui::Avatar::Component.new(size: :xs).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :sm).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :md).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :lg).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :xl).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xs) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :sm) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :md) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :lg) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xl) %>
           </div>
 
           <div class="flex flex-wrap items-center gap-2">
-            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :xs, circle: true) %>
-            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :sm, circle: true) %>
-            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :md, circle: true) %>
-            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :lg, circle: true) %>
-            <%= render Ui::Avatar::Component.new(name: "John Doe", size: :xl, circle: true) %>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2">
-            <%= render Ui::Avatar::Component.new(size: :xs, circle: true).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :sm, circle: true).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :md, circle: true).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :lg, circle: true).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :xl, circle: true).with_icon_content("images/icons/user.svg") %>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2">
-            <%= render Ui::Avatar::Component.new(size: :md, rounded: true).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :md, circle: true).with_icon_content("images/icons/user.svg") %>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2">
-            <%= render Ui::Avatar::Component.new(size: :lg, rounded: true, bordered: true).with_icon_content("images/icons/user.svg") %>
-            <%= render Ui::Avatar::Component.new(size: :lg, circle: true, bordered: true).with_icon_content("images/icons/user.svg") %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xs, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :sm, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :md, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :lg, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xl, variant: :rounded) %>
           </div>
         <% end %>
 
