@@ -4,7 +4,7 @@ end
 
 # Issue list
 crumb :ui do
-  link "UI elementes", ui_path
+  link "UI elements", ui_path
   parent :root
 end
 
