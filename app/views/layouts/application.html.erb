@@ -27,7 +27,7 @@
     <%= render partial: "layouts/shared/navbar" %>
 
     <main class="<%= body_classes %>">
-      <%= breadcrumbs pretext: 'You are here: ', separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "breadcrumbs wrapper" %>
+      <%= breadcrumbs separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "breadcrumbs wrapper" %>
 
       <%= yield %>
     </main>
