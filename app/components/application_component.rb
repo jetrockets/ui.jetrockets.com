@@ -7,6 +7,10 @@ class ApplicationComponent < ViewComponent::Base
   end
 
   def call
-    @cont.html_safe
+    if @cont
+      @cont.html_safe
+    else
+      @options
+    end
   end
 end
