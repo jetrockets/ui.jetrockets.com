@@ -10,12 +10,14 @@ class Ui::Typography::ComponentPreview < ViewComponent::Preview
 
       <p class="p">Text</p>
 
+      <h6 class="h6">Unordered list</h6>
       <ul class="ul">
         <li class="li">Item 1</li>
         <li class="li">Item 2</li>
         <li class="li">Item 3</li>
       </ul>
 
+      <h6 class="h6">Ordered list</h6>
       <ol class="ol">
         <li class="li">Item 1</li>
         <li class="li">Item 2</li>
