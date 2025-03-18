@@ -1,0 +1,41 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .avatar {
+    @apply inline-flex items-center justify-center text-gray-400 bg-gray-200;
+    @apply overflow-hidden;
+  }
+
+  .avatar-rounded {
+    @apply rounded-lg;
+  }
+
+  .avatar-circle {
+    @apply rounded-full;
+  }
+
+  .avatar__icon {
+    @apply w-full h-full p-1.5;
+  }
+
+  /* Sizes */
+  .avatar-xs {
+    @apply w-6 h-6;
+  }
+
+  .avatar-sm {
+    @apply w-8 h-8;
+  }
+
+  .avatar-md {
+    @apply w-10 h-10;
+  }
+
+  .avatar-lg {
+    @apply w-12 h-12;
+  }
+
+  .avatar-xl {
+    @apply w-14 h-14;
+  }
+}
