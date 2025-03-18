@@ -5,9 +5,9 @@ class Ui::Avatar::Component < ApplicationComponent
   VARIANTS = %i[rounded circle]
   DEFAULT_VARIANT = :circle
 
-  def initialize(size: DEFAULT_SIZE, name: nil, variant: DEFAULT_VARIANT, **options)
+  def initialize(size: DEFAULT_SIZE, full_name: nil, variant: DEFAULT_VARIANT, **options)
     @size = size
-    @name = name
+    @full_name = full_name
     @variant = variant
     @options = options
   end
@@ -19,15 +19,15 @@ class Ui::Avatar::Component < ApplicationComponent
   private
 
   def icon_content
-    if @name.present?
+    if @full_name.present?
       content_tag(:span, initials, class: name_classes)
     else
-      helpers.vite_svg_tag("images/icons/user.svg", class: icon_classes)
+      helpers.vite_svg_tag("images/icons/user.svg", class: "avatar__icon")
     end
   end
 
   def initials
-    @name.split.map { |word| word[0] }.join.upcase[0..1]
+    @full_name.split.map { |word| word[0] }.join.upcase[0..1]
   end
 
   def avatar_classes
@@ -37,13 +37,6 @@ class Ui::Avatar::Component < ApplicationComponent
       "avatar-#{@size}",
       "avatar-rounded": roudned?,
       "avatar-circle": circle?
-    )
-  end
-
-  def icon_classes
-    class_names(
-      "avatar__icon",
-      "avatar__icon-#{@size}"
     )
   end
 

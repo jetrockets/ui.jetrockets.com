@@ -43,6 +43,14 @@
 
         <%= accordion.with_item(title: "Avatars", id: "avatars", class: "space-y-4") do %>
           <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(size: :xs) %>
+            <%= render Ui::Avatar::Component.new(size: :sm) %>
+            <%= render Ui::Avatar::Component.new(size: :md) %>
+            <%= render Ui::Avatar::Component.new(size: :lg) %>
+            <%= render Ui::Avatar::Component.new(size: :xl) %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
             <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xs) %>
             <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :sm) %>
             <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :md) %>
