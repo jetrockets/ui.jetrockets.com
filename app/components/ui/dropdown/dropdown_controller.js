@@ -1,11 +1,12 @@
 import { Controller } from '@hotwired/stimulus'
 import { stimulus } from '~/init'
+import { Dropdown } from 'flowbite'
 
 export default class DropdownController extends Controller {
   static targets = ['trigger', 'menu', 'autofocus']
 
   connect () {
-    this.dropdown = new window.Dropdown(this.menuTarget, this.triggerTarget, this.#options())
+    this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
   }
 
   disconnect () {
