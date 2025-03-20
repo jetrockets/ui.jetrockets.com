@@ -1,5 +1,5 @@
-class Ui::GretelBreadcrumb::ComponentPreview < ViewComponent::Preview
+class Ui::Breadcrumb::ComponentPreview < ViewComponent::Preview
   def with_ui_page
-    render(Ui::GretelBreadcrumb::Component.new(:ui))
+    render(Ui::Breadcrumb::Component.new(:ui))
   end
 end

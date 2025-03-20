@@ -6,7 +6,7 @@
   )
 %>
 
-<%= render Ui::GretelBreadcrumb::Component.new(:ui) %>
+<%= render Ui::Breadcrumb::Component.new(:ui) %>
 
 <article class="space-y-8 wrapper">
   <section class="wysiwyg">
@@ -75,21 +75,6 @@
           <%= render Ui::Badge::Component.new title: "Red SM", variant: :red, size: :sm %>
           <%= render Ui::Badge::Component.new title: "Green MD", variant: :green, size: :md %>
           <%= render Ui::Badge::Component.new title: "Yellow LG", variant: :yellow, size: :lg %>
-        <% end %>
-
-        <%= accordion.with_item(title: "Breadcrumb", id: "breadcrumb") do %>
-          <div class="flex flex-col gap-4">
-            <%= render Ui::Breadcrumb::Component.new(bordered: false) do |breadcrumb| %>
-              <% breadcrumb.with_item(title: "Home", href: "#", separator: "images/icons/arrow.svg") %>
-              <% breadcrumb.with_item(title: "Projects", href: "#", separator: "images/icons/arrow.svg") %>
-              <% breadcrumb.with_item(title: "Dashboard", href: "#", active: true ) %>
-            <% end %>
-            <%= render Ui::Breadcrumb::Component.new(bordered: true) do |breadcrumb| %>
-              <% breadcrumb.with_item(title: "Home", href: "#", icon_path: "images/icons/alert.svg", separator: "images/icons/arrow.svg") %>
-              <% breadcrumb.with_item(title: "Projects", href: "#", separator: "images/icons/arrow.svg") %>
-              <% breadcrumb.with_item(title: "Dashboard", href: "#", active: true ) %>
-            <% end %>
-          </div>
         <% end %>
 
         <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
