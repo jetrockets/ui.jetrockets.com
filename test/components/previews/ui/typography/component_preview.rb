@@ -25,6 +25,8 @@ class Ui::Typography::ComponentPreview < ViewComponent::Preview
       </ol>
     HTML
 
-    render(ApplicationComponent.new(cont: content))
+    render ApplicationComponent.new do
+      content.html_safe
+    end
   end
 end

@@ -1,16 +1,13 @@
 class ApplicationComponent < ViewComponent::Base
   include Turbo::FramesHelper
 
-  def initialize(cont: nil, **options)
-    @cont = cont
+  def initialize(tag: nil, classes: nil, **options)
+    @tag = tag || :div
+    @classes = classes
     @options = options
   end
 
   def call
-    if @cont
-      @cont.html_safe
-    else
-      @options
-    end
+    content_tag(@tag, content, class: @classes, **@options) if @tag
   end
 end
