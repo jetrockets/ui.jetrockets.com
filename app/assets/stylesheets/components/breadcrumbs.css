@@ -1,6 +1,10 @@
 @layer components {
   .breadcrumbs {
     @apply flex mb-3.5 -mt-2 md:-mt-4 text-sm;
+
+    .current {
+      @apply text-gray-600;
+    }
   }
 
   .breadcrumbs__separator {
@@ -8,10 +12,6 @@
   }
 
   .breadcrumb__tab_current {
-    @apply text-gray-600;
-  }
-
-  .current {
     @apply text-gray-600;
   }
 }
