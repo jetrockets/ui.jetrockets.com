@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
+import Dropdown from 'flowbite/lib/esm/components/dropdown'
 import { stimulus } from '~/init'
-import { Dropdown } from 'flowbite'
 
 export default class DropdownController extends Controller {
   static targets = ['trigger', 'menu', 'autofocus']
