@@ -27,6 +27,7 @@
     <%= render partial: "layouts/shared/navbar" %>
 
     <main class="<%= body_classes %>">
+      <%= breadcrumbs(separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "breadcrumbs wrapper", display_single_fragment: true) %>
       <%= yield %>
     </main>
 
