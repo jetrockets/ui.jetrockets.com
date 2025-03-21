@@ -1,4 +1,4 @@
-class Ui::Dropdown::ListComponent < ApplicationComponent
+class Ui::Dropdown::MenuComponent < ApplicationComponent
   renders_one :title
   renders_many :elements, types: {
     link: Ui::Dropdown::LinkComponent,

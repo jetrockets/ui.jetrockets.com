@@ -1,6 +1,6 @@
 class Ui::Dropdown::Component < ApplicationComponent
   renders_one :trigger, Ui::Dropdown::TriggerComponent
-  renders_many :lists, Ui::Dropdown::ListComponent
+  renders_one :menu, Ui::Dropdown::MenuComponent
 
   def initialize(**options)
     super
@@ -12,9 +12,7 @@ class Ui::Dropdown::Component < ApplicationComponent
       <%= trigger %>
 
       <div class="dropdown" data-dropdown-target="menu">
-        <% lists.each do |list| %>
-          <%= list %>
-        <% end %>
+        <%= menu %>
       </div>
     </div>
   ERB
