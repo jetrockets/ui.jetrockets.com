@@ -18,7 +18,7 @@ export default class DropdownController extends Controller {
   }
 
   #options () {
-    const { placement, triggerType, offsetSkidding, offsetDistance, delay, ignoreClickOutsideClass } = this.element.dataset
+    const [placement, triggerType, offsetSkidding, offsetDistance, delay, ignoreClickOutsideClass] = JSON.parse(this.triggerTarget.dataset.dropdownAttributes)
 
     return {
       placement: placement || 'bottom',

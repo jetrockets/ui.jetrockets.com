@@ -1,7 +1,8 @@
 class Ui::Dropdown::TriggerComponent < ApplicationComponent
-  def initialize(**options)
+  def initialize(placement: nil, triggerType: nil, offsetSkidding: nil, offsetDistance: nil, delay: nil, ignoreClickOutsideClass: nil, **options)
     @options = options
     @options[:data] ||= {}
+    @options[:data][:dropdown_attributes] = placement, triggerType, offsetSkidding, offsetDistance, delay, ignoreClickOutsideClass
     @options[:data][:dropdown_target] = "trigger"
   end
 
