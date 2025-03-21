@@ -7,7 +7,15 @@
     @apply py-2 text-sm text-gray-700
   }
 
+  .dropdown__title {
+    @apply px-2 py-3 text-lg font-bold
+  }
+
   .dropdown__item {
     @apply block px-4 py-2 hover:bg-gray-100
+  }
+
+  .dropdown__divider {
+    @apply pb-2 mb-2 border-gray-200 border-b-1
   }
 }

@@ -1,13 +1,9 @@
 class Ui::Dropdown::ItemComponent < ApplicationComponent
-  def initialize(title: nil, href: nil, **options)
-    @title = title
-    @href = href
+  def initialize(**options)
     @options = options
   end
 
-  erb_template <<~ERB
-    <li class="dropdown__item">
-      <%= link_to @title, @href, **@options %>
-    </li>
-  ERB
+  def call
+    content_tag :li, content, class: "dropdown__item", **@options
+  end
 end
