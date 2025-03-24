@@ -4,10 +4,12 @@ class Ui::Accordion::ItemComponent < ApplicationComponent
     @title = title
     @opened = opened
     @options = options
+    @options[:data] ||= {}
+    @options[:data][:accordion_target] = "item"
   end
 
   erb_template <<~ERB
-    <button type="button" class="accordion__header" data-accordion-target="#accordion_<%= @id %>" aria-expanded="<%= true if @opened %>">
+    <button type="button" class="accordion__header" data-accordion-target="trigger" data-accordion-id="<%= @id %>" aria-expanded="<%= true if @opened %>">
       <span>
         <%= @title %>
       </span>
