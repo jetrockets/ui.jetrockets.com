@@ -20,7 +20,7 @@ class Ui::Dropdown::Component < ApplicationComponent
   private
 
   def attrs
-    merged_data = ({ controller: "dropdown" }).merge(@options[:data] || {})
-    @options.merge(data: merged_data)
+    data_attributes = ({ controller: "dropdown" }).deep_merge(@options.fetch(:data, {}))
+    @options.merge(data: data_attributes)
   end
 end
