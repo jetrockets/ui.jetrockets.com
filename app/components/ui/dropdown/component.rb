@@ -8,12 +8,19 @@ class Ui::Dropdown::Component < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <div data-controller="dropdown" **@options>
+    <%= content_tag :div, **attrs do %>
       <%= trigger %>
 
       <div class="dropdown" data-dropdown-target="menu">
         <%= menu %>
       </div>
-    </div>
+    <% end %>
   ERB
+
+  private
+
+  def attrs
+    merged_data = ({ controller: "dropdown" }).merge(@options[:data] || {})
+    @options.merge(data: merged_data)
+  end
 end

@@ -7,6 +7,7 @@ export default class DropdownController extends Controller {
 
   connect () {
     this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
+    console.log(this.element)
   }
 
   disconnect () {
@@ -18,15 +19,15 @@ export default class DropdownController extends Controller {
   }
 
   #options () {
-    const { placement, triggerType, offsetSkidding, offsetDistance, delay, ignoreClickOutsideClass } = this.element.dataset
+    const { placement, triggertype, offsetskidding, offsetdistance, delay, ignoreclickoutsideclass } = this.element.dataset
 
     return {
       placement: placement || 'bottom',
-      triggerType: triggerType || 'click',
-      offsetSkidding: parseInt(offsetSkidding) || 0,
-      offsetDistance: parseInt(offsetDistance) || 5,
+      triggerType: triggertype || 'click',
+      offsetSkidding: parseInt(offsetskidding) || 0,
+      offsetDistance: parseInt(offsetdistance) || 5,
       delay: parseInt(delay) || 300,
-      ignoreClickOutsideClass: ignoreClickOutsideClass || false,
+      ignoreClickOutsideClass: ignoreclickoutsideclass || false,
       onShow: () => {
         if (this.hasAutofocusTarget) {
           this.autofocusTarget.focus()
