@@ -3,10 +3,10 @@ import Accordion from 'flowbite/lib/esm/components/accordion'
 import { stimulus } from '~/init'
 
 export default class AccordionController extends Controller {
-  static targets = ['accordion', 'trigger', 'item', 'autofocus']
+  static targets = ['trigger', 'item', 'autofocus']
 
   connect () {
-    this.accordion = new Accordion(this.accordionTarget, this.accordionItems(), this.#options())
+    this.accordion = new Accordion(this.element, this.accordionItems(), this.#options())
   }
 
   disconnect () {
@@ -29,10 +29,11 @@ export default class AccordionController extends Controller {
   }
 
   #options () {
-    const { activeClasses, alwaysOpen } = this.element.dataset
+    const { activeClasses, inactiveClasses, alwaysOpen } = this.element.dataset
 
     return {
       activeClasses: activeClasses || 'bg-gray-50',
+      inactiveClasses: inactiveClasses || 'bg-gray-50',
       alwaysOpen: alwaysOpen || false,
       onOpen: () => {
         if (this.hasAutofocusTarget) {

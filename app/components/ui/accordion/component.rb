@@ -8,7 +8,7 @@ class Ui::Accordion::Component < ApplicationComponent
 
   erb_template <<~ERB
     <div data-controller="accordion" **@options>
-      <div class="accordion" data-accordion="collapse" data-accordion-target="accordion">
+      <div class="accordion" data-accordion="collapse">
         <% items.each do |item| %>
           <%= item %>
         <% end %>
