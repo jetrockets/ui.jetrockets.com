@@ -7,7 +7,7 @@ module.exports = {
     './app/lib/form_builders/**/*.rb'
   ],
   plugins: [
-    require('@tailwindcss/forms')(),
-    require('flowbite/plugin')
+    require('@tailwindcss/forms')()
+    // require('flowbite/plugin')
   ]
 }

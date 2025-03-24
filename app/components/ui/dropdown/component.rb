@@ -1,6 +1,6 @@
 class Ui::Dropdown::Component < ApplicationComponent
   renders_one :trigger, Ui::Dropdown::TriggerComponent
-  renders_many :links, Ui::Dropdown::LinksComponent
+  renders_one :menu, Ui::Dropdown::MenuComponent
 
   def initialize(**options)
     super
@@ -8,16 +8,19 @@ class Ui::Dropdown::Component < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <div data-controller="dropdown" **@options>
+    <%= content_tag :div, **attrs do %>
       <%= trigger %>
 
       <div class="dropdown" data-dropdown-target="menu">
-        <ul class="dropdown__wrapper">
-          <% links.each do |link| %>
-            <%= link %>
-          <% end %>
-        </ul>
+        <%= menu %>
       </div>
-    </div>
+    <% end %>
   ERB
+
+  private
+
+  def attrs
+    data_attributes = ({ controller: "dropdown" }).deep_merge(@options.fetch(:data, {}))
+    @options.merge(data: data_attributes)
+  end
 end
