@@ -9,8 +9,8 @@
 
 <article class="space-y-8 wrapper">
 
-  <%= render Ui::Dropdown::Component.new do |dropdown| %>
-    <%= dropdown.with_trigger(placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10, class: "btn btn-primary btn-iconed") do %>
+  <%= render Ui::Dropdown::Component.new(placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10, class: "mt-40 pt-20") do |dropdown| %>
+    <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
       Dropdown
       <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
@@ -202,8 +202,8 @@
         <% end %>
 
         <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
-          <%= render Ui::Dropdown::Component.new do |dropdown| %>
-            <%= dropdown.with_trigger(placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10, class: "btn btn-primary btn-iconed") do %>
+          <%= render Ui::Dropdown::Component.new(placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10) do |dropdown| %>
+            <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
               Dropdown
               <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
