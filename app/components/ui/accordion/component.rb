@@ -7,12 +7,19 @@ class Ui::Accordion::Component < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <div data-controller="accordion" **@options>
+    <%= content_tag :div, **attrs do %>
       <div class="accordion" data-accordion="collapse">
         <% items.each do |item| %>
           <%= item %>
         <% end %>
       </div>
-    </div
+    <% end %>
   ERB
+
+  private
+
+  def attrs
+    data_attributes = ({ controller: "accordion" }).deep_merge(@options.fetch(:data, {}))
+    @options.merge(data: data_attributes)
+  end
 end

@@ -29,12 +29,13 @@ export default class AccordionController extends Controller {
   }
 
   #options () {
-    const { activeClasses, inactiveClasses, alwaysOpen } = this.element.dataset
+    const { activeclasses, inactiveclasses, alwaysopen } = this.element.dataset
+    console.log(this.element.dataset)
 
     return {
-      activeClasses: activeClasses || 'bg-gray-50',
-      inactiveClasses: inactiveClasses || 'bg-white',
-      alwaysOpen: alwaysOpen || false,
+      activeClasses: activeclasses || 'bg-gray-50',
+      inactiveClasses: inactiveclasses || 'bg-white',
+      alwaysOpen: alwaysopen || false,
       onOpen: () => {
         if (this.hasAutofocusTarget) {
           this.autofocusTarget.focus()
