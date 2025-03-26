@@ -6,14 +6,14 @@ export default class AccordionController extends Controller {
   static targets = ['trigger', 'item', 'autofocus']
 
   connect () {
-    this.accordion = new Accordion(this.element, this.accordionItems(), this.#options())
+    this.accordion = new Accordion(this.element, this.#accordionItems(), this.#options())
   }
 
   disconnect () {
     this.accordion.destroy()
   }
 
-  accordionItems () {
+  #accordionItems () {
     const items = this.triggerTargets.map(trigger => {
       const targetId = `accordion_${trigger.dataset.accordionId}`
       const target = this.itemTargets.find(i => i.id === targetId)
@@ -33,7 +33,7 @@ export default class AccordionController extends Controller {
 
     return {
       activeClasses: activeClasses || 'bg-gray-50',
-      inactiveClasses: inactiveClasses || 'bg-gray-50',
+      inactiveClasses: inactiveClasses || 'bg-white',
       alwaysOpen: alwaysOpen || false,
       onOpen: () => {
         if (this.hasAutofocusTarget) {
