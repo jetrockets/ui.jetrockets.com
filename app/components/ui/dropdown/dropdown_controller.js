@@ -7,7 +7,6 @@ export default class DropdownController extends Controller {
 
   connect () {
     this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
-    console.log(this.element)
   }
 
   disconnect () {

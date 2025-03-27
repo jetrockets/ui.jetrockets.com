@@ -4,8 +4,8 @@ class Ui::Dropdown::ComponentPreview < ViewComponent::Preview
   # @param item_content
   # @param link_title
   # @param link_href
-  # @param placement
-  # @param triggerType
+  # @param placement select :placement_options
+  # @param triggerType select :trigger_options
   # @param offsetSkidding number
   # @param offsetDistance number
   # @param delay number
@@ -17,10 +17,10 @@ class Ui::Dropdown::ComponentPreview < ViewComponent::Preview
     item_content: "Any content",
     link_title: "Settings",
     link_href: "#",
-    placement: "right",
-    triggerType: "hover",
-    offsetSkidding: 130,
-    offsetDistance: 10,
+    placement: :bottom,
+    triggerType: :click,
+    offsetSkidding: 0,
+    offsetDistance: 5,
     delay: 300,
     ignoreClickOutsideClass: false
     )
@@ -41,5 +41,19 @@ class Ui::Dropdown::ComponentPreview < ViewComponent::Preview
         list.with_element_link(title: link_title, href: link_href)
       end
     end
+  end
+
+  private
+
+  def placement_options
+    {
+      choices: %i[bottom left right top]
+    }
+  end
+
+  def trigger_options
+    {
+      choices: %i[click hover none]
+    }
   end
 end
