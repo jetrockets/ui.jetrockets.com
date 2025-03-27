@@ -20,4 +20,8 @@
   .accordion__header:last-of-type[aria-expanded="true"] {
     @apply rounded-b-none
   }
+
+  [data-accordion-target][aria-expanded="false"] svg {
+    @apply rotate-180;
+  }
 }

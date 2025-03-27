@@ -30,7 +30,6 @@ export default class AccordionController extends Controller {
 
   #options () {
     const { activeclasses, inactiveclasses, alwaysopen } = this.element.dataset
-    console.log(this.element.dataset)
 
     return {
       activeClasses: activeclasses || 'bg-gray-50',
