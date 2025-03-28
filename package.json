@@ -8,7 +8,8 @@
     "stimulus-rails-autosave": "^5.1.0",
     "stimulus-textarea-autogrow": "^4.1.0",
     "stimulus-use": "^0.52.2",
-    "tailwindcss-stimulus-components": "^4.0.4"
+    "tailwindcss-stimulus-components": "^4.0.4",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
