@@ -1,0 +1,9 @@
+@layer components {
+  .popover {
+    @apply absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0
+  }
+
+  .popover__title {
+    @apply px-3 py-2 font-semibold text-gray-900 bg-gray-100 border-b border-gray-200 rounded-t-lg
+  }
+}

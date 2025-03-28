@@ -282,15 +282,23 @@
           <%= render Ui::Pagy::Component.new(pagy:) %>
         <% end %>
 
-        <%= accordion.with_item(title: "Popover", id: "popover") do %>
-          <%= button_tag"Default popover", class: "btn", data: { popover_target: "popover_top" }, type: :button %>
-          <%= render Ui::Popover::Component.new id: "popover_top", title: "Popover Title", placement: "right" do %>
-            <p>And here's some amazing content. It's very engaging.</p>
+        <%= accordion.with_item(title: "Popover", id: "popover", class: "flex") do %>
+          <%= render Ui::Popover::Component.new do |popover| %>
+            <%= popover.with_trigger(class: "btn mr-2") do %>
+              Default popover
+            <% end %>
+            <%= popover.with_menu(title: "Popover Title") do %>
+              <p>And here's some amazing content. It's very engaging.</p>
+            <% end %>
           <% end %>
 
-          <%= button_tag"Popover Right", class: "btn btn-primary", data: { popover_target: "popover_right", popover_placement: "right" }, type: :button %>
-          <%= render Ui::Popover::Component.new id: "popover_right", title: "Popover Title", placement: "right" do %>
-            <p>And here's some amazing content. It's very engaging.</p>
+          <%= render Ui::Popover::Component.new(data: { placement: "right", offset: 40 }) do |popover| %>
+            <%= popover.with_trigger(class: "btn btn-primary") do %>
+              Popover Right
+            <% end %>
+            <%= popover.with_menu(title: "Popover Title") do %>
+              <p>And here's some amazing content. It's very engaging.</p>
+            <% end %>
           <% end %>
         <% end %>
 
