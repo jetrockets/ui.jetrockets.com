@@ -1,6 +1,7 @@
 class Ui::Tooltip::Component < ApplicationComponent
-  def initialize(**options)
+  def initialize(tooltip_content:, **options)
     super
+    @tooltip_content = tooltip_content
     @optiobns = options
   end
 
@@ -10,8 +11,12 @@ class Ui::Tooltip::Component < ApplicationComponent
 
   private
 
+  def render?
+    @tooltip_content.present?
+  end
+
   def attrs
-    data_attributes = ({ controller: "tooltip", tooltip_target: "tooltip" }).deep_merge(@options.fetch(:data, {}))
+    data_attributes = ({ controller: "tooltip", content: @tooltip_content }).deep_merge(@options.fetch(:data, {}))
     @options.merge(data: data_attributes)
   end
 end

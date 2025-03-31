@@ -3,19 +3,13 @@ import tippy from 'tippy.js'
 import { stimulus } from '~/init'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light.css'
-import 'tippy.js/themes/light-border.css'
 import 'tippy.js/themes/material.css'
-import 'tippy.js/themes/translucent.css'
 import 'tippy.js/animations/scale.css'
 import 'tippy.js/animations/shift-away.css'
-import 'tippy.js/animations/shift-toward.css'
-import 'tippy.js/animations/perspective.css'
 
 export default class TooltipController extends Controller {
-  static targets = ['tooltip', 'autofocus']
-
   connect () {
-    this.tooltip = tippy(this.tooltipTarget, this.#options())
+    this.tooltip = tippy(this.element, this.#options())
   }
 
   disconnect () {
@@ -29,12 +23,7 @@ export default class TooltipController extends Controller {
       content: content || 'Default tooltip',
       placement: placement || 'top',
       animation: animation || 'scale',
-      theme: theme || 'light',
-      onShow: () => {
-        if (this.hasAutofocusTarget) {
-          this.autofocusTarget.focus()
-        }
-      }
+      theme: theme || 'light'
     }
   }
 }

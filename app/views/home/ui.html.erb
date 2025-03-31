@@ -380,7 +380,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Tooltip", id: "tooltip") do %>
-          <%= render Ui::Tooltip::Component.new(data: { content: "Tooltip content", placement: "bottom" }, class: "btn btn-primary") do %>
+          <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }, class: "btn btn-primary") do %>
             Tooltip
           <% end %>
         <% end %>
