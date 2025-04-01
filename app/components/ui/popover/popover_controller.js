@@ -18,12 +18,12 @@ export default class PopoverController extends Controller {
   }
 
   #options () {
-    const { placement, triggertype, offset } = this.element.dataset
+    const { placement, triggertype } = this.element.dataset
 
     return {
       placement: placement || 'bottom',
       triggerType: triggertype || 'hover',
-      offset: parseInt(offset) || 10,
+      offset: 0,
       onShow: () => {
         if (this.hasAutofocusTarget) {
           this.autofocusTarget.focus()

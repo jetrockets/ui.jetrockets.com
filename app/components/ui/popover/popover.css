@@ -2,7 +2,11 @@
 
 @layer components {
   .popover {
-    @apply absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0
+    @apply z-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm
+  }
+
+  .popover__wrapper {
+    @apply absolute z-10 invisible inline-block w-64 text-sm transition-opacity duration-300 opacity-0 p-4
   }
 
   .popover__title {
