@@ -11,8 +11,8 @@ class Ui::Popover::ComponentPreview < ViewComponent::Preview
     popover_title: "Popover Title",
     popover_content: "And here's some amazing content. It's very engaging.",
     placement: :bottom,
-    triggerType: :click,
-    offset: 0
+    triggerType: :hover,
+    offset: 10
   )
 
     render(Ui::Popover::Component.new(data: { placement: placement, triggerType: triggerType, offset: offset })) do |popover|
