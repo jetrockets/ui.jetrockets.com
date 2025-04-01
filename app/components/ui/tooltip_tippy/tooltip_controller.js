@@ -20,7 +20,7 @@ export default class TooltipController extends Controller {
     const { content, placement, animation, theme } = this.element.dataset
 
     return {
-      content: content || 'Default tooltip',
+      content: content || 'Default content',
       placement: placement || 'top',
       animation: animation || 'scale',
       theme: theme || 'light'
@@ -28,4 +28,4 @@ export default class TooltipController extends Controller {
   }
 }
 
-stimulus.register('tooltip', TooltipController)
+stimulus.register('tooltip_tippy', TooltipController)
