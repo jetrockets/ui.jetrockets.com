@@ -379,12 +379,10 @@
           <% end %>
         <% end %>
 
-        <%= accordion.with_item(title: "Tooltip", id: "tooltip") do %>
-          <%= render Ui::TooltipTippy::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }, class: "btn btn-primary") do %>
-            Tooltip Tippy
+        <%= accordion.with_item(title: "Tooltip", id: "tooltip", class: "flex gap-4 items-center") do %>
+          <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "right" }) do %>
+            <%= button_tag "Tooltip Button", class: "btn btn-primary" %>
           <% end %>
-
-          <%= render Ui::TooltipFlowbite::Component.new(trigger: "Tooltip Flowbite", tooltip_content: "Tooltip content", data: { placement: "right" }, class: "btn btn-primary") %>
         <% end %>
 
         <%= accordion.with_item(title: "Typography", id: "typography") do %>

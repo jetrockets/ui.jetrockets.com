@@ -7,5 +7,6 @@
 @import "./components/modal.css";
 @import "./components/navbar.css";
 @import "./components/scroller.css";
+@import "./components/tooltip.css";
 @import "./components/typography.css";
 @import "./components/wrapper.css";

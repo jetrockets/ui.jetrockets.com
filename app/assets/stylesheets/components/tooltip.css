@@ -1,0 +1,5 @@
+@layer components {
+  .tooltip {
+    @apply relative z-20 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 ease-in bg-gray-900 rounded-lg shadow-xs opacity-0 dark:bg-gray-700
+  }
+  }
