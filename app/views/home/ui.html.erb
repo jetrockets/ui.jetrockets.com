@@ -198,7 +198,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Clipboard", id: "clipboard") do %>
-          <%= render Ui::Clipboard::Component.new(label: "Clipboard label", value_content: "Any content to copy") do |clipboard| %>
+          <%= render Ui::Clipboard::Component.new(label: "Clipboard label", value_content: "Any content to copy", content_type: :innerHTML) do |clipboard| %>
             <%= clipboard.with_default do %>
               Copy
             <% end %>
