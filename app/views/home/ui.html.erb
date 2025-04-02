@@ -284,8 +284,8 @@
 
         <%= accordion.with_item(title: "Popover", id: "popover", class: "flex") do %>
           <%= render Ui::Popover::Component.new do |popover| %>
-            <%= popover.with_trigger(class: "btn mr-2") do %>
-              Default popover
+            <%= popover.with_trigger do %>
+              <%= button_tag "Default popover", class: "btn mr-2" %>
             <% end %>
             <%= popover.with_menu(title: "Popover Title") do %>
               <p>And here's some amazing content. It's very engaging.</p>
@@ -293,8 +293,8 @@
           <% end %>
 
           <%= render Ui::Popover::Component.new(data: { placement: "right" }) do |popover| %>
-            <%= popover.with_trigger(class: "btn btn-primary") do %>
-              Popover Right
+            <%= popover.with_trigger do %>
+              <%= button_tag "Popover Right", class: "btn btn-primary" %>
             <% end %>
             <%= popover.with_menu(title: "Popover Title") do %>
               <p>And here's some amazing content. It's very engaging.</p>

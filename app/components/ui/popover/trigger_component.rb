@@ -6,6 +6,6 @@ class Ui::Popover::TriggerComponent < ApplicationComponent
   end
 
   def call
-    content_tag :button, content, **@options
+    content_tag :div, content, **@options
   end
 end
