@@ -4,7 +4,7 @@ class Ui::Tooltip::ComponentPreview < ViewComponent::Preview
   # @param placement select :placement_options
   # @param triggerType select :trigger_options
 
-  def default(trigger_content: "Tooltip trigger", tooltip_content: "Tooltip content", placement: :top, triggerType: :hover)
+  def default(trigger_content: "Tooltip trigger", tooltip_content: "Tooltip content", placement: :bottom, triggerType: :hover)
     render(Ui::Tooltip::Component.new(tooltip_content: tooltip_content, data: { placement: placement, triggerType: triggerType }, class: "btn btn-primary")) do
       trigger_content
     end

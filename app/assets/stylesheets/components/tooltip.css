@@ -1,5 +1,25 @@
 @layer components {
   .tooltip {
-    @apply relative z-20 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 ease-in bg-gray-900 rounded-lg shadow-xs opacity-0 dark:bg-gray-700
+    @apply relative z-20 invisible px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 ease-in rounded-lg shadow-xs opacity-0 bg-gray-700 text-center min-w-40;
   }
+
+  .tooltip-arrow {
+    @apply absolute w-3 h-3 rotate-45 bg-gray-700;
   }
+
+  [data-placement="top"] .tooltip-arrow {
+    @apply bottom-full ml-5 mb-2.5;
+  }
+
+  [data-placement="bottom"] .tooltip-arrow {
+    @apply top-full ml-5 -mt-23;
+  }
+
+  [data-placement="right"] .tooltip-arrow {
+    @apply mt-1 -mr-4 right-full;
+  }
+
+  [data-placement="left"] .tooltip-arrow {
+    @apply mt-1 left-full;
+  }
+}
