@@ -1,10 +1,12 @@
 class Ui::Popover::MenuComponent < ApplicationComponent
-  def initialize(title:, **options)
+  def initialize(title:, offset: 10, **options)
     @title = title
+    @offset = offset
     @options = options
     @options[:data] ||= {}
     @options[:data][:popover] = true
     @options[:data][:popover_target] = "menu"
+    @options[:style] = " --popover-padding: #{@offset}px;"
   end
 
   erb_template <<~ERB

@@ -4,20 +4,22 @@ class Ui::Popover::ComponentPreview < ViewComponent::Preview
   # @param popover_content
   # @param placement select :placement_options
   # @param triggerType select :trigger_options
+  # @param offset number
 
   def default(
     trigger_title: "Default popover",
     popover_title: "Popover Title",
     popover_content: "And here's some amazing content. It's very engaging.",
     placement: :bottom,
-    triggerType: :hover
+    triggerType: :hover,
+    offset: 10
   )
 
     render(Ui::Popover::Component.new(data: { placement: placement, triggerType: triggerType })) do |popover|
       popover.with_trigger(class: "btn mr-2") do
         trigger_title
       end
-      popover.with_menu(title: popover_title) do
+      popover.with_menu(title: popover_title, offset: offset) do
         content_tag(:p, popover_content)
       end
     end
