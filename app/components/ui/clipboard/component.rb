@@ -1,8 +1,7 @@
 class Ui::Clipboard::Component < ApplicationComponent
-  renders_one :default, Ui::Clipboard::DefaultComponent
-  renders_one :success, Ui::Clipboard::SuccessComponent
+  renders_one :trigger, Ui::Clipboard::TriggerComponent
 
-  TYPES = %i[input textContent innerHTML]
+  TYPES = %i[input innerHTML]
   DEFAULT_TYPE = :input
 
   def initialize(label: nil, value_content: nil, content_type: DEFAULT_TYPE, **options)
@@ -15,20 +14,15 @@ class Ui::Clipboard::Component < ApplicationComponent
 
   erb_template <<~ERB
     <%= content_tag :div, **attrs do %>
-      <label for="clipboard" <%= "class='sr-only'" if !@label %>><%= @label %></label>
+      <label for="clipboard" class="form__label<%= 'sr-only' if !@label %>"><%= @label %></label>
       <div class="clipboard">
-        <input id="clipboard" type="text" data-clipboard-target="content" class="clipboard__input <%= 'hidden' if @content_type != :input %>" value="<%= @value_content %>" disabled readonly>
+        <input id="clipboard" type="text" data-clipboard-target="content" class="max-w-80 form__input" value="<%= @value_content %>" disabled readonly <%= 'hidden' if @content_type != :input %>>
 
-        <% if @content_type == :textContent %>
-          <span><%= @value_content %></span>
-        <% elsif @content_type == :innerHTML %>
-          <div><%= @value_content %></div>
+        <% if @content_type == :innerHTML %>
+          <div class="block h-10 px-3 py-2 max-w-80"><%= @value_content %></div>
         <% end %>
 
-        <button data-clipboard-target="clipboard" class="btn btn-primary">
-          <%= default %>
-          <%= success %>
-        </button>
+        <%= trigger %>
       </div>
     <% end %>
   ERB
@@ -36,6 +30,7 @@ class Ui::Clipboard::Component < ApplicationComponent
   private
 
   def attrs
-    @options.merge(data: { controller: "clipboard" })
+    data_attributes = ({ controller: "clipboard" }).deep_merge(@options.fetch(:data, {}))
+    @options.merge(data: data_attributes)
   end
 end

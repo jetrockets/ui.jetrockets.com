@@ -10,13 +10,15 @@ export default class ClipboardController extends Controller {
   }
 
   #showSuccessMessage () {
+    const { timeout } = this.element.dataset
+
     this.defaultTarget.classList.add('hidden')
     this.successTarget.classList.remove('hidden')
 
     setTimeout(() => {
       this.defaultTarget.classList.remove('hidden')
       this.successTarget.classList.add('hidden')
-    }, 1000)
+    }, timeout || 1000)
   }
 
   #options () {

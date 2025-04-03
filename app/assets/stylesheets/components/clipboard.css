@@ -2,8 +2,4 @@
   .clipboard {
     @apply flex gap-2 mt-2 items-center
   }
-
-  .clipboard__input {
-    @apply border border-gray-300 text-gray-500 text-sm rounded-lg p-2.5 w-60
-  }
 }
