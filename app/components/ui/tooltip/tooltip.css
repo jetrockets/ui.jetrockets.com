@@ -1,3 +1,5 @@
+@reference "~/entrypoints/application.css";
+
 @layer components {
   .tooltip {
     @apply relative z-20 invisible px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 ease-in rounded-lg shadow-xs opacity-0 bg-gray-700 text-center min-w-40;
