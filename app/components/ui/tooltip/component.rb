@@ -11,7 +11,7 @@ class Ui::Tooltip::Component < ApplicationComponent
 
       <div id="tooltip" role="tooltip" data-tooltip-target="menu" class="tooltip">
         <%= @tooltip_content %>
-        <div class="tooltip-arrow" data-popper-arrow></div>
+        <div class="tooltip__arrow tooltip__arrow-<%= @options[:data]&.[](:placement) || 'top' %>" data-popper-arrow></div>
       </div>
     <% end %>
   ERB
