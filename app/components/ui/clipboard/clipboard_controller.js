@@ -7,9 +7,6 @@ export default class ClipboardController extends Controller {
 
   connect () {
     this.clipboard = new CopyClipboard(this.clipboardTarget, this.contentTarget, this.#options())
-    console.log(this.element.dataset)
-    console.log(this.clipboard)
-    console.log('hello')
   }
 
   #showSuccessMessage () {
@@ -23,9 +20,7 @@ export default class ClipboardController extends Controller {
   }
 
   #options () {
-    const { contenttype } = this.element.dataset
     return {
-      contentType: contenttype,
       onCopy: () => {
         this.#showSuccessMessage()
       }

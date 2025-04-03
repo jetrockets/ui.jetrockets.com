@@ -17,12 +17,12 @@ class Ui::Clipboard::Component < ApplicationComponent
     <%= content_tag :div, **attrs do %>
       <label for="clipboard" <%= "class='sr-only'" if !@label %>><%= @label %></label>
       <div class="clipboard">
-        <% if @content_type == :input %>
-          <input id="clipboard" type="text" data-clipboard-target="content" class="clipboard__input" value="<%= @value_content %>" disabled readonly>
-        <% elsif @content_type == :textContent %>
-          <span id="clipboard" data-clipboard-target="content"><%= @value_content %></span>
+        <input id="clipboard" type="text" data-clipboard-target="content" class="clipboard__input <%= 'hidden' if @content_type != :input %>" value="<%= @value_content %>" disabled readonly>
+
+        <% if @content_type == :textContent %>
+          <span><%= @value_content %></span>
         <% elsif @content_type == :innerHTML %>
-          <div id="clipboard" data-clipboard-target="content" class="clipboard-content"><%= @value_content %></div>
+          <div><%= @value_content %></div>
         <% end %>
 
         <button data-clipboard-target="clipboard" class="btn btn-primary">
@@ -36,6 +36,6 @@ class Ui::Clipboard::Component < ApplicationComponent
   private
 
   def attrs
-    @options.merge(data: { controller: "clipboard", contentType: @content_type })
+    @options.merge(data: { controller: "clipboard" })
   end
 end
