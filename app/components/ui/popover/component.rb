@@ -5,13 +5,16 @@ class Ui::Popover::Component < ApplicationComponent
   def initialize(**options)
     super
     @options = options
+    @options[:style] = " --popover-padding: #{@options[:data][:offset] || 10}px;"
   end
 
   erb_template <<~ERB
     <%= content_tag :div, **attrs do %>
       <%= trigger %>
 
-      <%= menu %>
+      <div data-popover data-popover-target="menu" class="popover__wrapper popover__wrapper-<%= @options[:data]&.[](:placement) || 'bottom' %>" style="<%= @options[:style] %>">
+        <%= menu %>
+      </div>
     <% end %>
   ERB
 

@@ -292,11 +292,11 @@
             <% end %>
           <% end %>
 
-          <%= render Ui::Popover::Component.new(data: { placement: "right" }) do |popover| %>
+          <%= render Ui::Popover::Component.new(data: { placement: "right", offset: 20 }) do |popover| %>
             <%= popover.with_trigger do %>
               <%= button_tag "Popover Right", class: "btn btn-primary" %>
             <% end %>
-            <%= popover.with_menu(title: "Popover Title", offset: 20) do %>
+            <%= popover.with_menu(title: "Popover Title") do %>
               <p>And here's some amazing content. It's very engaging.</p>
             <% end %>
           <% end %>

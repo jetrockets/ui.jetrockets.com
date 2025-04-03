@@ -9,19 +9,19 @@
     @apply absolute z-10 invisible inline-block w-64 text-sm transition-opacity duration-300 opacity-0;
   }
 
-  [data-placement="top"] .popover__wrapper {
+  .popover__wrapper-top {
     padding-bottom: var(--popover-padding);
   }
 
-  [data-placement="bottom"] .popover__wrapper {
+  .popover__wrapper-bottom {
     padding-top: var(--popover-padding);
   }
 
-  [data-placement="right"] .popover__wrapper {
+  .popover__wrapper-right {
     padding-left: var(--popover-padding);
   }
 
-  [data-placement="left"] .popover__wrapper {
+  .popover__wrapper-left {
     padding-right: var(--popover-padding);
   }
 

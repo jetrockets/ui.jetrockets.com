@@ -15,11 +15,11 @@ class Ui::Popover::ComponentPreview < ViewComponent::Preview
     offset: 10
   )
 
-    render(Ui::Popover::Component.new(data: { placement: placement, triggerType: triggerType })) do |popover|
+    render(Ui::Popover::Component.new(data: { placement: placement, triggerType: triggerType, offset: offset })) do |popover|
       popover.with_trigger(class: "btn mr-2") do
         trigger_title
       end
-      popover.with_menu(title: popover_title, offset: offset) do
+      popover.with_menu(title: popover_title) do
         content_tag(:p, popover_content)
       end
     end
