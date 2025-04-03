@@ -17,11 +17,6 @@ class Ui::Clipboard::Component < ApplicationComponent
       <label for="clipboard" class="form__label<%= 'sr-only' if !@label %>"><%= @label %></label>
       <div class="clipboard">
         <input id="clipboard" type="text" data-clipboard-target="content" class="max-w-80 form__input" value="<%= @value_content %>" disabled readonly <%= 'hidden' if @content_type != :input %>>
-
-        <% if @content_type == :innerHTML %>
-          <div class="block h-10 px-3 py-2 max-w-80"><%= @value_content %></div>
-        <% end %>
-
         <%= trigger %>
       </div>
     <% end %>
