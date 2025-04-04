@@ -9,7 +9,7 @@ class Ui::Tooltip::Component < ApplicationComponent
     <%= content_tag :div, **attrs do %>
       <%= content_tag :div, content %>
 
-      <div id="tooltip" role="tooltip" data-tooltip-target="menu" class="tooltip">
+      <div role="tooltip" data-tooltip-target="menu" class="tooltip">
         <%= @tooltip_content %>
         <div class="tooltip__arrow tooltip__arrow-<%= @options[:data]&.[](:placement) || 'top' %>" data-popper-arrow></div>
       </div>
