@@ -1,0 +1,31 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .popover {
+    @apply z-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm;
+  }
+
+  .popover__wrapper {
+    @apply absolute z-10 invisible inline-block w-64 text-sm transition-opacity duration-300 opacity-0;
+  }
+
+  .popover__wrapper-top {
+    padding-bottom: var(--popover-padding);
+  }
+
+  .popover__wrapper-bottom {
+    padding-top: var(--popover-padding);
+  }
+
+  .popover__wrapper-right {
+    padding-left: var(--popover-padding);
+  }
+
+  .popover__wrapper-left {
+    padding-right: var(--popover-padding);
+  }
+
+  .popover__title {
+    @apply px-3 py-2 font-semibold text-gray-900 bg-gray-100 border-b border-gray-200 rounded-t-lg;
+  }
+}
