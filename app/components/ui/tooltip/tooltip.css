@@ -1,0 +1,27 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .tooltip {
+    @apply relative z-20 invisible px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 ease-in rounded-lg shadow-xs opacity-0 bg-gray-700 text-center min-w-40;
+  }
+
+  .tooltip__arrow {
+    @apply absolute w-3 h-3 rotate-45 bg-gray-700;
+  }
+
+  .tooltip__arrow-top {
+    @apply bottom-full ml-5 mb-2.5;
+  }
+
+  .tooltip__arrow-bottom {
+    @apply top-full ml-5 -mt-23;
+  }
+
+  .tooltip__arrow-right {
+    @apply mt-1 -mr-4 right-full;
+  }
+
+  .tooltip__arrow-left {
+    @apply mt-1 left-full;
+  }
+}
