@@ -197,7 +197,20 @@
           </div>
         <% end %>
 
-        <%= accordion.with_item(title: "Confirm Dialog", id: "clipboard") do %>
+        <%= accordion.with_item(title: "Clipboard", id: "clipboard") do %>
+          <%= render Ui::Clipboard::Component.new(label: "Clipboard label", value_content: "Any content to copy") do |clipboard| %>
+            <%= clipboard.with_trigger do |trigger| %>
+              <%= trigger.with_default do %>
+                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Copy") %>
+              <% end %>
+              <%= trigger.with_success do %>
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Coppied!").with_icon_content("images/icons/check.svg") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Confirm Dialog", id: "confirm_dialog") do %>
           <%= button_to"Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
         <% end %>
 
