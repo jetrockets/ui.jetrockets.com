@@ -10,21 +10,20 @@ class Ui::Modal::Component < ApplicationComponent
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 
-  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, trigger_class: nil, async: true, **options)
+  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, trigger_class: nil, **options)
     super
     @title = title
     @subtitle = subtitle
     @size = size
     @trigger_title = trigger_title
     @trigger_class = trigger_class
-    @async = async
     @options = options
   end
 
   private
 
   def container_tag
-    if @async
+    if helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request?
       turbo_frame_tag :modal do
         content_tag :div, id: "modalContainer", tabindex: "-1", data: { controller: "modal-async", turbo_temporary: true }, aria: { hidden: "true" }, class: "modal" do
           turbo_frame_tag :modalWindow, class: modal__container_classes do
