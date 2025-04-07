@@ -1,8 +1,9 @@
 import { Controller } from '@hotwired/stimulus'
+import Modal from 'flowbite/lib/esm/components/modal'
 import { stimulus } from '~/init'
 import Modal from 'flowbite/lib/esm/components/modal'
 
-export default class ModalController extends Controller {
+export default class ModalAsyncController extends Controller {
   connect () {
     const options = {
       placement: 'center-center',
@@ -34,4 +35,4 @@ export default class ModalController extends Controller {
   }
 }
 
-stimulus.register('modal', ModalController)
+stimulus.register('modal-async', ModalAsyncController)

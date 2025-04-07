@@ -10,11 +10,13 @@ class Ui::Modal::Component < ApplicationComponent
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 
-  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE)
+  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, **options)
     super
     @title = title
     @subtitle = subtitle
     @size = size
+    @trigger_title = trigger_title
+    @options = options
   end
 
   private
@@ -22,17 +24,22 @@ class Ui::Modal::Component < ApplicationComponent
   def container_tag
     if helpers.turbo_frame_request?
       turbo_frame_tag :modal do
-        content_tag :div, id: "modalContainer", tabindex: "-1", data: { controller: "modal", turbo_temporary: true }, aria: { hidden: "true" }, class: "modal" do
+        content_tag :div, id: "modalContainer", tabindex: "-1", data: { controller: "modal-async", turbo_temporary: true }, aria: { hidden: "true" }, class: "modal" do
           turbo_frame_tag :modalWindow, class: modal__container_classes do
             yield
           end
         end
       end
     else
-      content_tag :div, class: "flex-1" do
-        content_tag :div, class: modal__container_classes do
-          yield
-        end
+      content_tag :div, **attrs do
+        safe_join([
+          tag.div(@trigger_title, data: { modal_toggle: "modalContainer", action: "click->modal#show" }, class: "btn"),
+          tag.div(id: "modalContainer", data: { modal_target: "modalContainer" }, tabindex: "-1", aria: { hidden: "true" }, class: "modal") do
+            content_tag :div, class: modal__container_classes do
+              yield
+            end
+          end
+        ])
       end
     end
   end
@@ -42,5 +49,10 @@ class Ui::Modal::Component < ApplicationComponent
       "modal__container",
       "max-w-#{@size}"
     )
+  end
+
+  def attrs
+    data_attributes = ({ controller: "modal" }).deep_merge(@options.fetch(:data, {}))
+    @options.merge(data: data_attributes)
   end
 end
