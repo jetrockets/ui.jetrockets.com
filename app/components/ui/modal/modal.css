@@ -18,7 +18,7 @@
   }
 
   .modal__container {
-    @apply relative w-full max-h-full max-w-2xl mx-auto mt-6
+    @apply relative w-full max-h-full max-w-2xl
   }
 
   .modal__content {

@@ -10,19 +10,21 @@ class Ui::Modal::Component < ApplicationComponent
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 
-  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, **options)
+  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, trigger_class: nil, async: true, **options)
     super
     @title = title
     @subtitle = subtitle
     @size = size
     @trigger_title = trigger_title
+    @trigger_class = trigger_class
+    @async = async
     @options = options
   end
 
   private
 
   def container_tag
-    if helpers.turbo_frame_request?
+    if @async
       turbo_frame_tag :modal do
         content_tag :div, id: "modalContainer", tabindex: "-1", data: { controller: "modal-async", turbo_temporary: true }, aria: { hidden: "true" }, class: "modal" do
           turbo_frame_tag :modalWindow, class: modal__container_classes do
@@ -33,7 +35,7 @@ class Ui::Modal::Component < ApplicationComponent
     else
       content_tag :div, **attrs do
         safe_join([
-          tag.div(@trigger_title, data: { modal_toggle: "modalContainer", action: "click->modal#show" }, class: "btn"),
+          tag.div(@trigger_title, data: { modal_toggle: "modalContainer", action: "click->modal#show" }, class: @trigger_class),
           tag.div(id: "modalContainer", data: { modal_target: "modalContainer" }, tabindex: "-1", aria: { hidden: "true" }, class: "modal") do
             content_tag :div, class: modal__container_classes do
               yield

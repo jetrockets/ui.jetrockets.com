@@ -18,10 +18,10 @@ export default class ModalSyncController extends Controller {
   }
 
   #options () {
-    const { placement } = this.element.dataset
+    const { placementvertical, placementhorizontal } = this.element.dataset
 
     return {
-      placement: placement || 'center-center'
+      placement: `${placementvertical}-${placementhorizontal}` || 'center-center'
       // backdrop: 'dynamic',
       // backdropClasses: 'bg-gray-950 bg-opacity-50 fixed inset-0 z-40',
       // closable: this.data.get('closable') === 'true',
