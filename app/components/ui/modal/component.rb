@@ -10,13 +10,14 @@ class Ui::Modal::Component < ApplicationComponent
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 
-  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, trigger_class: nil, **options)
+  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, trigger_class: nil, async: true, **options)
     super
     @title = title
     @subtitle = subtitle
     @size = size
     @trigger_title = trigger_title
     @trigger_class = trigger_class
+    @async = async
     @options = options
   end
 
@@ -29,6 +30,12 @@ class Ui::Modal::Component < ApplicationComponent
           turbo_frame_tag :modalWindow, class: modal__container_classes do
             yield
           end
+        end
+      end
+    elsif @async
+      content_tag :div, class: "flex-1" do
+        content_tag :div, class: modal__container_classes do
+          yield
         end
       end
     else

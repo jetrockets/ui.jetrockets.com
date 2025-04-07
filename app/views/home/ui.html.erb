@@ -290,11 +290,11 @@
         <% end %>
 
         <%= accordion.with_item(title: "Modal Sync", id: "modal_sync", class: "flex gap-2") do %>
-          <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", trigger_title: "Open modal", trigger_class: "btn") do %>
+          <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", trigger_title: "Open modal", trigger_class: "btn", async: false) do %>
             <p class="p-4">Modal content</p>
           <% end %>
 
-          <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", trigger_title: "Modal Top", trigger_class: "btn", data: { placementVertical: "top", placementHorizontal: "left" }) do %>
+          <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", trigger_title: "Modal Top", trigger_class: "btn", async: false, data: { placementVertical: "top", placementHorizontal: "left" }) do %>
             <p class="p-4">Modal content</p>
           <% end %>
         <% end %>
