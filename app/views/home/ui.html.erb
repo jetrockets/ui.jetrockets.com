@@ -172,7 +172,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Clipboard", id: "clipboard", class: "flex flex-col gap-4") do %>
-          <%= render Ui::Clipboard::Component.new(label: "Clipboard label", value_content: "Any content to copy") do |clipboard| %>
+          <%= render Ui::Clipboard::Component.new(label: "Clipboard label", value_content: "Any content to copy", id: "clipboard1") do |clipboard| %>
             <%= clipboard.with_trigger do |trigger| %>
               <%= trigger.with_trigger_empty do |t| %>
                 <%= t.with_default do %>
@@ -185,7 +185,7 @@
             <% end %>
           <% end %>
 
-          <%= render Ui::Clipboard::Component.new(label: "Clipboard with tooltip", value_content: "Any content to copy") do |clipboard| %>
+          <%= render Ui::Clipboard::Component.new(label: "Clipboard with tooltip", value_content: "Something to copy", id: "clipboard2") do |clipboard| %>
             <%= clipboard.with_trigger do |trigger| %>
               <%= trigger.with_trigger_tooltip(tooltip_default: "Click to copy", tooltip_success: "Successfully copied!") do |t| %>
                 <%= t.with_default do %>
