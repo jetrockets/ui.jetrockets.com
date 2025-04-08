@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { stimulus } from '~/init'
+import Modal from 'flowbite/lib/esm/components/modal'
 
 export default class ModalController extends Controller {
   connect () {
@@ -19,7 +20,7 @@ export default class ModalController extends Controller {
       override: false
     }
 
-    this.modal = new window.Modal(this.element, options, instanceOptions)
+    this.modal = new Modal(this.element, options, instanceOptions)
     window.modal = this.modal
     this.modal.show()
   }

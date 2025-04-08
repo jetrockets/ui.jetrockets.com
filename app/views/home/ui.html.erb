@@ -8,32 +8,6 @@
 <% breadcrumb :ui %>
 
 <article class="space-y-8 wrapper">
-
-  <%= render Ui::Dropdown::Component.new(data: { placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10 }) do |dropdown| %>
-    <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
-      Dropdown
-      <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
-      </svg>
-    <% end %>
-
-    <%= dropdown.with_menu do |list| %>
-      <%= list.with_title { "Title" } %>
-      <%= list.with_element_item do %>
-        <%= link_to "#", class: "flex flex-row-reverse gap-2 items-center justify-end" do %>
-          Dashboard
-          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
-        <% end %>
-      <% end %>
-      <%= list.with_element_link(title: "Settings", href: "#") %>
-      <%= list.with_element_link(title: "Terms of Service", href: terms_path) %>
-      <%= list.with_element_link(title: "Privacy Policy", href: privacy_path) %>
-      <%= list.with_element_divider %>
-      <%= list.with_element_link(title: "Sign Up", href: "#") %>
-      <%= list.with_element_link(title: "Sign In", href: "#") %>
-    <% end %>
-  <% end %>
-
   <section class="wysiwyg">
     <h1>Component Examples</h1>
     <p>
@@ -215,6 +189,31 @@
         <% end %>
 
         <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
+          <%= render Ui::Dropdown::Component.new do |dropdown| %>
+            <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
+              Dropdown
+              <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+              </svg>
+            <% end %>
+
+            <%= dropdown.with_menu do |list| %>
+              <%= list.with_title { "Title" } %>
+              <%= list.with_element_item do %>
+                <%= link_to "#", class: "flex flex-row-reverse gap-2 items-center justify-end" do %>
+                  Dashboard
+                  <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+                <% end %>
+              <% end %>
+              <%= list.with_element_link(title: "Settings", href: "#") %>
+              <%= list.with_element_link(title: "Terms of Service", href: terms_path) %>
+              <%= list.with_element_link(title: "Privacy Policy", href: privacy_path) %>
+              <%= list.with_element_divider %>
+              <%= list.with_element_link(title: "Sign Up", href: "#") %>
+              <%= list.with_element_link(title: "Sign In", href: "#") %>
+            <% end %>
+          <% end %>
+
           <%= render Ui::Dropdown::Component.new(data: { placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10 }) do |dropdown| %>
             <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
               Dropdown

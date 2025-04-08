@@ -172,6 +172,6 @@
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
   --animate-fade-in: fadeIn 0.15s ease-in-out;
-  --animate-slide-down: slideDown 0.3s ease-in-out;
-  --animate-slide-up: slideUp 0.3s ease-in-out;
+  --animate-slide-down: slideDown 0.15s ease-in-out;
+  --animate-slide-up: slideUp 0.15s ease-in-out;
 }
