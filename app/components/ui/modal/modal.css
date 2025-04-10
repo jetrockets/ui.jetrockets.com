@@ -3,10 +3,6 @@
 @layer components {
   .modal {
     @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-screen px-4 pt-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-[var(--animate-slide-up)];
-
-    .modal__container {
-      @apply mt-0;
-    }
   }
 
   .modal-dialog {
@@ -17,12 +13,12 @@
     }
   }
 
-  .modal__container {
-    @apply relative w-full max-h-full max-w-2xl
+  .modal__window {
+    @apply relative w-full max-w-2xl max-h-full;
   }
 
   .modal__content {
-    @apply relative bg-white shadow-lg rounded-lg
+    @apply relative bg-white rounded-lg shadow-lg;
   }
 
   .modal__header {

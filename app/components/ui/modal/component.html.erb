@@ -12,7 +12,8 @@
         <% end %>
       </div>
 
-      <button type="button" class="modal__close" data-action="click->modal-async#close click->modal#close" aria-label="Close">
+      <!-- TODO. Only for frame_modal or sync -->
+      <button type="button" class="modal__close" data-action="click->modal-turbo#close click->modal#close" aria-label="Close">
         <%= helpers.vite_svg_tag "images/icons/close.svg", class: "w-6 h-6" %>
       </button>
     </div>
