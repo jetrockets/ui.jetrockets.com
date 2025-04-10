@@ -1,7 +1,8 @@
 class Ui::Tooltip::Component < ApplicationComponent
-  def initialize(tooltip_content:, **options)
+  def initialize(tooltip_content:, tooltip_success: nil, **options)
     super
     @tooltip_content = tooltip_content
+    @tooltip_success = tooltip_success
     @options = options
   end
 
@@ -10,7 +11,12 @@ class Ui::Tooltip::Component < ApplicationComponent
       <%= content_tag :div, content %>
 
       <div role="tooltip" data-tooltip-target="menu" class="tooltip">
-        <%= @tooltip_content %>
+        <span data-clipboard-target="defaultText"><%= @tooltip_content %></span>
+
+        <% if @tooltip_success.present? %>
+          <span data-clipboard-target="successText" class="hidden"><%= @tooltip_success %></span>
+        <% end %>
+
         <div class="tooltip__arrow tooltip__arrow-<%= @options[:data]&.[](:placement) || 'top' %>" data-popper-arrow></div>
       </div>
     <% end %>

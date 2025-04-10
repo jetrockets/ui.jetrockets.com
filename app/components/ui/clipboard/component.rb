@@ -4,22 +4,17 @@ class Ui::Clipboard::Component < ApplicationComponent
   TYPES = %i[input innerHTML]
   DEFAULT_TYPE = :input
 
-  def initialize(label: nil, value_content: nil, content_type: DEFAULT_TYPE, id: "clipboard", **options)
+  def initialize(value: nil, id:, **options)
     super
-    @label = label
-    @value_content = value_content
-    @content_type = content_type
+    @value = value
     @id = id
     @options = options
   end
 
   erb_template <<~ERB
-    <%= content_tag :div, **attrs do %>
-      <label for="<%= @id %>" class="form__label<%= 'sr-only' if !@label %>"><%= @label %></label>
-      <div class="clipboard">
-        <input id="<%= @id %>" type="text" data-clipboard-target="content" class="max-w-80 form__input" value="<%= @value_content %>" disabled readonly <%= 'hidden' if @content_type != :input %>>
-        <%= trigger %>
-      </div>
+    <%= content_tag :div, class: "clipboard", **attrs do %>
+      <input id="<%= @id %>" type="text" data-clipboard-target="content" class="max-w-80 form__input" value="<%= @value %>" disabled readonly hidden>
+      <%= trigger %>
     <% end %>
   ERB
 

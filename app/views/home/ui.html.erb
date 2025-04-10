@@ -172,31 +172,28 @@
         <% end %>
 
         <%= accordion.with_item(title: "Clipboard", id: "clipboard", class: "flex flex-col gap-4") do %>
-          <%= render Ui::Clipboard::Component.new(label: "Clipboard label", value_content: "Any content to copy", id: "clipboard1") do |clipboard| %>
-            <%= clipboard.with_trigger do |trigger| %>
-              <%= trigger.with_trigger_empty do |t| %>
-                <%= t.with_default do %>
-                  <%= render Ui::Btn::Component.new(variant: :primary).with_content("Copy") %>
-                <% end %>
-                <%= t.with_success do %>
-                  <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Coppied!").with_icon_content("images/icons/check.svg") %>
-                <% end %>
-              <% end %>
+          <div class="flex items-end gap-2">
+            <div>
+              <label for="default_clipboard" class="form__label">Label for clipboard</label>
+              <input id="default_clipboard" type="text" class="max-w-80 form__input" value="Copy this!" disabled readonly autocomplete="off">
+            </div>
+            <%= render Ui::Clipboard::Component.new(value: "Copy this!", id: "clipboard_empty") do |clipboard| %>
+              <%= clipboard.with_trigger(default: Ui::Btn::Component.new(variant: :primary).with_content("Copy"), success: Ui::Btn::Component.new(variant: :primary).with_content("Copied!")) %>
             <% end %>
-          <% end %>
+          </div>
 
-          <%= render Ui::Clipboard::Component.new(label: "Clipboard with tooltip", value_content: "Something to copy", id: "clipboard2") do |clipboard| %>
-            <%= clipboard.with_trigger do |trigger| %>
-              <%= trigger.with_trigger_tooltip(tooltip_default: "Click to copy", tooltip_success: "Successfully copied!") do |t| %>
-                <%= t.with_default do %>
-                  <%= render Ui::Btn::Component.new(variant: :primary).with_content("Copy") %>
-                <% end %>
-                <%= t.with_success do %>
-                  <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Coppied!").with_icon_content("images/icons/check.svg") %>
-                <% end %>
-              <% end %>
+          <div class="flex items-baseline gap-2">
+            <p>Any content to copy</p>
+            <%= render Ui::Clipboard::Component.new(value: "Any content to copy", id: "clipboard_tooltip") do |clipboard| %>
+              <%= clipboard.with_trigger(
+                default: "Copy text",
+                success: "COPIED!",
+                tooltip_default: "Click me to copy",
+                tooltip_success: "Siccessfully copied!",
+                tooltip_placement: "bottom"
+              ) %>
             <% end %>
-          <% end %>
+          </div>
         <% end %>
 
         <%= accordion.with_item(title: "Confirm Dialog", id: "confirm_dialog") do %>

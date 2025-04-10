@@ -1,79 +1,30 @@
 class Ui::Clipboard::ComponentPreview < ViewComponent::Preview
-  # @param label
-  # @param value_content
-  # @param content_type select :content_options
-  # @param default_value
-  # @param success_value
+  # @param value
+  # @param id
+  # @param default
+  # @param success
   # @param timeout number
-
-  def without_tooltip(
-    label: "Clipboard label",
-    value_content: "Any content to copy",
-    content_type: :input,
-    default_value: "Copy",
-    success_value: "Copied!",
-    id: "clipboard1",
-    timeout: 1000
-    )
-
-    render(Ui::Clipboard::Component.new(label: label, value_content: value_content, content_type: content_type, id: id, data: { timeout: timeout })) do |clipboard|
-      clipboard.with_trigger do |trigger|
-        trigger.with_trigger_empty do |t|
-          t.with_default(class: "btn btn-primary") do
-            default_value
-          end
-          t.with_success do
-            success_value
-          end
-        end
-      end
-    end
-  end
-
-  # @param label
-  # @param value_content
-  # @param content_type select :content_options
-  # @param default_value
-  # @param success_value
-  # @param timeout number
-  # @param tooltip_placement select :tooltip_placement_options
   # @param tooltip_default
   # @param tooltip_success
+  # @param tooltip_placement select :tooltip_placement_options
 
-  def with_tooltip(
-    label: "Clipboard label",
-    value_content: "Any content to copy",
-    content_type: :input,
-    default_value: "Copy",
-    success_value: "Copied!",
-    id: "clipboard2",
+  def default(
+    value: "Any content to copy",
+    id: "clipboard1",
+    default: Ui::Btn::Component.new(variant: :primary).with_content("Copy content"),
+    success: Ui::Btn::Component.new(variant: :primary).with_content("COPIED!"),
     timeout: 1000,
-    tooltip_placement: :top,
-    tooltip_default: "Click to copy",
-    tooltip_success: "Successfully copied!"
+    tooltip_default: "Click me to copy",
+    tooltip_success: "Siccessfully copied!",
+    tooltip_placement: :bottom
     )
 
-    render(Ui::Clipboard::Component.new(label: label, value_content: value_content, content_type: content_type, id: id, data: { timeout: timeout })) do |clipboard|
-      clipboard.with_trigger do |trigger|
-        trigger.with_trigger_tooltip(tooltip_placement: tooltip_placement, tooltip_default: tooltip_default, tooltip_success: tooltip_success) do |t|
-          t.with_default(class: "btn btn-primary") do
-            default_value
-          end
-          t.with_success do
-            success_value
-          end
-        end
-      end
+    render(Ui::Clipboard::Component.new(value: value, id: id, data: { timeout: timeout })) do |clipboard|
+      clipboard.with_trigger(default: default, success: success, tooltip_default: tooltip_default, tooltip_success: tooltip_success, tooltip_placement: tooltip_placement)
     end
   end
 
   private
-
-  def content_options
-    {
-      choices: %i[input innerHTML]
-    }
-  end
 
   def tooltip_placement_options
     {
