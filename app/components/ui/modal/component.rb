@@ -10,15 +10,13 @@ class Ui::Modal::Component < ApplicationComponent
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 
-  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, trigger_title: nil, trigger_class: nil, async: true, **options)
+  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, async: true, id: nil)
     super
     @title = title
     @subtitle = subtitle
     @size = size
-    @trigger_title = trigger_title
-    @trigger_class = trigger_class
     @async = async
-    @options = options
+    @id = id
   end
 
   private
@@ -29,15 +27,10 @@ class Ui::Modal::Component < ApplicationComponent
         yield
       end
     else
-      content_tag :div, **attrs do
-        safe_join([
-          tag.div(@trigger_title, data: { modal_toggle: "modalContainer", action: "click->modal#show" }, class: @trigger_class),
-          tag.div(id: "modalContainer", data: { modal_target: "modalContainer" }, tabindex: "-1", aria: { hidden: "true" }, class: "modal") do
-            content_tag :div, class: modal__window_classes do
-              yield
-            end
-          end
-        ])
+      content_tag :div, id: @id, data: { modal_target: "modal" }, tabindex: "-1", aria: { hidden: "true" }, class: "modal" do
+        content_tag :div, class: modal__window_classes do
+          yield
+        end
       end
     end
   end
@@ -66,10 +59,5 @@ class Ui::Modal::Component < ApplicationComponent
       "modal__window",
       "max-w-#{@size}"
     )
-  end
-
-  def attrs
-    data_attributes = ({ controller: "modal" }).deep_merge(@options.fetch(:data, {}))
-    @options.merge(data: data_attributes)
   end
 end

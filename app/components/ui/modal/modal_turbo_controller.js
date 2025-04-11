@@ -26,9 +26,9 @@ export default class ModalTurboController extends Controller {
   }
 
   #getModalOptions () {
+    const { closable } = this.element.dataset
     return {
-      // TODO.
-      // closable: this.element.dataset.closable === 'true',
+      closable: closable || 'true',
       onHide: () => {
         this.element.remove()
       }
