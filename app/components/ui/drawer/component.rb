@@ -1,5 +1,6 @@
 class Ui::Drawer::Component < ApplicationComponent
   def initialize(title: nil, **options)
+    super
     @title = title
     @options = options
   end
