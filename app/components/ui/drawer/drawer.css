@@ -1,0 +1,15 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .drawer {
+    @apply fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800;
+  }
+
+  .drawer__title {
+    @apply inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400;
+  }
+
+  .drawer__close {
+    @apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white;
+  }
+}

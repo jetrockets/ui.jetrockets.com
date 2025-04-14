@@ -192,6 +192,17 @@
           <%= button_to "Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
         <% end %>
 
+        <%= accordion.with_item(title: "Drawer", id: "accordion_drawer") do %>
+          <%= render Ui::Btn::Component.new(variant: :primary, data: { drawer_show: "drawer", action: "click->drawer#show" }, aria_controls: "drawer").with_content "Show drawer" %>
+          <%= render Ui::Drawer::Component.new(title: "Info") do %>
+            <p class="mb-6 text-sm text-gray-500 dark:text-gray-400">Supercharge your hiring by taking advantage of our <a href="#" class="text-blue-600 underline dark:text-blue-500 hover:no-underline">limited-time sale</a> for Flowbite Docs + Job Board. Unlimited access to over 190K top-ranked candidates and the #1 design job board.</p>
+            <div class="grid grid-cols-2 gap-4">
+              <%= render Ui::Btn::Component.new(href: "#").with_content "Learn more" %>
+              <%= render Ui::Btn::Component.new(variant: :primary, href: "#").with_content "Get access" %>
+            </div>
+          <% end %>
+        <% end %>
+
         <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
           <%= render Ui::Dropdown::Component.new do |dropdown| %>
             <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
