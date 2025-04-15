@@ -6,7 +6,7 @@ class Ui::Drawer::ComponentPreview < ViewComponent::Preview
   end
 
   def darawer(title: "Drawer Title", drawer_content: "Any amazing content")
-    render(Ui::Drawer::Component.new(title: title)) do
+    render(Ui::Drawer::Component.new(title: title, async: false)) do
       tag.div(drawer_content, class: "text-white")
     end
   end

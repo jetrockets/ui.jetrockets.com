@@ -6,7 +6,7 @@
   )
 %>
 
-<%= render Ui::Modal::Component.new title: "Terms of Service", subtitle: "Use this for your Terms of Service" do %>
+<%= render Ui::Drawer::Component.new(title: "Terms of Service") do %>
   <div class="modal__body">
     <article class="wysiwyg">
       <h2 class="mt-0">Five Reasons Why Your Website Needs a Terms of Use Agreement</h2>
