@@ -5,21 +5,25 @@ import '@yaireo/tagify/dist/tagify.css'
 
 export default class TagifyController extends Controller {
   connect () {
-    const { whitelist } = this.element.dataset
-
-    this.tagify = new Tagify(this.element, {
-      whitelist: whitelist?.split(',') || [],
-      dropdown: {
-        enabled: 0,
-        maxItems: 10,
-        classname: 'tags-look',
-        closeOnSelect: false
-      }
-    })
+    this.tagify = new Tagify(this.element, this.#options())
   }
 
   disconnect () {
     this.tagify.destroy()
+  }
+
+  #options () {
+    const { whitelist, maxitems, closeonselect } = this.element.dataset
+
+    return {
+      whitelist: whitelist?.split(',') || [],
+      dropdown: {
+        enabled: 0,
+        maxItems: maxitems || 10,
+        classname: 'tags-look',
+        closeOnSelect: closeonselect || false
+      }
+    }
   }
 }
 
