@@ -6,7 +6,7 @@ class Ui::TagInput::Component < ApplicationComponent
   end
 
   def call
-    tag.input(type: "text", value: @value, placeholder: @placeholder, data: { tagify_target: "input" }, class: input_classes, **attrs)
+    tag.input(type: "text", value: @value, placeholder: @placeholder, class: input_classes, **attrs)
   end
 
   private

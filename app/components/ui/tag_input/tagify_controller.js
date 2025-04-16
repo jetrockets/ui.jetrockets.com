@@ -21,7 +21,7 @@ export default class TagifyController extends Controller {
         enabled: 0,
         maxItems: maxitems || 10,
         classname: 'tags-look',
-        closeOnSelect: closeonselect || false
+        closeOnSelect: (/true/).test(closeonselect) || false
       }
     }
   }
