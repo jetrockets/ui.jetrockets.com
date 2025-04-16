@@ -12,7 +12,7 @@ export default class DatepickerController extends Controller {
       css: ['https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css'],
       plugins,
       format: format || 'YYYY-MM-DD',
-      autoApply: autohide || true,
+      autoApply: (/true/).test(autohide) || false,
       zIndex: 1000,
       ...pluginOptions
     })
@@ -27,7 +27,7 @@ export default class DatepickerController extends Controller {
     const plugins = []
     const pluginOptions = {}
 
-    if (range) plugins.push(RangePlugin)
+    if ((/true/).test(range)) plugins.push(RangePlugin)
 
     if (disableddates) {
       plugins.push(LockPlugin)

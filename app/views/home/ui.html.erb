@@ -194,7 +194,7 @@
 
         <%= accordion.with_item(title: "Datepicker", id: "datepicker") do %>
           <label class="form__label" id="picker">Datepicker</label>
-          <%= render Ui::Datepicker::Component.new(title: "Datepicker", placeholder: "Datepicker placeholder", id: "picker", data: { range: "true", disabledDates: "2025-04-13, 2025-04-15, 2025-04-18" }) %>
+          <%= render Ui::Datepicker::Component.new(title: "Datepicker", placeholder: "Datepicker placeholder", id: "picker", data: { range: true, disabledDates: "2025-04-13, 2025-04-15, 2025-04-18" }) %>
         <% end %>
 
         <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
