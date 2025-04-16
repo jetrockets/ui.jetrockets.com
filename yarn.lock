@@ -14,6 +14,83 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@easepick/amp-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/amp-plugin/-/amp-plugin-1.2.1.tgz#6d189d0a429721da082d8e8fe8d45dd0df3b76d1"
+  integrity sha512-LbGd7RU+fiucxTqJnBpT5SwACX1BoEK4yi1joLqN50O57jpN0jQMMvDO/vp/F4Zr8MO6kwaamRmOXhqo/Vb4aw==
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/base-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/base-plugin/-/base-plugin-1.2.1.tgz#1c8fc783d2e853c15cabd31bd60dfc15794a0e90"
+  integrity sha512-aonBQaRyZwNH/gmPzSzZDVjQjgy/rxWd+TXnM0E3Nxkeu4yMbXV+GnWVQbBwTvJx74M7iSCHJowdmZ5T46B7Vg==
+  dependencies:
+    "@easepick/core" "^1.1.0"
+
+"@easepick/bundle@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/bundle/-/bundle-1.2.1.tgz#c84cfad84c0be3ec742e8dbd619760ea5817ccd6"
+  integrity sha512-M9DGu7rrIltbTEPuBfc8fTOdK1E2CjTIiSqXmVRcof/peDnDC7U7h3XaTx7nbB0gq4HUTUO8BKHrofPC0jPqSw==
+  dependencies:
+    "@easepick/amp-plugin" "^1.1.0"
+    "@easepick/base-plugin" "^1.1.0"
+    "@easepick/core" "^1.1.0"
+    "@easepick/datetime" "^1.1.0"
+    "@easepick/kbd-plugin" "^1.1.0"
+    "@easepick/lock-plugin" "^1.1.0"
+    "@easepick/preset-plugin" "^1.1.0"
+    "@easepick/range-plugin" "^1.1.0"
+    "@easepick/time-plugin" "^1.1.0"
+
+"@easepick/core@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/core/-/core-1.2.1.tgz#f7b23ee89129a4bc38968015d4300f79b5bd3eda"
+  integrity sha512-V/blEia/ykAq+0mnQ9djOU5wvMZ+iffL5iuQrKLObpMOw38kL/qo4inH4pCbB3wm7sDjrJTuDKf+6+FrgdFGsw==
+  dependencies:
+    "@easepick/datetime" "^1.1.0"
+
+"@easepick/datetime@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/datetime/-/datetime-1.2.1.tgz#cefa39b7f18bb13bed5cb217b774eb21c279e564"
+  integrity sha512-KIUvWo/kEipwBqPTazjfUf6R7dKb2ztPizPoB/0ZMYz3HrWJptsLSZQma3R1nM/zkaexnk/e4L4nX+vDjwBtYA==
+
+"@easepick/kbd-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/kbd-plugin/-/kbd-plugin-1.2.1.tgz#a5b82cf217096273f60f7bdd4936c03af72e8376"
+  integrity sha512-t/bEtKuvAbo9b9iw4J5h5DsGYEL4Wm2sLA2VzR2rvmMfJuo1extktgzw2eCy+w6Q/s4ObdKzhXLnjMvFeiJ8Xg==
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/lock-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/lock-plugin/-/lock-plugin-1.2.1.tgz#b3713ef9932434b2777d4238ad11d7f92e9fe637"
+  integrity sha512-6sJCdliMpnQtzL9dwznS9vYaQUy66VRKPZ+jFdVR1ohiNUVM6C7dSGdG3dPntVTywTy2Z9uU+yJOeWcVFDT61A==
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/preset-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/preset-plugin/-/preset-plugin-1.2.1.tgz#a909c973b61f492ef7672e3926aa9fab784f0545"
+  integrity sha512-VAnjyWpf39kXTR6DYbpCJIBeBhbOgRoNTqntpSb5uF9O398KuHUpIM4Ep1id3fTIlfnRrKxzp54rAFwvc48eCA==
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+    "@easepick/range-plugin" "^1.1.0"
+
+"@easepick/range-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/range-plugin/-/range-plugin-1.2.1.tgz#188280ccb63377e4a2c001265497c62e39d20e7c"
+  integrity sha512-yEHLUq32Kj0exLz4txxchALQVJUbwyXvnovfN7yxTrCJLpi6uMmPXcW4lyYig2P9+xM9JqF6JsNqOsi0+5GlHQ==
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
+"@easepick/time-plugin@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@easepick/time-plugin/-/time-plugin-1.2.1.tgz#3d8771c812991d828b9c247a1065244fa2d67893"
+  integrity sha512-mjynAAppLxlqiDSdHdkBEqi4A67CH17FqO3UH2n6mfAIKPZLQA7R8Y6jEkp+Fpl5tj0/HFqdrk82ceiYYnLFYw==
+  dependencies:
+    "@easepick/base-plugin" "^1.1.0"
+
 "@esbuild/aix-ppc64@0.24.2":
   version "0.24.2"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.24.2.tgz#38848d3e25afe842a7943643cbcd387cc6e13461"
