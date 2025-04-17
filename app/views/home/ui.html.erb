@@ -376,8 +376,8 @@
         <% end %>
 
         <%= accordion.with_item(title: "Select", id: "select") do %>
-        <label class="form__label" for="select1">Select label</label>
-          <%= render Ui::Select::Component.new(placeholder: "Selection", id: "select1", data: { choices: "Rails,Hotwire,Turbo,Stimulus,Tailwind,CSS,HTML,React,JS,Python,Svelte,C,C#,C++" }) %>
+          <label class="form__label" for="select1">Select label</label>
+          <%= render Ui::Select::Component.new(id: "select1", class: "w-1/2", data: { choices: "Rails,Hotwire,Turbo,Stimulus,Tailwind,CSS,HTML,React,JS,Python,Svelte,C,C#,C++" }) %>
         <% end %>
 
         <%= accordion.with_item(title: "Table", id: "table") do %>
