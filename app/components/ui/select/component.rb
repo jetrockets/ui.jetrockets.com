@@ -7,7 +7,8 @@ class Ui::Select::Component < ApplicationComponent
 
   def call
     content_tag :div, **attrs do
-      tag.select(id: @id, data: { select_target: "selection" })
+      tag.select(id: @id, data: { select_target: "select" }) +
+      content_tag(:div, content, data: { select_target: "options" }, class: "hidden")
     end
   end
 
