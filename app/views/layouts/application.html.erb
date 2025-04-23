@@ -23,7 +23,7 @@
     <%= yield(:head) %>
   </head>
 
-  <body class="body" data-controller="navbar">
+  <body class="body" data-controller="navbar modal">
     <%= render partial: "layouts/shared/navbar" %>
 
     <main class="<%= body_classes %>">
@@ -34,7 +34,7 @@
     <%= render partial: "layouts/shared/footer" %>
 
     <%= render Ui::Flash::Component.new %>
+    <%= render Ui::TurboConfirm::Component.new %>
     <%= turbo_frame_tag :modal %>
-    <%= render partial: "layouts/shared/turbo_confirm" %>
   </body>
 </html>

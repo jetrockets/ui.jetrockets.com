@@ -20,7 +20,7 @@
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
   </head>
 
-  <body>
+  <body data-controller="modal">
     <div class="mt-6 wrapper">
       <%= yield %>
     </div>

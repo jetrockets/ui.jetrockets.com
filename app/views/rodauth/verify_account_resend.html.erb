@@ -10,7 +10,7 @@
           <%= form.label "login", rodauth.login_label %>
           <%= form.email_field rodauth.login_param, value: params[rodauth.login_param], id: "login", autocomplete: "email", required: true, class: "#{"form__input-errored" if rodauth.field_error(rodauth.login_param)}" %>
           <% if rodauth.field_error(rodauth.login_param) %>
-            <%= content_tag(:span, rodauth.field_error(rodauth.login_param), class: "form__error")  %>
+            <%= content_tag(:span, rodauth.field_error(rodauth.login_param), class: "form__error") %>
           <% end %>
         </div>
       <% end %>

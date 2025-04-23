@@ -1,36 +1,35 @@
 import { Controller } from '@hotwired/stimulus'
-import { stimulus } from '~/init'
 import Modal from 'flowbite/lib/esm/components/modal'
+import { stimulus } from '~/init'
 
 export default class ModalController extends Controller {
+  static targets = ['trigger', 'modal']
+
   connect () {
-    const options = {
-      placement: 'center-center',
-      // backdrop: 'dynamic',
-      // backdropClasses: 'bg-gray-950 bg-opacity-50 fixed inset-0 z-40',
-      // closable: this.data.get('closable') === 'true',
-      onHide: () => {
-        this.element.remove()
-        window.modal = undefined
-      }
-    }
-
-    const instanceOptions = {
-      id: 'modalContainer',
-      override: false
-    }
-
-    this.modal = new Modal(this.element, options, instanceOptions)
-    window.modal = this.modal
-    this.modal.show()
+    this.modals = new Map()
+    this.#initializeModals()
   }
 
-  close () {
-    this.modal.hide()
+  show (e) {
+    this.#getModal(e)?.show()
   }
 
-  disconnect () {
-    this.element.remove()
+  close (e) {
+    this.#getModal(e)?.hide()
+  }
+
+  #getModal (e) {
+    const id = e.currentTarget.dataset.id
+    return this.modals.get(id)
+  }
+
+  #initializeModals () {
+    this.triggerTargets.forEach(trigger => {
+      const targetId = trigger.dataset.id
+      const modalElement = this.modalTargets.find(i => i.id === targetId)
+
+      this.modals.set(targetId, new Modal(modalElement))
+    })
   }
 }
 

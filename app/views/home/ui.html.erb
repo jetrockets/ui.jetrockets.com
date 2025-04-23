@@ -34,14 +34,6 @@
           <%= render Ui::Alert::Component.new title: "Default alert!" %>
         <% end %>
 
-        <%= accordion.with_item(title: "Async Modal", id: "modal") do %>
-          <p class="mb-2 text-gray-600">
-            By continuing, I agree to <%= site_name %>
-            <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link" %>,
-            <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
-          </p>
-        <% end %>
-
         <%= accordion.with_item(title: "Avatars", id: "avatars", class: "space-y-4") do %>
           <div class="flex flex-wrap items-center gap-2">
             <%= render Ui::Avatar::Component.new(size: :xs) %>
@@ -185,7 +177,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Confirm Dialog", id: "confirm_dialog") do %>
-          <%= button_to"Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
+          <%= button_to "Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
         <% end %>
 
         <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
@@ -287,6 +279,23 @@
           <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
           <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-6" %>
           <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-8 text-primary" %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Modal Async", id: "modal_async") do %>
+          <p class="mb-2 text-gray-600">
+            By continuing, I agree to <%= site_name %>
+            <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link" %>,
+            <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
+          </p>
+        <% end %>
+
+        <%= accordion.with_item(title: "Modal Sync", id: "modal_sync", class: "flex gap-2") do %>
+          <%= render Ui::Btn::Component.new(variant: :primary, data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "modal1" }).with_content "Open modal" %>
+          <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", async: false, id: "modal1") do %>
+            <p class="p-4">Modal content</p>
+          <% end %>
+
+          <%= render Ui::Btn::Component.new(variant: :primary, data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "modal2" }).with_content "Open another modal" %>
         <% end %>
 
         <%= accordion.with_item(title: "Pagy", id: "pagy") do %>
@@ -431,5 +440,8 @@
         <% end %>
       <% end %>
     </div>
+    <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", async: false, id: "modal2") do %>
+      <p class="p-4">This modal window is in the end of this code section</p>
+    <% end %>
   </section>
 </article>
