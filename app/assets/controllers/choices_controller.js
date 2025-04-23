@@ -1,9 +1,9 @@
 import { Controller } from '@hotwired/stimulus'
 import Choices from 'choices.js'
-import { stimulus } from '~/init'
-import 'choices.js/public/assets/styles/choices.css'
 
-export default class SelectController extends Controller {
+// import 'choices.js/src/styles/choices.scss'
+
+export default class extends Controller {
   static targets = ['select', 'options']
 
   initialize () {
@@ -84,7 +84,6 @@ export default class SelectController extends Controller {
       callbackOnCreateTemplates: function (template) {
         return {
           choice: ({ classNames }, data) => {
-            console.log(data)
             return template(`
               <div class="${classNames.item} ${classNames.itemChoice} ${
               data.disabled ? classNames.itemDisabled : classNames.itemSelectable
@@ -114,11 +113,8 @@ export default class SelectController extends Controller {
 
     this.selectTarget.addEventListener('addItem', this.#addItem)
     this.selectTarget.addEventListener('removeItem', this.#removeItem)
-
     if (this.input && this.searchPath) {
       this.input.addEventListener('input', this.#search)
-    } else {
-      this.#loadDefaultOptions()
     }
 
     this.#appendNewLink()
@@ -190,8 +186,9 @@ export default class SelectController extends Controller {
     if (this.newPath) {
       const dropdownList = this.element.querySelector('.choices__list--dropdown')
 
-      if (dropdownList) {
-        dropdownList.insertAdjacentHTML('beforeend', this.#dropdownFooterTemplate())
+      if (dropdownList && !dropdownList.querySelector('.choices__item--new')) {
+        const linkElement = `<a href="${this.newUrlValue}" class="choices__item choices__item--new" data-turbo-frame="modal">+ New item</a>`
+        dropdownList.insertAdjacentHTML('beforeend', linkElement)
       }
     }
   }
@@ -211,40 +208,4 @@ export default class SelectController extends Controller {
     }
     return accumulator
   }
-
-  #dropdownFooterTemplate () {
-    return `
-      <div class="select_footer">
-        <a href="${this.newPath}" data-turbo-frame="sheet" class="select_footer__new" tabindex="-1">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 2.8125V15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Create</span>
-        </a>
-
-        <div class="select_footer__help">
-          <div class="select_footer__item">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 11L5 13L3 11" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M5 3V13" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9 5L11 3L13 5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M11 13V3" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            to navigate
-          </div>
-          <div class="select_footer__item">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 8L3 11L6 14" stroke="#3F3C43" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 2V11H3" stroke="#3F3C43" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            to select
-          </div>
-          <div class="select_footer__item"><b>esc</b> to dismiss</div>
-        </div>
-      </div>
-    `
-  }
 }
-
-stimulus.register('select', SelectController)

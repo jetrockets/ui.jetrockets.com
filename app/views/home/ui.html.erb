@@ -285,6 +285,16 @@
             </div>
 
             <div class="form__group">
+              <%= f.label :country, "Multiple Select" %>
+              <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
+            </div>
+
+            <div class="form__group">
+              <%= f.label :country %>
+              <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" } %>
+            </div>
+
+            <div class="form__group">
               <%= f.label :email %>
               <%= f.email_field :email, autocomplete: "email" %>
             </div>
@@ -372,15 +382,6 @@
             <%= popover.with_menu(title: "Popover Title") do %>
               <p>And here's some amazing content. It's very engaging.</p>
             <% end %>
-          <% end %>
-        <% end %>
-
-        <%= accordion.with_item(title: "Select", id: "select") do %>
-          <label class="form__label" for="user_select">Select label</label>
-          <%= render Ui::Select::Component.new(id: "user_select") do %>
-            <option value="1" data-custom-properties='{"desc":"Admin"}'>Alice</option>
-            <option value="2" data-custom-properties='{"desc":"Manager"}'>Bob</option>
-            <option value="3">Charlie</option>
           <% end %>
         <% end %>
 
