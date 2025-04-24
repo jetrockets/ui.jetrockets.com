@@ -21,12 +21,13 @@ export default class DrawerTurboController extends Controller {
   }
 
   #initializeModal () {
-    const options = this.#getModalOptions()
+    const options = this.#getOptions()
     this.drawer = new Drawer(this.element, options)
   }
 
-  #getModalOptions () {
+  #getOptions () {
     return {
+      placement: 'right',
       onHide: () => {
         this.element.remove()
       }

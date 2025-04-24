@@ -2,7 +2,7 @@
 
 @layer components {
   .drawer {
-    @apply fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800;
+    @apply fixed z-40 h-screen p-4 overflow-y-auto bg-white w-100 dark:bg-gray-800 animate-[var(--animate-slide-right)];
   }
 
   .drawer__title {

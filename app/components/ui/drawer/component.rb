@@ -1,8 +1,9 @@
 class Ui::Drawer::Component < ApplicationComponent
-  def initialize(title: nil, async: true, **options)
+  def initialize(title: nil, async: true, id: nil, **options)
     super
     @title = title
     @async = async
+    @id = id
     @options = options
   end
 
@@ -14,7 +15,7 @@ class Ui::Drawer::Component < ApplicationComponent
         yield
       end
     else
-      content_tag :div, id: "drawer", tabindex: "-1", data: { drawer_target: "drawer" }, class: "drawer -translate-x-full" do
+      content_tag :div, id: @id, tabindex: "-1", data: { drawer_target: "drawer" }, class: "drawer translate-x-full" do
         yield
       end
     end
@@ -23,7 +24,7 @@ class Ui::Drawer::Component < ApplicationComponent
   def async_container_tag(&block)
     if helpers.turbo_frame_request?
       turbo_frame_tag :drawerTurbo do
-        content_tag :div, id: "drawerTurbo", tabindex: "-1", data: { controller: "turbo-drawer" }, class: drawer_turbo_classes do
+        content_tag :div, id: "drawerTurbo", tabindex: "-1", data: { controller: "turbo-drawer" }, class: "drawer text-white" do
           yield
         end
       end
@@ -32,9 +33,5 @@ class Ui::Drawer::Component < ApplicationComponent
         yield
       end
     end
-  end
-
-  def drawer_turbo_classes
-    class_names("drawer -translate-x-full text-white")
   end
 end
