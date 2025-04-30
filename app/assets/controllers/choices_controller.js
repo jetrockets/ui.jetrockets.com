@@ -79,6 +79,7 @@ export default class extends Controller {
         threshold: 0.2
       },
       searchResultLimit: 10,
+      removeItemButton: true,
       allowHTML: true,
       ...this.#options(),
       callbackOnCreateTemplates: function (template) {

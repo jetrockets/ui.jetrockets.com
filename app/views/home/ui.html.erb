@@ -284,14 +284,16 @@
               </div>
             </div>
 
-            <div class="form__group">
-              <%= f.label :country, "Multiple Select" %>
-              <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
-            </div>
+            <div class="flex gap-4">
+              <div class="flex-1 form__group">
+                <%= f.label :country, "Multiple Select" %>
+                <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
+              </div>
 
-            <div class="form__group">
-              <%= f.label :country %>
-              <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" } %>
+              <div class="flex-1 form__group">
+                <%= f.label :country %>
+                <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" } %>
+              </div>
             </div>
 
             <div class="form__group">
