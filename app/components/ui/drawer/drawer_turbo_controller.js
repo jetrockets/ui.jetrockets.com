@@ -35,4 +35,4 @@ export default class DrawerTurboController extends Controller {
   }
 }
 
-stimulus.register('turbo-drawer', DrawerTurboController)
+stimulus.register('drawer-turbo', DrawerTurboController)

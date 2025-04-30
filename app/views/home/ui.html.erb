@@ -201,7 +201,7 @@
 
         <%= accordion.with_item(title: "Drawer Async", id: "drawer_async") do %>
           By continuing, I agree to <%= site_name %>
-          <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawerTurbo }, class: "link" %>
+          <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link" %>
         <% end %>
 
         <%= accordion.with_item(title: "Drawer Sync", id: "drawer_sync") do %>
