@@ -10,32 +10,51 @@ export default class DrawerController extends Controller {
     this.#initializeDrawers()
   }
 
-  show (e) {
-    this.#getDrawer(e)?.show()
+  show (event) {
+    const drawer = this.#findDrawer(event)
+    if (drawer) drawer.show()
   }
 
-  close (e) {
-    this.#getDrawer(e)?.hide()
+  close (event) {
+    const drawer = this.#findDrawer(event)
+    if (drawer) drawer.hide()
   }
 
-  #getDrawer (e) {
-    const id = e.currentTarget.dataset.id
+  #findDrawer (event) {
+    const id = event.currentTarget.dataset.id
+    if (!id) {
+      console.warn('Drawer ID not found in dataset.')
+      return null
+    }
     return this.drawers.get(id)
   }
 
   #initializeDrawers () {
     this.triggerTargets.forEach(trigger => {
       const targetId = trigger.dataset.id
-      const drawerElement = this.drawerTargets.find(i => i.id === targetId)
+      if (!targetId) {
+        console.warn('Trigger is missing a dataset ID.')
+        return
+      }
 
-      this.drawers.set(targetId, new Drawer(drawerElement, this.#options()))
+      const drawerElement = this.drawerTargets.find(drawer => drawer.id === targetId)
+      if (!drawerElement) {
+        console.warn(`Drawer element with ID "${targetId}" not found.`)
+        return
+      }
+
+      this.drawers.set(targetId, new Drawer(drawerElement, this.#drawerOptions()))
     })
   }
 
-  #options () {
+  #drawerOptions () {
     return {
-      placement: 'right'
+      placement: DrawerController.DEFAULT_PLACEMENT
     }
+  }
+
+  static get DEFAULT_PLACEMENT () {
+    return 'right'
   }
 }
 

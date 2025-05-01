@@ -4,34 +4,36 @@ import Drawer from 'flowbite/lib/esm/components/drawer'
 
 export default class DrawerTurboController extends Controller {
   connect () {
-    this.#initializeModal()
-    this.drawer.show()
+    this.#initializeDrawer()
+    this.show()
   }
 
   show () {
-    this.drawer.show()
+    this.drawer?.show()
   }
 
   close () {
-    this.drawer.hide()
+    this.drawer?.hide()
   }
 
   disconnect () {
     this.element.remove()
   }
 
-  #initializeModal () {
+  #initializeDrawer () {
     const options = this.#getOptions()
     this.drawer = new Drawer(this.element, options)
   }
 
   #getOptions () {
     return {
-      placement: 'right',
-      onHide: () => {
-        this.element.remove()
-      }
+      placement: DrawerTurboController.DEFAULT_PLACEMENT,
+      onHide: () => this.element.remove()
     }
+  }
+
+  static get DEFAULT_PLACEMENT () {
+    return 'right'
   }
 }
 

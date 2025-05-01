@@ -24,7 +24,7 @@ class Ui::Drawer::Component < ApplicationComponent
   def async_container_tag(&block)
     if helpers.turbo_frame_request?
       turbo_frame_tag :drawer do
-        content_tag :div, id: "drawerTurbo", tabindex: "-1", data: { controller: "drawer-turbo" }, class: "drawer text-white" do
+        content_tag :div, id: "drawerTurbo", tabindex: "-1", data: { controller: "drawer-turbo" }, class: "drawer" do
           yield
         end
       end
