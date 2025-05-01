@@ -1,0 +1,12 @@
+:host {
+  --day-width: 29px;
+  --day-height: 29px;
+  --color-fg-primary: var(--color-primary-600);
+  --color-fg-accent: var(--color-primary-600);
+  --color-bg-unavailable: transparent;
+  --color-fg-locked: #BDBDBD;
+}
+
+.container[data-theme=dark] {
+  --color-bg-unavailable: transparent;
+}

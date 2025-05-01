@@ -11,8 +11,9 @@ module FormBuilders
           { "form__input-errored": errors_for?(method) },
           options.delete(:class)
         )
+        autocomplete = options.delete(:autocomplete) || "off"
 
-        super(method, options.reverse_merge(class: input_classes)) + inline_errors_for(method)
+        super(method, options.reverse_merge(class: input_classes, autocomplete: autocomplete)) + inline_errors_for(method)
       end
     end
 
@@ -35,6 +36,20 @@ module FormBuilders
 
       html_options[:class] = input_classes
       super
+    end
+
+    def easepick(method, options = {})
+      options[:data] = {
+        action: "#{options[:data][:action]} focus->easepick#show",
+        controller: "easepick"
+      }.reverse_merge(options[:data] || {})
+      value = options.delete(:value) || @object&.send(method)
+
+      if value.present?
+        value = I18n.l(value)
+      end
+
+      text_field(method, options.merge(value: value))
     end
 
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
