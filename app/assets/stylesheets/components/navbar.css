@@ -1,6 +1,6 @@
 @layer components {
   .navbar {
-    @apply sticky top-0 z-40 flex flex-col items-center justify-between shadow-xs bg-white/90 backdrop-blur-xs h-(--nav-height);
+    @apply sticky top-0 z-20 flex flex-col items-center justify-between shadow-xs bg-white/90 backdrop-blur-xs h-(--nav-height);
   }
 
   .navbar-active .navbar__backgrop {
