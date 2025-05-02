@@ -284,7 +284,7 @@
               </div>
             </div>
 
-            <div class="flex gap-4">
+            <div class="flex flex-col md:flex-row md:gap-4">
               <div class="flex-1 form__group">
                 <%= f.label :country, "Multiple Select" %>
                 <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
