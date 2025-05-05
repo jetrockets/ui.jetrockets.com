@@ -66,7 +66,7 @@ export default class extends Controller {
       this.#initializeMask()
     }
 
-    this.picker = new easepick.create({
+    this.picker = new easepick.Core({
       ...this.config
     })
 
