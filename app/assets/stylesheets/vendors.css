@@ -1,1 +1,2 @@
-/* @import "./vendors/choices.css" */
+@import "./vendors/choices";
+@import "./vendors/choices_ui";
