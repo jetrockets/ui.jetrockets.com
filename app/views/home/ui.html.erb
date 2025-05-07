@@ -323,7 +323,7 @@
         <%= accordion.with_item(title: "Modal Async", id: "modal_async") do %>
           <p class="mb-2 text-gray-600">
             By continuing, I agree to <%= site_name %>
-            <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :modal }, class: "link" %>,
+            <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link" %>,
             <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
           </p>
         <% end %>

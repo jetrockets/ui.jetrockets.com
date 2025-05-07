@@ -28,6 +28,7 @@ export default class ModalTurboController extends Controller {
   #getModalOptions () {
     const { closable } = this.element.dataset
     return {
+      backdropClasses: 'bg-gray-900/50 fixed inset-0 z-30',
       closable: closable || 'true',
       onHide: () => {
         this.element.remove()
