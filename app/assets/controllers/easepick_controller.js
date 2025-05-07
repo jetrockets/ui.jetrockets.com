@@ -4,8 +4,8 @@ import Imask from 'imask'
 
 import styles from '@easepick/bundle/dist/index.css?inline'
 import customStyles from '~/stylesheets/vendors/easepick.css?inline'
-import { coreOptions, rangeOptions, lockOptions, ampOptions } from './easepick/config_options'
-import { events } from './easepick/events'
+import { coreOptions, rangeOptions, lockOptions, ampOptions } from '../utils/easepick/config_options'
+import { events } from '../utils/easepick/events'
 import isMobile from '~/utils/navigator'
 import { capitalize, kebabCase } from '~/utils/string'
 
