@@ -460,6 +460,10 @@
           <% end %>
         <% end %>
 
+        <%= accordion.with_item(title: "Tags", id: "tags") do %>
+          <%= render Ui::TagInput::Component.new(placeholder: "Choose your stack", value: "", data: { whitelist: "Rails,Hotwire,Turbo,Stimulus,Tailwind,CSS,HTML,React,JS,Python,Svelte,C,C#,C++" }) %>
+        <% end %>
+
         <%= accordion.with_item(title: "Tooltip", id: "tooltip", class: "flex gap-4 items-center") do %>
           <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }) do %>
             <%= render Ui::Btn::Component.new(variant: :primary).with_content "Tooltip Button" %>
