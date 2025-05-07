@@ -7,7 +7,7 @@ class Ui::Drawer::ComponentPreview < ViewComponent::Preview
 
   def darawer(title: "Drawer Title", drawer_content: "Any amazing content")
     render(Ui::Drawer::Component.new(title: title, async: false, id: "drawer-lookbook")) do
-      tag.div(drawer_content, class: "drawer__content")
+      tag.div(drawer_content, class: "drawer__body")
     end
   end
 end

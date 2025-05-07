@@ -27,6 +27,7 @@ export default class DrawerTurboController extends Controller {
 
   #getOptions () {
     return {
+      backdropClasses: 'bg-gray-900/50 fixed inset-0 z-40',
       placement: DrawerTurboController.DEFAULT_PLACEMENT,
       onHide: () => this.element.remove()
     }

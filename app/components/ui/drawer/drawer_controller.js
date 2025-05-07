@@ -49,6 +49,7 @@ export default class DrawerController extends Controller {
 
   #drawerOptions () {
     return {
+      backdropClasses: 'bg-gray-900/50 fixed inset-0 z-40',
       placement: DrawerController.DEFAULT_PLACEMENT
     }
   }

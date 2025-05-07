@@ -2,36 +2,35 @@
 
 @layer components {
   .drawer {
-    @apply fixed z-40 h-screen w-fit overflow-y-auto bg-white animate-[var(--animate-slide-right)];
-  }
-
-  .drawer__header {
-    @apply sticky top-0 p-4 bg-white;
-    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-  }
-
-  .drawer__footer {
-    @apply fixed w-full bottom-0 p-4 bg-white;
-    box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.1);
+    @apply fixed flex z-50 h-screen w-fit overflow-y-auto bg-white animate-[var(--animate-slide-right)];
   }
 
   .drawer__container {
-    @apply w-full max-w-2xl
+    @apply flex flex-col w-full max-w-2xl;
+  }
+
+  .drawer__header {
+    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white border-b border-gray-200;
   }
 
   .drawer__title {
-    @apply inline-flex items-center text-base font-semibold text-gray-600;
-  }
-
-  .drawer__content {
-    @apply text-sm text-gray-600 p-6;
+    @apply text-xl font-semibold leading-tight text-gray-900;
   }
 
   .drawer__close {
-    @apply text-gray-400 bg-transparent cursor-pointer hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center;
+    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full cursor-pointer hover:bg-gray-100 hover:text-gray-400;
   }
 
   .drawer__body {
-    @apply py-6 px-6 rounded-lg
+    @apply flex-1 p-6 text-sm text-gray-600;
+  }
+
+  .drawer__footer {
+    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white;
+    box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .drawer__footer-end {
+    @apply justify-end;
   }
 }
