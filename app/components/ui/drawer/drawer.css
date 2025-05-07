@@ -1,0 +1,36 @@
+@reference "~/entrypoints/application.css";
+
+@layer components {
+  .drawer {
+    @apply fixed flex z-50 h-screen w-fit overflow-y-auto bg-white animate-[var(--animate-slide-right)];
+  }
+
+  .drawer__container {
+    @apply flex flex-col w-full max-w-2xl;
+  }
+
+  .drawer__header {
+    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white border-b border-gray-200;
+  }
+
+  .drawer__title {
+    @apply text-xl font-semibold leading-tight text-gray-900;
+  }
+
+  .drawer__close {
+    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full cursor-pointer hover:bg-gray-100 hover:text-gray-400;
+  }
+
+  .drawer__body {
+    @apply flex-1 p-6 text-sm text-gray-600;
+  }
+
+  .drawer__footer {
+    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white;
+    box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .drawer__footer-end {
+    @apply justify-end;
+  }
+}

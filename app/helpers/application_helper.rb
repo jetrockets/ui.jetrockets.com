@@ -19,4 +19,25 @@ module ApplicationHelper
       render_inline_svg(filename, transform_params)
     end
   end
+
+  def close_btn(id = nil)
+    is_turbo = respond_to?(:turbo_frame_request?) && turbo_frame_request?
+
+    attributes = {
+      type: "button",
+      class: "drawer__close"
+    }
+
+    if is_turbo
+      attributes["data-action"] = "click->drawer-turbo#close"
+    else
+      attributes["data-action"] = "click->drawer#close"
+      attributes["aria-label"] = "Close"
+      attributes["data-id"] = id if id.present?
+    end
+
+    tag.button(**attributes) do
+      vite_svg_tag "images/icons/close.svg"
+    end
+  end
 end

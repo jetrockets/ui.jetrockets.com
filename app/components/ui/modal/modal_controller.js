@@ -28,7 +28,9 @@ export default class ModalController extends Controller {
       const targetId = trigger.dataset.id
       const modalElement = this.modalTargets.find(i => i.id === targetId)
 
-      this.modals.set(targetId, new Modal(modalElement))
+      this.modals.set(targetId, new Modal(modalElement, {
+        backdropClasses: 'bg-gray-900/50 fixed inset-0 z-30'
+      }))
     })
   }
 }
