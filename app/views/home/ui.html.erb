@@ -272,7 +272,7 @@
         <% end %>
 
         <%= accordion.with_item(title: "Form Builder", id: "form_builder") do %>
-          <%= form_with url: root_path do |f| %>
+          <%= form_with url: root_path, data: { controller: "fields" } do |f| %>
             <div class="grid gap-x-4 md:grid-cols-2">
               <div class="form__group">
                 <%= f.label :first_name %>
@@ -286,15 +286,20 @@
 
             <div class="flex flex-col md:flex-row md:gap-4">
               <div class="flex-1 form__group">
-                <%= f.label :country, "Multiple Select" %>
-                <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
+                <%= f.label :country_multiple, "Multiple Select" %>
+                <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
               </div>
 
               <div class="flex-1 form__group">
                 <%= f.label :country %>
-                <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" } %>
+                <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { data: { action: "change->fields#enable" } } %>
               </div>
             </div>
+
+            <%= field_set_tag nil, disabled: :country != "Other", class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
+              <%= f.label :country_name %>
+              <%= f.text_area :country_name, placeholder: "What is your country?" %>
+            <% end %>
 
             <div class="form__group">
               <%= f.label :email %>
