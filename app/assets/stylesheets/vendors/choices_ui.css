@@ -1,0 +1,199 @@
+:root {
+  --choices-font-size-lg: 16px;
+  --choices-font-size-md: 14px;
+  --choices-font-size-sm: 12px;
+  --choices-border-radius: 0.375rem;
+  --choices-border-radius-item: 20px;
+
+  --choices-bg-color: var(--color-white);
+  --choices-bg-color-disabled: var(--color-gray-300);
+  --choices-bg-color-dropdown: var(--color-white);
+
+  --choices-text-color: var(--color-gray-900);
+  --choices-keyline-color: var(--color-gray-300);
+  --choices-primary-color: var(--color-primary-700);
+  --choices-disabled-color: var(--color-gray-300);
+  --choices-highlight-color: var(--color-primary-700);
+  --choices-hover-color: var(--color-white);
+
+  --choices-button-dimension: 8px;
+  --choices-button-offset: 8px;
+  --choices-icon-cross: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==");
+  --choices-icon-cross-inverse: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==");
+
+  --choices-z-index: 1;
+
+  --choices-input-height: 40px;
+  --choices-width: 100%;
+  --choices-base-border: 1px solid var(--choices-keyline-color);
+  --choices-border-color-focus: var(--color-blue-300);
+  --choices-ring-shadow-focus: 0 0 0 3px rgba(191, 219, 254, 0.5);
+}
+
+.choices {
+  cursor: pointer;
+  font-size: var(--choices-font-size-lg);
+  position: relative;
+}
+
+.choices[data-type*="select-one"] .choices__input {
+  border-bottom: var(--choices-base-border);
+  margin: 0;
+  padding: 10px;
+  width: var(--choices-width);
+}
+
+.choices[data-type*="select-one"] .choices__button {
+  display: none;
+}
+
+.choices::after {
+  content: "";
+  border-style: solid;
+  border-color: var(--choices-text-color) transparent transparent transparent;
+  border-width: 5px;
+  margin-top: -2.5px;
+  position: absolute;
+  right: 11.5px;
+  top: 50%;
+}
+
+.choices.is-open::after {
+  border-color: transparent transparent var(--choices-text-color);
+  margin-top: -7.5px;
+}
+
+.choices[data-type*='select-multiple'] .choices__inner,
+.choices[data-type*='text'] .choices__inner {
+  padding: 5px 12px;
+}
+
+.choices[data-type*='select-multiple'] .choices__button,
+.choices[data-type*='text'] .choices__button {
+  background-image: var(--choices-icon-cross);
+  background-size: var(--choices-button-dimension);
+  opacity: 0.75;
+  padding-left: calc(var(--choices-button-offset) * 2);
+  position: relative;
+  width: var(--choices-button-dimension);
+}
+
+.choices[data-type*='select-multiple'] .choices__button:hover,
+.choices[data-type*='text'] .choices__button:hover {
+  opacity: 1;
+}
+
+.choices__button {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+.choices__inner {
+  background-color: var(--choices-bg-color);
+  border: var(--choices-base-border);
+  border-radius: var(--choices-border-radius);
+  display: inline-block;
+  font-size: var(--choices-font-size-lg);
+  min-height: var(--choices-input-height);
+  overflow: hidden;
+  padding: 7px 12px;
+  vertical-align: top;
+  width: var(--choices-width);
+}
+
+.is-focused .choices__inner,
+.is-open .choices__inner {
+  border-color: var(--choices-border-color-focus);
+  box-shadow: var(--choices-ring-shadow-focus);
+}
+
+.is-open .choices__inner {
+  border-radius: var(--choices-border-radius) var(--choices-border-radius) 0 0;
+}
+
+.choices__list[aria-expanded] {
+  background-color: var(--choices-bg-color-dropdown);
+  border: var(--choices-base-border);
+  border-bottom-left-radius: var(--choices-border-radius);
+  border-bottom-right-radius: var(--choices-border-radius);
+  margin-top: -1px;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  visibility: hidden;
+  width: var(--choices-width);
+  z-index: var(--choices-z-index);
+}
+
+.choices__list--single {
+  padding: 0 calc(var(--choices-button-offset) * 2) 0 0;
+  width: var(--choices-width);
+}
+
+.choices__list--multiple {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.choices__list--multiple .choices__item {
+  background-color: var(--choices-primary-color);
+  border-radius: var(--choices-border-radius-item);
+  color: var(--choices-hover-color);
+  display: inline-block;
+  font-size: var(--choices-font-size-sm);
+  margin-right: 4px;
+  padding: 4px 10px;
+}
+
+.choices__item--selectable {
+  cursor: pointer;
+}
+
+.choices__input {
+  background-color: var(--choices-bg-color);
+  border: 0;
+  box-shadow: none;
+  font-size: var(--choices-font-size-lg);
+  max-width: var(--choices-width);
+  padding: 1.5px 0 0 0;
+}
+
+.choices__list--dropdown,
+.choices__list[aria-expanded] {
+  background-color: var(--choices-bg-color-dropdown);
+  border: var(--choices-base-border);
+  border-bottom-left-radius: var(--choices-border-radius);
+  border-bottom-right-radius: var(--choices-border-radius);
+  overflow: hidden;
+  position: absolute;
+  visibility: hidden;
+  width: var(--choices-width);
+  z-index: var(--choices-z-index);
+}
+
+.is-active.choices__list--dropdown,
+.is-active.choices__list[aria-expanded] {
+  visibility: visible;
+}
+
+.choices__list--dropdown .choices__item,
+.choices__list[aria-expanded] .choices__item {
+  border-bottom: var(--choices-base-border);
+  font-size: var(--choices-font-size-md);
+  padding: 10px;
+  position: relative;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+  background-color: var(--choices-highlight-color);
+  color: var(--choices-hover-color);
+}
+
+.choices__placeholder {
+  opacity: 0.5;
+}

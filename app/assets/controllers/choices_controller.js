@@ -1,8 +1,8 @@
 import { Controller } from '@hotwired/stimulus'
 import Choices from 'choices.js'
 
-import '~/stylesheets/vendors/choices.scss'
-import '~/stylesheets/vendors/choices_ui.scss'
+// import '~/stylesheets/vendors/choices.scss'
+// import '~/stylesheets/vendors/choices_ui.scss'
 
 export default class extends Controller {
   static targets = ['select', 'options']
