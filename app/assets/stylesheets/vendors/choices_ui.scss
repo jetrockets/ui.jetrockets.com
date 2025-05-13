@@ -25,7 +25,6 @@ $choices-icon-cross: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdo
 $choices-icon-cross-inverse: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==") !default;
 $choices-z-index: 1 !default;
 
-/* Added */
 $choices-input-height: 44px !default;
 $choices-width: 100% !default;
 $choices-base-border: 1px solid $choices-keyline-color !default;
@@ -45,7 +44,6 @@ $choices-arrow-right: 11.5px !default;
 $choices-button-opacity: 0.75 !default;
 $choices-button-opacity-hover: 1 !default;
 $choices-placeholder-opacity: 0.5 !default;
-/* End */
 
 .#{$choices-selector} {
   position: relative;
