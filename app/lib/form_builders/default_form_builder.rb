@@ -52,6 +52,33 @@ module FormBuilders
       text_field(method, options.merge(value: value))
     end
 
+    def choices(method, choices = nil, options = {}, html_options = {}, choices_options = {}, &block)
+      id = field_id(method)
+      container_id = field_id("#{method}_container")
+
+      html_options[:data] = (html_options[:data] || {}).reverse_merge(choices_target: "select")
+
+      choices_data = choices_options.delete(:data) || {}
+      choices_data.reverse_merge!(controller: "choices")
+      choices_data.reverse_merge!(remove_item_button: true) if options[:multiple] == true
+
+      update_choices_data(choices_data, container_id, id)
+
+      classes = class_names(
+        choices_options&.delete(:class),
+        "form__group-errored": errors_for?(method)
+      )
+
+      @template.content_tag :div, class: classes, id: container_id, data: choices_data, **choices_options do
+        if choices_data[:search_path].present?
+          content_tag(:datalist, options_for_select(choices), data: { choices_target: "options" }) +
+          select(method, choices, options, html_options)
+        else
+          select(method, choices, options, html_options)
+        end
+      end
+    end
+
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
       label_text = options.delete(:label)
       hint = options.delete(:hint)
@@ -126,6 +153,17 @@ module FormBuilders
     end
 
     private
+
+    def update_choices_data(choices_data, container_id, id)
+      if choices_data[:new_path].present?
+        uri = URI.parse(choices_data[:new_path])
+        existing_params = URI.decode_www_form(uri.query || "")
+        new_params = { container: container_id, target: id }
+        uri.query = URI.encode_www_form(existing_params.to_h.merge(new_params))
+
+        choices_data[:new_path] = uri.to_s
+      end
+    end
 
     def errors_for?(method)
       @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
