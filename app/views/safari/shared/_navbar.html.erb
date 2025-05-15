@@ -1,0 +1,50 @@
+<aside class="px-3 py-6 bg-white border-gray-100 border-r-1 w-52">
+  <div class="flex justify-center pb-9">
+    <%= vite_svg_tag("images/safari/logo.svg", alt: "Safari Portal") %>
+  </div>
+  <nav class="sidebar">
+    <div class="sidebar__submenu">
+      <h2 class="sidebar__subheading">Home</h2>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/dashboard.svg", alt: "Dashboard") %>
+        <span>Dashboard</span>
+      <% end %>
+    </div>
+
+    <div class="sidebar__submenu">
+      <h2 class="sidebar__subheading">Operations</h2>
+      <%= link_to safari_path, class: "sidebar__item bg-primary-100" do %>
+        <%= vite_svg_tag("images/safari/icons/tasks.svg", alt: "Tasks") %>
+        <span>Tasks</span>
+      <% end %>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/financials.svg", alt: "Financials") %>
+        <span>Financials</span>
+      <% end %>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/contacts.svg", alt: "Contacts") %>
+        <span>Contacts</span>
+      <% end %>
+    </div>
+
+    <div class="sidebar__submenu">
+      <h2 class="sidebar__subheading">Libraries</h2>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/content.svg", alt: "Content") %>
+        <span>Content</span>
+      <% end %>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/resources.svg", alt: "Resources") %>
+        <span>Resources</span>
+      <% end %>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/documents.svg", alt: "Documents") %>
+        <span>Documents</span>
+      <% end %>
+      <%= link_to safari_path, class: "sidebar__item" do %>
+        <%= vite_svg_tag("images/safari/icons/media.svg", alt: "Media") %>
+        <span>Media</span>
+      <% end %>
+    </div>
+  </nav>
+</aside>

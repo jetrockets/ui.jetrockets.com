@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-prefetch" content="true">
+    <meta name="turbo-cache-control" content="no-cache">
+
+    <%= display_meta_tags(default_meta_tags) %>
+
+    <%= render partial: "layouts/shared/favicons" %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= vite_stylesheet_tag "application", data: { turbo_track: "reload" } %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag "application", data: { turbo_track: "reload" }, async: true %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+    <%= render partial: "layouts/shared/analytics" if Rails.env.production? %>
+    <%= yield(:head) %>
+  </head>
+
+  <body class="flex h-screen" data-controller="modal">
+    <%= render partial: "safari/shared/navbar" %>
+
+    <div class="safari-content">
+      <header class="safari-header">
+        <div class="flex items-center gap-2 cursor-pointer">
+          <%= render Ui::Avatar::Component.new(size: :md) %>
+          <div class="w-0 h-0 border-b-0 border-transparent border-t-6 border-r-6 border-l-6 border-t-gray-700"></div>
+        </div>
+      </header>
+
+      <main class="h-screen overflow-auto">
+        <%= yield %>
+      </main>
+    </div>
+
+    <%= render Ui::Flash::Component.new %>
+    <%= turbo_frame_tag :modal %>
+  </body>
+</html>

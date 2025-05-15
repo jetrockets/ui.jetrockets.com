@@ -1,0 +1,13 @@
+@layer components {
+  .safari-content {
+    @apply flex flex-col flex-1 bg-[url('/images/safari/bg.png')] bg-cover bg-no-repeat;
+  }
+
+  .safari-header {
+    @apply flex items-center justify-end px-6 py-2.5 bg-white border-gray-100 border-b-1;
+  }
+
+  .safari-filter__item {
+    @apply py-3 border-b border-gray-300 rounded-none;
+  }
+}

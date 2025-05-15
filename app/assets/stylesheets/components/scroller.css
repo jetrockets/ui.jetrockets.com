@@ -1,6 +1,5 @@
 @layer components {
   .scroller-x {
-    @apply overflow-x-auto;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
   }

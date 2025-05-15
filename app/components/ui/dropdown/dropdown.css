@@ -2,7 +2,7 @@
 
 @layer components {
   .dropdown {
-    @apply hidden bg-white divide-y divide-gray-200 rounded-lg shadow-md min-w-44
+    @apply hidden bg-white divide-y divide-gray-200 rounded-lg shadow-md min-w-44 z-20
   }
 
   .dropdown__wrapper {
@@ -14,7 +14,7 @@
   }
 
   .dropdown__item {
-    @apply block px-4 py-2 hover:bg-gray-100
+    @apply block px-4 py-2 hover:bg-gray-100 cursor-pointer rounded
   }
 
   .dropdown__divider {

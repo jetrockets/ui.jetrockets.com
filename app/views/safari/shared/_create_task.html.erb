@@ -1,0 +1,49 @@
+<%
+  set_meta_tags(
+    title: "Privacy Policy: Secure Your Information Online",
+    description: "Company Name operates the Website Name website, which provides the SERVICE.",
+    keywords: "Privacy Policy, Online Security, Data Protection, Personal Information, User Privacy"
+  )
+%>
+<%= form_with url: root_path do |f| %>
+  <%= render Ui::Modal::Component.new(title: "Create One Off Task", async: false, id: "create_task") do %>
+    <div class="modal__body">
+      <div class="flex flex-col gap-4">
+        <%= f.text_field :last_name, placeholder: "Task name" %>
+        <%= f.choices :file, ["United States", "Canada", "Mexico"], { include_blank: "File" } %>
+        <%= f.choices :assign_to, ["United States", "Canada", "Mexico"], { include_blank: "Assign to" } %>
+        <div>
+          <%= f.choices :task_type, ["United States", "Canada", "Mexico"], { include_blank: "Task Type" }, { multiple: true } %>
+          <div class="flex pt-1 items-center gap-0.5">
+            <%= vite_svg_tag("images/safari/warn.svg", alt: "Warn") %>
+            <p class="text-sm">Select up to 2 task types</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-gray-700 text-lg pb-2.5">
+            Due date is
+            <%= render Ui::Btn::Component.new(size: :sm, class: "border-dashed border-gray-500").with_content("10 days") %>
+            <%= render Ui::Btn::Component.new(size: :sm, class: "border-dashed border-gray-500").with_content("before") %>
+            the
+            <%= render Ui::Btn::Component.new(size: :sm, class: "border-dashed border-gray-500").with_content("start of the trip.") %>
+          </div>
+
+          <%= f.easepick :date, placeholder: "Or, Manually Select Due Date", data: {
+            easepick_plugins: ["LockPlugin", "AmpPlugin"],
+            easepick_amp_dropdown: {
+              months: true,
+              years: true,
+              maxYear: Time.zone.today.year + 0,
+              minYear: Time.zone.today.year - 0
+            }
+          } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="justify-end modal__footer">
+      <%= f.submit "Create" %>
+    </div>
+  <% end %>
+<% end %>

@@ -6,3 +6,6 @@
 @import "./components/scroller.css";
 @import "./components/typography.css";
 @import "./components/wrapper.css";
+
+@import "./components/safari/body.css";
+@import "./components/safari/navbar.css";

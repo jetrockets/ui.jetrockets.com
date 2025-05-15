@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/terms", to: "home#terms"
 
   get "/ui", to: "home#ui"
+  get "/safari", to: "safari#index"
   root "home#index"
 
   if Rails.env.development?

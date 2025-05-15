@@ -1,5 +1,5 @@
 class Ui::Table::Th::Component < ApplicationComponent
-  def initialize(sticky: false, **options)
+  def initialize(sticky: :left, **options)
     @sticky = sticky
     @options = options
   end
