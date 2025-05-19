@@ -13,11 +13,11 @@
     }
 
     th {
-      @apply text-xs font-medium text-gray-700 uppercase;
+      @apply text-xs font-medium text-gray-700;
     }
 
     tfoot {
-      @apply font-semibold uppercase bg-gray-100;
+      @apply font-semibold bg-gray-100;
     }
   }
 
