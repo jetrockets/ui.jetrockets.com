@@ -25,7 +25,7 @@
   )
 ] %>
 
-<div class="max-w-[1200px] safari_wrapper">
+<div class="max-w-7xl safari_wrapper">
   <div class="flex flex-col border border-gray-200 rounded">
     <%= render Ui::Table::Component.new size: :sm do |table| %>
 
@@ -38,16 +38,16 @@
               <div class="flex items-center gap-1">
                 <%= render Ui::Dropdown::Component.new(data: { offsetSkidding: 100, offsetDistance: 5 }) do |dropdown| %>
                   <%= dropdown.with_trigger(class: "btn btn-outlined border-0 btn-sm btn-iconed focus:bg-gray-200") do %>
-                    <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
-                    <p>
+                    <div class="flex items-center gap-1">
+                      <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
                       File
                       <% if items.any? %>
                         <span>(<%= items.size %>)</span>
                       <% end %>
-                    </p>
+                    </div>
                   <% end %>
 
-                  <%= dropdown.with_menu(class: "min-w-96 pb-0 capitalize") do |list| %>
+                  <%= dropdown.with_menu(class: "max-w-72 sm:max-w-md capitalize") do |list| %>
                     <%= form_with url: root_path do |f| %>
                       <%= list.with_element_item(class: "hover:bg-white") do %>
                         <div class="relative w-full my-3">
@@ -60,7 +60,7 @@
 
                       <fieldset class="flex flex-col gap-y-2">
                         <%= list.with_element_item(class: "safari_filter__item") do %>
-                          <label class="inline-flex items-center cursor-pointer">
+                          <label class="safari_filter__label">
                             <%= f.check_box :kristin_smith, label: false %>
                             <span>
                               Kristin Smith X2 (Shannon), February 2025, Kenya + Tanzania
@@ -70,7 +70,7 @@
                         <% end %>
 
                         <%= list.with_element_item(class: "safari_filter__item") do %>
-                          <label class="inline-flex items-center cursor-pointer">
+                          <label class="safari_filter__label">
                             <%= f.check_box :chase, label: false, checked: true %>
                             <span>
                               Chase x 2, Tanzania, July 2024
@@ -80,7 +80,7 @@
                         <% end %>
 
                         <%= list.with_element_item(class: "safari_filter__item") do %>
-                          <label class="inline-flex items-center cursor-pointer">
+                          <label class="safari_filter__label">
                             <%= f.check_box :zilberman, label: false %>
                             <span>
                               Zilbermann x 9, Tanzania, July 2025
@@ -90,7 +90,7 @@
                         <% end %>
 
                         <%= list.with_element_item(class: "safari_filter__item") do %>
-                          <label class="inline-flex items-center cursor-pointer">
+                          <label class="safari_filter__label">
                             <%= f.check_box :reeve_waud, label: false, checked: true %>
                             <span>
                               Reeve Waud Jr, Namibia, 2025
@@ -100,7 +100,7 @@
                         <% end %>
 
                         <%= list.with_element_item(class: "safari_filter__item") do %>
-                          <label class="inline-flex items-center cursor-pointer">
+                          <label class="safari_filter__label">
                           <%= f.check_box :fraser, label: false %>
                             <span>
                               Fraser x4 Invitational Great Serengeti January 2025
@@ -108,7 +108,8 @@
                             </span>
                           </label>
                         <% end %>
-                        <%= list.with_element_item(class: "flex justify-between bg-gray-100 rounded-none") do %>
+                        <%= list.with_element_divider %>
+                        <%= list.with_element_item(class: "flex justify-between bg-white py-0") do %>
                           <%= render Ui::Btn::Component.new(size: :sm, outlined: true, rounded: true).with_content("Clear Filters") %>
                           <%= render Ui::Btn::Component.new(size: :sm, variant: :primary, rounded: true).with_content("Apply Filters") %>
                         <% end %>
@@ -131,14 +132,14 @@
             <div class="flex items-center gap-1 cursor-pointer">
               <div class="flex items-center gap-1">
                 <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
-                Assigned To
+                <p class="w-max">Assigned To</p>
               </div>
               <%= render Ui::Icon::Component.new icon_path: "images/safari/arrow-down.svg", class: "size-4" %>
             </div>
           <% end %>
           <%= tr.with_th do %>
             <div class="flex items-center gap-1 cursor-pointer">
-              Due Date
+              <p class="w-max">Due Date</p>
               <%= render Ui::Icon::Component.new icon_path: "images/safari/arrow-down.svg", class: "size-4" %>
             </div>
           <% end %>

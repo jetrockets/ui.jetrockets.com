@@ -1,6 +1,6 @@
 @layer components {
   .safari_content {
-    @apply flex flex-col max-w-screen flex-1 bg-[url('/images/safari/bg.png')] bg-cover bg-no-repeat;
+    @apply flex flex-col max-w-full flex-1 bg-[url('/images/safari/bg.png')] bg-cover bg-no-repeat;
   }
 
   .safari_wrapper {
@@ -11,8 +11,12 @@
     @apply flex items-center justify-end px-6 py-2.5 bg-white border-gray-100 border-b-1 sticky;
   }
 
+  .safari_filter__label {
+    @apply flex items-center cursor-pointer;
+  }
+
   .safari_filter__item {
-    @apply py-3 border-b border-gray-300 rounded-none;
+    @apply py-3;
   }
 
   .safari_section__header {

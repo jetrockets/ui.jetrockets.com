@@ -14,7 +14,7 @@
   }
 
   .dropdown__item {
-    @apply block px-4 py-2 hover:bg-gray-100 cursor-pointer rounded
+    @apply block px-4 py-2 mx-2 hover:bg-gray-100 cursor-pointer
   }
 
   .dropdown__divider {
