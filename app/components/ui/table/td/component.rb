@@ -1,5 +1,5 @@
 class Ui::Table::Td::Component < ApplicationComponent
-  def initialize(actions: false, sticky: false, **options)
+  def initialize(actions: false, sticky: nil, **options)
     @actions = actions
     @sticky = sticky
     @options = options

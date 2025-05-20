@@ -13,11 +13,11 @@
     }
 
     th {
-      @apply text-xs font-medium text-left text-gray-700 uppercase;
+      @apply text-xs font-medium text-gray-700;
     }
 
     tfoot {
-      @apply font-semibold uppercase bg-gray-100;
+      @apply font-semibold bg-gray-100;
     }
   }
 
@@ -45,15 +45,15 @@
 
   /* Sticky */
   .table__th_sticky {
-    @apply sticky z-10 bg-gray-50;
+    @apply sticky z-10 bg-gray-50 hover:bg-gray-100;
   }
 
   .table__th_sticky-left {
-    @apply left-0;
+    @apply left-0 text-left;
   }
 
   .table__th_sticky-right {
-    @apply right-0;
+    @apply right-0 text-right;
   }
 
   .table__td_sticky {
@@ -61,11 +61,11 @@
   }
 
   .table__td_sticky-left {
-    @apply left-0;
+    @apply left-0 text-left;
   }
 
   .table__td_sticky-right {
-    @apply right-0;
+    @apply right-0 text-right;
   }
 
   /* Sizes */

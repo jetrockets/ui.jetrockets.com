@@ -86,7 +86,7 @@ module FormBuilders
       @template.content_tag :div, class: "flex items-start" do
         @template.concat super(method, options.merge(class: "form__checkbox"), checked_value, unchecked_value)
         @template.concat @template.content_tag(:div, class: "pl-2") {
-          @template.concat label(method, label_text, class: "form__label-checkbox")
+          @template.concat label(method, label_text, class: "form__label-checkbox") unless label_text == false
           @template.concat @template.content_tag(:p, hint, class: "form__hint") if hint
           @template.concat inline_errors_for(method)
         }

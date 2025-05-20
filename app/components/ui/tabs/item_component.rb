@@ -11,7 +11,7 @@ class Ui::Tabs::ItemComponent < ApplicationComponent
 
   erb_template <<~ERB
     <%= link_to href, class: class_names('tabs__link', 'tabs__link-active': active), **options do %>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 w-max">
         <% if icon_path %>
           <%= render Ui::Icon::Component.new(icon_path: icon_path, class: "w-4 h-4") %>
         <% end %>
