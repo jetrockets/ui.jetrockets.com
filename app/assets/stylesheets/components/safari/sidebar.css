@@ -1,0 +1,25 @@
+@layer components {
+  .sidebar {
+    @apply hidden lg:block px-3 py-6 bg-white border-gray-100 border-r-1 min-w-52 overflow-y-auto;
+  }
+
+  .sidebar__logo {
+    @apply flex justify-center pb-9;
+  }
+
+  .sidebar__menu {
+    @apply flex flex-col gap-4.5;
+  }
+
+  .sidebar__submenu {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .sidebar__subheading {
+    @apply py-1.5 text-xs font-semibold tracking-widest text-gray-500 uppercase px-2.5;
+  }
+
+  .sidebar__item {
+    @apply flex items-center gap-2.5 px-2.5 py-1 text-gray-700 font-medium rounded-full hover:bg-gray-100;
+  }
+}

@@ -1,13 +1,21 @@
 @layer components {
-  .safari-content {
-    @apply flex flex-col flex-1 bg-[url('/images/safari/bg.png')] bg-cover bg-no-repeat;
+  .safari_content {
+    @apply flex flex-col max-w-screen flex-1 bg-[url('/images/safari/bg.png')] bg-cover bg-no-repeat;
   }
 
-  .safari-header {
-    @apply flex items-center justify-end px-6 py-2.5 bg-white border-gray-100 border-b-1;
+  .safari_wrapper {
+    @apply px-4 lg:px-16;
   }
 
-  .safari-filter__item {
+  .safari_header {
+    @apply flex items-center justify-end px-6 py-2.5 bg-white border-gray-100 border-b-1 sticky;
+  }
+
+  .safari_filter__item {
     @apply py-3 border-b border-gray-300 rounded-none;
+  }
+
+  .safari_section__header {
+    @apply sticky top-0 pt-6 mb-3 z-30 bg-gray-50/90;
   }
 }

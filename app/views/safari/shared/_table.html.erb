@@ -1,0 +1,211 @@
+<% items = [
+  OpenStruct.new(
+    name: "Create Guest Portal",
+    file: "Jillian Cancro x 6, Tanzania, April 2024",
+    types: ["Payments", "Phone Call"],
+    assigned_to: "Jess Pattison",
+    due_date: Date.new(2023, 12, 8),
+    actions: ["Edit"]
+  ),
+  OpenStruct.new(
+    name: "Book Flights",
+    file: "Tyler Thomas x 9, Bahamas, June 2023",
+    types: ["Email"],
+    assigned_to: "Rachel West",
+    due_date: Date.new(2024, 5, 10),
+    actions: ["Send", "Edit"]
+  ),
+  OpenStruct.new(
+    name: "Finalize Itinerary",
+    file: "Tyler Thomas x 9, Bahamas, June 2023",
+    types: ["Admin"],
+    assigned_to: "Rachel West",
+    due_date: Date.new(2024, 5, 12),
+    actions: ["Edit"]
+  )
+] %>
+
+<div class="max-w-[1200px] safari_wrapper">
+  <div class="flex flex-col border border-gray-200 rounded">
+    <%= render Ui::Table::Component.new size: :sm do |table| %>
+
+      <%= table.with_thead do |thead| %>
+        <%= thead.with_tr do |tr| %>
+          <%= tr.with_th(sticky: :left) { "Task" } %>
+
+          <%= tr.with_th do %>
+            <div class="flex items-center gap-1 cursor-pointer md:gap-3 text-start">
+              <div class="flex items-center gap-1">
+                <%= render Ui::Dropdown::Component.new(data: { offsetSkidding: 100, offsetDistance: 5 }) do |dropdown| %>
+                  <%= dropdown.with_trigger(class: "btn btn-outlined border-0 btn-sm btn-iconed focus:bg-gray-200") do %>
+                    <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
+                    <p>
+                      File
+                      <% if items.any? %>
+                        <span>(<%= items.size %>)</span>
+                      <% end %>
+                    </p>
+                  <% end %>
+
+                  <%= dropdown.with_menu(class: "min-w-96 pb-0 capitalize") do |list| %>
+                    <%= form_with url: root_path do |f| %>
+                      <%= list.with_element_item(class: "hover:bg-white") do %>
+                        <div class="relative w-full my-3">
+                          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <%= vite_svg_tag("images/safari/search.svg") %>
+                          </div>
+                          <%= f.text_field :search, placeholder: "Search...", class: "pl-10" %>
+                        </div>
+                      <% end %>
+
+                      <fieldset class="flex flex-col gap-y-2">
+                        <%= list.with_element_item(class: "safari_filter__item") do %>
+                          <label class="inline-flex items-center cursor-pointer">
+                            <%= f.check_box :kristin_smith, label: false %>
+                            <span>
+                              Kristin Smith X2 (Shannon), February 2025, Kenya + Tanzania
+                              <span class="text-gray-400">(Planning)</span>
+                            </span>
+                          </label>
+                        <% end %>
+
+                        <%= list.with_element_item(class: "safari_filter__item") do %>
+                          <label class="inline-flex items-center cursor-pointer">
+                            <%= f.check_box :chase, label: false, checked: true %>
+                            <span>
+                              Chase x 2, Tanzania, July 2024
+                              <span class="text-gray-400">(Confirmed)</span>
+                            </span>
+                          </label>
+                        <% end %>
+
+                        <%= list.with_element_item(class: "safari_filter__item") do %>
+                          <label class="inline-flex items-center cursor-pointer">
+                            <%= f.check_box :zilberman, label: false %>
+                            <span>
+                              Zilbermann x 9, Tanzania, July 2025
+                              <span class="text-gray-400">(Confirmed)</span>
+                            </span>
+                          </label>
+                        <% end %>
+
+                        <%= list.with_element_item(class: "safari_filter__item") do %>
+                          <label class="inline-flex items-center cursor-pointer">
+                            <%= f.check_box :reeve_waud, label: false, checked: true %>
+                            <span>
+                              Reeve Waud Jr, Namibia, 2025
+                              <span class="text-gray-400">(Planning)</span>
+                            </span>
+                          </label>
+                        <% end %>
+
+                        <%= list.with_element_item(class: "safari_filter__item") do %>
+                          <label class="inline-flex items-center cursor-pointer">
+                          <%= f.check_box :fraser, label: false %>
+                            <span>
+                              Fraser x4 Invitational Great Serengeti January 2025
+                              <span class="text-gray-400">(Planning)</span>
+                            </span>
+                          </label>
+                        <% end %>
+                        <%= list.with_element_item(class: "flex justify-between bg-gray-100 rounded-none") do %>
+                          <%= render Ui::Btn::Component.new(size: :sm, outlined: true, rounded: true).with_content("Clear Filters") %>
+                          <%= render Ui::Btn::Component.new(size: :sm, variant: :primary, rounded: true).with_content("Apply Filters") %>
+                        <% end %>
+                      </fieldset>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              <%= render Ui::Icon::Component.new icon_path: "images/safari/arrow-down.svg", class: "size-4" %>
+            </div>
+          <% end %>
+
+          <%= tr.with_th do %>
+            <div class="flex items-center gap-1">
+              <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
+              Type
+            </div>
+          <% end %>
+          <%= tr.with_th do %>
+            <div class="flex items-center gap-1 cursor-pointer">
+              <div class="flex items-center gap-1">
+                <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
+                Assigned To
+              </div>
+              <%= render Ui::Icon::Component.new icon_path: "images/safari/arrow-down.svg", class: "size-4" %>
+            </div>
+          <% end %>
+          <%= tr.with_th do %>
+            <div class="flex items-center gap-1 cursor-pointer">
+              Due Date
+              <%= render Ui::Icon::Component.new icon_path: "images/safari/arrow-down.svg", class: "size-4" %>
+            </div>
+          <% end %>
+          <%= tr.with_th(colspan: 2, class: "text-center") { "Actions" } %>
+        <% end %>
+      <% end %>
+
+      <%= table.with_tbody do |tbody| %>
+        <% if items.any? %>
+          <% items.each do |item| %>
+            <%= tbody.with_tr do |tr| %>
+              <%= tr.with_td(sticky: :left) do %>
+                <div class="flex items-center gap-1.5">
+                  <%= vite_svg_tag("images/safari/check.svg") %>
+                  <span><%= item.name %></span>
+                </div>
+              <% end %>
+              <%= tr.with_td { item.file } %>
+              <%= tr.with_td do %>
+                <div class="flex flex-wrap gap-1">
+                  <% item.types.each do |type| %>
+                    <%= render Ui::Badge::Component.new(title: type, variant: :blue) %>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= tr.with_td { item.assigned_to } %>
+              <%= tr.with_td { item.due_date.strftime("%b %-d, %Y") } %>
+              <%= tr.with_td(actions: true) do %>
+                <%= render Ui::BtnGroup::Component.new with_gap: true do |group| %>
+                  <% item.actions.each do |action| %>
+                    <% group.with_button(size: :sm, outlined: true) { action } %>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <%= tr.with_td(class: "w-5") do %>
+                <%= render Ui::Btn::Component.new(size: :xl, variant: :ghost, class: "px-2 h-8").with_icon_content("images/safari/trash.svg") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= tbody.with_tr do |tr| %>
+            <%= tr.with_td(colspan: 7, class: "text-center text-gray-400 py-6") do %>
+              <div class="flex flex-col items-center justify-center py-12">
+                <%= vite_svg_tag("images/safari/no-tasks.svg") %>
+                <h3 class="pt-3 pb-2 text-xl font-semibold text-gray-700">No Tasks found</h3>
+                <p>
+                  Check your filters, attach a
+                  <%= link_to "Task Set", "", class: "link" %>
+                  to your files, or create a
+                  <%= link_to "one-time task", "", class: "link" %>.
+                </p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= table.with_tfoot do |tfoot| %>
+        <%= tfoot.with_tr do |tr| %>
+          <%= tr.with_td(colspan: 7) do %>
+            <div class="px-3 font-normal">
+              <% pagy = Pagy.new(count: 100, page: 1) %>
+              <%= render Ui::Pagy::Component.new(pagy:) %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

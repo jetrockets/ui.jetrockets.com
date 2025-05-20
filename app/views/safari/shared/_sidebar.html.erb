@@ -1,48 +1,48 @@
-<aside class="px-3 py-6 bg-white border-gray-100 border-r-1 w-52">
-  <div class="flex justify-center pb-9">
-    <%= vite_svg_tag("images/safari/logo.svg", alt: "Safari Portal") %>
+<aside class="sidebar">
+  <div class="sidebar__logo">
+    <%= vite_svg_tag("images/safari/logo.svg") %>
   </div>
-  <nav class="sidebar">
+  <nav class="sidebar__menu">
     <div class="sidebar__submenu">
-      <h2 class="sidebar__subheading">Home</h2>
+      <strong class="sidebar__subheading">Home</strong>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/dashboard.svg", alt: "Dashboard") %>
+        <%= vite_svg_tag("images/safari/icons/dashboard.svg") %>
         <span>Dashboard</span>
       <% end %>
     </div>
 
     <div class="sidebar__submenu">
-      <h2 class="sidebar__subheading">Operations</h2>
+      <strong class="sidebar__subheading">Operations</strong>
       <%= link_to safari_path, class: "sidebar__item bg-primary-100" do %>
-        <%= vite_svg_tag("images/safari/icons/tasks.svg", alt: "Tasks") %>
+        <%= vite_svg_tag("images/safari/icons/tasks.svg") %>
         <span>Tasks</span>
       <% end %>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/financials.svg", alt: "Financials") %>
+        <%= vite_svg_tag("images/safari/icons/financials.svg") %>
         <span>Financials</span>
       <% end %>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/contacts.svg", alt: "Contacts") %>
+        <%= vite_svg_tag("images/safari/icons/contacts.svg") %>
         <span>Contacts</span>
       <% end %>
     </div>
 
     <div class="sidebar__submenu">
-      <h2 class="sidebar__subheading">Libraries</h2>
+      <strong class="sidebar__subheading">Libraries</strong>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/content.svg", alt: "Content") %>
+        <%= vite_svg_tag("images/safari/icons/content.svg") %>
         <span>Content</span>
       <% end %>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/resources.svg", alt: "Resources") %>
+        <%= vite_svg_tag("images/safari/icons/resources.svg") %>
         <span>Resources</span>
       <% end %>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/documents.svg", alt: "Documents") %>
+        <%= vite_svg_tag("images/safari/icons/documents.svg") %>
         <span>Documents</span>
       <% end %>
       <%= link_to safari_path, class: "sidebar__item" do %>
-        <%= vite_svg_tag("images/safari/icons/media.svg", alt: "Media") %>
+        <%= vite_svg_tag("images/safari/icons/media.svg") %>
         <span>Media</span>
       <% end %>
     </div>

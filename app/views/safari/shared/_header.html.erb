@@ -1,0 +1,37 @@
+<div class="safari_section__header">
+  <div class="safari_wrapper">
+    <div class="flex flex-col items-center justify-between gap-4 sm:pb-6 sm:flex-row">
+      <h1 class="text-4xl italic text-gray-700">Task Manager</h1>
+      <div class="flex gap-2.5">
+        <%= render Ui::Btn::Component.new(rounded: true, class: "w-10").with_icon_content("images/safari/icons/search.svg") %>
+        <%= render Ui::Btn::Component.new(rounded: true).with_content("More").with_icon_content("images/safari/icons/chevron-bottom.svg") %>
+        <%= render Ui::Dropdown::Component.new(data: { offsetDistance: 10 }) do |dropdown| %>
+          <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed btn-rounded") do %>
+            <%= vite_svg_tag("images/safari/icons/plus.svg") %>
+            Create New
+          <% end %>
+
+          <%= dropdown.with_menu do |list| %>
+            <%= list.with_element_item(data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "create_task" }) do %>
+                Add Task Set to File
+            <% end %>
+            <%= list.with_element_item(data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "create_task" }) do %>
+                Create One Off Task
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= render Ui::Tabs::Component.new(class: "safari_wrapper") do |tabs| %>
+      <% tabs.with_item(title: "Due Today", href: "#", active: true) %>
+      <% tabs.with_item(title: "Overdue", href: "#") %>
+      <% tabs.with_item(title: "Due This Week", href: "#") %>
+      <% tabs.with_item(title: "Upcoming", href: "#") %>
+      <% tabs.with_item(title: "Completed", href: "#") %>
+      <% tabs.with_item(title: "TBD", href: "#") %>
+    <% end %>
+  </div>
+</div>

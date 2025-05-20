@@ -15,7 +15,7 @@
         <div>
           <%= f.choices :task_type, ["United States", "Canada", "Mexico"], { include_blank: "Task Type" }, { multiple: true } %>
           <div class="flex pt-1 items-center gap-0.5">
-            <%= vite_svg_tag("images/safari/warn.svg", alt: "Warn") %>
+            <%= vite_svg_tag("images/safari/warn.svg") %>
             <p class="text-sm">Select up to 2 task types</p>
           </div>
         </div>
@@ -23,10 +23,10 @@
         <div>
           <div class="text-gray-700 text-lg pb-2.5">
             Due date is
-            <%= render Ui::Btn::Component.new(size: :sm, class: "border-dashed border-gray-500").with_content("10 days") %>
-            <%= render Ui::Btn::Component.new(size: :sm, class: "border-dashed border-gray-500").with_content("before") %>
+            <%= render Ui::Btn::Component.new(size: :sm).with_content("10 days") %>
+            <%= render Ui::Btn::Component.new(size: :sm).with_content("before") %>
             the
-            <%= render Ui::Btn::Component.new(size: :sm, class: "border-dashed border-gray-500").with_content("start of the trip.") %>
+            <%= render Ui::Btn::Component.new(size: :sm).with_content("start of the trip.") %>
           </div>
 
           <%= f.easepick :date, placeholder: "Or, Manually Select Due Date", data: {
