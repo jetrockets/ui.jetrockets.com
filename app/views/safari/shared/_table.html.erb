@@ -25,7 +25,7 @@
   )
 ] %>
 
-<div class="max-w-7xl safari_wrapper">
+<div class="max-w-7xl xl:max-w-full safari_wrapper">
   <div class="flex flex-col border border-gray-200 rounded">
     <%= render Ui::Table::Component.new size: :sm do |table| %>
 
@@ -199,12 +199,19 @@
 
       <%= table.with_tfoot do |tfoot| %>
         <%= tfoot.with_tr do |tr| %>
-          <%= tr.with_td(colspan: 7) do %>
+          <%= tr.with_td(sticky: :left, colspan: 7, class: "hidden md:table-cell bg-gray-100") do %>
             <div class="px-3 font-normal">
               <% pagy = Pagy.new(count: 100, page: 1) %>
               <%= render Ui::Pagy::Component.new(pagy:) %>
             </div>
           <% end %>
+          <%= tr.with_td(sticky: :left, colspan: 3, class: "z-20 table-cell md:hidden bg-gray-100") do %>
+            <div class="px-3 font-normal">
+              <% pagy = Pagy.new(count: 100, page: 1) %>
+              <%= render Ui::Pagy::Component.new(pagy:) %>
+            </div>
+          <% end %>
+          <%= tr.with_td(sticky: :left, colspan: 4, class: "table-cell md:hidden bg-gray-100") %>
         <% end %>
       <% end %>
     <% end %>

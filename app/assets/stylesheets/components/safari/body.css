@@ -20,6 +20,6 @@
   }
 
   .safari_section__header {
-    @apply sticky top-0 pt-6 mb-3 z-30 bg-gray-50/90;
+    @apply sticky top-0 pt-6 mb-6 z-30 bg-gray-50/90;
   }
 }
