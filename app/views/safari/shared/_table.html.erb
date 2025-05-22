@@ -41,8 +41,8 @@
                     <div class="flex items-center gap-1">
                       <%= render Ui::Icon::Component.new icon_path: "images/safari/sliders.svg", class: "size-4" %>
                       File
-                      <% if items.any? %>
-                        <span>(<%= items.size %>)</span>
+                      <% if @tasks&.any? %>
+                        <span>(<%= @tasks.size %>)</span>
                       <% end %>
                     </div>
                   <% end %>
@@ -148,8 +148,8 @@
       <% end %>
 
       <%= table.with_tbody do |tbody| %>
-        <% if items.any? %>
-          <% items.each do |item| %>
+        <% if @tasks&.any? %>
+          <% @tasks.each do |item| %>
             <%= tbody.with_tr do |tr| %>
               <%= tr.with_td(sticky: :left) do %>
                 <div class="flex items-center gap-1.5">
@@ -169,13 +169,15 @@
               <%= tr.with_td { item.due_date.strftime("%b %-d, %Y") } %>
               <%= tr.with_td(actions: true) do %>
                 <%= render Ui::BtnGroup::Component.new with_gap: true do |group| %>
-                  <% item.actions.each do |action| %>
-                    <% group.with_button(size: :sm, outlined: true) { action } %>
+                  <% group.with_button(size: :sm, outlined: true) do %>
+                    <%= link_to "Edit", edit_safari_task_path(item), data: { turbo_frame: :modal } %>
                   <% end %>
                 <% end %>
               <% end %>
               <%= tr.with_td(class: "w-5") do %>
-                <%= render Ui::Btn::Component.new(size: :xl, variant: :ghost, class: "px-2 h-8").with_icon_content("images/safari/trash.svg") %>
+                <%= button_to task_path(item), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "p-0 bg-transparent border-0" do %>
+                  <%= render Ui::Btn::Component.new(size: :xl, variant: :ghost, class: "px-2 h-8").with_icon_content("images/safari/trash.svg") %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

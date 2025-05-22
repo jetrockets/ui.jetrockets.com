@@ -1,6 +1,7 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -204,6 +205,41 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: tasks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tasks (
+    id bigint NOT NULL,
+    name character varying,
+    file character varying,
+    types character varying[] DEFAULT '{}'::character varying[],
+    assigned_to character varying,
+    due_date date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: tasks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.tasks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.tasks_id_seq OWNED BY public.tasks.id;
+
+
+--
 -- Name: account_login_change_keys id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -236,6 +272,13 @@ ALTER TABLE ONLY public.account_verification_keys ALTER COLUMN id SET DEFAULT ne
 --
 
 ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
+
+
+--
+-- Name: tasks id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_id_seq'::regclass);
 
 
 --
@@ -295,6 +338,14 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tasks
+    ADD CONSTRAINT tasks_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: index_accounts_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -341,6 +392,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20240320152026'),
-('20240321113306');
+('20240321113306'),
+('20250521092532');
 
 

@@ -12,12 +12,8 @@
           <% end %>
 
           <%= dropdown.with_menu do |list| %>
-            <%= list.with_element_item(data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "create_task" }) do %>
-                Add Task Set to File
-            <% end %>
-            <%= list.with_element_item(data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "create_task" }) do %>
-                Create One Off Task
-            <% end %>
+            <%= list.with_element_link(title: "Add Task Set to File", href: new_safari_task_path, data: { turbo_frame: :modal }) %>
+            <%= list.with_element_link(title: "Create One Off Task", href: new_safari_task_path, data: { turbo_frame: :modal }) %>
           <% end %>
         <% end %>
       </div>

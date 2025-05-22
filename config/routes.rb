@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   get "/terms", to: "home#terms"
 
   get "/ui", to: "home#ui"
-  get "/safari", to: "safari#index"
   root "home#index"
+
+  get "/safari", to: "safari#index"
+  get "/safari/new", to: "tasks#new", as: :new_safari_task
+  get "/safari/edit/:id", to: "tasks#edit", as: :edit_safari_task
+  resources :tasks, only: [ :create, :destroy, :update ]
 
   if Rails.env.development?
     mount Lookbook::Engine, at: "/lookbook"
