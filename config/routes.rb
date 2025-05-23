@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/safari", to: "safari#index"
   get "/safari/new", to: "tasks#new", as: :new_safari_task
   get "/safari/edit/:id", to: "tasks#edit", as: :edit_safari_task
+  patch "/safari/:id/toggle_complete", to: "tasks#toggle_complete", as: :toggle_complete_safari_task
   resources :tasks, only: [ :create, :destroy, :update ]
 
   if Rails.env.development?

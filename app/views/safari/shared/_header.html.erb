@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center justify-between gap-4 sm:pb-6 sm:flex-row">
       <h1 class="text-4xl italic text-gray-700">Task Manager</h1>
       <div class="flex gap-2.5">
-        <%= render Ui::Btn::Component.new(rounded: true, class: "w-10").with_icon_content("images/safari/icons/search.svg") %>
+        <%= render Ui::Btn::Component.new(rounded: true, class: "w-10").with_icon_content("images/safari/search.svg") %>
         <%= render Ui::Btn::Component.new(rounded: true).with_content("More").with_icon_content("images/safari/icons/chevron-bottom.svg") %>
         <%= render Ui::Dropdown::Component.new(data: { offsetDistance: 10 }) do |dropdown| %>
           <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed btn-rounded") do %>

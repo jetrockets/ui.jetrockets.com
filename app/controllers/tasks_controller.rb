@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [ :destroy, :update, :edit ]
+  before_action :set_task, only: [ :destroy, :update, :edit, :toggle_complete ]
 
   def create
     task = Task.new(task_params)
@@ -31,6 +31,11 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to safari_path, notice: "Task deleted successfully."
+  end
+
+  def toggle_complete
+    @task.update(is_completed: !@task.is_completed)
+    redirect_to safari_path
   end
 
   private

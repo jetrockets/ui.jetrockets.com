@@ -2,6 +2,6 @@ class SafariController < ApplicationController
   layout "safari"
 
   def index
-    @tasks = Task.all
+    @tasks = Task.order(:is_completed)
   end
 end

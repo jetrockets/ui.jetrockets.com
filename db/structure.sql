@@ -216,7 +216,8 @@ CREATE TABLE public.tasks (
     assigned_to character varying,
     due_date date,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    is_completed boolean DEFAULT false NOT NULL
 );
 
 
@@ -393,6 +394,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20240320152026'),
 ('20240321113306'),
-('20250521092532');
+('20250521092532'),
+('20250523095528');
 
 

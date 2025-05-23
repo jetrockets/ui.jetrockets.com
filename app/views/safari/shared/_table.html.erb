@@ -153,7 +153,12 @@
             <%= tbody.with_tr do |tr| %>
               <%= tr.with_td(sticky: :left) do %>
                 <div class="flex items-center gap-1.5">
-                  <%= vite_svg_tag("images/safari/check.svg") %>
+                  <%= button_to(
+                    item.is_completed ? vite_svg_tag("images/safari/check.svg", class: "text-blue-600") : vite_svg_tag("images/safari/check.svg", class: "text-gray-500"),
+                    toggle_complete_safari_task_path(item),
+                    method: :patch,
+                    class: "cursor-pointer hover:bg-gray-100 rounded-full"
+                  ) %>
                   <span><%= item.name %></span>
                 </div>
               <% end %>
