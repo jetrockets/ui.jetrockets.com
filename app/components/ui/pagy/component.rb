@@ -8,10 +8,6 @@ class Ui::Pagy::Component < ApplicationComponent
 
   private
 
-  def render?
-    pagy.pages > 1
-  end
-
   def pagination_classes
     class_names(
       "pagination",

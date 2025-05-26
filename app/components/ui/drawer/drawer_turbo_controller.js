@@ -13,10 +13,16 @@ export default class DrawerTurboController extends Controller {
   }
 
   close () {
-    this.drawer?.hide()
+    try {
+      DrawerTurboController.turboFrame.src = null
+      this.drawer.removeInstance()
+      this.drawer?.hide()
+      this.element.remove()
+    } catch (e) {}
   }
 
   disconnect () {
+    this.close()
     this.element.remove()
   }
 
@@ -31,6 +37,10 @@ export default class DrawerTurboController extends Controller {
       placement: DrawerTurboController.DEFAULT_PLACEMENT,
       onHide: () => this.element.remove()
     }
+  }
+
+  static get turboFrame () {
+    return document.querySelector('turbo-frame[id=\'drawer\']')
   }
 
   static get DEFAULT_PLACEMENT () {

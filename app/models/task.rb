@@ -1,14 +1,6 @@
 class Task < ApplicationRecord
   validates :name, :file, :assigned_to, :due_date, presence: true
-  validates :types, presence: true
-  validate :types_valid
-
-  private
-
-  def types_valid
-    errors.add(:types, "can't be empty") if types.empty?
-    errors.add(:types, "can't have more than 2 items") if types.size > 2
-  end
+  validates :types, presence: true, length: { maximum: 2 }
 end
 
 # == Schema Information

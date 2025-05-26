@@ -1,0 +1,5 @@
+<%= turbo_stream.remove dom_id(@task) %>
+
+<%= turbo_stream.replace "task_count" do %>
+  <span>(<%= Task.count %>)</span>
+<% end %>

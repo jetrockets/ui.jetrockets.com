@@ -1,0 +1,3 @@
+<%= turbo_stream.replace dom_id(@task) do %>
+  <%= render partial: "safari/shared/table_row", locals: { item: @task } %>
+<% end %>

@@ -6,12 +6,16 @@ class TasksController < ApplicationController
 
     if task.save
       redirect_to safari_path, notice: "Task created successfully."
+    else
+      render :new, locals: { task: task }, status: :unprocessable_entity
     end
   end
 
   def update
     if @task.update(task_params)
       redirect_to safari_path, notice: "Task updated successfully."
+    else
+      render :edit, locals: { task: @task }, status: :unprocessable_entity
     end
   end
 
@@ -19,23 +23,30 @@ class TasksController < ApplicationController
     return head :not_found unless turbo_frame_request?
 
     @task = Task.new
-    render partial: "safari/shared/create_task", locals: { task: @task }
+    render locals: { task: @task }
   end
 
   def edit
     return head :not_found unless turbo_frame_request?
 
-    render partial: "safari/shared/update_task", locals: { task: @task }
+    render locals: { task: @task }
   end
 
   def destroy
     @task.destroy
-    redirect_to safari_path, notice: "Task deleted successfully."
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to safari_path, notice: "Task deleted successfully." }
+    end
   end
 
   def toggle_complete
     @task.update(is_completed: !@task.is_completed)
-    redirect_to safari_path
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to safari_path }
+    end
   end
 
   private

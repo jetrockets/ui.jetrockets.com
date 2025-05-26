@@ -1,0 +1,36 @@
+<tr id="<%= dom_id(item) %>">
+  <td class="sticky left-0 bg-white">
+    <div class="flex items-center gap-1.5">
+      <%= button_to(
+        item.is_completed ? vite_svg_tag("images/safari/check.svg", class: "text-blue-600") : vite_svg_tag("images/safari/check.svg", class: "text-gray-500"),
+        toggle_complete_safari_task_path(item),
+        method: :patch,
+        form: { data: { turbo_stream: true } },
+        class: "cursor-pointer hover:bg-gray-100 rounded-full"
+      ) %>
+      <span><%= item.name %></span>
+    </div>
+  </td>
+  <td><%= item.file %></td>
+  <td>
+    <div class="flex flex-wrap gap-1">
+      <% item.types.each do |type| %>
+        <%= render Ui::Badge::Component.new(title: type, variant: :blue) %>
+      <% end %>
+    </div>
+  </td>
+  <td><%= item.assigned_to %></td>
+  <td><%= item.due_date.strftime("%b %-d, %Y") %></td>
+  <td>
+    <%= render Ui::BtnGroup::Component.new with_gap: true do |group| %>
+      <% group.with_button(size: :sm, outlined: true) do %>
+        <%= link_to "Edit", edit_safari_task_path(item), data: { turbo_frame: :modal } %>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="w-5">
+    <%= button_to task_path(item), method: :delete, data: { turbo_confirm: "Are you sure?" }, form: { data: { turbo_stream: true } }, class: "btn btn-sm btn-ghost" do %>
+      <%= vite_svg_tag("images/safari/trash.svg") %>
+    <% end %>
+  </td>
+</tr>
