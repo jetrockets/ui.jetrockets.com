@@ -13,5 +13,4 @@
 @source '../../assets/**/*.js';
 @source '../../views/**/*.erb';
 @source '../../components/**/*.{erb,rb,js}';
-@source '../../components/ui/**/*.{erb,rb,js}';
 @source '../../lib/form_builders/**/*.rb';
