@@ -9,7 +9,7 @@ export default class ModalTurboController extends Controller {
   }
 
   show () {
-    this.modal.show()
+    this.modal?.show()
   }
 
   close () {
@@ -23,7 +23,6 @@ export default class ModalTurboController extends Controller {
 
   disconnect () {
     this.close()
-    this.element.remove()
   }
 
   #initializeModal () {

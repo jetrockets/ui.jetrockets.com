@@ -51,12 +51,15 @@
     }
   }
 
-  @keyframes slideRight {
-    0% {
-      transform: translateX(100%);
+  @keyframes slideleft {
+    from {
+      opacity: 0.8;
+      transform: translateX(3rem);
     }
-    100% {
-      transform: translateX(0%);
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 

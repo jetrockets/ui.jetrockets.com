@@ -173,6 +173,6 @@
   --animate-bounce: bounce 1s infinite;
   --animate-fade-in: fadeIn 0.15s ease-in-out;
   --animate-slide-down: slideDown 0.15s ease-in-out;
-  --animate-slide-right: slideRight 0.15s ease-in-out;
+  --animate-slide-left: slideleft 0.3s ease-in-out;
   --animate-slide-up: slideUp 0.15s ease-in-out;
 }
