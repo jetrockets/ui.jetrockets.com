@@ -289,9 +289,9 @@
               </div>
             </div>
 
-            <%= field_set_tag nil, disabled: :country != "Other", class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
+            <%= field_set_tag nil, disabled: true, class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
               <%= f.label :country_name %>
-              <%= f.text_area :country_name, placeholder: "What is your country?" %>
+              <%= f.text_field :country_name, placeholder: "What is your country?" %>
             <% end %>
 
             <div class="form__group">
