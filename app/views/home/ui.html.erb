@@ -34,13 +34,6 @@
           <%= render Ui::Alert::Component.new title: "Default alert!" %>
         <% end %>
 
-        <%= accordion.with_item(title: "Async Modal", id: "modal") do %>
-          <p class="mb-2 text-gray-600">
-            By continuing, I agree to <%= site_name %>
-            <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
-          </p>
-        <% end %>
-
         <%= accordion.with_item(title: "Avatars", id: "avatars", class: "space-y-4") do %>
           <div class="flex flex-wrap items-center gap-2">
             <%= render Ui::Avatar::Component.new(size: :xs) %>
@@ -231,9 +224,9 @@
             <%= dropdown.with_menu do |list| %>
               <%= list.with_title { "Title" } %>
               <%= list.with_element_item do %>
-                <%= link_to "#", class: "flex flex-row-reverse gap-2 items-center justify-end" do %>
-                  Dashboard
+                <%= link_to "#", class: "flex gap-2 items-center" do %>
                   <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+                  Dashboard
                 <% end %>
               <% end %>
               <%= list.with_element_link(title: "Settings", href: "#") %>
@@ -256,9 +249,9 @@
             <%= dropdown.with_menu do |list| %>
               <%= list.with_title { "Title" } %>
               <%= list.with_element_item do %>
-                <%= link_to "#", class: "flex flex-row-reverse gap-2 items-center justify-end" do %>
-                  Dashboard
+                <%= link_to "#", class: "flex gap-2 items-center" do %>
                   <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+                  Dashboard
                 <% end %>
               <% end %>
               <%= list.with_element_link(title: "Settings", href: "#") %>
@@ -284,21 +277,21 @@
               </div>
             </div>
 
-            <div class="flex flex-col md:flex-row md:gap-4">
-              <div class="flex-1 form__group">
+            <div class="grid gap-x-4 md:grid-cols-2">
+              <div class="form__group">
                 <%= f.label :country_multiple, "Multiple Select" %>
                 <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
               </div>
 
-              <div class="flex-1 form__group">
+              <div class="form__group">
                 <%= f.label :country %>
                 <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { data: { action: "change->fields#enable" } } %>
               </div>
             </div>
 
-            <%= field_set_tag nil, disabled: :country != "Other", class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
+            <%= field_set_tag nil, disabled: true, class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
               <%= f.label :country_name %>
-              <%= f.text_area :country_name, placeholder: "What is your country?" %>
+              <%= f.text_field :country_name, placeholder: "What is your country?" %>
             <% end %>
 
             <div class="form__group">
@@ -329,7 +322,7 @@
             </div>
 
             <div class="form__group">
-              <fieldset class="flex flex-col gap-y-2">
+              <fieldset class="flex flex-col gap-2">
                 <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
                 <%= f.radio_button :radio, "2" %>
                 <%= f.radio_button :radio, "3" %>
@@ -347,7 +340,7 @@
         <%= accordion.with_item(title: "Icons", id: "icons", class: "flex items-center gap-4") do %>
           <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
           <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-6" %>
-          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-8 text-primary" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "text-primary size-8" %>
         <% end %>
 
         <%= accordion.with_item(title: "Modal Async", id: "modal_async") do %>

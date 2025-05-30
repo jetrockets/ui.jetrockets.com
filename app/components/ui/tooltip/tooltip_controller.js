@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import Tooltip from 'flowbite/lib/esm/components/tooltip'
+
 import { stimulus } from '~/init'
 
 export default class TooltipController extends Controller {

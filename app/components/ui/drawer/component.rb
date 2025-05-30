@@ -20,7 +20,7 @@ class Ui::Drawer::Component < ApplicationComponent
       end
     else
       content_tag :div, id: @id, tabindex: "-1", data: { drawer_target: "drawer" }, class: "drawer translate-x-full" do
-        content_tag :div, class: drawer__container_classes do
+        content_tag :div, class: drawer__window_classes do
           yield
         end
       end
@@ -31,23 +31,23 @@ class Ui::Drawer::Component < ApplicationComponent
     if helpers.turbo_frame_request?
       turbo_frame_tag :drawer do
         content_tag :div, id: "drawerTurbo", tabindex: "-1", data: { controller: "drawer-turbo" }, class: "drawer" do
-          content_tag :div, class: drawer__container_classes do
+          content_tag :div, class: drawer__window_classes do
             yield
           end
         end
       end
     else
       content_tag :div, class: "flex-1 w-fit" do
-        content_tag :div, class: drawer__container_classes do
+        content_tag :div, class: drawer__window_classes do
           yield
         end
       end
     end
   end
 
-  def drawer__container_classes
+  def drawer__window_classes
     class_names(
-      "drawer__container",
+      "drawer__window",
       "max-w-#{@size}"
     )
   end

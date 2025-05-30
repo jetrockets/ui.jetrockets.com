@@ -8,7 +8,7 @@ class Ui::Dropdown::MenuComponent < ApplicationComponent
 
   erb_template <<~ERB
     <%= title_content %>
-    <ul class="dropdown__wrapper">
+    <ul class="<%= classes %>">
       <% elements.each do |element| %>
         <%= element %>
       <% end %>
@@ -19,5 +19,12 @@ class Ui::Dropdown::MenuComponent < ApplicationComponent
 
   def title_content
     content_tag :h6, title, class: "dropdown__title" if title?
+  end
+
+  def classes
+    class_names(
+      "dropdown__wrapper",
+      @options.delete(:class)
+    )
   end
 end

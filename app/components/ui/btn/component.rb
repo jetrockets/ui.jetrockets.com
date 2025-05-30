@@ -28,7 +28,7 @@ class Ui::Btn::Component < ApplicationComponent
   private
 
   def component_content
-    safe_join([ content, icon_content ].compact)
+    safe_join([ icon_content, content ].compact)
   end
 
   def icon_content

@@ -13,11 +13,16 @@ export default class DrawerTurboController extends Controller {
   }
 
   close () {
-    this.drawer?.hide()
+    try {
+      DrawerTurboController.turboFrame.src = null
+      this.drawer.removeInstance()
+      this.drawer?.hide()
+      this.element.remove()
+    } catch (e) {}
   }
 
   disconnect () {
-    this.element.remove()
+    this.close()
   }
 
   #initializeDrawer () {
@@ -27,14 +32,14 @@ export default class DrawerTurboController extends Controller {
 
   #getOptions () {
     return {
+      placement: 'right',
       backdropClasses: 'bg-gray-900/50 fixed inset-0 z-40',
-      placement: DrawerTurboController.DEFAULT_PLACEMENT,
       onHide: () => this.element.remove()
     }
   }
 
-  static get DEFAULT_PLACEMENT () {
-    return 'right'
+  static get turboFrame () {
+    return document.querySelector('turbo-frame[id=\'drawer\']')
   }
 }
 

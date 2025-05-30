@@ -2,11 +2,15 @@
 
 @layer components {
   .drawer {
-    @apply fixed flex z-50 h-screen w-fit overflow-y-auto bg-white animate-[var(--animate-slide-right)];
+    @apply fixed flex top-0 right-0 z-[60] h-screen md:w-fit w-full overflow-y-auto bg-white animate-slide-left;
+
+    .drawer__window {
+      @apply mx-0 mt-0;
+    }
   }
 
-  .drawer__container {
-    @apply flex flex-col w-full max-w-2xl;
+  .drawer__window {
+    @apply flex flex-col w-full max-w-2xl mt-4 mx-auto;
   }
 
   .drawer__header {

@@ -9,15 +9,20 @@ export default class ModalTurboController extends Controller {
   }
 
   show () {
-    this.modal.show()
+    this.modal?.show()
   }
 
   close () {
-    this.modal.hide()
+    try {
+      ModalTurboController.turboFrame.src = null
+      this.modal.removeInstance()
+      this.modal.hide()
+      this.element.remove()
+    } catch (e) {}
   }
 
   disconnect () {
-    this.element.remove()
+    this.close()
   }
 
   #initializeModal () {
@@ -34,6 +39,10 @@ export default class ModalTurboController extends Controller {
         this.element.remove()
       }
     }
+  }
+
+  static get turboFrame () {
+    return document.querySelector('turbo-frame[id=\'modal\']')
   }
 }
 

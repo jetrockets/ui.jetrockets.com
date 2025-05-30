@@ -1,11 +1,11 @@
 <div class="tabs">
   <div class="tabs__container">
-    <ul class="tabs__list">
+    <%= content_tag :div, class: classes do %>
       <% items.each do |item| %>
         <li class="tabs__item">
           <%= item %>
         </li>
       <% end %>
-    </ul>
+    <% end %>
   </div>
 </div>
