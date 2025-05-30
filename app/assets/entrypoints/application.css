@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
+
 @plugin "@tailwindcss/forms";
-@plugin "flowbite/plugin";
+/* @plugin "flowbite/plugin"; */
 
 @import '../stylesheets/_tailwindcss_variables.css';
 @import '../stylesheets/_variables.css';
@@ -15,4 +16,3 @@
 @source '../../components/**/*.{erb,rb,js}';
 @source '../../lib/form_builders/**/*.rb';
 @source "../../../node_modules/flowbite";
-
