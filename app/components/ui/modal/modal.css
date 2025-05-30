@@ -2,7 +2,7 @@
 
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-screen px-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slide-up;
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-screen px-4 overflow-x-hidden  overflow-y-auto md:bottom-0 animate-slide-up;
 
     .modal__window {
       @apply mt-0;

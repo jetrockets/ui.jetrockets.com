@@ -14,3 +14,5 @@
 @source '../../views/**/*.erb';
 @source '../../components/**/*.{erb,rb,js}';
 @source '../../lib/form_builders/**/*.rb';
+@source "../../../node_modules/flowbite";
+
