@@ -62,9 +62,7 @@ group :development do
   gem "brakeman"
   gem "bundler-audit", require: false
 
-
   gem "web-console"
-  gem "lookbook"
 end
 
 group :test do

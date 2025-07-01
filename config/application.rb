@@ -33,10 +33,5 @@ module Ui
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.active_record.schema_format = :sql
-    config.view_component.show_previews = true
-    config.view_component.preview_paths << "#{Rails.root}/test/components/previews"
-
-    config.view_component.default_preview_layout = "component_preview"
   end
 end

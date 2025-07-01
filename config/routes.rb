@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   get "/privacy", to: "home#privacy"
   get "/terms", to: "home#terms"
 
-  get "/ui", to: "home#ui"
   root "home#index"
 
   if Rails.env.development?
-    mount Lookbook::Engine, at: "/lookbook"
+    get "/ui", to: "home#ui"
   end
 end

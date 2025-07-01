@@ -70,7 +70,7 @@ Uses Rodauth for authentication with the following features enabled:
 - Multi-phase login support
 
 ### Development Tools
-- **Lookbook** - Component preview and documentation (available at `/lookbook` in development)
+- **Ui** - Component preview and documentation (available at `/ui` in development)
 - **Letter Opener** - Preview emails in development
 - **Annotate** - Auto-generate model schema annotations
 
