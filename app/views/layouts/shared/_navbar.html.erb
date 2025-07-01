@@ -4,7 +4,7 @@
     <ul class="navbar__menu" data-navbar-target="menu">
       <% if Rails.env.development? %>
         <li>
-          <%= link_to "Lookbook", lookbook_path, class: "navbar__link #{"navbar__link-active" if current_page?(lookbook_path)}" %>
+          <%= link_to "UI", ui_path, class: "navbar__link #{"navbar__link-active" if current_page?(ui_path)}" %>
         </li>
       <% end %>
       <li>

@@ -10,7 +10,7 @@
   }
 
   .drawer__window {
-    @apply flex flex-col w-full max-w-2xl mt-4 mx-auto;
+    @apply flex flex-col w-full max-w-2xl mt-4 mx-auto shadow-lg;
   }
 
   .drawer__header {
