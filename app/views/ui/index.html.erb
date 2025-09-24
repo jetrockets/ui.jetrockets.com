@@ -1,0 +1,111 @@
+<%
+  set_meta_tags(
+    title: "Rails UI Components",
+    description: "A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus.",
+    keywords: "Rails, UI, Components, ViewComponent, TailwindCSS, Stimulus"
+  )
+%>
+
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Rails UI Components</h1>
+      <p class="header__subtitle">
+        A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
+      </p>
+    </div>
+  </header>
+
+  <section class="wysiwyg">
+    <h2 class="h2 mt-0">Key Technologies</h2>
+
+    <div class="grid gap-4 lg:grid-cols-2">
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header bordered: false, title: "Rails 7 or higher" %>
+        <% component.with_body do %>
+          <p>
+            <%= link_to "Backend framework", "https://rubyonrails.org/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+            with modern features
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header bordered: false, title: "ViewComponent" %>
+        <% component.with_body do %>
+          <p>
+            <%= link_to "Component-based architecture", "https://viewcomponent.org/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+            for views
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header bordered: false, title: "TailwindCSS 4.0" %>
+        <% component.with_body do %>
+          <p>
+            <%= link_to "Utility-first CSS framework", "https://tailwindcss.com/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+            for rapid UI development
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header bordered: false, title: "Stimulus" %>
+        <% component.with_body do %>
+          <p>
+            <%= link_to "Modest JavaScript framework", "https://stimulus.hotwired.dev/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+            for enhancing HTML with minimal JavaScript
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header bordered: false, title: "Flowbite" %>
+        <% component.with_body do %>
+          <p>
+            <%= link_to "TailwindCSS components", "https://flowbite.com/docs/getting-started/introduction/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+            for ready-to-use UI elements and interactivity.
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header bordered: false, title: "Vite" %>
+        <% component.with_body do %>
+          <p>
+            <%= link_to "Fast build tool", "https://vitejs.dev/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+            for frontend assets
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2">Next Steps</h2>
+
+    <div class="flex flex-col gap-3">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-white rounded-full bg-primary shrink-0">1</div>
+        <div>
+          <%= link_to "Read Getting Started guide", ui_getting_started_path, class: "link" %> to learn how to use and customize components.
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-white rounded-full bg-primary shrink-0">2</div>
+        <div>
+          Explore the <strong>Components</strong> section in the sidebar to see detailed examples and usage patterns.
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-white rounded-full bg-primary shrink-0">3</div>
+        <div>
+          Check <%= link_to "Good to know", ui_good_to_know_path, class: "link" %> for best practices and architectural decisions.
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

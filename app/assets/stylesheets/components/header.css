@@ -1,10 +1,10 @@
 @layer components {
   .header {
-    @apply relative flex flex-wrap items-center justify-between gap-2 md:mb-4 md:py-6;
+    @apply relative flex flex-wrap items-center justify-between lg:gap-x-16 gap-2 md:mb-4 md:py-6;
   }
 
   .header__heading {
-    @apply relative;
+    @apply relative flex-1;
   }
 
   .header-sticky {

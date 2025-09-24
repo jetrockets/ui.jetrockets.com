@@ -7,35 +7,39 @@ Rails.application.routes.draw do
   get "/privacy", to: "home#privacy"
   get "/terms", to: "home#terms"
 
-  # UI Documentation routes
-  namespace :ui do
-    get "getting_started"
-    get "good_to_know"
+  if Rails.env.development?
+    get "ui", to: "ui#index"
+    # UI Documentation routes
+    namespace :ui do
+      get "getting_started"
+      get "good_to_know"
 
-    # Component pages
-    get "accordion"
-    get "alert"
-    get "avatar"
-    get "badge"
-    get "button"
-    get "button_group"
-    get "card"
-    get "clipboard"
-    get "drawer"
-    get "dropdown"
-    get "flash_message"
-    get "icon"
-    get "modal"
-    get "pagy"
-    get "popover"
-    get "table"
-    get "tabs"
-    get "tooltip"
-    get "turbo_confirm"
-    get "form_builder"
-    get "typography"
+      # Component pages
+      get "accordion"
+      get "alert"
+      get "avatar"
+      get "badge"
+      get "button"
+      get "button_group"
+      get "card"
+      get "clipboard"
+      get "drawer"
+      get "dropdown"
+      get "flash_message"
+      get "icon"
+      get "modal"
+      get "pagy"
+      get "popover"
+      get "table"
+      get "tabs"
+      get "tooltip"
+      get "turbo_confirm"
+      get "form_builder"
+      get "typography"
+    end
+
+    root "ui#index"
+  else
+    root "home#index"
   end
-
-  get "ui", to: "ui#ui"
-  root "home#index"
 end
