@@ -12,7 +12,7 @@
   }
 
   .header__title {
-    @apply flex-1 mr-2 text-2xl tracking-wider md:text-4xl font-extrabold;
+    @apply flex-1 mr-2 mb-2 text-2xl tracking-wider md:text-4xl font-extrabold;
   }
 
   .header__subtitle {
