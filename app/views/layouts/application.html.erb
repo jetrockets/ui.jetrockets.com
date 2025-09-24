@@ -28,10 +28,7 @@
     <div class="body__main">
       <%= render partial: "layouts/shared/sidebar" %>
       <main class="body__content">
-        <nav class="navbar">
-          <%= breadcrumbs(separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "breadcrumbs", display_single_fragment: true) %>
-          <%= render partial: "layouts/shared/rodauth_buttons" %>
-        </nav>
+        <%= render partial: "layouts/shared/navbar" %>
         <%= yield %>
         <%= render partial: "layouts/shared/footer" %>
       </main>
