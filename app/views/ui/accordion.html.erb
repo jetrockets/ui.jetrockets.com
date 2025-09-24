@@ -7,21 +7,27 @@
 %>
 <% breadcrumb :ui_accordion %>
 
-<article class="space-y-8">
-  <header class="space-y-4">
-    <h1 class="text-4xl font-bold text-gray-900">COMPONENT_TITLE</h1>
+<article class="wysiwyg">
+  <header>
+    <h1 class="h1">Accordion</h1>
     <p class="text-xl text-gray-600">
-      COMPONENT_DESCRIPTION
+      A component that allows users to expand and collapse sections of content.
     </p>
   </header>
 
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Coming Soon</h2>
-    <div class="p-6 rounded-lg bg-blue-50">
-      <p class="text-blue-800">
-        Documentation for this component is being prepared.
-        You can find the component implementation in <code>app/components/ui/COMPONENT_NAME/</code>
-      </p>
-    </div>
+  <section>
+    <%= render Ui::Accordion::Component.new do |accordion| %>
+      <%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %>
+        <p class="mb-0">
+          Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
+        </p>
+      <% end %>
+
+      <%= accordion.with_item(title: "Second Item", id: "item_2") do %>
+        <p class="mb-0">
+          Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
+        </p>
+      <% end %>
+    <% end %>
   </section>
 </article>
