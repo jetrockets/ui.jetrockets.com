@@ -15,7 +15,7 @@ class Ui::Alert::Component < ApplicationComponent
 
   def classes
     class_names(
-      "flex p-4 rounded-lg border",
+      "flex p-4 rounded-lg border text-sm",
       @options.delete(:class),
       "text-blue-900 bg-blue-50 border-blue-200": @type == :info,
       "text-red-900 bg-red-50 border-red-200": @type == :error,
@@ -27,7 +27,7 @@ class Ui::Alert::Component < ApplicationComponent
 
   def icon
     if @icon_path
-      helpers.vite_svg_tag @icon_path, class: "mt-0.5 shrink-0 w-5 h-5 mr-2"
+      helpers.vite_svg_tag @icon_path, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
     end
   end
 end

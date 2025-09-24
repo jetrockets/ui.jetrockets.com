@@ -17,7 +17,7 @@ class Ui::Badge::Component < ApplicationComponent
 
   def classes
     class_names(
-      "font-medium inline-flex items-center rounded-md ring-1 ring-inset",
+      "font-medium inline-flex items-center rounded-md ring-1 ring-inset w-fit",
       @options.delete(:class),
       "bg-gray-100 text-gray-800 ring-gray-800/20": @variant == :default,
       "bg-blue-100 text-blue-800 ring-blue-800/20": @variant == :blue,

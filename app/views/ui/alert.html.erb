@@ -9,7 +9,7 @@
 
 <article>
   <header class="wysiwyg">
-    <h1 class="text-4xl font-bold text-gray-900">Alert</h1>
+    <h1 class="h1">Alert</h1>
     <p class="text-xl text-gray-600">
       Display important messages and status notifications to users.
     </p>
@@ -17,53 +17,19 @@
 
   <section>
     <h2 class="h3">Example</h2>
-    <%= turbo_frame_tag :ui_accordion, data: { turbo_action: :advance }, target: :_top do %>
+    <%= turbo_frame_tag :ui_alert, data: { turbo_action: :advance }, target: :_top do %>
       <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
-        <% tabs.with_item title: "Preview", href: ui_alert_path, data: { turbo_frame: :ui_accordion }, active: !params[:code] %>
-        <% tabs.with_item title: "Code", href: ui_alert_path(code: true), data: { turbo_frame: :ui_accordion }, active: params[:code] %>
+        <% tabs.with_item title: "Preview", href: ui_alert_path, data: { turbo_frame: :ui_alert }, active: !params[:code] %>
+        <% tabs.with_item title: "Code", href: ui_alert_path(code: true), data: { turbo_frame: :ui_alert }, active: params[:code] %>
       <% end %>
 
-      <% unless params[:code] %>
-        <div class="flex flex-col gap-8">
-          <div class="flex flex-col gap-2">
-            <%= render Ui::Alert::Component.new title: "Default alert!" %>
-            <%= render Ui::Alert::Component.new type: :info, title: "Info alert!" %>
-            <%= render Ui::Alert::Component.new type: :warning, title: "Warning alert!" %>
-            <%= render Ui::Alert::Component.new type: :error, title: "Danger alert!" %>
-            <%= render Ui::Alert::Component.new type: :success, title: "Success alert!" %>
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <h3 class="h4">With Icon and Content</h3>
-
-            <%= render Ui::Alert::Component.new(type: :info, title: "Info Alert", icon_path: "images/icons/alert.svg") do %>
-              <ul class="pl-3 list-disc">
-                <li>This alert includes additional details</li>
-                <li>Multiple list items are supported</li>
-                <li>Icons help users quickly identify the alert type</li>
-              </ul>
-            <% end %>
-
-            <%= render Ui::Alert::Component.new(type: :success, title: "Operation Completed", icon_path: "images/icons/alert.svg") do %>
-              <p>Your changes have been saved successfully. You can now continue with the next step.</p>
-            <% end %>
-          </div>
-        </div>
-      <% else %>
-      <pre><code>&lt;%= render Ui::Alert::Component.new(title: "Default alert!") %&gt;
-&lt;%= render Ui::Alert::Component.new(type: :info, title: "Info Alert") %&gt;
-&lt;%= render Ui::Alert::Component.new(type: :warning, title: "Warning alert!") %&gt;
-&lt;%= render Ui::Alert::Component.new(type: :error, title: "Danger alert!") %&gt;
-&lt;%= render Ui::Alert::Component.new(type: :success, title: "Success alert!") %&gt;</code></pre>
-
-<pre class="mt-6"><code>&lt;%= render Ui::Alert::Component.new(type: :info, title: "Info Alert", icon_path: "images/icons/alert.svg") do %&gt;
-  &lt;ul class="pl-3 list-disc"&gt;
-    &lt;li&gt;This alert includes additional details&lt;/li&gt;
-    &lt;li&gt;Multiple list items are supported&lt;/li&gt;
-    &lt;li&gt;Icons help users quickly identify the alert type&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;% end %&gt;</pre>
-      <% end %>
+      <div class="flex flex-col gap-2">
+        <% unless params[:code] %>
+          <%= render "ui/examples/alert" %>
+        <% else %>
+          <%= render_code_example("ui/examples/_alert") %>
+        <% end %>
+      </div>
     <% end %>
   </section>
 </article>

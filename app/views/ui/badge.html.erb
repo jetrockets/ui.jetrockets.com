@@ -1,27 +1,35 @@
 <%
   set_meta_tags(
-    title: "COMPONENT_TITLE - Rails UI Components",
-    description: "COMPONENT_DESCRIPTION",
-    keywords: "Rails, UI Components, ViewComponent"
+    title: "Badge - Rails UI Components",
+    description: "Badge component for displaying status and labels.",
+    keywords: "Rails, UI Components, Badge"
   )
 %>
-<% breadcrumb :ui_badge %>
+<% breadcrumb :ui_avatar %>
 
-<article class="space-y-8">
-  <header class="space-y-4">
-    <h1 class="text-4xl font-bold text-gray-900">COMPONENT_TITLE</h1>
+<article>
+  <header class="wysiwyg">
+    <h1 class="h1">Badge</h1>
     <p class="text-xl text-gray-600">
-      COMPONENT_DESCRIPTION
+      Badge component for displaying status and labels.
     </p>
   </header>
 
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Coming Soon</h2>
-    <div class="p-6 rounded-lg bg-blue-50">
-      <p class="text-blue-800">
-        Documentation for this component is being prepared.
-        You can find the component implementation in <code>app/components/ui/COMPONENT_NAME/</code>
-      </p>
-    </div>
+  <section>
+    <h2 class="h3">Example</h2>
+    <%= turbo_frame_tag :ui_badge, data: { turbo_action: :advance }, target: :_top do %>
+      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
+        <% tabs.with_item title: "Preview", href: ui_badge_path, data: { turbo_frame: :ui_badge }, active: !params[:code] %>
+        <% tabs.with_item title: "Code", href: ui_badge_path(code: true), data: { turbo_frame: :ui_badge }, active: params[:code] %>
+      <% end %>
+
+      <div class="flex flex-col gap-2">
+        <% unless params[:code] %>
+          <%= render "ui/examples/badge" %>
+        <% else %>
+          <%= render_code_example("ui/examples/_badge") %>
+        <% end %>
+      </div>
+    <% end %>
   </section>
 </article>

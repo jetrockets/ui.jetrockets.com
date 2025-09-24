@@ -1,0 +1,17 @@
+<%= render Ui::Alert::Component.new title: "Default alert!" %>
+
+<%= render Ui::Alert::Component.new type: :info, title: "Info alert!" %>
+
+<%= render Ui::Alert::Component.new type: :warning, title: "Warning alert!" %>
+
+<%= render Ui::Alert::Component.new type: :error, title: "Danger alert!" %>
+
+<%= render Ui::Alert::Component.new type: :success, title: "Success alert!" %>
+
+<%= render Ui::Alert::Component.new(type: :info, title: "Info Alert", icon_path: "images/icons/alert.svg") do %>
+  <ul class="pl-3 list-disc">
+    <li>This alert includes additional details</li>
+    <li>Multiple list items are supported</li>
+    <li>Icons help users quickly identify the alert type</li>
+  </ul>
+<% end %>

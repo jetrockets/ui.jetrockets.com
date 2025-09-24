@@ -19,4 +19,15 @@ module ApplicationHelper
       render_inline_svg(filename, transform_params)
     end
   end
+
+  def render_code_example(partial_path)
+    partial_file_path = Rails.root.join("app/views/#{partial_path}.html.erb")
+
+    if File.exist?(partial_file_path)
+      raw_content = File.read(partial_file_path)
+      content_tag(:pre, content_tag(:code, html_escape(raw_content)))
+    else
+      "Partial not found: #{partial_path}"
+    end
+  end
 end
