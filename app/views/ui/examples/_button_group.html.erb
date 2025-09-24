@@ -1,5 +1,17 @@
 <div class="flex flex-col gap-4">
   <%= render Ui::BtnGroup::Component.new do |component| %>
+    <% component.with_button(variant: :primary) { "Button First" } %>
+    <% component.with_button(variant: :primary) { "Button Second" } %>
+    <% component.with_button(variant: :primary) { "Button Third" } %>
+  <% end %>
+
+  <%= render Ui::BtnGroup::Component.new do |component| %>
+    <% component.with_button(variant: :primary, rounded: true) { "Button First" } %>
+    <% component.with_button(variant: :primary, rounded: true) { "Button Second" } %>
+    <% component.with_button(variant: :primary, rounded: true) { "Button Third" } %>
+  <% end %>
+
+  <%= render Ui::BtnGroup::Component.new do |component| %>
     <% component.with_button(variant: :primary, outlined: true) { "Button First" } %>
     <% component.with_button(variant: :primary, outlined: true) { "Button Second" } %>
     <% component.with_button(variant: :primary, outlined: true) { "Button Third" } %>

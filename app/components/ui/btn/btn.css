@@ -2,9 +2,10 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center h-10 gap-2 px-3 py-2 text-sm font-medium text-center border border-transparent rounded-md outline-none cursor-pointer;
+    @apply relative inline-flex items-center justify-center h-10 gap-2 px-3 py-2 text-sm font-medium text-center no-underline border border-transparent rounded-md outline-none cursor-pointer;
     @apply text-gray-700 bg-gray-200 ring-gray-200/30;
     @apply hover:bg-gray-200/80;
+    @apply active:ring-inset active:top-px;
     @apply focus-visible:ring-4;
 
     &.btn-outlined {

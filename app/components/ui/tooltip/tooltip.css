@@ -2,7 +2,7 @@
 
 @layer components {
   .tooltip {
-    @apply relative z-20 invisible px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 ease-in rounded-lg shadow-xs opacity-0 bg-gray-700 text-center min-w-40;
+    @apply relative z-20 px-3 py-2 text-sm font-medium text-center text-white transition-opacity duration-150 ease-in bg-gray-700 rounded-lg shadow-xs opacity-0 pointer-events-none min-w-40;
   }
 
   .tooltip__arrow {
@@ -14,7 +14,7 @@
   }
 
   .tooltip__arrow-bottom {
-    @apply top-full -mt-10;
+    @apply -mt-10 top-full;
   }
 
   .tooltip__arrow-right {
@@ -26,15 +26,15 @@
   }
 
   /* FLOWBITE */
-  [data-popper-arrow] {
+  .tooltip__arrow {
     visibility: hidden;
   }
-  [data-popper-arrow]:before {
+  .tooltip__arrow:before {
     content: "";
     visibility: visible;
     transform: rotate(45deg);
   }
-  [data-popper-arrow]:after {
+  .tooltip__arrow:after {
     content: "";
     visibility: visible;
     transform: rotate(45deg);
@@ -43,70 +43,62 @@
     height: 9px;
     background: inherit;
   }
-  [role="tooltip"] > [data-popper-arrow]:before {
+  .tooltip__arrow:before {
     border-style: solid;
     border-color: var(--color-gray-200);
   }
-  .dark [role="tooltip"] > [data-popper-arrow]:before {
-    border-style: solid;
-    border-color: var(--color-gray-600);
-  }
-  [role="tooltip"] > [data-popper-arrow]:after {
+  .tooltip__arrow:after {
     border-style: solid;
     border-color: var(--color-gray-200);
   }
-  .dark [role="tooltip"] > [data-popper-arrow]:after {
-    border-style: solid;
-    border-color: var(--color-gray-600);
-  }
-  [data-popover][role="tooltip"][data-popper-placement^='top'] > [data-popper-arrow]:before {
+  .tooltip[data-placement^='top'] > .tooltip__arrow:before {
     border-bottom-width: 1px;
     border-right-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='top'] > [data-popper-arrow]:after {
+  .tooltip[data-placement^='top'] > .tooltip__arrow:after {
     border-bottom-width: 1px;
     border-right-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='right'] > [data-popper-arrow]:before {
+  .tooltip[data-placement^='right'] > .tooltip__arrow:before {
     border-bottom-width: 1px;
     border-left-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='right'] > [data-popper-arrow]:after {
+  .tooltip[data-placement^='right'] > .tooltip__arrow:after {
     border-bottom-width: 1px;
     border-left-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='bottom'] > [data-popper-arrow]:before {
+  .tooltip[data-placement^='bottom'] > .tooltip__arrow:before {
     border-top-width: 1px;
     border-left-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='bottom'] > [data-popper-arrow]:after {
+  .tooltip[data-placement^='bottom'] > .tooltip__arrow:after {
     border-top-width: 1px;
     border-left-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='left'] > [data-popper-arrow]:before {
+  .tooltip[data-placement^='left'] > .tooltip__arrow:before {
     border-top-width: 1px;
     border-right-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='left'] > [data-popper-arrow]:after {
+  .tooltip[data-placement^='left'] > .tooltip__arrow:after {
     border-top-width: 1px;
     border-right-width: 1px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='top'] > [data-popper-arrow] {
+  .tooltip[data-placement^='top'] > .tooltip__arrow {
     bottom: -5px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='bottom'] > [data-popper-arrow] {
+  .tooltip[data-placement^='bottom'] > .tooltip__arrow {
     top: -5px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='left'] > [data-popper-arrow] {
+  .tooltip[data-placement^='left'] > .tooltip__arrow {
     right: -5px;
   }
-  [data-popover][role="tooltip"][data-popper-placement^='right'] > [data-popper-arrow] {
+  .tooltip[data-placement^='right'] > .tooltip__arrow {
     left: -5px;
   }
-  [role="tooltip"].invisible > [data-popper-arrow]:before {
+  .tooltip.invisible > .tooltip__arrow:before {
     visibility: hidden;
   }
-  [role="tooltip"].invisible > [data-popper-arrow]:after {
+  .tooltip.invisible > .tooltip__arrow:after {
     visibility: hidden;
   }
 }

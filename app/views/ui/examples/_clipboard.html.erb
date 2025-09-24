@@ -9,11 +9,12 @@
     <% end %>
   </div>
 
-  <div class="flex items-baseline gap-2">
+  <div class="flex items-baseline gap-1">
     <p>Any content to copy</p>
     <%= render Ui::Clipboard::Component.new(value: "Any content to copy", id: "clipboard_tooltip") do |clipboard| %>
       <%= clipboard.with_trigger(
         default: "Copy text",
+        class: "link",
         success: "COPIED!",
         tooltip_default: "Click me to copy",
         tooltip_success: "Successfully copied!",
