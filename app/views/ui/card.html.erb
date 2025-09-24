@@ -7,16 +7,22 @@
 %>
 <% breadcrumb :ui_card %>
 
-<article class="wysiwyg">
-  <header>
-    <h1 class="h1">Card</h1>
-    <p class="text-xl text-gray-600">
-      Card component for displaying grouped content.
-    </p>
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Card</h1>
+      <p class="header__subtitle">
+        Card component for displaying grouped content.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/card", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
   </header>
 
-  <section>
-    <h2 class="h2">Basic Card</h2>
+  <section class="flex flex-col gap-2 mb-12">
+    <h2 class="h3">Basic Card</h2>
 
     <div class="max-w-md mb-4">
       <%= render Ui::Card::Component.new do |component| %>
@@ -41,8 +47,8 @@
 &lt;% end %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">Bordered Card</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">Bordered Card</h2>
 
     <div class="max-w-md mb-4">
       <%= render Ui::Card::Component.new(bordered: true) do |component| %>
@@ -67,8 +73,8 @@
 &lt;% end %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">Body Only Card</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">Body Only Card</h2>
 
     <div class="max-w-md mb-4">
       <%= render Ui::Card::Component.new do |component| %>

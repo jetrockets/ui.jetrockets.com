@@ -7,13 +7,21 @@
 %>
 <% breadcrumb :ui_good_to_know %>
 
-<article class="wysiwyg">
-  <header>
-    <h1 class="h1">Good to Know</h1>
-    <p class="text-xl text-gray-600">
-      Architectural decisions, best practices, and important considerations for working with this component library.
-    </p>
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Good to Know</h1>
+      <p class="header__subtitle">
+        Architectural decisions, best practices, and important considerations for working with this component library.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
   </header>
+
+  <div class="wysiwyg">
 
   <section class="space-y-6">
     <h2 class="h2">Architectural Philosophy</h2>
@@ -152,4 +160,5 @@ renders_one :footer, Ui::Card::Footer::Component
       </p>
     <% end %>
   </section>
+  </div>
 </article>

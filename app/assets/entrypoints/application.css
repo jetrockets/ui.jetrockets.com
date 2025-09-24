@@ -4,6 +4,7 @@
 @import "../stylesheets/components/body.css";
 @import "../stylesheets/components/breadcrumbs.css";
 @import "../stylesheets/components/form.css";
+@import "../stylesheets/components/header.css";
 @import "../stylesheets/components/link.css";
 @import "../stylesheets/components/navbar.css";
 @import "../stylesheets/components/sidebar.css";
@@ -13,5 +14,3 @@
 @import "../stylesheets/components/wysiwyg.css";
 
 /* Vendors */
-/* @import "../stylesheets/vendors/choices";
-@import "../stylesheets/vendors/choices_ui"; */

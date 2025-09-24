@@ -10,15 +10,17 @@
   }
 
   .tabs__list {
-    @apply flex text-sm list-none font-medium md:text-center md:border-b md:border-gray-200 gap-y-2 md:gap-y-0;
+    @apply flex text-sm list-none font-medium md:text-center md:border-b md:border-gray-200 gap-y-2 md:gap-y-0 md:gap-6;
   }
 
   .tabs__item {
-    @apply md:-mb-px md:me-2;
+    @apply md:-mb-px;
   }
 
   .tabs__link {
-    @apply inline-block text-gray-600 border-b-2 border-transparent rounded-t-lg p-4 hover:text-gray-800 hover:border-gray-300;
+    @apply inline-block text-gray-600 border-b-2 border-transparent rounded-t-lg py-4;
+    @apply hover:text-gray-800 hover:border-gray-300;
+    @apply focus:outline-none focus:border-primary/50 focus:text-primary/50;
   }
 
   .tabs__link-active {

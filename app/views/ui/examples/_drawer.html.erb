@@ -1,10 +1,10 @@
 <div>
-  <h3 class="mb-3 h3">Async Drawer</h3>
+  <h3 class="mb-3 h4">Async Drawer</h3>
   <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link" %></p>
 </div>
 
 <div>
-  <h3 class="mt-6 mb-3 h3">Sync Drawer</h3>
+  <h3 class="mt-6 mb-3 h4">Sync Drawer</h3>
   <%= render Ui::Btn::Component.new(variant: :primary, data: { drawer_target: "trigger", drawer_toggle: "drawer", action: "click->drawer#show", id: "drawer1" }, aria_controls: "drawer").with_content "Show drawer" %>
 
   <%= render Ui::Drawer::Component.new(title: "Info", async: false, id: "drawer1") do %>

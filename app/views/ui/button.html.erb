@@ -7,16 +7,22 @@
 %>
 <% breadcrumb :ui_button %>
 
-<article class="wysiwyg">
-  <header>
-    <h1 class="h1">Button</h1>
-    <p class="text-xl text-gray-600">
-      Button component for user actions and navigation.
-    </p>
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Button</h1>
+      <p class="header__subtitle">
+        Button component for user actions and navigation.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/btn", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
   </header>
 
-  <section>
-    <h2 class="h2">Basic Variants</h2>
+  <section class="flex flex-col gap-2 mb-12">
+    <h2 class="h3">Basic Variants</h2>
 
     <div class="flex flex-wrap items-center gap-1 mb-4">
       <%= render Ui::Btn::Component.new.with_content "Default" %>
@@ -31,8 +37,8 @@
 &lt;%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">Sizes</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">Sizes</h2>
 
     <div class="flex flex-wrap items-center gap-1 mb-4">
       <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
@@ -49,8 +55,8 @@
 &lt;%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">Outlined Variants</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">Outlined Variants</h2>
 
     <div class="flex flex-wrap items-center gap-1 mb-4">
       <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
@@ -65,8 +71,8 @@
 &lt;%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">With Icons</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">With Icons</h2>
 
     <div class="flex flex-wrap items-center gap-1 mb-4">
       <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/user.svg") %>
@@ -81,8 +87,8 @@
 &lt;%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/user.svg") %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">Special Styles</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">Special Styles</h2>
 
     <div class="mb-4 space-y-3">
       <div class="flex flex-wrap items-center gap-2">
@@ -111,13 +117,13 @@
 &lt;%= render Ui::Btn::Component.new(block: true, variant: :primary).with_content("Block Button") %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h2">As Links</h2>
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">As Links</h2>
 
     <div class="mb-4 space-y-2">
-      <%= render Ui::Btn::Component.new(href: root_path, variant: :primary).with_content "Link Button" %>
-      <%= render Ui::Btn::Component.new(href: root_path, variant: :link).with_content "Link" %>
-      <%= render Ui::Btn::Component.new(href: root_path, variant: :ghost).with_content "Link Ghost" %>
+      <%= render Ui::Btn::Component.new(href: "#", variant: :primary).with_content "Link Button" %>
+      <%= render Ui::Btn::Component.new(href: "#", variant: :link).with_content "Link" %>
+      <%= render Ui::Btn::Component.new(href: "#", variant: :ghost).with_content "Link Ghost" %>
     </div>
 
     <pre><code>&lt;%= render Ui::Btn::Component.new(href: root_path, variant: :primary).with_content "Link Button" %&gt;

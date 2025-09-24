@@ -1,0 +1,25 @@
+@layer components {
+  .header {
+    @apply relative flex flex-wrap items-center justify-between gap-2 md:mb-4 md:py-6;
+  }
+
+  .header__heading {
+    @apply relative;
+  }
+
+  .header-sticky {
+    @apply lg:sticky lg:z-30 lg:top-navbar bg-white/90 backdrop-blur-xs;
+  }
+
+  .header__title {
+    @apply flex-1 mr-2 text-2xl tracking-wider md:text-4xl font-extrabold;
+  }
+
+  .header__subtitle {
+    @apply text-xl text-gray-600;
+  }
+
+  .header__actions {
+    @apply flex items-center flex-shrink-0 gap-2 whitespace-nowrap;
+  }
+}

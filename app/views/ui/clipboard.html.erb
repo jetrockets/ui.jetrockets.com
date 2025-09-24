@@ -8,11 +8,17 @@
 <% breadcrumb :ui_clipboard %>
 
 <article>
-  <header class="wysiwyg">
-    <h1 class="h1">Clipboard</h1>
-    <p class="text-xl text-gray-600">
-      Clipboard component for copying content to clipboard.
-    </p>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Clipboard</h1>
+      <p class="header__subtitle">
+        Clipboard component for copying content to clipboard.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/clipboard", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
   </header>
 
   <section>

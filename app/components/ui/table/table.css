@@ -27,12 +27,8 @@
 
   /* Hovered */
   .table-hovered {
-    tr:hover {
+    tbody tr:hover td{
       @apply bg-gray-50;
-
-      .sticky-td {
-        @apply bg-gray-50;
-      }
     }
   }
 

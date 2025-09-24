@@ -1,10 +1,16 @@
 <article class="space-y-8 wrapper">
-  <section class="wysiwyg">
-    <h1>Component Examples</h1>
-    <p>
-      We based on <%= link_to "Flowbite", "https://flowbite.com/", target: :_blank, ref: "nofollow noopener noreferrer", class: "link" %>. So if you need more components, you can find them there and implement them in your project.
-    </p>
-  </section>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Component Examples</h1>
+      <p class="header__subtitle">
+        We based on <%= link_to "Flowbite", "https://flowbite.com/", target: :_blank, ref: "nofollow noopener noreferrer", class: "link" %>. So if you need more components, you can find them there and implement them in your project.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
+  </header>
 
   <section class="space-y-8">
     <div class="md:w-8/12">
