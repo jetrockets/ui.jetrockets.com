@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
+import { stimulus } from '~/init'
 
-export default class extends Controller {
+export default class FieldsController extends Controller {
   enable ({ target }) {
     const elements = Array.from(this.element.elements)
     const selectedElements = 'selectedOptions' in target
@@ -30,3 +31,5 @@ export default class extends Controller {
     return ids.map(id => document.getElementById(id))
   }
 }
+
+stimulus.register('fields', FieldsController)

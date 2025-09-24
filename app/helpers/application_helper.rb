@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def body_classes
-    class_names("body__main", @body_class)
+    class_names("body", @body_class)
   end
 
   def vite_asset_url_with_host(source)

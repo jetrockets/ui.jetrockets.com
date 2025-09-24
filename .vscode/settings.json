@@ -1,0 +1,4 @@
+{
+  "tailwindCSS.experimental.configFile": "app/assets/entrypoints/tailwind.css",
+  "microsoft-sovereign-cloud.customEnvironment": {}
+}

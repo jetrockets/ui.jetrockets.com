@@ -1,0 +1,104 @@
+<aside class="body__sidebar sidebar">
+  <div class="sidebar__header">
+    <%= link_to vite_svg_tag("images/logo.svg", class: "sidebar__logo", alt: "JetRockets"), root_path, aria: { label: "JetRockets" } %>
+
+    <div class="sidebar__actions">
+      <%= render partial: "layouts/shared/rodauth_buttons" %>
+
+      <%= button_tag class: "btn btn-link btn-sm", data: { action: "click->sidebar#toggle", sidebar_target: "burger" } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" class="sidebar__open" />
+          <path stroke-linecap="round" stroke-width="2" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" class="sidebar__close" />
+        </svg>
+      <% end %>
+    </div>
+  </div>
+
+  <nav class="sidebar__nav" data-sidebar-target="menu">
+    <!-- Basics Section -->
+    <div class="sidebar__section">
+      <h4 class="sidebar__title">Basics</h4>
+      <ul class="sidebar__menu">
+        <li>
+          <%= link_to "Introduction", root_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(root_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Getting Started", ui_getting_started_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_getting_started_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Good to know", ui_good_to_know_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_good_to_know_path)}" %>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Components Section -->
+    <div class="sidebar__section">
+      <h4 class="sidebar__title">Components</h4>
+      <ul class="sidebar__menu">
+        <li>
+          <%= link_to "Accordion", ui_accordion_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_accordion_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Alert", ui_alert_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_alert_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Avatar", ui_avatar_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_avatar_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Badge", ui_badge_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_badge_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Button", ui_button_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_button_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Button Group", ui_button_group_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_button_group_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Card", ui_card_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_card_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Clipboard", ui_clipboard_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_clipboard_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Drawer", ui_drawer_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_drawer_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Dropdown", ui_dropdown_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_dropdown_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Flash Message", ui_flash_message_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_flash_message_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Form Builder", ui_form_builder_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_form_builder_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Icon", ui_icon_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_icon_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Modal", ui_modal_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_modal_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Pagy", ui_pagy_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_pagy_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Popover", ui_popover_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_popover_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Table", ui_table_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_table_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Tabs", ui_tabs_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_tabs_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Tooltip", ui_tooltip_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_tooltip_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Turbo Confirm", ui_turbo_confirm_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_turbo_confirm_path)}" %>
+        </li>
+        <li>
+          <%= link_to "Typography", ui_typography_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_typography_path)}" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</aside>

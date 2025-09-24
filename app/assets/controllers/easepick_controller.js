@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { easepick, RangePlugin, LockPlugin, AmpPlugin } from '@easepick/bundle'
 import Imask from 'imask'
+import { stimulus } from '~/init'
 
 import styles from '@easepick/bundle/dist/index.css?inline'
 import customStyles from '~/stylesheets/vendors/easepick.css?inline'
@@ -9,7 +10,7 @@ import { events } from '../utils/easepick/events'
 import isMobile from '~/utils/navigator'
 import { capitalize, kebabCase } from '~/utils/string'
 
-export default class extends Controller {
+export default class EasepickController extends Controller {
   static targets = ['elementStart', 'elementEnd']
 
   initialize () {
@@ -256,3 +257,5 @@ export default class extends Controller {
     return JSON.parse(this.data.get(option))
   }
 }
+
+stimulus.register('easepick', EasepickController)

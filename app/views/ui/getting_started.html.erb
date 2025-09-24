@@ -1,0 +1,250 @@
+<%
+  set_meta_tags(
+    title: "Getting Started - Rails UI Components",
+    description: "Learn how to install, use, and customize Rails UI components in your projects.",
+    keywords: "Rails, UI, Components, Installation, Usage, Getting Started"
+  )
+%>
+<% breadcrumb :ui_getting_started %>
+
+<article class="space-y-8">
+  <header class="space-y-4">
+    <h1 class="text-4xl font-bold text-gray-900">Getting Started</h1>
+    <p class="text-xl text-gray-600">
+      Learn how to install, use, and customize Rails UI components in your projects.
+    </p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Requirements</h2>
+
+    <div class="p-6 rounded-lg bg-gray-50">
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="mb-2 font-semibold text-gray-900">Backend</h3>
+          <ul class="text-gray-600 space-y-1">
+            <li>• <strong>Ruby</strong> 3.2.3+</li>
+            <li>• <strong>Rails</strong> 7.0.8+</li>
+            <li>• <strong>ViewComponent</strong> gem</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="mb-2 font-semibold text-gray-900">Frontend</h3>
+          <ul class="text-gray-600 space-y-1">
+            <li>• <strong>Node.js</strong> 18+</li>
+            <li>• <strong>TailwindCSS</strong> 4.0</li>
+            <li>• <strong>Vite</strong> for asset compilation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Installation</h2>
+
+    <div class="space-y-4">
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">1. Add Required Gems</h3>
+        <p class="mb-3 text-gray-600">Add these dependencies to your <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Gemfile</code>:</p>
+
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code># Gemfile
+gem 'view_component'
+gem 'vite_rails'
+gem 'turbo-rails'
+gem 'pagy', '~> 9.3.4'</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">2. Install Dependencies</h3>
+
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code># Install Ruby gems
+bundle install
+
+# Install frontend dependencies
+yarn install</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">3. Copy Components</h3>
+        <p class="mb-3 text-gray-600">Copy the components you need from this template to your Rails project:</p>
+
+        <div class="p-4 bg-gray-100 rounded-lg">
+          <p class="text-sm text-gray-700">
+            📁 Copy entire <code>app/components/ui/</code> folder or individual component folders to your project.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">4. Start Development</h3>
+
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code># Start Rails server
+bin/rails server
+
+# Start Vite dev server (in another terminal)
+yarn dev
+# or
+bin/vite dev</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Component Structure</h2>
+
+    <p class="text-gray-600">Each component follows a consistent pattern:</p>
+
+    <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+      <pre><code>app/components/ui/[component_name]/
+├── component.rb          # Main component class
+├── component.html.erb    # Template (when needed)
+├── component.css         # Component-specific styles
+├── component_controller.js # Stimulus controller (when needed)
+└── [nested_components]/  # Sub-components</code></pre>
+    </div>
+
+    <div class="p-4 rounded-lg bg-blue-50">
+      <p class="text-sm text-blue-800">
+        <strong>💡 Tip:</strong> All components inherit from <code>ApplicationComponent</code> and are namespaced under <code>Ui::</code>
+      </p>
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Basic Usage</h2>
+
+    <div class="space-y-6">
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">Simple Component</h3>
+        <p class="mb-3 text-gray-600">Most components can be used with minimal configuration:</p>
+
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new(variant: :primary) do %&gt;
+  Click me!
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">Component with Options</h3>
+        <p class="mb-3 text-gray-600">Components accept various options for customization:</p>
+
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Alert::Component.new(
+  type: :success,
+  title: "Success!",
+  icon_path: "images/icons/check.svg"
+) do %&gt;
+  Your changes have been saved successfully.
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">Complex Component</h3>
+        <p class="mb-3 text-gray-600">Some components have nested sub-components:</p>
+
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new do |card| %&gt;
+  &lt;% card.with_header(title: "Card Title") %&gt;
+  &lt;% card.with_body do %&gt;
+    &lt;p&gt;Card content goes here&lt;/p&gt;
+  &lt;% end %&gt;
+  &lt;% card.with_footer do %&gt;
+    &lt;%= render Ui::Btn::Component.new(variant: :primary) { "Action" } %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Customization</h2>
+
+    <div class="space-y-4">
+      <div>
+        <h3 class="mb-3 text-lg font-semibold text-gray-900">Modifying Styles</h3>
+        <p class="mb-3 text-gray-600">You can customize component appearance in several ways:</p>
+
+        <div class="space-y-3">
+          <div class="p-4 rounded-lg bg-gray-50">
+            <h4 class="mb-2 font-medium text-gray-900">1. CSS Classes (Quick)</h4>
+            <div class="p-3 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded">
+              <pre><code>&lt;%= render Ui::Btn::Component.new(class: "bg-purple-600") do %&gt;
+  Purple Button
+&lt;% end %&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-50">
+            <h4 class="mb-2 font-medium text-gray-900">2. Component CSS (Recommended)</h4>
+            <p class="mb-2 text-sm text-gray-600">Edit the component's CSS file:</p>
+            <div class="p-3 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded">
+              <pre><code>/* app/components/ui/btn/btn.css */
+.btn--custom {
+  @apply bg-purple-600 text-white hover:bg-purple-700;
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-lg bg-gray-50">
+            <h4 class="mb-2 font-medium text-gray-900">3. New Variants</h4>
+            <p class="mb-2 text-sm text-gray-600">Add new variants to the component:</p>
+            <div class="p-3 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded">
+              <pre><code># app/components/ui/btn/component.rb
+def initialize(variant: :primary, **options)
+  @variant = variant # :primary, :secondary, :custom
+  @options = options
+end</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Development Commands</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-4 rounded-lg bg-gray-50">
+        <h3 class="mb-3 font-semibold text-gray-900">Development</h3>
+        <div class="text-sm space-y-2">
+          <div><code class="bg-gray-200 px-1 py-0.5 rounded">yarn dev</code> - Start Vite dev server</div>
+          <div><code class="bg-gray-200 px-1 py-0.5 rounded">bin/rails server</code> - Start Rails server</div>
+          <div><code class="bg-gray-200 px-1 py-0.5 rounded">bin/rails console</code> - Rails console</div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-lg bg-gray-50">
+        <h3 class="mb-3 font-semibold text-gray-900">Production</h3>
+        <div class="text-sm space-y-2">
+          <div><code class="bg-gray-200 px-1 py-0.5 rounded">yarn build</code> - Build assets</div>
+          <div><code class="bg-gray-200 px-1 py-0.5 rounded">yarn standard</code> - JavaScript linting</div>
+          <div><code class="bg-gray-200 px-1 py-0.5 rounded">bundle exec rubocop</code> - Ruby linting</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">What's Next?</h2>
+
+    <div class="p-6 rounded-lg bg-blue-50">
+      <p class="mb-4 text-blue-800">Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns.</p>
+
+      <p class="text-blue-700">
+        Don't forget to check out <%= link_to "Good to know", ui_good_to_know_path, class: "text-blue-600 hover:text-blue-800 font-medium underline" %> for architectural insights and best practices.
+      </p>
+    </div>
+  </section>
+</article>

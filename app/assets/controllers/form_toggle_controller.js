@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
+import { stimulus } from '~/init'
 
-export default class extends Controller {
+export default class FormToggleController extends Controller {
   static targets = ['on_hint', 'off_hint']
 
   toggle (event) {
@@ -9,3 +10,5 @@ export default class extends Controller {
     this.off_hintTarget.classList.toggle('hidden')
   }
 }
+
+stimulus.register('form-toggle', FormToggleController)

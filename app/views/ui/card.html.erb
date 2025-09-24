@@ -1,0 +1,342 @@
+<%
+  set_meta_tags(
+    title: "Card - Rails UI Components",
+    description: "Card component with header, body, and footer sections for Rails applications.",
+    keywords: "Rails, Card, UI Components, ViewComponent, Container"
+  )
+%>
+
+<article class="space-y-8">
+  <header class="space-y-4">
+    <h1 class="text-4xl font-bold text-gray-900">Card</h1>
+    <p class="text-xl text-gray-600">
+      Flexible container component with header, body, and footer sections.
+    </p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Basic Usage</h2>
+
+    <div class="space-y-4">
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Simple Card</h3>
+        <div class="max-w-md mb-4">
+          <%= render Ui::Card::Component.new do |component| %>
+            <% component.with_header align: :left, title: "Card Title" %>
+            <% component.with_body do %>
+              <p>This is the body content of the card. You can put any content here including text, images, or other components.</p>
+            <% end %>
+            <% component.with_footer(align: :right) do %>
+              <%= render Ui::Btn::Component.new(variant: :primary).with_content("Action") %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new do |component| %&gt;
+  &lt;% component.with_header align: :left, title: "Card Title" %&gt;
+  &lt;% component.with_body do %&gt;
+    &lt;p&gt;This is the body content of the card.&lt;/p&gt;
+  &lt;% end %&gt;
+  &lt;% component.with_footer(align: :right) do %&gt;
+    &lt;%= render Ui::Btn::Component.new(variant: :primary).with_content("Action") %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Bordered Card</h3>
+        <div class="max-w-md mb-4">
+          <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+            <% component.with_header align: :center, title: "Centered Title" %>
+            <% component.with_body do %>
+              <p class="text-center">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            <% end %>
+            <% component.with_footer(align: :center) do %>
+              <div class="flex justify-center gap-2">
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Cancel") %>
+                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Continue") %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new(bordered: true) do |component| %&gt;
+  &lt;% component.with_header align: :center, title: "Centered Title" %&gt;
+  &lt;% component.with_body do %&gt;
+    &lt;p class="text-center"&gt;Card content...&lt;/p&gt;
+  &lt;% end %&gt;
+  &lt;% component.with_footer(align: :center) do %&gt;
+    &lt;!-- Footer buttons --&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Card with Multiple Sections</h3>
+        <div class="mb-4 grid md:grid-cols-2 gap-4">
+          <%= render Ui::Card::Component.new do |component| %>
+            <% component.with_header align: :left, title: "User Profile", subtitle: "Complete your profile information" %>
+            <% component.with_body do %>
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :md) %>
+                  <div>
+                    <h4 class="font-semibold">John Doe</h4>
+                    <p class="text-sm text-gray-600">john@example.com</p>
+                  </div>
+                </div>
+                <p class="text-gray-600">Update your profile information and preferences.</p>
+              </div>
+            <% end %>
+            <% component.with_footer(align: :left) do %>
+              <div class="flex gap-2">
+                <%= render Ui::Btn::Component.new(variant: :primary, size: :sm).with_content("Edit Profile") %>
+                <%= render Ui::Btn::Component.new(variant: :secondary, size: :sm).with_content("View Public Profile") %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+            <% component.with_header align: :right, title: "Statistics", subtitle: "Last 30 days" %>
+            <% component.with_body do %>
+              <div class="space-y-3">
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Page Views</span>
+                  <span class="font-semibold">12,345</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Unique Visitors</span>
+                  <span class="font-semibold">8,901</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Conversion Rate</span>
+                  <span class="font-semibold">3.2%</span>
+                </div>
+              </div>
+            <% end %>
+            <% component.with_footer(align: :right) do %>
+              <%= render Ui::Btn::Component.new(variant: :link, size: :sm).with_content("View Details →") %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new do |component| %&gt;
+  &lt;% component.with_header(
+    align: :left,
+    title: "User Profile",
+    subtitle: "Complete your profile information"
+  ) %&gt;
+  &lt;% component.with_body do %&gt;
+    &lt;!-- Complex body content --&gt;
+  &lt;% end %&gt;
+  &lt;% component.with_footer(align: :left) do %&gt;
+    &lt;!-- Multiple buttons --&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Body-Only Card</h3>
+        <div class="max-w-md mb-4">
+          <%= render Ui::Card::Component.new do |component| %>
+            <% component.with_body do %>
+              <div class="text-center space-y-3">
+                <%= render Ui::Icon::Component.new(icon_path: "images/icons/alert.svg", class: "w-12 h-12 mx-auto text-blue-600") %>
+                <h3 class="text-lg font-semibold">Welcome!</h3>
+                <p class="text-gray-600">Thank you for joining our community. Get started by exploring the features.</p>
+                <%= render Ui::Btn::Component.new(variant: :primary, block: true).with_content("Get Started") %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new do |component| %&gt;
+  &lt;% component.with_body do %&gt;
+    &lt;!-- Only body content, no header or footer --&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">API Reference</h2>
+
+    <div class="space-y-4">
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Card Options</h3>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="py-2 font-semibold text-left text-gray-900">Option</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Type</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Default</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-gray-100">
+                <td class="py-2 font-mono text-blue-600">bordered</td>
+                <td class="py-2 text-gray-600">Boolean</td>
+                <td class="py-2 text-gray-600">false</td>
+                <td class="py-2 text-gray-600">Add border around the card</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Header Options</h3>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="py-2 font-semibold text-left text-gray-900">Option</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Type</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Default</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-gray-100">
+                <td class="py-2 font-mono text-blue-600">title</td>
+                <td class="py-2 text-gray-600">String</td>
+                <td class="py-2 text-gray-600">nil</td>
+                <td class="py-2 text-gray-600">Header title text</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-2 font-mono text-blue-600">subtitle</td>
+                <td class="py-2 text-gray-600">String</td>
+                <td class="py-2 text-gray-600">nil</td>
+                <td class="py-2 text-gray-600">Header subtitle text</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-2 font-mono text-blue-600">align</td>
+                <td class="py-2 text-gray-600">Symbol</td>
+                <td class="py-2 text-gray-600">:left</td>
+                <td class="py-2 text-gray-600">Text alignment (:left, :center, :right)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Footer Options</h3>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="py-2 font-semibold text-left text-gray-900">Option</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Type</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Default</th>
+                <th class="py-2 font-semibold text-left text-gray-900">Description</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-gray-100">
+                <td class="py-2 font-mono text-blue-600">align</td>
+                <td class="py-2 text-gray-600">Symbol</td>
+                <td class="py-2 text-gray-600">:left</td>
+                <td class="py-2 text-gray-600">Content alignment (:left, :center, :right)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Slots</h2>
+
+    <div class="p-6 rounded-lg bg-gray-50">
+      <h3 class="mb-4 text-lg font-semibold text-gray-900">Available Slots</h3>
+
+      <div class="space-y-3">
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_header(title:, subtitle: nil, align: :left)</h4>
+          <p class="text-sm text-gray-600">Add a header section with title and optional subtitle</p>
+        </div>
+
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_body { content }</h4>
+          <p class="text-sm text-gray-600">Main card content area</p>
+        </div>
+
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_footer(align: :left) { content }</h4>
+          <p class="text-sm text-gray-600">Footer section for actions or additional content</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Common Patterns</h2>
+
+    <div class="space-y-4">
+      <div class="p-6 rounded-lg bg-blue-50">
+        <h3 class="mb-3 text-lg font-semibold text-blue-900">Form Cards</h3>
+        <p class="mb-4 text-blue-800">Use cards to group related form fields:</p>
+
+        <div class="p-4 overflow-x-auto text-blue-100 bg-blue-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new do |card| %&gt;
+  &lt;% card.with_header(title: "Account Settings") %&gt;
+  &lt;% card.with_body do %&gt;
+    &lt;%= form_with model: @user do |f| %&gt;
+      &lt;!-- Form fields --&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+  &lt;% card.with_footer(align: :right) do %&gt;
+    &lt;%= render Ui::Btn::Component.new(variant: :primary).with_content("Save") %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-green-50">
+        <h3 class="mb-3 text-lg font-semibold text-green-900">Dashboard Widgets</h3>
+        <p class="mb-4 text-green-800">Perfect for dashboard metrics and data display:</p>
+
+        <div class="p-4 overflow-x-auto text-green-100 bg-green-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Card::Component.new(bordered: true) do |card| %&gt;
+  &lt;% card.with_header(title: "Monthly Revenue", subtitle: "March 2024") %&gt;
+  &lt;% card.with_body do %&gt;
+    &lt;div class="text-3xl font-bold text-green-600"&gt;$12,345&lt;/div&gt;
+    &lt;div class="text-green-600"&gt;↑ 12% from last month&lt;/div&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-purple-50">
+        <h3 class="mb-3 text-lg font-semibold text-purple-900">Content Lists</h3>
+        <p class="mb-4 text-purple-800">Great for article lists, user profiles, etc:</p>
+
+        <div class="p-4 overflow-x-auto text-purple-100 bg-purple-900 rounded-lg">
+          <pre><code>&lt;% @articles.each do |article| %&gt;
+  &lt;%= render Ui::Card::Component.new do |card| %&gt;
+    &lt;% card.with_header(title: article.title, subtitle: article.published_at.strftime("%B %d, %Y")) %&gt;
+    &lt;% card.with_body do %&gt;
+      &lt;p&gt;&lt;%= truncate(article.excerpt, length: 150) %&gt;&lt;/p&gt;
+    &lt;% end %&gt;
+    &lt;% card.with_footer(align: :right) do %&gt;
+      &lt;%= link_to "Read More", article, class: "text-blue-600 hover:text-blue-800" %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

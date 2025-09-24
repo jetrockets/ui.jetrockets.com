@@ -1,6 +1,6 @@
 @layer components {
   .body {
-    @apply relative flex flex-col min-h-[100svh];
+    @apply relative flex flex-col min-h-[100svh] font-serif px-3 md:px-6 lg:px-8 xl:px-20;
   }
 
   .body-overflow {
@@ -8,10 +8,19 @@
   }
 
   .body__main {
-    @apply flex flex-col items-center flex-1 py-6 md:py-8;
+    @apply flex flex-col flex-1 md:flex-row md:min-h-screen;
+    @apply w-full mx-auto;
+  }
+
+  .body__sidebar {
+    @apply sticky top-0 z-20 flex-shrink-0 w-full h-navbar md:w-64;
+  }
+
+  .body__content {
+    @apply flex-1 pb-8 md:px-6;
   }
 
   .body__footer {
-    @apply flex justify-center py-8 text-gray-600 bg-gray-800 lg:py-16;
+    @apply flex justify-center pt-12 text-sm;
   }
 }

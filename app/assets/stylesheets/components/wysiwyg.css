@@ -4,5 +4,6 @@
     @apply prose prose-img:my-0 prose-p:mt-0;
     @apply prose-li:marker:text-gray prose-li:leading-tight;
     @apply prose-a:text-primary;
+    @apply prose-headings:font-sans;
   }
 }

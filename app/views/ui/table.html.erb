@@ -1,0 +1,197 @@
+<%
+  set_meta_tags(
+    title: "Table - Rails UI Components",
+    description: "Responsive table component with sorting and pagination support.",
+    keywords: "Rails, Table, UI Components, Data Display"
+  )
+%>
+
+<article class="space-y-8">
+  <header class="space-y-4">
+    <h1 class="text-4xl font-bold text-gray-900">Table</h1>
+    <p class="text-xl text-gray-600">
+      Responsive table component for displaying structured data with support for different sizes and styles.
+    </p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Basic Usage</h2>
+
+    <div class="space-y-4">
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Simple Table</h3>
+        <div class="mb-4">
+          <%= render Ui::Table::Component.new do |table| %>
+            <%= table.with_thead do |thead| %>
+              <%= thead.with_tr do |tr| %>
+                <%= tr.with_th { "Name" } %>
+                <%= tr.with_th { "Email" } %>
+                <%= tr.with_th { "Status" } %>
+                <%= tr.with_th { "Actions" } %>
+              <% end %>
+            <% end %>
+
+            <%= table.with_tbody do |tbody| %>
+              <%= tbody.with_tr do |tr| %>
+                <%= tr.with_td { "John Doe" } %>
+                <%= tr.with_td { "john@example.com" } %>
+                <%= tr.with_td { render(Ui::Badge::Component.new title: "Active", variant: :green) } %>
+                <%= tr.with_td do %>
+                  <%= render Ui::Btn::Component.new(size: :sm, outlined: true) { "Edit" } %>
+                <% end %>
+              <% end %>
+              <%= tbody.with_tr do |tr| %>
+                <%= tr.with_td { "Jane Smith" } %>
+                <%= tr.with_td { "jane@example.com" } %>
+                <%= tr.with_td { render(Ui::Badge::Component.new title: "Pending", variant: :yellow) } %>
+                <%= tr.with_td do %>
+                  <%= render Ui::Btn::Component.new(size: :sm, outlined: true) { "Edit" } %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Table::Component.new do |table| %&gt;
+  &lt;%= table.with_thead do |thead| %&gt;
+    &lt;%= thead.with_tr do |tr| %&gt;
+      &lt;%= tr.with_th { "Name" } %&gt;
+      &lt;%= tr.with_th { "Email" } %&gt;
+      &lt;%= tr.with_th { "Actions" } %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+
+  &lt;%= table.with_tbody do |tbody| %&gt;
+    &lt;%= tbody.with_tr do |tr| %&gt;
+      &lt;%= tr.with_td { "John Doe" } %&gt;
+      &lt;%= tr.with_td { "john@example.com" } %&gt;
+      &lt;%= tr.with_td do %&gt;
+        &lt;%= render Ui::Btn::Component.new(size: :sm) { "Edit" } %&gt;
+      &lt;% end %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Table with Footer</h3>
+        <div class="mb-4">
+          <%= render Ui::Table::Component.new(bordered: true, hovered: true) do |table| %>
+            <%= table.with_thead do |thead| %>
+              <%= thead.with_tr do |tr| %>
+                <%= tr.with_th { "Item" } %>
+                <%= tr.with_th { "Quantity" } %>
+                <%= tr.with_th { "Price" } %>
+                <%= tr.with_th { "Total" } %>
+              <% end %>
+            <% end %>
+
+            <%= table.with_tbody do |tbody| %>
+              <%= tbody.with_tr do |tr| %>
+                <%= tr.with_td { "Product A" } %>
+                <%= tr.with_td { "2" } %>
+                <%= tr.with_td { "$50.00" } %>
+                <%= tr.with_td { "$100.00" } %>
+              <% end %>
+              <%= tbody.with_tr do |tr| %>
+                <%= tr.with_td { "Product B" } %>
+                <%= tr.with_td { "1" } %>
+                <%= tr.with_td { "$75.00" } %>
+                <%= tr.with_td { "$75.00" } %>
+              <% end %>
+            <% end %>
+
+            <%= table.with_tfoot do |tfoot| %>
+              <%= tfoot.with_tr do |tr| %>
+                <%= tr.with_td(colspan: 3, class: "font-semibold") { "Total" } %>
+                <%= tr.with_td(class: "font-semibold") { "$175.00" } %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Table::Component.new(bordered: true, hovered: true) do |table| %&gt;
+  &lt;!-- Table with tfoot for totals --&gt;
+  &lt;%= table.with_tfoot do |tfoot| %&gt;
+    &lt;%= tfoot.with_tr do |tr| %&gt;
+      &lt;%= tr.with_td(colspan: 3, class: "font-semibold") { "Total" } %&gt;
+      &lt;%= tr.with_td(class: "font-semibold") { "$175.00" } %&gt;
+    &lt;% end %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">API Reference</h2>
+
+    <div class="p-6 rounded-lg bg-gray-50">
+      <h3 class="mb-4 text-lg font-semibold text-gray-900">Table Options</h3>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="py-2 font-semibold text-left text-gray-900">Option</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Type</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Default</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Description</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">size</td>
+              <td class="py-2 text-gray-600">Symbol</td>
+              <td class="py-2 text-gray-600">:md</td>
+              <td class="py-2 text-gray-600">Table size (:xs, :sm, :md, :lg)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">bordered</td>
+              <td class="py-2 text-gray-600">Boolean</td>
+              <td class="py-2 text-gray-600">false</td>
+              <td class="py-2 text-gray-600">Add borders around cells</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">hovered</td>
+              <td class="py-2 text-gray-600">Boolean</td>
+              <td class="py-2 text-gray-600">false</td>
+              <td class="py-2 text-gray-600">Enable row hover effects</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Slots</h2>
+
+    <div class="p-6 rounded-lg bg-gray-50">
+      <div class="space-y-3">
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_thead</h4>
+          <p class="text-sm text-gray-600">Table header section</p>
+        </div>
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_tbody</h4>
+          <p class="text-sm text-gray-600">Table body section</p>
+        </div>
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_tfoot</h4>
+          <p class="text-sm text-gray-600">Table footer section</p>
+        </div>
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_tr</h4>
+          <p class="text-sm text-gray-600">Table row</p>
+        </div>
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">with_th / with_td</h4>
+          <p class="text-sm text-gray-600">Header/data cells with colspan, sticky options</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

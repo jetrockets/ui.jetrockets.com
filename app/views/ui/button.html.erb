@@ -1,0 +1,235 @@
+<%
+  set_meta_tags(
+    title: "Button - Rails UI Components",
+    description: "Button component with multiple variants, sizes, and states for Rails applications.",
+    keywords: "Rails, Button, UI Components, ViewComponent"
+  )
+%>
+
+<article class="space-y-8">
+  <header class="space-y-4">
+    <h1 class="text-4xl font-bold text-gray-900">Button</h1>
+    <p class="text-xl text-gray-600">
+      Versatile button component with multiple variants, sizes, and states.
+    </p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Basic Usage</h2>
+    
+    <div class="space-y-4">
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Simple Button</h3>
+        <div class="flex flex-wrap items-center mb-4 gap-2">
+          <%= render Ui::Btn::Component.new.with_content "Default" %>
+          <%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %>
+          <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %>
+          <%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new.with_content "Default" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Sizes</h3>
+        <div class="flex flex-wrap items-center mb-4 gap-2">
+          <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
+          <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
+          <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
+          <%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %>
+          <%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %&gt;
+&lt;%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %&gt;
+&lt;%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %&gt;
+&lt;%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %&gt;
+&lt;%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Outlined Variants</h3>
+        <div class="flex flex-wrap items-center mb-4 gap-2">
+          <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
+          <%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
+          <%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
+          <%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">With Icons</h3>
+        <div class="flex flex-wrap items-center mb-4 gap-2">
+          <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/chevron-left.svg") %>
+          <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/chevron-left.svg") %>
+          <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/chevron-left.svg") %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/chevron-left.svg") %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Special Styles</h3>
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Btn::Component.new(variant: :ghost).with_content "Ghost" %>
+            <%= render Ui::Btn::Component.new(variant: :link).with_content "Link Style" %>
+            <%= render Ui::Btn::Component.new(variant: :primary, rounded: true).with_content "Rounded" %>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Btn::Component.new(circle: true, size: :sm).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, circle: true, size: :md).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("images/icons/chevron-left.svg") %>
+          </div>
+          <div>
+            <%= render Ui::Btn::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button") %>
+          </div>
+        </div>
+        <div class="p-4 mt-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new(variant: :ghost).with_content "Ghost" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :link).with_content "Link Style" %&gt;
+&lt;%= render Ui::Btn::Component.new(variant: :primary, rounded: true).with_content "Rounded" %&gt;
+
+&lt;!-- Circle buttons --&gt;
+&lt;%= render Ui::Btn::Component.new(circle: true, size: :sm).with_icon_content("images/icons/chevron-left.svg") %&gt;
+
+&lt;!-- Block button --&gt;
+&lt;%= render Ui::Btn::Component.new(block: true, variant: :primary).with_content("Block Button") %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">As Links</h3>
+        <div class="mb-4 space-y-2">
+          <%= render Ui::Btn::Component.new(href: "#", variant: :primary, size: :lg).with_content "Link Button" %>
+          <%= render Ui::Btn::Component.new(href: "#", variant: :link).with_content "Simple Link" %>
+          <%= render Ui::Btn::Component.new(href: "#", variant: :ghost).with_content "Ghost Link" %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Btn::Component.new(href: "#", variant: :primary).with_content "Link Button" %&gt;
+&lt;%= render Ui::Btn::Component.new(href: "#", variant: :link).with_content "Simple Link" %&gt;
+&lt;%= render Ui::Btn::Component.new(href: "#", variant: :ghost).with_content "Ghost Link" %&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">API Reference</h2>
+    
+    <div class="p-6 rounded-lg bg-gray-50">
+      <h3 class="mb-4 text-lg font-semibold text-gray-900">Available Options</h3>
+      
+      <div class="overflow-x-auto">
+        <table class="min-w-full">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="py-2 font-semibold text-left text-gray-900">Option</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Type</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Default</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Description</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">variant</td>
+              <td class="py-2 text-gray-600">Symbol</td>
+              <td class="py-2 text-gray-600">:default</td>
+              <td class="py-2 text-gray-600">Visual style (:primary, :secondary, :danger, :ghost, :link)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">size</td>
+              <td class="py-2 text-gray-600">Symbol</td>
+              <td class="py-2 text-gray-600">:md</td>
+              <td class="py-2 text-gray-600">Button size (:xs, :sm, :md, :lg, :xl)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">outlined</td>
+              <td class="py-2 text-gray-600">Boolean</td>
+              <td class="py-2 text-gray-600">false</td>
+              <td class="py-2 text-gray-600">Apply outlined style</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">rounded</td>
+              <td class="py-2 text-gray-600">Boolean</td>
+              <td class="py-2 text-gray-600">false</td>
+              <td class="py-2 text-gray-600">Apply fully rounded corners</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">circle</td>
+              <td class="py-2 text-gray-600">Boolean</td>
+              <td class="py-2 text-gray-600">false</td>
+              <td class="py-2 text-gray-600">Make button circular (for icon-only buttons)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">block</td>
+              <td class="py-2 text-gray-600">Boolean</td>
+              <td class="py-2 text-gray-600">false</td>
+              <td class="py-2 text-gray-600">Make button full width</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">href</td>
+              <td class="py-2 text-gray-600">String</td>
+              <td class="py-2 text-gray-600">nil</td>
+              <td class="py-2 text-gray-600">Render as link instead of button</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Methods</h2>
+    
+    <div class="p-6 rounded-lg bg-gray-50">
+      <h3 class="mb-4 text-lg font-semibold text-gray-900">Content Methods</h3>
+      
+      <div class="space-y-3">
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">.with_content(text)</h4>
+          <p class="text-sm text-gray-600">Set button text content</p>
+        </div>
+        
+        <div>
+          <h4 class="mb-2 font-mono text-blue-600">.with_icon_content(icon_path)</h4>
+          <p class="text-sm text-gray-600">Add an icon to the button (combined with text)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Customization</h2>
+    
+    <div class="p-6 rounded-lg bg-blue-50">
+      <h3 class="mb-3 text-lg font-semibold text-blue-900">Adding Custom Variants</h3>
+      <p class="mb-4 text-blue-800">To add new button variants, modify the component's CSS and initialize method:</p>
+      
+      <div class="p-4 overflow-x-auto text-blue-100 bg-blue-900 rounded-lg">
+        <pre><code># app/components/ui/btn/component.rb
+def initialize(variant: :primary, **options)
+  @variant = variant # Add :custom to available variants
+end
+
+# app/components/ui/btn/btn.css
+.btn--custom {
+  @apply bg-purple-600 text-white hover:bg-purple-700;
+}</code></pre>
+      </div>
+    </div>
+  </section>
+</article>

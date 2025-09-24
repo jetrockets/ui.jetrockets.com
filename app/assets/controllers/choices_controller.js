@@ -1,10 +1,11 @@
 import { Controller } from '@hotwired/stimulus'
 import Choices from 'choices.js'
+import { stimulus } from '~/init'
 
 // import '~/stylesheets/vendors/choices.scss'
 // import '~/stylesheets/vendors/choices_ui.scss'
 
-export default class extends Controller {
+export default class ChoicesController extends Controller {
   static targets = ['select', 'options']
 
   initialize () {
@@ -211,3 +212,5 @@ export default class extends Controller {
     return accumulator
   }
 }
+
+stimulus.register('choices', ChoicesController)

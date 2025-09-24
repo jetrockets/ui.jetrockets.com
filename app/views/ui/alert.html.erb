@@ -1,0 +1,137 @@
+<%
+  set_meta_tags(
+    title: "Alert - Rails UI Components",
+    description: "Alert component for displaying status messages and notifications.",
+    keywords: "Rails, Alert, UI Components, Notifications, Status"
+  )
+%>
+<% breadcrumb :ui_alert %>
+
+<article class="space-y-8">
+  <header class="space-y-4">
+    <h1 class="text-4xl font-bold text-gray-900">Alert</h1>
+    <p class="text-xl text-gray-600">
+      Display important messages and status notifications to users.
+    </p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-900">Basic Usage</h2>
+
+    <div class="space-y-4">
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Alert Types</h3>
+        <div class="mb-4 space-y-4">
+          <%= render Ui::Alert::Component.new(title: "Default alert!") %>
+          <%= render Ui::Alert::Component.new(type: :info, title: "Info Alert") %>
+          <%= render Ui::Alert::Component.new(type: :success, title: "Success alert!") %>
+          <%= render Ui::Alert::Component.new(type: :warning, title: "Warning alert!") %>
+          <%= render Ui::Alert::Component.new(type: :error, title: "Danger alert!") %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Alert::Component.new(title: "Default alert!") %&gt;
+&lt;%= render Ui::Alert::Component.new(type: :info, title: "Info Alert") %&gt;
+&lt;%= render Ui::Alert::Component.new(type: :success, title: "Success alert!") %&gt;
+&lt;%= render Ui::Alert::Component.new(type: :warning, title: "Warning alert!") %&gt;
+&lt;%= render Ui::Alert::Component.new(type: :error, title: "Danger alert!") %&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-gray-50">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">With Icon and Content</h3>
+        <div class="mb-4 space-y-4">
+          <%= render Ui::Alert::Component.new(type: :info, title: "Info Alert", icon_path: "images/icons/alert.svg") do %>
+            <ul class="pl-3 text-sm list-disc space-y-1">
+              <li>This alert includes additional details</li>
+              <li>Multiple list items are supported</li>
+              <li>Icons help users quickly identify the alert type</li>
+            </ul>
+          <% end %>
+
+          <%= render Ui::Alert::Component.new(type: :success, title: "Operation Completed", icon_path: "images/icons/alert.svg") do %>
+            <p class="text-sm">Your changes have been saved successfully. You can now continue with the next step.</p>
+          <% end %>
+        </div>
+        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
+          <pre><code>&lt;%= render Ui::Alert::Component.new(
+  type: :info,
+  title: "Info Alert",
+  icon_path: "images/icons/alert.svg"
+) do %&gt;
+  &lt;ul class="pl-3 text-sm list-disc space-y-1"&gt;
+    &lt;li&gt;Additional details here&lt;/li&gt;
+    &lt;li&gt;Multiple list items supported&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;% end %&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">API Reference</h2>
+
+    <div class="p-6 rounded-lg bg-gray-50">
+      <h3 class="mb-4 text-lg font-semibold text-gray-900">Available Options</h3>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="py-2 font-semibold text-left text-gray-900">Option</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Type</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Default</th>
+              <th class="py-2 font-semibold text-left text-gray-900">Description</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">type</td>
+              <td class="py-2 text-gray-600">Symbol</td>
+              <td class="py-2 text-gray-600">:default</td>
+              <td class="py-2 text-gray-600">Alert type (:default, :info, :success, :warning, :error)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">title</td>
+              <td class="py-2 text-gray-600">String</td>
+              <td class="py-2 text-gray-600">nil</td>
+              <td class="py-2 text-gray-600">Alert title/headline</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2 font-mono text-blue-600">icon_path</td>
+              <td class="py-2 text-gray-600">String</td>
+              <td class="py-2 text-gray-600">nil</td>
+              <td class="py-2 text-gray-600">Path to icon SVG file</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold text-gray-900">Common Use Cases</h2>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="p-4 rounded-lg bg-blue-50">
+        <h3 class="mb-2 font-semibold text-blue-900">Form Validation</h3>
+        <p class="text-sm text-blue-800">Display validation errors and success messages</p>
+      </div>
+
+      <div class="p-4 rounded-lg bg-green-50">
+        <h3 class="mb-2 font-semibold text-green-900">Status Updates</h3>
+        <p class="text-sm text-green-800">Inform users about system status or operations</p>
+      </div>
+
+      <div class="p-4 rounded-lg bg-yellow-50">
+        <h3 class="mb-2 font-semibold text-yellow-900">Warnings</h3>
+        <p class="text-sm text-yellow-800">Alert users to potential issues or important information</p>
+      </div>
+
+      <div class="p-4 rounded-lg bg-red-50">
+        <h3 class="mb-2 font-semibold text-red-900">Error Messages</h3>
+        <p class="text-sm text-red-800">Communicate errors and failures clearly</p>
+      </div>
+    </div>
+  </section>
+</article>

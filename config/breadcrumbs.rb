@@ -1,11 +1,99 @@
 crumb :root do
-  link "Home", root_path
+  link "JR Components", root_path
 end
 
-# Issue list
-crumb :ui do
-  link "UI elements", ui_path
-  parent :root
+# UI Documentation
+crumb :ui_getting_started do
+  link "Getting Started", ui_getting_started_path
+end
+
+crumb :ui_good_to_know do
+  link "Good to know", ui_good_to_know_path
+end
+
+# Component breadcrumbs
+crumb :ui_accordion do
+  link "Accordion", ui_accordion_path
+end
+
+crumb :ui_alert do
+  link "Alert", ui_alert_path
+end
+
+crumb :ui_avatar do
+  link "Avatar", ui_avatar_path
+end
+
+crumb :ui_badge do
+  link "Badge", ui_badge_path
+end
+
+crumb :ui_button do
+  link "Button", ui_button_path
+end
+
+crumb :ui_button_group do
+  link "Button Group", ui_button_group_path
+end
+
+crumb :ui_card do
+  link "Card", ui_card_path
+end
+
+crumb :ui_clipboard do
+  link "Clipboard", ui_clipboard_path
+end
+
+crumb :ui_drawer do
+  link "Drawer", ui_drawer_path
+end
+
+crumb :ui_dropdown do
+  link "Dropdown", ui_dropdown_path
+end
+
+crumb :ui_flash_message do
+  link "Flash Message", ui_flash_message_path
+end
+
+crumb :ui_form_builder do
+  link "Form Builder", ui_form_builder_path
+end
+
+crumb :ui_icon do
+  link "Icon", ui_icon_path
+end
+
+crumb :ui_modal do
+  link "Modal", ui_modal_path
+end
+
+crumb :ui_pagy do
+  link "Pagy", ui_pagy_path
+end
+
+crumb :ui_popover do
+  link "Popover", ui_popover_path
+end
+
+crumb :ui_table do
+  link "Table", ui_table_path
+end
+
+crumb :ui_tabs do
+  link "Tabs", ui_tabs_path
+end
+
+crumb :ui_tooltip do
+  link "Tooltip", ui_tooltip_path
+end
+
+crumb :ui_turbo_confirm do
+  link "Turbo Confirm", ui_turbo_confirm_path
+end
+
+crumb :ui_typography do
+  link "Typography", ui_typography_path
 end
 
 crumb :privacy_policy do
