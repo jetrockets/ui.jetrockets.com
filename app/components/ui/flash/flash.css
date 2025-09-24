@@ -6,7 +6,7 @@
   }
 
   .flash__container {
-    @apply relative w-full py-3 pl-2 pl-3 pr-1 pr-12 text-white transition duration-300 rounded-xl md:max-w-lg md:w-fit;
+    @apply relative w-full py-3 pl-4 pr-12 text-white transition duration-300 rounded-xl md:max-w-lg md:w-fit;
   }
 
   .flash__link {
