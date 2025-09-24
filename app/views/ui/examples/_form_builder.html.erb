@@ -69,5 +69,7 @@
     <%= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
   </div>
 
-  <%= f.submit "Save" %>
+  <div class="form__actions">
+    <%= f.submit "Save", class: "btn-lg" %>
+  </div>
 <% end %>

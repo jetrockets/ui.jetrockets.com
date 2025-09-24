@@ -8,7 +8,7 @@
     <% end %>
   <% end %>
 
-  <%= render Ui::Popover::Component.new(data: { placement: "right", offset: 20 }) do |popover| %>
+  <%= render Ui::Popover::Component.new(data: { placement: "right" }) do |popover| %>
     <%= popover.with_trigger do %>
       <%= button_tag "Popover Right", class: "btn btn-primary" %>
     <% end %>

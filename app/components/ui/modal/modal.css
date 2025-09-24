@@ -2,7 +2,7 @@
 
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-40 hidden w-full h-full max-h-screen px-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slide-up;
+    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-screen px-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slide-up;
   }
 
   .modal-dialog {
@@ -41,6 +41,10 @@
     @apply py-6 px-6 rounded-lg
   }
 
+  .modal__body-overflowed {
+    @apply max-h-[calc(100vh-180px)] overflow-auto;
+  }
+
   .modal__footer {
     @apply flex items-center p-6 py-4 space-x-3 border-t border-gray-200
   }
@@ -50,6 +54,6 @@
   }
 
   .modal__footer-sticky {
-    @apply sticky bottom-0 rounded-b-lg bg-white/70 backdrop-blur-sm;
+    @apply sticky bottom-0 bg-white rounded-b-lg;
   }
 }

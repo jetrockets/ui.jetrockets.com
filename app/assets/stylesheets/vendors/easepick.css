@@ -1,8 +1,8 @@
 :host {
   --day-width: 29px;
   --day-height: 29px;
-  --color-fg-primary: var(--color-primary-600);
-  --color-fg-accent: var(--color-primary-600);
+  --color-fg-primary: var(--color-primary);
+  --color-fg-accent: var(--color-primary);
   --color-bg-unavailable: transparent;
   --color-fg-locked: #BDBDBD;
 }

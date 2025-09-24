@@ -14,7 +14,6 @@ class Ui::Popover::MenuComponent < ApplicationComponent
           <%= content %>
         </div>
       <% end %>
-      <div data-popper-arrow></div>
     <% end %>
   ERB
 end

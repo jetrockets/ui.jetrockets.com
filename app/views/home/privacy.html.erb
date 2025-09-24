@@ -8,7 +8,7 @@
 <% breadcrumb :privacy_policy %>
 
 <%= render Ui::Modal::Component.new title: "Privacy Policy", subtitle: "Use this for your Privacy Policy" do %>
-  <div class="modal__body">
+  <div class="modal__body modal__body-overflowed">
     <article class="wysiwyg">
       <p class="mt-0">Company Name operates the Website Name website, which provides the SERVICE.</p>
 
@@ -23,6 +23,16 @@
 
       <h3>Log Data</h3>
       <p>We want to inform you that whenever you visit our Service, we collect information that your browser sends to us that is called Log Data. This Log Data may include information such as your computer's Internet Protocol (“IP”) address, browser version, pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
+
+      <h3>Information Collection and Use</h3>
+      <p>For a better experience while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to your name, phone number, and postal address. The information that we collect will be used to contact or identify you.</p>
+
+      <h3>Log Data</h3>
+      <p>We want to inform you that whenever you visit our Service, we collect information that your browser sends to us that is called Log Data. This Log Data may include information such as your computer's Internet Protocol (“IP”) address, browser version, pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
     </article>
+  </div>
+  <div class="justify-between modal__footer modal__footer-sticky">
+    <%= render Ui::Btn::Component.new(type: :button, variant: :primary).with_content "Agree" %>
+    Sticky footer, for example with submit button
   </div>
 <% end %>

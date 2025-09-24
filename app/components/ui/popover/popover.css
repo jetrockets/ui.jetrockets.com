@@ -6,7 +6,7 @@
   }
 
   .popover__wrapper {
-    @apply absolute z-10 invisible inline-block w-64 text-sm transition-opacity duration-300 opacity-0;
+    @apply absolute z-10 inline-block w-64 text-sm transition-opacity duration-300 opacity-0 pointer-events-none;
   }
 
   .popover__wrapper-top {
