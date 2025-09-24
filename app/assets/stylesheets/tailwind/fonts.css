@@ -1,0 +1,74 @@
+@font-face {
+  font-weight: 400;
+  font-family: 'Brandon';
+  src: url('../../fonts/Brandon_reg.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-style: italic;
+  font-family: 'Brandon';
+  src: url('../../fonts/Brandon_reg_it.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: 'Brandon';
+  src: url('../../fonts/Brandon_med.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 500;
+  font-style: italic;
+  font-family: 'Brandon';
+  src: url('../../fonts/Brandon_med_it.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 600;
+  font-family: 'Brandon';
+  src: url('../../fonts/Brandon_bld.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 600;
+  font-style: italic;
+  font-family: 'Brandon';
+  src: url('../../fonts/Brandon_bld_it.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: normal;
+  font-family: 'Hoefler';
+  src: url('../../fonts/HoeflerText-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: bold;
+  font-family: 'Hoefler';
+  src: url('../../fonts/HoeflerText-Black.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Hoefler';
+  src: url('../../fonts/HoeflerText-BlackItalic.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: normal;
+  font-style: italic;
+  font-family: 'Hoefler';
+  src: url('../../fonts/HoeflerText-Italic.woff2') format('woff2');
+  font-display: swap;
+}

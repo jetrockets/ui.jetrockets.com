@@ -1,7 +1,9 @@
 <%= container_tag do %>
   <div class="drawer__header">
-    <h5 id="drawer-label" class="drawer__title"><%= @title %></h5>
-    <%= helpers.close_btn(@id) if (helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request?) || !@async %>
+    <h5 id="drawer-label" class="drawer__title">
+      <%= @title %>
+    </h5>
+    <%= close_btn %>
   </div>
 
   <%= content %>

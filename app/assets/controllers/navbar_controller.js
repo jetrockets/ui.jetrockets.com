@@ -1,14 +1,9 @@
 import { Controller } from '@hotwired/stimulus'
-import { useClickOutside } from 'stimulus-use'
 
 export default class Navbar extends Controller {
   static targets = ['menu', 'burger']
   static values = {
     opened: { type: Boolean, default: false }
-  }
-
-  connect () {
-    useClickOutside(this, { element: this.menuTarget })
   }
 
   openedValueChanged (value) {
@@ -25,12 +20,5 @@ export default class Navbar extends Controller {
 
   toggle (e) {
     this.openedValue = !this.openedValue
-  }
-
-  clickOutside (event) {
-    if (this.openedValue === true) {
-      event.preventDefault()
-      this.openedValue = false
-    }
   }
 }

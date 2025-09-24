@@ -1,7 +1,36 @@
 @theme {
+  --font-sans: 'Brandon', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-serif: 'Hoefler', ui-serif, georgia, cambria, 'Times New Roman', times, serif;
+
   --color-*: initial;
-  --color-black: #000;
-  --color-white: #fff;
+  --color-black: var(--color-gray);
+  --color-white: oklch(1 0 0);
+
+  --color-primary: var(--color-primary-600);
+  --color-primary-50: oklch(0.97 0.014 254.604);
+  --color-primary-100: oklch(0.932 0.032 255.585);
+  --color-primary-200: oklch(0.882 0.059 254.128);
+  --color-primary-300: oklch(0.809 0.105 251.813);
+  --color-primary-400: oklch(0.707 0.165 254.624);
+  --color-primary-500: oklch(0.623 0.214 259.815);
+  --color-primary-600: oklch(0.546 0.245 262.881);
+  --color-primary-700: oklch(0.488 0.243 264.376);
+  --color-primary-800: oklch(0.424 0.199 265.638);
+  --color-primary-900: oklch(0.379 0.146 265.522);
+  --color-primary-950: oklch(0.282 0.091 267.935);
+
+  --color-secondary: var(--color-secondary-600);
+  --color-secondary-50: oklch(0.985 0.002 247.839);
+  --color-secondary-100: oklch(0.967 0.003 264.542);
+  --color-secondary-200: oklch(0.928 0.006 264.531);
+  --color-secondary-300: oklch(0.872 0.01 258.338);
+  --color-secondary-400: oklch(0.707 0.022 261.325);
+  --color-secondary-500: oklch(0.551 0.027 264.364);
+  --color-secondary-600: oklch(0.446 0.03 256.802);
+  --color-secondary-700: oklch(0.373 0.034 259.733);
+  --color-secondary-800: oklch(0.278 0.033 256.848);
+  --color-secondary-900: oklch(0.21 0.034 264.665);
+  --color-secondary-950: oklch(0.13 0.028 261.692);
 
   --color-red-50: oklch(0.971 0.013 17.38);
   --color-red-100: oklch(0.936 0.032 17.717);
@@ -51,6 +80,7 @@
   --color-blue-900: oklch(0.379 0.146 265.522);
   --color-blue-950: oklch(0.282 0.091 267.935);
 
+  --color-gray: oklch(0.36 0.0125 305.08);
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
@@ -62,6 +92,7 @@
   --color-gray-800: oklch(0.278 0.033 256.848);
   --color-gray-900: oklch(0.21 0.034 264.665);
   --color-gray-950: oklch(0.13 0.028 261.692);
+
   --spacing: 0.25rem;
   --breakpoint-sm: 40rem;
   --breakpoint-md: 48rem;
@@ -167,12 +198,45 @@
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: linear(
+    0 0%,
+    0 1.8%,
+    0.01 3.6%,
+    0.03 6.35%,
+    0.07 9.1%,
+    0.13 11.4%,
+    0.19 13.4%,
+    0.27 15%,
+    0.34 16.1%,
+    0.54 18.35%,
+    0.66 20.6%,
+    0.72 22.4%,
+    0.77 24.6%,
+    0.81 27.3%,
+    0.85 30.4%,
+    0.88 35.1%,
+    0.92 40.6%,
+    0.94 47.2%,
+    0.96 55%,
+    0.98 64%,
+    0.99 74.4%,
+    1 86.4%,
+    1 100%
+  );
   --animate-spin: spin 1s linear infinite;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
   --animate-fade-in: fadeIn 0.15s ease-in-out;
   --animate-slide-down: slideDown 0.15s ease-in-out;
-  --animate-slide-left: slideleft 0.3s ease-in-out;
+  --animate-slide-left: slideLeft 0.3s ease-in-out;
   --animate-slide-up: slideUp 0.15s ease-in-out;
+
+  /* Not tailwind */
+  --spacing-navbar: var(--height-navbar);
+  --spacing-sidebar: var(--width-sidebar);
+
+  --nav-height: 54px;
+  --width-sidebar: 197px;
+  --icon-arrow: url('/images/icons/chevron-left.svg');
 }

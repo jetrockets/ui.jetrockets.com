@@ -8,6 +8,16 @@ crumb :ui do
   parent :root
 end
 
+crumb :privacy_policy do
+  link "Privacy Policy", privacy_path
+  parent :root
+end
+
+crumb :terms_and_conditions do
+  link "Terms and conditions", terms_path
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

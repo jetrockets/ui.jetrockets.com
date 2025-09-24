@@ -21,6 +21,11 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@bufbuild/protobuf@^2.0.0":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@bufbuild/protobuf/-/protobuf-2.2.5.tgz#8e82c0af292113b4a89f8b658c71c4636c8d2e36"
+  integrity sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==
+
 "@easepick/amp-plugin@^1.1.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@easepick/amp-plugin/-/amp-plugin-1.2.1.tgz#6d189d0a429721da082d8e8fe8d45dd0df3b76d1"
@@ -97,10 +102,6 @@
   integrity sha512-mjynAAppLxlqiDSdHdkBEqi4A67CH17FqO3UH2n6mfAIKPZLQA7R8Y6jEkp+Fpl5tj0/HFqdrk82ceiYYnLFYw==
   dependencies:
     "@easepick/base-plugin" "^1.1.0"
-"@bufbuild/protobuf@^2.0.0":
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/@bufbuild/protobuf/-/protobuf-2.2.5.tgz#8e82c0af292113b4a89f8b658c71c4636c8d2e36"
-  integrity sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==
 
 "@esbuild/aix-ppc64@0.24.2":
   version "0.24.2"
@@ -557,6 +558,13 @@
     "@tailwindcss/oxide-win32-arm64-msvc" "4.0.6"
     "@tailwindcss/oxide-win32-x64-msvc" "4.0.6"
 
+"@tailwindcss/typography@^0.5.18":
+  version "0.5.18"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.18.tgz#d21c6ce0205b2c8a6d175f9caa9cc7f7c39184f2"
+  integrity sha512-dDIgwZOlf+tVkZ7A029VvQ1+ngKATENDjMEx2N35s2yPjfTS05RWSM8ilhEWSa5DMJ6ci2Ha9WNZEd2GQjrdQg==
+  dependencies:
+    postcss-selector-parser "6.0.10"
+
 "@tailwindcss/vite@^4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@tailwindcss/vite/-/vite-4.0.6.tgz#e43be7bfaabaf3f157d08273e21edb74faf24f47"
@@ -975,6 +983,11 @@ css-what@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
+
+cssesc@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
+  integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
 debug@^3.2.7:
   version "3.2.7"
@@ -1892,6 +1905,7 @@ imask@^7.6.1:
   integrity sha512-sJlIFM7eathUEMChTh9Mrfw/IgiWgJqBKq2VNbyXvBZ7ev/IlO6/KQTKlV/Fm+viQMLrFLG/zCuudrLIwgK2dg==
   dependencies:
     "@babel/runtime-corejs3" "^7.24.4"
+
 immutable@^5.0.2:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-5.1.1.tgz#d4cb552686f34b076b3dcf23c4384c04424d8354"
@@ -3036,6 +3050,14 @@ pkg-conf@^3.1.0:
     find-up "^3.0.0"
     load-json-file "^5.2.0"
 
+postcss-selector-parser@6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.10.tgz#79b61e2c0d1bfc2602d549e11d0876256f8df88d"
+  integrity sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==
+  dependencies:
+    cssesc "^3.0.0"
+    util-deprecate "^1.0.2"
+
 postcss@^8.5.1:
   version "8.5.1"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.1.tgz#e2272a1f8a807fafa413218245630b5db10a3214"
@@ -3750,6 +3772,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+util-deprecate@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
+  integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
 valid-data-url@^3.0.0:
   version "3.0.1"

@@ -1,18 +1,16 @@
-@import "tailwindcss" source(none);
+@reference "./tailwind.css";
 
-@plugin "@tailwindcss/forms";
-/* @plugin "flowbite/plugin"; */
+/* Components */
+@import "../stylesheets/components/body.css";
+@import "../stylesheets/components/breadcrumbs.css";
+@import "../stylesheets/components/form.css";
+@import "../stylesheets/components/link.css";
+@import "../stylesheets/components/navbar.css";
+@import "../stylesheets/components/scroller.css";
+@import "../stylesheets/components/typography.css";
+@import "../stylesheets/components/wrapper.css";
+@import "../stylesheets/components/wysiwyg.css";
 
-@import '../stylesheets/_tailwindcss_variables.css';
-@import '../stylesheets/_variables.css';
-
-@import '../stylesheets/base.css';
-@import '../stylesheets/vendors.css';
-@import '../stylesheets/components.css';
-
-@source '../../helpers/**/*.rb';
-@source '../../assets/**/*.js';
-@source '../../views/**/*.erb';
-@source '../../components/**/*.{erb,rb,js}';
-@source '../../lib/form_builders/**/*.rb';
-@source "../../../node_modules/flowbite";
+/* Vendors */
+@import "../stylesheets/vendors/choices";
+@import "../stylesheets/vendors/choices_ui";

@@ -15,9 +15,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= vite_stylesheet_tag "application", data: { turbo_track: "reload" } %>
+    <%= vite_stylesheet_tag "tailwind", "application" %>
     <%= vite_client_tag %>
-    <%= vite_javascript_tag "application", data: { turbo_track: "reload" }, async: true %>
+    <%= vite_javascript_tag "application", data: { turbo_track: :reload }, async: true %>
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
 
     <%= render partial: "layouts/shared/analytics" if Rails.env.production? %>

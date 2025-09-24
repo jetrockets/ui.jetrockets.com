@@ -1,0 +1,128 @@
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    @apply border-gray-200 outline-primary;
+  }
+
+  html {
+    @apply md:scroll-smooth;
+  }
+
+  body {
+    @apply antialiased text-gray;
+  }
+
+  dialog {
+    @apply text-gray;
+  }
+
+  turbo-frame[spinner][busy] {
+    @apply relative block;
+
+    &::after {
+      @apply content-[''] absolute block top-0 bottom-0 left-0 right-0 bg-gray-50/80 z-10;
+    }
+  }
+
+  strong {
+    @apply font-medium;
+  }
+
+  textarea {
+    @apply resize-none;
+  }
+
+  button, [role="button"] {
+    @apply cursor-pointer;
+  }
+
+  input[type="search"]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  input[type="search"]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+
+  select:invalid {
+    @apply text-gray-300;
+  }
+
+  select[multiple] {
+    @apply max-h-11;
+  }
+}
+
+@layer utilities {
+  /* Fix from tailwind v3 */
+  .group:disabled .group-disabled\:block {
+    display: block
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .sr-only {
+    @apply fixed;
+  }
+}
+
+@utility scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+}
+
+@utility link {
+  @apply font-medium underline cursor-pointer outline-gray-300 underline-offset-2 decoration-1 hover:no-underline;
+}
+
+.turbo-progress-bar {
+  height: 2px;
+  background: var(--color-primary);
+}

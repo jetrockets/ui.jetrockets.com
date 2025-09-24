@@ -1,0 +1,19 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .flash {
+    @apply fixed flex flex-col items-end space-y-2 bottom-3 md:bottom-5 left-0 right-0 px-3 md:px-0 md:right-5 md:left-auto w-full md:w-fit md:h-fit z-[100];
+  }
+
+  .flash__container {
+    @apply relative py-3 pl-3 pr-12 text-white w-full pl-2 pr-1 transition duration-300 rounded-xl md:max-w-lg md:w-fit;
+  }
+
+  .flash__link {
+    @apply block ml-8 font-medium text-white underline hover:no-underline;
+  }
+
+  .flash__close {
+    @apply absolute top-4 right-3 text-white transition duration-300 focus:outline-none focus:text-white hover:text-white opacity-80 hover:opacity-100;
+  }
+}

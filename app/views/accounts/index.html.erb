@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <h1 class="mb-4 text-lg font-bold">Accounts</h1>
+<div class="wrapper flex flex-col gap-y-4">
+  <h1 class="h1">Accounts</h1>
 
   <%= render Ui::Table::Component.new(bordered: true, size: :md) do |table| %>
     <% table.with_thead do |thead| %>

@@ -51,4 +51,27 @@ class Ui::Drawer::Component < ApplicationComponent
       "max-w-#{@size}"
     )
   end
+
+  def close_btn
+    if (helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request?) || !@async
+      is_turbo = helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request?
+
+      attributes = {
+        type: "button",
+        class: "drawer__close"
+      }
+
+      if is_turbo
+        attributes["data-action"] = "click->drawer-turbo#close"
+      else
+        attributes["data-action"] = "click->drawer#close"
+        attributes["aria-label"] = "Close"
+        attributes["data-id"] = @id if @id.present?
+      end
+
+      tag.button(**attributes) do
+        helpers.vite_svg_tag "images/icons/close.svg"
+      end
+    end
+  end
 end
