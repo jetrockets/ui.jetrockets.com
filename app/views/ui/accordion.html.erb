@@ -23,17 +23,7 @@
         <% tabs.with_item title: "Code", href: ui_accordion_path(code: true), data: { turbo_frame: :ui_accordion }, active: params[:code] %>
       <% end %>
 
-      <% if params[:code] %>
-        <pre><code>&lt;%= render Ui::Accordion::Component.new do |accordion| %&gt;
-  &lt;%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %&gt;
-    Content
-  &lt;% end %&gt;
-
-  &lt;%= accordion.with_item(title: "Second Item", id: "item_2") do %&gt;
-    Content
-  &lt;% end %&gt;
-&lt;% end %&gt;</code></pre>
-      <% else %>
+      <% unless params[:code] %>
         <%= render Ui::Accordion::Component.new do |accordion| %>
           <%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %>
             <p class="mb-0">
@@ -47,6 +37,16 @@
             </p>
           <% end %>
         <% end %>
+      <% else %>
+      <pre><code>&lt;%= render Ui::Accordion::Component.new do |accordion| %&gt;
+  &lt;%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %&gt;
+    Content
+  &lt;% end %&gt;
+
+  &lt;%= accordion.with_item(title: "Second Item", id: "item_2") do %&gt;
+    Content
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
