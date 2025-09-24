@@ -1,27 +1,25 @@
 <%
   set_meta_tags(
-    title: "COMPONENT_TITLE - Rails UI Components",
-    description: "COMPONENT_DESCRIPTION",
-    keywords: "Rails, UI Components, ViewComponent"
+    title: "Flash Message - Rails UI Components",
+    description: "Flash Message component for displaying brief notifications.",
+    keywords: "Rails, Flash Message, UI Components, Notifications"
   )
 %>
 <% breadcrumb :ui_flash_message %>
 
-<article class="space-y-8">
-  <header class="space-y-4">
-    <h1 class="text-4xl font-bold text-gray-900">COMPONENT_TITLE</h1>
+<article>
+  <header class="wysiwyg">
+    <h1 class="h1">Flash message</h1>
     <p class="text-xl text-gray-600">
-      COMPONENT_DESCRIPTION
+      Display brief notifications to users.
     </p>
   </header>
 
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Coming Soon</h2>
-    <div class="p-6 rounded-lg bg-blue-50">
-      <p class="text-blue-800">
-        Documentation for this component is being prepared.
-        You can find the component implementation in <code>app/components/ui/COMPONENT_NAME/</code>
-      </p>
+  <section>
+    <h2 class="h3">Example</h2>
+    <div class="flex flex-col gap-2 mt-6">
+      <%= render "ui/examples/flash" %>
+      <%= render_code_example("ui/examples/_flash") %>
     </div>
   </section>
 </article>

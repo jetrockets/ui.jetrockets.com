@@ -19,6 +19,9 @@
     <div class="form__group">
       <%= f.label :country %>
       <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { data: { action: "change->fields#enable" } } %>
+      <p class="form__help">
+        Select Other to enable the custom country name field.
+      </p>
     </div>
   </div>
 
