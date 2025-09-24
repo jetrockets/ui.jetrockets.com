@@ -16,13 +16,12 @@
   </header>
 
   <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Architectural Philosophy</h2>
+    <h2 class="h2">Architectural Philosophy</h2>
 
     <div class="not-prose">
       <%= render Ui::Alert::Component.new title: "Copy, Don't Install", type: :info do %>
         <p>
-          This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed.
-          This approach gives you full control over styling, behavior, and dependencies.
+          This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed. This approach gives you full control over styling, behavior, and dependencies.
         </p>
         <p>
           💡 Think of it as a "component starter kit" rather than a traditional library.
@@ -37,9 +36,9 @@
     <h3 class="h3">1. Consistent API</h3>
     <p>All components follow similar initialization patterns:</p>
     <pre><code>def initialize(variant: nil, size: :md, **options)
-@variant = variant   # Visual style (primary, secondary, etc.)
-@size = size         # Size modifier (xs, sm, md, lg, xl)
-@options = options   # Additional attributes (class, data, etc.)
+  @variant = variant   # Visual style (primary, secondary, etc.)
+  @size = size         # Size modifier (xs, sm, md, lg, xl)
+  @options = options   # Additional attributes (class, data, etc.)
 end</code></pre>
 
     <h3 class="h3">2. CSS Class Strategy</h3>
@@ -68,16 +67,16 @@ renders_one :footer, Ui::Card::Footer::Component
 
 # Usage
 &lt;%= render Ui::Card::Component.new do |card| %&gt;
-&lt;% card.with_header(title: "Title") %&gt;
-&lt;% card.with_body { "Content" } %&gt;
+  &lt;% card.with_header(title: "Title") %&gt;
+  &lt;% card.with_body { "Content" } %&gt;
 &lt;% end %&gt;</code></pre>
   </section>
 
   <section>
-    <h2 class="text-2xl font-semibold text-gray-900">Styling Guidelines</h2>
+    <h2 class="h4">Styling Guidelines</h2>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :warning do %>
+      <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :info do %>
         <ul class="pl-8 space-y-2 list-disc">
           <li>Use <code>@apply</code> for component base styles</li>
           <li>Avoid long utility chains in templates</li>
@@ -92,6 +91,20 @@ renders_one :footer, Ui::Card::Footer::Component
       Components are mobile-first and responsive by default. Use Tailwind's responsive prefixes judiciously.
     </p>
     <pre><code>@apply px-4 md:px-6 lg:px-8</code></pre>
+
+    <h3 class="h3">💡 View Components or HTML/CSS</h3>
+    <p>
+      It's not necessary to use view components at all in the view layer. You can have standard HTML with `classes` and `data` attributes.
+    </p>
+    <p>
+      For example. Instead of:
+    </p>
+    <pre><code>&lt;%= render Ui::Button::Component.new(variant: :primary, size: :lg).with_content "Button" %/&gt;</code></pre>
+
+    <p>
+      You can do:
+    </p>
+    <pre><code>&lt;button class="btn btn-primary btn-lg"&gt;Button&lt;/button&gt;</code></pre>
   </section>
 
   <section>
