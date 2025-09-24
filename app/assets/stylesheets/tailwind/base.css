@@ -51,6 +51,10 @@
     height: 0;
   }
 
+  pre {
+    @apply max-w-full p-4 overflow-auto text-sm text-gray-200 bg-gray-800 rounded-md;
+  }
+
   /* clears the ‘X’ from Chrome */
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,

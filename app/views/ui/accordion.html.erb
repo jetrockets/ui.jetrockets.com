@@ -7,26 +7,46 @@
 %>
 <% breadcrumb :ui_accordion %>
 
-<article class="wysiwyg">
-  <header>
+<article>
+  <header class="wysiwyg">
     <h1 class="h1">Accordion</h1>
     <p class="text-xl text-gray-600">
-      A component that allows users to expand and collapse sections of content.
+      When you want to say a lot but not all at once
     </p>
   </header>
 
   <section>
-    <%= render Ui::Accordion::Component.new do |accordion| %>
-      <%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %>
-        <p class="mb-0">
-          Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
-        </p>
+    <h2 class="h3">Example</h2>
+    <%= turbo_frame_tag :ui_accordion, data: { turbo_action: :advance }, target: :_top do %>
+      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
+        <% tabs.with_item title: "Preview", href: ui_accordion_path, data: { turbo_frame: :ui_accordion }, active: !params[:code] %>
+        <% tabs.with_item title: "Code", href: ui_accordion_path(code: true), data: { turbo_frame: :ui_accordion }, active: params[:code] %>
       <% end %>
 
-      <%= accordion.with_item(title: "Second Item", id: "item_2") do %>
-        <p class="mb-0">
-          Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
-        </p>
+      <% if params[:code] %>
+        <pre><code>&lt;%= render Ui::Accordion::Component.new do |accordion| %&gt;
+  &lt;%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %&gt;
+    Content
+  &lt;% end %&gt;
+
+  &lt;%= accordion.with_item(title: "Second Item", id: "item_2") do %&gt;
+    Content
+  &lt;% end %&gt;
+&lt;% end %&gt;</code></pre>
+      <% else %>
+        <%= render Ui::Accordion::Component.new do |accordion| %>
+          <%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %>
+            <p class="mb-0">
+              Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
+            </p>
+          <% end %>
+
+          <%= accordion.with_item(title: "Second Item", id: "item_2") do %>
+            <p class="mb-0">
+              Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
+            </p>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </section>

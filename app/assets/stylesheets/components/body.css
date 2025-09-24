@@ -8,16 +8,16 @@
   }
 
   .body__main {
-    @apply flex flex-col flex-1 md:flex-row md:min-h-screen;
+    @apply md:grid md:grid-cols-[256px_1fr] md:min-h-screen;
     @apply w-full mx-auto;
   }
 
   .body__sidebar {
-    @apply sticky top-0 z-20 flex-shrink-0 w-full h-navbar md:w-64;
+    @apply sticky top-0 z-20 flex-shrink-0 w-full pb-8 h-navbar shrink-0;
   }
 
   .body__content {
-    @apply flex flex-col flex-1 pt-4 pb-8 md:px-6 md:pt-0;
+    @apply flex flex-col flex-1 min-w-0 pt-4 pb-8 md:pl-6 md:pt-0;
   }
 
   .body__footer {
