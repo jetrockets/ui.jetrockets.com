@@ -1,0 +1,509 @@
+<%
+  set_meta_tags(
+    title: "Homepage",
+    description: "Our homepage is the best place to find out what we do and how we can help you.",
+    keywords: "Site, Login, Members"
+  )
+%>
+<% breadcrumb :ui %>
+
+<article class="space-y-8 wrapper">
+  <section class="wysiwyg">
+    <h1>Component Examples</h1>
+    <p>
+      We based on <%= link_to "Flowbite", "https://flowbite.com/", target: :_blank, ref: "nofollow noopener noreferrer", class: "link" %>. So if you need more components, you can find them there and implement them in your project.
+    </p>
+  </section>
+
+  <section class="space-y-8">
+    <div class="md:w-8/12">
+      <%= render Ui::Accordion::Component.new do |accordion| %>
+        <%= accordion.with_item(title: "Alerts", id: "alerts", class: "space-y-2") do %>
+          <%= render Ui::Alert::Component.new(type: :info, title: "Info Alert", icon_path: "images/icons/alert.svg", class: "mb-4") do %>
+            <ul class="pl-3 text-xs list-disc">
+              <li>It's just a template, you can change every component.</li>
+              <li>It's just a template, you can change every component.</li>
+              <li>It's just a template, you can change every component.</li>
+              <li>It's just a template, you can change every component.</li>
+            </ul>
+          <% end %>
+
+          <%= render Ui::Alert::Component.new type: :error, title: "Danger alert!" %>
+          <%= render Ui::Alert::Component.new type: :success, title: "Success alert!" %>
+          <%= render Ui::Alert::Component.new type: :warning, title: "Warning alert!" %>
+          <%= render Ui::Alert::Component.new title: "Default alert!" %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Avatars", id: "avatars", class: "space-y-4") do %>
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(size: :xs) %>
+            <%= render Ui::Avatar::Component.new(size: :sm) %>
+            <%= render Ui::Avatar::Component.new(size: :md) %>
+            <%= render Ui::Avatar::Component.new(size: :lg) %>
+            <%= render Ui::Avatar::Component.new(size: :xl) %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xs) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :sm) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :md) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :lg) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xl) %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xs, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :sm, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :md, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :lg, variant: :rounded) %>
+            <%= render Ui::Avatar::Component.new(full_name: "John Doe", size: :xl, variant: :rounded) %>
+          </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Badges", id: "bages", class: "space-x-2") do %>
+          <%= render Ui::Badge::Component.new title: "Blue XS", variant: :blue, size: :xs %>
+          <%= render Ui::Badge::Component.new title: "Default" %>
+          <%= render Ui::Badge::Component.new title: "Red SM", variant: :red, size: :sm %>
+          <%= render Ui::Badge::Component.new title: "Green MD", variant: :green, size: :md %>
+          <%= render Ui::Badge::Component.new title: "Yellow LG", variant: :yellow, size: :lg %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Buttons", id: "buttons", class: "space-y-4") do %>
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
+            <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
+            <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
+            <%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %>
+            <%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new(variant: :ghost).with_content "Button Ghost" %>
+            <%= render Ui::Btn::Component.new(variant: :link).with_content "Button Link" %>
+            <%= render Ui::Btn::Component.new(variant: :primary, rounded: true).with_content "Rounded" %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new.with_content "Default" %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %>
+            <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %>
+            <%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/chevron-left.svg") %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
+            <%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
+            <%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
+            <%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new(circle: true, size: :xs).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, circle: true, size: :sm).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :secondary, circle: true, size: :md).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("images/icons/chevron-left.svg") %>
+            <%= render Ui::Btn::Component.new(variant: :primary, outlined: true, circle: true, size: :xl).with_icon_content("images/icons/chevron-left.svg") %>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1">
+            <%= render Ui::Btn::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("images/icons/chevron-left.svg") %>
+          </div>
+
+          <div class="space-y-2">
+            <%= render Ui::Btn::Component.new(href: root_path, variant: :primary, size: :lg, block: true).with_content "Link Button" %>
+            <%= render Ui::Btn::Component.new(href: root_path, variant: :link).with_content "Link" %>
+            <%= render Ui::Btn::Component.new(href: root_path, variant: :ghost).with_content "Link Ghost" %>
+          </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Button Group", id: "btnGroup") do %>
+          <div class="flex flex-col gap-4">
+            <%= render Ui::BtnGroup::Component.new do |component| %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button First" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button Second" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button Third" } %>
+            <% end %>
+
+            <%= render Ui::BtnGroup::Component.new with_gap: true do |component| %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+              <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Card", id: "card") do %>
+          <div class="flex flex-wrap items-center gap-4">
+            <%= render Ui::Card::Component.new do |component| %>
+              <% component.with_header align: :left, title: "Noteworthy technology acquisitions 2021" %>
+              <% component.with_body do %>
+                <p>This is the body of the card. You can put any content here.</p>
+              <% end %>
+              <% component.with_footer(align: :left) do %>
+                <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary") %>
+              <% end %>
+            <% end %>
+
+            <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+              <% component.with_header align: :center, title: "Noteworthy technology acquisitions 2021" %>
+              <% component.with_body do %>
+                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+              <% end %>
+              <% component.with_footer(align: :right) do %>
+                <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Clipboard", id: "clipboard", class: "flex flex-col gap-4") do %>
+          <div class="flex items-end gap-2">
+            <div>
+              <label for="default_clipboard" class="form__label">Label for clipboard</label>
+              <input id="default_clipboard" type="text" class="max-w-80 form__input" value="Copy this!" disabled readonly autocomplete="off">
+            </div>
+            <%= render Ui::Clipboard::Component.new(value: "Copy this!", id: "clipboard_empty") do |clipboard| %>
+              <%= clipboard.with_trigger(default: Ui::Btn::Component.new(variant: :primary).with_content("Copy"), success: Ui::Btn::Component.new(variant: :primary).with_content("Copied!")) %>
+            <% end %>
+          </div>
+
+          <div class="flex items-baseline gap-2">
+            <p>Any content to copy</p>
+            <%= render Ui::Clipboard::Component.new(value: "Any content to copy", id: "clipboard_tooltip") do |clipboard| %>
+              <%= clipboard.with_trigger(
+                default: "Copy text",
+                success: "COPIED!",
+                tooltip_default: "Click me to copy",
+                tooltip_success: "Siccessfully copied!",
+                tooltip_placement: "bottom"
+              ) %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Confirm Dialog", id: "confirm_dialog") do %>
+          <%= button_to "Delete","#", class: "btn btn-danger", data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Drawer Async", id: "drawer_async") do %>
+          By continuing, I agree to <%= site_name %>
+          <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link" %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Drawer Sync", id: "drawer_sync") do %>
+          <%= render Ui::Btn::Component.new(variant: :primary, data: { drawer_target: "trigger", drawer_toggle: "drawer", action: "click->drawer#show", id: "drawer1" }, aria_controls: "drawer").with_content "Show drawer" %>
+          <%= render Ui::Drawer::Component.new(title: "Info", async: false, id: "drawer1") do %>
+            <div class="drawer__body">
+              <% 3.times do %>
+                <p class="mb-6">Supercharge your hiring by taking advantage of our <a href="#" class="text-blue-600 underline dark:text-blue-500 hover:no-underline">limited-time sale</a> for Flowbite Docs + Job Board. Unlimited access to over 190K top-ranked candidates and the #1 design job board.</p>
+              <% end %>
+            </div>
+            <div class="drawer__footer drawer__footer-end">
+              <%= render Ui::Btn::Component.new(href: "#").with_content "Learn more" %>
+              <%= render Ui::Btn::Component.new(variant: :primary, href: "#").with_content "Get access" %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Dropdown Example", id: "accordion_dropdown", class: "flex items-center gap-2") do %>
+          <%= render Ui::Dropdown::Component.new do |dropdown| %>
+            <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
+              Dropdown
+              <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+              </svg>
+            <% end %>
+
+            <%= dropdown.with_menu do |list| %>
+              <%= list.with_title { "Title" } %>
+              <%= list.with_element_item do %>
+                <%= link_to "#", class: "flex gap-2 items-center" do %>
+                  <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+                  Dashboard
+                <% end %>
+              <% end %>
+              <%= list.with_element_link(title: "Settings", href: "#") %>
+              <%= list.with_element_link(title: "Terms of Service", href: terms_path) %>
+              <%= list.with_element_link(title: "Privacy Policy", href: privacy_path) %>
+              <%= list.with_element_divider %>
+              <%= list.with_element_link(title: "Sign Up", href: "#") %>
+              <%= list.with_element_link(title: "Sign In", href: "#") %>
+            <% end %>
+          <% end %>
+
+          <%= render Ui::Dropdown::Component.new(data: { placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10 }) do |dropdown| %>
+            <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
+              Dropdown
+              <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+              </svg>
+            <% end %>
+
+            <%= dropdown.with_menu do |list| %>
+              <%= list.with_title { "Title" } %>
+              <%= list.with_element_item do %>
+                <%= link_to "#", class: "flex gap-2 items-center" do %>
+                  <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+                  Dashboard
+                <% end %>
+              <% end %>
+              <%= list.with_element_link(title: "Settings", href: "#") %>
+              <%= list.with_element_link(title: "Terms of Service", href: terms_path) %>
+              <%= list.with_element_link(title: "Privacy Policy", href: privacy_path) %>
+              <%= list.with_element_divider %>
+              <%= list.with_element_link(title: "Sign Up", href: "#") %>
+              <%= list.with_element_link(title: "Sign In", href: "#") %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Form Builder", id: "form_builder") do %>
+          <%= form_with url: root_path, data: { controller: "fields" } do |f| %>
+            <div class="grid gap-x-4 md:grid-cols-2">
+              <div class="form__group">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name, autofocus: true %>
+              </div>
+              <div class="form__group">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name %>
+              </div>
+            </div>
+
+            <div class="grid gap-x-4 md:grid-cols-2">
+              <div class="form__group">
+                <%= f.label :country_multiple, "Multiple Select" %>
+                <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
+              </div>
+
+              <div class="form__group">
+                <%= f.label :country %>
+                <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { data: { action: "change->fields#enable" } } %>
+              </div>
+            </div>
+
+            <%= field_set_tag nil, disabled: true, class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
+              <%= f.label :country_name %>
+              <%= f.text_field :country_name, placeholder: "What is your country?" %>
+            <% end %>
+
+            <div class="form__group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autocomplete: "email" %>
+            </div>
+
+            <div class="form__group">
+              <%= f.label :date %>
+              <%= f.easepick :date, data: {
+                easepick_plugins: ["LockPlugin", "AmpPlugin"],
+                easepick_amp_dropdown: {
+                  months: true,
+                  years: true,
+                  maxYear: Time.zone.today.year + 10,
+                  minYear: Time.zone.today.year - 10
+                }
+              } %>
+            </div>
+
+            <div class="form__group">
+              <%= f.label :password %>
+              <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
+            </div>
+
+            <div class="form__group">
+              <%= f.check_box :free_shipping %>
+            </div>
+
+            <div class="form__group">
+              <fieldset class="flex flex-col gap-2">
+                <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
+                <%= f.radio_button :radio, "2" %>
+                <%= f.radio_button :radio, "3" %>
+              </fieldset>
+            </div>
+
+            <div class="form__group">
+              <%= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
+            </div>
+
+            <%= f.submit "Save" %>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Icons", id: "icons", class: "flex items-center gap-4") do %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-6" %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "text-primary size-8" %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Modal Async", id: "modal_async") do %>
+          <p class="mb-2 text-gray-600">
+            By continuing, I agree to <%= site_name %>
+            <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link" %>,
+            <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
+          </p>
+        <% end %>
+
+        <%= accordion.with_item(title: "Modal Sync", id: "modal_sync", class: "flex gap-2") do %>
+          <%= render Ui::Btn::Component.new(variant: :primary, data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "modal1" }).with_content "Open modal" %>
+          <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", async: false, id: "modal1") do %>
+            <p class="p-4">Modal content</p>
+          <% end %>
+
+          <%= render Ui::Btn::Component.new(variant: :primary, data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "modal2" }).with_content "Open another modal" %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Pagy", id: "pagy") do %>
+          <% pagy = Pagy.new(count: 100, page: 1) %>
+          <%= render Ui::Pagy::Component.new(pagy:) %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Popover", id: "popover", class: "flex") do %>
+          <%= render Ui::Popover::Component.new(data: { placement: "bottom" }) do |popover| %>
+            <%= popover.with_trigger do %>
+              <%= button_tag "Default popover", class: "btn mr-2" %>
+            <% end %>
+            <%= popover.with_menu(title: "Popover Title") do %>
+              <p>And here's some amazing content. It's very engaging.</p>
+            <% end %>
+          <% end %>
+
+          <%= render Ui::Popover::Component.new(data: { placement: "right", offset: 20 }) do |popover| %>
+            <%= popover.with_trigger do %>
+              <%= button_tag "Popover Right", class: "btn btn-primary" %>
+            <% end %>
+            <%= popover.with_menu(title: "Popover Title") do %>
+              <p>And here's some amazing content. It's very engaging.</p>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Table", id: "table") do %>
+          <div class="flex flex-col gap-8">
+            <%= render Ui::Table::Component.new size: :xs, bordered: true, hovered: true do |table| %>
+              <%= table.with_thead do |thead| %>
+                <%= thead.with_tr do |tr| %>
+                  <%= tr.with_th(sticky: :left) { "Payment" } %>
+                  <%= tr.with_th { "Status" } %>
+                  <%= tr.with_th { "Amount" } %>
+                  <%= tr.with_th { "Created At" } %>
+                  <%= tr.with_th { "Actions" } %>
+                <% end %>
+              <% end %>
+
+              <%= table.with_tbody do |tbody| %>
+                <% 2.times.each do |index| %>
+                  <%= tbody.with_tr do |tr| %>
+                    <%= tr.with_td(sticky: :left, class: "w-4/12") { "Payment Name" } %>
+                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Paid", variant: :green) } %>
+                    <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
+                    <%= tr.with_td(class: "whitespace-nowrap") { date_format(Time.zone.now, format: :full_month) } %>
+                    <%= tr.with_td(actions: true) do %>
+                      <%= render Ui::BtnGroup::Component.new do |component| %>
+                        <% component.with_button(size: :sm, outlined: true) { "Show" } %>
+                        <% component.with_button(size: :sm, outlined: true) { "Edit" } %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+              <%= table.with_tfoot do |tfoot| %>
+                <%= tfoot.with_tr do |tr| %>
+                  <%= tr.with_td(colspan: 2) { "Total" } %>
+                  <%= tr.with_td(colspan: 3) { number_to_currency(2400) } %>
+                <% end %>
+              <% end %>
+            <% end %>
+
+            <%= render Ui::Table::Component.new size: :lg do |table| %>
+              <%= table.with_thead do |thead| %>
+                <%= thead.with_tr do |tr| %>
+                  <%= tr.with_th { "Payment" } %>
+                  <%= tr.with_th { "Status" } %>
+                  <%= tr.with_th { "Amount" } %>
+                  <%= tr.with_th { "Created At" } %>
+                  <%= tr.with_th { "Actions" } %>
+                <% end %>
+              <% end %>
+
+              <%= table.with_tbody do |tbody| %>
+                <% 2.times.each do |index| %>
+                  <%= tbody.with_tr do |tr| %>
+                    <%= tr.with_td(class: "w-4/12") { "Payment Name" } %>
+                    <%= tr.with_td { render(Ui::Badge::Component.new title: "Paid", variant: :green) } %>
+                    <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
+                    <%= tr.with_td(class: "whitespace-nowrap") { date_format(Time.zone.now, format: :full_month) } %>
+                    <%= tr.with_td(actions: true) do %>
+                      <%= render Ui::BtnGroup::Component.new do |component| %>
+                        <% component.with_button(size: :sm, outlined: true) { "Show" } %>
+                        <% component.with_button(size: :sm, outlined: true) { "Edit" } %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+              <%= table.with_tfoot do |tfoot| %>
+                <%= tfoot.with_tr do |tr| %>
+                  <%= tr.with_td(colspan: 2) { "Total" } %>
+                  <%= tr.with_td(colspan: 3) { number_to_currency(2400) } %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= accordion.with_item(title: "Tabs", id: "tabs") do %>
+          <%= render Ui::Tabs::Component.new do |tabs| %>
+            <% tabs.with_item(title: "Profile", href: "#", icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Dashboard", href: "#", active: true, icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Settings", href: "#", icon_path: "images/icons/alert.svg") %>
+            <% tabs.with_item(title: "Contacts", href: "#", icon_path: "images/icons/alert.svg") %>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Tooltip", id: "tooltip", class: "flex gap-4 items-center") do %>
+          <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }) do %>
+            <%= render Ui::Btn::Component.new(variant: :primary).with_content "Tooltip Button" %>
+          <% end %>
+        <% end %>
+
+        <%= accordion.with_item(title: "Typography", id: "typography") do %>
+          <h1 class="h1">Heading 1</h1>
+          <h2 class="h2">Heading 2</h2>
+          <h3 class="h3">Heading 3</h3>
+          <h4 class="h4">Heading 4</h4>
+          <h5 class="h5">Heading 5</h5>
+          <h6 class="h6">Heading 6</h6>
+
+          <p class="p">Text</p>
+
+          <h6 class="h6">Unordered list</h6>
+          <ul class="ul">
+            <li class="li">Item 1</li>
+            <li class="li">Item 2</li>
+            <li class="li">Item 3</li>
+          </ul>
+
+          <h6 class="h6">Ordered list</h6>
+          <ol class="ol">
+            <li class="li">Item 1</li>
+            <li class="li">Item 2</li>
+            <li class="li">Item 3</li>
+          </ol>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", async: false, id: "modal2") do %>
+      <p class="p-4">This modal window is in the end of this code section</p>
+    <% end %>
+  </section>
+</article>
