@@ -1,44 +1,34 @@
 @font-face {
   font-weight: 400;
-  font-family: 'Brandon';
-  src: url('../../fonts/Brandon_reg.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-weight: 400;
-  font-style: italic;
-  font-family: 'Brandon';
-  src: url('../../fonts/Brandon_reg_it.woff2') format('woff2');
+  font-family: 'Montserrat';
+  src: url('../../fonts/Montserrat-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 500;
-  font-family: 'Brandon';
-  src: url('../../fonts/Brandon_med.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-weight: 500;
-  font-style: italic;
-  font-family: 'Brandon';
-  src: url('../../fonts/Brandon_med_it.woff2') format('woff2');
+  font-family: 'Montserrat';
+  src: url('../../fonts/Montserrat-Medium.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 600;
-  font-family: 'Brandon';
-  src: url('../../fonts/Brandon_bld.woff2') format('woff2');
+  font-family: 'Montserrat';
+  src: url('../../fonts/Montserrat-Bold.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
-  font-weight: 600;
-  font-style: italic;
-  font-family: 'Brandon';
-  src: url('../../fonts/Brandon_bld_it.woff2') format('woff2');
+  font-weight: 700;
+  font-family: 'Montserrat';
+  src: url('../../fonts/Montserrat-ExtraBold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 800;
+  font-family: 'Montserrat';
+  src: url('../../fonts/Montserrat-Black.ttf') format('truetype');
   font-display: swap;
 }

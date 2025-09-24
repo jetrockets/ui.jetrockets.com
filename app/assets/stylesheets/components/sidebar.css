@@ -1,6 +1,5 @@
 @layer components {
   .sidebar {
-    @apply font-sans;
     @apply md:overflow-y-auto md:h-screen;
   }
 

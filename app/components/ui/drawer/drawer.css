@@ -18,7 +18,7 @@
   }
 
   .drawer__title {
-    @apply font-sans text-xl font-semibold leading-tight text-gray-900;
+    @apply text-xl font-semibold leading-tight text-gray-900;
   }
 
   .drawer__close {

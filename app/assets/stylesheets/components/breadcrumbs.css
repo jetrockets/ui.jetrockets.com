@@ -1,6 +1,6 @@
 @layer components {
   .breadcrumbs {
-    @apply flex font-sans text-sm text-gray-600;
+    @apply flex text-sm text-gray-600;
 
     .current {
       @apply text-black;

@@ -1,6 +1,6 @@
 @layer components {
   .body {
-    @apply relative flex flex-col min-h-[100svh] font-serif px-3 md:px-6 lg:px-8 xl:px-20;
+    @apply relative flex flex-col min-h-[100svh] px-3 md:px-6 lg:px-8 xl:px-20;
   }
 
   .body-overflow {
@@ -17,7 +17,7 @@
   }
 
   .body__content {
-    @apply flex-1 pb-8 md:px-6;
+    @apply flex-1 pt-4 pb-8 md:px-6 md:pt-0;
   }
 
   .body__footer {

@@ -1,5 +1,5 @@
 @theme {
-  --font-sans: 'Brandon', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-serif: ui-serif, georgia, cambria, 'Times New Roman', times, serif;
 
   --color-*: initial;
@@ -80,7 +80,7 @@
   --color-blue-900: oklch(0.379 0.146 265.522);
   --color-blue-950: oklch(0.282 0.091 267.935);
 
-  --color-gray: oklch(0.1776 0 0);
+  --color-gray: oklch(0.36 0.0125 305.08);
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
