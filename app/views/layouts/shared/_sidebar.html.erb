@@ -69,9 +69,6 @@
           <%= link_to "Flash Message", ui_flash_message_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_flash_message_path)}" %>
         </li>
         <li>
-          <%= link_to "Form Builder", ui_form_builder_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_form_builder_path)}" %>
-        </li>
-        <li>
           <%= link_to "Icon", ui_icon_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_icon_path)}" %>
         </li>
         <li>
@@ -95,8 +92,59 @@
         <li>
           <%= link_to "Turbo Confirm", ui_turbo_confirm_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_turbo_confirm_path)}" %>
         </li>
+      </ul>
+    </div>
+    <div class="sidebar__section">
+      <h4 class="sidebar__title">
+        Utilities
+      </h4>
+      <ul class="sidebar__menu">
+        <li>
+          <%= link_to "Form Builder", ui_form_builder_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_form_builder_path)}" %>
+        </li>
         <li>
           <%= link_to "Typography", ui_typography_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_typography_path)}" %>
+        </li>
+      </ul>
+    </div>
+    <div class="sidebar__section">
+      <h4 class="sidebar__title">
+        Plugins
+        <%= render Ui::Badge::Component.new(title: "Coming Soon", size: :xs, variant: :blue) %>
+      </h4>
+      <ul class="sidebar__menu">
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Charts</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Date Picker</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Drag&Drop Sortable</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Color Picker</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Choices Select</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Dynamic Select</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">File uploader</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Lexical WYSIWYG</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Nested Fields</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Password Input</span>
+        </li>
+        <li>
+          <span class="sidebar__link sidebar__link-disabled">Tagify</span>
         </li>
       </ul>
     </div>

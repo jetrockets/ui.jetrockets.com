@@ -1,6 +1,6 @@
 @layer components {
   .sidebar {
-    @apply md:overflow-y-auto md:h-screen;
+    @apply md:overflow-y-auto md:h-screen pr-8;
   }
 
   .sidebar__header {
@@ -32,7 +32,7 @@
   }
 
   .sidebar__title {
-    @apply text-sm font-semibold tracking-wide text-gray-900 uppercase;
+    @apply flex justify-between text-sm font-semibold tracking-wide text-gray-900 uppercase;
   }
 
   .sidebar__menu {
@@ -45,6 +45,10 @@
 
   .sidebar__link--active {
     @apply text-primary;
+  }
+
+  .sidebar__link-disabled {
+    @apply cursor-not-allowed text-gray-400 hover:text-gray-400;
   }
 
   /* Mobile burger menu */
