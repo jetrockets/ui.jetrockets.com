@@ -1,4 +1,4 @@
-@reference "~/entrypoints/application.css";
+@reference "~/entrypoints/tailwind.css";
 
 @layer components {
   .tooltip {

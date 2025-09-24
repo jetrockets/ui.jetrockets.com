@@ -1,16 +1,12 @@
-@reference "~/entrypoints/application.css";
+@reference "~/entrypoints/tailwind.css";
 
 @layer components {
   .drawer {
     @apply fixed flex top-0 right-0 z-[60] h-screen md:w-fit w-full overflow-y-auto bg-white animate-slide-left;
-
-    .drawer__window {
-      @apply mx-0 mt-0;
-    }
   }
 
   .drawer__window {
-    @apply flex flex-col w-full max-w-2xl mx-auto mt-4 shadow-lg;
+    @apply flex flex-col w-full max-w-2xl;
   }
 
   .drawer__header {
@@ -30,7 +26,7 @@
   }
 
   .drawer__footer {
-    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white;
+    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white/70 backdrop-blur-sm;
     box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.1);
   }
 

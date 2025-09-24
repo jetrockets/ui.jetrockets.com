@@ -7,9 +7,9 @@
 %>
 <% breadcrumb :ui_good_to_know %>
 
-<article class="space-y-8">
-  <header class="space-y-4">
-    <h1 class="text-4xl font-bold text-gray-900">Good to Know</h1>
+<article class="wysiwyg">
+  <header>
+    <h1 class="h1">Good to Know</h1>
     <p class="text-xl text-gray-600">
       Architectural decisions, best practices, and important considerations for working with this component library.
     </p>
@@ -18,305 +18,125 @@
   <section class="space-y-6">
     <h2 class="text-2xl font-semibold text-gray-900">Architectural Philosophy</h2>
 
-    <div class="space-y-4">
-      <div class="p-6 border border-blue-200 rounded-lg bg-blue-50">
-        <h3 class="mb-3 text-lg font-semibold text-blue-900">Copy, Don't Install</h3>
-        <p class="mb-3 text-blue-800">
+    <div class="not-prose">
+      <%= render Ui::Alert::Component.new title: "Copy, Don't Install", type: :info do %>
+        <p>
           This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed.
           This approach gives you full control over styling, behavior, and dependencies.
         </p>
-        <p class="text-sm text-blue-700">
+        <p>
           💡 Think of it as a "component starter kit" rather than a traditional library.
         </p>
-      </div>
-
-      <div class="p-6 border border-green-200 rounded-lg bg-green-50">
-        <h3 class="mb-3 text-lg font-semibold text-green-900">Progressive Enhancement</h3>
-        <p class="mb-3 text-green-800">
-          Components work server-side first, with JavaScript enhancement via Stimulus. This ensures accessibility,
-          SEO-friendliness, and graceful degradation.
-        </p>
-        <p class="text-sm text-green-700">
-          🚀 Fast initial page loads, then enhanced interactivity.
-        </p>
-      </div>
+      <% end %>
     </div>
   </section>
 
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Component Design Patterns</h2>
+  <section>
+    <h2 class="h2">Component Design Patterns</h2>
 
-    <div class="space-y-6">
-      <div>
-        <h3 class="mb-4 text-lg font-semibold text-gray-900">1. Consistent API</h3>
-        <p class="mb-3 text-gray-600">All components follow similar initialization patterns:</p>
-
-        <div class="p-4 rounded-lg bg-gray-50">
-          <div class="p-3 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded">
-            <pre><code>def initialize(variant: nil, size: :md, **options)
-  @variant = variant    # Visual style (primary, secondary, etc.)
-  @size = size         # Size modifier (xs, sm, md, lg, xl)
-  @options = options   # Additional attributes (class, data, etc.)
+    <h3 class="h3">1. Consistent API</h3>
+    <p>All components follow similar initialization patterns:</p>
+    <pre><code>def initialize(variant: nil, size: :md, **options)
+@variant = variant   # Visual style (primary, secondary, etc.)
+@size = size         # Size modifier (xs, sm, md, lg, xl)
+@options = options   # Additional attributes (class, data, etc.)
 end</code></pre>
-          </div>
-        </div>
-      </div>
 
-      <div>
-        <h3 class="mb-4 text-lg font-semibold text-gray-900">2. CSS Class Strategy</h3>
-        <p class="mb-3 text-gray-600">Components use a hybrid approach:</p>
+    <h3 class="h3">2. CSS Class Strategy</h3>
+    <p>Components use a hybrid approach:</p>
+    <div class="px-4 pt-0.5 pb-2 rounded-lg bg-gray-100">
+      <h4 class="h4">Base Classes</h4>
+      <p>Core component styling using TailwindCSS utilities</p>
+      <pre><code>@apply px-4 py-2 rounded-md font-medium transition-colors</code></pre>
 
-        <div class="space-y-3">
-          <div class="p-4 rounded-lg bg-gray-50">
-            <h4 class="mb-2 font-medium text-gray-900">Base Classes</h4>
-            <p class="mb-2 text-sm text-gray-600">Core component styling using TailwindCSS utilities</p>
-            <div class="p-2 overflow-x-auto text-xs text-gray-100 bg-gray-900 rounded">
-              <pre><code>@apply px-4 py-2 rounded-md font-medium transition-colors</code></pre>
-            </div>
-          </div>
+      <h4 class="h4">Modifier Classes</h4>
+      <p>BEM-like naming for variants and states</p>
+      <pre><code>.btn-primary, .btn-lg, .btn-outlined</code></pre>
 
-          <div class="p-4 rounded-lg bg-gray-50">
-            <h4 class="mb-2 font-medium text-gray-900">Modifier Classes</h4>
-            <p class="mb-2 text-sm text-gray-600">BEM-like naming for variants and states</p>
-            <div class="p-2 overflow-x-auto text-xs text-gray-100 bg-gray-900 rounded">
-              <pre><code>.btn--primary, .btn--lg, .btn--outlined</code></pre>
-            </div>
-          </div>
+      <h4 class="h4">Dynamic Classes</h4>
+      <p>Rails' <code>class_names</code> helper for conditional styling</p>
+      <pre><code>class_names("btn", "btn-#{variant}", "btn-loading": loading)</code></pre>
+    </div>
 
-          <div class="p-4 rounded-lg bg-gray-50">
-            <h4 class="mb-2 font-medium text-gray-900">Dynamic Classes</h4>
-            <p class="mb-2 text-sm text-gray-600">Rails' <code>class_names</code> helper for conditional styling</p>
-            <div class="p-2 overflow-x-auto text-xs text-gray-100 bg-gray-900 rounded">
-              <pre><code>class_names("btn", "btn--#{variant}", { "btn--loading" => loading })</code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
+    <h3 class="h3">3. Content Slots</h3>
+    <p class="mb-3 text-gray-600">Complex components use ViewComponent slots for flexibility:</p>
 
-      <div>
-        <h3 class="mb-4 text-lg font-semibold text-gray-900">3. Content Slots</h3>
-        <p class="mb-3 text-gray-600">Complex components use ViewComponent slots for flexibility:</p>
-
-        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
-          <pre><code># Component definition
+    <pre><code># Component definition
 renders_one :header, Ui::Card::Header::Component
 renders_one :body
 renders_one :footer, Ui::Card::Footer::Component
 
 # Usage
 &lt;%= render Ui::Card::Component.new do |card| %&gt;
-  &lt;% card.with_header(title: "Title") %&gt;
-  &lt;% card.with_body { "Content" } %&gt;
+&lt;% card.with_header(title: "Title") %&gt;
+&lt;% card.with_body { "Content" } %&gt;
 &lt;% end %&gt;</code></pre>
-        </div>
-      </div>
-    </div>
   </section>
 
-  <section class="space-y-6">
+  <section>
     <h2 class="text-2xl font-semibold text-gray-900">Styling Guidelines</h2>
 
-    <div class="space-y-4">
-      <div class="p-6 border border-yellow-200 rounded-lg bg-yellow-50">
-        <h3 class="mb-3 text-lg font-semibold text-yellow-900">TailwindCSS Best Practices</h3>
-        <ul class="text-yellow-800 space-y-2">
-          <li>• Use <code>@apply</code> for component base styles</li>
-          <li>• Avoid long utility chains in templates</li>
-          <li>• Create custom CSS for complex animations/interactions</li>
-          <li>• Use CSS custom properties for themeable values</li>
+    <div class="not-prose">
+      <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :warning do %>
+        <ul class="pl-8 space-y-2 list-disc">
+          <li>Use <code>@apply</code> for component base styles</li>
+          <li>Avoid long utility chains in templates</li>
+          <li>Create custom CSS for complex animations/interactions</li>
+          <li>Use CSS custom properties for themeable values</li>
         </ul>
-      </div>
+      <% end %>
+    </div>
 
-      <div class="p-6 border border-purple-200 rounded-lg bg-purple-50">
-        <h3 class="mb-3 text-lg font-semibold text-purple-900">Responsive Design</h3>
-        <p class="mb-3 text-purple-800">
-          Components are mobile-first and responsive by default. Use Tailwind's responsive prefixes judiciously.
-        </p>
-        <div class="p-3 text-sm text-purple-100 bg-purple-900 rounded">
-          <code>@apply px-4 md:px-6 lg:px-8</code>
-        </div>
-      </div>
+    <h3 class="h3">Responsive Design</h3>
+    <p>
+      Components are mobile-first and responsive by default. Use Tailwind's responsive prefixes judiciously.
+    </p>
+    <pre><code>@apply px-4 md:px-6 lg:px-8</code></pre>
+  </section>
 
-      <div class="p-6 border border-red-200 rounded-lg bg-red-50">
-        <h3 class="mb-3 text-lg font-semibold text-red-900">Dark Mode Considerations</h3>
-        <p class="mb-3 text-red-800">
-          Currently, components are designed for light mode. For dark mode support, you'll need to:
-        </p>
-        <ul class="text-sm text-red-700 space-y-1">
-          <li>• Add <code>dark:</code> variants to component CSS</li>
-          <li>• Use semantic color names in CSS custom properties</li>
-          <li>• Test contrast ratios for accessibility</li>
+  <section>
+    <h2 class="h2">Accessibility (A11y)</h2>
+    <div class="flex flex-col gap-6 not-prose">
+      <%= render Ui::Alert::Component.new title: "Built-in Features" do %>
+        <ul class="pl-8 space-y-2 list-disc">
+          <li>Semantic HTML elements</li>
+          <li>ARIA attributes where needed</li>
+          <li>Keyboard navigation support</li>
+          <li>Focus management for modals/dropdowns</li>
+          <li>Screen reader friendly content</li>
         </ul>
-      </div>
+      <% end %>
+
+      <%= render Ui::Alert::Component.new title: "Your Responsibilities" do %>
+        <ul class="pl-8 space-y-2 list-disc">
+          <li>Provide meaningful alt text for images</li>
+          <li>Ensure sufficient color contrast</li>
+          <li>Test with screen readers</li>
+          <li>Add ARIA labels for dynamic content</li>
+          <li>Follow WCAG 2.1 guidelines</li>
+        </ul>
+      <% end %>
     </div>
   </section>
 
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">JavaScript & Stimulus</h2>
+  <section>
+    <h2 class="h2">Contributing & Customization</h2>
+    <h3 class="h3">Making It Your Own</h3>
+    <p>
+      These components are meant to be a starting point. Feel free to:
+    </p>
+    <ul>
+      <li>Modify styling to match your brand</li>
+      <li>Add new variants and sizes</li>
+      <li>Extend functionality as needed</li>
+      <li>Remove unused components</li>
+      <li>Combine multiple components into new ones</li>
+    </ul>
 
-    <div class="space-y-4">
-      <div class="p-6 rounded-lg bg-gray-50">
-        <h3 class="mb-3 text-lg font-semibold text-gray-900">Stimulus Controllers</h3>
-        <p class="mb-3 text-gray-600">
-          Interactive components include Stimulus controllers for client-side behavior:
-        </p>
-
-        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
-          <pre><code>// app/components/ui/modal/modal_controller.js
-import { Controller } from "@hotwired/stimulus"
-
-export default class extends Controller {
-  static targets = ["dialog"]
-
-  show() {
-    this.dialogTarget.showModal()
-  }
-
-  hide() {
-    this.dialogTarget.close()
-  }
-}</code></pre>
-        </div>
-
-        <div class="p-3 mt-3 rounded bg-blue-50">
-          <p class="text-sm text-blue-800">
-            💡 Controllers are automatically loaded by Stimulus and scoped to their components.
-          </p>
-        </div>
-      </div>
-
-      <div class="p-6 rounded-lg bg-gray-50">
-        <h3 class="mb-3 text-lg font-semibold text-gray-900">Data Attributes</h3>
-        <p class="mb-3 text-gray-600">
-          Components use data attributes for configuration:
-        </p>
-
-        <div class="p-4 overflow-x-auto text-gray-100 bg-gray-900 rounded-lg">
-          <pre><code>&lt;%= render Ui::Dropdown::Component.new(
-  data: {
-    placement: "bottom",
-    trigger_type: "click",
-    offset_distance: 10
-  }
-) do |dropdown|
-  # dropdown content
-end %&gt;</code></pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Performance Considerations</h2>
-
-    <div class="space-y-4">
-      <div class="p-6 rounded-lg bg-green-50">
-        <h3 class="mb-3 text-lg font-semibold text-green-900">✅ What's Optimized</h3>
-        <ul class="text-green-800 space-y-2">
-          <li>• Server-side rendering (fast first paint)</li>
-          <li>• Minimal JavaScript payload</li>
-          <li>• CSS is scoped and tree-shakeable</li>
-          <li>• Vite's fast HMR for development</li>
-        </ul>
-      </div>
-
-      <div class="p-6 rounded-lg bg-yellow-50">
-        <h3 class="mb-3 text-lg font-semibold text-yellow-900">⚠️ Watch Out For</h3>
-        <ul class="text-yellow-800 space-y-2">
-          <li>• Don't over-nest components (performance cost)</li>
-          <li>• Large datasets in tables need pagination</li>
-          <li>• Complex animations may need optimization</li>
-          <li>• Icon SVGs should be optimized for file size</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Accessibility (A11y)</h2>
-
-    <div class="space-y-4">
-      <div class="p-6 rounded-lg bg-blue-50">
-        <h3 class="mb-3 text-lg font-semibold text-blue-900">Built-in Features</h3>
-        <ul class="text-blue-800 space-y-2">
-          <li>• Semantic HTML elements</li>
-          <li>• ARIA attributes where needed</li>
-          <li>• Keyboard navigation support</li>
-          <li>• Focus management for modals/dropdowns</li>
-          <li>• Screen reader friendly content</li>
-        </ul>
-      </div>
-
-      <div class="p-6 rounded-lg bg-orange-50">
-        <h3 class="mb-3 text-lg font-semibold text-orange-900">Your Responsibilities</h3>
-        <ul class="text-orange-800 space-y-2">
-          <li>• Provide meaningful alt text for images</li>
-          <li>• Ensure sufficient color contrast</li>
-          <li>• Test with screen readers</li>
-          <li>• Add ARIA labels for dynamic content</li>
-          <li>• Follow WCAG 2.1 guidelines</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Testing Strategy</h2>
-
-    <div class="p-6 rounded-lg bg-gray-50">
-      <h3 class="mb-4 text-lg font-semibold text-gray-900">Component Testing</h3>
-
-      <div class="space-y-4">
-        <div>
-          <h4 class="mb-2 font-medium text-gray-900">Ruby (RSpec/Minitest)</h4>
-          <p class="mb-2 text-sm text-gray-600">Test component logic and rendering:</p>
-          <div class="p-3 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded">
-            <pre><code>it "renders button with correct variant" do
-  component = Ui::Btn::Component.new(variant: :primary)
-  expect(component.css_classes).to include("btn--primary")
-end</code></pre>
-          </div>
-        </div>
-
-        <div>
-          <h4 class="mb-2 font-medium text-gray-900">JavaScript (Jest/Vitest)</h4>
-          <p class="mb-2 text-sm text-gray-600">Test Stimulus controller behavior:</p>
-          <div class="p-3 overflow-x-auto text-sm text-gray-100 bg-gray-900 rounded">
-            <pre><code>test("modal opens when button is clicked", () => {
-  // Test Stimulus controller interactions
-})</code></pre>
-          </div>
-        </div>
-
-        <div>
-          <h4 class="mb-2 font-medium text-gray-900">Integration (System Tests)</h4>
-          <p class="text-sm text-gray-600">Test complete user interactions with Capybara.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="space-y-4">
-    <h2 class="text-2xl font-semibold text-gray-900">Contributing & Customization</h2>
-
-    <div class="p-6 rounded-lg bg-indigo-50">
-      <h3 class="mb-3 text-lg font-semibold text-indigo-900">Making It Your Own</h3>
-      <p class="mb-4 text-indigo-800">
-        These components are meant to be a starting point. Feel free to:
+    <%= render Ui::Alert::Component.new title: "Remember", type: :info, class: "not-prose" do %>
+      <p>
+        This is your codebase once you copy the components. Make them work for your specific needs!
       </p>
-      <ul class="text-indigo-700 space-y-2">
-        <li>• Modify styling to match your brand</li>
-        <li>• Add new variants and sizes</li>
-        <li>• Extend functionality as needed</li>
-        <li>• Remove unused components</li>
-        <li>• Combine multiple components into new ones</li>
-      </ul>
-
-      <div class="p-3 mt-4 bg-indigo-100 rounded">
-        <p class="text-sm text-indigo-800">
-          Remember: This is your codebase once you copy the components. Make them work for your specific needs!
-        </p>
-      </div>
-    </div>
+    <% end %>
   </section>
 </article>

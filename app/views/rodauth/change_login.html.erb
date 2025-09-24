@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Edit email") %>
 
-<%= render Ui::Modal::Component.new(title: "Edit email", size: :md) do %>
+<%= render Ui::Modal::Component.new(title: "Edit email", size: :lg) do %>
   <div class="modal__body">
     <%= form_with url: rodauth.change_login_path, method: :post, class: "form" do |form| %>
       <div class="form__group">

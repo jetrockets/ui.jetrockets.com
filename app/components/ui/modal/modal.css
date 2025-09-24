@@ -1,16 +1,12 @@
-@reference "~/entrypoints/application.css";
+@reference "~/entrypoints/tailwind.css";
 
 @layer components {
   .modal {
     @apply fixed top-0 left-0 right-0 z-40 hidden w-full h-full max-h-screen px-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slide-up;
-
-    .modal__window {
-      @apply mt-0;
-    }
   }
 
   .modal-dialog {
-    @apply p-0 m-auto rounded-lg shadow-lg h-fit w-fit backdrop:bg-gray-900/50;
+    @apply p-0 m-auto rounded-lg shadow-sm h-fit w-fit backdrop:bg-gray-900/50;
 
     &[open] {
       @apply block;
@@ -18,11 +14,11 @@
   }
 
   .modal__window {
-    @apply relative w-full max-w-2xl max-h-full mx-auto mt-6;
+    @apply relative w-full max-w-2xl max-h-full mx-auto;
   }
 
   .modal__content {
-    @apply relative bg-white rounded-lg shadow-lg;
+    @apply relative bg-white rounded-lg shadow-sm;
   }
 
   .modal__header {
@@ -54,6 +50,6 @@
   }
 
   .modal__footer-sticky {
-    @apply sticky bottom-0 bg-white rounded-b-lg
+    @apply sticky bottom-0 rounded-b-lg bg-white/70 backdrop-blur-sm;
   }
 }

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   # UI Documentation routes
   namespace :ui do
-    root "ui#index"
     get "getting_started"
     get "good_to_know"
 
@@ -37,5 +36,6 @@ Rails.application.routes.draw do
     get "typography"
   end
 
+  get "ui", to: "ui#ui"
   root "home#index"
 end

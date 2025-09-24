@@ -15,13 +15,13 @@ class Ui::Alert::Component < ApplicationComponent
 
   def classes
     class_names(
-      "flex p-4 text-sm rounded-lg",
+      "flex p-4 rounded-lg border",
       @options.delete(:class),
-      "text-blue-800 bg-blue-50 bg-blue-50": @type == :info,
-      "text-red-800 bg-red-50 bg-red-50": @type == :error,
-      "text-green-800 bg-green-50 bg-green-50": @type == :success,
-      "text-yellow-800 bg-yellow-50 bg-yellow-50": @type == :warning,
-      "text-gray-800 bg-gray-50 bg-gray-50": @type == :default
+      "text-blue-900 bg-blue-50 border-blue-200": @type == :info,
+      "text-red-900 bg-red-50 border-red-200": @type == :error,
+      "text-green-900 bg-green-50 border-green-200": @type == :success,
+      "text-yellow-900 bg-yellow-50 border-yellow-200": @type == :warning,
+      "text-gray-900 bg-gray-50 bg-gray-50": @type == :default
     )
   end
 

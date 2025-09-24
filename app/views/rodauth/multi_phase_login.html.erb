@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
 
-<%= render Ui::Modal::Component.new(title: "Sign In", subtitle: "Welcome back to #{site_name}. Please Sign in to access your account", size: :md) do %>
+<%= render Ui::Modal::Component.new(title: "Sign In", subtitle: "Welcome back to #{site_name}. Please Sign in to access your account", size: :lg) do %>
   <div class="modal_body">
     <%== rodauth.render_multi_phase_login_forms %>
     <%== rodauth.login_form_footer %>

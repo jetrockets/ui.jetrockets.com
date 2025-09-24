@@ -27,11 +27,13 @@
   <body class="<%= body_classes %>" data-controller="sidebar modal drawer">
     <div class="body__main">
       <%= render partial: "layouts/shared/sidebar" %>
-      <main class="body__content">
+      <div class="body__content">
         <%= render partial: "layouts/shared/navbar" %>
-        <%= yield %>
+        <main class="flex-1">
+          <%= yield %>
+        </main>
         <%= render partial: "layouts/shared/footer" %>
-      </main>
+      </div>
     </div>
 
     <%= render Ui::Flash::Component.new %>

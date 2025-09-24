@@ -1,4 +1,4 @@
-@reference "~/entrypoints/application.css";
+@reference "~/entrypoints/tailwind.css";
 
 .btn_group {
   @apply inline-flex items-center gap-2;

@@ -2,11 +2,10 @@
 
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
-/* @plugin "flowbite/plugin"; */
 
 @import "../stylesheets/tailwind/fonts";
 @import "../stylesheets/tailwind/animations";
 @import "../stylesheets/tailwind/theme";
 @import "../stylesheets/tailwind/base";
 
-/* @source "../../../node_modules/flowbite"; */
+@source '../../../tailwindcss_safelist.txt';
