@@ -22,6 +22,11 @@
   </header>
 
   <section>
+    <div class="flex flex-col gap-4 mb-12">
+      <%= render Ui::Alert::Component.new title: "To use async Drawer component, you need to have a <turbo-frame id='drawer'> in your layout", type: :warning %>
+      <pre><code>&lt;%= turbo_frame_tag :drawer %&gt;</code></pre>
+    </div>
+
     <h2 class="h3">Example</h2>
     <%= turbo_frame_tag :ui_drawer, data: { turbo_action: :advance }, target: :_top do %>
       <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
@@ -29,7 +34,7 @@
         <% tabs.with_item title: "Code", href: ui_drawer_path(code: true), data: { turbo_frame: :ui_drawer }, active: params[:code] %>
       <% end %>
 
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-4 mb-12">
         <% unless params[:code] %>
           <%= render "ui/examples/drawer" %>
         <% else %>
