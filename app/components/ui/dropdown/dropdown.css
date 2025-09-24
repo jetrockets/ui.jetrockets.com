@@ -2,22 +2,22 @@
 
 @layer components {
   .dropdown {
-    @apply hidden bg-white divide-y divide-gray-200 rounded-lg shadow-md min-w-44 z-20
+    @apply z-40 hidden overflow-auto bg-white divide-y divide-gray-200 rounded-lg shadow-md min-w-44 animate-fade-in max-w-96 max-h-96;
   }
 
   .dropdown__wrapper {
-    @apply py-2 text-sm text-gray-700
+    @apply py-1.5 text-gray;
   }
 
   .dropdown__title {
-    @apply px-2 py-3 text-lg font-bold
+    @apply px-4 py-3 font-bold;
   }
 
   .dropdown__item {
-    @apply block px-4 py-2 mx-2 hover:bg-gray-100 cursor-pointer
+    @apply block px-2 py-2 mx-2 text-sm rounded-md cursor-pointer hover:bg-gray-100;
   }
 
   .dropdown__divider {
-    @apply pb-2 mb-2 border-gray-200 border-b-1
+    @apply pb-2 mb-2 border-b border-gray-200;
   }
 }

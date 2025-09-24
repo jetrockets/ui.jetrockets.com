@@ -14,7 +14,7 @@ class Ui::Accordion::ItemComponent < ApplicationComponent
         <%= @title %>
       </span>
 
-      <%= helpers.vite_svg_tag('images/icons/chevron-down.svg', class: 'w-3 h-3 transition-transform duration-300 shrink-0', data: { accordion_icon: true }, aria: { hidden: true }) %>
+      <%= helpers.vite_svg_tag('images/icons/chevron-up.svg', class: 'w-3 h-3 transition-transform duration-300 shrink-0', data: { accordion_icon: true }, aria: { hidden: true }) %>
     </button>
 
     <%= item %>
