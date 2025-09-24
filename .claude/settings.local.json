@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm audit:*)",
+      "Bash(ruby:*)",
+      "Bash(npm install:*)",
+      "Bash(bundle:*)",
+      "Bash(npm cache clean:*)"
+    ],
+    "deny": []
+  }
+}

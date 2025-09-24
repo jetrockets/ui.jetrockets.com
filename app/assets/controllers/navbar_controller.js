@@ -8,7 +8,7 @@ export default class Navbar extends Controller {
   }
 
   connect () {
-    useClickOutside(this, { element: this.menuTaget })
+    useClickOutside(this, { element: this.menuTarget })
   }
 
   openedValueChanged (value) {

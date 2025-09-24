@@ -23,7 +23,6 @@ export default class DrawerController extends Controller {
   #findDrawer (event) {
     const id = event.currentTarget.dataset.id
     if (!id) {
-      console.warn('Drawer ID not found in dataset.')
       return null
     }
     return this.drawers.get(id)
@@ -33,13 +32,11 @@ export default class DrawerController extends Controller {
     this.triggerTargets.forEach(trigger => {
       const targetId = trigger.dataset.id
       if (!targetId) {
-        console.warn('Trigger is missing a dataset ID.')
         return
       }
 
       const drawerElement = this.drawerTargets.find(drawer => drawer.id === targetId)
       if (!drawerElement) {
-        console.warn(`Drawer element with ID "${targetId}" not found.`)
         return
       }
 
