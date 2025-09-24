@@ -10,7 +10,7 @@
   }
 
   .drawer__window {
-    @apply flex flex-col w-full max-w-2xl mt-4 mx-auto shadow-lg;
+    @apply flex flex-col w-full max-w-2xl mx-auto mt-4 shadow-lg;
   }
 
   .drawer__header {
@@ -18,7 +18,7 @@
   }
 
   .drawer__title {
-    @apply text-xl font-semibold leading-tight text-gray-900;
+    @apply font-sans text-xl font-semibold leading-tight text-gray-900;
   }
 
   .drawer__close {

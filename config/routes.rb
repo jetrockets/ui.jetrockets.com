@@ -37,5 +37,5 @@ Rails.application.routes.draw do
     get "typography"
   end
 
-  root "ui#index"
+  root "home#index"
 end

@@ -5,6 +5,7 @@
     keywords: "Rails, Button, UI Components, ViewComponent"
   )
 %>
+<% breadcrumb :ui_button %>
 
 <article class="space-y-8">
   <header class="space-y-4">
@@ -16,11 +17,11 @@
 
   <section class="space-y-6">
     <h2 class="text-2xl font-semibold text-gray-900">Basic Usage</h2>
-    
+
     <div class="space-y-4">
       <div class="p-6 rounded-lg bg-gray-50">
         <h3 class="mb-4 text-lg font-semibold text-gray-900">Simple Button</h3>
-        <div class="flex flex-wrap items-center mb-4 gap-2">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
           <%= render Ui::Btn::Component.new.with_content "Default" %>
           <%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %>
           <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %>
@@ -36,7 +37,7 @@
 
       <div class="p-6 rounded-lg bg-gray-50">
         <h3 class="mb-4 text-lg font-semibold text-gray-900">Sizes</h3>
-        <div class="flex flex-wrap items-center mb-4 gap-2">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
           <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
           <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
           <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
@@ -54,7 +55,7 @@
 
       <div class="p-6 rounded-lg bg-gray-50">
         <h3 class="mb-4 text-lg font-semibold text-gray-900">Outlined Variants</h3>
-        <div class="flex flex-wrap items-center mb-4 gap-2">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
           <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
           <%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
           <%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
@@ -70,7 +71,7 @@
 
       <div class="p-6 rounded-lg bg-gray-50">
         <h3 class="mb-4 text-lg font-semibold text-gray-900">With Icons</h3>
-        <div class="flex flex-wrap items-center mb-4 gap-2">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
           <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/chevron-left.svg") %>
           <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/chevron-left.svg") %>
           <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
@@ -129,10 +130,10 @@
 
   <section class="space-y-4">
     <h2 class="text-2xl font-semibold text-gray-900">API Reference</h2>
-    
+
     <div class="p-6 rounded-lg bg-gray-50">
       <h3 class="mb-4 text-lg font-semibold text-gray-900">Available Options</h3>
-      
+
       <div class="overflow-x-auto">
         <table class="min-w-full">
           <thead>
@@ -194,16 +195,16 @@
 
   <section class="space-y-4">
     <h2 class="text-2xl font-semibold text-gray-900">Methods</h2>
-    
+
     <div class="p-6 rounded-lg bg-gray-50">
       <h3 class="mb-4 text-lg font-semibold text-gray-900">Content Methods</h3>
-      
+
       <div class="space-y-3">
         <div>
           <h4 class="mb-2 font-mono text-blue-600">.with_content(text)</h4>
           <p class="text-sm text-gray-600">Set button text content</p>
         </div>
-        
+
         <div>
           <h4 class="mb-2 font-mono text-blue-600">.with_icon_content(icon_path)</h4>
           <p class="text-sm text-gray-600">Add an icon to the button (combined with text)</p>
@@ -214,11 +215,11 @@
 
   <section class="space-y-4">
     <h2 class="text-2xl font-semibold text-gray-900">Customization</h2>
-    
+
     <div class="p-6 rounded-lg bg-blue-50">
       <h3 class="mb-3 text-lg font-semibold text-blue-900">Adding Custom Variants</h3>
       <p class="mb-4 text-blue-800">To add new button variants, modify the component's CSS and initialize method:</p>
-      
+
       <div class="p-4 overflow-x-auto text-blue-100 bg-blue-900 rounded-lg">
         <pre><code># app/components/ui/btn/component.rb
 def initialize(variant: :primary, **options)
