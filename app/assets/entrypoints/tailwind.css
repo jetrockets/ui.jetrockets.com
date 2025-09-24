@@ -3,9 +3,11 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 
+
 @import "../stylesheets/tailwind/fonts";
 @import "../stylesheets/tailwind/animations";
 @import "../stylesheets/tailwind/theme";
 @import "../stylesheets/tailwind/base";
 
 @source '../../../tailwindcss_safelist.txt';
+/* @source "../../../node_modules/flowbite"; */

@@ -1,0 +1,48 @@
+<div class="flex items-center gap-4">
+  <%= render Ui::Dropdown::Component.new do |dropdown| %>
+    <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
+      Dropdown
+      <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+      </svg>
+    <% end %>
+
+    <%= dropdown.with_menu do |list| %>
+      <%= list.with_title { "Title" } %>
+      <%= list.with_element_item do %>
+        <%= link_to "#", class: "flex gap-2 items-center" do %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+          Dashboard
+        <% end %>
+      <% end %>
+      <%= list.with_element_link(title: "Settings", href: "#") %>
+      <%= list.with_element_link(title: "Terms of Service", href: terms_path) %>
+      <%= list.with_element_link(title: "Privacy Policy", href: privacy_path) %>
+      <%= list.with_element_divider %>
+      <%= list.with_element_link(title: "Sign Up", href: "#") %>
+      <%= list.with_element_link(title: "Sign In", href: "#") %>
+    <% end %>
+  <% end %>
+
+  <%= render Ui::Dropdown::Component.new(data: { placement: "right", triggerType: "hover", offsetSkidding: 130, offsetDistance: 10 }) do |dropdown| %>
+    <%= dropdown.with_trigger(class: "btn btn-secondary btn-iconed") do %>
+      Hover Dropdown
+      <svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4">
+      </svg>
+    <% end %>
+
+    <%= dropdown.with_menu do |list| %>
+      <%= list.with_title { "Hover Menu" } %>
+      <%= list.with_element_item do %>
+        <%= link_to "#", class: "flex gap-2 items-center" do %>
+          <%= render Ui::Icon::Component.new icon_path: "images/icons/chevron-left.svg", class: "size-4" %>
+          Dashboard
+        <% end %>
+      <% end %>
+      <%= list.with_element_link(title: "Settings", href: "#") %>
+      <%= list.with_element_divider %>
+      <%= list.with_element_link(title: "Sign Out", href: "#") %>
+    <% end %>
+  <% end %>
+</div>

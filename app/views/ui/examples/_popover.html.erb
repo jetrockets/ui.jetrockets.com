@@ -1,0 +1,28 @@
+<div class="flex gap-4">
+  <%= render Ui::Popover::Component.new(data: { placement: "bottom" }) do |popover| %>
+    <%= popover.with_trigger do %>
+      <%= button_tag "Default popover", class: "btn mr-2" %>
+    <% end %>
+    <%= popover.with_menu(title: "Popover Title") do %>
+      <p>And here's some amazing content. It's very engaging.</p>
+    <% end %>
+  <% end %>
+
+  <%= render Ui::Popover::Component.new(data: { placement: "right", offset: 20 }) do |popover| %>
+    <%= popover.with_trigger do %>
+      <%= button_tag "Popover Right", class: "btn btn-primary" %>
+    <% end %>
+    <%= popover.with_menu(title: "Popover Title") do %>
+      <p>And here's some amazing content. It's very engaging.</p>
+    <% end %>
+  <% end %>
+
+  <%= render Ui::Popover::Component.new(data: { placement: "top" }) do |popover| %>
+    <%= popover.with_trigger do %>
+      <%= button_tag "Popover Top", class: "btn btn-secondary" %>
+    <% end %>
+    <%= popover.with_menu(title: "Top Popover") do %>
+      <p>This popover appears above the button.</p>
+    <% end %>
+  <% end %>
+</div>

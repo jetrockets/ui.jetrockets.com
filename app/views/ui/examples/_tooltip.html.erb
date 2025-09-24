@@ -1,0 +1,17 @@
+<div class="flex gap-4 items-center">
+  <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }) do %>
+    <%= render Ui::Btn::Component.new(variant: :primary).with_content "Tooltip Button" %>
+  <% end %>
+
+  <%= render Ui::Tooltip::Component.new(tooltip_content: "Top tooltip", data: { placement: "top" }) do %>
+    <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Top Tooltip" %>
+  <% end %>
+
+  <%= render Ui::Tooltip::Component.new(tooltip_content: "Right tooltip", data: { placement: "right" }) do %>
+    <%= render Ui::Btn::Component.new(variant: :ghost).with_content "Right Tooltip" %>
+  <% end %>
+
+  <%= render Ui::Tooltip::Component.new(tooltip_content: "Left tooltip", data: { placement: "left" }) do %>
+    <%= render Ui::Btn::Component.new.with_content "Left Tooltip" %>
+  <% end %>
+</div>

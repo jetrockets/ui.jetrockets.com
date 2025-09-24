@@ -1,0 +1,21 @@
+<div class="flex flex-wrap items-center gap-4">
+  <%= render Ui::Card::Component.new do |component| %>
+    <% component.with_header align: :left, title: "Noteworthy technology acquisitions 2021" %>
+    <% component.with_body do %>
+      <p>This is the body of the card. You can put any content here.</p>
+    <% end %>
+    <% component.with_footer(align: :left) do %>
+      <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary") %>
+    <% end %>
+  <% end %>
+
+  <%= render Ui::Card::Component.new(bordered: true) do |component| %>
+    <% component.with_header align: :center, title: "Noteworthy technology acquisitions 2021" %>
+    <% component.with_body do %>
+      Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+    <% end %>
+    <% component.with_footer(align: :right) do %>
+      <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/chevron-left.svg") %>
+    <% end %>
+  <% end %>
+</div>
