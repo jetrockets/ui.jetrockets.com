@@ -7,49 +7,49 @@ module FormBuilders
     INPUT_HELPERS.each do |field_method|
       define_method(field_method) do |method, options = {}, &block|
         begin
-          input_class = "FormBuilders::Inputs::#{field_method.classify}Input".constantize
-          input_class.new(self, method, options).render
+          field_class = "FormBuilders::Fields::#{field_method.classify}Field".constantize
+          field_class.new(self, method, options).render
         rescue NameError
-          Inputs::TextInput.new(self, method, options, field_method.to_sym).render
+          Fields::TextField.new(self, method, options, field_method.to_sym).render
         end
       end
     end
 
     def text_area(method, options = {})
       options[:data] = { controller: "textarea-autogrow" }.merge(options[:data] || {})
-      Inputs::TextInput.new(self, method, options, :text_area).render
+      Fields::TextField.new(self, method, options, :text_area).render
     end
 
     def easepick(method, options = {})
-      Inputs::EasepickInput.new(self, method, options).render
+      Fields::EasepickField.new(self, method, options).render
     end
 
     def select(method, choices = nil, options = {}, html_options = {}, &block)
-      Inputs::SelectInput.new(self, method, choices, options, html_options).render
+      Fields::SelectField.new(self, method, choices, options, html_options).render
     end
 
     def choices(method, choices = nil, options = {}, html_options = {}, &block)
-      Inputs::ChoicesInput.new(self, method, choices, options, html_options).render
+      Fields::ChoicesField.new(self, method, choices, options, html_options).render
     end
 
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
-      Inputs::CheckBoxInput.new(self, method, options, checked_value, unchecked_value).render
+      Fields::CheckBoxField.new(self, method, options, checked_value, unchecked_value).render
     end
 
     def toggler(method, options = {}, checked_value = "1", unchecked_value = "0")
-      Inputs::TogglerInput.new(self, method, options, checked_value, unchecked_value).render
+      Fields::TogglerField.new(self, method, options, checked_value, unchecked_value).render
     end
 
     def radio_button(method, tag_value, options = {})
-      Inputs::RadioButtonInput.new(self, method, tag_value, options).render
+      Fields::RadioButtonField.new(self, method, tag_value, options).render
     end
 
     def label(method, text = nil, options = {}, &block)
-      Inputs::Label.new(self, method, text, options, &block).render
+      Fields::Label.new(self, method, text, options, &block).render
     end
 
     def submit(value = nil, options = {})
-      Inputs::Submit.new(self, value, options).render
+      Fields::Submit.new(self, value, options).render
     end
   end
 end

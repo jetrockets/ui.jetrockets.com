@@ -12,15 +12,15 @@
     @apply mb-0;
   }
 
-  .form__input {
+  .form__field {
     @apply block w-full h-10 px-3 py-2 border-gray-300 rounded-md focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
   }
 
-  .form__input-sm {
+  .form__field-sm {
     @apply h-9;
   }
 
-  .form__input-errored {
+  .form__field-errored {
     @apply text-red-800 border-red-400 bg-red-50/50 focus:border-red-300 focus:ring-red-200;
   }
 

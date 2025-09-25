@@ -13,7 +13,7 @@ class Ui::Clipboard::Component < ApplicationComponent
 
   erb_template <<~ERB
     <%= content_tag :div, class: "clipboard", **attrs do %>
-      <input id="<%= @id %>" type="text" data-clipboard-target="content" class="max-w-80 form__input" value="<%= @value %>" disabled readonly hidden>
+      <input id="<%= @id %>" type="text" data-clipboard-target="content" class="max-w-80 form__field" value="<%= @value %>" disabled readonly hidden>
       <%= trigger %>
     <% end %>
   ERB
