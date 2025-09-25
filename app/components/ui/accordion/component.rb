@@ -1,28 +1,9 @@
-class Ui::Accordion::ItemComponent < ApplicationComponent
-  def initialize(name:, title: nil, open: false)
-    @name = name
-    @title = title
-    @open = open
-  end
-
-  erb_template <<~ERB
-    <details class="accordion__details" name="<%= @name %>" open="<%= @open %>">
-      <summary class="accordion__summary">
-        <%= @title %>
-        <%= helpers.vite_svg_tag('images/icons/chevron-down.svg', class: 'accordion__icon') %>
-      </summary>
-      <div class="accordion__body">
-        <%= content %>
-      </div>
-    </details>
-  ERB
-end
-
 class Ui::Accordion::Component < ApplicationComponent
-  renders_many :items, Ui::Accordion::ItemComponent
+  renders_many :items, "ItemComponent"
 
-  def initialize(**options)
+  def initialize(name: nil, **options)
     super
+    @name = name
     @options = options
   end
 
@@ -33,6 +14,26 @@ class Ui::Accordion::Component < ApplicationComponent
       <% end %>
     <% end %>
   ERB
+
+  class ItemComponent < ApplicationComponent
+    def initialize(name:, title: nil, open: false)
+      @name = name
+      @title = title
+      @open = open
+    end
+
+    erb_template <<~ERB
+      <details class="accordion__details" name="<%= @name %>" open="<%= @open %>">
+        <summary class="accordion__summary">
+          <%= @title %>
+          <%= helpers.vite_icon_tag('chevron-down.svg', class: 'accordion__icon') %>
+        </summary>
+        <div class="accordion__body">
+          <%= content %>
+        </div>
+      </details>
+    ERB
+  end
 
   private
 

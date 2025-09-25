@@ -20,7 +20,7 @@
   <section class="flex flex-col gap-4 mb-12">
     <h2 class="h2">Architectural Philosophy</h2>
 
-    <%= render Ui::Alert::Component.new title: "Copy, Don't Install", type: :info do %>
+    <%= render Ui::Alert::Component.new title: "Copy, Don't Install", variant: :info do %>
       <p>
         This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed. This approach gives you full control over styling, behavior, and dependencies.
       </p>
@@ -79,7 +79,7 @@ renders_one :footer, Ui::Card::Footer::Component
   <section class="flex flex-col gap-4 my-12">
     <h3 class="h3">Styling Guidelines</h3>
 
-    <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :info do %>
+    <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", variant: :info do %>
       <ul class="pl-8 space-y-2 list-disc">
         <li>Use <code>@apply</code> for component base styles</li>
         <li>Avoid long utility chains in templates</li>
@@ -148,7 +148,7 @@ renders_one :footer, Ui::Card::Footer::Component
       <li>Combine multiple components into new ones</li>
     </ul>
 
-    <%= render Ui::Alert::Component.new title: "Remember", type: :info do %>
+    <%= render Ui::Alert::Component.new title: "Remember", variant: :info do %>
       <p>
         This is your codebase once you copy the components. Make them work for your specific needs!
       </p>

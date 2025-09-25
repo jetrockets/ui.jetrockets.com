@@ -104,7 +104,7 @@ yarn install</code></pre>
     <h3 class="mt-4 h3">4. Copy Components</h3>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new(title: "It's better to have 100% the same structure as in this template app.", type: :info) do %>
+      <%= render Ui::Alert::Component.new(title: "It's better to have 100% the same structure as in this template app.", variant: :info) do %>
         <p class="mb-0">This ensures all dependencies and configurations are correctly set up.</p>
       <% end %>
     </div>
@@ -132,7 +132,7 @@ bin/rails server
 yarn dev</code></pre>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "We recommend using Overmind", type: :info do %>
+      <%= render Ui::Alert::Component.new title: "We recommend using Overmind", variant: :info do %>
         <p class="mb-0">
           <%= link_to "Overmind", "https://github.com/DarthSim/overmind", target: "_blank", rel: "noopener noreferrer", class: "link" %>
           is a great tool for managing your development environment. We have `Procfile.dev` set up for you.
@@ -152,7 +152,7 @@ yarn dev</code></pre>
 └── [nested_components]/  # Sub-components</code></pre>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "💡 Tip", type: :info do %>
+      <%= render Ui::Alert::Component.new title: "💡 Tip", variant: :info do %>
         <div>
           All components inherit from <code>ApplicationComponent</code> and are namespaced under <code>Ui::</code>
         </div>
@@ -164,7 +164,7 @@ yarn dev</code></pre>
     <h2 class="text-2xl font-semibold text-gray-900">What's Next?</h2>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns.", type: :info do %>
+      <%= render Ui::Alert::Component.new title: "Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns.", variant: :info do %>
         <p>
           Don't forget to check out <%= link_to "Good to know", ui_good_to_know_path, class: "text-blue-600 hover:text-blue-800 font-medium underline" %> for architectural insights and best practices.
         </p>

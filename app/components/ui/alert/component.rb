@@ -1,13 +1,27 @@
 class Ui::Alert::Component < ApplicationComponent
-  TYPES = %i[info error success warning default]
+  VARIANTS = %i[default info error success warning]
   DEFAULT_TYPE = :default
 
-  def initialize(title:, icon_path: nil, type: DEFAULT_TYPE, **options)
-    @type = TYPES.include?(type) ? type : DEFAULT_TYPE
+  def initialize(title:, icon: nil, variant: DEFAULT_TYPE, **options)
+    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_TYPE
     @title = title
-    @icon_path = icon_path
+    @icon = icon
     @options = options
   end
+
+  erb_template <<~ERB
+    <%= content_tag :div, class: classes, **@options do %>
+      <%= icon %>
+
+      <div class="flex flex-col gap-2">
+        <strong class="font-semibold">
+          <%= @title %>
+        </strong>
+
+        <%= content %>
+      </div>
+    <% end %>
+  ERB
 
   private
 
@@ -15,17 +29,17 @@ class Ui::Alert::Component < ApplicationComponent
     class_names(
       "flex p-4 rounded-lg border border-gray-200 text-sm",
       @options.delete(:class),
-      "text-blue-900 bg-blue-50 border-blue-200": @type == :info,
-      "text-red-900 bg-red-50 border-red-200": @type == :error,
-      "text-green-900 bg-green-50 border-green-200": @type == :success,
-      "text-yellow-900 bg-yellow-50 border-yellow-200": @type == :warning,
-      "text-gray-900 bg-gray-50 bg-gray-50": @type == :default
+      "text-gray-900 bg-gray-50 bg-gray-50": @variant == :default,
+      "text-blue-900 bg-blue-50 border-blue-200": @variant == :info,
+      "text-red-900 bg-red-50 border-red-200": @variant == :error,
+      "text-green-900 bg-green-50 border-green-200": @variant == :success,
+      "text-yellow-900 bg-yellow-50 border-yellow-200": @variant == :warning
     )
   end
 
   def icon
-    if @icon_path
-      helpers.vite_svg_tag @icon_path, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
+    if @icon
+      helpers.vite_icon_tag @icon, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
     end
   end
 end

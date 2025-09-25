@@ -1,13 +1,11 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.3"
+ruby "3.4.4"
 
 gem "bootsnap", require: false
 
 gem "discard", "~> 1.2"
-
-gem "erb_lint", require: false
 
 gem "inline_svg"
 
@@ -16,25 +14,26 @@ gem "gretel"
 gem "meta-tags"
 gem "mjml-rails"
 
-gem "pagy", "~> 9.3.4"
+gem "pagy", "~> 9.4.0"
 gem "pg"
 gem "propshaft"
 gem "puma"
 
 # attractor uses Sinatra for web interface, which requires rack < 3.0 as of 2023-12-05
-gem "rack", "~> 2.2"
+gem "rack"
 gem "bcrypt"
 gem "rodauth-rails"
 gem "rodauth-omniauth"
 
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 8.0.0"
 gem "redis", "~> 5.0"
 
+gem "sequel-activerecord_connection", "~> 2.0"
 gem "strong_migrations"
 
 gem "turbo-rails"
 
-gem "view_component"
+gem "view_component", "~> 4.0.0"
 gem "vite_rails"
 
 group :development, :test do

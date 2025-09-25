@@ -70,7 +70,7 @@ class Ui::Drawer::Component < ApplicationComponent
       end
 
       tag.button(**attributes) do
-        helpers.vite_svg_tag "images/icons/close.svg"
+        helpers.vite_icon_tag "close.svg"
       end
     end
   end

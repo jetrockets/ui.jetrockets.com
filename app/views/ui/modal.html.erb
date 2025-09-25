@@ -22,8 +22,8 @@
   </header>
 
   <section>
-    <div class="flex flex-col mb-12 gap-4">
-      <%= render Ui::Alert::Component.new title: "To use async Modal component, you need to have a <turbo-frame id='modal'> in your layout", type: :warning %>
+    <div class="flex flex-col gap-4 mb-12">
+      <%= render Ui::Alert::Component.new title: "To use async Modal component, you need to have a <turbo-frame id='modal'> in your layout", variant: :warning %>
       <pre><code>&lt;%= turbo_frame_tag :modal %&gt;</code></pre>
     </div>
 
@@ -34,7 +34,7 @@
         <% tabs.with_item title: "Code", href: ui_modal_path(code: true), data: { turbo_frame: :ui_modal }, active: params[:code] %>
       <% end %>
 
-      <div class="flex flex-col mb-12 gap-4">
+      <div class="flex flex-col gap-4 mb-12">
         <% unless params[:code] %>
           <%= render "ui/examples/modal" %>
         <% else %>

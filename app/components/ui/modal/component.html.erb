@@ -14,7 +14,7 @@
 
       <% if helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request? || !@async %>
         <button type="button" class="modal__close" data-action="click->modal-turbo#close click->modal#close" aria-label="Close" data-id="<%= @id if @id.present? %>">
-          <%= helpers.vite_svg_tag "images/icons/close.svg", class: "w-6 h-6" %>
+          <%= helpers.vite_icon_tag "close.svg", class: "w-6 h-6" %>
         </button>
       <% end %>
     </div>

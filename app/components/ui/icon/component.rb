@@ -5,8 +5,6 @@ class Ui::Icon::Component < ApplicationComponent
   end
 
   def call
-    with_asset_finder(InlineSvg::ViteAssetFinder) do
-      render_inline_svg(@path, @options)
-    end
+    helpers.vite_icon_tag(@path, @options)
   end
 end

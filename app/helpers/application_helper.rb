@@ -20,6 +20,12 @@ module ApplicationHelper
     end
   end
 
+  def vite_icon_tag(filename, transform_params = {})
+    with_asset_finder(InlineSvg::ViteAssetFinder) do
+      render_inline_svg("images/icons/#{filename}", transform_params)
+    end
+  end
+
   def render_code_example(partial_path)
     partial_file_path = Rails.root.join("app/views/#{partial_path}.html.erb")
 

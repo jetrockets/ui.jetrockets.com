@@ -22,7 +22,7 @@ class Ui::Avatar::Component < ApplicationComponent
     if @full_name.present?
       content_tag(:span, initials, class: name_classes)
     else
-      helpers.vite_svg_tag("images/icons/user.svg", class: "avatar__icon")
+      helpers.vite_icon_tag("user.svg", class: "avatar__icon")
     end
   end
 

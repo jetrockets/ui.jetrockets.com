@@ -32,7 +32,7 @@ class Ui::Btn::Component < ApplicationComponent
   end
 
   def icon_content
-    helpers.vite_svg_tag(icon, class: icon_classes) if icon?
+    helpers.vite_icon_tag(icon, class: icon_classes) if icon?
   end
 
   def button_attributes
