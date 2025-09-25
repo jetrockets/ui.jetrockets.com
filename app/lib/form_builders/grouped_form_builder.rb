@@ -38,7 +38,7 @@ module FormBuilders
       end
     end
 
-    # Checkbox and Radio do not create a group, as they have their own markup
+    #  Checkbox and Radio do not create a group, as they have their own markup
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
       super(method, options, checked_value, unchecked_value)
     end
@@ -86,7 +86,7 @@ module FormBuilders
     end
 
     def extract_input_options(options)
-      # Remove group-specific options to avoid passing them to the input helpers
+      # Убираем group-специфичные опции из инпута
       options.except(:label, :hint, :group_class, :group_id, :group_data)
     end
 

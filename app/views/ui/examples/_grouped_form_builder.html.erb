@@ -27,13 +27,15 @@
   <%= f.password_field :password, autocomplete: "current-password", hint: "Password should contain at least 8 characters, including at least one letter and one number" %>
   <%= f.text_area :bio %>
 
-  <%= f.check_box :free_shipping, hint: "Hint text" %>
+  <%= f.group do %>
+    <%= f.check_box :free_shipping, hint: "Hint text" %>
+  <% end %>
 
-  <fieldset class="flex flex-col gap-2">
+  <%= f.group class: "flex flex-col gap-2" do %>
     <%= f.radio_button :radio, "1", label: "Radio 1"%>
     <%= f.radio_button :radio, "2", checked: true , hint: "Selected by default" %>
     <%= f.radio_button :radio, "3" %>
-  </fieldset>
+  <% end %>
 
   <%= f.toggler :toggler %>
 
