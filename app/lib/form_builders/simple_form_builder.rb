@@ -16,7 +16,7 @@ module FormBuilders
     end
 
     def text_area(method, options = {})
-      options[:data] = (options[:data] || {}).reverse_merge(controller: "textarea-autogrow")
+      options[:data] = { controller: "textarea-autogrow" }.merge(options[:data] || {})
       Inputs::TextInput.new(self, method, options, :text_area).render
     end
 
@@ -26,6 +26,10 @@ module FormBuilders
 
     def choices(method, choices = nil, options = {}, html_options = {}, &block)
       Inputs::ChoicesInput.new(self, method, choices, options, html_options).render
+    end
+
+    def label(method, text = nil, options = {}, &block)
+      Inputs::LabelInput.new(self, method, text, options).render
     end
 
     # def label(method, text = nil, options = {}, &block)

@@ -11,7 +11,7 @@ module FormBuilders
         @options[:autocomplete] ||= "off"
         @options[:required] = required?
 
-        @template.send(@field_type, @form_builder.object_name, @method, @options.merge(object: @form_builder.object))
+        @template.send(@field_type, @form_builder.object_name, @method, @options)
       end
     end
   end

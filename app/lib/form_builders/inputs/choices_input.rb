@@ -10,16 +10,16 @@ module FormBuilders
       def render
         @options[:required] = required?
         @html_options[:class] = input_classes(@html_options[:class])
-        @html_options[:data] = (@html_options[:data] || {}).reverse_merge!(choices_target: "select")
+        @html_options[:data] = { choices_target: "select" }.merge(@html_options[:data] || {})
 
-        prepare_choices_new_params
+        prepare_new_path_params
 
         @template.content_tag(:div, id: @container_id, class: form__choices_classes, data: { controller: "choices" }) do
           @template.select(
             @form_builder.object_name,
             @method,
             @choices,
-            @options.merge(object: @form_builder.object),
+            @options,
             @html_options
           )
         end
@@ -27,7 +27,7 @@ module FormBuilders
 
       private
 
-      def prepare_choices_new_params
+      def prepare_new_path_params
         return unless @html_options[:data][:new].present?
 
         @container_id = @form_builder.field_id("#{@method}_container")

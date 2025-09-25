@@ -11,7 +11,7 @@ module FormBuilders
         @html_options[:class] = input_classes(@html_options[:class])
         @options[:required] = required?
 
-        @template.select(@form_builder.object_name, @method, @choices, @options.merge(object: @form_builder.object), @html_options)
+        @template.select(@form_builder.object_name, @method, @choices, @options, @html_options)
       end
     end
   end
