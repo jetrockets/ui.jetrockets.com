@@ -51,5 +51,10 @@ module FormBuilders
     def submit(value = nil, options = {})
       Fields::Submit.new(self, value, options).render
     end
+
+    # Group container for form elements
+    def group(options = {}, &block)
+      Fields::GroupField.new(self, nil, options, &block).render
+    end
   end
 end

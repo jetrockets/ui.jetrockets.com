@@ -10,9 +10,9 @@
 
   --choices-text-color: var(--color-gray-900);
   --choices-keyline-color: var(--color-gray-300);
-  --choices-primary-color: var(--color-gray-200);
+  --choices-primary-color: var(--color-gray-100);
   --choices-highlight-color: var(--color-gray-100);
-  --choices-hover-color: var(--color-gray-900);
+  --choices-hover-color: var(--color-black);
 
   --choices-button-dimension: 8px;
   --choices-button-offset: 8px;
@@ -168,6 +168,7 @@
   color: var(--choices-hover-color);
   display: inline-block;
   font-size: var(--choices-font-size-sm);
+  font-weight: 500;
   margin-right: var(--choices-item-margin-horizontal);
   padding: var(--choices-multiple-item-padding);
 }

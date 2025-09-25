@@ -1,43 +1,21 @@
-<%= form_with url: root_path, data: { controller: "fields" }, builder: FormBuilders::CoreFormBuilder do |f| %>
-  <div class="grid gap-x-4 md:grid-cols-2">
-    <div class="form__group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, autofocus: true, required: true %>
-    </div>
-    <div class="form__group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-    </div>
-  </div>
-
-  <div class="grid gap-x-4 md:grid-cols-2">
-    <div class="form__group">
-      <%= f.label :country_multiple, "Multiple Select" %>
-      <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
+<%= form_with url: root_path, class: "form", data: { controller: "fields" }, builder: FormBuilders::CoreFormBuilder do |f| %>
+  <div class="flex flex-col gap-4">
+    <div class="grid gap-x-4 md:grid-cols-2">
+      <%= f.text_field :first_name, autofocus: true, required: true, placeholder: "First Name" %>
+      <%= f.text_field :last_name, placeholder: "Last Name" %>
     </div>
 
-    <div class="form__group">
-      <%= f.label :country %>
-      <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path } } %>
-      <p class="form__hint">
-        Select Other to enable the custom country name field
-      </p>
+    <div class="grid gap-x-4 md:grid-cols-2">
+      <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { label: "Multiple Select",include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
+      <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { hint: "Select Other to enable the custom country name field", include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path, hint: "Select Other to enable the custom country name field." } } %>
     </div>
-  </div>
 
-  <%= field_set_tag nil, disabled: true, class: "form__group disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
-    <%= f.label :country_name %>
-    <%= f.text_field :country_name, placeholder: "What is your country?" %>
-  <% end %>
+    <%= field_set_tag nil, disabled: true, class: "disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
+      <%= f.text_field :country_name, placeholder: "What is your country?" %>
+    <% end %>
 
-  <div class="form__group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="form__group">
-    <%= f.label :date %>
-    <%= f.easepick :date, value: Date.today, data: {
+    <%= f.email_field :email, autocomplete: "email", placeholder: "Email" %>
+    <%= f.easepick :date, placeholder: "Select a date", data: {
       easepick_plugins: ["LockPlugin", "AmpPlugin"],
       easepick_amp_dropdown: {
         months: true,
@@ -46,34 +24,16 @@
         minYear: Time.zone.today.year - 10
       }
     } %>
-  </div>
-
-  <div class="form__group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-    <p class="form__hint">
-      Password should contain at least 8 characters, including at least one letter and one number
-    </p>
-  </div>
-
-  <div class="form__group">
-    <%= f.label :bio %>
-    <%= f.text_area :bio %>
-  </div>
-
-  <div class="form__group">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+    <%= f.text_area :bio, placeholder: "Bio" %>
     <%= f.check_box :free_shipping, hint: "Hint text" %>
-  </div>
 
-  <div class="form__group">
-    <fieldset class="flex flex-col gap-2">
+    <%= f.group class: "flex flex-col gap-2" do %>
       <%= f.radio_button :radio, "1", label: "Radio 1"%>
       <%= f.radio_button :radio, "2", checked: true , hint: "Selected by default" %>
       <%= f.radio_button :radio, "3" %>
-    </fieldset>
-  </div>
+    <% end %>
 
-  <div class="form__group">
     <%= f.toggler :toggler %>
   </div>
 

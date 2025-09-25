@@ -5,7 +5,7 @@
   </div>
 
   <div class="grid gap-x-4 md:grid-cols-2">
-    <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { label: "Multiple Select",include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
+    <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
     <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { hint: "Select Other to enable the custom country name field", include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path, hint: "Select Other to enable the custom country name field." } } %>
   </div>
 
@@ -14,7 +14,7 @@
   <% end %>
 
   <%= f.email_field :email, autocomplete: "email" %>
-  <%= f.easepick :date, value: Date.today, data: {
+  <%= f.easepick :date, data: {
     easepick_plugins: ["LockPlugin", "AmpPlugin"],
     easepick_amp_dropdown: {
       months: true,

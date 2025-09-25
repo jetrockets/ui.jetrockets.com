@@ -6,7 +6,7 @@ module FormBuilders
       def initialize(form_builder, method, options = {}, &block)
         @form_builder = form_builder
         @method = method
-        @options = options
+        @options = options.symbolize_keys
         @object = form_builder.object
         @template = form_builder.instance_variable_get(:@template)
         @block = block
@@ -30,11 +30,15 @@ module FormBuilders
       end
 
       def field_classes(additional_classes = nil)
+        size = @options.delete(:size)
+
         class_names(
           "form__field",
-          { "form__field-errored": errors_for? },
           additional_classes,
-          @options.delete(:class)
+          @options.delete(:class),
+          "form__field-sm": size == :sm,
+          "form__field-lg": size == :lg,
+          "form__field-errored": errors_for?
         )
       end
     end

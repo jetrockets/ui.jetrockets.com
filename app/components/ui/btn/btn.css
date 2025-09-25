@@ -73,10 +73,10 @@
   }
 
   .btn-sm {
-    @apply px-2 py-1.5 h-8;
+    @apply px-2 py-1.5 h-9 text-xs;
 
     &.btn-circle {
-      @apply w-8 h-8;
+      @apply w-9 h-9;
     }
   }
 
