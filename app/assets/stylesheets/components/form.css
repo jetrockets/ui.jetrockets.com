@@ -1,6 +1,6 @@
 @layer components {
   .form__group {
-    @apply flex flex-col gap-1 mb-4;
+    @apply flex flex-col gap-1 mb-6;
   }
 
   .form__label {

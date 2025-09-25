@@ -39,7 +39,10 @@ class UiController < ApplicationController
   def flash_message
   end
 
-  def form_builder
+  def simple_form_builder
+  end
+
+  def grouped_form_builder
   end
 
   def icon

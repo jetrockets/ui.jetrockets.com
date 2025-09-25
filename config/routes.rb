@@ -34,7 +34,8 @@ Rails.application.routes.draw do
       get "tabs"
       get "tooltip"
       get "turbo_confirm"
-      get "form_builder"
+      get "simple_form_builder"
+      get "grouped_form_builder"
       get "typography"
     end
 
