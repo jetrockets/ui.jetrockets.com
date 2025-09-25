@@ -1,21 +1,20 @@
 module FormBuilders
   module Inputs
     class EasepickInput < BaseInput
-      def render
-        setup_easepick_options
-        super
+      def initialize(form_builder, method, options = {})
+        super(form_builder, method, options)
       end
 
-      private
+      def render
+        @value = @options.delete(:value) || @object&.send(@method)
+        @options[:value] = @value.present? ? I18n.l(@value) : nil
 
-      def setup_easepick_options
         @options[:data] = {
           action: "#{@options.dig(:data, :action)} focus->easepick#show",
           controller: "easepick"
         }.merge(@options[:data] || {})
 
-        value = @options.delete(:value) || @object&.send(@method)
-        @options[:value] = value.present? ? I18n.l(value) : nil
+        @form_builder.text_field(@method, @options)
       end
     end
   end

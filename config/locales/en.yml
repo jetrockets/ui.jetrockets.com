@@ -1,13 +1,13 @@
 en:
   date:
     formats:
-      default: "%d/%m/%Y"
+      default: "%m/%d/%Y"
       full_month: "%e %B, %Y"
       month_and_day: "%d, %B"
       only_day: "%d"
   time:
     formats:
-      default: "%d/%m/%Y %I:%M %p"
+      default: "%m/%d/%Y %I:%M %p"
       full_month: "%e %B, %Y"
       only_day: "%d"
   shared:

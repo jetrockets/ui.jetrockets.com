@@ -36,7 +36,7 @@ module FormBuilders
       end
 
       def label_tag(label_text)
-        Inputs::Label.new(@form_builder, @method, label_text, class: "form__label-checkbox").render
+        @form_builder.label(@method, label_text, class: "form__label-checkbox")
       end
 
       def hint_tag(hint)

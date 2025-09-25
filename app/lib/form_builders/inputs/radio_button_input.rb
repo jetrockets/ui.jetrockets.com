@@ -37,7 +37,7 @@ module FormBuilders
       end
 
       def label_tag(label_text)
-        Inputs::Label.new(@form_builder, "#{@method}_#{@tag_value}", label_text, class: "form__label-radio").render
+        @form_builder.label("#{@method}_#{@tag_value}", label_text, class: "form__label-radio")
       end
 
       def hint_tag(hint)

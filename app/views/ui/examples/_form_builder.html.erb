@@ -6,7 +6,7 @@
     </div>
     <div class="form__group">
       <%= f.label :last_name %>
-      <%= f.text_field :last_name, placeholder: "Please Select" %>
+      <%= f.text_field :last_name %>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
 
   <div class="form__group">
     <%= f.label :date %>
-    <%#= f.easepick :date, data: {
+    <%= f.easepick :date, value: Date.today, data: {
       easepick_plugins: ["LockPlugin", "AmpPlugin"],
       easepick_amp_dropdown: {
         months: true,

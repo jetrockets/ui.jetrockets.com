@@ -13,7 +13,7 @@ module FormBuilders
         @template.content_tag(:div, class: "flex items-center") do
           @template.concat hidden_checkbox
           @template.concat toggler_container(label_text)
-          @template.concat Inputs::Label.new(@form_builder, @method, label_text, class: "pl-2").render unless label_text == false
+          @template.concat @form_builder.label(@method, label_text, class: "pl-2") unless label_text == false
         end
       end
 
