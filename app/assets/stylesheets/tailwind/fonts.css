@@ -1,34 +1,20 @@
 @font-face {
   font-weight: 400;
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-Regular.ttf') format('truetype');
+  font-family: 'Inter';
+  src: url('../../fonts/Inter-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 500;
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-Medium.ttf') format('truetype');
+  font-family: 'Inter';
+  src: url('../../fonts/Inter-Medium.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 600;
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-Bold.ttf') format('truetype');
-  font-display: swap;
-}
-
-@font-face {
-  font-weight: 700;
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-ExtraBold.ttf') format('truetype');
-  font-display: swap;
-}
-
-@font-face {
-  font-weight: 800;
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-Black.ttf') format('truetype');
+  font-family: 'Inter';
+  src: url('../../fonts/Inter-SemiBold.ttf') format('truetype');
   font-display: swap;
 }

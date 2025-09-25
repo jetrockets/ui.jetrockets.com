@@ -10,7 +10,7 @@
   }
 
   .flash__link {
-    @apply block ml-8 font-medium text-white underline hover:no-underline;
+    @apply block ml-8 text-white underline hover:no-underline;
   }
 
   .flash__close {

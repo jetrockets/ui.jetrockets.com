@@ -2,7 +2,7 @@
 
 @layer components {
   .tooltip {
-    @apply relative z-20 px-3 py-2 text-sm font-medium text-center text-white transition-opacity duration-150 ease-in bg-gray-700 rounded-lg shadow-xs opacity-0 pointer-events-none min-w-40;
+    @apply relative z-20 px-3 py-2 text-sm text-center text-white transition-opacity duration-150 ease-in bg-gray-700 rounded-lg shadow-xs opacity-0 pointer-events-none min-w-40;
   }
 
   .tooltip__arrow {

@@ -23,7 +23,7 @@
         @apply relative inline-flex items-center h-8 px-2 cursor-not-allowed hover:bg-none;
       }
       &.current {
-        @apply relative flex items-center justify-center w-8 h-8 font-medium text-white cursor-default bg-primary border-primary z-10;
+        @apply relative z-10 flex items-center justify-center w-8 h-8 text-white cursor-default bg-primary border-primary;
       }
     }
     label {

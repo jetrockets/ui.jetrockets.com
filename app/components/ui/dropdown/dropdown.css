@@ -10,7 +10,7 @@
   }
 
   .dropdown__title {
-    @apply px-4 py-3 font-bold;
+    @apply px-4 py-3 font-medium;
   }
 
   .dropdown__item {

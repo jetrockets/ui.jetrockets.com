@@ -1,26 +1,26 @@
 @layer components {
   .h1 {
-    @apply text-4xl font-extrabold;
+    @apply text-4xl font-semibold;
   }
 
   .h2 {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-semibold;
   }
 
   .h3 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-semibold;
   }
 
   .h4 {
-    @apply text-xl font-bold;
+    @apply text-xl font-semibold;
   }
 
   .h5 {
-    @apply text-lg font-bold;
+    @apply text-lg font-semibold;
   }
 
   .h6 {
-    @apply text-base font-bold;
+    @apply text-base font-semibold;
   }
 
   .p {

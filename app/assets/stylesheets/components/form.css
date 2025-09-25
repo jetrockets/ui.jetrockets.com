@@ -4,7 +4,7 @@
   }
 
   .form__label {
-    @apply block text-sm font-medium cursor-pointer w-fit;
+    @apply block text-sm font-medium w-fit;
   }
 
   .form__label-checkbox,
@@ -13,7 +13,7 @@
   }
 
   .form__field {
-    @apply block w-full px-3 text-sm font-medium border-gray-300 rounded-md min-h-10 focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
+    @apply block w-full px-3 text-sm border-gray-300 rounded-md min-h-10 focus:border-blue-300 focus:ring-3 focus:ring-blue-200/50;
   }
 
   .form__field-lg {
@@ -46,7 +46,7 @@
 
   .form__radio,
   .form__checkbox {
-    @apply w-5 h-5 border-gray-300 rounded-md;
+    @apply w-5 h-5 border-gray-300 rounded-md cursor-pointer;
     @apply focus:ring focus:ring-offset-0 focus:ring-blue-200/50 checked:hover:bg-blue-500 focus:border-blue-300 checked:focus:border-blue-500 checked:focus:bg-blue-500 checked:bg-blue-500 checked:border-blue-500;
   }
 
