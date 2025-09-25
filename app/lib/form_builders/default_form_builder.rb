@@ -1,5 +1,5 @@
 module FormBuilders
-  class GroupedFormBuilder < SimpleFormBuilder
+  class DefaultFormBuilder < CoreFormBuilder
     INPUT_HELPERS.each do |field_method|
       define_method(field_method) do |method, options = {}, &block|
         create_form_group(method, options) do

@@ -1,5 +1,5 @@
 module FormBuilders
-  class SimpleFormBuilder < ActionView::Helpers::FormBuilder
+  class CoreFormBuilder < ActionView::Helpers::FormBuilder
     include ActionView::Helpers::TagHelper
 
     INPUT_HELPERS = %w[text_field password_field color_field search_field telephone_field phone_field date_field time_field datetime_field datetime_local_field month_field week_field url_field email_field number_field range_field].freeze

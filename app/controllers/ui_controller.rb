@@ -42,7 +42,7 @@ class UiController < ApplicationController
   def simple_form_builder
   end
 
-  def grouped_form_builder
+  def default_form_builder
   end
 
   def icon

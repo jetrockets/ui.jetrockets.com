@@ -34,9 +34,12 @@ Rails.application.routes.draw do
       get "tabs"
       get "tooltip"
       get "turbo_confirm"
-      get "simple_form_builder"
-      get "grouped_form_builder"
       get "typography"
+
+      namespace :form_builders do
+        get "core"
+        get "default"
+      end
     end
 
     root "ui#index"

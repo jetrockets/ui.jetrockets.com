@@ -13,7 +13,6 @@
     <%= f.text_field :country_name, placeholder: "What is your country?" %>
   <% end %>
 
-
   <%= f.email_field :email, autocomplete: "email" %>
   <%= f.easepick :date, value: Date.today, data: {
     easepick_plugins: ["LockPlugin", "AmpPlugin"],

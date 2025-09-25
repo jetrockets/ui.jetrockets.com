@@ -56,12 +56,12 @@ crumb :ui_flash_message do
   link "Flash Message", ui_flash_message_path
 end
 
-crumb :ui_simple_form_builder do
-  link "Simple Form Builder", ui_simple_form_builder_path
+crumb :ui_form_builders_core do
+  link "Core Form Builder", ui_form_builders_core_path
 end
 
-crumb :ui_grouped_form_builder do
-  link "Grouped Form Builder", ui_grouped_form_builder_path
+crumb :ui_form_builders_default do
+  link "Default Form Builder", ui_form_builders_default_path
 end
 
 crumb :ui_icon do

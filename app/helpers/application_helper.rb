@@ -1,5 +1,6 @@
 module ApplicationHelper
   include Pagy::Frontend
+  ActionView::Base.default_form_builder = FormBuilders::DefaultFormBuilder
 
   def set_body_class(classes)
     @body_class = classes

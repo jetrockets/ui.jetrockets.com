@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  default_form_builder FormBuilders::GroupedFormBuilder
 
   before_action :current_account
 
