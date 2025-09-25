@@ -26,6 +26,7 @@
   } %>
   <%= f.password_field :password, autocomplete: "current-password", hint: "Password should contain at least 8 characters, including at least one letter and one number" %>
   <%= f.text_area :bio %>
+
   <%= f.check_box :free_shipping, hint: "Hint text" %>
 
   <fieldset class="flex flex-col gap-2">
@@ -35,5 +36,6 @@
   </fieldset>
 
   <%= f.toggler :toggler %>
+
   <%= f.submit "Save", class: "btn-lg" %>
 <% end %>

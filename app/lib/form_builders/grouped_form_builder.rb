@@ -1,6 +1,5 @@
 module FormBuilders
   class GroupedFormBuilder < SimpleFormBuilder
-    # Переопределяем все методы инпутов, чтобы они автоматически создавали группы
     INPUT_HELPERS.each do |field_method|
       define_method(field_method) do |method, options = {}, &block|
         create_form_group(method, options) do
@@ -33,12 +32,14 @@ module FormBuilders
       end
     end
 
-    # Для check_box, radio_button, toggle не создаем группу, так как у них своя разметка
-    def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
-      super(method, options, checked_value, unchecked_value)
+    def toggler(method, options = {}, checked_value = "1", unchecked_value = "0")
+      create_form_group(method, options) do
+        super(method, options, checked_value, unchecked_value)
+      end
     end
 
-    def toggler(method, options = {}, checked_value = "1", unchecked_value = "0")
+    # Checkbox and Radio do not create a group, as they have their own markup
+    def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
       super(method, options, checked_value, unchecked_value)
     end
 
@@ -46,7 +47,7 @@ module FormBuilders
       super(method, tag_value, options)
     end
 
-    # Группа без инпута - просто контейнер
+    # Group container for form elements
     def group(options = {}, &block)
       Inputs::GroupInput.new(self, nil, options, &block).render
     end
@@ -57,26 +58,22 @@ module FormBuilders
       group_options = extract_group_options(options)
 
       Inputs::GroupInput.new(self, method, group_options) do
-        content = ""
-
-        # Лейбл (если не отключен)
+        # Label only if not false
         unless options[:label] == false
           label_text = options.delete(:label)
-          content += label(method, label_text)
+          @template.concat label(method, label_text)
         end
 
-        # Инпут
-        content += block.call
+        # Input
+        @template.concat block.call
 
-        # Подсказка
+        # Hint
         if options[:hint]
-          content += hint_tag(options.delete(:hint))
+          @template.concat hint_tag(options.delete(:hint))
         end
 
-        # Ошибки
-        content += inline_errors_for(method)
-
-        content.html_safe
+        # Errors
+        @template.concat inline_errors_for(method)
       end.render
     end
 
@@ -89,7 +86,7 @@ module FormBuilders
     end
 
     def extract_input_options(options)
-      # Убираем group-специфичные опции из инпута
+      # Remove group-specific options to avoid passing them to the input helpers
       options.except(:label, :hint, :group_class, :group_id, :group_data)
     end
 

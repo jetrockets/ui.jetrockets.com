@@ -1,8 +1,9 @@
 module FormBuilders
   module Inputs
     class EasepickInput < BaseInput
-      def initialize(form_builder, method, options = {})
+      def initialize(form_builder, method, options = {}, field_type = :text_field)
         super(form_builder, method, options)
+        @field_type = field_type
       end
 
       def render
@@ -14,7 +15,11 @@ module FormBuilders
           controller: "easepick"
         }.merge(@options[:data] || {})
 
-        @form_builder.text_field(@method, @options)
+        @options[:class] = input_classes
+        @options[:autocomplete] ||= "off"
+        @options[:required] = required?
+
+        @template.send(@field_type, @form_builder.object_name, @method, @options)
       end
     end
   end
