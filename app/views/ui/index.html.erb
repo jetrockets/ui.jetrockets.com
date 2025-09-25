@@ -16,7 +16,7 @@
     </div>
   </header>
 
-  <section class="flex flex-col mb-12 gap-4">
+  <section class="flex flex-col gap-4 mb-12">
     <h2 class="h2">Key Technologies</h2>
 
     <div class="grid gap-4 lg:grid-cols-2">
@@ -52,7 +52,7 @@
 
       <%= render Ui::Card::Component.new do |component| %>
         <% component.with_header bordered: false, title: "Stimulus", class: "flex-row justify-between" do %>
-          <%= render Ui::Badge::Component.new title: "Deprecated", type: :danger %>
+          <%= render Ui::Badge::Component.new title: "Deprecated", variant: :yellow %>
         <% end %>
         <% component.with_body do %>
           <p>
@@ -84,7 +84,7 @@
     </div>
   </section>
 
-  <section class="flex flex-col my-12 gap-4">
+  <section class="flex flex-col gap-4 my-12">
     <h2 class="h2">Next Steps</h2>
 
     <div class="flex flex-col gap-3">
