@@ -41,9 +41,7 @@ Rails.application.routes.draw do
         get "default"
       end
     end
-
-    root "ui#index"
-  else
-    root "home#index"
   end
+
+  root "home#index"
 end

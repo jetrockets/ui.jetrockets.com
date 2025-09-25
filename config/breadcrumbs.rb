@@ -2,6 +2,10 @@ crumb :root do
   link "JR Components", root_path
 end
 
+crumb :ui do
+  link "Introduction", ui_path
+end
+
 # UI Documentation
 crumb :ui_getting_started do
   link "Getting Started", ui_getting_started_path

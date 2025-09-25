@@ -1,46 +1,31 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.4.4"
+ruby file: ".ruby-version"
 
+gem "rails", "~> 8.0.0"
+
+gem "bcrypt"
 gem "bootsnap", require: false
-
-gem "discard", "~> 1.2"
-
-gem "inline_svg"
-
 gem "gretel"
-
+gem "inline_svg"
 gem "meta-tags"
 gem "mjml-rails"
-
-gem "pagy", "~> 9.4.0"
+gem "pagy"
 gem "pg"
 gem "propshaft"
 gem "puma"
-
-# attractor uses Sinatra for web interface, which requires rack < 3.0 as of 2023-12-05
 gem "rack"
-gem "bcrypt"
-gem "rodauth-rails"
-gem "rodauth-omniauth"
-
-gem "rails", "~> 8.0.0"
 gem "redis", "~> 5.0"
-
+gem "rodauth-omniauth"
+gem "rodauth-rails"
 gem "sequel-activerecord_connection", "~> 2.0"
 gem "strong_migrations"
-
 gem "turbo-rails"
-
 gem "view_component", "~> 4.0.0"
 gem "vite_rails"
 
 group :development, :test do
   gem "erb_lint", require: false
-
-  gem "factory_bot_rails"
-  gem "ffaker"
 
   gem "letter_opener"
 
@@ -48,9 +33,6 @@ group :development, :test do
   gem "pry-byebug"
 
   gem "rubocop-rails-omakase", require: false
-  gem "rubocop-rspec", require: false
-  gem "rubocop-faker", require: false
-  gem "rubocop-md", require: false
 end
 
 group :development do
