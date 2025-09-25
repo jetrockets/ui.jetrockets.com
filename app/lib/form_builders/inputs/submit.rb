@@ -2,17 +2,18 @@ module FormBuilders
   module Inputs
     class Submit < BaseInput
       def initialize(form_builder, value = nil, options = {})
-        @form_builder = form_builder
+        super(form_builder, nil, options)
         @value = value
-        @options = options
-        @template = form_builder.instance_variable_get(:@template)
       end
 
       def render
-        classes = [ "btn", "btn-primary" ]
-        classes << @options.delete(:class) if @options[:class]
+        classes = class_names(
+          "btn",
+          "btn-primary",
+          @options.delete(:class)
+        )
 
-        @template.submit_tag(@value, @options.merge(class: classes.compact.join(" ")))
+        @template.submit_tag(@value, class: classes, **@options)
       end
     end
   end

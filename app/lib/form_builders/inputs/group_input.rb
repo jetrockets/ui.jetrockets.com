@@ -2,18 +2,11 @@ module FormBuilders
   module Inputs
     class GroupInput < BaseInput
       def initialize(form_builder, method = nil, options = {}, &block)
-        @form_builder = form_builder
-        @method = method
-        @options = options
-        @template = form_builder.instance_variable_get(:@template)
-        @object = form_builder.object
-        @block = block
+        super(form_builder, method, options, &block)
       end
 
       def render
-        classes = build_group_classes
-        
-        @template.content_tag(:div, class: classes, **@options.except(:class)) do
+        @template.content_tag(:div, class: build_group_classes, **@options) do
           @block ? @block.call : ""
         end
       end
@@ -21,14 +14,11 @@ module FormBuilders
       private
 
       def build_group_classes
-        classes = ["form__group"]
-        classes << "form__group-errored" if @method && errors_for?(@method)
-        classes << @options[:class] if @options[:class]
-        classes.compact.join(" ")
-      end
-
-      def errors_for?(method)
-        @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
+        class_names(
+          "form__group",
+          { "form__group-errored": @method && errors_for?(@method) },
+          @options.delete(:class)
+        )
       end
     end
   end

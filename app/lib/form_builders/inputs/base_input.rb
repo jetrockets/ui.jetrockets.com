@@ -3,12 +3,13 @@ module FormBuilders
     class BaseInput
       include ActionView::Helpers::TagHelper
 
-      def initialize(form_builder, method, options = {})
+      def initialize(form_builder, method, options = {}, &block)
         @form_builder = form_builder
         @method = method
         @options = options
         @object = form_builder.object
         @template = form_builder.instance_variable_get(:@template)
+        @block = block
       end
 
       protected
