@@ -39,8 +39,7 @@
     display: none;
   }
 
-
-/* FIX for tailwind */
+  /* FIX for tailwind */
   select.choices__input[required][hidden] {
     display: block !important;
   }

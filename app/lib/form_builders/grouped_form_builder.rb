@@ -64,30 +64,30 @@ module FormBuilders
         end
 
         # Errors
-        @template.concat inline_errors_for(method)
+        custom_error = options[:error]
+        @template.concat inline_errors_for(method, custom_error)
       end.render
     end
 
     def extract_group_options(options)
-      {
-        class: options.delete(:group_class),
-        id: options.delete(:group_id),
-        data: options.delete(:group_data)
-      }.compact
+      options.delete(:group_html) || {}
     end
 
     def extract_field_options(options)
-      # Remove group-specific options from field
-      options.except(:label, :hint, :group_class, :group_id, :group_data)
+      # Remove group-specific options from field, but keep :error for BaseField CSS classes
+      options.except(:label, :hint, :group_html)
     end
 
     def hint_tag(hint)
       @template.content_tag(:p, hint, class: "form__hint")
     end
 
-    def inline_errors_for(method)
-      return "" unless errors_for?(method)
-      @template.content_tag(:p, @object&.errors[method.to_sym]&.first&.capitalize, class: "form__error")
+    def inline_errors_for(method, custom_error = nil)
+      if custom_error || errors_for?(method)
+        error_message = (custom_error.presence || @object&.errors[method.to_sym]&.first).to_s.capitalize
+
+        @template.content_tag(:p, error_message, class: "form__error")
+      end
     end
 
     def errors_for?(method)

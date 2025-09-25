@@ -15,6 +15,7 @@ module FormBuilders
       protected
 
       def errors_for?(method = @method)
+        return true if @options.delete(:error).present?
         @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
       end
 

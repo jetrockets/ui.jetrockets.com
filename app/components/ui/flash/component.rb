@@ -38,8 +38,8 @@ class Ui::Flash::Component < ApplicationComponent
     {
       notice: "bg-gray-800",
       success: "bg-gray-800",
-      alert: "bg-red-800",
-      error: "bg-red-800"
+      alert: "bg-red-700",
+      error: "bg-red-700"
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
 end
