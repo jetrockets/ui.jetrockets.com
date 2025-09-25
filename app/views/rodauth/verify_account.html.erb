@@ -2,7 +2,7 @@
 
 <%= render Ui::Modal::Component.new(title: "Please verify your account", size: :lg) do %>
   <div class="modal__body">
-    <%= form_with url: rodauth.verify_account_path, method: :post, data: { turbo: false }, class: "w-full max-w-sm" do |form| %>
+    <%= form_with url: rodauth.verify_account_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
       <% if rodauth.verify_account_set_password? %>
         <p>
           Now it's just a matter of a few things. Create a strong password for your account.
@@ -16,11 +16,13 @@
         <% if rodauth.require_password_confirmation? %>
           <%= form.password_field rodauth.password_confirm_param, value: "", autocomplete: "new-password", required: true, error: rodauth.field_error(rodauth.password_confirm_param) %>
         <% end %>
-      <% end %>
 
-      <div class="mb-6 form__actions">
-        <%= form.submit rodauth.verify_account_button, class: "btn-block" %>
-      </div>
+        <div class="mb-6 form__actions">
+          <%= form.submit rodauth.verify_account_button, class: "btn-lg btn-block" %>
+        </div>
+      <% else %>
+        <%= form.submit rodauth.verify_account_button, class: "btn-lg btn-block" %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

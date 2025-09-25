@@ -35,8 +35,8 @@ class Ui::Avatar::Component < ApplicationComponent
       "avatar",
       @options.delete(:class),
       "avatar-#{@size}",
-      "avatar-rounded": roudned?,
-      "avatar-circle": circle?
+      "avatar-rounded": @variant == :rounded,
+      "avatar-circle": @variant == :circle
     )
   end
 
@@ -48,13 +48,5 @@ class Ui::Avatar::Component < ApplicationComponent
       "text-lg": @size == :lg,
       "text-xl": @size == :xl
     )
-  end
-
-  def roudned?
-    @variant == :rounded
-  end
-
-  def circle?
-    @variant == :circle
   end
 end
