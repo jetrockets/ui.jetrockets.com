@@ -19,6 +19,8 @@ class Ui::Avatar::Component < ApplicationComponent
   private
 
   def icon_content
+    # TODO: Add account avatar if exists
+
     if @full_name.present?
       content_tag(:span, initials, class: name_classes)
     else

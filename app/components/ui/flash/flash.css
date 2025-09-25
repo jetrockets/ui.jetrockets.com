@@ -2,7 +2,7 @@
 
 @layer components {
   .flash {
-    @apply fixed flex flex-col items-end space-y-2 bottom-3 md:bottom-5 left-0 right-0 px-3 md:px-0 md:right-5 md:left-auto w-full md:w-fit md:h-fit z-[100];
+    @apply fixed flex flex-col items-end space-y-2 top-3 left-3 right-3 md:left-auto md:w-fit md:h-fit z-[100];
   }
 
   .flash__container {

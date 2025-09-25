@@ -1,4 +1,4 @@
-class Ui::Dropdown::LinkComponent < ApplicationComponent
+class Ui::Dropdown::ButtonComponent < ApplicationComponent
   def initialize(title: nil, href: nil, **options)
     @title = title
     @href = href
@@ -7,7 +7,7 @@ class Ui::Dropdown::LinkComponent < ApplicationComponent
 
   erb_template <<~ERB
     <li class="dropdown__item">
-      <%= link_to @title, @href, class: classes, **@options %>
+      <%= button_to @title, @href, **@options, class: classes, form: { class: "dropdown__form" } %>
     </li>
   ERB
 

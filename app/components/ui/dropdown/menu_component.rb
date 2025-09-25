@@ -2,6 +2,7 @@ class Ui::Dropdown::MenuComponent < ApplicationComponent
   renders_one :title
   renders_many :elements, types: {
     link: Ui::Dropdown::LinkComponent,
+    button: Ui::Dropdown::ButtonComponent,
     item: Ui::Dropdown::ItemComponent,
     divider: Ui::Dropdown::DividerComponent
   }

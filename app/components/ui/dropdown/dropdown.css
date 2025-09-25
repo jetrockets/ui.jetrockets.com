@@ -14,7 +14,11 @@
   }
 
   .dropdown__item {
-    @apply block px-2 py-2 mx-2 text-sm rounded-md cursor-pointer hover:bg-gray-100;
+    @apply block mx-2;
+  }
+
+  .dropdown__link {
+    @apply block w-full px-2 py-2 text-sm text-left rounded-md cursor-pointer hover:bg-gray-100;
   }
 
   .dropdown__divider {

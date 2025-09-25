@@ -6,6 +6,15 @@ class Ui::Dropdown::TriggerComponent < ApplicationComponent
   end
 
   def call
-    content_tag :button, content, **@options
+    content_tag :span, content, role: :button, class: classses, **@options
+  end
+
+  private
+
+  def classses
+    class_names(
+      "dropdown__trigger",
+      @options.delete(:class)
+    )
   end
 end
