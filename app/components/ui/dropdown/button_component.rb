@@ -6,9 +6,9 @@ class Ui::Dropdown::ButtonComponent < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <li class="dropdown__item">
+    <%= render Ui::Dropdown::ItemComponent.new do %>
       <%= button_to @title, @href, **@options, class: classes, form: { class: "dropdown__form" } %>
-    </li>
+    <% end %>
   ERB
 
   private

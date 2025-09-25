@@ -6,9 +6,9 @@ class Ui::Dropdown::LinkComponent < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <li class="dropdown__item">
+    <%= render Ui::Dropdown::ItemComponent.new do %>
       <%= link_to @title, @href, class: classes, **@options %>
-    </li>
+    <% end %>
   ERB
 
   private

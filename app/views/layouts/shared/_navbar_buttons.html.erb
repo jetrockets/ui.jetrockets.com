@@ -5,7 +5,7 @@
 
   <% if rodauth.logged_in? %>
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
-      <%= dropdown.with_trigger(class: "h-8") do %>
+      <%= dropdown.with_trigger do %>
         <%= render Ui::Avatar::Component.new size: :sm %>
       <% end %>
       <%= dropdown.with_menu do |list| %>
