@@ -39,14 +39,23 @@
 
   --choices-button-opacity: 0.7;
   --choices-button-opacity-hover: 1;
-  --choices-placeholder-opacity: 0.5;
+  --choices-placeholder-opacity: 0.6;
 }
-
 
 .choices {
   cursor: pointer;
   font-size: var(--choices-font-size-lg);
   position: relative;
+}
+
+/* Fix for required attribute */
+.choices select.choices__input[required] {
+  opacity: 0;
+  outline: none;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .choices[data-type*="select-one"] .choices__input {
@@ -110,6 +119,7 @@
   font-size: var(--choices-font-size-lg);
   min-height: var(--choices-input-height);
   overflow: hidden;
+  color: var(--choices-text-color);
   padding: var(--choices-inner-padding);
   vertical-align: top;
   width: var(--choices-width);
@@ -186,6 +196,9 @@
   visibility: hidden;
   width: var(--choices-width);
   z-index: var(--choices-z-index);
+
+  --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 
 .is-active.choices__list--dropdown,

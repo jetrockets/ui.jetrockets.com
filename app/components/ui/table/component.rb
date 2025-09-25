@@ -19,6 +19,7 @@ class Ui::Table::Component < ApplicationComponent
   def classes
     class_names(
       "table",
+      @options.delete(:class),
       "table-bordered": @bordered,
       "table-full": @full,
       "table-hovered": @hovered,

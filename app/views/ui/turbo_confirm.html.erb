@@ -22,7 +22,7 @@
   </header>
 
   <section>
-    <div class="flex flex-col gap-4 mb-12">
+    <div class="flex flex-col mb-12 gap-4">
         <%= render Ui::Alert::Component.new title: "To use the Turbo Confirm component, you need to set a custom confirm method using the following JavaScript code", type: :warning %>
         <pre><code>Turbo.setConfirmMethod((message) => {
   const dialog = document.getElementById('turbo-confirm')
@@ -55,7 +55,7 @@
         <% tabs.with_item title: "Code", href: ui_turbo_confirm_path(code: true), data: { turbo_frame: :ui_turbo_confirm }, active: params[:code] %>
       <% end %>
 
-      <div class="flex flex-col gap-4 mb-12">
+      <div class="flex flex-col mb-12 gap-4">
         <% unless params[:code] %>
           <%= render "ui/examples/turbo_confirm" %>
         <% else %>

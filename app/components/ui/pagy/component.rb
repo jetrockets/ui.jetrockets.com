@@ -4,12 +4,10 @@ class Ui::Pagy::Component < ApplicationComponent
     @options = options
   end
 
-  attr_reader :pagy
-
   private
 
   def render?
-    pagy.pages > 1
+    @pagy.pages > 1
   end
 
   def pagination_classes

@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 class Ui::Modal::Component < ApplicationComponent
-  # If you need a drawer instead of modal, you can prepare component for that.
-  # Please copy the modal component, rename it to drawer and use it the same way.
-  # https://flowbite.com/docs/components/drawer/
-
-  attr_reader :title, :subtitle
-
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 

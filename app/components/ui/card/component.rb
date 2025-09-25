@@ -6,8 +6,4 @@ class Ui::Card::Component < ApplicationComponent
   def initialize(**options)
     @options = options
   end
-
-  private
-
-  attr_reader :options
 end

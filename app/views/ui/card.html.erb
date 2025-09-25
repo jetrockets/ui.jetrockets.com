@@ -21,7 +21,7 @@
     </div>
   </header>
 
-  <section class="flex flex-col gap-2 mb-12">
+  <section class="flex flex-col mb-12 gap-2">
     <h2 class="h3">Basic Card</h2>
 
     <div class="max-w-md mb-4">
@@ -47,7 +47,7 @@
 &lt;% end %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">Bordered Card</h2>
 
     <div class="max-w-md mb-4">
@@ -73,13 +73,13 @@
 &lt;% end %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">Body Only Card</h2>
 
     <div class="max-w-md mb-4">
       <%= render Ui::Card::Component.new do |component| %>
         <% component.with_body do %>
-          <div class="space-y-3 text-center">
+          <div class="text-center space-y-3">
             <%= render Ui::Icon::Component.new(path: "images/icons/alert.svg", class: "w-12 h-12 mx-auto text-blue-600") %>
             <h3 class="text-lg font-semibold">Welcome!</h3>
             <p class="text-gray-600">Thank you for joining our community. Get started by exploring the features.</p>

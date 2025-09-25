@@ -19,6 +19,7 @@ class Ui::Card::Header::Component < ApplicationComponent
     class_names(
       "card__header",
       align_class,
+      @options.delete(:class),
       "card__header-bordered": @bordered
     )
   end

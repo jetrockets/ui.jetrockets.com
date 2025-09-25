@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  default_form_builder FormBuilders::SimpleFormBuilder
+
   before_action :current_account
 
   helper_method :current_account, :turbo_frame_request?, :pagy

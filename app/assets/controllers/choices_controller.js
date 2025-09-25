@@ -2,14 +2,12 @@ import { Controller } from '@hotwired/stimulus'
 import Choices from 'choices.js'
 import { stimulus } from '~/init'
 
-import '~/stylesheets/vendors/choices.css'
-
 export default class ChoicesController extends Controller {
-  static targets = ['select', 'options']
+  static targets = ['select']
 
   initialize () {
-    this.searchPath = this.element.dataset.searchPath
-    this.newPath = this.element.dataset.newPath || false
+    this.searchPath = this.selectTarget.dataset.search
+    this.newPath = this.selectTarget.dataset.new
   }
 
   connect () {
@@ -50,7 +48,7 @@ export default class ChoicesController extends Controller {
     if (!input) return
 
     const selectedItems = this.selectTarget.querySelectorAll('option:checked').length
-    if (selectedItems >= parseInt(this.element.dataset.maxItemCount)) {
+    if (selectedItems >= parseInt(this.selectTarget.dataset.maxItemCount)) {
       input.classList.add('hidden')
     } else {
       input.classList.remove('hidden')
@@ -79,8 +77,9 @@ export default class ChoicesController extends Controller {
       fuseOptions: {
         threshold: 0.2
       },
+      shouldSort: false,
+      removeItemButton: this.selectTarget.multiple,
       searchResultLimit: 10,
-      removeItemButton: true,
       allowHTML: true,
       ...this.#options(),
       callbackOnCreateTemplates: function (template) {
@@ -123,22 +122,9 @@ export default class ChoicesController extends Controller {
     this.#toggleInput()
   }
 
-  #loadDefaultOptions = () => {
-    // this.choices.setChoices([{ value: '', label: 'Please Select' }], 'value', 'label', true)
-
-    if (this.hasOptionsTarget) {
-      const options = [...this.optionsTarget.children].map(option => ({
-        value: option.value,
-        label: option.label,
-        customProperties: option.dataset.customProperties ? JSON.parse(option.dataset.customProperties) : {}
-      }))
-      this.choices.setChoices(options, 'value', 'label', false)
-    }
-  }
-
   #addItem = (event) => {
     const selectedLength = this.selectTarget.options.length
-    const maxItemCount = parseInt(this.element.dataset.maxItemCount)
+    const maxItemCount = parseInt(this.selectTarget.dataset.maxItemCount)
 
     if (event.detail.customProperties === 'all') {
       this.choices.choiceList.element.querySelectorAll('.choices__item').forEach(item => {
@@ -166,8 +152,6 @@ export default class ChoicesController extends Controller {
       })
         .then(response => response.json())
         .then(this.#setSearchOptions)
-    } else {
-      this.#loadDefaultOptions()
     }
   }
 
@@ -188,9 +172,8 @@ export default class ChoicesController extends Controller {
     if (this.newPath) {
       const dropdownList = this.element.querySelector('.choices__list--dropdown')
 
-      if (dropdownList && !dropdownList.querySelector('.choices__item--new')) {
-        const linkElement = `<a href="${this.newUrlValue}" class="choices__item choices__item--new" data-turbo-frame="modal">+ New item</a>`
-        dropdownList.insertAdjacentHTML('beforeend', linkElement)
+      if (dropdownList) {
+        dropdownList.insertAdjacentHTML('beforeend', this.#dropdownFooterTemplate())
       }
     }
   }
@@ -202,13 +185,23 @@ export default class ChoicesController extends Controller {
   }
 
   #optionsReducer = (accumulator, currentValue) => {
-    const value = this.element.dataset[currentValue]
+    const value = this.selectTarget.dataset[currentValue]
     if (value) {
-      accumulator[currentValue] = value === 'true' || value === 'false' ? JSON.parse(value) : value
-    } else if (currentValue === 'shouldSort') {
-      accumulator[currentValue] = false // Set default value for shouldSort
+      accumulator[currentValue] = ['true', 'false'].includes(value) ? JSON.parse(value) : value
     }
     return accumulator
+  }
+
+  #dropdownFooterTemplate () {
+    return `
+      <a href="${this.newPath}" data-turbo-frame="drawer" class="choices__item choices__item--choice flex items-center gap-2 hover:bg-gray-100" tabindex="-1">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 2.8125V15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>New</span>
+      </a>
+    `
   }
 }
 

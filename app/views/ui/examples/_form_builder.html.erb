@@ -2,23 +2,23 @@
   <div class="grid gap-x-4 md:grid-cols-2">
     <div class="form__group">
       <%= f.label :first_name %>
-      <%= f.text_field :first_name, autofocus: true %>
+      <%= f.text_field :first_name, autofocus: true, required: true %>
     </div>
     <div class="form__group">
       <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, placeholder: "Please Select" %>
     </div>
   </div>
 
   <div class="grid gap-x-4 md:grid-cols-2">
     <div class="form__group">
       <%= f.label :country_multiple, "Multiple Select" %>
-      <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true } %>
+      <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
     </div>
 
     <div class="form__group">
       <%= f.label :country %>
-      <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { data: { action: "change->fields#enable" } } %>
+      <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path } } %>
       <p class="form__help">
         Select Other to enable the custom country name field.
       </p>
@@ -37,7 +37,7 @@
 
   <div class="form__group">
     <%= f.label :date %>
-    <%= f.easepick :date, data: {
+    <%#= f.easepick :date, data: {
       easepick_plugins: ["LockPlugin", "AmpPlugin"],
       easepick_amp_dropdown: {
         months: true,
@@ -50,7 +50,15 @@
 
   <div class="form__group">
     <%= f.label :password %>
-    <%= f.password_field :password, help: "Password should contain at least 8 characters, including at least one letter and one number.", autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password" %>
+    <p class="form__help">
+      Password should contain at least 8 characters, including at least one letter and one number
+    </p>
+  </div>
+
+  <div class="form__group">
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
   </div>
 
   <div class="form__group">
@@ -66,7 +74,7 @@
   </div>
 
   <div class="form__group">
-    <%= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
+    <%#= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
   </div>
 
   <div class="form__actions">

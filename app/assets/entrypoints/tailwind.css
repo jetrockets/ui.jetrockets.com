@@ -8,6 +8,7 @@
 @import "../stylesheets/tailwind/animations";
 @import "../stylesheets/tailwind/theme";
 @import "../stylesheets/tailwind/base";
+@import "../stylesheets/tailwind/utilities";
 
 @source '../../../tailwindcss_safelist.txt';
 /* @source "../../../node_modules/flowbite"; */

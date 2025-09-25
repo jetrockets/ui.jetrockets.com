@@ -15,6 +15,7 @@ class Ui::Card::Footer::Component < ApplicationComponent
     class_names(
       "card__footer",
       align_class,
+      @options.delete(:class),
       "card__footer-bordered": @bordered
     )
   end

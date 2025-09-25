@@ -1,4 +1,4 @@
-<div class="flex gap-4 items-center">
+<div class="flex items-center gap-4">
   <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }) do %>
     <%= render Ui::Btn::Component.new(variant: :primary).with_content "Tooltip Button" %>
   <% end %>

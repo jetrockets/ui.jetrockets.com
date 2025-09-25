@@ -6,7 +6,7 @@
       <p class="flex-1">
         <%== message %>
       </p>
-      <% if dismissible %>
+      <% if @dismissible %>
         <button class="flash__close" type="button" data-action="flash#close" aria-label="Close">
           <%= helpers.vite_svg_tag "images/icons/close.svg", class: "w-5 h-5" %>
           <span class="sr-only">Close</span>

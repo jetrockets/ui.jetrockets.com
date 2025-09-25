@@ -22,14 +22,14 @@
   </header>
 
   <section>
-    <div class="flex flex-col gap-4 mb-12">
+    <div class="flex flex-col mb-12 gap-4">
       <%= render Ui::Alert::Component.new title: "To use the Flash Message component, you need to render it in your layout", type: :warning %>
       <pre><code>&lt;%= render Ui::Flash::Component.new %&gt;</code></pre>
     </div>
 
     <h2 class="h3">Example</h2>
 
-    <div class="flex flex-col gap-2 mt-6">
+    <div class="flex flex-col mt-6 gap-2">
       <%= render "ui/examples/flash" %>
       <%= render_code_example("ui/examples/_flash") %>
     </div>

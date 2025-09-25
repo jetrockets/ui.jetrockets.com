@@ -1,6 +1,6 @@
 @layer components {
   .sidebar {
-    @apply md:overflow-y-auto md:h-screen pr-8;
+    @apply md:pr-8 md:overflow-y-auto;
   }
 
   .sidebar__header {
@@ -16,7 +16,7 @@
   }
 
   .sidebar__nav {
-    @apply w-full space-y-8;
+    @apply w-full pb-8 space-y-8 md:pb-0;
     @apply fixed inset-0 invisible px-4 pt-4 overflow-auto duration-300 -translate-y-full bg-white opacity-0;
     @apply md:relative md:block md:visible md:translate-y-0 md:bg-transparent md:opacity-100 md:px-0;
     transition-property: opacity, transform;
@@ -36,7 +36,7 @@
   }
 
   .sidebar__menu {
-    @apply space-y-1 border-l;
+    @apply space-y-1 border-l border-gray-200;
   }
 
   .sidebar__link {
@@ -48,7 +48,7 @@
   }
 
   .sidebar__link-disabled {
-    @apply cursor-not-allowed text-gray-400 hover:text-gray-400;
+    @apply text-gray-400 cursor-not-allowed hover:text-gray-400;
   }
 
   /* Mobile burger menu */

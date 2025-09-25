@@ -1,9 +1,9 @@
-<%= content_tag :div, class: classes, **options do %>
+<%= content_tag :div, class: classes, **@options do %>
   <%= icon %>
 
   <div class="flex flex-col gap-2">
     <strong class="block font-semibold">
-      <%= title %>
+      <%= @title %>
     </strong>
 
     <%= content %>

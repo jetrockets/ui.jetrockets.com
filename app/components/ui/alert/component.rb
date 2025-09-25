@@ -11,11 +11,9 @@ class Ui::Alert::Component < ApplicationComponent
 
   private
 
-  attr_reader :title, :options
-
   def classes
     class_names(
-      "flex p-4 rounded-lg border text-sm",
+      "flex p-4 rounded-lg border border-gray-200 text-sm",
       @options.delete(:class),
       "text-blue-900 bg-blue-50 border-blue-200": @type == :info,
       "text-red-900 bg-red-50 border-red-200": @type == :error,

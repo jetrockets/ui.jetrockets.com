@@ -5,8 +5,6 @@ class Ui::Flash::Component < ApplicationComponent
   REMOVE_DELAY = 9000
   SHOW_DELAY = 250
 
-  attr_reader :dismissible
-
   def initialize(dismissible: true)
     super
     @dismissible = dismissible

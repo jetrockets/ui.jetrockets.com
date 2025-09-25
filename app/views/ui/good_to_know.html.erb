@@ -81,7 +81,7 @@ renders_one :footer, Ui::Card::Footer::Component
 
     <div class="not-prose">
       <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :info do %>
-        <ul class="pl-8 space-y-2 list-disc">
+        <ul class="pl-8 list-disc space-y-2">
           <li>Use <code>@apply</code> for component base styles</li>
           <li>Avoid long utility chains in templates</li>
           <li>Create custom CSS for complex animations/interactions</li>
@@ -115,7 +115,7 @@ renders_one :footer, Ui::Card::Footer::Component
     <h2 class="h2">Accessibility (A11y)</h2>
     <div class="flex flex-col gap-6 not-prose">
       <%= render Ui::Alert::Component.new title: "Built-in Features" do %>
-        <ul class="pl-8 space-y-2 list-disc">
+        <ul class="pl-8 list-disc space-y-2">
           <li>Semantic HTML elements</li>
           <li>ARIA attributes where needed</li>
           <li>Keyboard navigation support</li>
@@ -125,7 +125,7 @@ renders_one :footer, Ui::Card::Footer::Component
       <% end %>
 
       <%= render Ui::Alert::Component.new title: "Your Responsibilities" do %>
-        <ul class="pl-8 space-y-2 list-disc">
+        <ul class="pl-8 list-disc space-y-2">
           <li>Provide meaningful alt text for images</li>
           <li>Ensure sufficient color contrast</li>
           <li>Test with screen readers</li>

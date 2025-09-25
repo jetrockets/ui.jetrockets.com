@@ -21,10 +21,10 @@
     </div>
   </header>
 
-  <section class="flex flex-col gap-2 mb-12">
+  <section class="flex flex-col mb-12 gap-2">
     <h2 class="h3">Basic Variants</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
+    <div class="flex flex-wrap items-center mb-4 gap-1">
       <%= render Ui::Btn::Component.new.with_content "Default" %>
       <%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %>
       <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %>
@@ -37,10 +37,10 @@
 &lt;%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">Sizes</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
+    <div class="flex flex-wrap items-center mb-4 gap-1">
       <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
       <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
       <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
@@ -55,10 +55,10 @@
 &lt;%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">Outlined Variants</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
+    <div class="flex flex-wrap items-center mb-4 gap-1">
       <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
       <%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
       <%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
@@ -71,10 +71,10 @@
 &lt;%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">With Icons</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
+    <div class="flex flex-wrap items-center mb-4 gap-1">
       <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("images/icons/user.svg") %>
       <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("images/icons/user.svg") %>
       <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("images/icons/user.svg") %>
@@ -87,7 +87,7 @@
 &lt;%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("images/icons/user.svg") %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">Special Styles</h2>
 
     <div class="mb-4 space-y-3">
@@ -117,7 +117,7 @@
 &lt;%= render Ui::Btn::Component.new(block: true, variant: :primary).with_content("Block Button") %&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
+  <section class="flex flex-col my-12 gap-2">
     <h2 class="h3">As Links</h2>
 
     <div class="mb-4 space-y-2">

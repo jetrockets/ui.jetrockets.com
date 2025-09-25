@@ -1,6 +1,6 @@
 @layer components {
   .body {
-    @apply relative flex flex-col min-h-[100svh] px-3 md:px-6 lg:px-8 xl:px-20;
+    @apply relative flex flex-col min-h-[100svh] px-3 md:px-6 lg:px-8 xl:px-20 antialiased text-gray;
   }
 
   .body-overflow {
@@ -13,7 +13,11 @@
   }
 
   .body__sidebar {
-    @apply sticky top-0 z-20 flex-shrink-0 w-full pb-8 h-navbar shrink-0;
+    @apply relative sticky top-0 z-20 flex-shrink-0 w-full h-navbar shrink-0 md:h-screen;
+
+    &::after {
+      @apply content-[''] hidden md:block sticky bottom-0 w-full h-40 bg-gradient-to-t from-white  to-transparent pointer-events-none;
+    }
   }
 
   .body__content {

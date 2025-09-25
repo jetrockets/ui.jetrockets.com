@@ -1,38 +1,18 @@
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    @apply border-gray-200 outline-primary;
-  }
-
-  html {
-    @apply md:scroll-smooth;
-  }
-
-  body {
-    @apply antialiased text-gray;
-  }
-
   dialog {
-    @apply text-gray;
+    @apply text-black;
   }
 
-  turbo-frame[spinner][busy] {
-    @apply relative block;
-
-    &::after {
-      @apply content-[''] absolute block top-0 bottom-0 left-0 right-0 bg-gray-50/80 z-10;
-    }
-  }
-
-  strong {
-    @apply font-medium;
+  pre {
+    @apply max-w-full p-4 overflow-auto text-sm text-gray-200 bg-gray-800 rounded-md;
   }
 
   textarea {
     @apply resize-none;
+  }
+
+  select[multiple] {
+    @apply max-h-11;
   }
 
   button, [role="button"] {
@@ -51,10 +31,6 @@
     height: 0;
   }
 
-  pre {
-    @apply max-w-full p-4 overflow-auto text-sm text-gray-200 bg-gray-800 rounded-md;
-  }
-
   /* clears the ‘X’ from Chrome */
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
@@ -63,67 +39,11 @@
     display: none;
   }
 
-  /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    margin: 0;
-    -webkit-appearance: none;
+
+/* FIX for tailwind */
+  select.choices__input[required][hidden] {
+    display: block !important;
   }
-
-  /* Firefox */
-  input[type=number] {
-    -moz-appearance: textfield;
-  }
-
-
-  select:invalid {
-    @apply text-gray-300;
-  }
-
-  select[multiple] {
-    @apply max-h-11;
-  }
-}
-
-@layer utilities {
-  /* Fix from tailwind v3 */
-  .group:disabled .group-disabled\:block {
-    display: block
-  }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .sr-only {
-    @apply fixed;
-  }
-}
-
-@utility scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-
-  ::-webkit-scrollbar {
-    width: 20px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
-}
-
-@utility link {
-  @apply font-medium underline cursor-pointer outline-gray-300 underline-offset-2 decoration-1 hover:no-underline;
 }
 
 .turbo-progress-bar {
