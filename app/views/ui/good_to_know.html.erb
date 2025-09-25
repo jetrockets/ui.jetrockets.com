@@ -17,24 +17,20 @@
     </div>
   </header>
 
-  <div class="wysiwyg">
-
-  <section class="space-y-6">
+  <section class="flex flex-col gap-4 mb-12">
     <h2 class="h2">Architectural Philosophy</h2>
 
-    <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "Copy, Don't Install", type: :info do %>
-        <p>
-          This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed. This approach gives you full control over styling, behavior, and dependencies.
-        </p>
-        <p>
-          💡 Think of it as a "component starter kit" rather than a traditional library.
-        </p>
-      <% end %>
-    </div>
+    <%= render Ui::Alert::Component.new title: "Copy, Don't Install", type: :info do %>
+      <p>
+        This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed. This approach gives you full control over styling, behavior, and dependencies.
+      </p>
+      <p>
+        💡 Think of it as a "component starter kit" rather than a traditional library.
+      </p>
+    <% end %>
   </section>
 
-  <section>
+  <section class="flex flex-col gap-4 my-12">
     <h2 class="h2">Component Design Patterns</h2>
 
     <h3 class="h3">1. Consistent API</h3>
@@ -45,23 +41,27 @@
   @options = options   # Additional attributes (class, data, etc.)
 end</code></pre>
 
-    <h3 class="h3">2. CSS Class Strategy</h3>
+    <h3 class="mt-4 h3">2. CSS Class Strategy</h3>
     <p>Components use a hybrid approach:</p>
-    <div class="px-4 pt-0.5 pb-2 rounded-lg bg-gray-100">
-      <h4 class="h4">Base Classes</h4>
-      <p>Core component styling using TailwindCSS utilities</p>
-      <pre><code>@apply px-4 py-2 rounded-md font-medium transition-colors</code></pre>
-
-      <h4 class="h4">Modifier Classes</h4>
-      <p>BEM-like naming for variants and states</p>
-      <pre><code>.btn-primary, .btn-lg, .btn-outlined</code></pre>
-
-      <h4 class="h4">Dynamic Classes</h4>
-      <p>Rails' <code>class_names</code> helper for conditional styling</p>
-      <pre><code>class_names("btn", "btn-#{variant}", "btn-loading": loading)</code></pre>
+    <div class="flex flex-col gap-2 p-6 bg-gray-100 rounded-lg">
+      <div class="flex flex-col gap-1">
+        <h4 class="h4">Base Classes</h4>
+        <p>Core component styling using TailwindCSS utilities</p>
+        <pre><code>@apply px-4 py-2 rounded-md font-medium transition-colors</code></pre>
+      </div>
+      <div class="flex flex-col gap-1">
+        <h4 class="mt-4 h4">Modifier Classes</h4>
+        <p>BEM-like naming for variants and states</p>
+        <pre><code>.btn-primary, .btn-lg, .btn-outlined</code></pre>
+      </div>
+      <div class="flex flex-col gap-1">
+        <h4 class="mt-4 h4">Dynamic Classes</h4>
+        <p>Rails' <code>class_names</code> helper for conditional styling</p>
+        <pre><code>class_names("btn", "btn-#{variant}", "btn-loading": loading)</code></pre>
+      </div>
     </div>
 
-    <h3 class="h3">3. Content Slots</h3>
+    <h3 class="mt-4 h3">3. Content Slots</h3>
     <p class="mb-3 text-gray-600">Complex components use ViewComponent slots for flexibility:</p>
 
     <pre><code># Component definition
@@ -76,27 +76,25 @@ renders_one :footer, Ui::Card::Footer::Component
 &lt;% end %&gt;</code></pre>
   </section>
 
-  <section>
-    <h2 class="h4">Styling Guidelines</h2>
+  <section class="flex flex-col gap-4 my-12">
+    <h3 class="h3">Styling Guidelines</h3>
 
-    <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :info do %>
-        <ul class="pl-8 list-disc space-y-2">
-          <li>Use <code>@apply</code> for component base styles</li>
-          <li>Avoid long utility chains in templates</li>
-          <li>Create custom CSS for complex animations/interactions</li>
-          <li>Use CSS custom properties for themeable values</li>
-        </ul>
-      <% end %>
-    </div>
+    <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", type: :info do %>
+      <ul class="pl-8 space-y-2 list-disc">
+        <li>Use <code>@apply</code> for component base styles</li>
+        <li>Avoid long utility chains in templates</li>
+        <li>Create custom CSS for complex animations/interactions</li>
+        <li>Use CSS custom properties for themeable values</li>
+      </ul>
+    <% end %>
 
-    <h3 class="h3">Responsive Design</h3>
+    <h3 class="mt-4 h3">Responsive Design</h3>
     <p>
       Components are mobile-first and responsive by default. Use Tailwind's responsive prefixes judiciously.
     </p>
     <pre><code>@apply px-4 md:px-6 lg:px-8</code></pre>
 
-    <h3 class="h3">💡 View Components or HTML/CSS</h3>
+    <h3 class="mt-4 h3">💡 View Components or HTML/CSS</h3>
     <p>
       It's not necessary to use view components at all in the view layer. You can have standard HTML with `classes` and `data` attributes.
     </p>
@@ -111,11 +109,11 @@ renders_one :footer, Ui::Card::Footer::Component
     <pre><code>&lt;button class="btn btn-primary btn-lg"&gt;Button&lt;/button&gt;</code></pre>
   </section>
 
-  <section>
+  <section class="flex flex-col gap-4 my-12">
     <h2 class="h2">Accessibility (A11y)</h2>
-    <div class="flex flex-col gap-6 not-prose">
+    <div class="flex flex-col gap-6">
       <%= render Ui::Alert::Component.new title: "Built-in Features" do %>
-        <ul class="pl-8 list-disc space-y-2">
+        <ul class="pl-8 space-y-2 list-disc">
           <li>Semantic HTML elements</li>
           <li>ARIA attributes where needed</li>
           <li>Keyboard navigation support</li>
@@ -125,7 +123,7 @@ renders_one :footer, Ui::Card::Footer::Component
       <% end %>
 
       <%= render Ui::Alert::Component.new title: "Your Responsibilities" do %>
-        <ul class="pl-8 list-disc space-y-2">
+        <ul class="pl-8 space-y-2 list-disc">
           <li>Provide meaningful alt text for images</li>
           <li>Ensure sufficient color contrast</li>
           <li>Test with screen readers</li>
@@ -136,13 +134,13 @@ renders_one :footer, Ui::Card::Footer::Component
     </div>
   </section>
 
-  <section>
-    <h2 class="h2">Contributing & Customization</h2>
-    <h3 class="h3">Making It Your Own</h3>
+  <section class="flex flex-col gap-4 my-12">
+    <h3 class="h2">Contributing & Customization</h3>
+    <h4 class="h3">Making It Your Own</h4>
     <p>
       These components are meant to be a starting point. Feel free to:
     </p>
-    <ul>
+    <ul class="ul">
       <li>Modify styling to match your brand</li>
       <li>Add new variants and sizes</li>
       <li>Extend functionality as needed</li>
@@ -150,11 +148,10 @@ renders_one :footer, Ui::Card::Footer::Component
       <li>Combine multiple components into new ones</li>
     </ul>
 
-    <%= render Ui::Alert::Component.new title: "Remember", type: :info, class: "not-prose" do %>
+    <%= render Ui::Alert::Component.new title: "Remember", type: :info do %>
       <p>
         This is your codebase once you copy the components. Make them work for your specific needs!
       </p>
     <% end %>
   </section>
-  </div>
 </article>

@@ -4,23 +4,23 @@
   }
 
   .h2 {
-    @apply text-3xl font-semibold;
-  }
-
-  .h3 {
     @apply text-2xl font-semibold;
   }
 
-  .h4 {
+  .h3 {
     @apply text-xl font-semibold;
   }
 
-  .h5 {
+  .h4 {
     @apply text-lg font-semibold;
   }
 
-  .h6 {
+  .h5 {
     @apply text-base font-semibold;
+  }
+
+  .h6 {
+    @apply text-sm font-semibold;
   }
 
   .p {
@@ -28,15 +28,18 @@
   }
 
   .ul {
-    @apply list-disc list-inside;
+    @apply flex flex-col gap-1 list-disc list-inside;
+
+    li {
+      @apply pl-6;
+    }
   }
 
   .ol {
-    @apply list-decimal list-inside;
-  }
-
-  .li {
-    @apply py-1;
+    @apply flex flex-col gap-1 list-decimal list-inside;
+    li {
+      @apply pl-6;
+    }
   }
 
   .hr {

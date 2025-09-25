@@ -17,160 +17,159 @@
     </div>
   </header>
 
-  <div class="wysiwyg">
-    <section>
-      <h2 class="h2">Requirements</h2>
+  <section class="flex flex-col gap-4 mb-12">
+    <h2 class="mt-0 h2">Requirements</h2>
 
-      <div class="grid gap-4 md:grid-cols-2">
-        <%= render Ui::Card::Component.new do |component| %>
-          <% component.with_header title: "Backend" %>
-          <% component.with_body do %>
-            <ul class="py-0">
-              <li><strong>Ruby</strong> 3.2.3+</li>
-              <li><strong>Rails</strong> 7.0.8+</li>
-              <li><strong>ViewComponent</strong> gem</li>
-            </ul>
-          <% end %>
+    <div class="grid gap-4 md:grid-cols-2">
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header title: "Backend" %>
+        <% component.with_body do %>
+          <ul class="py-0">
+            <li><strong>Ruby</strong> 3.2.3+</li>
+            <li><strong>Rails</strong> 7.0.8+</li>
+            <li><strong>ViewComponent</strong> gem</li>
+          </ul>
         <% end %>
+      <% end %>
 
-        <%= render Ui::Card::Component.new do |component| %>
-          <% component.with_header title: "Frontend" %>
-          <% component.with_body do %>
-            <ul class="py-0">
-              <li><strong>Node.js</strong> 18+</li>
-              <li><strong>Vite</strong> for asset compilation</li>
-            </ul>
-          <% end %>
+      <%= render Ui::Card::Component.new do |component| %>
+        <% component.with_header title: "Frontend" %>
+        <% component.with_body do %>
+          <ul class="py-0">
+            <li><strong>Node.js</strong> 18+</li>
+            <li><strong>Vite</strong> for asset compilation</li>
+          </ul>
         <% end %>
-      </div>
-    </section>
+      <% end %>
+    </div>
+  </section>
 
-    <section>
-      <h2 class="h2">Installation</h2>
+  <section class="flex flex-col gap-4 my-12">
+    <h2 class="h2">Installation</h2>
 
-      <h3 class="h3">1. Add Required Gems</h3>
-      <p>Add these dependencies to your
-        <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Gemfile</code>:
+    <h3 class="h3">1. Add Required Gems</h3>
+    <p>Add these dependencies to your
+      <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Gemfile</code>:
+    </p>
+    <pre><code># Gemfile
+gem 'view_component'
+gem 'vite_rails'
+gem 'turbo-rails'
+
+# Below are optional just for enhanced functionality
+gem 'pagy', '~> 9.3.4' # For pagination
+gem 'gretel' # For breadcrumbs
+gem 'meta-tags' # For SEO meta tags
+gem 'inline_svg'  # For SVG icons
+</code></pre>
+
+    <h3 class="mt-4 h3">2. Add Required Frontend Dependencies</h3>
+    <p>Add dependencies you need to your
+      <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Package.json</code>:
+    </p>
+    <pre><code># Package.json
+"dependencies": {
+  "@hotwired/stimulus": "^3.2.2",
+  "@hotwired/turbo-rails": "^8.0.2",
+  "flowbite": "^3.1.2", // JS libraries from Flowbite
+  "tailwindcss-stimulus-components": "^4.0.4" // TailwindCSS components for Stimulus
+  "@easepick/bundle": "^1.2.1", // Datepicker library
+  "@rails/request.js": "^0.0.9", // Rails AJAX helper
+  "choices.js": "^11.1.0", // Custom select library
+  "imask": "^7.6.1", // Input masking library
+  "mjml": "^4.15.3", // MJML email templates
+  "stimulus-rails-autosave": "^5.1.0", // Autosave form data
+  "stimulus-textarea-autogrow": "^4.1.0", // Auto-grow textarea
+  "stimulus-use": "^0.52.2", // Reusable Stimulus behaviors
+},
+"devDependencies": {
+  "@tailwindcss/forms": "^0.5.10", // TailwindCSS forms plugin
+  "@tailwindcss/typography": "^0.5.18", // TailwindCSS typography plugin
+  "@tailwindcss/vite": "^4.0.6", // TailwindCSS Vite plugin
+  "standard": "^17.1.0",
+  "stimulus-vite-helpers": "^3.1.0",
+  "tailwindcss": "^4.0.6",
+  "vite": "^7.1.7",
+  "vite-plugin-rails": "^0.5.0"
+}
+</code></pre>
+
+    <h3 class="mt-4 h3">3. Install Dependencies</h3>
+    <pre><code># Install Ruby gems
+bundle install
+
+# Install frontend dependencies
+yarn install</code></pre>
+
+    <h3 class="mt-4 h3">4. Copy Components</h3>
+
+    <div class="not-prose">
+      <%= render Ui::Alert::Component.new(title: "It's better to have 100% the same structure as in this template app.", type: :info) do %>
+        <p class="mb-0">This ensures all dependencies and configurations are correctly set up.</p>
+      <% end %>
+    </div>
+
+    <p class="mt-4">But you can copy only what you need from this template to your Rails project:</p>
+
+    <div class="p-4 bg-gray-100 rounded-lg">
+      <p>
+        📁 Copy <code>app/components/ui/</code> folder or individual component folders to your project.
       </p>
-      <pre><code># Gemfile
-  gem 'view_component'
-  gem 'vite_rails'
-  gem 'turbo-rails'
-
-  # Below are optional just for enhanced functionality
-  gem 'pagy', '~> 9.3.4' # For pagination
-  gem 'gretel' # For breadcrumbs
-  gem 'meta-tags' # For SEO meta tags
-  gem 'inline_svg'  # For SVG icons
-  </code></pre>
-
-      <h3 class="h3">2. Add Required Frontend Dependencies</h3>
-      <p>Add dependencies you need to your
-        <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Package.json</code>:
+      <p>
+        📁 Copy <code>app/assets/controllers/</code> folder or individual Stimulus controllers to your project.
       </p>
-      <pre><code># Package.json
-  "dependencies": {
-    "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.2",
-    "flowbite": "^3.1.2", // JS libraries from Flowbite
-    "tailwindcss-stimulus-components": "^4.0.4" // TailwindCSS components for Stimulus
-    "@easepick/bundle": "^1.2.1", // Datepicker library
-    "@rails/request.js": "^0.0.9", // Rails AJAX helper
-    "choices.js": "^11.1.0", // Custom select library
-    "imask": "^7.6.1", // Input masking library
-    "mjml": "^4.15.3", // MJML email templates
-    "stimulus-rails-autosave": "^5.1.0", // Autosave form data
-    "stimulus-textarea-autogrow": "^4.1.0", // Auto-grow textarea
-    "stimulus-use": "^0.52.2", // Reusable Stimulus behaviors
-  },
-  "devDependencies": {
-    "@tailwindcss/forms": "^0.5.10", // TailwindCSS forms plugin
-    "@tailwindcss/typography": "^0.5.18", // TailwindCSS typography plugin
-    "@tailwindcss/vite": "^4.0.6", // TailwindCSS Vite plugin
-    "standard": "^17.1.0",
-    "stimulus-vite-helpers": "^3.1.0",
-    "tailwindcss": "^4.0.6",
-    "vite": "^7.1.7",
-    "vite-plugin-rails": "^0.5.0"
-  }
-  </code></pre>
+      <p class="mb-0">
+        📁 Copy <code>app/assets/stylesheets/components/ui/</code> folder for component-specific styles.
+      </p>
+    </div>
 
-      <h3 class="h3">3. Install Dependencies</h3>
-      <pre><code># Install Ruby gems
-  bundle install
+    <h3 class="mt-4 h3">5. Start Development</h3>
 
-  # Install frontend dependencies
-  yarn install</code></pre>
+    <pre><code># Start Rails server
+bin/rails server
 
-      <h3 class="h3">4. Copy Components</h3>
+# Start Vite dev server (in another terminal)
+yarn dev</code></pre>
 
-      <div class="not-prose">
-        <%= render Ui::Alert::Component.new(title: "It's better to have 100% the same structure as in this template app.", type: :info) do %>
-          <p class="mb-0">This ensures all dependencies and configurations are correctly set up.</p>
-        <% end %>
-      </div>
-
-      <p class="mt-4">But you can copy only what you need from this template to your Rails project:</p>
-
-      <div class="p-4 bg-gray-100 rounded-lg">
-        <p>
-          📁 Copy <code>app/components/ui/</code> folder or individual component folders to your project.
-        </p>
-        <p>
-          📁 Copy <code>app/assets/controllers/</code> folder or individual Stimulus controllers to your project.
-        </p>
+    <div class="not-prose">
+      <%= render Ui::Alert::Component.new title: "We recommend using Overmind", type: :info do %>
         <p class="mb-0">
-          📁 Copy <code>app/assets/stylesheets/components/ui/</code> folder for component-specific styles.
+          <%= link_to "Overmind", "https://github.com/DarthSim/overmind", target: "_blank", rel: "noopener noreferrer", class: "link" %>
+          is a great tool for managing your development environment. We have `Procfile.dev` set up for you.
+      <% end %>
+    </div>
+  </section>
+
+  <section class="flex flex-col gap-4 my-12">
+    <h2 class="text-2xl font-semibold text-gray-900">Component Structure</h2>
+    <p class="text-gray-600">Each component follows a consistent pattern:</p>
+
+    <pre><code>app/components/ui/[component_name]/
+├── component.rb          # Main component class
+├── component.html.erb    # Template (when needed)
+├── component.css         # Component-specific styles
+├── component_controller.js # Stimulus controller (when needed)
+└── [nested_components]/  # Sub-components</code></pre>
+
+    <div class="not-prose">
+      <%= render Ui::Alert::Component.new title: "💡 Tip", type: :info do %>
+        <div>
+          All components inherit from <code>ApplicationComponent</code> and are namespaced under <code>Ui::</code>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="flex flex-col gap-4 my-12">
+    <h2 class="text-2xl font-semibold text-gray-900">What's Next?</h2>
+
+    <div class="not-prose">
+      <%= render Ui::Alert::Component.new title: "Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns.", type: :info do %>
+        <p>
+          Don't forget to check out <%= link_to "Good to know", ui_good_to_know_path, class: "text-blue-600 hover:text-blue-800 font-medium underline" %> for architectural insights and best practices.
         </p>
-      </div>
+      <% end %>
+    </div>
+  </section>
 
-      <h3 class="h3">5. Start Development</h3>
-
-      <pre><code># Start Rails server
-  bin/rails server
-
-  # Start Vite dev server (in another terminal)
-  yarn dev</code></pre>
-
-      <div class="not-prose">
-        <%= render Ui::Alert::Component.new title: "We recommend using Overmind", type: :info do %>
-          <p class="mb-0">
-            <%= link_to "Overmind", "https://github.com/DarthSim/overmind", target: "_blank", rel: "noopener noreferrer", class: "link" %>
-            is a great tool for managing your development environment. We have `Procfile.dev` set up for you.
-        <% end %>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-gray-900">Component Structure</h2>
-      <p class="text-gray-600">Each component follows a consistent pattern:</p>
-
-      <pre><code>app/components/ui/[component_name]/
-  ├── component.rb          # Main component class
-  ├── component.html.erb    # Template (when needed)
-  ├── component.css         # Component-specific styles
-  ├── component_controller.js # Stimulus controller (when needed)
-  └── [nested_components]/  # Sub-components</code></pre>
-
-      <div class="not-prose">
-        <%= render Ui::Alert::Component.new title: "💡 Tip", type: :info do %>
-          <div>
-            All components inherit from <code>ApplicationComponent</code> and are namespaced under <code>Ui::</code>
-          </div>
-        <% end %>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold text-gray-900">What's Next?</h2>
-
-      <div class="not-prose">
-        <%= render Ui::Alert::Component.new title: "Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns.", type: :info do %>
-          <p>
-            Don't forget to check out <%= link_to "Good to know", ui_good_to_know_path, class: "text-blue-600 hover:text-blue-800 font-medium underline" %> for architectural insights and best practices.
-          </p>
-        <% end %>
-      </div>
-    </section>
-  </div>
 </article>
