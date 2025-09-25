@@ -7,30 +7,20 @@
         <p>
           Now it's just a matter of a few things. Create a strong password for your account.
         </p>
-        <p class="mt-3 text-sm text-gray-500">
+        <p class="mt-3 text-sm text-gray-600">
           Make sure your password is at least 8 characters long and includes at least one number and one special character.
         </p>
 
-        <div class="form__group">
-          <%= form.label "password", rodauth.password_label %>
-          <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "#{"form__field-errored" if rodauth.field_error(rodauth.password_param)}" %>
-          <% if rodauth.field_error(rodauth.password_param) %>
-            <%= content_tag(:p, rodauth.field_error(rodauth.password_param), class: "form__error") %>
-          <% end %>
-        </div>
+        <%= form.password_field rodauth.password_param, value: "", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: rodauth.field_error(rodauth.password_param) %>
 
         <% if rodauth.require_password_confirmation? %>
-          <div class="form__group">
-            <%= form.label "password-confirm", rodauth.password_confirm_label, class: "block text-sm font-semibold" %>
-            <%= form.password_field rodauth.password_confirm_param, value: "", id: "password-confirm", autocomplete: "new-password", required: true, class: "#{"form__field-errored" if rodauth.field_error(rodauth.password_confirm_param)}" %>
-            <% if rodauth.field_error(rodauth.password_confirm_param) %>
-              <%= content_tag(:span, rodauth.field_error(rodauth.password_confirm_param), class: "form__error") %>
-            <% end %>
-          </div>
+          <%= form.password_field rodauth.password_confirm_param, value: "", autocomplete: "new-password", required: true, error: rodauth.field_error(rodauth.password_confirm_param) %>
         <% end %>
       <% end %>
 
-      <%= form.submit rodauth.verify_account_button, class: "btn btn-primary btn-block" %>
+      <div class="mb-6 form__actions">
+        <%= form.submit rodauth.verify_account_button, class: "btn-block" %>
+      </div>
     <% end %>
   </div>
 <% end %>

@@ -1,15 +1,19 @@
 <% set_meta_tags(title: "Logout", description: "Logout from #{site_name}") %>
 
-<%= render Ui::Modal::Component.new(title: "Logout", subtitle: "Logout from #{site_name}", size: :lg) do %>
+<%= render Ui::Modal::Component.new(title: "Logout", size: :lg) do %>
   <%= form_with url: rodauth.logout_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
     <div class="modal__body">
+      <p class="mb-3 text-gray-600">
+        Logout from <%= site_name %>
+      </p>
+
       <% if rodauth.features.include?(:active_sessions) %>
-        <div class="form__group">
-          <%= form.check_box rodauth.global_logout_param, id: "global-logout", include_hidden: false, label: rodauth.global_logout_label %>
-        </div>
+        <%= form.group do %>
+          <%= form.check_box rodauth.global_logout_param, include_hidden: false, label: rodauth.global_logout_label %>
+        <% end %>
       <% end %>
 
-      <%= form.submit rodauth.logout_button, class: "btn btn-primary btn-block" %>
+      <%= form.submit rodauth.logout_button, class: "btn-block" %>
     </div>
   <% end %>
 <% end %>

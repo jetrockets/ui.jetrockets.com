@@ -3,16 +3,14 @@
 <%= render Ui::Modal::Component.new(title: "Remember Me", size: :lg) do %>
   <div class="modal__body">
     <%= form_with url: rodauth.remember_path, method: :post, class: "form" do |form| %>
-      <div class="form__group">
-        <fieldset class="flex flex-col gap-y-2">
-          <%= form.radio_button rodauth.remember_param, rodauth.remember_remember_param_value, id: "remember-remember", label: rodauth.remember_remember_label %>
-          <%= form.radio_button rodauth.remember_param, rodauth.remember_forget_param_value, id: "remember-forget", label: rodauth.remember_forget_label %>
-          <%= form.radio_button rodauth.remember_param, rodauth.remember_disable_param_value, id: "remember-disable", label: rodauth.remember_disable_label %>
-        </fieldset>
-      </div>
+      <%= f.group class: "flex flex-col gap-2" do %>
+        <%= form.radio_button rodauth.remember_param, rodauth.remember_remember_param_value, id: "remember-remember", label: rodauth.remember_remember_label %>
+        <%= form.radio_button rodauth.remember_param, rodauth.remember_forget_param_value, id: "remember-forget", label: rodauth.remember_forget_label %>
+        <%= form.radio_button rodauth.remember_param, rodauth.remember_disable_param_value, id: "remember-disable", label: rodauth.remember_disable_label %>
+      <% end %>
 
       <div class="form__actions">
-        <%= form.submit rodauth.remember_button, class: "btn btn-primary btn-block" %>
+        <%= form.submit rodauth.remember_button, class: "btn-block" %>
       </div>
     <% end %>
   </div>

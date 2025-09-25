@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
 <%= render Ui::Modal::Component.new(title: "Sign In", size: :lg) do %>
   <div class="modal__body">
-    <p class="mb-4 text-gray-500">
+    <p class="mb-4 text-gray-600">
       By continuing, you agree to our <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link no-underline" %>, and acknowledge that you understand the <%= link_to "Privacy Policy", privacy_path, class: "link no-underline", data: { turbo: false }, target: :_blank %>.
     </p>
 
@@ -13,10 +13,12 @@
       <% end %>
 
       <% unless rodauth.skip_password_field_on_login? %>
-        <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, error: rodauth.field_error(rodauth.password_param) %>
+        <%= form.password_field rodauth.password_param, value: "", autocomplete: rodauth.password_field_autocomplete_value, required: true, error: rodauth.field_error(rodauth.password_param) %>
       <% end %>
 
-      <%= form.submit rodauth.login_button, class: "btn btn-primary btn-block" %>
+      <div class="mb-6 form__actions">
+        <%= form.submit rodauth.login_button, class: "btn-block" %>
+      </div>
 
       <%== rodauth.login_form_footer %>
     <% end %>

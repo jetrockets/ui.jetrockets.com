@@ -8,17 +8,11 @@
 
     <%= form_with url: rodauth.close_account_path, method: :post, class: "form" do |form| %>
       <% if rodauth.close_account_requires_password? %>
-        <div class="form__group">
-          <%= form.label "password", rodauth.password_label %>
-          <%= form.password_field rodauth.password_param, value: "", id: "password", autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "#{"form__field-errored" if rodauth.field_error(rodauth.password_param)}" %>
-          <% if rodauth.field_error(rodauth.password_param) %>
-            <%= content_tag(:span, rodauth.field_error(rodauth.password_param), class: "form__error") %>
-          <% end %>
-        </div>
+        <%= form.password_field rodauth.password_param, value: "", autocomplete: rodauth.password_field_autocomplete_value, required: true, error: rodauth.field_error(rodauth.password_param) %>
       <% end %>
 
       <div class="form__actions">
-        <%= form.submit rodauth.close_account_button, class: "btn btn-danger btn-outlined btn-block" %>
+        <%= form.submit rodauth.close_account_button, class: "btn-danger btn-outlined btn-block" %>
       </div>
     <% end %>
   </div>

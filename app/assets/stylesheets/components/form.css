@@ -61,6 +61,6 @@
   }
 
   .form__actions {
-    @apply mt-8;
+    @apply my-6;
   }
 }
