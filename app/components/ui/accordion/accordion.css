@@ -1,29 +1,41 @@
 @reference "~/entrypoints/tailwind.css";
 
 @layer components {
-  .accordion__header {
-    @apply flex items-center justify-between w-full gap-3 p-5 -mt-px font-medium text-gray-600 border border-gray-200 cursor-pointer;
-    @apply focus-visible:ring-4 focus-visible:ring-gray-200 focus-visible:outline-none
+  .accordion {
+    @apply flex flex-col gap-2;
+  }
+
+  .accordion__details {
+    @apply border border-gray-200 rounded-md;
+
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+      block-size: 0;
+      @apply transition-all duration-300 opacity-0 overflow-clip;
+    }
+
+    &[open]::details-content {
+      block-size: auto;
+      @apply opacity-100;
+    }
+  }
+
+  .accordion__summary {
+    @apply flex items-center justify-between gap-3 p-4 font-medium rounded-md cursor-pointer;
   }
 
   .accordion__body {
-    @apply p-5 border border-gray-200 -mt-px
+    @apply px-5 pb-4 -mt-px transition-transform;
   }
 
-  .accordion__header:first-of-type {
-    @apply rounded-t-xl
+  .accordion__icon {
+    @apply w-5 h-5 transition-transform shrink-0;
   }
 
-  .accordion__header:last-of-type,
-  .accordion__body:last-of-type {
-    @apply rounded-b-xl
-  }
-
-  .accordion__header:last-of-type[aria-expanded="true"] {
-    @apply rounded-b-none
-  }
-
-  [data-accordion-target][aria-expanded="false"] svg {
-    @apply rotate-180;
+  .accordion__details[open] .accordion__icon {
+    @apply -rotate-180;
   }
 }

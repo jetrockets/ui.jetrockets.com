@@ -1,12 +1,18 @@
 <%= render Ui::Accordion::Component.new do |accordion| %>
-  <%= accordion.with_item(title: "First Item", id: "item_1", opened: true) do %>
-    <p class="mb-0">
+  <%= accordion.with_item(title: "First Item", name: "tech-specs", open: true) do %>
+    <p>
       Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
     </p>
   <% end %>
 
-  <%= accordion.with_item(title: "Second Item", id: "item_2") do %>
-    <p class="mb-0">
+  <%= accordion.with_item(title: "Second Item", name: "tech-specs") do %>
+    <p>
+      Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
+    </p>
+  <% end %>
+
+  <%= accordion.with_item(title: "Third Item", name: "tech-specs") do %>
+    <p>
       Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
     </p>
   <% end %>
