@@ -32,12 +32,6 @@ module FormBuilders
       end
     end
 
-    def toggler(method, options = {}, checked_value = "1", unchecked_value = "0")
-      create_form_group(method, options) do
-        super(method, options, checked_value, unchecked_value)
-      end
-    end
-
     # Group container for form elements
     def group(options = {}, &block)
       Fields::GroupField.new(self, nil, options, &block).render

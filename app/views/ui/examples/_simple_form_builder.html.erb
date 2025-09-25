@@ -20,7 +20,7 @@
       <%= f.label :country %>
       <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path } } %>
       <p class="form__hint">
-        Select Other to enable the custom country name field.
+        Select Other to enable the custom country name field
       </p>
     </div>
   </div>

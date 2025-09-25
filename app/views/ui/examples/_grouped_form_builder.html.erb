@@ -5,8 +5,8 @@
   </div>
 
   <div class="grid gap-x-4 md:grid-cols-2">
-    <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
-    <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path, hint: "Select Other to enable the custom country name field." } } %>
+    <%= f.choices :country_multiple, ["United States", "Canada", "Mexico"], { label: "Multiple Select",include_blank: "Please Select" }, { multiple: true, data: { max_item_count: 2 } } %>
+    <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { hint: "Select Other to enable the custom country name field", include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path, hint: "Select Other to enable the custom country name field." } } %>
   </div>
 
   <%= field_set_tag nil, disabled: true, class: "disabled:hidden", id: f.field_id(:country, :other, :fieldset), name: f.field_name(:country) do %>
@@ -37,7 +37,11 @@
     <%= f.radio_button :radio, "3" %>
   <% end %>
 
-  <%= f.toggler :toggler %>
+  <%= f.group do %>
+    <%= f.toggler :toggler %>
+  <% end %>
 
-  <%= f.submit "Save", class: "btn-lg" %>
+  <div class="form__actions">
+    <%= f.submit "Save", class: "btn-lg" %>
+  </div>
 <% end %>
