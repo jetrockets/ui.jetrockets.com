@@ -1,16 +1,17 @@
 module FormBuilders
   module Inputs
-    class LabelInput < BaseInput
-      def initialize(form_builder, method, text = nil, options = {})
-        super(form_builder, method, options)
+    class Label < BaseInput
+      def initialize(form_builder, method, text = nil, options = {}, &block)
+        super(form_builder, method, options, &block)
         @text = text
+        @block = block
       end
 
       def render
         label_text = determine_label_text
         @options[:class] = label_classes
 
-        @template.label(@form_builder.object_name, @method, label_text, @options)
+        @template.label(@form_builder.object_name, @method, label_text, @options, &@block)
       end
 
       private

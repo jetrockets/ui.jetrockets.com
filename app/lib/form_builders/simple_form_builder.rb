@@ -29,17 +29,28 @@ module FormBuilders
     end
 
     def label(method, text = nil, options = {}, &block)
-      Inputs::LabelInput.new(self, method, text, options).render
+      Inputs::Label.new(self, method, text, options, &block).render
     end
 
-    # def label(method, text = nil, options = {}, &block)
-    #   default_label = method.to_s.humanize
-    #   model_name = object.class.name.underscore
-    #   text = text || I18n.t("activerecord.attributes.#{model_name}.#{method}", default: default_label)
+    def easepick(method, options = {})
+      Inputs::EasepickInput.new(self, method, options, :text_field).render
+    end
 
-    #   options[:class] = label_classes(options)
-    #   super
-    # end
+    def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
+      Inputs::CheckBoxInput.new(self, method, options, checked_value, unchecked_value).render
+    end
+
+    def toggler(method, options = {}, checked_value = "1", unchecked_value = "0")
+      Inputs::TogglerInput.new(self, method, options, checked_value, unchecked_value).render
+    end
+
+    def radio_button(method, tag_value, options = {})
+      Inputs::RadioButtonInput.new(self, method, tag_value, options).render
+    end
+
+    def submit(value = nil, options = {})
+      Inputs::Submit.new(self, value, options).render
+    end
 
     # def easepick(method, options = {})
     #   options[:data] = {

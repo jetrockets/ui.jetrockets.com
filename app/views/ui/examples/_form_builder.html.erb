@@ -19,7 +19,7 @@
     <div class="form__group">
       <%= f.label :country %>
       <%= f.choices :country, ["United States", "Canada", "Mexico", ["Other", data: { custom_properties: f.field_id(:country, "other", :fieldset) } ]], { include_blank: "Please Select" }, { required: true, data: { action: "change->fields#enable", search: root_path } } %>
-      <p class="form__help">
+      <p class="form__hint">
         Select Other to enable the custom country name field.
       </p>
     </div>
@@ -51,7 +51,7 @@
   <div class="form__group">
     <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "current-password" %>
-    <p class="form__help">
+    <p class="form__hint">
       Password should contain at least 8 characters, including at least one letter and one number
     </p>
   </div>
@@ -62,19 +62,19 @@
   </div>
 
   <div class="form__group">
-    <%= f.check_box :free_shipping %>
+    <%= f.check_box :free_shipping, hint: "Hint text" %>
   </div>
 
   <div class="form__group">
     <fieldset class="flex flex-col gap-2">
-      <%= f.radio_button :radio, "1", label: "Radio 1", checked: true %>
-      <%= f.radio_button :radio, "2" %>
+      <%= f.radio_button :radio, "1", label: "Radio 1"%>
+      <%= f.radio_button :radio, "2", checked: true , hint: "Selected by default" %>
       <%= f.radio_button :radio, "3" %>
     </fieldset>
   </div>
 
   <div class="form__group">
-    <%#= f.toggle :toggle, { label: "Label", hint: { on: "ON hint", off: "OFF hint" } } %>
+    <%= f.toggler :toggler %>
   </div>
 
   <div class="form__actions">

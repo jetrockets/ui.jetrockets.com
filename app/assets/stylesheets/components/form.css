@@ -1,10 +1,10 @@
 @layer components {
   .form__group {
-    @apply mb-4;
+    @apply flex flex-col gap-1 mb-4;
   }
 
   .form__label {
-    @apply block mb-1 text-sm font-medium text-gray-700;
+    @apply block text-sm font-medium text-gray-700 cursor-pointer w-fit;
   }
 
   .form__label-checkbox,
@@ -33,11 +33,7 @@
   }
 
   .form__hint {
-    @apply text-sm font-normal text-gray-600
-  }
-
-  .form__help {
-    @apply mt-1 text-sm text-gray-600
+    @apply text-sm font-normal text-gray-600;
   }
 
   .form__error {
@@ -58,8 +54,8 @@
     @apply border-red-300 focus:ring-red-200 focus:border-red-300;
   }
 
-  .form__toggle {
-    @apply relative h-6 mr-2 bg-gray-200 rounded-full w-11 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-300 peer-checked:after:translate-x-full;
+  .form__toggler {
+    @apply relative overflow-hidden indent-[9999px] h-6 bg-gray-200 rounded-full w-11 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-300 peer-checked:after:translate-x-full cursor-pointer;
     @apply peer-checked:after:border-white peer-checked:bg-blue-500;
     @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
   }
