@@ -1,12 +1,12 @@
 class Ui::Avatar::Component < ApplicationComponent
-  SIZES = %i[xs sm md lg xl]
-  DEFAULT_SIZE = :md
+  SIZE_OPTIONS = [ 8, 12, 16, 20, 40 ].freeze
+  DEFAULT_SIZE = 12
 
   VARIANTS = %i[rounded circle]
   DEFAULT_VARIANT = :circle
 
   def initialize(size: DEFAULT_SIZE, full_name: nil, variant: DEFAULT_VARIANT, **options)
-    @size = size
+    @size = SIZE_OPTIONS.include?(size) ? size : DEFAULT_SIZE
     @full_name = full_name
     @variant = variant
     @options = options

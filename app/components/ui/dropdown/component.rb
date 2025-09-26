@@ -96,9 +96,10 @@ class Ui::Dropdown::Component < ApplicationComponent
     end
 
     class LinkComponent < ApplicationComponent
-      def initialize(title: nil, href: nil, **options)
+      def initialize(title: nil, href: nil, active: false, **options)
         @title = title
         @href = href
+        @active = active
         @options = options
       end
 
@@ -113,6 +114,7 @@ class Ui::Dropdown::Component < ApplicationComponent
       def classes
         class_names(
           "dropdown__link",
+          ("dropdown__link-active" if @active),
           @options.delete(:class)
         )
       end

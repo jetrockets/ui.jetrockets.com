@@ -15,13 +15,7 @@ module FormBuilders
         prepare_new_path_params
 
         @template.content_tag(:div, id: @container_id, class: form__choices_classes, data: { controller: "choices" }) do
-          @template.select(
-            @form_builder.object_name,
-            @method,
-            @choices,
-            @options,
-            @html_options
-          )
+          ActionView::Helpers::FormBuilder.instance_method(:select).bind(@form_builder).call(@method, @choices, @options, @html_options)
         end
       end
 

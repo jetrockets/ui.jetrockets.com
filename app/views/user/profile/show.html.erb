@@ -1,0 +1,23 @@
+<%
+  set_meta_tags(
+    title: "Profile",
+    description: "Manage your profile and settings",
+  )
+%>
+
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Your Profile</h1>
+      <p class="header__subtitle">
+        Manage your profile and settings.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <div class="max-w-xl">
+      <%= render "user/profile/form", user: current_user %>
+    </div>
+  </section>
+</article>

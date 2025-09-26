@@ -19,8 +19,7 @@ module FormBuilders
       private
 
       def checkbox_tag
-        @template.check_box(
-          @form_builder.object_name,
+        ActionView::Helpers::FormBuilder.instance_method(:check_box).bind(@form_builder).call(
           @method,
           @options.merge(class: "form__checkbox"),
           @checked_value,

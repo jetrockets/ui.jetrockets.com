@@ -1,0 +1,43 @@
+<%# locals(user:) %>
+
+<div class="form__group">
+  <div class="flex flex-col items-center gap-3">
+    <%= render Ui::Avatar::Component.new size: 20, user: %>
+
+    <div class="flex flex-col max-w-lg gap-3 mx-auto text-sm text-center">
+      <%= form_with model: user, url: user_avatar_path, class: "form", method: :post, data: { controller: "autosave" } do |form| %>
+        <%= label_tag :user_avatar do %>
+          <%= form.hidden_field :avatar, value: form.object.cached_avatar_data, id: nil %>
+          <%= form.file_field :avatar, class: "avatar__input", hidden: true, accept: "image/*", data: { action: "change->autosave#save" } %>
+          <button type="button" class="btn btn-primary btn-outlined btn-sm submit">
+            <span class="submit__btn">
+              Upload a photo
+            </span>
+            <span class="submit__busy">
+              <%= render Ui::Icon::Component.new icon: "spinner.svg", class: "w-5 h-5 animate-spin" %>
+              <span>Uploading…</span>
+            </span>
+          </button>
+          <%#= inline_errors_for(form.object, :avatar) %>
+        <% end %>
+      <% end %>
+
+      <% if user.avatar_url %>
+        <%= button_to "Remove photo and show initials only", user_avatar_path, data: { turbo: false }, method: :delete, class: "link" %>
+      <% end %>
+
+      <p>
+        Square JPG or PNG image without transparency works best.
+      </p>
+    </div>
+  </div>
+</div>
+
+<%= form_with model: user, url: user_profile_path, class: "form" do |f| %>
+  <%= f.text_field :first_name, autofocus: true, size: :lg %>
+  <%= f.text_field :last_name, size: :lg %>
+
+  <div class="form__actions">
+    <%= f.submit "Save", class: "btn-lg", data: { turbo_submits_with: "Saving…" } %>
+  </div>
+<% end %>

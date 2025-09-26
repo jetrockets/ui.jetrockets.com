@@ -19,7 +19,7 @@ module FormBuilders
         @options[:autocomplete] ||= "off"
         @options[:required] = required?
 
-        @template.send(@field_type, @form_builder.object_name, @method, @options)
+        ActionView::Helpers::FormBuilder.instance_method(@field_type).bind(@form_builder).call(@method, @options)
       end
     end
   end

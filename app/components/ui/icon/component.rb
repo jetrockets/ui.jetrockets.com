@@ -1,10 +1,10 @@
 class Ui::Icon::Component < ApplicationComponent
-  def initialize(path:, **options)
-    @path = path
+  def initialize(icon:, **options)
+    @icon = icon
     @options = options
   end
 
   def call
-    helpers.vite_icon_tag(@path, @options)
+    helpers.vite_icon_tag(@icon, @options)
   end
 end

@@ -1,6 +1,8 @@
 class Account < ApplicationRecord
   include Rodauth::Model(RodauthMain)
   enum :status, unverified: 1, verified: 2, closed: 3
+
+  has_one :user, dependent: :destroy
 end
 
 # == Schema Information

@@ -21,6 +21,10 @@
     @apply block w-full px-2 py-2 text-sm text-left rounded-md cursor-pointer hover:bg-gray-100;
   }
 
+  .dropdown__link-active {
+    @apply bg-gray-100;
+  }
+
   .dropdown__divider {
     @apply pb-2 mb-2 border-b border-gray-200;
   }

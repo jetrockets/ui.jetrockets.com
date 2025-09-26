@@ -20,8 +20,7 @@ module FormBuilders
       private
 
       def hidden_checkbox
-        @template.check_box(
-          @form_builder.object_name,
+        ActionView::Helpers::FormBuilder.instance_method(:check_box).bind(@form_builder).call(
           @method,
           {
             checked: @object && @object[@method.to_sym] || @options[:checked],
@@ -31,7 +30,7 @@ module FormBuilders
       end
 
       def toggler_container(label_text)
-        @template.label(@form_builder.object_name, @method, label_text, class: "form__toggler")
+        @form_builder.label(@method, label_text, class: "form__toggler")
       end
     end
   end

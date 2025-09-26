@@ -18,8 +18,7 @@ module FormBuilders
       private
 
       def radio_tag
-        @template.radio_button(
-          @form_builder.object_name,
+        ActionView::Helpers::FormBuilder.instance_method(:radio_button).bind(@form_builder).call(
           @method,
           @tag_value,
           @options.merge(

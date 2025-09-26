@@ -80,7 +80,7 @@
       <%= render Ui::Card::Component.new do |component| %>
         <% component.with_body do %>
           <div class="space-y-3 text-center">
-            <%= render Ui::Icon::Component.new(path: "alert.svg", class: "w-12 h-12 mx-auto text-blue-600") %>
+            <%= render Ui::Icon::Component.new(icon: "alert.svg", class: "w-12 h-12 mx-auto text-blue-600") %>
             <h3 class="text-lg font-semibold">Welcome!</h3>
             <p class="text-gray-600">Thank you for joining our community. Get started by exploring the features.</p>
             <%= render Ui::Btn::Component.new(variant: :primary, block: true).with_content("Get Started") %>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ui::Flash::Component < ApplicationComponent
   DISMISS_AFTER = 8000
   REMOVE_DELAY = 9000

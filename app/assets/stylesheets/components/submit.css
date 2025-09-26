@@ -1,0 +1,19 @@
+@layer components {
+  .submit__busy {
+    @apply flex items-center gap-2 hidden;
+  }
+
+  form[aria-busy=true] {
+    .submit {
+      @apply cursor-progress;
+    }
+
+    .submit__default {
+      @apply hidden;
+    }
+
+    .submit__busy {
+      @apply flex;
+    }
+  }
+}

@@ -17,7 +17,7 @@
 
   .sidebar__nav {
     @apply w-full pb-8 space-y-8 md:pb-0;
-    @apply fixed inset-0 invisible px-4 pt-4 overflow-auto duration-300 -translate-y-full bg-white opacity-0;
+    @apply fixed inset-0 invisible px-4 pt-4 md:pt-8 overflow-auto duration-300 -translate-y-full bg-white opacity-0;
     @apply md:relative md:block md:visible md:translate-y-0 md:bg-transparent md:opacity-100 md:px-0;
     transition-property: opacity, transform;
   }

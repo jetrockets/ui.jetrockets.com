@@ -2,7 +2,7 @@
   <%= render Ui::Dropdown::Component.new do |dropdown| %>
     <%= dropdown.with_trigger(class: "btn btn-primary btn-iconed") do %>
       Dropdown
-      <%= render Ui::Icon::Component.new path: "chevron-down.svg", class: "size-4" %>
+      <%= render Ui::Icon::Component.new icon: "chevron-down.svg", class: "size-4" %>
     <% end %>
 
     <%= dropdown.with_menu do |list| %>
@@ -19,7 +19,7 @@
   <%= render Ui::Dropdown::Component.new(data: { placement: "right", triggerType: "hover", offsetSkidding: 10, offsetDistance: 10 }) do |dropdown| %>
     <%= dropdown.with_trigger(class: "btn btn-secondary btn-iconed") do %>
       Hover Dropdown with Offsets
-      <%= render Ui::Icon::Component.new path: "chevron-down.svg", class: "size-4" %>
+      <%= render Ui::Icon::Component.new icon: "chevron-down.svg", class: "size-4" %>
     <% end %>
 
     <%= dropdown.with_menu do |list| %>

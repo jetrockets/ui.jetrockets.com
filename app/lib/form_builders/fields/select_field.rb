@@ -11,7 +11,7 @@ module FormBuilders
         @html_options[:class] = field_classes(@html_options[:class])
         @options[:required] = required?
 
-        @template.select(@form_builder.object_name, @method, @choices, @options, @html_options)
+        ActionView::Helpers::FormBuilder.instance_method(:select).bind(@form_builder).call(@method, @choices, @options, @html_options)
       end
     end
   end

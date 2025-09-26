@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class Current < ActiveSupport::CurrentAttributes
-  attribute :account
+  attribute :account, :user
 
   def admin?
     account&.admin?

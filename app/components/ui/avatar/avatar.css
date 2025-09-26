@@ -2,7 +2,7 @@
 
 @layer components {
   .avatar {
-    @apply flex items-center justify-center font-semibold text-gray-600 bg-gray-200;
+    @apply flex items-center justify-center font-semibold text-gray-400 bg-gray-200;
     @apply overflow-hidden;
   }
 
@@ -14,28 +14,36 @@
     @apply rounded-full;
   }
 
-  .avatar__icon {
-    @apply w-full h-full p-1.5 text-gray-400;
-  }
-
   /* Sizes */
-  .avatar-xs {
-    @apply w-6 h-6;
+  .avatar-8 {
+    @apply w-8 h-8 text-sm;
+
+    .avatar__icon {
+      @apply p-1.5;
+    }
   }
 
-  .avatar-sm {
-    @apply w-8 h-8;
+  .avatar-12 {
+    @apply w-12 h-12 text-xl;
+
+    .avatar__icon {
+      @apply p-2;
+    }
   }
 
-  .avatar-md {
-    @apply w-10 h-10;
+  .avatar-16 {
+    @apply w-16 h-16 text-2xl;
+
+    .avatar__icon {
+      @apply p-2.5;
+    }
   }
 
-  .avatar-lg {
-    @apply w-12 h-12;
-  }
+  .avatar-20 {
+    @apply w-20 h-20 text-3xl;
 
-  .avatar-xl {
-    @apply w-14 h-14;
+    .avatar__icon {
+      @apply p-3;
+    }
   }
 }

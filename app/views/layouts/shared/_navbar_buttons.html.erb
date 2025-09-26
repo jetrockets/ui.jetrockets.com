@@ -1,15 +1,15 @@
 <div class="flex items-center justify-end flex-1 gap-2">
   <%= link_to "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" do %>
-    <%= render Ui::Icon::Component.new path: "github.svg", class: "size-8 mr-2" %>
+    <%= render Ui::Icon::Component.new icon: "github.svg", class: "size-8 mr-2" %>
   <% end %>
 
   <% if rodauth.logged_in? %>
     <%= render Ui::Dropdown::Component.new do |dropdown| %>
       <%= dropdown.with_trigger do %>
-        <%= render Ui::Avatar::Component.new size: :sm %>
+        <%= render Ui::Avatar::Component.new size: 8, full_name: current_user.full_name %>
       <% end %>
       <%= dropdown.with_menu do |list| %>
-        <%= list.with_element_link(title: "Profile", href: "#") %>
+        <%= list.with_element_link(title: "Profile", href: user_profile_path, active: current_page?(user_profile_path)) %>
         <%= list.with_element_divider %>
         <%= list.with_element_button(title: "Sign Out", href: rodauth.logout_path, data: { turbo: false, turbo_method: :post }) %>
       <% end %>
