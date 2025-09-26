@@ -1,9 +1,32 @@
-<%= render Ui::Badge::Component.new title: "Blue XS", variant: :blue, size: :xs %>
-
-<%= render Ui::Badge::Component.new title: "Default" %>
-
-<%= render Ui::Badge::Component.new title: "Red SM", variant: :red, size: :sm %>
-
-<%= render Ui::Badge::Component.new title: "Green MD", variant: :green, size: :md %>
-
-<%= render Ui::Badge::Component.new title: "Yellow LG", variant: :yellow, size: :lg %>
+<div class="grid grid-cols-5">
+  <div class="flex flex-col gap-2">
+    <%= render Ui::Badge::Component.new title: "Default XS", size: :xs %>
+    <%= render Ui::Badge::Component.new title: "Default SM", size: :sm %>
+    <%= render Ui::Badge::Component.new title: "Default MD", size: :md %>
+    <%= render Ui::Badge::Component.new title: "Default LG", size: :lg %>
+  </div>
+  <div class="flex flex-col gap-2">
+    <%= render Ui::Badge::Component.new title: "Blue XS", variant: :blue, size: :xs %>
+    <%= render Ui::Badge::Component.new title: "Blue SM", size: :sm, variant: :blue %>
+    <%= render Ui::Badge::Component.new title: "Blue MD", size: :md, variant: :blue %>
+    <%= render Ui::Badge::Component.new title: "Blue LG", size: :lg, variant: :blue %>
+  </div>
+  <div class="flex flex-col gap-2">
+    <%= render Ui::Badge::Component.new title: "Red XS", variant: :red, size: :xs %>
+    <%= render Ui::Badge::Component.new title: "Red SM", size: :sm, variant: :red %>
+    <%= render Ui::Badge::Component.new title: "Red MD", size: :md, variant: :red %>
+    <%= render Ui::Badge::Component.new title: "Red LG", size: :lg, variant: :red %>
+  </div>
+  <div class="flex flex-col gap-2">
+    <%= render Ui::Badge::Component.new title: "Green XS", variant: :green, size: :xs %>
+    <%= render Ui::Badge::Component.new title: "Green SM", size: :sm, variant: :green %>
+    <%= render Ui::Badge::Component.new title: "Green MD", size: :md, variant: :green %>
+    <%= render Ui::Badge::Component.new title: "Green LG", size: :lg, variant: :green %>
+  </div>
+  <div class="flex flex-col gap-2">
+    <%= render Ui::Badge::Component.new title: "Yellow XS", variant: :yellow, size: :xs %>
+    <%= render Ui::Badge::Component.new title: "Yellow SM", size: :sm, variant: :yellow %>
+    <%= render Ui::Badge::Component.new title: "Yellow MD", size: :md, variant: :yellow %>
+    <%= render Ui::Badge::Component.new title: "Yellow LG", size: :lg, variant: :yellow %>
+  </div>
+</div>
