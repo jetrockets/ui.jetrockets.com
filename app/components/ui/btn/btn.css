@@ -68,7 +68,7 @@
     @apply py-0.5 px-2 text-xs h-6;
 
     &.btn-circle {
-      @apply w-6 h-6;
+      @apply size-6;
     }
   }
 
@@ -76,7 +76,7 @@
     @apply px-2 py-1.5 h-9 text-xs;
 
     &.btn-circle {
-      @apply w-9 h-9;
+      @apply size-9;
     }
   }
 
@@ -84,7 +84,7 @@
     @apply px-3 py-2.5 h-10;
 
     &.btn-circle {
-      @apply w-10 h-10;
+      @apply size-10;
     }
   }
 
@@ -92,7 +92,7 @@
     @apply h-12 px-4 py-3 text-base;
 
     &.btn-circle {
-      @apply w-12 h-12;
+      @apply size-12;
     }
   }
 
@@ -100,7 +100,7 @@
     @apply px-5 py-3.5 text-base h-14;
 
     &.btn-circle {
-      @apply w-14 h-14;
+      @apply size-14;
     }
   }
 
@@ -110,26 +110,26 @@
 
   /* Icons */
   .btn__icon {
-    @apply w-4 h-4 shrink-0;
+    @apply size-4 shrink-0;
   }
 
   .btn__icon-xs {
-    @apply w-2 h-2;
+    @apply size-2;
   }
 
   .btn__icon-sm {
-    @apply w-2.5 h-2.5;
+    @apply size-2.5;
   }
 
   .btn__icon-md {
-    @apply w-3 h-3;
+    @apply size-3;
   }
 
   .btn__icon-lg {
-    @apply w-3.5 h-3.5;
+    @apply size-3.5;
   }
 
   .btn__icon-xl {
-    @apply w-4 h-4;
+    @apply size-4;
   }
 }

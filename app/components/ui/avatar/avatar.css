@@ -5,7 +5,7 @@
     --size: 12;
     --font-size: calc(var(--size) * 1.65px);
 
-    @apply relative flex items-center justify-center overflow-hidden font-semibold text-gray-500 bg-gray-200;
+    @apply relative flex items-center justify-center overflow-hidden font-medium text-gray-500 bg-gray-200;
 
     width: calc(var(--spacing) * var(--size));
     height: calc(var(--spacing) * var(--size));

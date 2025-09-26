@@ -6,7 +6,7 @@
   }
 
   .tooltip__arrow {
-    @apply absolute w-3 h-3 bg-gray-700;
+    @apply absolute bg-gray-700 size-3;
   }
 
   .tooltip__arrow-top {

@@ -39,7 +39,7 @@ class Ui::Alert::Component < ApplicationComponent
 
   def icon
     if @icon
-      helpers.vite_icon_tag @icon, class: "mt-0.5 shrink-0 w-4 h-4 mr-2"
+      helpers.vite_icon_tag @icon, class: "mt-0.5 shrink-0 size-4 mr-2"
     end
   end
 end
