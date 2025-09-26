@@ -4,6 +4,7 @@
     description: "Manage your profile and settings",
   )
 %>
+<% breadcrumb :profile %>
 
 <article>
   <header class="header">
@@ -15,9 +16,7 @@
     </div>
   </header>
 
-  <section>
-    <div class="max-w-xl">
-      <%= render "user/profile/form", user: current_user %>
-    </div>
+  <section class="max-w-xl mx-auto">
+    <%= render "user/profile/form", user: current_user %>
   </section>
 </article>

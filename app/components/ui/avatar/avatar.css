@@ -2,8 +2,13 @@
 
 @layer components {
   .avatar {
-    @apply flex items-center justify-center font-semibold text-gray-400 bg-gray-200;
-    @apply overflow-hidden;
+    --size: 12;
+    --font-size: calc(var(--size) * 1.65px);
+
+    @apply relative flex items-center justify-center overflow-hidden font-semibold text-gray-500 bg-gray-200;
+
+    width: calc(var(--spacing) * var(--size));
+    height: calc(var(--spacing) * var(--size));
   }
 
   .avatar-rounded {
@@ -14,36 +19,11 @@
     @apply rounded-full;
   }
 
-  /* Sizes */
-  .avatar-8 {
-    @apply w-8 h-8 text-sm;
-
-    .avatar__icon {
-      @apply p-1.5;
-    }
+  .avatar__icon {
+    @apply w-8/12 text-gray-400;
   }
 
-  .avatar-12 {
-    @apply w-12 h-12 text-xl;
-
-    .avatar__icon {
-      @apply p-2;
-    }
-  }
-
-  .avatar-16 {
-    @apply w-16 h-16 text-2xl;
-
-    .avatar__icon {
-      @apply p-2.5;
-    }
-  }
-
-  .avatar-20 {
-    @apply w-20 h-20 text-3xl;
-
-    .avatar__icon {
-      @apply p-3;
-    }
+  .avatar__initials {
+    font-size: var(--font-size);
   }
 }

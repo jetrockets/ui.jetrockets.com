@@ -1,19 +1,17 @@
 class Ui::Avatar::Component < ApplicationComponent
-  SIZE_OPTIONS = [ 8, 12, 16, 20, 40 ].freeze
+  VARIANTS = %i[rounded circle square]
+  DEFAULT_VARIANT = :circle
   DEFAULT_SIZE = 12
 
-  VARIANTS = %i[rounded circle]
-  DEFAULT_VARIANT = :circle
-
   def initialize(size: DEFAULT_SIZE, full_name: nil, variant: DEFAULT_VARIANT, **options)
-    @size = SIZE_OPTIONS.include?(size) ? size : DEFAULT_SIZE
+    @size = size
     @full_name = full_name
     @variant = variant
     @options = options
   end
 
   def call
-    content_tag :div, icon_content, class: avatar_classes
+    content_tag :div, icon_content, class: avatar_classes, style: "--size: #{@size}"
   end
 
   private
@@ -22,7 +20,7 @@ class Ui::Avatar::Component < ApplicationComponent
     # TODO: Add account avatar if exists
 
     if @full_name.present?
-      content_tag(:span, initials, class: name_classes)
+      content_tag(:span, initials, class: "avatar__initials")
     else
       helpers.vite_icon_tag("user.svg", class: "avatar__icon")
     end
@@ -36,19 +34,9 @@ class Ui::Avatar::Component < ApplicationComponent
     class_names(
       "avatar",
       @options.delete(:class),
-      "avatar-#{@size}",
+      "avatar-square": @variant == :square,
       "avatar-rounded": @variant == :rounded,
       "avatar-circle": @variant == :circle
-    )
-  end
-
-  def name_classes
-    class_names(
-      "text-xs": @size == :xs,
-      "text-sm": @size == :sm,
-      "text-base": @size == :md,
-      "text-lg": @size == :lg,
-      "text-xl": @size == :xl
     )
   end
 end

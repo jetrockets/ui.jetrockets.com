@@ -6,6 +6,11 @@ crumb :ui do
   link "Introduction", ui_path
 end
 
+crumb :profile do
+  link "Profile", user_profile_path
+  parent :root
+end
+
 # UI Documentation
 crumb :ui_getting_started do
   link "Getting Started", ui_getting_started_path

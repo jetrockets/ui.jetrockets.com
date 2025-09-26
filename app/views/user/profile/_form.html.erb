@@ -2,7 +2,7 @@
 
 <div class="form__group">
   <div class="flex flex-col items-center gap-3">
-    <%= render Ui::Avatar::Component.new size: 20, user: %>
+    <%= render Ui::Avatar::Component.new size: 40, full_name: user.full_name %>
 
     <div class="flex flex-col max-w-lg gap-3 mx-auto text-sm text-center">
       <%= form_with model: user, url: user_avatar_path, class: "form", method: :post, data: { controller: "autosave" } do |form| %>
