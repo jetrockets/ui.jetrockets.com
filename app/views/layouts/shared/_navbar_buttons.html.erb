@@ -1,7 +1,5 @@
 <div class="flex items-center justify-end flex-1 gap-2">
-  <%= link_to "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" do %>
-    <%= render Ui::Icon::Component.new icon: "github.svg", class: "size-8 mr-2" %>
-  <% end %>
+  <%= link_to render(Ui::Icon::Component.new icon: "github.svg", class: "size-8 mr-2"), "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" %>
 
   <% if rodauth.logged_in? %>
     <%= render Ui::Dropdown::Component.new do |dropdown| %>

@@ -37,18 +37,18 @@ module MetaTagsHelper
   private
 
   def site_name
-    "Site Name"
+    "UI JetRockets"
   end
 
   def default_title
-    "Default Title"
+    "Rails"
   end
 
   def default_description
-    "Default Description"
+    "A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus"
   end
 
   def default_keywords
-    "Default keywords"
+    "Rails, ViewComponent, TailwindCSS, Stimulus"
   end
 end
