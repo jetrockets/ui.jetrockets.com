@@ -1,39 +1,40 @@
 # Rails UI Component Library
 
-A comprehensive Rails 7 component library template built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
+A comprehensive Rails 8 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This project demonstrates modern Rails development patterns with a complete set of reusable UI components.
 
 ## 🚀 Quick Start
 
 ### Requirements
 
-- **Ruby** 3.2.3+
-- **Rails** 7.0.8+
+- **Ruby** 3.4.4+
+- **Rails** 8.0+
 - **Node.js** 18+
 - **ViewComponent** gem
 - **TailwindCSS** 4.0
 
 ### Installation
 
-1. Clone or download this template
-2. Copy the components you need to your Rails project
-3. Ensure you have the required dependencies in your `Gemfile`:
-
-```ruby
-gem 'view_component'
-gem 'vite_rails'
-gem 'turbo-rails'
-gem 'pagy', '~> 9.3.4'
-```
-
-4. Install frontend dependencies:
+1. Clone the repository:
 ```bash
-yarn install
+git clone <repository-url>
+cd ui.jetrockets.com
 ```
 
-5. Start development:
+2. Install dependencies:
+```bash
+bundle install
+npm install
+```
+
+3. Setup database:
+```bash
+bin/rails db:setup
+```
+
+4. Start development servers:
 ```bash
 bin/rails server
-yarn dev  # or bin/vite dev
+npm run dev  # or bin/vite dev
 ```
 
 ## 📦 Component Library
@@ -203,9 +204,9 @@ end
 
 ### Build and Development
 ```bash
-yarn dev          # Start Vite development server
-yarn build        # Build assets for production
-yarn standard     # Run JavaScript StandardJS linting
+npm run dev          # Start Vite development server
+npm run build        # Build assets for production
+npm run standard     # Run JavaScript StandardJS linting
 ```
 
 ### Rails Commands
@@ -258,7 +259,7 @@ app/
 
 ## 🎯 Key Technologies
 
-- **Rails 7.0.8** - Backend framework with modern features
+- **Rails 8.0** - Backend framework with modern features
 - **ViewComponent** - Component-based architecture for views
 - **Vite** - Fast build tool for frontend assets
 - **TailwindCSS 4.0** - Utility-first CSS framework
