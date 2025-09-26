@@ -40,19 +40,19 @@
   <section class="flex flex-col gap-2 my-12">
     <h2 class="h3">Sizes</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
-      <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
-      <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
-      <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
-      <%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %>
+    <div class="flex flex-wrap items-end gap-1 mb-4">
       <%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %>
+      <%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %>
+      <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
+      <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
+      <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
     </div>
 
-    <pre><code>&lt;%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %&gt;
+    <pre><code>&lt;%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %&gt;
 &lt;%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %&gt;</code></pre>
+&lt;%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %&gt;
+&lt;%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %&gt;
+&lt;%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-2 my-12">

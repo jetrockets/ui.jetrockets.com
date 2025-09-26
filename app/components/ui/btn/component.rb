@@ -37,6 +37,7 @@ class Ui::Btn::Component < ApplicationComponent
 
   def button_attributes
     {
+      type: "button",
       class: class_names(
         "btn",
         variant_class,
