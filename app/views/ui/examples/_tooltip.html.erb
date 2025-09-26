@@ -1,17 +1,17 @@
-<div class="flex items-center gap-4">
-  <%= render Ui::Tooltip::Component.new(tooltip_content: "Tooltip content", data: { placement: "bottom" }) do %>
-    <%= render Ui::Btn::Component.new(variant: :primary).with_content "Tooltip Button" %>
-  <% end %>
-
-  <%= render Ui::Tooltip::Component.new(tooltip_content: "Top tooltip", data: { placement: "top" }) do %>
+<div class="flex flex-col items-start gap-4">
+  <%= render Ui::Tooltip::Component.new(title: "Top tooltip", data: { placement: "top" }) do %>
     <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Top Tooltip" %>
   <% end %>
 
-  <%= render Ui::Tooltip::Component.new(tooltip_content: "Right tooltip", data: { placement: "right" }) do %>
-    <%= render Ui::Btn::Component.new(variant: :ghost).with_content "Right Tooltip" %>
+  <%= render Ui::Tooltip::Component.new(title: "Right tooltip", data: { placement: "right" }) do %>
+    <%= render Ui::Btn::Component.new(variant: :danger).with_content "Right Tooltip" %>
   <% end %>
 
-  <%= render Ui::Tooltip::Component.new(tooltip_content: "Left tooltip", data: { placement: "left" }) do %>
+  <%= render Ui::Tooltip::Component.new(title: "Left tooltip", data: { placement: "left" }) do %>
     <%= render Ui::Btn::Component.new.with_content "Left Tooltip" %>
+  <% end %>
+
+  <%= render Ui::Tooltip::Component.new(title: "Tooltip content", data: { placement: "bottom" }) do %>
+    <%= render Ui::Btn::Component.new(variant: :primary).with_content "Bottom Tooltip" %>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 @layer components {
   .header {
-    @apply relative flex flex-wrap items-start justify-between mb-4 gap-y-2 gap-x-8 lg:gap-x-16 md:py-6;
+    @apply relative flex flex-col flex-wrap items-start justify-between mb-4 md:flex-row gap-y-2 gap-x-8 lg:gap-x-16 md:py-6;
   }
 
   .header__heading {

@@ -2,7 +2,8 @@
 
 @layer components {
   .drawer {
-    @apply fixed flex top-0 right-0 z-[60] h-screen md:w-fit w-full overflow-y-auto bg-white animate-slide-left;
+    @apply fixed flex top-0 right-0 z-[60] h-screen md:w-fit w-full overflow-y-auto bg-white;
+    @apply transition-transform animate-slide-left;
   }
 
   .drawer__window {
