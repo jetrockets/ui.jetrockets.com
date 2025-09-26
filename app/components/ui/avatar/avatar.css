@@ -20,7 +20,7 @@
   }
 
   .avatar__icon {
-    @apply w-8/12 text-gray-400;
+    @apply w-8/12;
   }
 
   .avatar__initials {
