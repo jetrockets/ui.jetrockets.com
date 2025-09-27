@@ -23,7 +23,7 @@ cd ui.jetrockets.com
 2. Install dependencies:
 ```bash
 bundle install
-npm install
+yarn install
 ```
 
 3. Setup database:
@@ -34,7 +34,7 @@ bin/rails db:setup
 4. Start development servers:
 ```bash
 bin/rails server
-npm run dev  # or bin/vite dev
+yarn dev  # or bin/vite dev
 ```
 
 ## 📦 Component Library
@@ -187,8 +187,8 @@ private
 def css_classes
   class_names(
     "btn",
-    "btn--#{@variant}",
-    "btn--#{@size}",
+    "btn-#{@variant}",
+    "btn-#{@size}",
     @options[:class]
   )
 end
@@ -204,9 +204,9 @@ end
 
 ### Build and Development
 ```bash
-npm run dev          # Start Vite development server
-npm run build        # Build assets for production
-npm run standard     # Run JavaScript StandardJS linting
+yarn dev          # Start Vite development server
+yarn build        # Build assets for production
+yarn standard     # Run JavaScript StandardJS linting
 ```
 
 ### Rails Commands
