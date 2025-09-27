@@ -82,6 +82,46 @@
 
   <section class="my-12">
     <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Hint messages" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_field :password, label: "Password", hint: "Must be at least 8 characters long" %>
+          <%= f.email_field :email, hint: "We'll never share your email with anyone else" %>
+          <%= f.text_field :username, hint: "Choose a unique username that represents you" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :password, hint: "Must be at least 8 characters long" %&gt;
+&lt;%= f.email_field :email, hint: "We'll never share your email with anyone else" %&gt;
+&lt;%= f.text_field :username, hint: "Choose a unique username that represents you" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Label customization" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_field :custom_label, label: "Custom Label Text" %>
+          <%= f.text_field :no_label, label: false, placeholder: "Field without label" %>
+          <%= f.text_field :default_label %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :custom_label, label: "Custom Label Text" %&gt;
+&lt;%= f.text_field :no_label, label: false, placeholder: "Field without label" %&gt;
+&lt;%= f.text_field :default_label %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
       <% component.with_header align: :left, title: "Validation" %>
 
       <% component.with_body do %>
@@ -97,12 +137,12 @@
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;!--Active Record Validations works automatically--&gt;</code>
+        <pre class="w-full"><code>&lt;!--Active Record Validations works automatically--&gt;
 &lt;%= form_with model: @user, url: root_path do |f| %&gt;
   &lt;%= f.text_field :first_name %&gt;
 &lt;% end %&gt;
 
-<code>&lt;!-- You are able to add custom error messages --&gt;
+&lt;!-- You are able to add custom error messages --&gt;
 &lt;%= f.text_field :manual_error_field, error: "This field has a custom error message" %&gt;</code></pre>
       <% end %>
     <% end %>
