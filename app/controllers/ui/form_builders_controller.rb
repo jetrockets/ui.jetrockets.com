@@ -4,4 +4,7 @@ class Ui::FormBuildersController < ApplicationController
 
   def default
   end
+
+  def text_field
+  end
 end

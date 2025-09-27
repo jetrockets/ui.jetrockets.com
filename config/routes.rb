@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       namespace :form_builders do
         get "core"
         get "default"
+        get "text_field"
       end
     end
   end

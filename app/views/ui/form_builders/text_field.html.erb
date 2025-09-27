@@ -1,0 +1,110 @@
+<%
+  set_meta_tags(
+    title: "TextField Examples - Rails UI Components",
+    description: "TextField examples using DefaultFormBuilder with various field types, sizes, states, and validation examples.",
+    keywords: "Rails, UI Components, Form Builder, TextField"
+  )
+%>
+<% breadcrumb :ui_form_builders_text_field %>
+
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Rails <code class="px-1 text-3xl bg-yellow-100">text_field</code> examples</h1>
+      <p class="header__subtitle">
+        Comprehensive examples of text field types, sizes, states, and validation using DefaultFormBuilder.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/default_form_builder.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
+  </header>
+
+  <section class="mb-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "TextField types" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_field :first_name, required: true %>
+          <%= f.email_field :email, autocomplete: "email" %>
+          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.phone_field :phone, placeholder: "+1 (555) 123-4567" %>
+          <%= f.submit %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :first_name, required: true %&gt;
+&lt;%= f.email_field :email, autocomplete: "email" %&gt;
+&lt;%= f.password_field :password, autocomplete: "current-password" %&gt;
+&lt;%= f.phone_field :phone, placeholder: "+1 (555) 123-4567" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "TextField sizes" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_field :large_field, size: :lg %>
+          <%= f.text_field :default_field %>
+          <%= f.text_field :small_field, size: :sm %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :large_field, size: :lg %&gt;
+&lt;%= f.text_field :default_field %&gt;
+&lt;%= f.text_field :small_field, size: :sm %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Disabled State" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_field :disabled_field, value: "Disabled", disabled: true %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :disabled_field, value: "Disabled", disabled: true %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Validation" %>
+
+      <% component.with_body do %>
+        <% user = User.new %>
+        <% user.errors.add(:first_name, "is required") %>
+        <%= form_with model: user, url: root_path do |f| %>
+          <%= f.text_field :first_name, label: "Active Record Validations" %>
+        <% end %>
+
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_field :manual_error_field, label: "Manual validation error", error: "This field has a custom error message", value: "Invalid Value" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;!--Active Record Validations works automatically--&gt;</code>
+&lt;%= form_with model: @user, url: root_path do |f| %&gt;
+  &lt;%= f.text_field :first_name %&gt;
+&lt;% end %&gt;
+
+<code>&lt;!-- You are able to add custom error messages --&gt;
+&lt;%= f.text_field :manual_error_field, error: "This field has a custom error message" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+</article>

@@ -73,6 +73,10 @@ crumb :ui_form_builders_default do
   link "Default Form Builder", ui_form_builders_default_path
 end
 
+crumb :ui_form_builders_text_field do
+  link "TextField Examples", ui_form_builders_text_field_path
+end
+
 crumb :ui_icon do
   link "Icon", ui_icon_path
 end
