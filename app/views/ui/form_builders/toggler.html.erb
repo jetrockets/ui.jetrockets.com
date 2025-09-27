@@ -1,0 +1,41 @@
+<%
+  set_meta_tags(
+    title: "Toggler - Rails UI Components",
+    description: "Toggle switch component with enhanced styling and accessibility features.",
+    keywords: "Rails, UI Components, Toggle, Switch, Form"
+  )
+%>
+<% breadcrumb :ui_form_builders_toggler %>
+
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Toggler</h1>
+      <p class="header__subtitle">
+        Enhanced toggle switch field with modern styling, hint support, and improved accessibility for boolean input.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/toggler_field.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="h3">Example</h2>
+    <%= turbo_frame_tag :ui_form_builder, data: { turbo_action: :advance }, target: :_top do %>
+      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
+        <% tabs.with_item title: "Preview", href: ui_form_builders_toggler_path, data: { turbo_frame: :ui_form_builder }, active: !params[:code] %>
+        <% tabs.with_item title: "Code", href: ui_form_builders_toggler_path(code: true), data: { turbo_frame: :ui_form_builder }, active: params[:code] %>
+      <% end %>
+
+      <div class="flex flex-col gap-2">
+        <% unless params[:code] %>
+          <%= render "ui/form_builders/examples/toggler" %>
+        <% else %>
+          <%= render_code_example("ui/form_builders/examples/_toggler") %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</article>

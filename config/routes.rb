@@ -45,6 +45,13 @@ Rails.application.routes.draw do
         get "core"
         get "default"
         get "text_field"
+        get "text_area"
+        get "select"
+        get "choices"
+        get "checkbox"
+        get "radio_button"
+        get "toggler"
+        get "easepick"
       end
     end
   end

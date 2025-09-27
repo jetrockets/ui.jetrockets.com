@@ -74,7 +74,35 @@ crumb :ui_form_builders_default do
 end
 
 crumb :ui_form_builders_text_field do
-  link "TextField Examples", ui_form_builders_text_field_path
+  link "TextField", ui_form_builders_text_field_path
+end
+
+crumb :ui_form_builders_text_area do
+  link "TextArea", ui_form_builders_text_area_path
+end
+
+crumb :ui_form_builders_select do
+  link "Select", ui_form_builders_select_path
+end
+
+crumb :ui_form_builders_choices do
+  link "Choices", ui_form_builders_choices_path
+end
+
+crumb :ui_form_builders_checkbox do
+  link "Checkbox", ui_form_builders_checkbox_path
+end
+
+crumb :ui_form_builders_radio_button do
+  link "Radio Button", ui_form_builders_radio_button_path
+end
+
+crumb :ui_form_builders_toggler do
+  link "Toggler", ui_form_builders_toggler_path
+end
+
+crumb :ui_form_builders_easepick do
+  link "Easepick", ui_form_builders_easepick_path
 end
 
 crumb :ui_icon do

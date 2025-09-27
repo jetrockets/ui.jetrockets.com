@@ -1,0 +1,21 @@
+<%= form_with url: root_path do |f| %>
+  <%= f.group do %>
+    <%= f.check_box :newsletter, hint: "Receive weekly updates" %>
+  <% end %>
+
+  <%= f.group do %>
+    <%= f.check_box :terms, required: true %>
+  <% end %>
+
+  <%= f.group do %>
+    <%= f.check_box :free_shipping, checked: true, hint: "Free shipping for orders over $50" %>
+  <% end %>
+
+  <%= f.group do %>
+    <%= f.check_box :notifications, hint: "Enable push notifications" %>
+  <% end %>
+
+  <div class="form__actions">
+    <%= f.submit "Save", class: "btn-lg" %>
+  </div>
+<% end %>

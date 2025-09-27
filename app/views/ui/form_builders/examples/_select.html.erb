@@ -1,0 +1,9 @@
+<%= form_with url: root_path do |f| %>
+  <%= f.select :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select", hint: "Choose your country" } %>
+  <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state", required: true } %>
+  <%= f.select :priority, [["High", 1], ["Medium", 2], ["Low", 3]], { selected: 2, hint: "Task priority level" } %>
+
+  <div class="form__actions">
+    <%= f.submit "Save", class: "btn-lg" %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<%= form_with url: root_path do |f| %>
+  <%= f.text_area :bio, placeholder: "Tell us about yourself...", hint: "Max 500 characters" %>
+  <%= f.text_area :description, placeholder: "Product description", required: true %>
+  <%= f.text_area :comment, placeholder: "Leave your comment", rows: 3 %>
+
+  <div class="form__actions">
+    <%= f.submit "Save", class: "btn-lg" %>
+  </div>
+<% end %>
