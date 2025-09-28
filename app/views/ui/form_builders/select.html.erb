@@ -27,12 +27,32 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" } %>
+          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" } %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…  " } %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Select sizes" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.select :large_field, ["Yes", "No"], { }, { size: :lg } %>
+          <%= f.select :default_field, ["Yes", "No"], { } %>
+          <%= f.select :small_field, ["Yes", "No"], { }, { size: :sm } %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :large_field, size: :lg %&gt;
+&lt;%= f.text_field :default_field %&gt;
+&lt;%= f.text_field :small_field, size: :sm %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -43,13 +63,13 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option" }, { label: "Custom Label Text" } %>
+          <%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %>
           <%= f.select :no_label, ["Yes", "No"], {}, { label: false } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option" }, { label: "Custom Label Text" } %&gt;
+        <pre class="w-full"><code>&lt;%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %&gt;
 &lt;%= f.select :no_label, ["Yes", "No"], {}, { label: false } %&gt;</code></pre>
       <% end %>
     <% end %>
@@ -95,20 +115,20 @@
         <% user = User.new %>
         <% user.errors.add(:state, "is required") %>
         <%= form_with model: user, url: root_path do |f| %>
-          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" } %>
+          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
         <% end %>
 
         <%= form_with url: root_path do |f| %>
-          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" }, { error: "This field has a custom error" } %>
+          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
         <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
-&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" } %&gt;
+&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %&gt;
 
 &lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" }, { error: "This field has a custom error" } %&gt;</code></pre>
+&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

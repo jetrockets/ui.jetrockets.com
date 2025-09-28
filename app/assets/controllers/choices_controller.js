@@ -27,7 +27,6 @@ export default class ChoicesController extends Controller {
         this.input.removeEventListener('input', this.#search)
       }
       this.selectTarget.removeEventListener('addItem', this.#addItem)
-      this.selectTarget.removeEventListener('removeItem', this.#removeItem)
     } catch {}
   }
 
@@ -40,19 +39,6 @@ export default class ChoicesController extends Controller {
 
   enable () {
     this.choices.enable()
-  }
-
-  #toggleInput () {
-    const input = this.element.querySelector('.choices__input.choices__input--cloned')
-
-    if (!input) return
-
-    const selectedItems = this.selectTarget.querySelectorAll('option:checked').length
-    if (selectedItems >= parseInt(this.selectTarget.dataset.maxItemCount)) {
-      input.classList.add('hidden')
-    } else {
-      input.classList.remove('hidden')
-    }
   }
 
   setValue (event) {
@@ -77,6 +63,7 @@ export default class ChoicesController extends Controller {
       fuseOptions: {
         threshold: 0.2
       },
+      searchEnabled: this.searchPath || false,
       shouldSort: false,
       removeItemButton: this.selectTarget.multiple,
       searchResultLimit: 10,
@@ -113,13 +100,11 @@ export default class ChoicesController extends Controller {
     this.input = this.element.querySelector('input')
 
     this.selectTarget.addEventListener('addItem', this.#addItem)
-    this.selectTarget.addEventListener('removeItem', this.#removeItem)
     if (this.input && this.searchPath) {
       this.input.addEventListener('input', this.#search)
     }
 
     this.#appendNewLink()
-    this.#toggleInput()
   }
 
   #addItem = (event) => {
@@ -137,12 +122,6 @@ export default class ChoicesController extends Controller {
     if (maxItemCount && selectedLength === maxItemCount) {
       this.choices.hideDropdown()
     }
-
-    this.#toggleInput()
-  }
-
-  #removeItem = (event) => {
-    this.#toggleInput()
   }
 
   #search = (event) => {

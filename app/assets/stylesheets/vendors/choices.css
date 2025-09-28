@@ -72,8 +72,9 @@
   content: "";
   background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMCAyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNMTYuMjUgOEwxMCAxNC4yNUwzLjc1IDgiIHN0cm9rZT0iIzNGM0M0MyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K") no-repeat;
   background-position: center;
+  background-size: 15px;
   width: 40px;
-  height: 40px;
+  height: 100%;
   position: absolute;
   right: var(--choices-arrow-right);
 }
@@ -115,7 +116,8 @@
   background-color: var(--choices-bg-color);
   border: var(--choices-base-border);
   border-radius: var(--choices-border-radius);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: var(--choices-font-size-lg);
   min-height: var(--choices-input-height);
   overflow: hidden;
@@ -140,6 +142,7 @@
 }
 
 .choices__list[aria-expanded] {
+  visibility: hidden;
   background-color: var(--choices-bg-color-dropdown);
   border: var(--choices-base-border);
   border-bottom-left-radius: var(--choices-border-radius);
@@ -160,6 +163,10 @@
 
 .choices__list--multiple {
   display: inline;
+}
+
+.choices__item {
+  font-size: var(--choices-font-size-md);
 }
 
 .choices__list--multiple .choices__item {
@@ -188,11 +195,14 @@
 
 .choices__list--dropdown,
 .choices__list[aria-expanded] {
+  overflow: auto;
+  max-height: 320px;
+
   background-color: var(--choices-bg-color-dropdown);
   border: var(--choices-base-border);
   border-bottom-left-radius: var(--choices-border-radius);
   border-bottom-right-radius: var(--choices-border-radius);
-  overflow: hidden;
+
   position: absolute;
   visibility: hidden;
   width: var(--choices-width);
@@ -222,4 +232,13 @@
 
 .choices__placeholder {
   opacity: var(--choices-placeholder-opacity);
+}
+
+/* DISABLED */
+.choices.is-disabled .choices__inner,
+.choices.is-disabled .choices__input {
+  cursor: not-allowed;
+  user-select: none;
+  color: var(--color-gray-500);
+  background-color: var(--color-gray-50);
 }

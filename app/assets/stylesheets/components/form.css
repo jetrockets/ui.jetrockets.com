@@ -29,14 +29,6 @@
     @apply text-red-800 border-red-400 bg-red-50/50 focus:border-red-300 focus:ring-red-200;
   }
 
-  .form__choices-errored {
-    --choices-ring-shadow-focus: 0 0 0 3px var(--color-red-200);
-    --choices-bg-color: color-mix(in oklab, var(--color-red-50) 50%, transparent);
-    --choices-base-border: 1px solid var(--color-red-400);
-    --choices-border-color-focus: var(--color-red-400);
-    --choices-text-color: var(--color-red-800);
-  }
-
   .form__hint {
     @apply text-sm font-normal text-gray-600;
   }
@@ -67,5 +59,24 @@
 
   .form__actions {
     @apply mt-8 mb-6;
+  }
+
+
+  /* Choices.js custom styles */
+  .form__choices-lg {
+    --choices-input-height: 3rem;
+    --choices-font-size-md: 16px;
+  }
+  .form__choices-sm {
+    --choices-input-height: 2.25rem;
+    --choices-font-size-md: 12px;
+  }
+
+  .form__choices-errored {
+    --choices-ring-shadow-focus: 0 0 0 3px var(--color-red-200);
+    --choices-bg-color: color-mix(in oklab, var(--color-red-50) 50%, transparent);
+    --choices-base-border: 1px solid var(--color-red-400);
+    --choices-border-color-focus: var(--color-red-400);
+    --choices-text-color: var(--color-red-800);
   }
 }

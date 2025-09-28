@@ -29,12 +29,32 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" } %>
+          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state" }%&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }%&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Choices sizes" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.choices :large_field, ["Yes", "No"], { }, { size: :lg } %>
+          <%= f.choices :default_field, ["Yes", "No"], { } %>
+          <%= f.choices :small_field, ["Yes", "No"], { }, { size: :sm } %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_field :large_field, size: :lg %&gt;
+&lt;%= f.text_field :default_field %&gt;
+&lt;%= f.text_field :small_field, size: :sm %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -63,28 +83,28 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.choices :async_countries, [], {}, { data: { search: countries_path(format: :json) } } %>
+          <%= f.choices :country, [], { include_blank: "Select country…" }, { data: { search: countries_path(format: :json) } } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :no_label, ["Yes", "No"], {}, { data: { searchEnabled: false } } %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.choices :country, ["Yes", "No"], {}, { data: { search: countries_path(format: :json) } } %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
     <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Without Search" %>
+      <% component.with_header align: :left, title: "With Search Field" %>
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.choices :no_label, ["Yes", "No"], {}, { data: { search_enabled: false } } %>
+          <%= f.choices :gender, ["Male", "Female", "Other"], {}, { data: { search_enabled: true } } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :no_label, ["Yes", "No"], {}, { data: { searchEnabled: false } } %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.choices :gender, ["Male", "Female", "Other"], {}, { data: { searchEnabled: true } } %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -95,18 +115,76 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option" }, { label: "Custom Label Text" } %>
+          <%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %>
           <%= f.choices :no_label, ["Yes", "No"], {}, { label: false } %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option" }, { label: "Custom Label Text" } %&gt;
+        <pre class="w-full"><code>&lt;%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %&gt;
 &lt;%= f.choices :no_label, ["Yes", "No"], {}, { label: false } %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Hint message" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.choices :with_hint, ["Yes", "No"], {}, { hint: "Select an option" } %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.choices :no_label, ["Yes", "No"], {}, { hint: "Select an option" } %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Disabled State" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.choices :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.choices :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Validation" %>
+
+      <% component.with_body do %>
+        <% user = User.new %>
+        <% user.errors.add(:state, "is required") %>
+        <%= form_with model: user, url: root_path do |f| %>
+          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
+        <% end %>
+
+        <%= form_with url: root_path do |f| %>
+          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
+&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %&gt;
+
+&lt;!-- You are able to add custom error messages --&gt;
+&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
 
 
 </article>
