@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { stimulus } from '~/init'
+import { throttle } from '~/utils/timing'
 
 /* global sessionStorage */
 
@@ -16,32 +17,16 @@ export default class Sidebar extends Controller {
   }
 
   disconnect () {
-    if (this.#scrollDebounceTimer) {
-      clearTimeout(this.#scrollDebounceTimer)
-    }
-
     if (this.hasScrollTarget && this.scrollTarget.scrollTop > 0) {
       this.#saveScrollPosition()
     }
   }
-
-  #scrollDebounceTimer = null
 
   #saveScrollPosition () {
     if (!this.hasScrollTarget) return
 
     const scrollPosition = this.scrollTarget.scrollTop
     sessionStorage.setItem('sidebar-scroll-position', scrollPosition)
-  }
-
-  #saveScrollPositionDebounced () {
-    if (this.#scrollDebounceTimer) {
-      clearTimeout(this.#scrollDebounceTimer)
-    }
-
-    this.#scrollDebounceTimer = setTimeout(() => {
-      this.#saveScrollPosition()
-    }, 500)
   }
 
   #restoreScrollPosition () {
@@ -56,9 +41,9 @@ export default class Sidebar extends Controller {
   #setupScrollListener () {
     if (!this.hasScrollTarget) return
 
-    this.scrollTarget.addEventListener('scroll', () => {
-      this.#saveScrollPositionDebounced()
-    })
+    const throttledSave = throttle(() => this.#saveScrollPosition(), 500)
+
+    this.scrollTarget.addEventListener('scroll', throttledSave)
   }
 
   #setupBeforeUnloadListener () {
