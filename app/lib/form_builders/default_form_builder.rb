@@ -14,6 +14,12 @@ module FormBuilders
       end
     end
 
+    def easepick(method, options = {})
+      create_form_group(method, options) do
+        super(method, extract_field_options(options))
+      end
+    end
+
     def select(method, choices = nil, options = {}, html_options = {})
       create_form_group(method, html_options) do
         super(method, choices, extract_field_options(options), html_options)
@@ -23,12 +29,6 @@ module FormBuilders
     def choices(method, choices = nil, options = {}, html_options = {})
       create_form_group(method, html_options) do
         super(method, choices, extract_field_options(options), html_options)
-      end
-    end
-
-    def easepick(method, options = {})
-      create_form_group(method, options) do
-        super(method, extract_field_options(options))
       end
     end
 

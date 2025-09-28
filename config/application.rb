@@ -33,5 +33,11 @@ module Ui
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.action_view.field_error_proc =
+      proc { |html_tag, instance|
+        # content_tag(:span, html_tag, class: 'field_with_errors')
+        html_tag.html_safe
+      }
   end
 end

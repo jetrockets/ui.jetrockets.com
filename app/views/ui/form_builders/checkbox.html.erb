@@ -27,18 +27,18 @@
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group class: "form__checkbox_collection" do %>
-            <%= f.check_box :newsletter, hint: "Receive weekly updates" %>
-            <%= f.check_box :terms, required: true %>
-            <%= f.check_box :free_shipping, checked: true, hint: "Free shipping for orders over $50" %>
+            <%= f.check_box :newsletter, hint: "Here you can have a hint" %>
+            <%= f.check_box :terms %>
+            <%= f.check_box :free_shipping %>
           <% end %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
         <pre class="w-full"><code>&lt;%= f.group class: "form__checkbox_collection" do %&gt;
-  &lt;%= f.check_box :newsletter, hint: "Receive weekly updates" %&gt;
-  &lt;%= f.check_box :terms, required: true %&gt;
-  &lt;%= f.check_box :free_shipping, checked: true, hint: "Free shipping for orders over $50" %&gt;
+  &lt;%= f.check_box :newsletter, hint: "Here you can have a hint" %&gt;
+  &lt;%= f.check_box :terms %&gt;
+  &lt;%= f.check_box :free_shipping %&gt;
 &lt;% end %&gt;</code></pre>
       <% end %>
     <% end %>
@@ -56,6 +56,38 @@
 
       <% component.with_footer do %>
         <pre class="w-full"><code>&lt;%= f.check_box :disabled_checkbox, disabled: true %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Validation" %>
+
+      <% component.with_body do %>
+        <% user = User.new %>
+        <% user.errors.add(:terms_and_conditions, "is required") %>
+        <%= form_with model: user, url: root_path do |f| %>
+          <%= f.check_box :terms_and_conditions, label: "I agree to the terms and conditions" %>
+        <% end %>
+
+        <hr class="hr">
+
+        <%= form_with url: root_path do |f| %>
+          <%= f.group class: "form__checkbox_collection" do %>
+            <%= f.check_box :newsletter, hint: "Receive weekly updates" %>
+            <%= f.check_box :terms %>
+            <%= f.check_box :free_shipping, hint: "Free shipping for orders over $50" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
+&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %&gt;
+
+&lt;!-- You are able to add custom error messages --&gt;
+&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
