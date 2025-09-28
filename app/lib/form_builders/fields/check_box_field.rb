@@ -21,7 +21,7 @@ module FormBuilders
       def checkbox_tag
         ActionView::Helpers::FormBuilder.instance_method(:check_box).bind(@form_builder).call(
           @method,
-          @options.merge(class: "form__checkbox"),
+          @options.merge(class: classes),
           @checked_value,
           @unchecked_value
         )
@@ -31,6 +31,7 @@ module FormBuilders
         @template.content_tag(:div, class: "pl-2") do
           @template.concat label_tag(label_text) unless label_text == false
           @template.concat hint_tag(hint) if hint
+          @template.concat @form_builder.inline_errors_for(@method, @custom_error) if errors?
         end
       end
 
@@ -40,6 +41,13 @@ module FormBuilders
 
       def hint_tag(hint)
         @template.content_tag(:p, hint, class: "form__hint")
+      end
+
+      def classes
+        class_names(
+          "form__checkbox",
+          { "form__checkbox-errored": errors? }
+        )
       end
     end
   end

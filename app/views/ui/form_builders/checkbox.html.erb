@@ -71,23 +71,19 @@
           <%= f.check_box :terms_and_conditions, label: "I agree to the terms and conditions" %>
         <% end %>
 
-        <hr class="hr">
+        <hr class="hr my-4">
 
         <%= form_with url: root_path do |f| %>
-          <%= f.group class: "form__checkbox_collection" do %>
-            <%= f.check_box :newsletter, hint: "Receive weekly updates" %>
-            <%= f.check_box :terms %>
-            <%= f.check_box :free_shipping, hint: "Free shipping for orders over $50" %>
-          <% end %>
+          <%= f.check_box :custom_error, checked: true, error: "Custom error" %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
         <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
-&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %&gt;
+&lt;%= f.check_box :terms_and_conditions, label: "I agree to the terms and conditions" %&gt;
 
 &lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %&gt;</code></pre>
+&lt;%= f.check_box :free_shipping, error: "Custom error" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

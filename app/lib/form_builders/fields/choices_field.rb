@@ -42,7 +42,7 @@ module FormBuilders
           "form__choices",
           "form__choices-sm": size == :sm,
           "form__choices-lg": size == :lg,
-          "form__choices-errored": errors_for?
+          "form__choices-errored": errors?
         )
       end
     end

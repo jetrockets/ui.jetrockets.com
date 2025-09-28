@@ -16,7 +16,7 @@ module FormBuilders
       def build_group_classes
         class_names(
           "form__group",
-          { "form__group-errored": @method && errors_for?(@method) },
+          { "form__group-errored": @method && errors? },
           @options.delete(:class)
         )
       end

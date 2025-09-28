@@ -75,17 +75,5 @@ module FormBuilders
     def hint_tag(hint)
       @template.content_tag(:p, hint, class: "form__hint")
     end
-
-    def inline_errors_for(method, custom_error = nil)
-      if custom_error || errors_for?(method)
-        error_message = (custom_error.presence || @object&.errors[method.to_sym]&.first).to_s.capitalize
-
-        @template.content_tag(:p, error_message, class: "form__error")
-      end
-    end
-
-    def errors_for?(method)
-      @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
-    end
   end
 end

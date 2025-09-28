@@ -10,13 +10,13 @@ module FormBuilders
         @object = form_builder.object
         @template = form_builder.instance_variable_get(:@template)
         @block = block
+        @custom_error = @options.delete(:error)
       end
 
       protected
 
-      def errors_for?(method = @method)
-        return true if @options.delete(:error).present?
-        @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
+      def errors?
+        @custom_error || (@object&.errors&.any? && @object&.errors[@method.to_sym]&.any?)
       end
 
       def required?
@@ -38,7 +38,7 @@ module FormBuilders
           @options.delete(:class),
           "form__field-sm": size == :sm,
           "form__field-lg": size == :lg,
-          "form__field-errored": errors_for?
+          "form__field-errored": errors?
         )
       end
     end

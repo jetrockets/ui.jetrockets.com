@@ -28,7 +28,7 @@ module FormBuilders
       def label_classes
         class_names(
           "form__label",
-          { "form__label-errored": errors_for? },
+          { "form__label-errored": errors? },
           @options.delete(:class)
         )
       end

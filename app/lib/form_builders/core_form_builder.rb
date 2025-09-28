@@ -56,5 +56,20 @@ module FormBuilders
     def group(options = {}, &block)
       Fields::GroupField.new(self, nil, options, &block).render
     end
+
+    # Error message for the given method
+    def inline_errors_for(method, custom_error = nil)
+      if custom_error || errors_for?(method)
+        error_message = (custom_error.presence || @object&.errors[method.to_sym]&.first).to_s.capitalize
+
+        @template.content_tag(:p, error_message, class: "form__error")
+      end
+    end
+
+    private
+
+    def errors_for?(method)
+      @object&.errors&.any? && @object&.errors[method.to_sym]&.any?
+    end
   end
 end
