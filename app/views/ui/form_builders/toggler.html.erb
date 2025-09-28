@@ -28,79 +28,18 @@
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group do %>
-            <%= f.toggler :dark_mode, hint: "Enable dark theme" %>
+            <%= f.toggler :dark_mode %>
           <% end %>
 
           <%= f.group do %>
-            <%= f.toggler :notifications, checked: true, hint: "Receive email notifications" %>
-          <% end %>
-
-          <%= f.group do %>
-            <%= f.toggler :public_profile, hint: "Make your profile visible to others" %>
+            <%= f.toggler :notifications, hint: "Here you can have a hint" %>
           <% end %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group do %&gt;
-  &lt;%= f.toggler :dark_mode, hint: "Enable dark theme" %&gt;
-&lt;% end %&gt;
-
-&lt;%= f.group do %&gt;
-  &lt;%= f.toggler :notifications, checked: true, hint: "Receive email notifications" %&gt;
-&lt;% end %&gt;
-
-&lt;%= f.group do %&gt;
-  &lt;%= f.toggler :public_profile, hint: "Make your profile visible to others" %&gt;
-&lt;% end %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Custom Labels" %>
-
-      <% component.with_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.group do %>
-            <%= f.toggler :custom_label, label: "Custom Label Text" %>
-          <% end %>
-
-          <%= f.group do %>
-            <%= f.toggler :no_label, label: false %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group do %&gt;
-  &lt;%= f.toggler :custom_label, label: "Custom Label Text" %&gt;
-&lt;% end %&gt;
-
-&lt;%= f.group do %&gt;
-  &lt;%= f.toggler :no_label, label: false %&gt;
-&lt;% end %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Disabled State" %>
-
-      <% component.with_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.group do %>
-            <%= f.toggler :disabled_field, checked: true, disabled: true %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group do %&gt;
-  &lt;%= f.toggler :disabled_field, checked: true, disabled: true %&gt;
-&lt;% end %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.toggler :dark_mode %&gt;
+&lt;%= f.toggler :dark_mode, hint: "Here you can have a hint" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

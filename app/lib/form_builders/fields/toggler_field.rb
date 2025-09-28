@@ -10,10 +10,10 @@ module FormBuilders
       def render
         label_text = @options.delete(:label)
 
-        @template.content_tag(:div, class: "flex items-center") do
+        @template.content_tag(:div, class: "flex items-start") do
           @template.concat hidden_checkbox
-          @template.concat toggler_container(label_text)
-          @template.concat @form_builder.label(@method, label_text, class: "pl-2") unless label_text == false
+          @template.concat toggler_element(label_text)
+          @template.concat toggler_label_with_hint(label_text)
         end
       end
 
@@ -29,8 +29,15 @@ module FormBuilders
         )
       end
 
-      def toggler_container(label_text)
+      def toggler_element(label_text)
         @form_builder.label(@method, label_text, class: "form__toggler")
+      end
+
+      def toggler_label_with_hint(label_text)
+        @template.content_tag(:div, class: "pt-0.5 pl-3") do
+          @template.concat @form_builder.label(@method, label_text) unless label_text == false
+          @template.concat @template.content_tag(:p, @options[:hint], class: "form__hint mt-0") if @options[:hint]
+        end
       end
     end
   end
