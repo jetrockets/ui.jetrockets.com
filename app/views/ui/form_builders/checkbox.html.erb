@@ -24,62 +24,21 @@
   <section class="mb-12">
     <%= render Ui::Card::Component.new do |component| %>
       <% component.with_header align: :left, title: "Basic Checkbox" %>
-
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.group do %>
+          <%= f.group class: "form__checkbox_collection" do %>
             <%= f.check_box :newsletter, hint: "Receive weekly updates" %>
-          <% end %>
-
-          <%= f.group do %>
             <%= f.check_box :terms, required: true %>
-          <% end %>
-
-          <%= f.group do %>
             <%= f.check_box :free_shipping, checked: true, hint: "Free shipping for orders over $50" %>
           <% end %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group do %&gt;
+        <pre class="w-full"><code>&lt;%= f.group class: "form__checkbox_collection" do %&gt;
   &lt;%= f.check_box :newsletter, hint: "Receive weekly updates" %&gt;
-&lt;% end %&gt;
-
-&lt;%= f.group do %&gt;
   &lt;%= f.check_box :terms, required: true %&gt;
-&lt;% end %&gt;
-
-&lt;%= f.group do %&gt;
   &lt;%= f.check_box :free_shipping, checked: true, hint: "Free shipping for orders over $50" %&gt;
-&lt;% end %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Custom Labels" %>
-
-      <% component.with_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.group do %>
-            <%= f.check_box :custom_label, label: "Custom Label Text" %>
-          <% end %>
-
-          <%= f.group do %>
-            <%= f.check_box :no_label, label: false %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group do %&gt;
-  &lt;%= f.check_box :custom_label, label: "Custom Label Text" %&gt;
-&lt;% end %&gt;
-
-&lt;%= f.group do %&gt;
-  &lt;%= f.check_box :no_label, label: false %&gt;
 &lt;% end %&gt;</code></pre>
       <% end %>
     <% end %>
@@ -91,16 +50,12 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.group do %>
-            <%= f.check_box :disabled_field, checked: true, disabled: true %>
-          <% end %>
+          <%= f.check_box :disabled_checkbox, disabled: true %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group do %&gt;
-  &lt;%= f.check_box :disabled_field, checked: true, disabled: true %&gt;
-&lt;% end %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.check_box :disabled_checkbox, disabled: true %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

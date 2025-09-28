@@ -37,10 +37,15 @@
     @apply text-sm text-red-800
   }
 
+  .form__checkbox_collection {
+    @apply flex flex-col gap-6;
+  }
+
   .form__radio,
   .form__checkbox {
     @apply border-gray-300 rounded-md cursor-pointer size-5;
     @apply focus:ring focus:ring-offset-0 focus:ring-blue-200/50 checked:hover:bg-blue-500 focus:border-blue-300 checked:focus:border-blue-500 checked:focus:bg-blue-500 checked:bg-blue-500 checked:border-blue-500;
+    @apply disabled:cursor-not-allowed disabled:bg-gray-50 disabled:focus:border-gray-400 disabled:border-gray-300 disabled:focus:ring-gray-400 disabled:checked:bg-gray-200 disabled:checked:hover:bg-gray-400 disabled:checked:bg-gray-400 disabled:checked:border-gray-400 disabled:checked:focus:border-gray-400;
   }
 
   .form__radio {
