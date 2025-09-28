@@ -17,13 +17,13 @@
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/default_form_builder.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/text_field.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
   <section class="mb-12">
     <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "TextField types" %>
+      <% component.with_header align: :left, title: "TextField types", subtitle: "It supports all HTML5 input types" %>
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
@@ -66,16 +66,20 @@
 
   <section class="my-12">
     <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Disabled State" %>
+      <% component.with_header align: :left, title: "Label customization" %>
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.text_field :disabled_field, value: "Disabled", disabled: true %>
+          <%= f.text_field :custom_label, label: "Custom Label Text" %>
+          <%= f.text_field :no_label, label: false, placeholder: "Field without label" %>
+          <%= f.text_field :default_label %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :disabled_field, value: "Disabled", disabled: true %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.text_field :custom_label, label: "Custom Label Text" %&gt;
+&lt;%= f.text_field :no_label, label: false, placeholder: "Field without label" %&gt;
+&lt;%= f.text_field :default_label %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -102,20 +106,16 @@
 
   <section class="my-12">
     <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Label customization" %>
+      <% component.with_header align: :left, title: "Disabled State" %>
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.text_field :custom_label, label: "Custom Label Text" %>
-          <%= f.text_field :no_label, label: false, placeholder: "Field without label" %>
-          <%= f.text_field :default_label %>
+          <%= f.text_field :disabled_field, value: "Disabled", disabled: true %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :custom_label, label: "Custom Label Text" %&gt;
-&lt;%= f.text_field :no_label, label: false, placeholder: "Field without label" %&gt;
-&lt;%= f.text_field :default_label %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.text_field :disabled_field, value: "Disabled", disabled: true %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -132,18 +132,18 @@
         <% end %>
 
         <%= form_with url: root_path do |f| %>
-          <%= f.text_field :manual_error_field, label: "Manual validation error", error: "This field has a custom error message", value: "Invalid Value" %>
+          <%= f.text_field :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;!--Active Record Validations works automatically--&gt;
+        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
 &lt;%= form_with model: @user, url: root_path do |f| %&gt;
   &lt;%= f.text_field :first_name %&gt;
 &lt;% end %&gt;
 
 &lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.text_field :manual_error_field, error: "This field has a custom error message" %&gt;</code></pre>
+&lt;%= f.text_field :manual_error_field, error: "This field has a custom error" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

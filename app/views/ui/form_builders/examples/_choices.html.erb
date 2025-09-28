@@ -1,9 +1,0 @@
-<%= form_with url: root_path do |f| %>
-  <%= f.choices :country, ["United States", "Canada", "Mexico"], { include_blank: "Please Select", hint: "Choose your country" } %>
-  <%= f.choices :skills, ["JavaScript", "Ruby", "Python", "Go", "Rust"], { hint: "Select multiple skills" }, { multiple: true, data: { max_item_count: 3 } } %>
-  <%= f.choices :framework, ["Rails", "Django", "Express", "FastAPI"], { include_blank: "Select framework", required: true } %>
-
-  <div class="form__actions">
-    <%= f.submit "Save", class: "btn-lg" %>
-  </div>
-<% end %>

@@ -10,7 +10,7 @@
 <article>
   <header class="header">
     <div class="header__heading">
-      <h1 class="header__title">Easepick</h1>
+      <h1 class="header__title">Rails <code class="px-1 text-3xl bg-yellow-100">easepick</code> examples</h1>
       <p class="header__subtitle">
         Enhanced date picker field with powerful calendar functionality, multiple plugins support, and consistent styling using Easepick library.
       </p>
@@ -21,21 +21,97 @@
     </div>
   </header>
 
-  <section>
-    <h2 class="h3">Example</h2>
-    <%= turbo_frame_tag :ui_form_builder, data: { turbo_action: :advance }, target: :_top do %>
-      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
-        <% tabs.with_item title: "Preview", href: ui_form_builders_easepick_path, data: { turbo_frame: :ui_form_builder }, active: !params[:code] %>
-        <% tabs.with_item title: "Code", href: ui_form_builders_easepick_path(code: true), data: { turbo_frame: :ui_form_builder }, active: params[:code] %>
+  <section class="mb-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Basic Date Picker" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :birthday, hint: "Select your birth date" %>
+          <%= f.easepick :start_date, required: true %>
+        <% end %>
       <% end %>
 
-      <div class="flex flex-col gap-2">
-        <% unless params[:code] %>
-          <%= render "ui/form_builders/examples/easepick" %>
-        <% else %>
-          <%= render_code_example("ui/form_builders/examples/_easepick") %>
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :birthday, hint: "Select your birth date" %&gt;
+&lt;%= f.easepick :start_date, required: true %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Date Picker with Plugins" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :future_date, data: {
+            easepick_plugins: ["LockPlugin"],
+            easepick_lock_min_date: Date.current
+          }, hint: "Future dates only" %>
+
+          <%= f.easepick :appointment, data: {
+            easepick_plugins: ["LockPlugin", "AmpPlugin"],
+            easepick_amp_dropdown: {
+              months: true,
+              years: true,
+              maxYear: Time.zone.today.year + 2,
+              minYear: Time.zone.today.year
+            }
+          }, hint: "Select appointment date", required: true %>
         <% end %>
-      </div>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :future_date, data: {
+  easepick_plugins: ["LockPlugin"],
+  easepick_lock_min_date: Date.current
+}, hint: "Future dates only" %&gt;
+
+&lt;%= f.easepick :appointment, data: {
+  easepick_plugins: ["LockPlugin", "AmpPlugin"],
+  easepick_amp_dropdown: {
+    months: true,
+    years: true,
+    maxYear: Time.zone.today.year + 2,
+    minYear: Time.zone.today.year
+  }
+}, hint: "Select appointment date", required: true %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Custom Labels" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :custom_label, label: "Custom Label Text" %>
+          <%= f.easepick :no_label, label: false, placeholder: "Select date" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :custom_label, label: "Custom Label Text" %&gt;
+&lt;%= f.easepick :no_label, label: false, placeholder: "Select date" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Disabled State" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :disabled_field, value: Date.current, disabled: true %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :disabled_field, value: Date.current, disabled: true %&gt;</code></pre>
+      <% end %>
     <% end %>
   </section>
 </article>

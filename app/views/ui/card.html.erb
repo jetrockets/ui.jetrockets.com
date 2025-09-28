@@ -26,7 +26,7 @@
 
     <div class="max-w-md mb-4">
       <%= render Ui::Card::Component.new do |component| %>
-        <% component.with_header align: :left, title: "Noteworthy technology acquisitions 2021" %>
+        <% component.with_header align: :left, title: "Noteworthy technology acquisitions 2021", subtitle: "A summary of notable acquisitions" %>
         <% component.with_body do %>
           <p>This is the body of the card. You can put any content here.</p>
         <% end %>
@@ -37,7 +37,7 @@
     </div>
 
     <pre><code>&lt;%= render Ui::Card::Component.new do |component| %&gt;
-  &lt;% component.with_header align: :left, title: "Card Title" %&gt;
+  &lt;% component.with_header align: :left, title: "Card Title", subtitle: "Card Subtitle" %&gt;
   &lt;% component.with_body do %&gt;
     &lt;p&gt;This is the body content of the card.&lt;/p&gt;
   &lt;% end %&gt;

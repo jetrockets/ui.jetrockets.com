@@ -10,7 +10,7 @@
 <article>
   <header class="header">
     <div class="header__heading">
-      <h1 class="header__title">Radio Button</h1>
+      <h1 class="header__title">Rails <code class="px-1 text-3xl bg-yellow-100">radio_button</code> examples</h1>
       <p class="header__subtitle">
         Enhanced radio button field with consistent styling, hint support, and improved accessibility for single-choice selection.
       </p>
@@ -21,21 +21,85 @@
     </div>
   </header>
 
-  <section>
-    <h2 class="h3">Example</h2>
-    <%= turbo_frame_tag :ui_form_builder, data: { turbo_action: :advance }, target: :_top do %>
-      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
-        <% tabs.with_item title: "Preview", href: ui_form_builders_radio_button_path, data: { turbo_frame: :ui_form_builder }, active: !params[:code] %>
-        <% tabs.with_item title: "Code", href: ui_form_builders_radio_button_path(code: true), data: { turbo_frame: :ui_form_builder }, active: params[:code] %>
+  <section class="mb-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Basic Radio Button Groups" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.group class: "flex flex-col gap-2" do %>
+            <%= f.radio_button :plan, "basic", label: "Basic Plan", hint: "$9/month" %>
+            <%= f.radio_button :plan, "pro", checked: true, hint: "$19/month - Most popular" %>
+            <%= f.radio_button :plan, "enterprise", label: "Enterprise Plan", hint: "$49/month" %>
+          <% end %>
+
+          <%= f.group class: "flex flex-col gap-2" do %>
+            <%= f.radio_button :shipping, "standard", label: "Standard Shipping", hint: "5-7 business days" %>
+            <%= f.radio_button :shipping, "express", label: "Express Shipping", hint: "2-3 business days" %>
+            <%= f.radio_button :shipping, "overnight", label: "Overnight Shipping", hint: "Next business day" %>
+          <% end %>
+        <% end %>
       <% end %>
 
-      <div class="flex flex-col gap-2">
-        <% unless params[:code] %>
-          <%= render "ui/form_builders/examples/radio_button" %>
-        <% else %>
-          <%= render_code_example("ui/form_builders/examples/_radio_button") %>
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.group class: "flex flex-col gap-2" do %&gt;
+  &lt;%= f.radio_button :plan, "basic", label: "Basic Plan", hint: "$9/month" %&gt;
+  &lt;%= f.radio_button :plan, "pro", checked: true, hint: "$19/month - Most popular" %&gt;
+  &lt;%= f.radio_button :plan, "enterprise", label: "Enterprise Plan", hint: "$49/month" %&gt;
+&lt;% end %&gt;
+
+&lt;%= f.group class: "flex flex-col gap-2" do %&gt;
+  &lt;%= f.radio_button :shipping, "standard", label: "Standard Shipping", hint: "5-7 business days" %&gt;
+  &lt;%= f.radio_button :shipping, "express", label: "Express Shipping", hint: "2-3 business days" %&gt;
+  &lt;%= f.radio_button :shipping, "overnight", label: "Overnight Shipping", hint: "Next business day" %&gt;
+&lt;% end %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Custom Labels" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.group class: "flex flex-col gap-2" do %>
+            <%= f.radio_button :custom_labels, "option1", label: "Custom Label Text" %>
+            <%= f.radio_button :custom_labels, "option2", label: false %>
+            <%= f.radio_button :custom_labels, "option3" %>
+          <% end %>
         <% end %>
-      </div>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.group class: "flex flex-col gap-2" do %&gt;
+  &lt;%= f.radio_button :custom_labels, "option1", label: "Custom Label Text" %&gt;
+  &lt;%= f.radio_button :custom_labels, "option2", label: false %&gt;
+  &lt;%= f.radio_button :custom_labels, "option3" %&gt;
+&lt;% end %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Disabled State" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.group class: "flex flex-col gap-2" do %>
+            <%= f.radio_button :disabled_group, "option1", checked: true, disabled: true %>
+            <%= f.radio_button :disabled_group, "option2", disabled: true %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.group class: "flex flex-col gap-2" do %&gt;
+  &lt;%= f.radio_button :disabled_group, "option1", checked: true, disabled: true %&gt;
+  &lt;%= f.radio_button :disabled_group, "option2", disabled: true %&gt;
+&lt;% end %&gt;</code></pre>
+      <% end %>
     <% end %>
   </section>
 </article>

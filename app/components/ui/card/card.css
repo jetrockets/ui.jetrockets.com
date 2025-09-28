@@ -17,6 +17,10 @@
     @apply text-lg font-semibold;
   }
 
+  .card__subtitle {
+    @apply text-sm text-gray-600;
+  }
+
   .card__body {
     @apply px-6 py-4;
   }

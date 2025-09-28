@@ -6,6 +6,7 @@ gem "rails", "~> 8.0.0"
 
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "countries"
 gem "gretel"
 gem "image_processing"
 gem "inline_svg"

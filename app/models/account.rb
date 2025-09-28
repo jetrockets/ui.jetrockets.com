@@ -3,6 +3,14 @@ class Account < ApplicationRecord
   enum :status, unverified: 1, verified: 2, closed: 3
 
   has_one :user, dependent: :destroy
+
+  def value
+    id
+  end
+
+  def label
+    "#{user.full_name} (#{email})"
+  end
 end
 
 # == Schema Information

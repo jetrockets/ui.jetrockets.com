@@ -42,7 +42,7 @@
   }
 
   .form__error {
-    @apply mt-1 text-sm text-red-800
+    @apply text-sm text-red-800
   }
 
   .form__radio,

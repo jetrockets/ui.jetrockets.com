@@ -15,13 +15,13 @@ module FormBuilders
     end
 
     def select(method, choices = nil, options = {}, html_options = {})
-      create_form_group(method, options) do
+      create_form_group(method, html_options) do
         super(method, choices, extract_field_options(options), html_options)
       end
     end
 
     def choices(method, choices = nil, options = {}, html_options = {})
-      create_form_group(method, options) do
+      create_form_group(method, html_options) do
         super(method, choices, extract_field_options(options), html_options)
       end
     end

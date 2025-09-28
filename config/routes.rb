@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   constraints Rodauth::Rails.authenticate do
-    get "/accounts", to: "accounts#index"
-
     namespace :user do
       resource :profile, only: [ :show, :update ], controller: "profile"
       resource :avatar, only: [ :create, :destroy ], controller: "avatar"
     end
   end
+
+  get :countries, to: "countries#index"
+  get :states, to: "states#index"
 
   get "/privacy", to: "home#privacy"
   get "/terms", to: "home#terms"

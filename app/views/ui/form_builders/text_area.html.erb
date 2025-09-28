@@ -10,32 +10,111 @@
 <article>
   <header class="header">
     <div class="header__heading">
-      <h1 class="header__title">Text Area</h1>
+      <h1 class="header__title">Rails <code class="px-1 text-3xl bg-yellow-100">text_area</code> examples</h1>
       <p class="header__subtitle">
-        Enhanced text area field with auto-grow functionality, hint support, and consistent styling for multi-line text input.
+        Textarea allows users to enter text in multiple lines. It supports auto-grow functionality and hint messages.
       </p>
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/text_field.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/blob/88b28989cabce140900dbf5d39b8a5540532e975/app/lib/form_builders/core_form_builder.rb#L18", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
-  <section>
-    <h2 class="h3">Example</h2>
-    <%= turbo_frame_tag :ui_form_builder, data: { turbo_action: :advance }, target: :_top do %>
-      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
-        <% tabs.with_item title: "Preview", href: ui_form_builders_text_area_path, data: { turbo_frame: :ui_form_builder }, active: !params[:code] %>
-        <% tabs.with_item title: "Code", href: ui_form_builders_text_area_path(code: true), data: { turbo_frame: :ui_form_builder }, active: params[:code] %>
+  <section class="mb-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Basic Text Area" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_area :bio %>
+          <%= f.text_area :comment, placeholder: "5 rows by default", rows: 5 %>
+        <% end %>
       <% end %>
 
-      <div class="flex flex-col gap-2">
-        <% unless params[:code] %>
-          <%= render "ui/form_builders/examples/text_area" %>
-        <% else %>
-          <%= render_code_example("ui/form_builders/examples/_text_area") %>
-        <% end %>
-      </div>
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_area :bio %&gt;
+&lt;%= f.text_area :comment, rows: 5 %&gt;</code></pre>
+      <% end %>
     <% end %>
   </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Label customization" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_area :custom_label, label: "Custom Label Text" %>
+          <%= f.text_area :no_label, label: false, placeholder: "Field without label" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_area :custom_label, label: "Custom Label Text" %&gt;
+&lt;%= f.text_area :no_label, label: false, placeholder: "Field without label" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Hint message" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_area :bio, hint: "Max 500 characters" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_area :bio, hint: "Max 500 characters" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Disabled State" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Validation" %>
+
+      <% component.with_body do %>
+        <% user = User.new %>
+        <% user.errors.add(:bio, "is required") %>
+        <%= form_with model: user, url: root_path do |f| %>
+          <%= f.text_area :bio, label: "Active Record Validations" %>
+        <% end %>
+
+        <%= form_with url: root_path do |f| %>
+          <%= f.text_area :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
+&lt;%= form_with model: @user, url: root_path do |f| %&gt;
+  &lt;%= f.text_area :bio %&gt;
+&lt;% end %&gt;
+
+&lt;!-- You are able to add custom error messages --&gt;
+&lt;%= f.text_area :manual_error_field, error: "This field has a custom error" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
 </article>
