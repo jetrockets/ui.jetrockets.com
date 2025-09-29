@@ -1,6 +1,6 @@
 # Rails UI Component Library
 
-A comprehensive Rails 8 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This project demonstrates modern Rails development patterns with a complete set of reusable UI components.
+A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
 
 ## 🚀 Quick Start
 
@@ -36,37 +36,6 @@ bin/rails db:setup
 bin/rails server
 yarn dev  # or bin/vite dev
 ```
-
-## 📦 Component Library
-
-### Navigation Components
-- **Accordion** - Collapsible content sections with smooth animations
-- **Dropdown** - Customizable dropdown menus with keyboard navigation
-- **Tabs** - Horizontal tab navigation with active states
-
-### Form Components
-- **Button (`btn`)** - Multiple variants (primary, secondary, outline) and sizes
-- **Button Group (`btn_group`)** - Grouped button layouts
-- **Turbo Confirm** - Confirmation dialogs with Turbo integration
-
-### Layout Components
-- **Card** - Container component with header and footer variants
-- **Drawer** - Slide-out panels for navigation or content
-- **Modal** - Overlay dialogs with backdrop and animations
-- **Table** - Responsive tables with sorting and pagination support
-
-### Feedback Components
-- **Alert** - Status messages with dismissible functionality
-- **Badge** - Small status indicators and labels
-- **Flash** - System notifications with auto-dismiss
-- **Tooltip** - Hover information popups
-
-### Interactive Components
-- **Avatar** - User profile images with fallbacks
-- **Clipboard** - Copy-to-clipboard functionality
-- **Icon** - SVG icon system with Vite integration
-- **Popover** - Rich content popovers with positioning
-- **Pagy** - Pagination component with multiple styles
 
 ## 🏗️ Architecture
 
