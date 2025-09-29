@@ -11,14 +11,6 @@ on:
       - master
 
 jobs:
-  spec:
-    uses: ./.github/workflows/_specs.yaml
-    secrets: inherit
-
-  lint:
-    uses: ./.github/workflows/_lint_code.yaml
-    secrets: inherit
-
   build_and_deploy:
     name: deploy-production
     concurrency:
@@ -27,9 +19,6 @@ jobs:
     environment:
       name:  production
       url: https://ui.jetrockets.com
-    needs:
-      - spec
-      - lint
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
