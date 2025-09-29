@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - master
+      - deploy
 
 jobs:
   build_and_deploy:
