@@ -1,0 +1,51 @@
+# Name of your application. Used to uniquely configure containers.
+service: ui-jetrockets
+
+# Name of the container image.
+image: ui-jetrockets
+
+ssh:
+  user: www
+
+# Credentials for your image host.
+registry:
+  # Specify the registry server, if you're not using Docker Hub
+  server: registry.digitalocean.com/ui-jetrockets
+
+  # Always use an access token rather than real password when possible.
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Container builder setup.
+builder:
+  arch: amd64
+  args:
+    RUBY_VERSION: <%= File.read('.ruby-version').strip %>
+    NODE_VERSION: <%= File.read('.node-version').strip %>
+    YARN_VERSION: 1.22.19
+  cache:
+    type: registry
+    options: mode=max,image-manifest=true,oci-mediatypes=true
+
+env:
+  clear:
+    RAILS_LOG_TO_STDOUT: 1
+    RAILS_SERVE_STATIC_FILES: 1
+  secret:
+    - RAILS_MASTER_KEY
+
+asset_path: /rails/public/vite/assets
+
+aliases:
+  ssh: app exec --interactive --reuse "bash"
+  console: app exec --interactive --reuse  "bin/rails console"
+
+proxy:
+  ssl: true
+  healthcheck:
+    path: /up
+    timeout: 60
+
+deploy_timeout: 60
