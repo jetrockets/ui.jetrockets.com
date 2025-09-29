@@ -7,7 +7,7 @@ A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 
 ### Requirements
 
 - **Ruby** 3.4.4+
-- **Rails** 8.0+
+- **Rails** 7.0+
 - **Node.js** 18+
 - **ViewComponent** gem
 - **TailwindCSS** 4.0
