@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class GroupField < BaseField
+    class Group < Base
       def initialize(form_builder, method = nil, options = {}, &block)
         super(form_builder, method, options, &block)
       end

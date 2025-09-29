@@ -17,7 +17,7 @@
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/radio_button_field.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/radio_button.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
@@ -41,6 +41,22 @@
   &lt;%= f.radio_button :plan, "pro", checked: true %&gt;
   &lt;%= f.radio_button :plan, "enterprise" %&gt;
 &lt;% end %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Radio Button Collection" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.radio_buttons_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.radio_buttons_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

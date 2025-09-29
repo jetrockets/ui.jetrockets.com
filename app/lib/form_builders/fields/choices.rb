@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class ChoicesField < BaseField
+    class Choices < Base
       def initialize(form_builder, method, choices = nil, select_options = {}, options = {})
         super(form_builder, method, options)
         @choices = choices

@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class BaseField
+    class Base
       include ActionView::Helpers::TagHelper
 
       def initialize(form_builder, method, options = {}, &block)

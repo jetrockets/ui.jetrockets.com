@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class TextField < BaseField
+    class Text < Base
       def initialize(form_builder, method, options = {}, field_type = :text_field)
         super(form_builder, method, options)
         @field_type = field_type

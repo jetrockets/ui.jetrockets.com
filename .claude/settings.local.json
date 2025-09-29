@@ -5,7 +5,8 @@
       "Bash(ruby:*)",
       "Bash(npm install:*)",
       "Bash(bundle:*)",
-      "Bash(npm cache clean:*)"
+      "Bash(npm cache clean:*)",
+      "WebSearch"
     ],
     "deny": []
   }

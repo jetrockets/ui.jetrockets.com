@@ -34,7 +34,7 @@ module FormBuilders
 
     # Group container for form elements
     def group(options = {}, &block)
-      Fields::GroupField.new(self, nil, options, &block).render
+      Fields::Group.new(self, nil, options, &block).render
     end
 
     private
@@ -42,7 +42,7 @@ module FormBuilders
     def create_form_group(method, options, &block)
       group_options = extract_group_options(options)
 
-      Fields::GroupField.new(self, method, group_options) do
+      Fields::Group.new(self, method, group_options) do
         # Label only if not false
         unless options[:label] == false
           label_text = options.delete(:label)

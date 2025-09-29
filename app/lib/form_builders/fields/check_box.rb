@@ -1,9 +1,10 @@
 module FormBuilders
   module Fields
-    class RadioButtonField < BaseField
-      def initialize(form_builder, method, tag_value, options = {})
+    class CheckBox < Base
+      def initialize(form_builder, method, options = {}, checked_value = "1", unchecked_value = "0")
         super(form_builder, method, options)
-        @tag_value = tag_value
+        @checked_value = checked_value
+        @unchecked_value = unchecked_value
       end
 
       def render
@@ -11,19 +12,18 @@ module FormBuilders
         hint = @options.delete(:hint)
 
         @template.content_tag(:div, class: "inline-flex items-start") do
-          radio_tag + label_and_hint_container(label_text, hint)
+          checkbox_tag + label_and_hint_container(label_text, hint)
         end
       end
 
       private
 
-      def radio_tag
-        ActionView::Helpers::FormBuilder.instance_method(:radio_button).bind(@form_builder).call(
+      def checkbox_tag
+        ActionView::Helpers::FormBuilder.instance_method(:check_box).bind(@form_builder).call(
           @method,
-          @tag_value,
-          @options.merge(
-            class: classes
-          )
+          @options.merge(class: classes),
+          @checked_value,
+          @unchecked_value
         )
       end
 
@@ -36,17 +36,18 @@ module FormBuilders
       end
 
       def label_tag(label_text)
-        @form_builder.label("#{@method}_#{@tag_value}", label_text, class: "form__label-radio")
+        label_id = @options[:id] || "#{@method}".downcase
+        @form_builder.label(label_id, label_text, class: class_names(label_classes, "form__label-checkbox"))
       end
 
       def hint_tag(hint)
         @template.content_tag(:p, hint, class: "form__hint")
       end
 
-       def classes
+      def classes
         class_names(
-          "form__radio",
-          "form__radio-errored": errors?
+          "form__checkbox",
+          "form__checkbox-errored": errors?
         )
       end
     end

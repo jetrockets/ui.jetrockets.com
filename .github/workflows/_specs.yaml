@@ -1,0 +1,65 @@
+name: _specs
+
+on:
+  workflow_call:
+  schedule:
+    - cron: "0 3 * * 1" # Every monday at 3 AM
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+      CI: true
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/onetribe_test
+      APPLICATION_HOST: localhost:3000
+
+    services:
+      postgres:
+        image: postgres:14
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - uses: actions/checkout@v5
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version-file: .node-version
+
+    - uses: borales/actions-yarn@v5
+      with:
+        cmd: install
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: .ruby-version
+        bundler-cache: true
+
+    - name: Install GraphicsMagick
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y graphicsmagick
+
+    - name: Setup database
+      run: |
+        bin/rails db:test:prepare
+
+    - name: Run RSpec
+      env:
+        USE_FX: ${{ matrix.fx }}
+      run: bin/rspec -f d --force-color
+
+    - name: Simplecov Report
+      uses: aki77/simplecov-report-action@v1
+      with:
+        failedThreshold: 50
+        token: ${{ secrets.GITHUB_TOKEN }}

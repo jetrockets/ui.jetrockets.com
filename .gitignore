@@ -30,6 +30,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/config/database.yml
+
 # Vite Ruby
 /public/vite*
 node_modules

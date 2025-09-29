@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class TogglerField < BaseField
+    class Toggler < Base
       def initialize(form_builder, method, options = {}, checked_value = "1", unchecked_value = "0")
         super(form_builder, method, options)
         @checked_value = checked_value

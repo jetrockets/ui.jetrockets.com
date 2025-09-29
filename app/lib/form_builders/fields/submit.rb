@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class Submit < BaseField
+    class Submit < Base
       def initialize(form_builder, value = nil, options = {})
         super(form_builder, value, options)
         @value = value
