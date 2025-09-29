@@ -1,0 +1,15 @@
+servers:
+  web:
+    hosts:
+      - 159.65.40.36
+
+env:
+  clear:
+    RAILS_ENV: production
+
+# Configure builder setup.
+builder:
+  args:
+    RAILS_ENV: production
+proxy:
+  host: ui.jetrockets.com
