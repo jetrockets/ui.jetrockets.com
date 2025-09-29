@@ -36,7 +36,8 @@ module FormBuilders
       end
 
       def label_tag(label_text)
-        @form_builder.label(@method, label_text, class: class_names(label_classes, "form__label-checkbox"))
+        label_id = @options[:id] || "#{@method}".downcase
+        @form_builder.label(label_id, label_text, class: class_names(label_classes, "form__label-checkbox"))
       end
 
       def hint_tag(hint)

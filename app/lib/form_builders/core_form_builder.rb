@@ -44,6 +44,15 @@ module FormBuilders
       Fields::RadioButtonField.new(self, method, tag_value, options).render
     end
 
+    def radio_buttons_collection(method, collection, value_method, text_method, options = {}, html_options = {}, &block)
+      Fields::RadioButtonsCollectionField.new(self, method, collection, value_method, text_method, options, html_options, &block).render
+    end
+
+    def check_boxes_collection(method, collection, value_method, text_method, options = {}, html_options = {}, &block)
+      Fields::CheckBoxesCollectionField.new(self, method, collection, value_method, text_method, options, html_options, &block).render
+    end
+
+
     def label(method, text = nil, options = {}, &block)
       Fields::Label.new(self, method, text, options, &block).render
     end

@@ -36,7 +36,7 @@ module FormBuilders
       end
 
       def label_tag(label_text)
-        @form_builder.label("#{@method}_#{@tag_value}", label_text, class: "form__label-radio")
+        @form_builder.label("#{@method}_#{@tag_value}".downcase, label_text, class: "form__label-radio")
       end
 
       def hint_tag(hint)

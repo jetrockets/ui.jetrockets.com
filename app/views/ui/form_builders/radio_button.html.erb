@@ -47,6 +47,22 @@
 
   <section class="my-12">
     <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Radio Button Collection" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.radio_buttons_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.radio_buttons_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
       <% component.with_header align: :left, title: "Label customization" %>
 
       <% component.with_body do %>
