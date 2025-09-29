@@ -1,6 +1,6 @@
 module FormBuilders
   module Fields
-    class Label < BaseField
+    class Label < Base
       def initialize(form_builder, method, text = nil, options = {}, &block)
         super(form_builder, method, options, &block)
         @text = text

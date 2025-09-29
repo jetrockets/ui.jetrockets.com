@@ -28,8 +28,8 @@
     <%= f.text_area :bio, placeholder: "Bio" %>
     <%= f.check_box :free_shipping, hint: "Hint text" %>
 
-    <%= f.group class: "flex flex-col gap-2" do %>
-      <%= f.radio_button :radio, "1", label: "Radio 1"%>
+    <%= f.group class: "form__radio_collection" do %>
+      <%= f.radio_button :radio, "1", label: "Radio 1" %>
       <%= f.radio_button :radio, "2", checked: true , hint: "Selected by default" %>
       <%= f.radio_button :radio, "3" %>
     <% end %>
