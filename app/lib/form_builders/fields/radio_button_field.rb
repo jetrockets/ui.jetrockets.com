@@ -10,7 +10,7 @@ module FormBuilders
         label_text = @options.delete(:label)
         hint = @options.delete(:hint)
 
-        @template.content_tag(:div, class: "flex items-start") do
+        @template.content_tag(:div, class: "inline-flex items-start") do
           radio_tag + label_and_hint_container(label_text, hint)
         end
       end
@@ -30,7 +30,7 @@ module FormBuilders
 
       def label_and_hint_container(label_text, hint)
         @template.content_tag(:div, class: "pl-2") do
-          @template.concat label_tag(label_text)
+          @template.concat label_tag(label_text) unless label_text == false
           @template.concat hint_tag(hint) if hint
           @template.concat @form_builder.inline_errors_for(@method, @custom_error) if errors?
         end
@@ -47,7 +47,7 @@ module FormBuilders
        def classes
         class_names(
           "form__radio",
-          { "form__radio-errored": errors? }
+          "form__radio-errored": errors?
         )
       end
     end

@@ -24,14 +24,6 @@ module FormBuilders
 
         I18n.t("activerecord.attributes.#{model_name}.#{@method}", default: default_label)
       end
-
-      def label_classes
-        class_names(
-          "form__label",
-          { "form__label-errored": errors? },
-          @options.delete(:class)
-        )
-      end
     end
   end
 end

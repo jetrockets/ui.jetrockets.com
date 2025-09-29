@@ -36,12 +36,10 @@ module FormBuilders
       end
 
       def form__choices_classes
-        size = @options[:size] || :md
-
         class_names(
           "form__choices",
-          "form__choices-sm": size == :sm,
-          "form__choices-lg": size == :lg,
+          "form__choices-sm": @size == :sm,
+          "form__choices-lg": @size == :lg,
           "form__choices-errored": errors?
         )
       end

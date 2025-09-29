@@ -28,19 +28,60 @@
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group class: "form__radio_collection" do %>
-            <%= f.radio_button :plan, "basic", label: "Basic Plan", hint: "$9/month" %>
-            <%= f.radio_button :plan, "pro", checked: true, hint: "$19/month - Most popular" %>
-            <%= f.radio_button :plan, "enterprise", label: "Enterprise Plan", hint: "$49/month" %>
+            <%= f.radio_button :plan, "basic" %>
+            <%= f.radio_button :plan, "pro", checked: true %>
+            <%= f.radio_button :plan, "enterprise" %>
           <% end %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.group class: "flex flex-col gap-2" do %&gt;
-  &lt;%= f.radio_button :plan, "basic", label: "Basic Plan", hint: "$9/month" %&gt;
-  &lt;%= f.radio_button :plan, "pro", checked: true, hint: "$19/month - Most popular" %&gt;
-  &lt;%= f.radio_button :plan, "enterprise", label: "Enterprise Plan", hint: "$49/month" %&gt;
+        <pre class="w-full"><code>&lt;%= f.group class: "form__radio_collection" do %&gt;
+  &lt;%= f.radio_button :plan, "basic" %&gt;
+  &lt;%= f.radio_button :plan, "pro", checked: true %&gt;
+  &lt;%= f.radio_button :plan, "enterprise" %&gt;
 &lt;% end %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Label customization" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.group class: "form__radio_collection" do %>
+            <%= f.radio_button :custom_label, "custom", label: "Custom Label Text" %>
+            <%= f.radio_button :custom_label, "with_link", label: "I agree to the #{link_to 'terms and conditions', '#', class: 'link'}".html_safe %>
+            <%= f.radio_button :custom_label, "default" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.radio_button :custom_label, "custom", label: "Custom Label Text" %&gt;
+&lt;%= f.radio_button :custom_label, "with_link", label: "I agree to the #{link_to 'terms and conditions', '#', class: 'link'}".html_safe %&gt;
+&lt;%= f.radio_button :custom_label, "default" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Hint messages" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.group class: "form__radio_collection" do %>
+            <%= f.radio_button :receive_emails, "yes", hint: "I agree to receive marketing emails" %>
+            <%= f.radio_button :receive_emails, "no", hint: "I do not agree to receive marketing emails" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.radio_button :receive_emails, "yes", hint: "I agree to receive marketing emails" %&gt;&lt;%= f.radio_button :receive_emails, "no", hint: "I do not agree to receive marketing emails" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -51,12 +92,45 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.radio_button :disabled_group, "Option 1", disabled: true %>
+          <%= f.group class: "form__radio_collection" do %>
+            <%= f.radio_button :disabled_group, "Option 1", disabled: true %>
+            <%= f.radio_button :disabled_group_2, "Option 2", checked: true, disabled: true %>
+          <% end %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.radio_button :disabled_group, "Option 1", disabled: true %&gt;&lt;% end %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.radio_button :disabled_group, "Option 1", disabled: true %&gt;&lt;% end %&gt;
+&lt;%= f.radio_button :disabled_group_2, "Option 2", checked: true, disabled: true %&gt;&lt;% end %&gt;
+        </code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Validation" %>
+
+      <% component.with_body do %>
+        <% user = User.new %>
+        <% user.errors.add(:validation, "is required") %>
+        <%= form_with model: user, url: root_path do |f| %>
+          <%= f.radio_button :validation, "standard" %>
+        <% end %>
+
+        <hr class="hr my-4">
+
+        <%= form_with url: root_path do |f| %>
+          <%= f.radio_button :validation, "custom", error: "Custom error" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
+&lt;%= f.radio_button :validation, "standard" %&gt;
+
+&lt;!-- You are able to add custom error messages --&gt;
+&lt;%= f.radio_button :validation, "custom", error: "Custom error" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

@@ -6,10 +6,8 @@
   .form__label {
     @apply block text-sm font-medium w-fit;
   }
-
-  .form__label-checkbox,
-  .form__label-radio {
-    @apply mb-0;
+  .form__label-disabled {
+    @apply text-gray-500;
   }
 
   .form__field {
@@ -29,14 +27,6 @@
     @apply text-red-800 border-red-400 bg-red-50/50 focus:border-red-300 focus:ring-red-200;
   }
 
-  .form__hint {
-    @apply text-sm font-normal text-gray-600;
-  }
-
-  .form__error {
-    @apply text-sm text-red-800
-  }
-
   .form__radio_collection,
   .form__checkbox_collection {
     @apply flex flex-col gap-3;
@@ -53,6 +43,7 @@
     @apply rounded-full;
   }
 
+  .form__radio-errored,
   .form__checkbox-errored {
     @apply text-red-800 border-red-600 bg-red-100 focus:ring-red-200 focus:border-red-300;
     @apply checked:bg-red-600 checked:border-red-600 checked:hover:bg-red-700 checked:focus:border-red-600 checked:focus:bg-red-600;
@@ -64,10 +55,17 @@
     @apply after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all;
   }
 
+  .form__hint {
+    @apply text-sm font-normal text-gray-600;
+  }
+
+  .form__error {
+    @apply text-sm text-red-800
+  }
+
   .form__actions {
     @apply mt-8 mb-6;
   }
-
 
   /* Choices.js custom styles */
   .form__choices-lg {

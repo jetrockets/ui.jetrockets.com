@@ -11,6 +11,7 @@ module FormBuilders
         @template = form_builder.instance_variable_get(:@template)
         @block = block
         @custom_error = @options.delete(:error)
+        @size = @options.delete(:size)
       end
 
       protected
@@ -30,15 +31,24 @@ module FormBuilders
       end
 
       def field_classes(additional_classes = nil)
-        size = @options.delete(:size)
-
         class_names(
           "form__field",
           additional_classes,
+          { "form__field-sm": @size == :sm },
+          { "form__field-lg": @size == :lg },
+          { "form__field-errored": errors? },
           @options.delete(:class),
-          "form__field-sm": size == :sm,
-          "form__field-lg": size == :lg,
-          "form__field-errored": errors?
+        )
+      end
+
+      def label_classes
+        class_names(
+          "form__label",
+          { "form__label-disabled": @options[:disabled] },
+          { "form__label-sm": @size == :sm },
+          { "form__label-lg": @size == :lg },
+          { "form__label-errored": errors? },
+          @options.delete(:class)
         )
       end
     end

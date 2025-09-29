@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-4">
   <div class="flex items-end gap-2">
     <div>
-      <label for="default_clipboard" class="form__label">Label for clipboard</label>
+      <label for="default_clipboard" class="form__label mb-1">Label for clipboard</label>
       <input id="default_clipboard" type="text" class="max-w-80 form__field" value="Copy this!" disabled readonly autocomplete="off">
     </div>
     <%= render Ui::Clipboard::Component.new(value: "Copy this!", id: "clipboard_empty") do |clipboard| %>
