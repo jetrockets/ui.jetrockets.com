@@ -115,13 +115,10 @@
         <% user = User.new %>
         <% user.errors.add(:validation, "is required") %>
         <%= form_with model: user, url: root_path do |f| %>
-          <%= f.radio_button :validation, "standard" %>
-        <% end %>
-
-        <hr class="hr my-4">
-
-        <%= form_with url: root_path do |f| %>
-          <%= f.radio_button :validation, "custom", error: "Custom error" %>
+          <%= f.group class: "form__radio_collection" do %>
+            <%= f.radio_button :validation, "standard" %>
+            <%= f.radio_button :validation, "custom", error: "Custom error" %>
+          <% end %>
         <% end %>
       <% end %>
 

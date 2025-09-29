@@ -22,8 +22,7 @@ module FormBuilders
           @method,
           @tag_value,
           @options.merge(
-            class: classes,
-            id: "#{@method}_#{@tag_value}"
+            class: classes
           )
         )
       end
