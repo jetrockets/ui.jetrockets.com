@@ -52,9 +52,7 @@
       <% end %>
 
       <%= render Ui::Card::Component.new do |component| %>
-        <% component.with_header bordered: false, title: "Stimulus", class: "flex-row justify-between" do %>
-          <%= render Ui::Badge::Component.new title: "Deprecated", variant: :yellow %>
-        <% end %>
+        <% component.with_header bordered: false, title: "Stimulus" %>
         <% component.with_body do %>
           <p>
             <%= link_to "Modest JavaScript framework", "https://stimulus.hotwired.dev/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
@@ -64,7 +62,9 @@
       <% end %>
 
       <%= render Ui::Card::Component.new do |component| %>
-        <% component.with_header bordered: false, title: "Flowbite" %>
+        <% component.with_header bordered: false, title: "Flowbite", class: "flex-row justify-between" do %>
+          <%= render Ui::Badge::Component.new title: "Deprecated", variant: :yellow %>
+        <% end %>
         <% component.with_body do %>
           <p>
             <%= link_to "TailwindCSS components", "https://flowbite.com/docs/getting-started/introduction/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
