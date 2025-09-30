@@ -4,7 +4,7 @@
   }
 
   pre {
-    @apply max-w-full p-4 overflow-auto text-sm text-gray-200 bg-gray-800 rounded-md;
+    @apply max-w-full overflow-auto text-sm text-gray-200 bg-gray-900 rounded-md;
   }
 
   textarea {
