@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
-      - deploy
+      - main
 
 jobs:
   build_and_deploy:
