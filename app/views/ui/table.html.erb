@@ -31,7 +31,9 @@
 
       <div class="flex flex-col gap-2">
         <% unless params[:code] %>
-          <%= render "ui/examples/table" %>
+          <div class="flex flex-col gap-8">
+            <%= render "ui/examples/table" %>
+          </div>
         <% else %>
           <%= render_code_example("ui/examples/_table") %>
         <% end %>

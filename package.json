@@ -6,6 +6,7 @@
     "@rails/request.js": "^0.0.9",
     "choices.js": "^11.1.0",
     "flowbite": "^3.1.2",
+    "highlight.js": "^11.11.1",
     "imask": "^7.6.1",
     "mjml": "^4.15.3",
     "stimulus-rails-autosave": "^5.1.0",

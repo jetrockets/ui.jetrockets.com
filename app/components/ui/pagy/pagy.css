@@ -12,7 +12,7 @@
       }
 
       &:first-child::before, &:last-child::before {
-        @apply absolute size-4 bg-center bg-no-repeat content-[''] bg-(image:--icon-arrow);
+        @apply absolute size-4 bg-center bg-no-repeat content-[''] bg-chevron-left;
       }
 
       &:last-child::before {

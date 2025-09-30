@@ -27,14 +27,66 @@
 
       <% component.with_body do %>
         <%= form_with url: root_path do |f| %>
-          <%= f.easepick :birthday, hint: "Select your birth date" %>
-          <%= f.easepick :start_date, required: true %>
+          <%= f.easepick :birthday %>
         <% end %>
       <% end %>
 
       <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.easepick :birthday, hint: "Select your birth date" %&gt;
-&lt;%= f.easepick :start_date, required: true %&gt;</code></pre>
+        <pre class="w-full"><code>&lt;%= f.easepick :birthday, hint: "Select your birth date" %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+   <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Easepick sizes" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :large_field, size: :lg %>
+          <%= f.easepick :default_field %>
+          <%= f.easepick :small_field, size: :sm %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :large_field, size: :lg %&gt;
+&lt;%= f.easepick :default_field %&gt;
+&lt;%= f.easepick :small_field, size: :sm %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Label customization" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :custom_label, label: "Custom Label Text" %>
+          <%= f.easepick :no_label, label: false %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :custom_label, label: "Custom Label Text" %&gt;
+&lt;%= f.easepick :no_label, label: false %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Hint message" %>
+
+      <% component.with_body do %>
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :birthday_with_hint, hint: "Select your birth date" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;%= f.easepick :birthday_with_hint, hint: "Select your birth date" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
@@ -83,24 +135,6 @@
 
   <section class="my-12">
     <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Custom Labels" %>
-
-      <% component.with_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.easepick :custom_label, label: "Custom Label Text" %>
-          <%= f.easepick :no_label, label: false, placeholder: "Select date" %>
-        <% end %>
-      <% end %>
-
-      <% component.with_footer do %>
-        <pre class="w-full"><code>&lt;%= f.easepick :custom_label, label: "Custom Label Text" %&gt;
-&lt;%= f.easepick :no_label, label: false, placeholder: "Select date" %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
       <% component.with_header align: :left, title: "Disabled State" %>
 
       <% component.with_body do %>
@@ -111,6 +145,32 @@
 
       <% component.with_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :disabled_field, value: Date.current, disabled: true %&gt;</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="my-12">
+    <%= render Ui::Card::Component.new do |component| %>
+      <% component.with_header align: :left, title: "Validation" %>
+
+      <% component.with_body do %>
+        <% user = User.new %>
+        <% user.errors.add(:last_name, "is required") %>
+        <%= form_with model: user, url: root_path do |f| %>
+          <%= f.easepick :last_name, label: "Birthday" %>
+        <% end %>
+
+        <%= form_with url: root_path do |f| %>
+          <%= f.easepick :with_custom_error, error: "This field has a custom error" %>
+        <% end %>
+      <% end %>
+
+      <% component.with_footer do %>
+        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
+&lt;%= f.easepick :dob %&gt;
+
+&lt;!-- You are able to add custom error messages --&gt;
+&lt;%= f.easepick :dob, error: "This field has a custom error" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>

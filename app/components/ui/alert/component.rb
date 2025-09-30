@@ -13,7 +13,7 @@ class Ui::Alert::Component < ApplicationComponent
     <%= content_tag :div, class: classes, **@options do %>
       <%= icon %>
 
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-2 flex-1">
         <strong class="font-semibold">
           <%= @title %>
         </strong>

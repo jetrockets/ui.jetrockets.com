@@ -238,5 +238,5 @@
 
   --height-navbar: 54px;
   --width-sidebar: 197px;
-  --icon-arrow: url('/images/icons/chevron-left.svg');
+  --background-image-chevron-left: url('/images/icons/chevron-left.svg');
 }
