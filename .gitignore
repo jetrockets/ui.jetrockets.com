@@ -27,9 +27,13 @@
 
 /public/assets
 
+/ui_jetrockets_development
+/ui_jetrockets_development-shm
+/ui_jetrockets_development-wal
+/ui_jetrockets_test
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
 /config/database.yml
 
 # Vite Ruby
@@ -38,4 +42,3 @@ node_modules
 # Vite uses dotenv and suggests to ignore local-only env files. See
 # https://vitejs.dev/guide/env-and-mode.html#env-files
 *.local
-

@@ -39,3 +39,7 @@
   --color-border-default: var(--color-gray-800);
   --color-border-locked: var(--color-gray-900);
 }
+
+.container {
+  min-width: 260px;
+}
