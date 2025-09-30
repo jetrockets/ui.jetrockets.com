@@ -32,7 +32,7 @@ class RodauthMain < Rodauth::Rails::Auth
     # Use path prefix for all routes.
     # prefix "/auth"
 
-    create_account_autologin? false
+    create_account_autologin? true
 
     # Specify the controller used for view rendering, CSRF, and callbacks.
     rails_controller { RodauthController }
@@ -51,6 +51,8 @@ class RodauthMain < Rodauth::Rails::Auth
     create_account_set_password? true
     require_password_confirmation? false
     require_login_confirmation? false
+
+    verify_account_autologin? true
 
     # Change some default param keys.
     login_param "email"
@@ -95,11 +97,11 @@ class RodauthMain < Rodauth::Rails::Auth
     # end
     send_email do |email|
       # queue email delivery on the mailer after the transaction commits
-      if Rails.env.development? || Rails.env.test?
-        db.after_commit { email.deliver_now }
-      else
-        db.after_commit { email.deliver_later }
-      end
+      # if Rails.env.development? || Rails.env.test?
+      #   db.after_commit { email.deliver_now }
+      # else
+      #   db.after_commit { email.deliver_later }
+      # end
     end
 
     # ==> Flash
@@ -108,7 +110,7 @@ class RodauthMain < Rodauth::Rails::Auth
     # flash_error_key :error # default is :alert
 
     # Override default flash messages.
-    create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
+    # create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
     # require_login_error_flash "Login is required for accessing this page"
     # login_notice_flash nil
 
@@ -164,7 +166,8 @@ class RodauthMain < Rodauth::Rails::Auth
     # end
 
     # ==> Redirects
-    create_account_redirect { verify_account_resend_path }
+    # create_account_redirect { verify_account_resend_path }
+    create_account_redirect { rails_routes.root_path }
 
     # Redirect to home page after logout.
     logout_redirect { rails_routes.root_path }
@@ -186,7 +189,7 @@ class RodauthMain < Rodauth::Rails::Auth
     # remember_deadline_interval Hash[days: 30]
 
     verify_account_skip_resend_email_within { 5.minutes.to_i }
-    verify_account_email_recently_sent_error_flash "You'll get an email to verify your account. You can request new email every 5 mins."
+    verify_account_email_recently_sent_error_flash "It's a sample app, email sending is disabled"
 
     # Change login
     # change_login_redirect { rails_routes.user_profile_path }

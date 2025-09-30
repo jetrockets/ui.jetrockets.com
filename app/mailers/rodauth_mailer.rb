@@ -1,5 +1,5 @@
 class RodauthMailer < ApplicationMailer
-  default to: -> { @rodauth.email_to }, from: -> { @rodauth.email_from }
+  # default to: -> { @rodauth.email_to }, from: -> { @rodauth.email_from }
 
   def verify_account(name, account_id, key)
     @rodauth = rodauth(name, account_id) { @verify_account_key_value = key }
