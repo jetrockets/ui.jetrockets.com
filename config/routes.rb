@@ -55,5 +55,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/up", to: HealthController.action(:index)
   root "home#index"
 end

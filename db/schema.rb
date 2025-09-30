@@ -11,10 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_09_26_061714) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "citext"
-  enable_extension "pg_catalog.plpgsql"
-
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -40,17 +36,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_26_061714) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "status", default: 1, null: false
-    t.citext "email", null: false
+    t.string "email", null: false
     t.string "password_hash"
     t.boolean "admin", default: false, null: false
-    t.index ["email"], name: "index_accounts_on_email", unique: true, where: "(status = ANY (ARRAY[1, 2]))"
+    t.index ["email"], name: "index_accounts_on_email", unique: true, where: "status IN (1, 2)"
   end
 
   create_table "users", force: :cascade do |t|
-    t.bigint "account_id", null: false
+    t.integer "account_id", null: false
     t.string "first_name"
     t.string "last_name"
-    t.jsonb "avatar_data"
+    t.json "avatar_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_users_on_account_id", unique: true

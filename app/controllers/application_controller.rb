@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownFormat, with: ->(exception) { render_error(404, exception) }
     rescue_from ActionController::RoutingError, with: ->(exception) { render_error(404, exception) }
     rescue_from ActiveRecord::RecordNotFound, with: ->(exception) { render_error(404, exception) }
-    rescue_from ActionPolicy::Unauthorized, with: ->(exception) { render_error(401, exception) }
+    # rescue_from ActionPolicy::Unauthorized, with: ->(exception) { render_error(401, exception) }
   end
 
   private

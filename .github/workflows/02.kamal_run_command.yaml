@@ -1,5 +1,7 @@
 name: 02. Kamal run command
 
+run-name: "kamal ${{ github.event.inputs.command }} --destination=${{ github.event.inputs.environment }}"
+
 permissions:
   id-token: write
   contents: read
