@@ -1,24 +1,22 @@
 <%= container_tag do %>
-  <div class="modal__content">
-    <div class="modal__header">
-      <div>
-        <h3 class="modal__title">
-          <%= @title %>
-        </h3>
-        <% if @subtitle %>
-          <div class="modal__subtitle">
-            <%= @subtitle %>
-          </div>
-        <% end %>
-      </div>
-
-      <% if helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request? || !@async %>
-        <button type="button" class="modal__close" data-action="click->modal-turbo#close click->modal#close" aria-label="Close" data-id="<%= @id if @id.present? %>">
-          <%= helpers.vite_icon_tag "close.svg", class: "size-6" %>
-        </button>
+  <div class="modal__header">
+    <div>
+      <h3 class="modal__title">
+        <%= @title %>
+      </h3>
+      <% if @subtitle %>
+        <div class="modal__subtitle">
+          <%= @subtitle %>
+        </div>
       <% end %>
     </div>
 
-    <%= content %>
+    <% if helpers.turbo_frame_request? || @id %>
+      <button type="button" class="modal__close" data-action="click->modal#close click->modals#close" aria-label="Close" data-id="<%= @id %>">
+        <%= helpers.vite_icon_tag "close.svg", class: "size-6" %>
+      </button>
+    <% end %>
   </div>
+
+  <%= content %>
 <% end %>

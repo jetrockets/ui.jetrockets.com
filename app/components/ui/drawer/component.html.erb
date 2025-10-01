@@ -1,9 +1,21 @@
 <%= container_tag do %>
   <div class="drawer__header">
-    <h5 id="drawer-label" class="drawer__title">
-      <%= @title %>
-    </h5>
-    <%= close_btn %>
+    <div>
+      <h3 class="drawer__title">
+        <%= @title %>
+      </h3>
+      <% if @subtitle %>
+        <div class="drawer__subtitle">
+          <%= @subtitle %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if helpers.turbo_frame_request? || @id %>
+      <button type="button" class="drawer__close" data-action="click->drawer#close click->drawers#close" aria-label="Close" data-id="<%= @id %>">
+        <%= helpers.vite_icon_tag "close.svg", class: "size-6" %>
+      </button>
+    <% end %>
   </div>
 
   <%= content %>

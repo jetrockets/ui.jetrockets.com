@@ -1,24 +1,20 @@
 <div>
-  <h3 class="mb-3 h4">Async Modal</h3>
-  <p>
-    By continuing, I agree to <%= site_name %>
-    <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
-  </p>
+  <%= link_to "Async Modal", privacy_path, data: { turbo_frame: :modal }, class: "btn btn-primary" %>
 </div>
 
 <div>
-  <h3 class="mt-6 mb-3 h4">Sync Modal</h3>
+  <h3 class="mt-6 mb-3 h4">Sync Modals</h3>
+
   <div class="flex gap-2">
-    <%= render Ui::Btn::Component.new(variant: :primary, data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "modal1" }).with_content "Open modal" %>
-    <%= render Ui::Btn::Component.new(variant: :secondary, data: { modal_target: "trigger", modal_toggle: "modal", action: "click->modal#show", id: "modal2" }).with_content "Open another modal" %>
+    <%= render Ui::Btn::Component.new(variant: :primary, data: { action: "click->modals#show", id: "dialog1" }).with_content "One modal" %>
+    <%= render Ui::Btn::Component.new(variant: :secondary, data: { action: "click->modals#show", id: "dialog2" }).with_content "Another modal" %>
   </div>
 
-
-  <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", async: false, id: "modal1") do %>
-    <p class="p-4">Modal content</p>
+  <%= render Ui::Modal::Component.new(title: "Modal Title", subtitle: "Modal Subtitle", id: "dialog1") do %>
+    <p class="p-4">Dialog content</p>
   <% end %>
 
-  <%= render Ui::Modal::Component.new(title: "Another Modal", subtitle: "Another Modal Subtitle", async: false, id: "modal2") do %>
-    <p class="p-4">This modal window is in the end of this code section</p>
+  <%= render Ui::Modal::Component.new(title: "Another Modal", subtitle: "Another Subtitle", id: "dialog2") do %>
+    <p class="p-4">Dialog content 2</p>
   <% end %>
 </div>

@@ -16,17 +16,22 @@ hljs.registerLanguage('erb', erb)
 export default class HighlightController extends Controller {
   connect () {
     this.highlightCode()
-    this.element.addEventListener('turbo:frame-load', this.highlightCode.bind(this))
+    this.element.addEventListener('turbo:frame-load', this.#onFrameLoad.bind(this))
   }
 
   disconnect () {
-    this.element.removeEventListener('turbo:frame-load', this.highlightCode.bind(this))
+    this.element.removeEventListener('turbo:frame-load', this.#onFrameLoad.bind(this))
   }
 
-  highlightCode () {
+  #onFrameLoad (event) {
+    const frame = event.target
+    this.highlightCode(frame)
+  }
+
+  highlightCode (container = this.element) {
     // It's a bad practice to use querySelectorAll in Stimulus controllers,
     // but in this case, we need to highlight all code blocks inside the body.
-    this.element.querySelectorAll('pre code').forEach((element) => {
+    container.querySelectorAll('pre code:not(.hljs)').forEach((element) => {
       hljs.highlightElement(element)
     })
   }

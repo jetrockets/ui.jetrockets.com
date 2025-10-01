@@ -1,25 +1,23 @@
-<dialog id="turbo-confirm" class="modal modal-dialog">
-  <div class="modal__content">
-    <form method="dialog" class="max-w-xl">
-      <div class="modal__header">
-        <h3 class="modal__title">
-          Are you sure?
-        </h3>
+<dialog id="turbo-confirm" class="modal animate-slide-up w-xl">
+  <form method="dialog">
+    <div class="modal__header">
+      <h3 class="modal__title">
+        Are you sure?
+      </h3>
 
-        <button value="cancel" class="modal__close" data-action="click->modal#close">
-          <%= helpers.vite_icon_tag "close.svg", class: "size-6" %>
-          <span class="sr-only">Close modal</span>
-        </button>
-      </div>
+      <button value="cancel" class="modal__close" data-action="click->modal#close">
+        <%= helpers.vite_icon_tag "close.svg", class: "size-6" %>
+        <span class="sr-only">Close modal</span>
+      </button>
+    </div>
 
-      <div class="modal__body">
-        <p class="">This cannot be undone.</p>
-      </div>
+    <div class="modal__body">
+      <p class="">This cannot be undone.</p>
+    </div>
 
-      <div class="modal__footer modal__footer-end">
-        <button class="btn btn-outlined" value="cancel">Cancel</button>
-        <button class="btn btn-danger" value="confirm">Yes, I'm sure</button>
-      </div>
-    </form>
-  </div>
+    <div class="modal__footer modal__footer-end">
+      <button class="btn btn-outlined" value="cancel">Cancel</button>
+      <button class="btn btn-danger" value="confirm">Yes, I'm sure</button>
+    </div>
+  </form>
 </dialog>

@@ -2,20 +2,25 @@
 
 @layer components {
   .drawer {
-    @apply fixed flex top-0 right-0 z-[60] h-screen md:w-fit w-full overflow-y-auto bg-white;
-    @apply transition-transform animate-slide-left;
+    @apply fixed flex flex-col inset-0 left-auto m-0 hidden;
+    @apply rounded-l-2xl shadow-sm min-h-full w-fit backdrop:bg-gray-900/50;
+    @apply w-2xl; /* Default width */
   }
 
-  .drawer__window {
-    @apply flex flex-col w-full max-w-2xl;
+  .drawer[open] {
+    @apply flex;
   }
 
   .drawer__header {
-    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white border-b border-gray-200;
+    @apply flex items-center justify-between p-4 px-6 border-b border-gray-200
   }
 
   .drawer__title {
     @apply text-xl font-semibold leading-tight text-gray-900;
+  }
+
+  .drawer__subtitle {
+    @apply mt-1 text-sm text-gray-600;
   }
 
   .drawer__close {
@@ -23,12 +28,11 @@
   }
 
   .drawer__body {
-    @apply flex-1 p-6 text-sm text-gray-600;
+    @apply flex-1 p-6 text-gray-600 overflow-auto;
   }
 
   .drawer__footer {
-    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white/70 backdrop-blur-xs;
-    box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.1);
+    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white rounded-bl-2xl border-t border-gray-200;
   }
 
   .drawer__footer-end {

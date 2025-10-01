@@ -1,37 +1,37 @@
 import { Controller } from '@hotwired/stimulus'
-import Modal from 'flowbite/lib/esm/components/modal'
 import { stimulus } from '~/init'
 
 export default class ModalController extends Controller {
-  static targets = ['trigger', 'modal']
-
   connect () {
-    this.modals = new Map()
-    this.#initializeModals()
+    this.element.addEventListener('click', this.#closeOnBackdropClick.bind(this))
+    this.element.showModal()
   }
 
-  show (e) {
-    this.#getModal(e)?.show()
+  disconnect () {
+    this.element.removeEventListener('click', this.#closeOnBackdropClick.bind(this))
+    this.close()
   }
 
-  close (e) {
-    this.#getModal(e)?.hide()
+  show () {
+    this.element.showModal()
   }
 
-  #getModal (e) {
-    const id = e.currentTarget.dataset.id
-    return this.modals.get(id)
+  close () {
+    try {
+      this.element.close()
+      ModalController.turboFrame.src = null
+      this.element.remove()
+    } catch (e) {}
   }
 
-  #initializeModals () {
-    this.triggerTargets.forEach(trigger => {
-      const targetId = trigger.dataset.id
-      const modalElement = this.modalTargets.find(i => i.id === targetId)
+  #closeOnBackdropClick (event) {
+    if (event.target === this.element) {
+      this.close()
+    }
+  }
 
-      this.modals.set(targetId, new Modal(modalElement, {
-        backdropClasses: 'bg-gray-900/50 fixed inset-0 z-30'
-      }))
-    })
+  static get turboFrame () {
+    return document.querySelector('turbo-frame[id=\'modal\']')
   }
 }
 
