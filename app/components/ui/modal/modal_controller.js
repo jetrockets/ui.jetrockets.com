@@ -4,6 +4,7 @@ import { stimulus } from '~/init'
 export default class ModalController extends Controller {
   connect () {
     this.element.addEventListener('click', this.#closeOnBackdropClick.bind(this))
+    document.body.classList.add('body-overflow')
     this.element.showModal()
   }
 
@@ -14,11 +15,13 @@ export default class ModalController extends Controller {
 
   show () {
     this.element.showModal()
+    document.body.classList.add('body-overflow')
   }
 
   close () {
     try {
       this.element.close()
+      document.body.classList.remove('body-overflow')
       ModalController.turboFrame.src = null
       this.element.remove()
     } catch (e) {}

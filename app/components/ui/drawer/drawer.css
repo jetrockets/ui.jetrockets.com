@@ -12,7 +12,7 @@
   }
 
   .drawer__header {
-    @apply flex items-center justify-between p-4 px-6 border-b border-gray-200
+    @apply sticky top-0 flex items-center justify-between p-4 px-6 border-b border-gray-200 bg-white/70 backdrop-blur-sm;
   }
 
   .drawer__title {
@@ -28,11 +28,11 @@
   }
 
   .drawer__body {
-    @apply flex-1 p-6 text-gray-600 overflow-auto;
+    @apply flex-1 p-6 text-gray-600;
   }
 
   .drawer__footer {
-    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white rounded-bl-2xl border-t border-gray-200;
+    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 rounded-bl-2xl border-t border-gray-200 bg-white/70 backdrop-blur-sm;
   }
 
   .drawer__footer-end {
