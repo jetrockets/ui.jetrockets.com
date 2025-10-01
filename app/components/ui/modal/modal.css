@@ -2,23 +2,8 @@
 
 @layer components {
   .modal {
-    @apply fixed top-0 left-0 right-0 z-50 hidden w-full h-full max-h-screen px-4 overflow-x-hidden overflow-y-auto md:bottom-0 animate-slide-up;
-  }
-
-  .modal-dialog {
     @apply p-0 m-auto rounded-lg shadow-sm h-fit w-fit backdrop:bg-gray-900/50;
-
-    &[open] {
-      @apply block;
-    }
-  }
-
-  .modal__window {
-    @apply relative w-full max-w-2xl max-h-full mx-auto;
-  }
-
-  .modal__content {
-    @apply relative bg-white rounded-lg shadow-sm;
+    @apply w-2xl;  /* default width */
   }
 
   .modal__header {

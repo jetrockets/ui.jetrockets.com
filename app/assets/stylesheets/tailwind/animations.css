@@ -34,7 +34,7 @@
   @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(3rem);
+      transform: translateY(2rem);
     }
 
     to {

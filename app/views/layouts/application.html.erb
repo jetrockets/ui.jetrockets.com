@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-prefetch" content="false">
     <meta name="turbo-cache-control" content="no-cache">
-    <meta name="view-transition" content="same-origin" />
+    <meta name="view-transition" content="same-origin">
 
     <%= display_meta_tags(default_meta_tags) %>
 
@@ -24,7 +24,7 @@
     <%= yield(:head) %>
   </head>
 
-  <body class="<%= body_classes %>" data-controller="sidebar modal drawer highlight">
+  <body class="<%= body_classes %>" data-controller="sidebar modals drawers highlight">
     <div class="body__main">
       <%= render partial: "layouts/shared/sidebar" %>
       <div class="body__content">
