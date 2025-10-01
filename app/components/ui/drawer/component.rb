@@ -2,76 +2,44 @@ class Ui::Drawer::Component < ApplicationComponent
   SIZES = %w[sm md lg xl 2xl 3xl 4xl 5xl 6xl].freeze
   DEFAULT_SIZE = "2xl"
 
-  def initialize(title: nil, async: true, id: nil, size: DEFAULT_SIZE, **options)
+  def initialize(title: nil, subtitle: nil, size: DEFAULT_SIZE, id: nil)
     super
     @title = title
-    @async = async
-    @id = id
+    @subtitle = subtitle
     @size = size
-    @options = options
+    @id = id
   end
 
   private
 
   def container_tag
-    if @async
-      async_container_tag do
+    # If @id is provided, we assume it's a sync dialog.
+    if @id
+      return dialog_tag id: @id, data: { drawers_target: "dialog" } do
         yield
       end
-    else
-      content_tag :div, id: @id, tabindex: "-1", data: { drawer_target: "drawer" }, class: "drawer translate-x-full" do
-        content_tag :div, class: drawer__window_classes do
-          yield
-        end
-      end
     end
-  end
 
-  def async_container_tag(&block)
+    # If turbo frame request (for example, open drawer via link_to with data: { turbo_frame: :drawer }), we should use dialog tag inside turbo frame :drawer
     if helpers.turbo_frame_request?
       turbo_frame_tag :drawer do
-        content_tag :div, id: "drawerTurbo", tabindex: "-1", data: { controller: "drawer-turbo" }, class: "drawer" do
-          content_tag :div, class: drawer__window_classes do
+        dialog_tag id: :drawerDialog, data: { controller: "drawer" } do
+          turbo_frame_tag :drawerContent do
             yield
           end
         end
       end
+    # If not using Turbo Frame (open new tab for example), we should use a regular div instead of dialog
     else
-      content_tag :div, class: "flex-1 w-fit" do
-        content_tag :div, class: drawer__window_classes do
-          yield
-        end
+      content_tag :div, class: class_names("drawer", "w-#{@size}") do
+        yield
       end
     end
   end
 
-  def drawer__window_classes
-    class_names(
-      "drawer__window",
-      "max-w-#{@size}"
-    )
-  end
-
-  def close_btn
-    if (helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request?) || !@async
-      is_turbo = helpers.respond_to?(:turbo_frame_request?) && helpers.turbo_frame_request?
-
-      attributes = {
-        type: "button",
-        class: "drawer__close"
-      }
-
-      if is_turbo
-        attributes["data-action"] = "click->drawer-turbo#close"
-      else
-        attributes["data-action"] = "click->drawer#close"
-        attributes["aria-label"] = "Close"
-        attributes["data-id"] = @id if @id.present?
-      end
-
-      tag.button(**attributes) do
-        helpers.vite_icon_tag "close.svg"
-      end
+  def dialog_tag(options = {})
+    content_tag :dialog, tabindex: "-1", class: class_names("drawer", "animate-slide-left", "w-#{@size}"), **options do
+      yield
     end
   end
 end

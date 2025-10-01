@@ -23,7 +23,7 @@ class Ui::Modal::Component < ApplicationComponent
     # If turbo frame request (for example, open modal via link_to with data: { turbo_frame: :modal }), we should use dialog tag inside turbo frame :modal
     if helpers.turbo_frame_request?
       turbo_frame_tag :modal do
-        dialog_tag id: :modal, data: { controller: "modal" } do
+        dialog_tag id: :modalDialog, data: { controller: "modal" } do
           turbo_frame_tag :modalContent do
             yield
           end

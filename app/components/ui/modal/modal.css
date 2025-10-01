@@ -23,15 +23,11 @@
   }
 
   .modal__body {
-    @apply py-6 px-6 rounded-lg
-  }
-
-  .modal__body-overflowed {
-    @apply max-h-[calc(100vh-180px)] overflow-auto;
+    @apply py-6 px-6 rounded-lg overflow-auto;
   }
 
   .modal__footer {
-    @apply flex items-center p-6 py-4 space-x-3 border-t border-gray-200
+    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 bg-white rounded-bl-2xl border-t border-gray-200;
   }
 
   .modal__footer-end {
