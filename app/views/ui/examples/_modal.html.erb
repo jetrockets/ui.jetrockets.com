@@ -1,13 +1,9 @@
 <div>
-  <h3 class="mb-3 h4">Async Modal</h3>
-  <p>
-    By continuing, I agree to <%= site_name %>
-    <%= link_to "Privacy Policy", privacy_path, data: { turbo_frame: :modal }, class: "link" %> and I confirm I am 18 years old.
-  </p>
+  <%= link_to "Async Modal", privacy_path, data: { turbo_frame: :modal }, class: "btn btn-primary" %>
 </div>
 
 <div>
-  <h3 class="mt-6 mb-3 h4">Sync Modal</h1>
+  <h3 class="mt-6 mb-3 h4">Sync Modals</h3>
 
   <div class="flex gap-2">
     <%= render Ui::Btn::Component.new(variant: :primary, data: { action: "click->modals#show", id: "dialog1" }).with_content "One modal" %>
