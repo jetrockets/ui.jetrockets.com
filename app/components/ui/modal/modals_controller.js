@@ -11,13 +11,11 @@ export default class ModalsController extends Controller {
   show (e) {
     this.openedDialog = this.#getDialog(e)
     this.openedDialog.addEventListener('click', this.#closeOnBackdropClick.bind(this))
-    document.body.classList.add('body-overflow')
     this.#getDialog(e)?.showModal()
   }
 
   close (e) {
     this.#getDialog(e)?.close()
-    document.body.classList.remove('body-overflow')
   }
 
   #getDialog (e) {
