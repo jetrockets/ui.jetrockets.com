@@ -2,7 +2,7 @@
 
 @layer components {
   .modal {
-    @apply p-0 m-auto rounded-lg shadow-sm h-fit w-fit backdrop:bg-gray-900/50;
+    @apply p-0 m-auto rounded-lg shadow-sm h-fit w-fit backdrop:bg-gray-900/50 max-w-full;
     @apply w-2xl;  /* default width */
   }
 
