@@ -3803,11 +3803,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tailwindcss-stimulus-components@^4.0.4:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-4.1.0.tgz#74ba5f9c3d04317a8a8cd437c9673a54a7af93c1"
-  integrity sha512-g+TlppXgf2bLEQvhvjBU/vG0mQShA1v4Iftap90KOcUrd3vpVY8+Wam8SNP5nWmMiEEQctS5W0fHNEMC6iV+Hg==
-
 tailwindcss@4.1.13, tailwindcss@^4.0.6:
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-4.1.13.tgz#ade3471fdfd0a2a86da3a679bfc10c623e645b09"

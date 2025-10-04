@@ -1,6 +1,5 @@
 class Ui::Flash::Component < ApplicationComponent
-  DISMISS_AFTER = 8000
-  REMOVE_DELAY = 9000
+  DISMISS_AFTER = 5000
   SHOW_DELAY = 250
 
   def initialize(dismissible: true)
@@ -20,12 +19,7 @@ class Ui::Flash::Component < ApplicationComponent
     if @dismissible
       attrs[:data].merge!({
         flash_dismiss_after_value: DISMISS_AFTER,
-        flash_remove_delay_value: REMOVE_DELAY,
-        flash_show_delay_value: SHOW_DELAY,
-        transition_enter_from: "opacity-0 translate-x-1/4",
-        transition_enter_to: "opacity-100 translate-x-0",
-        transition_leave_from: "opacity-100 translate-x-0",
-        transition_leave_to: "opacity-0 translate-x-1/4"
+        flash_show_delay_value: SHOW_DELAY
       })
     end
 
