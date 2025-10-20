@@ -102,7 +102,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.2.3)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -225,7 +225,7 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (5.25.5)
+    minitest (5.26.0)
     mjml-rails (4.16.0)
     msgpack (1.8.0)
     mustermann (3.0.4)
@@ -442,7 +442,7 @@ GEM
       net-ssh (>= 2.8.0)
       ostruct
     stringio (3.1.7)
-    strong_migrations (2.5.0)
+    strong_migrations (2.5.1)
       activerecord (>= 7.1)
     thor (1.4.0)
     thruster (0.1.15)
@@ -462,7 +462,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.3)
+    uri (1.0.4)
     useragent (0.16.11)
     view_component (4.0.2)
       activesupport (>= 7.1.0, < 8.1)
