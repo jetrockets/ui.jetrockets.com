@@ -7,14 +7,23 @@ export default class DropdownController extends Controller {
 
   connect () {
     this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
+    document.addEventListener('turbo:morph', this.reload.bind(this))
   }
 
   disconnect () {
+    document.removeEventListener('turbo:morph', this.reload.bind(this))
     this.dropdown.hide()
   }
 
   hide () {
     this.dropdown.hide()
+  }
+
+  reload () {
+    if (this.dropdown) {
+      this.dropdown.destroy()
+      this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
+    }
   }
 
   #options () {
