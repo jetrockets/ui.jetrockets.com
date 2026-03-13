@@ -10,16 +10,18 @@ module ApplicationHelper
     class_names("body", @body_class)
   end
 
-  def vite_svg_tag(filename, transform_params = {})
-    with_asset_finder(InlineSvg::ViteAssetFinder) do
-      render_inline_svg(filename, transform_params)
-    end
-  end
+  def icon_tag(name, **options)
+    size = options.delete(:size) || 5
+    img = options.delete(:img) || false
 
-  def vite_icon_tag(filename, transform_params = {})
-    with_asset_finder(InlineSvg::ViteAssetFinder) do
-      render_inline_svg("images/icons/#{filename}", transform_params)
-    end
+    classes = class_names(
+      'icon',
+      "icon-#{name}",
+      options.delete(:class),
+      "size-#{size}",
+      "icon-img": img
+    )
+    tag.span nil, class: classes, "aria-hidden": true, "aria-label": name.to_s.humanize, **options
   end
 
   # Picture tag

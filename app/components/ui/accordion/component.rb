@@ -26,7 +26,7 @@ class Ui::Accordion::Component < ApplicationComponent
       <details class="accordion__details" name="<%= @name %>" open="<%= @open %>">
         <summary class="accordion__summary">
           <%= @title %>
-          <%= helpers.vite_icon_tag('chevron-down.svg', class: 'accordion__icon') %>
+          <%= helpers.icon_tag('chevron-down', class: 'accordion__icon') %>
         </summary>
         <div class="accordion__body">
           <%= content %>

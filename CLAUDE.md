@@ -128,6 +128,3 @@ def initialize(variant: nil, size: :md, href: nil, **options)
 
 ### CSS Class Management
 Uses Rails' `class_names` helper to conditionally apply CSS classes based on component state and options.
-
-### Icon Integration
-Icons are integrated using `vite_svg_tag` helper for SVG assets managed by Vite.

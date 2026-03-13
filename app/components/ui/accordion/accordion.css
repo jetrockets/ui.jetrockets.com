@@ -32,6 +32,7 @@
   }
 
   .accordion__icon {
+    --icon-size: 1.25rem;
     @apply transition-transform size-5 shrink-0;
   }
 

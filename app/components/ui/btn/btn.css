@@ -118,18 +118,18 @@
   }
 
   .btn__icon-sm {
-    @apply size-2.5;
-  }
-
-  .btn__icon-md {
     @apply size-3;
   }
 
+  .btn__icon-md {
+    @apply size-4;
+  }
+
   .btn__icon-lg {
-    @apply size-3.5;
+    @apply size-5;
   }
 
   .btn__icon-xl {
-    @apply size-4;
+    @apply size-6;
   }
 }

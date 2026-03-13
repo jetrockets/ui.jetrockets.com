@@ -32,7 +32,7 @@ class Ui::Btn::Component < ApplicationComponent
   end
 
   def icon_content
-    helpers.vite_icon_tag(icon, class: icon_classes) if icon?
+    helpers.icon_tag(icon, class: icon_classes, size: icon_size) if icon?
   end
 
   def button_attributes
@@ -73,5 +73,16 @@ class Ui::Btn::Component < ApplicationComponent
       "btn__icon-lg": @size == :lg,
       "btn__icon-xl": @size == :xl
     )
+  end
+
+  def icon_size
+    case @size
+    when :xs then 2
+    when :sm then 3
+    when :md then 4
+    when :lg then 5
+    when :xl then 6
+    else 4
+    end
   end
 end

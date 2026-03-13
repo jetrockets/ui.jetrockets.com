@@ -18,7 +18,7 @@
   }
 
   .tabs__link {
-    @apply inline-block py-4 text-gray-600 border-b-2 border-transparent rounded-t-lg;
+    @apply inline-flex items-center gap-2 w-max py-4 text-gray-600 border-b-2 border-transparent rounded-t-lg;
     @apply hover:text-gray-800 hover:border-gray-300;
     @apply focus:outline-none focus:border-primary/50 focus:text-primary/50;
   }

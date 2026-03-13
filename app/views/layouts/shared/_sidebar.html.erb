@@ -1,7 +1,7 @@
 
 <aside class="body__sidebar sidebar" data-sidebar-target="scroll">
   <div class="sidebar__header">
-    <%= link_to vite_svg_tag("images/logo.svg", class: "sidebar__logo", alt: "JetRockets"), root_path, aria: { label: "JetRockets" } %>
+    <%= link_to icon_tag("logo", class: "sidebar__logo", img: true), root_path, aria: { label: "JetRockets" } %>
 
     <div class="sidebar__actions">
       <%= render partial: "layouts/shared/navbar_buttons" %>

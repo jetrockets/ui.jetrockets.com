@@ -22,7 +22,7 @@ class Ui::Avatar::Component < ApplicationComponent
     if @full_name.present?
       content_tag(:span, initials, class: "avatar__initials")
     else
-      concat helpers.vite_icon_tag("user.svg", class: "avatar__icon")
+      concat helpers.icon_tag("user", class: "avatar__icon")
       concat content_tag(:span, class: "sr-only") { "Avatar thumbnail" }
     end
   end

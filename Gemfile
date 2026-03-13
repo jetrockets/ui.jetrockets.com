@@ -10,7 +10,6 @@ gem "bootsnap", require: false
 gem "countries"
 gem "gretel"
 gem "image_processing"
-gem "inline_svg"
 gem "meta-tags"
 gem "mjml-rails"
 gem "pagy"

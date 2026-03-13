@@ -8,7 +8,7 @@
   }
 
   .sidebar__logo {
-    @apply h-6 md:w-28 md:h-auto;
+    @apply h-6 md:w-28 md:h-8;
   }
 
   .sidebar__actions {
