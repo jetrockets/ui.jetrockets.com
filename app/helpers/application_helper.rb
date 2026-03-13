@@ -11,14 +11,14 @@ module ApplicationHelper
   end
 
   def icon_tag(name, **options)
-    size = options.delete(:size) || 5
+    size = options.delete(:size)
     img = options.delete(:img) || false
 
     classes = class_names(
       'icon',
       "icon-#{name}",
       options.delete(:class),
-      "size-#{size}",
+      "size-#{size}": size,
       "icon-img": img
     )
     tag.span nil, class: classes, "aria-hidden": true, "aria-label": name.to_s.humanize, **options
