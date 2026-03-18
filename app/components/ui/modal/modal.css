@@ -2,12 +2,20 @@
 
 @layer components {
   .modal {
-    @apply p-0 m-auto rounded-lg shadow-sm h-fit w-fit backdrop:bg-gray-900/50 max-w-full;
+    @apply p-0 m-auto rounded-lg shadow-sm max-w-11/12 h-fit w-fit backdrop:bg-gray-900/50;
     @apply w-2xl;  /* default width */
   }
 
+  .modal-page {
+    @apply mt-4;
+  }
+
   .modal__header {
-    @apply sticky top-0 flex items-center justify-between p-4 px-6 border-b border-gray-200 bg-white/70 backdrop-blur-sm;
+    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white/70 backdrop-blur-sm;
+  }
+
+  .modal__header-bordered {
+    @apply border-b border-gray-200;
   }
 
   .modal__title {
@@ -23,11 +31,15 @@
   }
 
   .modal__body {
-    @apply py-6 px-6 rounded-lg overflow-auto;
+    @apply px-6 py-6 overflow-auto rounded-lg;
   }
 
   .modal__footer {
-    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 rounded-b-lg border-t border-gray-200 bg-white/70 backdrop-blur-sm;
+    @apply sticky bottom-0 w-full p-4 rounded-b-lg bg-white/70 backdrop-blur-sm;
+  }
+
+  .modal__footer-bordered {
+    @apply border-t border-gray-200;
   }
 
   .modal__footer-end {

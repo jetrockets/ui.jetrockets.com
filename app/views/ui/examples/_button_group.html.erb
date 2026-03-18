@@ -1,31 +1,39 @@
 <div class="flex flex-col gap-4">
-  <%= render Ui::BtnGroup::Component.new do |component| %>
-    <% component.with_button(variant: :primary) { "Button First" } %>
-    <% component.with_button(variant: :primary) { "Button Second" } %>
-    <% component.with_button(variant: :primary) { "Button Third" } %>
+  <%= ui.btn_group do %>
+    <%= ui.btn "Button First", variant: :outline %>
+
+    <%= ui.dropdown do %>
+      <%= ui.dropdown_trigger as: :btn, variant: :outline, size: :icon_md do %>
+        <%= icon_tag "chevron-down", size: 5 %>
+      <% end %>
+
+      <%= ui.dropdown_menu do %>
+        <%= ui.dropdown_title "Title" %>
+        <%= ui.dropdown_link "Settings", url: "#" %>
+        <%= ui.dropdown_link "Terms of Service", url: terms_path %>
+        <%= ui.dropdown_link "Privacy Policy", url: privacy_path %>
+        <%= ui.dropdown_divider %>
+        <%= ui.dropdown_link "Sign Up", url: "#" %>
+        <%= ui.dropdown_link "Sign In", url: "#" %>
+      <% end %>
+    <% end %>
   <% end %>
 
-  <%= render Ui::BtnGroup::Component.new do |component| %>
-    <% component.with_button(variant: :primary, size: :lg) { "Button First" } %>
-    <% component.with_button(variant: :primary, size: :lg) { "Button Second" } %>
-    <% component.with_button(variant: :primary, size: :lg) { "Button Third" } %>
+  <%= ui.btn_group sticky: false do %>
+    <%= ui.btn "Button With Gap", variant: :outline %>
+    <%= ui.btn "Button With Gap", variant: :outline %>
+    <%= ui.btn "Button With Gap", variant: :outline %>
   <% end %>
 
-  <%= render Ui::BtnGroup::Component.new do |component| %>
-    <% component.with_button(variant: :primary, rounded: true) { "Button First" } %>
-    <% component.with_button(variant: :primary, rounded: true) { "Button Second" } %>
-    <% component.with_button(variant: :primary, rounded: true) { "Button Third" } %>
+  <%= ui.btn_group do %>
+    <%= ui.btn "Button First" %>
+    <%= ui.btn "Button Second" %>
+    <%= ui.btn "Button Third"  %>
   <% end %>
 
-  <%= render Ui::BtnGroup::Component.new do |component| %>
-    <% component.with_button(variant: :primary, outlined: true) { "Button First" } %>
-    <% component.with_button(variant: :primary, outlined: true) { "Button Second" } %>
-    <% component.with_button(variant: :primary, outlined: true) { "Button Third" } %>
-  <% end %>
-
-  <%= render Ui::BtnGroup::Component.new with_gap: true do |component| %>
-    <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
-    <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
-    <% component.with_button(variant: :primary, outlined: true) { "Button With Gap" } %>
+  <%= ui.btn_group do %>
+    <%= ui.btn "Button First", variant: :secondary, rounded: true %>
+    <%= ui.btn "Button Second", variant: :secondary, rounded: true %>
+    <%= ui.btn "Button Third", variant: :secondary, rounded: true %>
   <% end %>
 </div>

@@ -1,17 +1,13 @@
-<div class="flex flex-col items-start gap-4">
-  <%= render Ui::Tooltip::Component.new(title: "Top tooltip", data: { placement: "top" }) do %>
-    <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Top Tooltip" %>
+<div class="flex flex-col gap-4">
+  <%= ui.btn_group sticky: false do %>
+    <%= ui.tooltip "Top Tooltip", title: "Top Tooltip", as: :btn, placement: :top, variant: :secondary %>
+    <%= ui.tooltip "Right Tooltip", title: "Right Tooltip", as: :btn, placement: :right, variant: :danger %>
+    <%= ui.tooltip "Left Tooltip", title: "Left Tooltip", as: :btn, placement: :left %>
+    <%= ui.tooltip "Bottom Tooltip", title: "Bottom Tooltip", as: :btn, placement: :bottom %>
   <% end %>
 
-  <%= render Ui::Tooltip::Component.new(title: "Right tooltip", data: { placement: "right" }) do %>
-    <%= render Ui::Btn::Component.new(variant: :danger).with_content "Right Tooltip" %>
-  <% end %>
-
-  <%= render Ui::Tooltip::Component.new(title: "Left tooltip", data: { placement: "left" }) do %>
-    <%= render Ui::Btn::Component.new.with_content "Left Tooltip" %>
-  <% end %>
-
-  <%= render Ui::Tooltip::Component.new(title: "Tooltip content", data: { placement: "bottom" }) do %>
-    <%= render Ui::Btn::Component.new(variant: :primary).with_content "Bottom Tooltip" %>
-  <% end %>
+  <span>
+    Tooltip without component
+    <%= icon_tag "question-circle", size: 5, data: { controller: "tooltip", tooltip_content_value: "Without component" }, class: "cursor-help" %>
+  </span>
 </div>

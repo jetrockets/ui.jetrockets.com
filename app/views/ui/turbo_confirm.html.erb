@@ -17,14 +17,16 @@
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/turbo_confirm", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/turbo_confirm", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
   <section>
-    <div class="flex flex-col mb-12 gap-4">
-        <%= render Ui::Alert::Component.new title: "To use the Turbo Confirm component, you need to set a custom confirm method using the following JavaScript code", type: :warning %>
-        <pre><code>Turbo.setConfirmMethod((message) => {
+    <div class="flex flex-col gap-4 mb-12">
+      <%= ui.alert variant: :warning do %>
+        <%= ui.alert__title "To use the Turbo Confirm component, you need to set a custom confirm method using the following JavaScript code" %>
+      <% end %>
+      <pre><code>Turbo.setConfirmMethod((message) => {
   const dialog = document.getElementById('turbo-confirm')
   dialog.querySelector('p').textContent = message
   dialog.showModal()
@@ -44,18 +46,18 @@
 })
 
 &lt;!-- And somewhere in your layout --&gt;
-&lt;%= render Ui::TurboConfirm::Component.new %&gt;
+&lt;%= ui.turbo_confirm %&gt;
 </code></pre>
     </div>
 
     <h2 class="h3">Example</h2>
     <%= turbo_frame_tag :ui_turbo_confirm, data: { turbo_action: :advance }, target: :_top do %>
-      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
-        <% tabs.with_item title: "Preview", href: ui_turbo_confirm_path, data: { turbo_frame: :ui_turbo_confirm }, active: !params[:code] %>
-        <% tabs.with_item title: "Code", href: ui_turbo_confirm_path(code: true), data: { turbo_frame: :ui_turbo_confirm }, active: params[:code] %>
+      <%= ui.tabs class: "mb-6" do %>
+        <%= ui.tabs_item title: "Preview", href: ui_turbo_confirm_path, data: { turbo_frame: :ui_turbo_confirm }, active: !params[:code] %>
+        <%= ui.tabs_item title: "Code", href: ui_turbo_confirm_path(code: true), data: { turbo_frame: :ui_turbo_confirm }, active: params[:code] %>
       <% end %>
 
-      <div class="flex flex-col mb-12 gap-4">
+      <div class="flex flex-col gap-4 mb-12">
         <% unless params[:code] %>
           <%= render "ui/examples/turbo_confirm" %>
         <% else %>

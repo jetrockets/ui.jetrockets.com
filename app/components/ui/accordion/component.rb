@@ -1,43 +1,21 @@
 class Ui::Accordion::Component < ApplicationComponent
-  renders_many :items, "ItemComponent"
-
-  def initialize(name: nil, **options)
+  def initialize(name: nil, open: false, **options)
     super
     @name = name
+    @open = open
     @options = options
   end
 
-  erb_template <<~ERB
-    <%= content_tag :div, class: classes, **@options do %>
-      <% items.each do |item| %>
-        <%= item %>
-      <% end %>
-    <% end %>
-  ERB
-
-  class ItemComponent < ApplicationComponent
-    def initialize(name:, title: nil, open: false)
-      @name = name
-      @title = title
-      @open = open
-    end
-
-    erb_template <<~ERB
-      <details class="accordion__details" name="<%= @name %>" open="<%= @open %>">
-        <summary class="accordion__summary">
-          <%= @title %>
-          <%= helpers.icon_tag('chevron-down', class: 'accordion__icon') %>
-        </summary>
-        <div class="accordion__body">
-          <%= content %>
-        </div>
-      </details>
-    ERB
+  def call
+    content_tag :details, content, class: classes, name: @name, open: @open, **@options
   end
 
   private
 
   def classes
-    class_names("accordion", @options.delete(:class))
+    class_names(
+      "group border-b border-gray-200",
+      @options.delete(:class)
+    )
   end
 end

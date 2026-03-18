@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Please verify your account", description: rodauth.verify_account_resend_explanatory_text) %>
 
-<%= render Ui::Modal::Component.new(title: "Please verify your account", size: :lg) do %>
-  <div class="modal__body">
+<%= ui.modal(title: "Please verify your account", size: :lg) do %>
+  <%= ui.modal_body do %>
     <%= form_with url: rodauth.verify_account_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
       <% if rodauth.verify_account_set_password? %>
         <p>
@@ -18,11 +18,11 @@
         <% end %>
 
         <div class="mb-6 form__actions">
-          <%= form.submit rodauth.verify_account_button, class: "btn-lg btn-block" %>
+          <%= form.submit rodauth.verify_account_button, block: true %>
         </div>
       <% else %>
-        <%= form.submit rodauth.verify_account_button, class: "btn-lg btn-block" %>
+        <%= form.submit rodauth.verify_account_button, block: true %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

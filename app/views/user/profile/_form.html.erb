@@ -1,6 +1,6 @@
 <%# locals(user:) %>
 <div class="flex flex-col items-center gap-3 mb-8">
-  <%= render Ui::Avatar::Component.new size: 40, full_name: user.full_name %>
+  <%= ui.avatar size: 40, user: user %>
 
   <div class="flex flex-col max-w-lg gap-3 mx-auto text-sm text-center">
     <%= form_with model: user, url: user_avatar_path, class: "form", method: :post, data: { controller: "autosave" } do |form| %>
@@ -35,6 +35,6 @@
   <%= f.text_field :last_name, size: :lg %>
 
   <div class="form__actions">
-    <%= f.submit "Save", class: "btn-lg", data: { turbo_submits_with: "Saving…" } %>
+    <%= f.submit "Save", data: { turbo_submits_with: "Saving…" } %>
   </div>
 <% end %>

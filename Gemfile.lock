@@ -147,6 +147,7 @@ GEM
       rubocop (>= 1)
       smart_properties
     erubi (1.13.1)
+    fastimage (2.4.0)
     fattr (2.4.0)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -506,6 +507,7 @@ DEPENDENCIES
   bundler-audit
   countries
   erb_lint
+  fastimage
   gretel
   image_processing
   kamal (~> 2.7.0)

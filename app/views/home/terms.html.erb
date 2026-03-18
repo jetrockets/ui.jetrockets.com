@@ -7,8 +7,8 @@
 %>
 <% breadcrumb :terms_and_conditions %>
 
-<%= render Ui::Drawer::Component.new(title: "Terms of Service") do %>
-  <div class="drawer__body">
+<%= ui.drawer(title: "Terms of Service") do %>
+  <%= ui.drawer_body do %>
     <article class="wysiwyg">
       <h2 class="mt-0">Five Reasons Why Your Website Needs a Terms of Use Agreement</h2>
 
@@ -20,5 +20,5 @@
       <h3>2. Limiting Liability From User Content</h3>
       <p>If your website involves user interactions such as a comments section, social media functions, chat rooms or forums, a terms of use agreement can serve to insulate the website from user-generated content. This is especially important if users can freely upload digital media of their own to an online platform.</p>
     </article>
-  </div>
+  <% end %>
 <% end %>

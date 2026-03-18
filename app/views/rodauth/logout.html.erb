@@ -1,8 +1,8 @@
 <% set_meta_tags(title: "Logout", description: "Logout from #{site_name}") %>
 
-<%= render Ui::Modal::Component.new(title: "Logout", size: :lg) do %>
+<%= ui.modal(title: "Logout", size: :lg) do %>
   <%= form_with url: rodauth.logout_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
-    <div class="modal__body">
+    <%= ui.modal_body do %>
       <p class="mb-3 text-gray-600">
         Logout from <%= site_name %>
       </p>
@@ -13,7 +13,7 @@
         <% end %>
       <% end %>
 
-      <%= form.submit rodauth.logout_button, class: "btn-block" %>
-    </div>
+      <%= form.submit rodauth.logout_button, block: true %>
+    <% end %>
   <% end %>
 <% end %>

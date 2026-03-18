@@ -17,117 +17,150 @@
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/btn", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/btn", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
   <section class="flex flex-col gap-2 mb-12">
     <h2 class="h3">Basic Variants</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
-      <%= render Ui::Btn::Component.new.with_content "Default" %>
-      <%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %>
-      <%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %>
-      <%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %>
-    </div>
+    <%= ui.btn_group sticky: false, class: "mb-4" do %>
+      <%= ui.btn "Default" %>
+      <%= ui.btn "Outline", variant: :outline %>
+      <%= ui.btn "Secondary", variant: :secondary %>
+      <%= ui.btn "Danger", variant: :danger %>
+      <%= ui.btn "Ghost", variant: :ghost %>
+      <%= ui.btn "Link", variant: :link %>
+    <% end %>
 
-    <pre><code>&lt;%= render Ui::Btn::Component.new.with_content "Default" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :primary).with_content "Primary" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :secondary).with_content "Secondary" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :danger).with_content "Danger" %&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn "Default" %&gt;
+&lt;%= ui.btn "Outline", variant: :outline %&gt;
+&lt;%= ui.btn "Secondary", variant: :secondary %&gt;
+&lt;%= ui.btn "Danger", variant: :danger %&gt;
+&lt;%= ui.btn "Ghost", variant: :ghost %&gt;
+&lt;%= ui.btn "Link", variant: :link %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-2 my-12">
     <h2 class="h3">Sizes</h2>
 
     <div class="flex flex-wrap items-end gap-1 mb-4">
-      <%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %>
-      <%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %>
-      <%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %>
-      <%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %>
-      <%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %>
+      <%= ui.btn "Button XS", size: :xs %>
+      <%= ui.btn "Button SM", size: :sm %>
+      <%= ui.btn "Button MD", size: :md %>
+      <%= ui.btn "Button LG", size: :lg %>
     </div>
 
-    <pre><code>&lt;%= render Ui::Btn::Component.new(size: :xl).with_content "Button XL" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :lg).with_content "Button LG" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :md).with_content "Button MD" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :sm).with_content "Button SM" %&gt;
-&lt;%= render Ui::Btn::Component.new(size: :xs).with_content "Button XS" %&gt;</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Outlined Variants</h2>
-
-    <div class="flex flex-wrap items-center gap-1 mb-4">
-      <%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %>
-      <%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %>
-      <%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %>
-      <%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %>
-    </div>
-
-    <pre><code>&lt;%= render Ui::Btn::Component.new(outlined: true).with_content "Default Outlined" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :primary, outlined: true).with_content "Primary Outlined" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :secondary, outlined: true).with_content "Secondary Outlined" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :danger, outlined: true).with_content "Danger Outlined" %&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn "Button XS", size: :xs %&gt;
+&lt;%= ui.btn "Button SM", size: :sm %&gt;
+&lt;%= ui.btn "Button MD", size: :md %&gt;
+&lt;%= ui.btn "Button LG", size: :lg %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-2 my-12">
     <h2 class="h3">With Icons</h2>
 
-    <div class="flex flex-wrap items-center gap-1 mb-4">
-      <%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("user") %>
-      <%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("user") %>
-      <%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("user") %>
-      <%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("user") %>
+    <div class="flex flex-wrap items-end gap-1 mb-4">
+      <%= ui.btn size: :xs do %>
+        <%= icon_tag "user" %>
+        Default
+      <% end %>
+      <%= ui.btn size: :sm do %>
+        <%= icon_tag "user" %>
+        Default
+      <% end %>
+      <%= ui.btn size: :md do %>
+        <%= icon_tag "user" %>
+        Default
+      <% end %>
+      <%= ui.btn size: :lg do %>
+        <%= icon_tag "user" %>
+        Default
+      <% end %>
+    </div>
+    <pre><code>&lt;%= ui.btn size: :xs do %&gt;
+  &lt;%= icon_tag "user" %&gt;
+  Default
+&lt;% end %&gt;
+
+&lt;%= ui.btn size: :sm do %&gt;
+  &lt;%= icon_tag "user" %&gt;
+  Default
+&lt;% end %&gt;
+
+&lt;%= ui.btn size: :md do %&gt;
+  &lt;%= icon_tag "user" %&gt;
+  Default
+&lt;% end %&gt;
+
+&lt;%= ui.btn size: :lg do %&gt;
+  &lt;%= icon_tag "user" %&gt;
+  Default
+&lt;% end %&gt;
+</code></pre>
+  </section>
+
+  <section class="flex flex-col gap-2 my-12">
+    <h2 class="h3">Only Icon</h2>
+
+    <div class="flex flex-wrap items-end gap-1 mb-4">
+      <%= ui.btn icon_tag("user"), size: :icon_xs %>
+      <%= ui.btn icon_tag("user"), variant: :secondary, size: :icon_sm %>
+      <%= ui.btn icon_tag("user"), variant: :outline, size: :icon_md %>
+      <%= ui.btn icon_tag("user"), variant: :danger, size: :icon_lg %>
+      <%= ui.btn icon_tag("user"), variant: :ghost, size: :icon_lg %>
+      <%= ui.btn icon_tag("user"), variant: :link, size: :icon_lg %>
     </div>
 
-    <pre><code>&lt;%= render Ui::Btn::Component.new.with_content("Default").with_icon_content("user") %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :primary).with_content("Primary").with_icon_content("user") %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :secondary).with_content("Secondary").with_icon_content("user") %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :danger).with_content("Danger").with_icon_content("user") %&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn icon_tag("user"), size: :icon_xs %&gt;
+&lt;%= ui.btn icon_tag("user"), variant: :secondary, size: :icon_sm %&gt;
+&lt;%= ui.btn icon_tag("user"), variant: :outline, size: :icon_md %&gt;
+&lt;%= ui.btn icon_tag("user"), variant: :danger, size: :icon_lg %&gt;
+&lt;%= ui.btn icon_tag("user"), variant: :ghost, size: :icon_lg %&gt;
+&lt;%= ui.btn icon_tag("user"), variant: :link, size: :icon_lg %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-2 my-12">
     <h2 class="h3">Special Styles</h2>
 
     <div class="mb-4 space-y-3">
-      <div class="flex flex-wrap items-center gap-2">
-        <%= render Ui::Btn::Component.new(variant: :ghost).with_content "Ghost" %>
-        <%= render Ui::Btn::Component.new(variant: :primary, rounded: true).with_content "Rounded" %>
+      <div class="flex flex-wrap items-end gap-1 mb-4">
+        <%= ui.btn "Rounded", size: :sm, rounded: true %>
+        <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
       </div>
-      <div class="flex flex-wrap items-center gap-2">
-        <%= render Ui::Btn::Component.new(circle: true, size: :xs).with_icon_content("user") %>
-        <%= render Ui::Btn::Component.new(variant: :primary, circle: true, size: :sm).with_icon_content("user") %>
-        <%= render Ui::Btn::Component.new(variant: :secondary, circle: true, size: :md).with_icon_content("user") %>
-        <%= render Ui::Btn::Component.new(variant: :danger, circle: true, size: :lg).with_icon_content("user") %>
-        <%= render Ui::Btn::Component.new(variant: :primary, outlined: true, circle: true, size: :xl).with_icon_content("user") %>
+      <div class="flex flex-wrap items-end gap-1 mb-4">
+        <%= ui.btn icon_tag("user"), size: :icon_md, rounded: true %>
+        <%= ui.btn icon_tag("user"), size: :icon_lg, rounded: true %>
       </div>
       <div>
-        <%= render Ui::Btn::Component.new(block: true, variant: :primary, size: :lg).with_content("Block Button").with_icon_content("user") %>
+        <%= ui.btn block: true, size: :lg do %>
+          <%= icon_tag("user", size: 6) %>
+          Block Button
+        <% end %>
       </div>
     </div>
 
-    <pre><code>&lt;%= render Ui::Btn::Component.new(variant: :ghost).with_content "Ghost" %&gt;
-&lt;%= render Ui::Btn::Component.new(variant: :primary, rounded: true).with_content "Rounded" %&gt;
-
-&lt;!-- Circle buttons --&gt;
-&lt;%= render Ui::Btn::Component.new(circle: true, size: :sm).with_icon_content("user") %&gt;
-
-&lt;!-- Block button --&gt;
-&lt;%= render Ui::Btn::Component.new(block: true, variant: :primary).with_content("Block Button") %&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn "Rounded", size: :sm, rounded: true %&gt;
+&lt;%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %&gt;
+&lt;%= ui.btn icon_tag("user"), size: :icon_md, rounded: true %&gt;
+&lt;%= ui.btn icon_tag("user"), size: :icon_lg, rounded: true %&gt;
+&lt;%= ui.btn block: true, size: :lg do %&gt;
+  &lt;%= icon_tag("user", size: 6) %&gt;
+  Block Button
+&lt;% end %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-2 my-12">
     <h2 class="h3">As Links</h2>
 
     <div class="mb-4 space-y-2">
-      <%= render Ui::Btn::Component.new(href: "#", variant: :primary).with_content "Link Button" %>
-      <%= render Ui::Btn::Component.new(href: "#", variant: :link).with_content "Link" %>
-      <%= render Ui::Btn::Component.new(href: "#", variant: :ghost).with_content "Link Ghost" %>
+      <%= ui.btn "Link Button", url: "#" %>
+      <%= ui.btn "Link", url: "#", variant: :link %>
+      <%= ui.btn "Link Ghost", url: "#", variant: :ghost %>
     </div>
 
-    <pre><code>&lt;%= render Ui::Btn::Component.new(href: root_path, variant: :primary).with_content "Link Button" %&gt;
-&lt;%= render Ui::Btn::Component.new(href: root_path, variant: :link).with_content "Link" %&gt;
-&lt;%= render Ui::Btn::Component.new(href: root_path, variant: :ghost).with_content "Link Ghost" %&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn "Link Button", url: root_path %&gt;
+&lt;%= ui.btn "Link", url: root_path, variant: :link %&gt;
+&lt;%= ui.btn "Link Ghost", url: root_path, variant: :ghost %&gt;</code></pre>
   </section>
 </article>

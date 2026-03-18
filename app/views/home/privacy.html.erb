@@ -7,8 +7,8 @@
 %>
 <% breadcrumb :privacy_policy %>
 
-<%= render Ui::Modal::Component.new title: "Privacy Policy", subtitle: "Use this for your Privacy Policy" do %>
-  <div class="modal__body">
+<%= ui.modal title: "Privacy Policy", subtitle: "Use this for your Privacy Policy" do %>
+  <%= ui.modal_body do %>
     <article class="wysiwyg">
       <p class="mt-0">Company Name operates the Website Name website, which provides the SERVICE.</p>
 
@@ -30,8 +30,8 @@
       <h3>Log Data</h3>
       <p>We want to inform you that whenever you visit our Service, we collect information that your browser sends to us that is called Log Data. This Log Data may include information such as your computer's Internet Protocol (“IP”) address, browser version, pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
     </article>
-  </div>
-  <div class="justify-between modal__footer">
-    <%= render Ui::Btn::Component.new(type: :button, variant: :primary).with_content "Agree" %>
-  </div>
+  <% end %>
+  <%= ui.modal_footer do %>
+    <%= ui.btn "Agree", type: :button %>
+  <% end %>
 <% end %>

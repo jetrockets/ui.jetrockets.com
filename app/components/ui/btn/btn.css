@@ -2,134 +2,99 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center h-10 gap-2 px-3 py-2 text-sm font-medium text-center no-underline border border-transparent rounded-md outline-none cursor-pointer;
-    @apply text-gray-700 bg-gray-200;
-    @apply hover:bg-gray-200/80;
-    @apply focus:ring-2 focus:ring-offset-1 focus:ring-gray-300;
+    @apply inline-flex items-center justify-center gap-2;
+    @apply outline-none cursor-pointer shrink-0 text-trim-trim-both;
+    @apply font-medium text-center;
 
-    &.btn-outlined {
-      @apply bg-transparent border-gray-300;
-      @apply hover:bg-gray-200/90 hover:border-transparent;
-    }
+    @apply focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-300;
+    @apply transition-transform active:translate-y-px;
   }
 
-  .btn-primary {
-    @apply text-white bg-primary;
-    @apply hover:bg-primary/90 hover:text-white;
-    @apply focus:ring-primary/30;
+  .btn-default {
+    @apply text-white;
+    @apply bg-primary hover:bg-primary/90;
+    @apply focus-visible:ring-primary/30;
+  }
 
-    &.btn-outlined {
-      @apply bg-transparent text-primary border-primary;
-      @apply hover:text-white hover:bg-primary hover:border-primary;
-    }
+  .btn-outline {
+    @apply text-black border border-gray-300;
+    @apply hover:bg-gray-200/50;
   }
 
   .btn-secondary {
-    @apply text-white bg-secondary-700;
-    @apply hover:text-white hover:bg-secondary-700/90;
-    @apply focus:ring-secondary-700/30;
-
-    &.btn-outlined {
-      @apply bg-transparent text-secondary-900 border-secondary-700;
-      @apply hover:text-white hover:bg-secondary-700 hover:border-secondary-700;
-    }
+    @apply text-white;
+    @apply bg-secondary-700 hover:bg-secondary-700/90;
+    @apply focus-visible:ring-secondary-700/30;
   }
 
   .btn-danger {
-    @apply text-white bg-red-700;
-    @apply hover:text-white hover:bg-red-700/90;
-    @apply focus:ring-red-700/30;
-
-    &.btn-outlined {
-      @apply text-red-700 bg-transparent border-red-700;
-      @apply hover:text-white hover:bg-red-700 hover:border-red-700;
-    }
+    @apply text-red-700;
+    @apply bg-red-700/20 hover:bg-red-700/25;
+    @apply focus-visible:ring-red-700/30;
   }
 
   .btn-ghost {
-    @apply text-black bg-transparent;
+    @apply text-black;
+    @apply hover:bg-gray-200/50;
   }
 
   .btn-link {
-    @apply p-0 bg-transparent border-transparent text-primary-700;
-    @apply hover:bg-transparent hover:text-primary-800;
+    @apply text-primary-700 hover:text-primary-800;
   }
 
+  /* Sizes */
+  .btn-xs {
+    --icon-size: calc(var(--spacing) * 3.25);
+    @apply px-2 text-xs rounded-md min-h-6.5 gap-1;
+  }
+
+  .btn-sm {
+    --icon-size: calc(var(--spacing) * 4);
+    @apply px-3.5 text-xs rounded-md min-h-8 gap-1.5;
+  }
+
+  .btn-md {
+    --icon-size: calc(var(--spacing) * 5);
+    @apply px-4.5 text-sm rounded-md min-h-10;
+  }
+
+  .btn-lg {
+    --icon-size: calc(var(--spacing) * 6);
+    @apply px-6 text-base rounded-lg min-h-12;
+  }
+
+  /* Icons */
+  .btn-icon_xs {
+    --icon-size: calc(var(--spacing) * 3.25);
+    @apply rounded-md size-6.5;
+  }
+
+  .btn-icon_sm {
+    --icon-size: calc(var(--spacing) * 4);
+    @apply rounded-md size-8;
+  }
+
+  .btn-icon_md {
+    --icon-size: calc(var(--spacing) * 5);
+    @apply rounded-md size-10;
+  }
+
+  .btn-icon_lg {
+    --icon-size: calc(var(--spacing) * 6);
+    @apply rounded-lg size-12;
+  }
+
+  /* Block */
+  .btn-block {
+    @apply w-full;
+  }
+
+  /* Rounded */
   .btn-rounded {
     @apply rounded-full;
   }
 
   .btn-circle {
-    @apply justify-center p-0 rounded-full;
-  }
-
-  /* Sizes */
-  .btn-xs {
-    @apply py-0.5 px-2 text-xs h-6;
-
-    &.btn-circle {
-      @apply size-6;
-    }
-  }
-
-  .btn-sm {
-    @apply px-2 py-1.5 h-9 text-xs;
-
-    &.btn-circle {
-      @apply size-9;
-    }
-  }
-
-  .btn-md {
-    @apply px-3 py-2.5 h-10;
-
-    &.btn-circle {
-      @apply size-10;
-    }
-  }
-
-  .btn-lg {
-    @apply h-12 px-4 py-3 text-base;
-
-    &.btn-circle {
-      @apply size-12;
-    }
-  }
-
-  .btn-xl {
-    @apply px-5 py-3.5 text-base h-14;
-
-    &.btn-circle {
-      @apply size-14;
-    }
-  }
-
-  .btn-block {
-    @apply w-full;
-  }
-
-  /* Icons */
-  .btn__icon {
-    @apply size-4 shrink-0;
-  }
-
-  .btn__icon-xs {
-    @apply size-2;
-  }
-
-  .btn__icon-sm {
-    @apply size-3;
-  }
-
-  .btn__icon-md {
-    @apply size-4;
-  }
-
-  .btn__icon-lg {
-    @apply size-5;
-  }
-
-  .btn__icon-xl {
-    @apply size-6;
+    @apply p-0 rounded-full;
   }
 }

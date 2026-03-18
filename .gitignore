@@ -26,6 +26,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/public/uploads
 
 /ui_jetrockets_development
 /ui_jetrockets_development-shm

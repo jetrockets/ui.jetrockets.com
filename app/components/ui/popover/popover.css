@@ -2,30 +2,35 @@
 
 @layer components {
   .popover {
-    @apply z-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm;
+    @apply absolute z-10 w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 pointer-events-none;
   }
 
-  .popover__wrapper {
-    @apply absolute z-10 inline-block w-64 text-sm transition-opacity duration-300 opacity-0 pointer-events-none;
+  .popover::after {
+    @apply absolute rotate-45 bg-white border border-gray-200 size-2.5;
+    content: "";
   }
 
-  .popover__wrapper-top {
-    padding-bottom: var(--popover-padding);
+  .popover[data-placement^="top"]::after {
+    @apply bottom-0 -translate-x-1/2 translate-y-1/2 border-t-0 border-l-0 left-1/2;
   }
 
-  .popover__wrapper-bottom {
-    padding-top: var(--popover-padding);
+  .popover[data-placement^="bottom"]::after {
+    @apply top-0 -translate-x-1/2 -translate-y-1/2 bg-gray-100 border-b-0 border-r-0 left-1/2;
   }
 
-  .popover__wrapper-right {
-    padding-left: var(--popover-padding);
+  .popover[data-placement^="left"]::after {
+    @apply right-0 translate-x-1/2 -translate-y-1/2 border-b-0 border-l-0 top-1/2;
   }
 
-  .popover__wrapper-left {
-    padding-right: var(--popover-padding);
+  .popover[data-placement^="right"]::after {
+    @apply left-0 -translate-x-1/2 -translate-y-1/2 border-t-0 border-r-0 top-1/2;
   }
 
   .popover__title {
-    @apply px-3 py-2 font-semibold text-gray-900 bg-gray-100 border-b border-gray-200 rounded-t-lg;
+    @apply px-3 py-3 font-semibold text-black bg-gray-100 border-b border-gray-200 rounded-t-lg;
+  }
+
+  .popover__body {
+    @apply p-3;
   }
 }

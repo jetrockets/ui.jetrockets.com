@@ -22,10 +22,12 @@
   </header>
 
   <section class="mb-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Basic Toggler" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Basic Toggler<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group do %>
             <%= f.toggler :dark_mode %>
@@ -37,7 +39,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.toggler :dark_mode %&gt;
 &lt;%= f.toggler :dark_mode, hint: "Here you can have a hint" %&gt;</code></pre>
       <% end %>

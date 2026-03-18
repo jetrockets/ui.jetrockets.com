@@ -21,9 +21,11 @@
     <h2 class="mt-0 h2">Requirements</h2>
 
     <div class="grid gap-4 md:grid-cols-2">
-      <%= render Ui::Card::Component.new do |component| %>
-        <% component.with_header title: "Backend" %>
-        <% component.with_body do %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>Backend<% end %>
+        <% end %>
+        <%= ui.card_body do %>
           <ul class="py-0">
             <li><strong>Ruby</strong> 3.2.3+</li>
             <li><strong>Rails</strong> 7.0.8+</li>
@@ -32,9 +34,11 @@
         <% end %>
       <% end %>
 
-      <%= render Ui::Card::Component.new do |component| %>
-        <% component.with_header title: "Frontend" %>
-        <% component.with_body do %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>Frontend<% end %>
+        <% end %>
+        <%= ui.card_body do %>
           <ul class="py-0">
             <li><strong>Node.js</strong> 18+</li>
             <li><strong>Vite</strong> for asset compilation</li>
@@ -72,8 +76,7 @@ gem 'shrine', '~> 3.0' # For file uploads
 "dependencies": {
   "@hotwired/stimulus": "^3.2.2",
   "@hotwired/turbo-rails": "^8.0.2",
-  "flowbite": "^3.1.2", // JS libraries from Flowbite
-  "@easepick/bundle": "^1.2.1", // Datepicker library
+  "@easepick/bundle": "^1.2.1", // Datepicker library (deprecated, we need to rewrite it)
   "@rails/request.js": "^0.0.9", // Rails AJAX helper
   "choices.js": "^11.1.0", // Custom select library
   "imask": "^7.6.1", // Input masking library
@@ -104,8 +107,9 @@ yarn install</code></pre>
     <h3 class="mt-4 h3">4. Copy Components</h3>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new(title: "It's better to have 100% the same structure as in this template app.", variant: :info) do %>
-        <p class="mb-0">This ensures all dependencies and configurations are correctly set up.</p>
+      <%= ui.alert variant: :info do %>
+        <%= ui.alert_title "It's better to have 100% the same structure as in this template app." %>
+        <%= ui.alert_description "This ensures all dependencies and configurations are correctly set up." %>
       <% end %>
     </div>
 
@@ -132,10 +136,12 @@ bin/rails server
 yarn dev</code></pre>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "We recommend using Overmind", variant: :info do %>
-        <p class="mb-0">
+      <%= ui.alert variant: :info do %>
+        <%= ui.alert_title "We recommend using Overmind" %>
+        <%= ui.alert_description do %>
           <%= link_to "Overmind", "https://github.com/DarthSim/overmind", target: "_blank", rel: "noopener noreferrer", class: "link" %>
           is a great tool for managing your development environment. We have `Procfile.dev` set up for you.
+        <% end %>
       <% end %>
     </div>
   </section>
@@ -145,17 +151,19 @@ yarn dev</code></pre>
     <p class="text-gray-600">Each component follows a consistent pattern:</p>
 
     <pre><code>app/components/ui/[component_name]/
-├── component.rb          # Main component class
-├── component.html.erb    # Template (when needed)
-├── component.css         # Component-specific styles
-├── component_controller.js # Stimulus controller (when needed)
-└── [nested_components]/  # Sub-components</code></pre>
+├── component.rb              # Main component class
+├── component.html.erb        # Template (when needed)
+├── component.css             # Component-specific styles
+├── component_controller.js   # Stimulus controller (when needed)
+├── header_component.rb       # Sub-component (flat structure)
+└── body_component.rb         # Sub-component (flat structure)</code></pre>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "💡 Tip", variant: :info do %>
-        <div>
+      <%= ui.alert variant: :info do %>
+        <%= ui.alert_title "Tip" %>
+        <%= ui.alert_description do %>
           All components inherit from <code>ApplicationComponent</code> and are namespaced under <code>Ui::</code>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </section>
@@ -164,12 +172,12 @@ yarn dev</code></pre>
     <h2 class="text-2xl font-semibold text-gray-900">What's Next?</h2>
 
     <div class="not-prose">
-      <%= render Ui::Alert::Component.new title: "Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns.", variant: :info do %>
-        <p>
+      <%= ui.alert variant: :info do %>
+        <%= ui.alert_title "Now that you have the basics, explore individual components in the sidebar to see detailed examples and learn about their specific options and usage patterns." %>
+        <%= ui.alert_description do %>
           Don't forget to check out <%= link_to "Good to know", ui_good_to_know_path, class: "text-blue-600 hover:text-blue-800 font-medium underline" %> for architectural insights and best practices.
-        </p>
+        <% end %>
       <% end %>
     </div>
   </section>
-
 </article>

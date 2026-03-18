@@ -20,13 +20,17 @@
   <section class="flex flex-col gap-4 mb-12">
     <h2 class="h2">Architectural Philosophy</h2>
 
-    <%= render Ui::Alert::Component.new title: "Copy, Don't Install", variant: :info do %>
-      <p>
-        This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed. This approach gives you full control over styling, behavior, and dependencies.
-      </p>
-      <p>
-        💡 Think of it as a "component starter kit" rather than a traditional library.
-      </p>
+    <%= ui.alert variant: :info do %>
+      <%= ui.alert_title "Copy, Don't Install" %>
+      <%= ui.alert_description class: "mt-2" do %>
+        <p>
+          This is a <strong>template library</strong>, not a gem. Copy components to your project and customize them as needed. This approach gives you full control over styling, behavior, and dependencies.
+        </p>
+
+        <p class="mt-2">
+          💡 Think of it as a "component starter kit" rather than a traditional library.
+        </p>
+      <% end %>
     <% end %>
   </section>
 
@@ -61,31 +65,33 @@ end</code></pre>
       </div>
     </div>
 
-    <h3 class="mt-4 h3">3. Content Slots</h3>
-    <p class="mb-3 text-gray-600">Complex components use ViewComponent slots for flexibility:</p>
+    <h3 class="mt-4 h3">3. Composable Components</h3>
+    <p class="mb-3 text-gray-600">Complex components use composition pattern with ui helper:</p>
 
-    <pre><code># Component definition
-renders_one :header, Ui::Card::Header::Component
-renders_one :body
-renders_one :footer, Ui::Card::Footer::Component
-
-# Usage
-&lt;%= render Ui::Card::Component.new do |card| %&gt;
-  &lt;% card.with_header(title: "Title") %&gt;
-  &lt;% card.with_body { "Content" } %&gt;
+    <pre><code># Usage via ui helper
+&lt;%= ui.card do %&gt;
+  &lt;%= ui.card_header do %&gt;
+    &lt;%= ui.card_title do %&gt;Title&lt;% end %&gt;
+    &lt;%= ui.card_subtitle do %&gt;Subtitle&lt;% end %&gt;
+  &lt;% end %&gt;
+  &lt;%= ui.card_body do %&gt;Content&lt;% end %&gt;
+  &lt;%= ui.card_footer do %&gt;Footer&lt;% end %&gt;
 &lt;% end %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-4 my-12">
     <h3 class="h3">Styling Guidelines</h3>
 
-    <%= render Ui::Alert::Component.new title: "TailwindCSS Best Practices", variant: :info do %>
-      <ul class="pl-8 space-y-2 list-disc">
-        <li>Use <code>@apply</code> for component base styles</li>
-        <li>Avoid long utility chains in templates</li>
-        <li>Create custom CSS for complex animations/interactions</li>
-        <li>Use CSS custom properties for themeable values</li>
-      </ul>
+    <%= ui.alert variant: :info do %>
+      <%= ui.alert_title "TailwindCSS Best Practices" %>
+      <%= ui.alert_description class: "mt-2" do %>
+        <ul class="pl-6 space-y-1 list-disc">
+          <li>Use <code>@apply</code> for component base styles</li>
+          <li>Avoid long utility chains in templates</li>
+          <li>Create custom CSS for complex animations/interactions</li>
+          <li>Use CSS custom properties for themeable values</li>
+        </ul>
+      <% end %>
     <% end %>
 
     <h3 class="mt-4 h3">Responsive Design</h3>
@@ -101,7 +107,7 @@ renders_one :footer, Ui::Card::Footer::Component
     <p>
       For example. Instead of:
     </p>
-    <pre><code>&lt;%= render Ui::Button::Component.new(variant: :primary, size: :lg).with_content "Button" %/&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn "Button", size: :lg %&gt;</code></pre>
 
     <p>
       You can do:
@@ -112,7 +118,7 @@ renders_one :footer, Ui::Card::Footer::Component
   <section class="flex flex-col gap-4 my-12">
     <h2 class="h2">Accessibility (A11y)</h2>
     <div class="flex flex-col gap-6">
-      <%= render Ui::Alert::Component.new title: "Built-in Features" do %>
+      <%= ui.alert title: "Built-in Features" do %>
         <ul class="pl-8 space-y-2 list-disc">
           <li>Semantic HTML elements</li>
           <li>ARIA attributes where needed</li>
@@ -122,7 +128,7 @@ renders_one :footer, Ui::Card::Footer::Component
         </ul>
       <% end %>
 
-      <%= render Ui::Alert::Component.new title: "Your Responsibilities" do %>
+      <%= ui.alert title: "Your Responsibilities" do %>
         <ul class="pl-8 space-y-2 list-disc">
           <li>Provide meaningful alt text for images</li>
           <li>Ensure sufficient color contrast</li>
@@ -148,10 +154,9 @@ renders_one :footer, Ui::Card::Footer::Component
       <li>Combine multiple components into new ones</li>
     </ul>
 
-    <%= render Ui::Alert::Component.new title: "Remember", variant: :info do %>
-      <p>
-        This is your codebase once you copy the components. Make them work for your specific needs!
-      </p>
+    <%= ui.alert variant: :info do %>
+      <%= ui.alert_title "Remember" %>
+      <%= ui.alert_description "This is your codebase once you copy the components. Make them work for your specific needs!" %>
     <% end %>
   </section>
 </article>

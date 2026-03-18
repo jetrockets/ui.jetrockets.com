@@ -1,7 +1,0 @@
-@reference "~/entrypoints/tailwind.css";
-
-@layer components {
-  .clipboard {
-    @apply flex gap-2 mt-2 items-center
-  }
-}

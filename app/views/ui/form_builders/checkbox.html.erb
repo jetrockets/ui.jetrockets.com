@@ -22,9 +22,11 @@
   </header>
 
   <section class="mb-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Basic Checkbox" %>
-      <% component.with_body do %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Basic Checkbox<% end %>
+      <% end %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group class: "form__checkbox_collection" do %>
             <%= f.check_box :newsletter %>
@@ -33,7 +35,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.check_box :newsletter %&gt;
 &lt;%= f.check_box :free_shipping, checked: true %&gt;</code></pre>
       <% end %>
@@ -41,26 +43,30 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "CheckBox Collection" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>CheckBox Collection<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.check_boxes_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.check_boxes_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Label customization" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Label customization<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group class: "form__checkbox_collection" do %>
             <%= f.check_box :custom_label, label: "Custom Label Text" %>
@@ -70,7 +76,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.check_box :custom_label, label: "Custom Label Text" %&gt;
 &lt;%= f.check_box :with_link, label: "I agree to the #{link_to 'terms and conditions', '#', class: 'link'}".html_safe %&gt;
 &lt;%= f.check_box :default_label %&gt;</code></pre>
@@ -79,26 +85,30 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Hint messages" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Hint messages<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.check_box :receive_mails, hint: "Receive marketing emails" %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.check_box :receive_mail, hint: "Receive marketing emails" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Disabled State" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Disabled State<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.group class: "form__checkbox_collection" do %>
             <%= f.check_box :disabled_checkbox, disabled: true %>
@@ -107,7 +117,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.check_box :disabled_checkbox, disabled: true %&gt;
 &lt;%= f.check_box :disabled_checkbox_checked, checked: true, disabled: true %&gt;
         </code></pre>
@@ -116,10 +126,12 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Validation" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Validation<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <% user = User.new %>
         <% user.errors.add(:terms_and_conditions, "is required") %>
         <%= form_with model: user, url: root_path do |f| %>
@@ -133,7 +145,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
 &lt;%= f.check_box :terms_and_conditions, label: "I agree to the terms and conditions" %&gt;
 

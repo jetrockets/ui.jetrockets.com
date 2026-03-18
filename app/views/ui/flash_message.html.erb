@@ -17,14 +17,14 @@
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/flash", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/flash", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
   <section>
     <div class="flex flex-col gap-4 mb-12">
-      <%= render Ui::Alert::Component.new title: "To use the Flash Message component, you need to render it in your layout", variant: :warning %>
-      <pre><code>&lt;%= render Ui::Flash::Component.new %&gt;</code></pre>
+      <%= ui.alert title: "To use the Flash Message component, you need to render it in your layout", variant: :warning %>
+      <pre><code>&lt;%= ui.flash %&gt;</code></pre>
     </div>
 
     <h2 class="h3">Example</h2>

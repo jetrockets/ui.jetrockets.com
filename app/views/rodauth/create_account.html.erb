@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Sign up", description: "Create your #{site_name}'s account") %>
 
-<%= render Ui::Modal::Component.new(title: "Sign Up", size: :lg) do %>
-  <div class="modal__body">
+<%= ui.modal(title: "Sign Up", size: :lg) do %>
+  <%= ui.modal_body do %>
     <p class="mb-4 text-gray-600">
       Create your <%= site_name %>'s account
     </p>
@@ -22,7 +22,7 @@
       <% end %>
 
       <div class="mb-6 form__actions">
-        <%= form.submit rodauth.create_account_button, class: "btn-block" %>
+        <%= form.submit rodauth.create_account_button, block: true %>
       </div>
 
       <ul class="text-sm text-gray-600">
@@ -32,5 +32,5 @@
         </li>
       </ul>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

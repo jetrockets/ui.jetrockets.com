@@ -1,9 +1,11 @@
 class Ui::BtnGroup::Component < ApplicationComponent
-  renders_many :buttons, Ui::Btn::Component
-
-  def initialize(with_gap: false, **options)
-    @with_gap = with_gap
+  def initialize(sticky: true, **options)
+    @sticky = sticky
     @options = options
+  end
+
+  def call
+    content_tag :div, content, class: classes
   end
 
   private
@@ -11,8 +13,8 @@ class Ui::BtnGroup::Component < ApplicationComponent
   def classes
     class_names(
       "btn_group",
+      { "btn_group-sticky": @sticky },
       @options.delete(:class),
-      "btn_group-sticky": !@with_gap
     )
   end
 end

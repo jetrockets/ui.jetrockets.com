@@ -1,18 +1,18 @@
-@reference "./tailwind.css";
+@reference "./tailwind";
 
 /* Components */
-@import "../stylesheets/components/body.css";
-@import "../stylesheets/components/breadcrumbs.css";
-@import "../stylesheets/components/form.css";
-@import "../stylesheets/components/header.css";
-@import "../stylesheets/components/link.css";
-@import "../stylesheets/components/navbar.css";
-@import "../stylesheets/components/sidebar.css";
-@import "../stylesheets/components/submit.css";
-@import "../stylesheets/components/scroller.css";
-@import "../stylesheets/components/typography.css";
-@import "../stylesheets/components/wrapper.css";
-@import "../stylesheets/components/wysiwyg.css";
+@import "../stylesheets/components/body";
+@import "../stylesheets/components/breadcrumbs";
+@import "../stylesheets/components/form";
+@import "../stylesheets/components/header";
+@import "../stylesheets/components/link";
+@import "../stylesheets/components/navbar";
+@import "../stylesheets/components/sidebar";
+@import "../stylesheets/components/submit";
+@import "../stylesheets/components/scroller";
+@import "../stylesheets/components/typography";
+@import "../stylesheets/components/wrapper";
+@import "../stylesheets/components/wysiwyg";
 
 /* Vendors */
-@import '../stylesheets/vendors/choices.css'
+@import '../stylesheets/vendors/choices'

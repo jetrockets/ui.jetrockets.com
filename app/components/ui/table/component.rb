@@ -1,8 +1,4 @@
 class Ui::Table::Component < ApplicationComponent
-  renders_one :thead, Ui::Table::Thead::Component
-  renders_one :tbody, Ui::Table::Tbody::Component
-  renders_one :tfoot, Ui::Table::Tfoot::Component
-
   SIZES = %i[xs sm md lg]
   DEFAULT_SIZE = :md
 
@@ -13,6 +9,14 @@ class Ui::Table::Component < ApplicationComponent
     @hovered = hovered
     @options = options
   end
+
+  erb_template <<~ERB
+    <div class="scroller scroller-x">
+      <table class="<%= classes %>">
+        <%= content %>
+      </table>
+    </div>
+  ERB
 
   private
 

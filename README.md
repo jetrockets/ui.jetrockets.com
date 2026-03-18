@@ -72,7 +72,7 @@ Components are namespaced under the `Ui::` module:
 
 ```ruby
 class Ui::Button::Component < ApplicationComponent
-  def initialize(variant: :primary, size: :md, **options)
+  def initialize(variant: :default, size: :md, **options)
     @variant = variant
     @size = size
     @options = options
@@ -84,24 +84,24 @@ end
 
 ### Basic Button
 ```erb
-<%= render Ui::Btn::Component.new(variant: :primary, size: :lg) do %>
-  Click me
-<% end %>
+<%= ui.btn "Click me" %>
 ```
 
 ### Card with Header and Footer
 ```erb
-<%= render Ui::Card::Component.new do %>
-  <%= render Ui::Card::Header::Component.new do %>
-    Card Title
+<%= ui.card do %>
+  <%= ui.card_header do %>
+    <%= ui.card_title do %>Card Title<% end %>
   <% end %>
 
-  <p>Card content goes here</p>
+  <%= ui.card_body do %>
+    <p>Card content goes here</p>
+  <% end %>
 
-  <%= render Ui::Card::Footer::Component.new do %>
+  <%= ui.card_footer do %>
     <div class="flex justify-end gap-2">
-      <%= render Ui::Btn::Component.new(variant: :secondary) { "Cancel" } %>
-      <%= render Ui::Btn::Component.new(variant: :primary) { "Save" } %>
+      <%= ui.btn variant: :secondary do %>Cancel<% end %>
+      <%= ui.btn variant: :default do %>Save<% end %>
     </div>
   <% end %>
 <% end %>
@@ -146,7 +146,7 @@ end
 Components support variants through CSS classes:
 
 ```ruby
-def initialize(variant: :primary, size: :md, **options)
+def initialize(variant: :default, size: :md, **options)
   @variant = variant
   @size = size
 end

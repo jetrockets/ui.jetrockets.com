@@ -1,9 +1,9 @@
 @layer components {
   .icon {
     @apply shrink-0;
-    pointer-events: none;
     user-select: none;
-    display: flex;
+    display: inline-flex;
+    vertical-align: middle;
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
@@ -34,12 +34,13 @@
   .icon-logo { --svg: url("/images/logo.svg") };
 
   /* Icons */
-  .icon-alert { --svg: url("/images/icons/alert.svg") };
-  .icon-check { --svg: url("/images/icons/arrow-check.svg") };
   .icon-chevron-down { --svg: url("/images/icons/chevron-down.svg") };
   .icon-chevron-left { --svg: url("/images/icons/chevron-left.svg") };
+  .icon-clipboard { --svg: url("/images/icons/clipboard.svg") };
   .icon-close { --svg: url("/images/icons/close.svg") };
   .icon-github { --svg: url("/images/icons/github.svg") };
+  .icon-information-circle { --svg: url("/images/icons/information-circle.svg") };
+  .icon-question-circle { --svg: url("/images/icons/question-circle.svg") };
   .icon-spinner { --svg: url("/images/icons/spinner.svg") };
   .icon-user { --svg: url("/images/icons/user.svg") };
 }

@@ -1,32 +1,38 @@
-<div class="grid grid-cols-5">
+<div class="grid grid-cols-6">
   <div class="flex flex-col gap-2">
-    <%= render Ui::Badge::Component.new title: "Default XS", size: :xs %>
-    <%= render Ui::Badge::Component.new title: "Default SM", size: :sm %>
-    <%= render Ui::Badge::Component.new title: "Default MD", size: :md %>
-    <%= render Ui::Badge::Component.new title: "Default LG", size: :lg %>
+    <%= ui.badge "Default XS", size: :xs %>
+    <%= ui.badge "Default SM", size: :sm %>
+    <%= ui.badge "Default MD", size: :md %>
+    <%= ui.badge "Default LG", size: :lg %>
   </div>
   <div class="flex flex-col gap-2">
-    <%= render Ui::Badge::Component.new title: "Blue XS", variant: :blue, size: :xs %>
-    <%= render Ui::Badge::Component.new title: "Blue SM", size: :sm, variant: :blue %>
-    <%= render Ui::Badge::Component.new title: "Blue MD", size: :md, variant: :blue %>
-    <%= render Ui::Badge::Component.new title: "Blue LG", size: :lg, variant: :blue %>
+    <%= ui.badge "Blue XS", variant: :info, size: :xs %>
+    <%= ui.badge "Blue SM", variant: :info, size: :sm %>
+    <%= ui.badge "Blue MD", variant: :info, size: :md %>
+    <%= ui.badge "Blue LG", variant: :info, size: :lg %>
   </div>
   <div class="flex flex-col gap-2">
-    <%= render Ui::Badge::Component.new title: "Red XS", variant: :red, size: :xs %>
-    <%= render Ui::Badge::Component.new title: "Red SM", size: :sm, variant: :red %>
-    <%= render Ui::Badge::Component.new title: "Red MD", size: :md, variant: :red %>
-    <%= render Ui::Badge::Component.new title: "Red LG", size: :lg, variant: :red %>
+    <%= ui.badge "Yellow XS", variant: :warning, size: :xs %>
+    <%= ui.badge "Yellow SM", variant: :warning, size: :sm %>
+    <%= ui.badge "Yellow MD", variant: :warning, size: :md %>
+    <%= ui.badge "Yellow LG", variant: :warning, size: :lg %>
   </div>
   <div class="flex flex-col gap-2">
-    <%= render Ui::Badge::Component.new title: "Green XS", variant: :green, size: :xs %>
-    <%= render Ui::Badge::Component.new title: "Green SM", size: :sm, variant: :green %>
-    <%= render Ui::Badge::Component.new title: "Green MD", size: :md, variant: :green %>
-    <%= render Ui::Badge::Component.new title: "Green LG", size: :lg, variant: :green %>
+    <%= ui.badge "Green XS", variant: :success, size: :xs %>
+    <%= ui.badge "Green SM", variant: :success, size: :sm %>
+    <%= ui.badge "Green MD", variant: :success, size: :md %>
+    <%= ui.badge "Green LG", variant: :success, size: :lg %>
   </div>
   <div class="flex flex-col gap-2">
-    <%= render Ui::Badge::Component.new title: "Yellow XS", variant: :yellow, size: :xs %>
-    <%= render Ui::Badge::Component.new title: "Yellow SM", size: :sm, variant: :yellow %>
-    <%= render Ui::Badge::Component.new title: "Yellow MD", size: :md, variant: :yellow %>
-    <%= render Ui::Badge::Component.new title: "Yellow LG", size: :lg, variant: :yellow %>
+    <%= ui.badge "Red XS", variant: :error, size: :xs %>
+    <%= ui.badge "Red SM", variant: :error, size: :sm %>
+    <%= ui.badge "Red MD", variant: :error, size: :md %>
+    <%= ui.badge "Red LG", variant: :error, size: :lg %>
+  </div>
+  <div class="flex flex-col gap-2">
+    <%= ui.badge "2", size: :xs, rounded: true %>
+    <%= ui.badge "5", size: :sm, rounded: true %>
+    <%= ui.badge "8", size: :md, rounded: true %>
+    <%= ui.badge "12", size: :lg, rounded: true %>
   </div>
 </div>

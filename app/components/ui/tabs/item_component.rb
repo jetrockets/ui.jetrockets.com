@@ -8,11 +8,23 @@ class Ui::Tabs::ItemComponent < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <%= link_to @href, class: class_names('tabs__link', 'tabs__link-active': @active), **@options do %>
-      <% if @icon %>
-        <%= helpers.icon_tag(@icon, size: 4) %>
+    <li class="tabs__item">
+      <%= link_to @href, class: link_classes, **@options do %>
+        <% if @icon %>
+          <%= helpers.icon_tag(@icon, size: 4) %>
+        <% end %>
+        <%= @title %>
       <% end %>
-      <%= @title %>
-    <% end %>
+    </li>
   ERB
+
+  private
+
+  def link_classes
+    class_names(
+      "tabs__link",
+      { "tabs__link-active": @active },
+      @options.delete(:class)
+    )
+  end
 end

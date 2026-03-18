@@ -1,28 +1,22 @@
 <div class="flex gap-4">
-  <%= render Ui::Popover::Component.new(data: { placement: "bottom" }) do |popover| %>
-    <%= popover.with_trigger do %>
-      <%= button_tag "Default popover", class: "btn mr-2" %>
-    <% end %>
-    <%= popover.with_menu(title: "Popover Title") do %>
-      <p>And here's some amazing content. It's very engaging.</p>
+  <%= ui.popover do %>
+    <%= ui.popover_trigger "Default popover", as: :btn %>
+    <%= ui.popover_content(title: "Popover Default") do %>
+      And here's some amazing content. It's very engaging.
     <% end %>
   <% end %>
 
-  <%= render Ui::Popover::Component.new(data: { placement: "right" }) do |popover| %>
-    <%= popover.with_trigger do %>
-      <%= button_tag "Popover Right", class: "btn btn-primary" %>
-    <% end %>
-    <%= popover.with_menu(title: "Popover Title") do %>
-      <p>And here's some amazing content. It's very engaging.</p>
+  <%= ui.popover(placement: :right) do %>
+    <%= ui.popover_trigger "Popover Right", as: :btn, variant: :outline %>
+    <%= ui.popover_content(title: "Popover Right") do %>
+      And here's some amazing content. It's very engaging.
     <% end %>
   <% end %>
 
-  <%= render Ui::Popover::Component.new(data: { placement: "top" }) do |popover| %>
-    <%= popover.with_trigger do %>
-      <%= button_tag "Popover Top", class: "btn btn-secondary" %>
-    <% end %>
-    <%= popover.with_menu(title: "Top Popover") do %>
-      <p>This popover appears above the button.</p>
+  <%= ui.popover(placement: :top) do %>
+    <%= ui.popover_trigger "Popover Top", as: :btn, variant: :secondary %>
+    <%= ui.popover_content(title: "Popover Top") do %>
+      This popover appears above the button.
     <% end %>
   <% end %>
 </div>

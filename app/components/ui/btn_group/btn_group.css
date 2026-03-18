@@ -7,23 +7,47 @@
 .btn_group-sticky {
   @apply gap-0;
 
-  .btn:first-of-type {
+  /* First element */
+  > .btn:first-child,
+  > *:first-child .btn,
+  > .form__field:first-child {
     @apply rounded-r-none;
   }
 
-  .btn:last-of-type {
+  /* Last element */
+  > .btn:last-child,
+  > *:last-child .btn,
+  > .form__field:last-child {
     @apply rounded-l-none;
   }
 
-  .btn:not(:last-of-type) {
+  /* Middle elements — border handling for outline */
+  > *:not(:last-child) .btn-outline,
+  > .btn-outline:not(:last-child),
+  > .form__field:not(:last-child) {
     @apply border-r-0;
   }
 
-  .btn:not(:first-of-type):not(:last-of-type) {
-    @apply rounded-none;
+  /* Dividers for solid buttons (default, secondary, danger) */
+  > *:not(:last-child) .btn-default,
+  > .btn-default:not(:last-child) {
+    @apply border-r border-r-white/25;
   }
 
-  .btn {
-    @apply hover:z-10;
+  > *:not(:last-child) .btn-secondary,
+  > .btn-secondary:not(:last-child) {
+    @apply border-r border-r-white/25;
+  }
+
+  > *:not(:last-child) .btn-danger,
+  > .btn-danger:not(:last-child) {
+    @apply border-r border-r-white/25;
+  }
+
+  /* Middle elements (not first, not last) */
+  > *:not(:first-child):not(:last-child) .btn,
+  > .btn:not(:first-child):not(:last-child),
+  > .form__field:not(:first-child):not(:last-child) {
+    @apply rounded-none;
   }
 }
