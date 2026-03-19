@@ -3,10 +3,7 @@
     <%= ui.btn "Button First", variant: :outline %>
 
     <%= ui.dropdown do %>
-      <%= ui.dropdown_trigger as: :btn, variant: :outline, size: :icon_md do %>
-        <%= icon_tag "chevron-down", size: 5 %>
-      <% end %>
-
+      <%= ui.dropdown_trigger icon_tag("chevron-down"), as: :btn, variant: :outline, size: :icon_md %>
       <%= ui.dropdown_menu do %>
         <%= ui.dropdown_title "Title" %>
         <%= ui.dropdown_link "Settings", url: "#" %>
