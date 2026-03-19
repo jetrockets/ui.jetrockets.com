@@ -5,7 +5,7 @@
     @apply w-auto;
 
     thead {
-      @apply bg-gray-50;
+      @apply bg-white;
     }
 
     th, td {
@@ -13,7 +13,7 @@
     }
 
     th {
-      @apply font-semibold text-gray-700 text-left;
+      @apply font-semibold text-left text-gray-700;
     }
 
     tfoot {
@@ -27,7 +27,8 @@
 
   /* Hovered */
   .table-hovered {
-    tbody tr:hover td{
+    tbody tr:hover td,
+    thead tr:hover th {
       @apply bg-gray-50;
     }
   }
@@ -41,7 +42,7 @@
 
   /* Sticky */
   .table__th_sticky {
-    @apply sticky z-10 bg-gray-50 hover:bg-gray-100;
+    @apply sticky z-10 bg-white hover:bg-gray-100;
   }
 
   .table__th_sticky-left {

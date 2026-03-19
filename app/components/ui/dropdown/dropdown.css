@@ -2,11 +2,11 @@
 
 @layer components {
   .dropdown {
-    @apply z-40 hidden overflow-auto bg-white divide-y divide-gray-200 rounded-lg shadow-md min-w-44 animate-fade-in max-w-96 max-h-96;
+    @apply relative w-fit;
   }
 
-  .dropdown__wrapper {
-    @apply py-1.5 text-gray;
+  .dropdown__menu {
+    @apply absolute z-40 hidden overflow-auto py-1.5 text-gray bg-white rounded-lg shadow-md min-w-44 animate-fade-in max-w-96 max-h-96;
   }
 
   .dropdown__title {

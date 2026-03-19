@@ -3,41 +3,52 @@ class Ui::Avatar::Component < ApplicationComponent
   DEFAULT_VARIANT = :circle
   DEFAULT_SIZE = 12
 
-  def initialize(size: DEFAULT_SIZE, full_name: nil, variant: DEFAULT_VARIANT, **options)
+  def initialize(user: nil, size: DEFAULT_SIZE, variant: DEFAULT_VARIANT, **options)
+    @user = user
     @size = size
-    @full_name = full_name
-    @variant = variant
+    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
     @options = options
   end
 
   def call
-    content_tag :div, icon_content, class: avatar_classes, style: "--size: #{@size}"
+    content_tag :div, icon_content, class: avatar_classes, style: avatar_style
   end
 
   private
 
   def icon_content
-    # TODO: Add account avatar if exists
-
-    if @full_name.present?
-      content_tag(:span, initials, class: "avatar__initials")
-    else
-      concat helpers.icon_tag("user", class: "avatar__icon")
-      concat content_tag(:span, class: "sr-only") { "Avatar thumbnail" }
+    if image_url
+      return helpers.image_tag image_url, alt: @user.full_name, class: "size-full object-cover"
     end
+
+    if @user&.full_name.present?
+      return content_tag(:span, initials)
+    end
+
+    helpers.icon_tag("user", class: "w-8/12")
+  end
+
+  def image_url
+    return false if !@user || !@user.avatar
+    @user.avatar_url(:square_300) || @user.avatar_url
   end
 
   def initials
-    @full_name.split.map { |word| word[0] }.join.upcase[0..1]
+    @user.full_name.split.map { |word| word[0] }.join.upcase[0..1]
   end
 
   def avatar_classes
     class_names(
-      "avatar",
-      @options.delete(:class),
-      "avatar-square": @variant == :square,
-      "avatar-rounded": @variant == :rounded,
-      "avatar-circle": @variant == :circle
+      "relative flex items-center justify-center overflow-hidden font-medium text-gray-500 bg-gray-200",
+      { "rounded-lg": @variant == :rounded },
+      { "rounded-full": @variant == :circle },
+      @options.delete(:class)
     )
+  end
+
+  def avatar_style
+    size = "calc(var(--spacing) * #{@size})"
+    font_size = (@size * 1.65).round(1)
+    "width: #{size}; height: #{size}; font-size: #{font_size}px"
   end
 end

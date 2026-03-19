@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
-<%= render Ui::Modal::Component.new(title: "Sign In", size: :lg) do %>
-  <div class="modal__body">
+<%= ui.modal(title: "Sign In", size: :lg) do %>
+  <%= ui.modal_body do %>
     <p class="mb-4 text-gray-600">
       By continuing, you agree to our <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link no-underline" %>, and acknowledge that you understand the <%= link_to "Privacy Policy", privacy_path, class: "link no-underline", data: { turbo: false }, target: :_blank %>.
     </p>
@@ -17,10 +17,10 @@
       <% end %>
 
       <div class="mb-6 form__actions">
-        <%= form.submit rodauth.login_button, class: "btn-block" %>
+        <%= form.submit rodauth.login_button, block: true %>
       </div>
 
       <%== rodauth.login_form_footer %>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

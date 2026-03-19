@@ -36,9 +36,8 @@
       </div>
     </div>
 
-    <%= render Ui::Flash::Component.new %>
-
-    <%= render Ui::TurboConfirm::Component.new %>
+    <%= ui.flash %>
+    <%= ui.turbo_confirm %>
     <%= turbo_frame_tag :drawer %>
     <%= turbo_frame_tag :modal %>
   </body>

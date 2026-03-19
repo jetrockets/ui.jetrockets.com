@@ -10,6 +10,13 @@ class Ui::Modal::Component < ApplicationComponent
     @id = id
   end
 
+  erb_template <<~ERB
+    <%= container_tag do %>
+      <%= render Ui::Modal::HeaderComponent.new(title: @title, subtitle: @subtitle, closable: closable?, id: @id) %>
+      <%= content %>
+    <% end %>
+  ERB
+
   private
 
   def container_tag
@@ -31,7 +38,7 @@ class Ui::Modal::Component < ApplicationComponent
       end
     # If not using Turbo Frame (open new tab for example), we should use a regular div instead of dialog
     else
-      content_tag :div, class: class_names("modal", "w-#{@size}") do
+      content_tag :div, class: class_names("modal modal-page", "w-#{@size}") do
         yield
       end
     end
@@ -41,5 +48,9 @@ class Ui::Modal::Component < ApplicationComponent
     content_tag :dialog, tabindex: "-1", class: class_names("modal", "animate-slide-up", "w-#{@size}"), **options do
       yield
     end
+  end
+
+  def closable?
+    helpers.turbo_frame_request? || @id
   end
 end

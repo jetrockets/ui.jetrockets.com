@@ -22,26 +22,30 @@
   </header>
 
   <section class="mb-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Basic Date Picker" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Basic Date Picker<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.easepick :birthday %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :birthday, hint: "Select your birth date" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
    <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Easepick sizes" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Easepick sizes<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.easepick :large_field, size: :lg %>
           <%= f.easepick :default_field %>
@@ -49,7 +53,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :large_field, size: :lg %&gt;
 &lt;%= f.easepick :default_field %&gt;
 &lt;%= f.easepick :small_field, size: :sm %&gt;</code></pre>
@@ -58,17 +62,19 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Label customization" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Label customization<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.easepick :custom_label, label: "Custom Label Text" %>
           <%= f.easepick :no_label, label: false %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :custom_label, label: "Custom Label Text" %&gt;
 &lt;%= f.easepick :no_label, label: false %&gt;</code></pre>
       <% end %>
@@ -76,26 +82,30 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Hint message" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Hint message<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.easepick :birthday_with_hint, hint: "Select your birth date" %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :birthday_with_hint, hint: "Select your birth date" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Date Picker with Plugins" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Date Picker with Plugins<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.easepick :future_date, data: {
             easepick_plugins: ["LockPlugin"],
@@ -114,7 +124,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :future_date, data: {
   easepick_plugins: ["LockPlugin"],
   easepick_lock_min_date: Date.current
@@ -134,26 +144,30 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Disabled State" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Disabled State<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.easepick :disabled_field, value: Date.current, disabled: true %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.easepick :disabled_field, value: Date.current, disabled: true %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Validation" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Validation<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <% user = User.new %>
         <% user.errors.add(:last_name, "is required") %>
         <%= form_with model: user, url: root_path do |f| %>
@@ -165,7 +179,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
 &lt;%= f.easepick :dob %&gt;
 

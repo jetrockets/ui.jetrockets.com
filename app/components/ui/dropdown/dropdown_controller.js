@@ -1,47 +1,98 @@
 import { Controller } from '@hotwired/stimulus'
-import Dropdown from 'flowbite/lib/esm/components/dropdown'
+import { useClickOutside } from 'stimulus-use'
+import { computePosition, flip, shift, offset } from '@floating-ui/dom'
 import { stimulus } from '~/init'
 
 export default class DropdownController extends Controller {
-  static targets = ['trigger', 'menu', 'autofocus']
+  static targets = ['menu', 'autofocus']
+  static values = { open: { type: Boolean, default: false } }
 
   connect () {
-    this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
-    document.addEventListener('turbo:morph', this.reload.bind(this))
+    useClickOutside(this, { element: this.element })
+    this.element.addEventListener('click', this.#handleClick)
+    document.addEventListener('turbo:morph', this.#handleMorph)
   }
 
   disconnect () {
-    document.removeEventListener('turbo:morph', this.reload.bind(this))
-    this.dropdown.hide()
+    this.element.removeEventListener('click', this.#handleClick)
+    document.removeEventListener('keydown', this.#handleKeydown)
+    document.removeEventListener('turbo:morph', this.#handleMorph)
+  }
+
+  #handleClick = (event) => {
+    if (!this.menuTarget.contains(event.target)) {
+      this.toggle()
+    }
+  }
+
+  toggle () {
+    this.openValue = !this.openValue
+  }
+
+  show () {
+    this.openValue = true
   }
 
   hide () {
-    this.dropdown.hide()
+    this.openValue = false
   }
 
-  reload () {
-    if (this.dropdown) {
-      this.dropdown.destroy()
-      this.dropdown = new Dropdown(this.menuTarget, this.triggerTarget, this.#options())
+  openValueChanged (isOpen) {
+    if (isOpen) {
+      this.#showMenu()
+    } else {
+      this.#hideMenu()
     }
   }
 
-  #options () {
-    const { placement, triggertype, offsetskidding, offsetdistance, delay, ignoreclickoutsideclass } = this.element.dataset
+  clickOutside () {
+    this.hide()
+  }
 
-    return {
-      placement: placement || 'bottom',
-      triggerType: triggertype || 'click',
-      offsetSkidding: parseInt(offsetskidding) || 0,
-      offsetDistance: parseInt(offsetdistance) || 5,
-      delay: parseInt(delay) || 300,
-      ignoreClickOutsideClass: ignoreclickoutsideclass || false,
-      onShow: () => {
-        if (this.hasAutofocusTarget) {
-          this.autofocusTarget.focus()
-        }
-      }
+  #showMenu () {
+    this.menuTarget.classList.remove('hidden')
+    this.menuTarget.classList.add('block')
+    this.#updatePosition()
+
+    if (this.hasAutofocusTarget) {
+      this.autofocusTarget.focus()
     }
+
+    document.addEventListener('keydown', this.#handleKeydown)
+  }
+
+  #hideMenu () {
+    this.menuTarget.classList.remove('block')
+    this.menuTarget.classList.add('hidden')
+    document.removeEventListener('keydown', this.#handleKeydown)
+  }
+
+  #handleKeydown = (event) => {
+    if (event.key === 'Escape') {
+      this.hide()
+    }
+  }
+
+  #handleMorph = () => {
+    if (this.openValue) {
+      this.#showMenu()
+    }
+  }
+
+  async #updatePosition () {
+    const { x, y } = await computePosition(this.element, this.menuTarget, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(5),
+        flip(),
+        shift({ padding: 8 })
+      ]
+    })
+
+    Object.assign(this.menuTarget.style, {
+      left: `${x}px`,
+      top: `${y}px`
+    })
   }
 }
 

@@ -1,13 +1,13 @@
-<%= turbo_frame_tag :flash, class: "flash", target: :_top, refresh: :morph do %>
+<%= turbo_frame_tag :flash, class: "fixed flex flex-col items-end space-y-2 top-3 left-3 right-3 md:left-auto md:w-fit md:h-fit z-[100]", target: :_top, refresh: :morph do %>
   <% flash.each do |key, message| %>
     <% next if message.blank? %>
 
-    <%= content_tag :div, class: "flash__container hidden #{tailwind_classes_for(key)}", id: "flash-#{key}", **data_attrs do %>
+    <%= content_tag :div, class: "relative w-full py-3 pl-4 pr-12 text-white transition duration-300 rounded-xl md:max-w-lg md:w-fit hidden #{tailwind_classes_for(key)}", id: "flash-#{key}", **data_attrs do %>
       <p class="flex-1">
         <%== message %>
       </p>
       <% if @dismissible %>
-        <button class="flash__close" type="button" data-action="flash#close" aria-label="Close">
+        <button class="absolute top-3.5 right-3 text-white transition duration-300 focus:outline-none focus:text-white hover:text-white opacity-80 hover:opacity-100" type="button" data-action="flash#close" aria-label="Close">
           <%= helpers.icon_tag "close", size: 5 %>
           <span class="sr-only">Close</span>
         </button>

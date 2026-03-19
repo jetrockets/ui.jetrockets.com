@@ -1,6 +1,6 @@
 <% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
 
-<%= render Ui::Modal::Component.new(title: "Sign In", size: :lg) do %>
+<%= ui.modal(title: "Sign In", size: :lg) do %>
   <div class="modal_body">
     <p class="mb-3 text-gray-600">
       Welcome back to #{site_name}. Please Sign in to access your account

@@ -1,22 +1,22 @@
-<div class="flex items-center justify-end flex-1 gap-2">
+<%= ui.btn_group sticky: false do %>
   <%= link_to "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" do %>
-    <%= icon_tag "github", size: 8, class: "mr-2" %>
+    <%= icon_tag "github", size: 7, class: "mr-2" %>
     <span class="sr-only">GitHub</span>
   <% end %>
 
   <% if rodauth.logged_in? %>
-    <%= render Ui::Dropdown::Component.new do |dropdown| %>
-      <%= dropdown.with_trigger do %>
-        <%= render Ui::Avatar::Component.new size: 8, full_name: current_user.full_name %>
+    <%= ui.dropdown do %>
+      <%= ui.dropdown_trigger do %>
+        <%= ui.avatar size: 8, user: current_user %>
       <% end %>
-      <%= dropdown.with_menu do |list| %>
-        <%= list.with_element_link(title: "Profile", href: user_profile_path, active: current_page?(user_profile_path)) %>
-        <%= list.with_element_divider %>
-        <%= list.with_element_button(title: "Sign Out", href: rodauth.logout_path, data: { turbo: false, turbo_method: :post }) %>
+      <%= ui.dropdown_menu do %>
+        <%= ui.dropdown_link "Profile", url: user_profile_path, active: current_page?(user_profile_path) %>
+        <%= ui.dropdown_divider %>
+        <%= ui.dropdown_button "Sign Out", url: rodauth.logout_path, data: { turbo: false, turbo_method: :post } %>
       <% end %>
     <% end %>
   <% else %>
-    <%= link_to "Sign In", rodauth.login_path, class: "btn btn-primary btn-outlined btn-sm", data: { turbo_frame: :modal } %>
-    <%= link_to "Sign Up", rodauth.create_account_path, class: "btn btn-primary btn-sm", data: { turbo_frame: :modal } %>
+    <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
+    <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :primary, data: { turbo_frame: :modal } %>
   <% end %>
-</div>
+<% end %>

@@ -7,13 +7,7 @@ module FormBuilders
       end
 
       def render
-        classes = class_names(
-          "btn",
-          "btn-primary",
-          @options.delete(:class)
-        )
-
-        @template.submit_tag(@value, class: classes, **@options)
+        @template.render(Ui::Btn::Component.new(type: "submit", **@options)) { @value }
       end
     end
   end

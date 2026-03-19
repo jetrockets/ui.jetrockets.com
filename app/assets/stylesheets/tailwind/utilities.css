@@ -24,3 +24,7 @@
     0 0 0 2px oklch(0% 0 0 / 5%);
   text-shadow: 0 1px oklch(0% 0 0 / var(--glass-text-shadow-opacity, 5%));
 }
+
+@utility text-trim-* {
+  text-box-trim: --value("none", "trim-both", "trim-start", "trim-end");
+}

@@ -22,10 +22,13 @@
   </header>
 
   <section class="mb-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "TextField types", subtitle: "It supports all HTML5 input types" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>TextField types<% end %>
+        <%= ui.card_subtitle do %>It supports all HTML5 input types<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_field :first_name, required: true %>
           <%= f.email_field :email, autocomplete: "email" %>
@@ -35,7 +38,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_field :first_name, required: true %&gt;
 &lt;%= f.email_field :email, autocomplete: "email" %&gt;
 &lt;%= f.password_field :password, autocomplete: "current-password" %&gt;
@@ -45,10 +48,12 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "TextField sizes" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>TextField sizes<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_field :large_field, size: :lg %>
           <%= f.text_field :default_field %>
@@ -56,7 +61,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_field :large_field, size: :lg %&gt;
 &lt;%= f.text_field :default_field %&gt;
 &lt;%= f.text_field :small_field, size: :sm %&gt;</code></pre>
@@ -65,10 +70,12 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Label customization" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Label customization<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_field :custom_label, label: "Custom Label Text" %>
           <%= f.text_field :no_label, label: false, placeholder: "Field without label" %>
@@ -76,7 +83,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_field :custom_label, label: "Custom Label Text" %&gt;
 &lt;%= f.text_field :no_label, label: false, placeholder: "Field without label" %&gt;
 &lt;%= f.text_field :default_label %&gt;</code></pre>
@@ -85,10 +92,12 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Hint messages" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Hint messages<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_field :password, label: "Password", hint: "Must be at least 8 characters long" %>
           <%= f.email_field :email, hint: "We'll never share your email with anyone else" %>
@@ -96,7 +105,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_field :password, hint: "Must be at least 8 characters long" %&gt;
 &lt;%= f.email_field :email, hint: "We'll never share your email with anyone else" %&gt;
 &lt;%= f.text_field :username, hint: "Choose a unique username that represents you" %&gt;</code></pre>
@@ -105,26 +114,30 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Disabled State" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Disabled State<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_field :disabled_field, value: "Disabled", disabled: true %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_field :disabled_field, value: "Disabled", disabled: true %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Validation" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Validation<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <% user = User.new %>
         <% user.errors.add(:first_name, "is required") %>
         <%= form_with model: user, url: root_path do |f| %>
@@ -136,7 +149,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
 &lt;%= form_with model: @user, url: root_path do |f| %&gt;
   &lt;%= f.text_field :first_name %&gt;

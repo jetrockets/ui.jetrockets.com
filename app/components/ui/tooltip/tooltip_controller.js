@@ -1,26 +1,64 @@
 import { Controller } from '@hotwired/stimulus'
-import Tooltip from 'flowbite/lib/esm/components/tooltip'
-
+import { useHover } from 'stimulus-use'
+import { computePosition, flip, shift, offset } from '@floating-ui/dom'
 import { stimulus } from '~/init'
 
 export default class TooltipController extends Controller {
-  static targets = ['tooltip', 'menu']
+  static values = {
+    content: String,
+    placement: { type: String, default: 'top' }
+  }
 
   connect () {
-    this.tooltip = new Tooltip(this.menuTarget, this.tooltipTarget, this.#options())
+    useHover(this, { element: this.element })
   }
 
-  disconnect () {
-    this.tooltip.destroy()
+  async mouseEnter () {
+    this.#createTooltip()
+    await this.#updatePosition()
   }
 
-  #options () {
-    const { placement, triggertype } = this.element.dataset
+  mouseLeave () {
+    this.tooltip?.remove()
+    this.tooltip = null
+  }
 
-    return {
-      placement: placement || 'top',
-      triggerType: triggertype || 'hover'
+  updateContent (event) {
+    const text = event.detail?.content
+    if (text) this.contentValue = text
+  }
+
+  contentValueChanged (value) {
+    if (this.tooltip) {
+      this.tooltip.innerHTML = value
+      this.#updatePosition()
     }
+  }
+
+  #createTooltip () {
+    this.tooltip = document.createElement('div')
+    this.tooltip.className = 'tooltip'
+    this.tooltip.role = 'tooltip'
+    this.tooltip.innerHTML = this.contentValue
+    document.body.appendChild(this.tooltip)
+  }
+
+  async #updatePosition () {
+    const { x, y, placement } = await computePosition(this.element, this.tooltip, {
+      placement: this.placementValue,
+      middleware: [
+        offset(8),
+        flip(),
+        shift({ padding: 8 })
+      ]
+    })
+
+    Object.assign(this.tooltip.style, {
+      left: `${x}px`,
+      top: `${y}px`
+    })
+
+    this.tooltip.dataset.placement = placement
   }
 }
 

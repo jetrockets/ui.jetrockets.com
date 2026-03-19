@@ -1,8 +1,8 @@
 <% set_meta_tags(title: "Are you sure?") %>
 
-<%= render Ui::Modal::Component.new(title: "Are you sure?", size: :lg) do %>
-  <div class="modal__body">
-    <%= render Ui::Alert::Component.new variant: :info, class: "mb-4" do |alert| %>
+<%= ui.modal(title: "Are you sure?", size: :lg) do %>
+  <%= ui.modal_body do %>
+    <%= ui.alert variant: :info, class: "mb-4" do |alert| %>
       <strong>Deleting an account</strong> is a permanent action that cannot be undone.
     <% end %>
 
@@ -12,8 +12,8 @@
       <% end %>
 
       <div class="form__actions">
-        <%= form.submit rodauth.close_account_button, class: "btn-danger btn-outlined btn-block" %>
+        <%= form.submit rodauth.close_account_button, block: true, variant: :danger %>
       </div>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

@@ -1,77 +1,55 @@
 class Ui::Btn::Component < ApplicationComponent
-  renders_one :icon
-
-  SIZES = %i[xs sm md lg xl]
+  SIZES = %i[xs sm md lg icon_xs icon_sm icon_md icon_lg]
   DEFAULT_SIZE = :md
 
-  VARIANTS = %i[primary secondary danger ghost link]
+  VARIANTS = %i[default outline secondary danger ghost link]
+  DEFAULT_VARIANT = :default
 
-  def initialize(variant: nil, href: nil, size: DEFAULT_SIZE, rounded: false, block: false, circle: false, outlined: false, **options)
-    @variant = variant
-    @href = href
-    @size = size
+  def initialize(variant: DEFAULT_VARIANT, url: nil, size: DEFAULT_SIZE, rounded: false, block: false, circle: false, method: nil, **options)
+    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
+    @url = url
+    @size = SIZES.include?(size) ? size : DEFAULT_SIZE
     @rounded = rounded
     @block = block
     @circle = circle
-    @outlined = outlined
+    @method = method
     @options = options
   end
 
   def call
-    if @href
-      link_to component_content, @href, **button_attributes
+    if @url && @method
+      button_to @url, class: classes, method: @method, **@options do
+        content
+      end
+    elsif @url
+      link_to content, @url, class: classes, **@options
     else
-      button_tag component_content, **button_attributes
+      button_tag content, type: "button", class: classes, **@options
     end
   end
 
   private
 
-  def component_content
-    safe_join([ icon_content, content ].compact)
-  end
-
-  def icon_content
-    helpers.icon_tag(icon, class: icon_classes) if icon?
-  end
-
-  def button_attributes
-    {
-      type: "button",
-      class: class_names(
-        "btn",
-        variant_class,
-        @options.delete(:class),
-        "btn-#{@size}",
-        "btn-block": @block,
-        "btn-rounded": @rounded,
-        "btn-circle": @circle,
-        "btn-outlined": @outlined
-      ),
-      **@options
-    }
+  def classes
+    class_names(
+      "btn",
+      variant_class,
+      "btn-#{@size}",
+      { "btn-block": @block },
+      { "btn-rounded": @rounded },
+      { "btn-circle": @circle },
+      @options.delete(:class),
+    )
   end
 
   def variant_class
-    variant_classes = {
-      primary: "btn-primary",
+    {
+      default: "btn-default",
+      outline: "btn-outline",
       secondary: "btn-secondary",
       danger: "btn-danger",
       ghost: "btn-ghost",
       link: "btn-link"
-    }.freeze
-
-    variant_classes[@variant]
-  end
-
-  def icon_classes
-    class_names(
-      "btn__icon",
-      "btn__icon-xs": @size == :xs,
-      "btn__icon-sm": @size == :sm,
-      "btn__icon-md": @size == :md,
-      "btn__icon-lg": @size == :lg,
-      "btn__icon-xl": @size == :xl
-    )
+    }[@variant]
   end
 end

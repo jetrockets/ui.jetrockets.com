@@ -1,45 +1,38 @@
 class Ui::Alert::Component < ApplicationComponent
   VARIANTS = %i[default info error success warning]
-  DEFAULT_TYPE = :default
+  DEFAULT_VARIANT = :default
 
-  def initialize(title:, icon: nil, variant: DEFAULT_TYPE, **options)
-    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_TYPE
+  def initialize(title: nil, variant: DEFAULT_VARIANT, **options)
     @title = title
-    @icon = icon
+    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
     @options = options
   end
 
-  erb_template <<~ERB
-    <%= content_tag :div, class: classes, **@options do %>
-      <%= icon %>
-
-      <div class="flex flex-col gap-2 flex-1">
-        <strong class="font-semibold">
-          <%= @title %>
-        </strong>
-
-        <%= content %>
-      </div>
-    <% end %>
-  ERB
+  def call
+    content_tag :div, class: classes, **@options do
+      concat helpers.ui.alert_title(@title) if @title.present?
+      concat content
+    end
+  end
 
   private
 
   def classes
     class_names(
-      "flex p-4 rounded-lg border border-gray-200 text-sm",
-      @options.delete(:class),
-      "text-gray-900 bg-gray-50 bg-gray-50": @variant == :default,
-      "text-blue-900 bg-blue-50 border-blue-200": @variant == :info,
-      "text-red-900 bg-red-50 border-red-200": @variant == :error,
-      "text-green-900 bg-green-50 border-green-200": @variant == :success,
-      "text-yellow-900 bg-yellow-50 border-yellow-200": @variant == :warning
+      "grid items-center gap-x-2 px-3.5 py-3 rounded-xl border text-sm",
+      "has-[.icon]:grid-cols-[auto_1fr]",
+      variant_classes,
+      @options.delete(:class)
     )
   end
 
-  def icon
-    if @icon
-      helpers.icon_tag @icon, size: 4, class: "mt-0.5 shrink-0 size-4 mr-2"
-    end
+  def variant_classes
+    {
+      default: "bg-gray-50 border-gray-200",
+      info: "bg-blue-50 border-blue-200",
+      error: "bg-red-50 border-red-200",
+      success: "bg-green-50 border-green-300",
+      warning: "bg-yellow-50 border-yellow-300"
+    }[@variant]
   end
 end

@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Please verify your email", description: rodauth.verify_account_resend_explanatory_text) %>
 
-<%= render Ui::Modal::Component.new(title: "Please verify your email", size: :md) do %>
-  <div class="modal__body">
+<%= ui.modal(title: "Please verify your email", size: :md) do %>
+  <%= ui.modal_body do %>
     <p class="mb-4 text-gray-600">
       If you no longer have the email to verify the account, you can request that it be resent to you:
     </p>
@@ -14,7 +14,7 @@
       <% end %>
 
       <div class="mb-6 form__actions">
-        <%= form.submit rodauth.verify_account_resend_button, class: "btn-block" %>
+        <%= form.submit rodauth.verify_account_resend_button, block: true %>
       </div>
 
       <ul class="text-sm text-gray-600">
@@ -24,5 +24,5 @@
         </li>
       </ul>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

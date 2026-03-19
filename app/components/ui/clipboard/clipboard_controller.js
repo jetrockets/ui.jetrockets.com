@@ -1,39 +1,48 @@
 import { Controller } from '@hotwired/stimulus'
-import CopyClipboard from 'flowbite/lib/esm/components/clipboard'
 import { stimulus } from '~/init'
 
 export default class ClipboardController extends Controller {
-  static targets = ['clipboard', 'content', 'default', 'success', 'defaultText', 'successText']
+  static values = {
+    content: String,
+    sourceId: String,
+    successText: { type: String, default: 'Copied!' },
+    timeout: { type: Number, default: 2000 }
+  }
 
   connect () {
-    this.clipboard = new CopyClipboard(this.clipboardTarget, this.contentTarget, this.#options())
+    this.originalText = this.#hasTooltip
+      ? this.element.dataset.tooltipContentValue
+      : this.element.textContent
   }
 
-  #showSuccessMessage () {
-    const timeout = this.element.dataset.timeout || 1000
+  async copy () {
+    const text = this.#getContent()
+    await navigator.clipboard.writeText(text)
 
-    if (this.hasDefaultTextTarget && this.hasSuccessTextTarget) {
-      this.#toggleElementVisibility(this.defaultTextTarget, this.successTextTarget, timeout)
+    if (!this.#hasTooltip) {
+      this.element.textContent = this.successTextValue
     }
-    this.#toggleElementVisibility(this.defaultTarget, this.successTarget, timeout)
-  }
 
-  #toggleElementVisibility (defaultElement, successElement, timeout) {
-    defaultElement.classList.add('hidden')
-    successElement.classList.remove('hidden')
+    this.dispatch('change', { detail: { content: this.successTextValue } })
 
     setTimeout(() => {
-      defaultElement.classList.remove('hidden')
-      successElement.classList.add('hidden')
-    }, timeout)
+      if (!this.#hasTooltip) {
+        this.element.textContent = this.originalText
+      }
+      this.dispatch('change', { detail: { content: this.originalText } })
+    }, this.timeoutValue)
   }
 
-  #options () {
-    return {
-      onCopy: () => {
-        this.#showSuccessMessage()
-      }
+  get #hasTooltip () {
+    return this.element.dataset.controller?.includes('tooltip')
+  }
+
+  #getContent () {
+    if (this.hasSourceIdValue) {
+      const el = document.getElementById(this.sourceIdValue)
+      return el?.value ?? el?.textContent ?? ''
     }
+    return this.contentValue
   }
 }
 

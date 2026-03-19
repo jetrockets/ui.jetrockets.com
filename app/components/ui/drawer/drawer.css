@@ -2,9 +2,9 @@
 
 @layer components {
   .drawer {
-    @apply fixed flex flex-col inset-0 left-auto m-0 hidden;
-    @apply rounded-l-2xl shadow-sm min-h-full w-fit backdrop:bg-gray-900/50;
-    @apply w-2xl; /* Default width */
+    @apply fixed inset-0 left-auto flex flex-col hidden m-0;
+    @apply min-h-full shadow-sm rounded-l-2xl w-fit backdrop:bg-gray-900/50;
+    @apply max-w-2xl; /* Default width */
   }
 
   .drawer[open] {
@@ -12,7 +12,11 @@
   }
 
   .drawer__header {
-    @apply sticky top-0 flex items-center justify-between p-4 px-6 border-b border-gray-200 bg-white/70 backdrop-blur-sm;
+    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white/70 backdrop-blur-sm;
+  }
+
+  .drawer__header-bordered {
+    @apply border-b border-gray-200;
   }
 
   .drawer__title {
@@ -32,10 +36,10 @@
   }
 
   .drawer__footer {
-    @apply sticky bottom-0 flex items-center w-full gap-2 p-4 rounded-bl-2xl border-t border-gray-200 bg-white/70 backdrop-blur-sm;
+    @apply sticky bottom-0 w-full p-4 rounded-bl-2xl bg-white/70 backdrop-blur-sm;
   }
 
-  .drawer__footer-end {
-    @apply justify-end;
+  .drawer__footer-bordered {
+    @apply border-t border-gray-200;
   }
 }

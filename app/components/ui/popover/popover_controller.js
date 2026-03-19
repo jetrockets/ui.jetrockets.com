@@ -1,30 +1,73 @@
 import { Controller } from '@hotwired/stimulus'
-import Popover from 'flowbite/lib/esm/components/popover'
+import { useHover } from 'stimulus-use'
+import { computePosition, flip, shift, offset } from '@floating-ui/dom'
 import { stimulus } from '~/init'
 
 export default class PopoverController extends Controller {
-  static targets = ['trigger', 'menu']
+  static targets = ['content']
+  static values = {
+    open: { type: Boolean, default: false },
+    placement: { type: String, default: 'bottom' }
+  }
 
   connect () {
-    this.popover = new Popover(this.menuTarget, this.triggerTarget, this.#options())
+    useHover(this, { element: this.element })
+    document.addEventListener('turbo:morph', this.#handleMorph)
   }
 
   disconnect () {
-    this.popover.hide()
+    document.removeEventListener('turbo:morph', this.#handleMorph)
   }
 
-  hide () {
-    this.popover.hide()
+  mouseEnter () {
+    this.openValue = true
   }
 
-  #options () {
-    const { placement, triggertype } = this.element.dataset
+  mouseLeave () {
+    this.openValue = false
+  }
 
-    return {
-      placement: placement || 'bottom',
-      triggerType: triggertype || 'hover',
-      offset: 0
+  openValueChanged (isOpen) {
+    if (isOpen) {
+      this.#showContent()
+    } else {
+      this.#hideContent()
     }
+  }
+
+  #showContent () {
+    this.contentTarget.classList.remove('opacity-0', 'pointer-events-none')
+    this.contentTarget.classList.add('opacity-100', 'pointer-events-auto')
+    this.#updatePosition()
+  }
+
+  #hideContent () {
+    this.contentTarget.classList.remove('opacity-100', 'pointer-events-auto')
+    this.contentTarget.classList.add('opacity-0', 'pointer-events-none')
+  }
+
+  #handleMorph = () => {
+    if (this.openValue) {
+      this.#showContent()
+    }
+  }
+
+  async #updatePosition () {
+    const { x, y, placement } = await computePosition(this.element, this.contentTarget, {
+      placement: this.placementValue,
+      middleware: [
+        offset(12),
+        flip(),
+        shift({ padding: 8 })
+      ]
+    })
+
+    Object.assign(this.contentTarget.style, {
+      left: `${x}px`,
+      top: `${y}px`
+    })
+
+    this.contentTarget.dataset.placement = placement
   }
 }
 

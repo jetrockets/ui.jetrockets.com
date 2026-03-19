@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Edit email") %>
 
-<%= render Ui::Modal::Component.new(title: "Edit email", size: :lg) do %>
-  <div class="modal__body">
+<%= ui.modal(title: "Edit email", size: :lg) do %>
+  <%= ui.modal_body do %>
     <%= form_with url: rodauth.change_login_path, method: :post, class: "form" do |form| %>
       <%= form.email_field rodauth.login_param, value: params[rodauth.login_param], autocomplete: "email", required: true, error:rodauth.field_error(rodauth.login_param) %>
 
@@ -14,8 +14,8 @@
       <% end %>
 
       <div class="form__actions">
-        <%= form.submit rodauth.change_login_button, class: "btn-block" %>
+        <%= form.submit rodauth.change_login_button, block: true %>
       </div>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

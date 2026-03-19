@@ -22,17 +22,19 @@
   </header>
 
   <section class="mb-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Basic Text Area" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Basic Text Area<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_area :bio %>
           <%= f.text_area :comment, placeholder: "5 rows by default", rows: 5 %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_area :bio %&gt;
 &lt;%= f.text_area :comment, rows: 5 %&gt;</code></pre>
       <% end %>
@@ -40,17 +42,19 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Label customization" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Label customization<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_area :custom_label, label: "Custom Label Text" %>
           <%= f.text_area :no_label, label: false, placeholder: "Field without label" %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_area :custom_label, label: "Custom Label Text" %&gt;
 &lt;%= f.text_area :no_label, label: false, placeholder: "Field without label" %&gt;</code></pre>
       <% end %>
@@ -58,42 +62,48 @@
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Hint message" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Hint message<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_area :bio, hint: "Max 500 characters" %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_area :bio, hint: "Max 500 characters" %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Disabled State" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Disabled State<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <%= form_with url: root_path do |f| %>
           <%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %>
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %&gt;</code></pre>
       <% end %>
     <% end %>
   </section>
 
   <section class="my-12">
-    <%= render Ui::Card::Component.new do |component| %>
-      <% component.with_header align: :left, title: "Validation" %>
+    <%= ui.card do %>
+      <%= ui.card_header align: :left do %>
+        <%= ui.card_title do %>Validation<% end %>
+      <% end %>
 
-      <% component.with_body do %>
+      <%= ui.card_body do %>
         <% user = User.new %>
         <% user.errors.add(:bio, "is required") %>
         <%= form_with model: user, url: root_path do |f| %>
@@ -105,7 +115,7 @@
         <% end %>
       <% end %>
 
-      <% component.with_footer do %>
+      <%= ui.card_footer do %>
         <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
 &lt;%= form_with model: @user, url: root_path do |f| %&gt;
   &lt;%= f.text_area :bio %&gt;

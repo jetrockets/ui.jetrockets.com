@@ -1,17 +1,15 @@
-<%= render Ui::Alert::Component.new title: "Default alert!" %>
+<%= ui.alert title: "Default alert!" %>
+<%= ui.alert title: "Info alert!", variant: :info %>
+<%= ui.alert title: "Warning alert!", variant: :warning %>
+<%= ui.alert title: "Danger alert!", variant: :error %>
 
-<%= render Ui::Alert::Component.new variant: :info, title: "Info alert!" %>
+<%= ui.alert variant: :success do %>
+  <%= ui.alert_title "Success alert!" %>
+  <%= ui.alert_description "Describe what can be done about it here." %>
+<% end %>
 
-<%= render Ui::Alert::Component.new variant: :warning, title: "Warning alert!" %>
-
-<%= render Ui::Alert::Component.new variant: :error, title: "Danger alert!" %>
-
-<%= render Ui::Alert::Component.new variant: :success, title: "Success alert!" %>
-
-<%= render Ui::Alert::Component.new(variant: :info, title: "Info Alert", icon: "alert") do %>
-  <ul class="pl-3 list-disc">
-    <li>This alert includes additional details</li>
-    <li>Multiple list items are supported</li>
-    <li>Icons help users quickly identify the alert type</li>
-  </ul>
+<%= ui.alert variant: :info do %>
+  <%= ui.alert_icon "information-circle", size: 5, class: "text-blue-500" %>
+  <%= ui.alert_title "Heads up!" %>
+  <%= ui.alert_description "Describe what can be done about it here." %>
 <% end %>

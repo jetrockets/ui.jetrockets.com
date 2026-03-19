@@ -17,16 +17,17 @@
     </div>
 
     <div class="header__actions">
-      <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/modal", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/modal", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
     </div>
   </header>
 
   <section>
     <div class="flex flex-col gap-4 mb-12">
-      <%= render Ui::Alert::Component.new title: "To use async Modal component, you need to have a <turbo-frame id='modal'> in your layout", variant: :warning do %>
+      <%= ui.alert variant: :warning, class: "gap-2" do %>
+        <%= ui.alert__title "To use async Modal component, you need to have a <turbo-frame id='modal'> in your layout" %>
         <pre class="w-full"><code>&lt;%= turbo_frame_tag :modal %&gt;</code></pre>
         <p class="font-semibold">And wrap response content with the modal component:</p>
-        <pre class="w-full"><code>&lt;%= render Ui::Modal::Component.new(title: "Title HERE") do %&gt;
+        <pre class="w-full"><code>&lt;%= ui.modal(title: "Title HERE") do %&gt;
   ...
 &lt;% end %&gt;</code></pre>
       <% end %>
@@ -34,12 +35,12 @@
 
     <h2 class="h3">Example</h2>
     <%= turbo_frame_tag :ui_modal, data: { turbo_action: :advance }, target: :_top do %>
-      <%= render Ui::Tabs::Component.new class: "mb-6" do |tabs| %>
-        <% tabs.with_item title: "Preview", href: ui_modal_path, data: { turbo_frame: :ui_modal }, active: !params[:code] %>
-        <% tabs.with_item title: "Code", href: ui_modal_path(code: true), data: { turbo_frame: :ui_modal }, active: params[:code] %>
+      <%= ui.tabs class: "mb-6" do %>
+        <%= ui.tabs_item title: "Preview", href: ui_modal_path, data: { turbo_frame: :ui_modal }, active: !params[:code] %>
+        <%= ui.tabs_item title: "Code", href: ui_modal_path(code: true), data: { turbo_frame: :ui_modal }, active: params[:code] %>
       <% end %>
 
-      <div class="flex flex-col gap-4 mb-12">
+      <div class="flex flex-col items-start gap-4">
         <% unless params[:code] %>
           <%= render "ui/examples/modal" %>
         <% else %>

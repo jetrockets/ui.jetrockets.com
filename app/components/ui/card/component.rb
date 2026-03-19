@@ -1,9 +1,18 @@
 class Ui::Card::Component < ApplicationComponent
-  renders_one :header, "Ui::Card::Header::Component"
-  renders_one :footer, "Ui::Card::Footer::Component"
-  renders_one :body
-
   def initialize(**options)
     @options = options
+  end
+
+  def call
+    content_tag(:div, content, class: classes, **@options)
+  end
+
+  private
+
+  def classes
+    class_names(
+      "border border-gray-200 rounded-lg",
+      @options.delete(:class)
+    )
   end
 end

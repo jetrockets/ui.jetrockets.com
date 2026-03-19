@@ -1,6 +1,6 @@
-<%= render Ui::Tabs::Component.new do |tabs| %>
-  <% tabs.with_item(title: "Profile", href: "#", icon: "alert") %>
-  <% tabs.with_item(title: "Dashboard", href: "#", active: true, icon: "alert") %>
-  <% tabs.with_item(title: "Settings", href: "#", icon: "alert") %>
-  <% tabs.with_item(title: "Contacts", href: "#", icon: "alert") %>
+<%= ui.tabs do %>
+  <%= ui.tabs_item(title: "Profile", href: "#", icon: "information-circle") %>
+  <%= ui.tabs_item(title: "Dashboard", href: "#", active: true, icon: "information-circle") %>
+  <%= ui.tabs_item(title: "Settings", href: "#", icon: "information-circle") %>
+  <%= ui.tabs_item(title: "Contacts", href: "#", icon: "information-circle") %>
 <% end %>

@@ -121,10 +121,39 @@ app/assets/
 ## Key Patterns
 
 ### Component Initialization
-Components typically accept configuration options like `variant`, `size`, `href`, and boolean modifiers:
+Components typically accept configuration options like `variant`, `size`, `url`, and boolean modifiers:
 ```ruby
-def initialize(variant: nil, size: :md, href: nil, **options)
+def initialize(variant: nil, size: :md, url: nil, **options)
 ```
 
 ### CSS Class Management
 Uses Rails' `class_names` helper to conditionally apply CSS classes based on component state and options.
+
+### Using the `ui` Helper
+Components can be rendered using the `ui` helper for a cleaner syntax:
+```erb
+<%= ui.btn("Click me", variant: :default, url: "/path") %>
+<%= ui.badge("Status", variant: :success) %>
+<%= ui.alert(title: "Warning", variant: :warning) { "Message" } %>
+```
+
+### Rendering Complex Components
+For components with subcomponents, use the `render` method:
+```erb
+<%= render Ui::Card::Component.new do %>
+  <%= render Ui::Card::HeaderComponent.new(justify: :between) do %>
+    <%= render Ui::Card::TitleComponent.new { "Title" } %>
+  <% end %>
+  <%= render Ui::Card::BodyComponent.new do %>
+    Content
+  <% end %>
+<% end %>
+```
+
+## Custom Agents
+
+### Frontend Agent
+For creating pages and views using existing UI components, use the frontend agent:
+- Location: `.claude/agents/frontend.md`
+- Purpose: Create pages without writing new CSS, using only existing components
+- Documentation: Full component API reference with all attributes and options

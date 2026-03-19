@@ -1,71 +1,71 @@
-<%= render Ui::Table::Component.new size: :md, hovered: true do |table| %>
-  <%= table.with_thead do |thead| %>
-    <%= thead.with_tr do |tr| %>
-      <%= tr.with_th { "Payment" } %>
-      <%= tr.with_th { "Status" } %>
-      <%= tr.with_th { "Amount" } %>
-      <%= tr.with_th { "Created At" } %>
-      <%= tr.with_th { "Actions" } %>
+<%= ui.table size: :md, hovered: true do %>
+  <%= ui.table_thead do %>
+    <%= ui.table_tr do %>
+      <%= ui.table_th "Payment" %>
+      <%= ui.table_th "Status" %>
+      <%= ui.table_th "Amount" %>
+      <%= ui.table_th "Created At" %>
+      <%= ui.table_th "Actions" %>
     <% end %>
   <% end %>
 
-  <%= table.with_tbody do |tbody| %>
+  <%= ui.table_tbody do %>
     <% 2.times.each do |index| %>
-      <%= tbody.with_tr do |tr| %>
-        <%= tr.with_td(class: "w-4/12") { "Payment Name" } %>
-        <%= tr.with_td { render(Ui::Badge::Component.new title: "Paid", variant: :green) } %>
-        <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
-        <%= tr.with_td(class: "whitespace-nowrap") { I18n.l(Time.zone.now, format: :full_month) } %>
-        <%= tr.with_td(actions: true) do %>
-          <%= render Ui::BtnGroup::Component.new do |component| %>
-            <% component.with_button(size: :sm, outlined: true) { "Show" } %>
-            <% component.with_button(size: :sm, outlined: true) { "Edit" } %>
+      <%= ui.table_tr do %>
+        <%= ui.table_td "Payment Name", class: "w-4/12" %>
+        <%= ui.table_td { ui.badge title: "Paid", variant: :green } %>
+        <%= ui.table_td number_to_currency(1200), class: "whitespace-nowrap" %>
+        <%= ui.table_td I18n.l(Time.zone.now, format: :full_month), class: "whitespace-nowrap" %>
+        <%= ui.table_td(actions: true) do %>
+          <%= ui.btn_group do %>
+            <%= ui.btn "Show", size: :sm, variant: :outline %>
+            <%= ui.btn "Edit", size: :sm, variant: :outline %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
 
-  <%= table.with_tfoot do |tfoot| %>
-    <%= tfoot.with_tr do |tr| %>
-      <%= tr.with_td(colspan: 2) { "Total" } %>
-      <%= tr.with_td(colspan: 3) { number_to_currency(2400) } %>
+  <%= ui.table_tfoot do %>
+    <%= ui.table_tr do %>
+      <%= ui.table_td "Total", colspan: 2 %>
+      <%= ui.table_td number_to_currency(2400), colspan: 3 %>
     <% end %>
   <% end %>
 <% end %>
 
-<%= render Ui::Table::Component.new size: :xs, bordered: true, hovered: true do |table| %>
-  <%= table.with_thead do |thead| %>
-    <%= thead.with_tr do |tr| %>
-      <%= tr.with_th(sticky: :left) { "Payment" } %>
-      <%= tr.with_th { "Status" } %>
-      <%= tr.with_th { "Amount" } %>
-      <%= tr.with_th { "Created At" } %>
-      <%= tr.with_th { "Actions" } %>
+<%= ui.table size: :xs, bordered: true, hovered: true do %>
+  <%= ui.table_thead do %>
+    <%= ui.table_tr do %>
+      <%= ui.table_th(sticky: :left) { "Payment" } %>
+      <%= ui.table_th { "Status" } %>
+      <%= ui.table_th { "Amount" } %>
+      <%= ui.table_th { "Created At" } %>
+      <%= ui.table_th { "Actions" } %>
     <% end %>
   <% end %>
 
-  <%= table.with_tbody do |tbody| %>
+  <%= ui.table_tbody do %>
     <% 2.times.each do |index| %>
-      <%= tbody.with_tr do |tr| %>
-        <%= tr.with_td(sticky: :left, class: "w-4/12") { "Payment Name" } %>
-        <%= tr.with_td { render(Ui::Badge::Component.new title: "Paid", variant: :green) } %>
-        <%= tr.with_td(class: "whitespace-nowrap") { number_to_currency(1200) } %>
-        <%= tr.with_td(class: "whitespace-nowrap") { I18n.l(Time.zone.now, format: :full_month) } %>
-        <%= tr.with_td(actions: true) do %>
-          <%= render Ui::BtnGroup::Component.new do |component| %>
-            <% component.with_button(size: :xs, outlined: true) { "Show" } %>
-            <% component.with_button(size: :xs, outlined: true) { "Edit" } %>
+      <%= ui.table_tr do %>
+        <%= ui.table_td "Payment Name", sticky: :left, class: "w-4/12" %>
+        <%= ui.table_td ui.badge(title: "Paid", variant: :green) %>
+        <%= ui.table_td number_to_currency(1200), class: "whitespace-nowrap" %>
+        <%= ui.table_td I18n.l(Time.zone.now, format: :full_month), class: "whitespace-nowrap" %>
+        <%= ui.table_td(actions: true) do %>
+          <%= ui.btn_group do %>
+            <%= ui.btn "Show", size: :xs, variant: :outline %>
+            <%= ui.btn "Edit", size: :xs, variant: :outline %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
 
-  <%= table.with_tfoot do |tfoot| %>
-    <%= tfoot.with_tr do |tr| %>
-      <%= tr.with_td(colspan: 2) { "Total" } %>
-      <%= tr.with_td(colspan: 3) { number_to_currency(2400) } %>
+  <%= ui.table_tfoot do %>
+    <%= ui.table_tr do %>
+      <%= ui.table_td "Total", colspan: 2 %>
+      <%= ui.table_td number_to_currency(2400), colspan: 3 %>
     <% end %>
   <% end %>
 <% end %>

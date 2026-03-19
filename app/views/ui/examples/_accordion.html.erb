@@ -1,17 +1,24 @@
-<%= render Ui::Accordion::Component.new  name: "tech-specs" do |accordion| %>
-  <%= accordion.with_item(title: "First Item", name: "tech-specs", open: true) do %>
+<%= ui.accordion name: "tech-specs", open: true do %>
+  <%= ui.accordion_summary "First Item" %>
+  <%= ui.accordion_body do %>
     <p>
       Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
     </p>
   <% end %>
+<% end %>
 
-  <%= accordion.with_item(title: "Second Item", name: "tech-specs") do %>
+<%= ui.accordion name: "tech-specs" do %>
+  <%= ui.accordion_summary "Second Item" %>
+  <%= ui.accordion_body do %>
     <p>
       Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
     </p>
   <% end %>
+<% end %>
 
-  <%= accordion.with_item(title: "Third Item", name: "tech-specs") do %>
+<%= ui.accordion name: "tech-specs" do %>
+  <%= ui.accordion_summary "Third Item" %>
+  <%= ui.accordion_body do %>
     <p>
       Laborum exercitation commodo ut quis nisi dolore incididunt officia. Minim ea incididunt ea tempor dolor sunt. Excepteur ullamco do eu incididunt tempor. Consequat voluptate amet Lorem aliquip elit incididunt mollit reprehenderit cupidatat adipisicing labore proident labore. Officia laboris consectetur commodo sunt eiusmod non velit irure est nulla excepteur et cupidatat duis do.
     </p>

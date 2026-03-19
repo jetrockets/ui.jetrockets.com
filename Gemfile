@@ -8,6 +8,7 @@ gem "kamal", "~> 2.7.0"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "countries"
+gem "fastimage"
 gem "gretel"
 gem "image_processing"
 gem "meta-tags"

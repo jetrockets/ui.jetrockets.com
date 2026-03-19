@@ -1,11 +1,14 @@
 class Ui::Popover::TriggerComponent < ApplicationComponent
-  def initialize(**options)
+  def initialize(as: nil, **options)
+    @as = as
     @options = options
-    @options[:data] ||= {}
-    @options[:data][:popover_target] = "trigger"
   end
 
   def call
-    content_tag :div, content, **@options
+    if @as
+      helpers.ui.public_send(@as, **@options) { content }
+    else
+      content_tag :span, content, **@options
+    end
   end
 end
