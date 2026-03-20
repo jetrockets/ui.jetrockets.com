@@ -19,7 +19,7 @@
   --color-primary-900: oklch(0.379 0.146 265.522);
   --color-primary-950: oklch(0.282 0.091 267.935);
 
-  --color-secondary: var(--color-secondary-600);
+  --color-secondary: var(--color-secondary-700);
   --color-secondary-50: oklch(0.985 0.002 247.839);
   --color-secondary-100: oklch(0.967 0.003 264.542);
   --color-secondary-200: oklch(0.928 0.006 264.531);

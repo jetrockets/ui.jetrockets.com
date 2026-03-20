@@ -23,8 +23,8 @@
 
   .btn-secondary {
     @apply text-white;
-    @apply bg-secondary-700 hover:bg-secondary-700/90;
-    @apply focus-visible:ring-secondary-700/30;
+    @apply bg-secondary hover:bg-secondary/90;
+    @apply focus-visible:ring-secondary/30;
   }
 
   .btn-danger {
