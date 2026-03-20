@@ -22,7 +22,7 @@ class Ui::Drawer::HeaderComponent < ApplicationComponent
 
       <% if @closable %>
         <button type="button" class="drawer__close" data-action="click->drawer#close click->drawers#close" aria-label="Close" data-id="<%= @id %>">
-          <%= helpers.icon_tag "close", size: 6 %>
+          <%= helpers.ui.icon "close", size: 6 %>
         </button>
       <% end %>
     </div>

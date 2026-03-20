@@ -1,0 +1,45 @@
+.icon {
+  @apply shrink-0;
+  user-select: none;
+  display: inline-flex;
+  vertical-align: middle;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: currentColor;
+  -webkit-touch-callout: none;
+  mask-image: var(--svg);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  block-size: var(--icon-size, 100%);
+  inline-size: var(--icon-size, 100%);
+  mask-size: var(--icon-size, 100%);
+}
+
+img.icon {
+  background: none;
+}
+
+.icon-img {
+  background-color: transparent;
+  mask-image: none;
+  background-image: var(--svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: var(--icon-size, 100%);
+}
+
+/* Images */
+.icon-logo { --svg: url("/images/logo.svg") };
+
+/* Icons */
+.icon-burger { --svg: url("/images/icons/burger.svg") };
+.icon-chevron-down { --svg: url("/images/icons/chevron-down.svg") };
+.icon-chevron-left { --svg: url("/images/icons/chevron-left.svg") };
+.icon-clipboard { --svg: url("/images/icons/clipboard.svg") };
+.icon-close { --svg: url("/images/icons/close.svg") };
+.icon-github { --svg: url("/images/icons/github.svg") };
+.icon-information-circle { --svg: url("/images/icons/information-circle.svg") };
+.icon-question-circle { --svg: url("/images/icons/question-circle.svg") };
+.icon-spinner { --svg: url("/images/icons/spinner.svg") };
+.icon-user { --svg: url("/images/icons/user.svg") };

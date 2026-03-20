@@ -6,7 +6,8 @@
       "Bash(npm install:*)",
       "Bash(bundle:*)",
       "Bash(npm cache clean:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(grep -r 'ui\\\\.icon.*size: :' /Users/solilin/Workspace/ui.jetrockets.com/app --include=*.erb --include=*.rb)"
     ],
     "deny": []
   }

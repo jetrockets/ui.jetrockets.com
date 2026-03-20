@@ -4,6 +4,6 @@ class Ui::Alert::IconComponent < ApplicationComponent
   end
 
   def call
-    helpers.icon_tag content, **@options
+    helpers.ui.icon content, **@options
   end
 end

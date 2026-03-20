@@ -7,7 +7,7 @@ class Ui::Accordion::SummaryComponent < ApplicationComponent
   erb_template <<~ERB
     <summary class="<%= classes %>">
       <%= content %>
-      <%= helpers.icon_tag(@icon, class: icon_classes) if @icon %>
+      <%= helpers.ui.icon(@icon, class: icon_classes) if @icon %>
     </summary>
   ERB
 

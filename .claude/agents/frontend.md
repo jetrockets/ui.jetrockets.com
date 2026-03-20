@@ -307,7 +307,7 @@ Same API as Modal, but slides from the right side.
 ### Clipboard
 ```erb
 <%= ui.clipboard(value: "Text to copy", tooltip: "Copy", tooltip_success: "Copied!", as: :btn, variant: :ghost) do %>
-  <%= icon_tag "copy" %>
+  <%= ui.icon "copy" %>
 <% end %>
 ```
 
@@ -351,10 +351,17 @@ Same API as Modal, but slides from the right side.
 
 ## Icons
 
-Use the `icon_tag` helper:
+Use the `ui.icon` component:
 ```erb
-<%= icon_tag "icon-name", size: 4, class: "text-gray-500" %>
+<%= ui.icon "icon-name", size: 5, class: "text-gray-500" %>
 ```
+
+| Attribute | Type | Default | Options |
+|-----------|------|---------|---------|
+| name | String | required | Icon name (first argument) |
+| size | Integer | nil | Tailwind size (4, 5, 6, etc.) |
+| img | Boolean | false | Render as background image |
+| class | String | nil | Additional CSS classes |
 
 ## Layout Guidelines
 

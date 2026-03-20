@@ -11,7 +11,7 @@ class Ui::Tabs::ItemComponent < ApplicationComponent
     <li class="tabs__item">
       <%= link_to @href, class: link_classes, **@options do %>
         <% if @icon %>
-          <%= helpers.icon_tag(@icon, size: 4) %>
+          <%= helpers.ui.icon(@icon, size: 4) %>
         <% end %>
         <%= @title %>
       <% end %>

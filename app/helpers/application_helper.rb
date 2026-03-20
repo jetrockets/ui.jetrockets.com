@@ -10,20 +10,6 @@ module ApplicationHelper
     class_names("body", @body_class)
   end
 
-  def icon_tag(name, **options)
-    size = options.delete(:size)
-    img = options.delete(:img) || false
-
-    classes = class_names(
-      'icon',
-      "icon-#{name}",
-      options.delete(:class),
-      "size-#{size}": size,
-      "icon-img": img
-    )
-    tag.span nil, class: classes, "aria-hidden": true, "aria-label": name.to_s.humanize, **options
-  end
-
   # Picture tag
   def vite_asset_exists?(logical_path)
     File.exist?(Rails.root.join("app/assets", logical_path))

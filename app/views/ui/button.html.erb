@@ -62,39 +62,39 @@
 
     <div class="flex flex-wrap items-end gap-1 mb-4">
       <%= ui.btn size: :xs do %>
-        <%= icon_tag "user" %>
+        <%= ui.icon "user" %>
         Default
       <% end %>
       <%= ui.btn size: :sm do %>
-        <%= icon_tag "user" %>
+        <%= ui.icon "user" %>
         Default
       <% end %>
       <%= ui.btn size: :md do %>
-        <%= icon_tag "user" %>
+        <%= ui.icon "user" %>
         Default
       <% end %>
       <%= ui.btn size: :lg do %>
-        <%= icon_tag "user" %>
+        <%= ui.icon "user" %>
         Default
       <% end %>
     </div>
     <pre><code>&lt;%= ui.btn size: :xs do %&gt;
-  &lt;%= icon_tag "user" %&gt;
+  &lt;%= ui.icon "user" %&gt;
   Default
 &lt;% end %&gt;
 
 &lt;%= ui.btn size: :sm do %&gt;
-  &lt;%= icon_tag "user" %&gt;
+  &lt;%= ui.icon "user" %&gt;
   Default
 &lt;% end %&gt;
 
 &lt;%= ui.btn size: :md do %&gt;
-  &lt;%= icon_tag "user" %&gt;
+  &lt;%= ui.icon "user" %&gt;
   Default
 &lt;% end %&gt;
 
 &lt;%= ui.btn size: :lg do %&gt;
-  &lt;%= icon_tag "user" %&gt;
+  &lt;%= ui.icon "user" %&gt;
   Default
 &lt;% end %&gt;
 </code></pre>
@@ -104,20 +104,20 @@
     <h2 class="h3">Only Icon</h2>
 
     <div class="flex flex-wrap items-end gap-1 mb-4">
-      <%= ui.btn icon_tag("user"), size: :icon_xs %>
-      <%= ui.btn icon_tag("user"), variant: :secondary, size: :icon_sm %>
-      <%= ui.btn icon_tag("user"), variant: :outline, size: :icon_md %>
-      <%= ui.btn icon_tag("user"), variant: :danger, size: :icon_lg %>
-      <%= ui.btn icon_tag("user"), variant: :ghost, size: :icon_lg %>
-      <%= ui.btn icon_tag("user"), variant: :link, size: :icon_lg %>
+      <%= ui.btn ui.icon("user"), size: :icon_xs %>
+      <%= ui.btn ui.icon("user"), variant: :secondary, size: :icon_sm %>
+      <%= ui.btn ui.icon("user"), variant: :outline, size: :icon_md %>
+      <%= ui.btn ui.icon("user"), variant: :danger, size: :icon_lg %>
+      <%= ui.btn ui.icon("user"), variant: :ghost, size: :icon_lg %>
+      <%= ui.btn ui.icon("user"), variant: :link, size: :icon_lg %>
     </div>
 
-    <pre><code>&lt;%= ui.btn icon_tag("user"), size: :icon_xs %&gt;
-&lt;%= ui.btn icon_tag("user"), variant: :secondary, size: :icon_sm %&gt;
-&lt;%= ui.btn icon_tag("user"), variant: :outline, size: :icon_md %&gt;
-&lt;%= ui.btn icon_tag("user"), variant: :danger, size: :icon_lg %&gt;
-&lt;%= ui.btn icon_tag("user"), variant: :ghost, size: :icon_lg %&gt;
-&lt;%= ui.btn icon_tag("user"), variant: :link, size: :icon_lg %&gt;</code></pre>
+    <pre><code>&lt;%= ui.btn ui.icon("user"), size: :icon_xs %&gt;
+&lt;%= ui.btn ui.icon("user"), variant: :secondary, size: :icon_sm %&gt;
+&lt;%= ui.btn ui.icon("user"), variant: :outline, size: :icon_md %&gt;
+&lt;%= ui.btn ui.icon("user"), variant: :danger, size: :icon_lg %&gt;
+&lt;%= ui.btn ui.icon("user"), variant: :ghost, size: :icon_lg %&gt;
+&lt;%= ui.btn ui.icon("user"), variant: :link, size: :icon_lg %&gt;</code></pre>
   </section>
 
   <section class="flex flex-col gap-2 my-12">
@@ -129,12 +129,12 @@
         <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
       </div>
       <div class="flex flex-wrap items-end gap-1 mb-4">
-        <%= ui.btn icon_tag("user"), size: :icon_md, rounded: true %>
-        <%= ui.btn icon_tag("user"), size: :icon_lg, rounded: true %>
+        <%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %>
+        <%= ui.btn ui.icon("user"), size: :icon_lg, rounded: true %>
       </div>
       <div>
         <%= ui.btn block: true, size: :lg do %>
-          <%= icon_tag("user", size: 6) %>
+          <%= ui.icon("user", size: 6) %>
           Block Button
         <% end %>
       </div>
@@ -142,10 +142,10 @@
 
     <pre><code>&lt;%= ui.btn "Rounded", size: :sm, rounded: true %&gt;
 &lt;%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %&gt;
-&lt;%= ui.btn icon_tag("user"), size: :icon_md, rounded: true %&gt;
-&lt;%= ui.btn icon_tag("user"), size: :icon_lg, rounded: true %&gt;
+&lt;%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %&gt;
+&lt;%= ui.btn ui.icon("user"), size: :icon_lg, rounded: true %&gt;
 &lt;%= ui.btn block: true, size: :lg do %&gt;
-  &lt;%= icon_tag("user", size: 6) %&gt;
+  &lt;%= ui.icon("user", size: 6) %&gt;
   Block Button
 &lt;% end %&gt;</code></pre>
   </section>
