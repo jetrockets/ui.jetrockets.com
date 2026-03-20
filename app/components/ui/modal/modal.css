@@ -11,7 +11,7 @@
   }
 
   .modal__header {
-    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white/70 backdrop-blur-sm;
+    @apply sticky top-0 flex items-start justify-between p-4 px-6 bg-white/70 backdrop-blur-sm;
   }
 
   .modal__header-bordered {
