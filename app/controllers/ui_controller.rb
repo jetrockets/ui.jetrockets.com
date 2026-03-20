@@ -71,4 +71,7 @@ class UiController < ApplicationController
 
   def typography
   end
+
+  def empty
+  end
 end

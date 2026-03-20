@@ -1,0 +1,41 @@
+<%
+  set_meta_tags(
+    title: "Empty - Rails UI Components",
+    description: "Empty state component for displaying placeholder content when no data is available.",
+    keywords: "Rails, Empty State, UI Components, Placeholder, No Data"
+  )
+%>
+<% breadcrumb :ui_empty %>
+
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Empty</h1>
+      <p class="header__subtitle">
+        Display empty states when no data is available or to guide users to take action.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/empty", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="h3">Example</h2>
+    <%= turbo_frame_tag :ui_empty, data: { turbo_action: :advance }, target: :_top do %>
+      <%= ui.tabs class: "mb-6" do %>
+        <%= ui.tabs_item title: "Preview", href: ui_empty_path, data: { turbo_frame: :ui_empty }, active: !params[:code] %>
+        <%= ui.tabs_item title: "Code", href: ui_empty_path(code: true), data: { turbo_frame: :ui_empty }, active: params[:code] %>
+      <% end %>
+
+      <div class="flex flex-col gap-6">
+        <% unless params[:code] %>
+          <%= render "ui/examples/empty" %>
+        <% else %>
+          <%= render_code_example("ui/examples/_empty") %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</article>

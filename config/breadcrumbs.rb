@@ -61,6 +61,10 @@ crumb :ui_dropdown do
   link "Dropdown", ui_dropdown_path
 end
 
+crumb :ui_empty do
+  link "Empty", ui_empty_path
+end
+
 crumb :ui_flash_message do
   link "Flash Message", ui_flash_message_path
 end

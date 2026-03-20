@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get "clipboard"
     get "drawer"
     get "dropdown"
+    get "empty"
     get "flash_message"
     get "icon"
     get "modal"
