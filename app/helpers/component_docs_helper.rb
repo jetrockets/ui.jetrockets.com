@@ -65,7 +65,7 @@ module ComponentDocsHelper
       safe_join([
         ui.card_header { ui.card_title("Props") },
         ui.card_body do
-          ui.table(size: :sm) do
+          ui.table(size: :xs) do
             safe_join([
               ui.table_thead do
                 ui.table_tr do
@@ -92,7 +92,7 @@ module ComponentDocsHelper
       safe_join([
         ui.card_header { ui.card_title("Subcomponents") },
         ui.card_body do
-          ui.table(size: :sm) do
+          ui.table(size: :xs) do
             safe_join([
               ui.table_thead do
                 ui.table_tr do
