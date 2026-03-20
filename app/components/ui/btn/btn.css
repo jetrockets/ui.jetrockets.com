@@ -28,9 +28,10 @@
   }
 
   .btn-danger {
-    @apply text-red-700;
-    @apply bg-red-700/20 hover:bg-red-700/25;
-    @apply focus-visible:ring-red-700/30;
+    @apply text-white;
+    @apply bg-red-600 hover:bg-red-600/90;
+    @apply focus-visible:ring-red-600/30;
+
   }
 
   .btn-ghost {
@@ -50,7 +51,7 @@
 
   .btn-sm {
     --icon-size: calc(var(--spacing) * 4);
-    @apply px-3.5 text-xs rounded-md min-h-8 gap-1.5;
+    @apply px-3 text-sm rounded-md min-h-8 gap-1.5;
   }
 
   .btn-md {

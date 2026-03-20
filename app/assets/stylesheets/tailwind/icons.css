@@ -34,6 +34,7 @@
   .icon-logo { --svg: url("/images/logo.svg") };
 
   /* Icons */
+  .icon-burger { --svg: url("/images/icons/burger.svg") };
   .icon-chevron-down { --svg: url("/images/icons/chevron-down.svg") };
   .icon-chevron-left { --svg: url("/images/icons/chevron-left.svg") };
   .icon-clipboard { --svg: url("/images/icons/clipboard.svg") };

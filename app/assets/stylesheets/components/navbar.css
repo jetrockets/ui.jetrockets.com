@@ -1,5 +1,0 @@
-@layer components {
-  .navbar {
-    @apply sticky top-0 z-20 items-center justify-between hidden w-full h-navbar md:flex gap-x-3 bg-white/90 backdrop-blur-xs;
-  }
-}

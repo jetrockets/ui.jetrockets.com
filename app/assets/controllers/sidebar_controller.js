@@ -5,7 +5,7 @@ import { throttle } from '~/utils/timing'
 /* global sessionStorage */
 
 export default class Sidebar extends Controller {
-  static targets = ['menu', 'burger', 'scroll']
+  static targets = ['menu']
   static values = {
     opened: { type: Boolean, default: false }
   }
@@ -17,33 +17,33 @@ export default class Sidebar extends Controller {
   }
 
   disconnect () {
-    if (this.hasScrollTarget && this.scrollTarget.scrollTop > 0) {
+    if (this.hasMenuTarget && this.menuTarget.scrollTop > 0) {
       this.#saveScrollPosition()
     }
   }
 
   #saveScrollPosition () {
-    if (!this.hasScrollTarget) return
+    if (!this.hasMenuTarget) return
 
-    const scrollPosition = this.scrollTarget.scrollTop
+    const scrollPosition = this.menuTarget.scrollTop
     sessionStorage.setItem('sidebar-scroll-position', scrollPosition)
   }
 
   #restoreScrollPosition () {
     const savedPosition = sessionStorage.getItem('sidebar-scroll-position')
 
-    if (savedPosition && this.hasScrollTarget) {
+    if (savedPosition && this.hasMenuTarget) {
       const position = parseInt(savedPosition, 10)
-      this.scrollTarget.scrollTop = position
+      this.menuTarget.scrollTop = position
     }
   }
 
   #setupScrollListener () {
-    if (!this.hasScrollTarget) return
+    if (!this.hasMenuTarget) return
 
     const throttledSave = throttle(() => this.#saveScrollPosition(), 500)
 
-    this.scrollTarget.addEventListener('scroll', throttledSave)
+    this.menuTarget.addEventListener('scroll', throttledSave)
   }
 
   #setupBeforeUnloadListener () {
@@ -59,12 +59,10 @@ export default class Sidebar extends Controller {
   openedValueChanged (value) {
     if (value === true) {
       this.element.classList.add('body-overflow')
-      this.menuTarget.classList.add('sidebar__nav-mobile_open')
-      this.burgerTarget.classList.add('sidebar__burger-opened')
+      this.menuTarget.classList.add('body__sidebar-opened')
     } else {
       this.element.classList.remove('body-overflow')
-      this.menuTarget.classList.remove('sidebar__nav-mobile_open')
-      this.burgerTarget.classList.remove('sidebar__burger-opened')
+      this.menuTarget.classList.remove('body__sidebar-opened')
     }
   }
 

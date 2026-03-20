@@ -1,4 +1,11 @@
-<nav class="navbar">
-  <%= breadcrumbs(separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "breadcrumbs", display_single_fragment: true) %>
-  <%= render partial: "layouts/shared/navbar_buttons" %>
-</nav>
+<header class="sticky top-0 z-20 w-full h-navbar bg-white/90 backdrop-blur-xs md:grid md:grid-cols-[256px_1fr] gap-6 items-center flex justify-between">
+  <div class="flex items-center gap-3">
+    <%= button_tag icon_tag("burger", size: 6), class: "md:hidden", data: { action: "click->sidebar#toggle" } %>
+    <%= link_to icon_tag("logo", class: "w-28 h-8", img: true), root_path, aria: { label: "JetRockets" } %>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <%= breadcrumbs(separator: content_tag(:span, "/", class: "breadcrumbs__separator"), class: "breadcrumbs hidden md:flex", display_single_fragment: true) %>
+    <%= render partial: "layouts/shared/navbar_buttons" %>
+  </div>
+</header>

@@ -16,7 +16,11 @@
       <% end %>
     <% end %>
   <% else %>
-    <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
-    <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :primary, data: { turbo_frame: :modal } %>
+    <%= ui.btn_group sticky: false, class: "hidden" do %>
+      <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :ghost, data: { turbo_frame: :modal } %>
+      <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
+    <% end %>
+
+    <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, data: { turbo_frame: :modal }, class: "md:hidden" %>
   <% end %>
 <% end %>

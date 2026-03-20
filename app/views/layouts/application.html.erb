@@ -25,11 +25,11 @@
   </head>
 
   <body class="<%= body_classes %>" data-controller="sidebar modals drawers highlight">
-    <div class="body__main">
+    <%= render partial: "layouts/shared/navbar" %>
+    <div class="body__main body__main-sidebarred">
       <%= render partial: "layouts/shared/sidebar" %>
       <div class="body__content">
-        <%= render partial: "layouts/shared/navbar" %>
-        <main class="flex-1">
+        <main class="flex flex-col flex-1">
           <%= yield %>
         </main>
         <%= render partial: "layouts/shared/footer" %>
