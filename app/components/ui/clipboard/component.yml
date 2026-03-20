@@ -1,0 +1,78 @@
+name: Clipboard
+description: Copy content to clipboard with optional tooltip feedback. Can copy from a value, an element by ID, or wrap another component.
+
+preview: |
+  <%= ui.clipboard "Copy", as: :btn, value: "Text to copy", variant: :secondary %>
+
+usage: |
+  # <% Copy a direct value %>
+  <%= ui.clipboard "Copy", as: :btn, value: "Text to copy", variant: :secondary %>
+
+  # <% Copy from an element by ID %>
+  <input id="my_input" type="text" value="Copy this!" readonly>
+  <%= ui.clipboard "Copy", as: :btn, source_id: "my_input", variant: :secondary %>
+
+  # <% With tooltip feedback %>
+  <%= ui.clipboard "Copy", source_id: "text_element", tooltip: "Click to copy", success_text: "Copied!" %>
+
+accepts_html_attributes: true
+
+props:
+  - name: as
+    type: Symbol
+    default: "nil"
+    description: Render as another UI component (e.g., :btn). When nil, renders as a span.
+
+  - name: value
+    type: String
+    default: "nil"
+    description: The text content to copy. Use this OR source_id.
+
+  - name: source_id
+    type: String
+    default: "nil"
+    description: ID of the element whose text content should be copied. Use this OR value.
+
+  - name: success_text
+    type: String
+    default: '"Copied!"'
+    description: Text shown after successful copy (replaces button text or tooltip).
+
+  - name: tooltip
+    type: String
+    default: "nil"
+    description: Tooltip text shown on hover. Enables tooltip functionality when set.
+
+  - name: tooltip_success
+    type: String
+    default: "nil"
+    description: Tooltip text shown after successful copy. Defaults to success_text if not provided.
+
+  - name: tooltip_placement
+    type: String
+    default: '"top"'
+    description: Position of the tooltip relative to the element.
+
+examples:
+  - name: Copy from input field
+    code: |
+      <%= ui.group do %>
+        <input id="clipboard_input" type="text" class="form__field form__field-readonly" value="Copy this!" readonly>
+        <%= ui.clipboard "Copy", as: :btn, source_id: "clipboard_input", variant: :secondary, class: "min-w-32" %>
+      <% end %>
+
+  - name: Copy with tooltip
+    code: |
+      <div class="flex items-baseline gap-1">
+        <span id="clipboard_text">Any content to copy</span>
+        <%= ui.clipboard "Copy", class: "link", source_id: "clipboard_text", tooltip: "Click to copy", success_text: "Content copied!" %>
+      </div>
+
+  - name: Icon button with direct value
+    code: |
+      <div class="flex items-baseline gap-1">
+        <%= ui.clipboard ui.icon("clipboard"), as: :btn, size: :icon_xs, variant: :secondary, value: "https://example.com", success_text: "URL copied!", tooltip: "Copy URL" %>
+        <%= ui.clipboard ui.icon("clipboard"), as: :btn, size: :icon_sm, variant: :secondary, value: "https://example.com", success_text: "URL copied!", tooltip: "Copy URL" %>
+        <%= ui.clipboard ui.icon("clipboard"), as: :btn, size: :icon_md, variant: :secondary, value: "https://example.com", success_text: "URL copied!", tooltip: "Copy URL" %>
+        <%= ui.clipboard ui.icon("clipboard"), as: :btn, size: :icon_lg, variant: :secondary, value: "https://example.com", success_text: "URL copied!", tooltip: "Copy URL" %>
+      </div>

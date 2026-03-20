@@ -1,0 +1,105 @@
+name: TextField
+description: Text input fields with support for various HTML5 types, sizes, labels, hints, and validation.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.text_field :example, placeholder: "Enter text..." %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.text_field :name %>
+    <%= f.email_field :email %>
+    <%= f.password_field :password %>
+    <%= f.phone_field :phone %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of the text field.
+
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the field.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: required
+    type: Boolean
+    default: "false"
+    description: Mark the field as required.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the field.
+
+examples:
+  - name: TextField types
+    description: Supports all HTML5 input types.
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_field :first_name, required: true %>
+        <%= f.email_field :email, autocomplete: "email" %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.phone_field :phone, placeholder: "+1 (555) 123-4567" %>
+      <% end %>
+
+  - name: TextField sizes
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_field :large_field, size: :lg %>
+        <%= f.text_field :default_field %>
+        <%= f.text_field :small_field, size: :sm %>
+      <% end %>
+
+  - name: Label customization
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_field :custom_label, label: "Custom Label Text" %>
+        <%= f.text_field :no_label, label: false, placeholder: "Field without label" %>
+        <%= f.text_field :default_label %>
+      <% end %>
+
+  - name: Hint messages
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_field :password, label: "Password", hint: "Must be at least 8 characters long" %>
+        <%= f.email_field :email, hint: "We'll never share your email with anyone else" %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_field :disabled_field, value: "Disabled", disabled: true %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:first_name, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.text_field :first_name, label: "Active Record Validations" %>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_field :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
+      <% end %>

@@ -37,6 +37,8 @@ class UiController < ApplicationController
   end
 
   def flash_message
+    flash.now[:notice] = "This is a notice message."
+    flash.now[:error] = "This is an error message."
   end
 
   def simple_form_builder

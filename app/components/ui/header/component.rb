@@ -9,7 +9,7 @@ class Ui::Header::Component < ApplicationComponent
   end
 
   def call
-    content_tag :header, content, class: classes, **@options
+    content_tag :div, content, class: classes, **@options
   end
 
   private

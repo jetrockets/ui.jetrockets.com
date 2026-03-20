@@ -1,127 +1,32 @@
-<%
-  set_meta_tags(
-    title: "Text Area - Rails UI Components",
-    description: "Text area component with auto-grow functionality and enhanced styling.",
-    keywords: "Rails, UI Components, Text Area, Form"
-  )
-%>
+<% set_meta_tags(
+  title: "TextArea - Rails UI Components",
+  description: "Textarea for multi-line text input with auto-grow functionality and hint support.",
+  keywords: "Rails, UI Components, Form Builder, TextArea"
+) %>
 <% breadcrumb :ui_form_builders_text_area %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title do %>Rails <code class="px-1 text-3xl bg-yellow-100">text_area</code> examples<% end %>
-      <%= ui.header_subtitle "Textarea allows users to enter text in multiple lines. It supports auto-grow functionality and hint messages." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/blob/88b28989cabce140900dbf5d39b8a5540532e975/app/lib/form_builders/core_form_builder.rb#L18", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "TextArea" %>
+    <%= ui.header_subtitle "Textarea for multi-line text input with auto-grow functionality and hint support." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/core_form_builder.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="mb-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Basic Text Area<% end %>
-      <% end %>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("text_area") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_area :bio %>
-          <%= f.text_area :comment, placeholder: "5 rows by default", rows: 5 %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_area :bio %&gt;
-&lt;%= f.text_area :comment, rows: 5 %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("text_area") %>
   </section>
 
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Label customization<% end %>
-      <% end %>
+  <%= render_props_table("text_area") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_area :custom_label, label: "Custom Label Text" %>
-          <%= f.text_area :no_label, label: false, placeholder: "Field without label" %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_area :custom_label, label: "Custom Label Text" %&gt;
-&lt;%= f.text_area :no_label, label: false, placeholder: "Field without label" %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("text_area") %>
   </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Hint message<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_area :bio, hint: "Max 500 characters" %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_area :bio, hint: "Max 500 characters" %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Disabled State<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Validation<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <% user = User.new %>
-        <% user.errors.add(:bio, "is required") %>
-        <%= form_with model: user, url: root_path do |f| %>
-          <%= f.text_area :bio, label: "Active Record Validations" %>
-        <% end %>
-
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_area :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
-&lt;%= form_with model: @user, url: root_path do |f| %&gt;
-  &lt;%= f.text_area :bio %&gt;
-&lt;% end %&gt;
-
-&lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.text_area :manual_error_field, error: "This field has a custom error" %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
 </article>

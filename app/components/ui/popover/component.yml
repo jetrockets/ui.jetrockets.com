@@ -1,0 +1,119 @@
+name: Popover
+description: Display rich content in a floating panel triggered by user interaction.
+
+preview: |
+  <%= ui.popover do %>
+    <%= ui.popover_trigger "Click me", as: :btn %>
+    <%= ui.popover_content(title: "Popover Title") do %>
+      Here's some amazing content. It's very engaging.
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.popover do %>
+    <%= ui.popover_trigger "Open", as: :btn %>
+    <%= ui.popover_content(title: "Title") do %>
+      Popover content here
+    <% end %>
+  <% end %>
+
+  # <% With placement %>
+  <%= ui.popover(placement: :right) do %>
+    <%= ui.popover_trigger "Open Right", as: :btn %>
+    <%= ui.popover_content do %>
+      Content appears to the right
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: placement
+    type: Symbol
+    default: ":bottom"
+    values:
+      - ":top"
+      - ":right"
+      - ":bottom"
+      - ":left"
+    description: Position of the popover relative to the trigger element.
+
+slots:
+  - name: popover_trigger
+    component: Ui::Popover::TriggerComponent
+    description: The element that triggers the popover on click.
+    props:
+      - name: as
+        type: Symbol
+        default: "nil"
+        description: Render as another UI component (e.g., `:btn`). If nil, renders as a span.
+
+      - name: "**options"
+        type: Hash
+        description: "Additional options passed to the rendered component (e.g., `variant: :outline` for buttons)."
+
+  - name: popover_content
+    component: Ui::Popover::ContentComponent
+    description: The floating panel content displayed when triggered.
+    props:
+      - name: title
+        type: String
+        default: "nil"
+        description: Optional title displayed at the top of the popover.
+
+examples:
+  - name: Default Popover
+    description: Basic popover with default bottom placement.
+    code: |
+      <%= ui.popover do %>
+        <%= ui.popover_trigger "Default popover", as: :btn %>
+        <%= ui.popover_content(title: "Popover Default") do %>
+          And here's some amazing content. It's very engaging.
+        <% end %>
+      <% end %>
+
+  - name: Placement Right
+    description: Popover appearing to the right of the trigger.
+    code: |
+      <%= ui.popover(placement: :right) do %>
+        <%= ui.popover_trigger "Popover Right", as: :btn, variant: :outline %>
+        <%= ui.popover_content(title: "Popover Right") do %>
+          And here's some amazing content. It's very engaging.
+        <% end %>
+      <% end %>
+
+  - name: Placement Top
+    description: Popover appearing above the trigger.
+    code: |
+      <%= ui.popover(placement: :top) do %>
+        <%= ui.popover_trigger "Popover Top", as: :btn, variant: :secondary %>
+        <%= ui.popover_content(title: "Popover Top") do %>
+          This popover appears above the button.
+        <% end %>
+      <% end %>
+
+  - name: Multiple Placements
+    description: Comparison of different popover placements.
+    code: |
+      <div class="flex gap-4">
+        <%= ui.popover do %>
+          <%= ui.popover_trigger "Default popover", as: :btn %>
+          <%= ui.popover_content(title: "Popover Default") do %>
+            And here's some amazing content. It's very engaging.
+          <% end %>
+        <% end %>
+
+        <%= ui.popover(placement: :right) do %>
+          <%= ui.popover_trigger "Popover Right", as: :btn, variant: :outline %>
+          <%= ui.popover_content(title: "Popover Right") do %>
+            And here's some amazing content. It's very engaging.
+          <% end %>
+        <% end %>
+
+        <%= ui.popover(placement: :top) do %>
+          <%= ui.popover_trigger "Popover Top", as: :btn, variant: :secondary %>
+          <%= ui.popover_content(title: "Popover Top") do %>
+            This popover appears above the button.
+          <% end %>
+        <% end %>
+      </div>

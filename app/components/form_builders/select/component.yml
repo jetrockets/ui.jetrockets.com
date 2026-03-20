@@ -1,0 +1,91 @@
+name: Select
+description: Enhanced select dropdown field with consistent styling and accessibility features.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"]]), { include_blank: "Select..." } %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of the select field.
+
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the field.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the field.
+
+examples:
+  - name: Basic Select
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
+      <% end %>
+
+  - name: Select sizes
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.select :large_field, ["Yes", "No"], { }, { size: :lg } %>
+        <%= f.select :default_field, ["Yes", "No"], { } %>
+        <%= f.select :small_field, ["Yes", "No"], { }, { size: :sm } %>
+      <% end %>
+
+  - name: Label customization
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option..." }, { label: "Custom Label Text" } %>
+        <%= f.select :no_label, ["Yes", "No"], {}, { label: false } %>
+      <% end %>
+
+  - name: Hint message
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.select :with_hint, ["Yes", "No"], {}, { hint: "Select an option" } %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.select :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:state, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." }, { error: "This field has a custom error" } %>
+      <% end %>

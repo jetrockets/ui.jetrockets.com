@@ -1,0 +1,102 @@
+name: Alert
+description: Display important messages and status notifications to users.
+
+preview: |
+  <%= ui.alert variant: :info do %>
+    <%= ui.alert_icon "information-circle", size: 5, class: "text-blue-500" %>
+    <%= ui.alert_title "Heads up!" %>
+    <%= ui.alert_description "You can add components to your app using the CLI." %>
+  <% end %>
+
+usage: |
+  <%= ui.alert title: "Heads up!" %>
+
+  <%= ui.alert variant: :success do %>
+    <%= ui.alert_icon "check-circle" %>
+    <%= ui.alert_title "Success!" %>
+    <%= ui.alert_description "Your changes have been saved." %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: title
+    type: String
+    default: "nil"
+    description: Alert title text. Can also use `alert_title` slot for more control.
+
+  - name: variant
+    type: Symbol
+    default: ":default"
+    values:
+      - ":default"
+      - ":info"
+      - ":error"
+      - ":success"
+      - ":warning"
+    description: Visual style of the alert.
+
+slots:
+  - name: alert_title
+    component: Ui::Alert::TitleComponent
+    description: Styled title element. Use instead of `title` prop for complex content.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: alert_description
+    component: Ui::Alert::DescriptionComponent
+    description: Secondary text with muted styling.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: alert_icon
+    component: Ui::Alert::IconComponent
+    description: Icon displayed at the start of the alert. Inherits from `Ui::Icon::Component`.
+    props:
+      - name: name
+        type: String
+        required: true
+        description: Icon name (e.g., "information-circle", "check-circle").
+
+      - name: size
+        type: Integer
+        default: "nil"
+        description: Icon size (adds `size-{n}` class).
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes (e.g., "text-blue-500").
+
+examples:
+  - name: Default
+    code: |
+      <%= ui.alert title: "Default alert!" %>
+
+  - name: Variants
+    code: |
+      <%= ui.alert title: "Info alert!", variant: :info %>
+      <%= ui.alert title: "Warning alert!", variant: :warning %>
+      <%= ui.alert title: "Danger alert!", variant: :error %>
+      <%= ui.alert title: "Success alert!", variant: :success %>
+
+  - name: With description
+    code: |
+      <%= ui.alert variant: :success do %>
+        <%= ui.alert_title "Success!" %>
+        <%= ui.alert_description "Your changes have been saved." %>
+      <% end %>
+
+  - name: With icon
+    code: |
+      <%= ui.alert variant: :info do %>
+        <%= ui.alert_icon "information-circle", size: 5, class: "text-blue-500" %>
+        <%= ui.alert_title "Heads up!" %>
+        <%= ui.alert_description "Describe what can be done about it here." %>
+      <% end %>

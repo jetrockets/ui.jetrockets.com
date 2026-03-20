@@ -1,144 +1,32 @@
-<%
-  set_meta_tags(
-    title: "Select - Rails UI Components",
-    description: "Select dropdown component with enhanced styling and functionality.",
-    keywords: "Rails, UI Components, Select, Dropdown, Form"
-  )
-%>
+<% set_meta_tags(
+  title: "Select - Rails UI Components",
+  description: "Enhanced select dropdown field with consistent styling and accessibility features.",
+  keywords: "Rails, UI Components, Form Builder, Select"
+) %>
 <% breadcrumb :ui_form_builders_select %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title do %>Rails <code class="px-1 text-3xl bg-yellow-100">select</code> examples<% end %>
-      <%= ui.header_subtitle "Enhanced select dropdown field with consistent styling, hint support, and improved accessibility features." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/select.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Select" %>
+    <%= ui.header_subtitle "Enhanced select dropdown field with consistent styling and accessibility features." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/select.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="mb-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Basic Select<% end %>
-      <% end %>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("select") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…  " } %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("select") %>
   </section>
 
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Select sizes<% end %>
-      <% end %>
+  <%= render_props_table("select") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.select :large_field, ["Yes", "No"], { }, { size: :lg } %>
-          <%= f.select :default_field, ["Yes", "No"], { } %>
-          <%= f.select :small_field, ["Yes", "No"], { }, { size: :sm } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :large_field, size: :lg %&gt;
-&lt;%= f.select :default_field %&gt;
-&lt;%= f.select :small_field, size: :sm %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Label customization<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %>
-          <%= f.select :no_label, ["Yes", "No"], {}, { label: false } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %&gt;
-&lt;%= f.select :no_label, ["Yes", "No"], {}, { label: false } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Hint message<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.select :with_hint, ["Yes", "No"], {}, { hint: "Select an option" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :no_label, ["Yes", "No"], {}, { hint: "Select an option" } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Disabled State<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.select :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.select :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Validation<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <% user = User.new %>
-        <% user.errors.add(:state, "is required") %>
-        <%= form_with model: user, url: root_path do |f| %>
-          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
-        <% end %>
-
-        <%= form_with url: root_path do |f| %>
-          <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
-&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %&gt;
-
-&lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("select") %>
   </section>
 </article>

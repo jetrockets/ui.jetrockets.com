@@ -1,0 +1,146 @@
+name: Header
+description: Page header component for displaying titles, subtitles, and action buttons with flexible layout options.
+
+preview: |
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Page Title" %>
+      <%= ui.header_subtitle "A brief description of the page content." %>
+    <% end %>
+    <%= ui.header_actions do %>
+      <%= ui.btn "Primary Action" %>
+      <%= ui.btn "Secondary", variant: :secondary %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Title" %>
+    <% end %>
+  <% end %>
+
+  <%= ui.header bordered: true do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Title" %>
+      <%= ui.header_subtitle "Subtitle" %>
+    <% end %>
+    <%= ui.header_actions do %>
+      <%= ui.btn "Action" %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: direction
+    type: Symbol
+    default: ":row"
+    values:
+      - ":col"
+      - ":row"
+    description: Layout direction of the header. Row direction is responsive (column on mobile, row on desktop).
+
+  - name: align
+    type: Symbol
+    default: ":start"
+    values:
+      - ":start"
+      - ":center"
+      - ":end"
+    description: Vertical alignment of header content.
+
+  - name: justify
+    type: Symbol
+    default: ":between"
+    values:
+      - ":start"
+      - ":center"
+      - ":end"
+      - ":between"
+    description: Horizontal justification of header content.
+
+  - name: sticky
+    type: Boolean
+    default: "false"
+    description: Whether the header should stick to the top of the viewport on scroll.
+
+  - name: bordered
+    type: Boolean
+    default: "false"
+    description: Whether to show a bottom border on the header.
+
+slots:
+  - name: header_heading
+    component: Ui::Header::HeadingComponent
+    description: Container for title and subtitle elements.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: header_title
+    component: Ui::Header::TitleComponent
+    description: Main page title element (h1).
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: header_subtitle
+    component: Ui::Header::SubtitleComponent
+    description: Secondary description text with muted styling.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: header_actions
+    component: Ui::Header::ActionsComponent
+    description: Container for action buttons on the right side.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Default Header
+    code: |
+      <%= ui.header do %>
+        <%= ui.header_heading do %>
+          <%= ui.header_title "Page Title" %>
+          <%= ui.header_subtitle "A brief description of the page content." %>
+        <% end %>
+        <%= ui.header_actions do %>
+          <%= ui.btn "Primary Action" %>
+          <%= ui.btn "Secondary", variant: :secondary %>
+        <% end %>
+      <% end %>
+
+  - name: Bordered Header
+    code: |
+      <%= ui.header bordered: true do %>
+        <%= ui.header_heading do %>
+          <%= ui.header_title "Bordered Header" %>
+          <%= ui.header_subtitle "Header with a bottom border separator." %>
+        <% end %>
+        <%= ui.header_actions do %>
+          <%= ui.btn "Action", variant: :outline %>
+        <% end %>
+      <% end %>
+
+  - name: Sticky Header
+    code: |
+      <%= ui.header sticky: true, bordered: true do %>
+        <%= ui.header_heading do %>
+          <%= ui.header_title "Sticky Header" %>
+          <%= ui.header_subtitle "This header sticks to the top on scroll." %>
+        <% end %>
+        <%= ui.header_actions do %>
+          <%= ui.btn "Action" %>
+        <% end %>
+      <% end %>

@@ -1,0 +1,67 @@
+name: Group
+description: Groups multiple elements together with optional sticky borders for connected appearance.
+
+preview: |
+  <%= ui.group do %>
+    <%= ui.btn "First", variant: :outline %>
+    <%= ui.btn "Second", variant: :outline %>
+    <%= ui.btn "Third", variant: :outline %>
+  <% end %>
+
+usage: |
+  <%= ui.group do %>
+    <%= ui.btn "Button First" %>
+    <%= ui.btn "Button Second" %>
+    <%= ui.btn "Button Third" %>
+  <% end %>
+
+  <%= ui.group sticky: false do %>
+    <%= ui.btn "With Gap", variant: :outline %>
+    <%= ui.btn "With Gap", variant: :outline %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: sticky
+    type: Boolean
+    default: "true"
+    description: When true, elements are joined without gaps. When false, elements have gaps between them.
+
+examples:
+  - name: Sticky (default)
+    code: |
+      <%= ui.group do %>
+        <%= ui.btn "Button First" %>
+        <%= ui.btn "Button Second" %>
+        <%= ui.btn "Button Third" %>
+      <% end %>
+
+  - name: With Gap
+    code: |
+      <%= ui.group sticky: false do %>
+        <%= ui.btn "Button With Gap", variant: :outline %>
+        <%= ui.btn "Button With Gap", variant: :outline %>
+        <%= ui.btn "Button With Gap", variant: :outline %>
+      <% end %>
+
+  - name: With Dropdown
+    code: |
+      <%= ui.group do %>
+        <%= ui.btn "Button First", variant: :outline %>
+        <%= ui.dropdown do %>
+          <%= ui.dropdown_trigger ui.icon("chevron-down"), as: :btn, variant: :outline, size: :icon_md %>
+          <%= ui.dropdown_menu do %>
+            <%= ui.dropdown_title "Title" %>
+            <%= ui.dropdown_link "Settings", url: "#" %>
+            <%= ui.dropdown_link "Sign Out", url: "#" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: With Input
+    code: |
+      <%= ui.group do %>
+        <input type="text" class="form__field">
+        <%= ui.btn "Search", variant: :outline %>
+      <% end %>

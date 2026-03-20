@@ -166,7 +166,7 @@ For components with subcomponents, use the `render` method:
 #### Empty State Component
 ```erb
 <%= render Ui::Empty::Component.new do %>
-  <%= render Ui::Empty::IconComponent.new(name: "inbox") %>
+  <%= render Ui::Empty::IconComponent.new(name: "user") %>
   <%= render Ui::Empty::TitleComponent.new { "No items" } %>
   <%= render Ui::Empty::DescriptionComponent.new { "Description text" } %>
   <%= render Ui::Empty::ActionsComponent.new do %>

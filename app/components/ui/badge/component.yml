@@ -1,0 +1,63 @@
+name: Badge
+description: Display labels, tags, or status indicators with different visual styles.
+
+preview: |
+  <%= ui.badge "New", variant: :info %>
+
+usage: |
+  <%= ui.badge "Label" %>
+  <%= ui.badge "Success", variant: :success %>
+  <%= ui.badge "Warning", variant: :warning, size: :md %>
+  <%= ui.badge "99+", rounded: true %>
+
+accepts_html_attributes: true
+
+props:
+  - name: variant
+    type: Symbol
+    default: ":default"
+    values:
+      - ":default"
+      - ":info"
+      - ":error"
+      - ":success"
+      - ":warning"
+    description: Visual style of the badge.
+
+  - name: size
+    type: Symbol
+    default: ":sm"
+    values:
+      - ":xs"
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of the badge.
+
+  - name: rounded
+    type: Boolean
+    default: "false"
+    description: When true, renders the badge with fully rounded (pill) corners instead of rounded-md.
+
+examples:
+  - name: Sizes
+    code: |
+      <%= ui.badge "Default XS", size: :xs %>
+      <%= ui.badge "Default SM", size: :sm %>
+      <%= ui.badge "Default MD", size: :md %>
+      <%= ui.badge "Default LG", size: :lg %>
+
+  - name: Variants
+    code: |
+      <%= ui.badge "Default", variant: :default %>
+      <%= ui.badge "Info", variant: :info %>
+      <%= ui.badge "Warning", variant: :warning %>
+      <%= ui.badge "Success", variant: :success %>
+      <%= ui.badge "Error", variant: :error %>
+
+  - name: Rounded (pill style)
+    code: |
+      <%= ui.badge "2", size: :xs, rounded: true %>
+      <%= ui.badge "5", size: :sm, rounded: true %>
+      <%= ui.badge "8", size: :md, rounded: true %>
+      <%= ui.badge "12", size: :lg, rounded: true %>

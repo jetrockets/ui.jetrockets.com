@@ -358,7 +358,7 @@ Same API as Modal, but slides from the right side.
 ### Empty (Empty State)
 ```erb
 <%= render Ui::Empty::Component.new do %>
-  <%= render Ui::Empty::IconComponent.new(name: "inbox") %>
+  <%= render Ui::Empty::IconComponent.new(name: "user") %>
   <%= render Ui::Empty::TitleComponent.new { "No items" } %>
   <%= render Ui::Empty::DescriptionComponent.new { "Get started by creating a new item." } %>
   <%= render Ui::Empty::ActionsComponent.new do %>

@@ -1,49 +1,33 @@
-<%
-  set_meta_tags(
-    title: "Modal - Rails UI Components",
-    description: "Modal component for dialog overlays and popups.",
-    keywords: "Rails, UI Components, Modal"
-  )
-%>
+<% set_meta_tags(
+  title: "Modal - Rails UI Components",
+  description: "Modal component for dialog overlays and popups.",
+  keywords: "Rails, UI Components, Modal"
+) %>
 <% breadcrumb :ui_modal %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Modal" %>
-      <%= ui.header_subtitle "Modal component for dialog overlays and popups." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/modal", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Modal" %>
+    <%= ui.header_subtitle "Modal component for dialog overlays and popups." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/modal", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section>
-    <div class="flex flex-col gap-4 mb-12">
-      <%= ui.alert variant: :warning, class: "gap-2" do %>
-        <%= ui.alert__title "To use async Modal component, you need to have a <turbo-frame id='modal'> in your layout" %>
-        <pre class="w-full"><code>&lt;%= turbo_frame_tag :modal %&gt;</code></pre>
-        <p class="font-semibold">And wrap response content with the modal component:</p>
-        <pre class="w-full"><code>&lt;%= ui.modal(title: "Title HERE") do %&gt;
-  ...
-&lt;% end %&gt;</code></pre>
-      <% end %>
-    </div>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("modal") %>
 
-    <section class="flex flex-col gap-4">
-      <h2 class="h3">Example</h2>
-      <%= ui.tabs do %>
-        <%= ui.tabs_item "Preview", href: ui_modal_path, active: !params[:code] %>
-        <%= ui.tabs_item "Code", href: ui_modal_path(code: true), active: params[:code] %>
-      <% end %>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("modal") %>
+  </section>
 
-      <div>
-        <% unless params[:code] %>
-          <%= render "ui/examples/modal" %>
-        <% else %>
-          <%= render_code_example("ui/examples/_modal") %>
-        <% end %>
-      </div>
-    </section>
+  <%= render_props_table("modal") %>
+  <%= render_subcomponents_table("modal") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("modal") %>
   </section>
 </article>

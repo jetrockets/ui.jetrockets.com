@@ -1,0 +1,132 @@
+name: Choices
+description: Enhanced select field with search functionality, multiple selection, and custom options using Choices.js.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"]]), { include_blank: "Select..." } %>
+    <%= f.choices :languages, ["English", "Spanish"], {}, { multiple: true } %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of the select field.
+
+  - name: multiple
+    type: Boolean
+    default: "false"
+    description: Enable multiple selection.
+
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the field.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the field.
+
+  - name: "data-search"
+    type: String
+    default: "nil"
+    description: URL for async search functionality.
+
+  - name: "data-search_enabled"
+    type: Boolean
+    default: "false"
+    description: Enable local search within options.
+
+  - name: "data-max_item_count"
+    type: Integer
+    default: "nil"
+    description: Maximum number of items that can be selected (multiple mode).
+
+examples:
+  - name: Basic Choices
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
+      <% end %>
+
+  - name: Choices sizes
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :large_field, ["Yes", "No"], { }, { size: :lg } %>
+        <%= f.choices :default_field, ["Yes", "No"], { } %>
+        <%= f.choices :small_field, ["Yes", "No"], { }, { size: :sm } %>
+      <% end %>
+
+  - name: Multiple Selection
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :languages, ["English", "Spanish", "French", "German", "Italian"], { hint: "Choose languages you speak" }, { multiple: true } %>
+        <%= f.choices :skills, ["JavaScript", "Ruby", "Python", "Go", "Rust"], {}, { multiple: true, data: { max_item_count: 2 }, hint: "Max 2 items" } %>
+      <% end %>
+
+  - name: Async Search
+    description: Load options from a remote URL.
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :country, [], { include_blank: "Select country..." }, { data: { search: countries_path(format: :json) } } %>
+      <% end %>
+
+  - name: With Search Field
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :gender, ["Male", "Female", "Other"], {}, { data: { search_enabled: true } } %>
+      <% end %>
+
+  - name: Label customization
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option..." }, { label: "Custom Label Text" } %>
+        <%= f.choices :no_label, ["Yes", "No"], {}, { label: false } %>
+      <% end %>
+
+  - name: Hint message
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :with_hint, ["Yes", "No"], {}, { hint: "Select an option" } %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:state, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." }, { error: "This field has a custom error" } %>
+      <% end %>

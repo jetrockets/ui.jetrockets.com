@@ -1,132 +1,33 @@
-<%
-  set_meta_tags(
-    title: "Card - Rails UI Components",
-    description: "Card component for displaying grouped content.",
-    keywords: "Rails, UI Components, Card"
-  )
-%>
+<% set_meta_tags(
+  title: "Card - Rails UI Components",
+  description: "Card component for displaying grouped content.",
+  keywords: "Rails, UI Components, Card"
+) %>
 <% breadcrumb :ui_card %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Card" %>
-      <%= ui.header_subtitle "Card component for displaying grouped content." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/card", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Card" %>
+    <%= ui.header_subtitle "Card component for displaying grouped content." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/card", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="flex flex-col gap-2 mb-12">
-    <h2 class="h3">Basic Card</h2>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("card") %>
 
-    <div class="max-w-md mb-4">
-      <%= ui.card do %>
-        <%= ui.card_header do %>
-          <%= ui.card_title "Noteworthy technology acquisitions 2021." %>
-          <%= ui.card_subtitle "A summary of notable acquisitions." %>
-        <% end %>
-        <%= ui.card_body do %>
-          <p>This is the body of the card. You can put any content here.</p>
-        <% end %>
-        <%= ui.card_footer do %>
-          <%= ui.btn "Primary" %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <pre><code>&lt;%= ui.card do %&gt;
-  &lt;%= ui.card_header do %&gt;
-    &lt;%= ui.card_title "Card Title" %&gt;
-    &lt;%= ui.card_subtitle "Card Subtitle" %&gt;
-  &lt;% end %&gt;
-  &lt;%= ui.card_body do %&gt;
-    &lt;p&gt;This is the body content of the card.&lt;/p&gt;
-  &lt;% end %&gt;
-  &lt;%= ui.card_footer do %&gt;
-    &lt;%= ui.btn "Action" %&gt;
-  &lt;% end %&gt;
-&lt;% end %&gt;</code></pre>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("card") %>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Card without borders</h2>
+  <%= render_props_table("card") %>
+  <%= render_subcomponents_table("card") %>
 
-    <div class="max-w-md mb-4">
-      <%= ui.card do %>
-        <%= ui.card_header align: :center, bordered: false do %>
-          <%= ui.card_title "Noteworthy technology acquisitions 2021." %>
-        <% end %>
-        <%= ui.card_body do %>
-          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-        <% end %>
-        <%= ui.card_footer justify: :end, bordered: false do %>
-          <%= ui.btn "Secondary", variant: :secondary %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <pre><code>&lt;%= ui.card do %&gt;
-  &lt;%= ui.card_header align: :center, bordered: false do %&gt;
-    &lt;%= ui.card_title "Centered Title" %&gt;
-  &lt;% end %&gt;
-  &lt;%= ui.card_body do %&gt;
-    &lt;p&gt;Card content goes here...&lt;/p&gt;
-  &lt;% end %&gt;
-  &lt;%= ui.card_footer align: :end, bordered: false do %&gt;
-    &lt;%= ui.btn "Action", variant: :secondary %&gt;
-  &lt;% end %&gt;
-&lt;% end %&gt;</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Header with Row Direction</h2>
-
-    <div class="max-w-md mb-4">
-      <%= ui.card do %>
-        <%= ui.card_header direction: :row, justify: :between do %>
-          <%= ui.card_title "Noteworthy technology" %>
-          <%= ui.btn "Action", size: :sm %>
-        <% end %>
-        <%= ui.card_body do %>
-          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-        <% end %>
-      <% end %>
-    </div>
-
-    <pre><code>&lt;%= ui.card do %&gt;
-  &lt;%= ui.card_header direction: :row, justify: :between do %&gt;
-    &lt;%= ui.card_title "Title" %&gt;
-    &lt;%= ui.btn "Action", size: :sm %&gt;
-  &lt;% end %&gt;
-  &lt;%= ui.card_body do %&gt;
-    &lt;p&gt;Card content goes here...&lt;/p&gt;
-  &lt;% end %&gt;
-&lt;% end %&gt;</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Body Only Card</h2>
-
-    <div class="max-w-md mb-4">
-      <%= ui.card do %>
-        <%= ui.card_body class: "flex flex-col gap-3 text-center" do %>
-          <%= ui.icon "information-circle", class: "mx-auto text-primary size-12" %>
-          <h3 class="text-lg font-semibold">Welcome!</h3>
-          <p class="text-gray-600">Thank you for joining our community. Get started by exploring the features.</p>
-          <%= ui.btn "Get Started", block: true, size: :lg %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <pre><code>&lt;%= ui.card do %&gt;
-  &lt;%= ui.card_body class: "flex flex-col gap-3 text-center" do %&gt;
-    &lt;%= ui.icon "information-circle", class: "mx-auto text-primary size-12" %&gt;
-    &lt;h3 class="text-lg font-semibold"&gt;Welcome!&lt;/h3&gt;
-    &lt;p class="text-gray-600"&gt;Thank you for joining our community. Get started by exploring the features.&lt;/p&gt;
-    &lt;%= ui.btn "Get Started", block: true, size: :lg %&gt;
-  &lt;% end %&gt;
-&lt;% end %&gt;</code></pre>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("card") %>
   </section>
 </article>

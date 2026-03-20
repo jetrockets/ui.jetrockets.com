@@ -4,7 +4,7 @@
   .drawer {
     @apply fixed inset-0 left-auto flex flex-col hidden m-0;
     @apply min-h-full shadow-sm rounded-l-2xl w-fit backdrop:bg-gray-900/50;
-    @apply max-w-2xl; /* Default width */
+    @apply w-2xl; /* Default width */
   }
 
   .drawer[open] {

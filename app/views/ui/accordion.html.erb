@@ -1,36 +1,33 @@
-<%
-  set_meta_tags(
-    title: "Accordion - Rails UI Components",
-    description: "Accordion component for organizing and displaying content in a collapsible format.",
-    keywords: "Rails, Accordion, UI Components, Collapsible, Content Organization"
-  )
-%>
+<% set_meta_tags(
+  title: "Accordion - Rails UI Components",
+  description: "Accordion component for organizing and displaying content in a collapsible format.",
+  keywords: "Rails, Accordion, UI Components, Collapsible, Content Organization"
+) %>
 <% breadcrumb :ui_accordion %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Accordion" %>
-      <%= ui.header_subtitle "Exclusive accordions using the HTML details element. When you want to say a lot but not all at once." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/accordion", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Accordion" %>
+    <%= ui.header_subtitle "Exclusive accordions using the HTML details element. When you want to say a lot but not all at once." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/accordion", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("accordion") %>
 
   <section class="flex flex-col gap-4">
-    <h2 class="h3">Example</h2>
-    <%= ui.tabs do %>
-      <%= ui.tabs_item "Preview", href: ui_accordion_path, active: !params[:code] %>
-      <%= ui.tabs_item "Code", href: ui_accordion_path(code: true), active: params[:code] %>
-    <% end %>
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("accordion") %>
+  </section>
 
-    <div>
-      <% unless params[:code] %>
-        <%= render "ui/examples/accordion" %>
-      <% else %>
-        <%= render_code_example("ui/examples/_accordion") %>
-      <% end %>
-    </div>
+  <%= render_props_table("accordion") %>
+  <%= render_subcomponents_table("accordion") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("accordion") %>
   </section>
 </article>

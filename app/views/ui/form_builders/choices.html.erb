@@ -1,204 +1,36 @@
-<%
-  set_meta_tags(
-    title: "Choices - Rails UI Components",
-    description: "Enhanced select component with search functionality using Choices.js.",
-    keywords: "Rails, UI Components, Choices, Select, Search, Form"
-  )
-%>
+<% set_meta_tags(
+  title: "Choices - Rails UI Components",
+  description: "Enhanced select field with search functionality, multiple selection, and custom options using Choices.js.",
+  keywords: "Rails, UI Components, Form Builder, Choices"
+) %>
 <% breadcrumb :ui_form_builders_choices %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title do %>Modern Rails <code class="px-1 text-3xl bg-yellow-100">select</code><% end %>
-      <%= ui.header_subtitle do %>
-        Enhanced select field with search functionality, multiple selection support, and custom options using
-        <%= link_to "Choices.js", "https://github.com/Choices-js/Choices", class: "link", target: "_blank", rel: "noopener noreferrer" %>
-        library. There are a lot of options available to customize the behavior and appearance of the select field.
-      <% end %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/choices.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Choices" %>
+    <%= ui.header_subtitle do %>
+      Enhanced select field with search functionality, multiple selection support, and custom options using
+      <%= link_to "Choices.js", "https://github.com/Choices-js/Choices", class: "link", target: "_blank", rel: "noopener noreferrer" %>
+      library.
     <% end %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/choices.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="mb-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Basic Choices<% end %>
-      <% end %>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("choices") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }%&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("choices") %>
   </section>
 
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Choices sizes<% end %>
-      <% end %>
+  <%= render_props_table("choices") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :large_field, ["Yes", "No"], { }, { size: :lg } %>
-          <%= f.choices :default_field, ["Yes", "No"], { } %>
-          <%= f.choices :small_field, ["Yes", "No"], { }, { size: :sm } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :large_field, size: :lg %&gt;
-&lt;%= f.choices :default_field %&gt;
-&lt;%= f.choices :small_field, size: :sm %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Multiple Selection<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :languages, ["English", "Spanish", "French", "German", "Italian"], { hint: "Choose languages you speak" }, { multiple: true } %>
-          <%= f.choices :skills, ["JavaScript", "Ruby", "Python", "Go", "Rust"], { hint: "Select multiple skills" }, { multiple: true, data: { max_item_count: 2 }, hint: "Max 2 items" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :languages, ["English", "Spanish", "French", "German", "Italian"], { hint: "Choose languages you speak" }, { multiple: true } %&gt;
-&lt;%= f.choices :skills, ["JavaScript", "Ruby", "Python", "Go", "Rust"], { hint: "Select multiple skills" }, { multiple: true, data: { max_item_count: 2 } } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Async Search<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :country, [], { include_blank: "Select country…" }, { data: { search: countries_path(format: :json) } } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :country, ["Yes", "No"], {}, { data: { search: countries_path(format: :json) } } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>With Search Field<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :gender, ["Male", "Female", "Other"], {}, { data: { search_enabled: true } } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :gender, ["Male", "Female", "Other"], {}, { data: { searchEnabled: true } } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Label customization<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %>
-          <%= f.choices :no_label, ["Yes", "No"], {}, { label: false } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :custom_label, ["Option 1", "Option 2"], { include_blank: "Select option…" }, { label: "Custom Label Text" } %&gt;
-&lt;%= f.choices :no_label, ["Yes", "No"], {}, { label: false } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Hint message<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :with_hint, ["Yes", "No"], {}, { hint: "Select an option" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :no_label, ["Yes", "No"], {}, { hint: "Select an option" } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Disabled State<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.choices :disabled_field, ["Option 1", "Option 2"], { selected: "Option 1" }, { disabled: true } %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Validation<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <% user = User.new %>
-        <% user.errors.add(:state, "is required") %>
-        <%= form_with model: user, url: root_path do |f| %>
-          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %>
-        <% end %>
-
-        <%= form_with url: root_path do |f| %>
-          <%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
-&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" } %&gt;
-
-&lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.choices :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state…" }, { error: "This field has a custom error" } %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("choices") %>
   </section>
 </article>

@@ -1,0 +1,198 @@
+name: Table
+description: Data table component with support for headers, body, footer, and various styling options.
+
+preview: |
+  <%= ui.table do %>
+    <%= ui.table_thead do %>
+      <%= ui.table_tr do %>
+        <%= ui.table_th "Name" %>
+        <%= ui.table_th "Status" %>
+        <%= ui.table_th "Amount" %>
+      <% end %>
+    <% end %>
+    <%= ui.table_tbody do %>
+      <%= ui.table_tr do %>
+        <%= ui.table_td "Item 1" %>
+        <%= ui.table_td "Active" %>
+        <%= ui.table_td "$100" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.table do %>
+    <%= ui.table_thead do %>
+      <%= ui.table_tr do %>
+        <%= ui.table_th "Column 1" %>
+        <%= ui.table_th "Column 2" %>
+      <% end %>
+    <% end %>
+    <%= ui.table_tbody do %>
+      <%= ui.table_tr do %>
+        <%= ui.table_td "Data 1" %>
+        <%= ui.table_td "Data 2" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: bordered
+    type: Boolean
+    default: "false"
+    description: Whether to show borders on the table.
+
+  - name: full
+    type: Boolean
+    default: "true"
+    description: Whether the table should take full width.
+
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":xs"
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of table cells and text.
+
+  - name: hovered
+    type: Boolean
+    default: "false"
+    description: Whether to highlight rows on hover.
+
+slots:
+  - name: table_thead
+    component: Ui::Table::TheadComponent
+    description: Table header section containing column headers.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: table_tbody
+    component: Ui::Table::TbodyComponent
+    description: Table body section containing data rows.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: table_tfoot
+    component: Ui::Table::TfootComponent
+    description: Table footer section for summary or total rows.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: table_tr
+    component: Ui::Table::TrComponent
+    description: Table row element.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: table_th
+    component: Ui::Table::ThComponent
+    description: Table header cell element.
+    props:
+      - name: sticky
+        type: Symbol
+        default: "false"
+        values:
+          - "false"
+          - ":left"
+          - ":right"
+        description: Make the column sticky to the left or right edge.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: table_td
+    component: Ui::Table::TdComponent
+    description: Table data cell element.
+    props:
+      - name: actions
+        type: Boolean
+        default: "false"
+        description: Style the cell as an actions column.
+
+      - name: sticky
+        type: Symbol
+        default: "nil"
+        values:
+          - "nil"
+          - ":left"
+          - ":right"
+        description: Make the column sticky to the left or right edge.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic Table
+    code: |
+      <%= ui.table size: :md, hovered: true do %>
+        <%= ui.table_thead do %>
+          <%= ui.table_tr do %>
+            <%= ui.table_th "Payment" %>
+            <%= ui.table_th "Status" %>
+            <%= ui.table_th "Amount" %>
+            <%= ui.table_th "Actions" %>
+          <% end %>
+        <% end %>
+        <%= ui.table_tbody do %>
+          <%= ui.table_tr do %>
+            <%= ui.table_td "Payment Name" %>
+            <%= ui.table_td { ui.badge title: "Paid", variant: :green } %>
+            <%= ui.table_td "$1,200.00" %>
+            <%= ui.table_td(actions: true) do %>
+              <%= ui.group do %>
+                <%= ui.btn "Show", size: :sm, variant: :outline %>
+                <%= ui.btn "Edit", size: :sm, variant: :outline %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= ui.table_tfoot do %>
+          <%= ui.table_tr do %>
+            <%= ui.table_td "Total", colspan: 2 %>
+            <%= ui.table_td "$2,400.00", colspan: 2 %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Bordered Table with Sticky Column
+    code: |
+      <%= ui.table size: :xs, bordered: true, hovered: true do %>
+        <%= ui.table_thead do %>
+          <%= ui.table_tr do %>
+            <%= ui.table_th(sticky: :left) { "Payment" } %>
+            <%= ui.table_th { "Status" } %>
+            <%= ui.table_th { "Amount" } %>
+            <%= ui.table_th { "Actions" } %>
+          <% end %>
+        <% end %>
+        <%= ui.table_tbody do %>
+          <%= ui.table_tr do %>
+            <%= ui.table_td "Payment Name", sticky: :left %>
+            <%= ui.table_td "Paid" %>
+            <%= ui.table_td "$1,200.00" %>
+            <%= ui.table_td(actions: true) do %>
+              <%= ui.btn "Edit", size: :xs, variant: :outline %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>

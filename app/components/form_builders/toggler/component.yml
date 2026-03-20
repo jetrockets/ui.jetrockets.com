@@ -1,0 +1,41 @@
+name: Toggler
+description: Toggle switch component that enhances the standard Rails check_box with improved styling.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.group do %>
+      <%= f.toggler :dark_mode %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.toggler :dark_mode %>
+    <%= f.toggler :notifications, hint: "Enable notifications" %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the toggler.
+
+examples:
+  - name: Basic Toggler
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.group do %>
+          <%= f.toggler :dark_mode %>
+        <% end %>
+
+        <%= f.group do %>
+          <%= f.toggler :notifications, hint: "Here you can have a hint" %>
+        <% end %>
+      <% end %>

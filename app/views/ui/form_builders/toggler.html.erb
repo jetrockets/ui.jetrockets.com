@@ -1,45 +1,32 @@
-<%
-  set_meta_tags(
-    title: "Toggler - Rails UI Components",
-    description: "Toggle switch component with enhanced styling and accessibility features.",
-    keywords: "Rails, UI Components, Toggle, Switch, Form"
-  )
-%>
+<% set_meta_tags(
+  title: "Toggler - Rails UI Components",
+  description: "Toggle switch component that enhances the standard Rails check_box with improved styling.",
+  keywords: "Rails, UI Components, Form Builder, Toggler"
+) %>
 <% breadcrumb :ui_form_builders_toggler %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title do %>Rails <code class="px-1 text-3xl bg-yellow-100">check_box</code> as a Toggler<% end %>
-      <%= ui.header_subtitle do %>A toggle switch component that enhances the standard Rails <code>check_box</code> with improved styling feature.<% end %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/blob/main/app/lib/form_builders/fields/toggler.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Toggler" %>
+    <%= ui.header_subtitle "Toggle switch component that enhances the standard Rails check_box with improved styling." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/toggler.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="mb-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Basic Toggler<% end %>
-      <% end %>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("toggler") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.group do %>
-            <%= f.toggler :dark_mode %>
-          <% end %>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("toggler") %>
+  </section>
 
-          <%= f.group do %>
-            <%= f.toggler :notifications, hint: "Here you can have a hint" %>
-          <% end %>
-        <% end %>
-      <% end %>
+  <%= render_props_table("toggler") %>
 
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.toggler :dark_mode %&gt;
-&lt;%= f.toggler :dark_mode, hint: "Here you can have a hint" %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("toggler") %>
   </section>
 </article>

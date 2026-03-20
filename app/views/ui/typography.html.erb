@@ -19,18 +19,41 @@
   <% end %>
 
   <section class="flex flex-col gap-4">
-    <h2 class="h3">Example</h2>
-    <%= ui.tabs do %>
-      <%= ui.tabs_item "Preview", href: ui_typography_path, active: !params[:code] %>
-      <%= ui.tabs_item "Code", href: ui_typography_path(code: true), active: params[:code] %>
-    <% end %>
+    <h2 class="h3">Usage</h2>
+    <pre><code>&lt;h1 class="h1"&gt;Heading 1&lt;/h1&gt;
+&lt;h2 class="h2"&gt;Heading 2&lt;/h2&gt;
+&lt;h3 class="h3"&gt;Heading 3&lt;/h3&gt;
+&lt;h4 class="h4"&gt;Heading 4&lt;/h4&gt;
+&lt;h5 class="h5"&gt;Heading 5&lt;/h5&gt;
+&lt;h6 class="h6"&gt;Heading 6&lt;/h6&gt;
+&lt;p class="p"&gt;Paragraph text&lt;/p&gt;
+&lt;ul class="ul"&gt;&lt;li&gt;List item&lt;/li&gt;&lt;/ul&gt;
+&lt;ol class="ol"&gt;&lt;li&gt;List item&lt;/li&gt;&lt;/ol&gt;
+&lt;hr class="hr"&gt;</code></pre>
+  </section>
 
-    <div class="flex flex-col gap-2">
-      <% unless params[:code] %>
-        <%= render "ui/examples/typography" %>
-      <% else %>
-        <%= render_code_example("ui/examples/_typography") %>
+  <section class="flex flex-col gap-4 mt-8">
+    <h2 class="h3">Example</h2>
+    <%= ui.card do %>
+      <%= ui.card_body class: "flex flex-col gap-2" do %>
+        <h1 class="h1">Heading 1</h1>
+        <h2 class="h2">Heading 2</h2>
+        <h3 class="h3">Heading 3</h3>
+        <h4 class="h4">Heading 4</h4>
+        <h5 class="h5">Heading 5</h5>
+        <h6 class="h6">Heading 6</h6>
+        <p class="p">This is a paragraph with some example text to demonstrate the typography styles.</p>
+        <ul class="ul">
+          <li>Unordered list item 1</li>
+          <li>Unordered list item 2</li>
+          <li>Unordered list item 3</li>
+        </ul>
+        <ol class="ol">
+          <li>Ordered list item 1</li>
+          <li>Ordered list item 2</li>
+          <li>Ordered list item 3</li>
+        </ol>
       <% end %>
-    </div>
+    <% end %>
   </section>
 </article>
