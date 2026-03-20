@@ -15,8 +15,8 @@ class Ui::Icon::Component < ApplicationComponent
       "icon",
       "icon-#{name}",
       @options.delete(:class),
-      "icon-img": @img,
-      "size-#{@size}": @size
+      "size-#{@size}": @size,
+      "icon-img": @img
     )
   end
 end

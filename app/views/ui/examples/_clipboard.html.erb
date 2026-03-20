@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-4">
   <%= ui.btn_group do %>
-    <input id="clipboard_input" type="text" class="form__field" value="Copy this!" readonly>
+    <input id="clipboard_input" type="text" class="form__field form__field-readonly" value="Copy this!" readonly>
     <%= ui.clipboard "Copy", as: :btn, source_id: "clipboard_input", variant: :secondary, class: "min-w-32" %>
   <% end %>
 
