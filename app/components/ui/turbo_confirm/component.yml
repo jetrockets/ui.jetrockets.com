@@ -1,0 +1,25 @@
+name: Turbo Confirm
+description: A modal dialog for confirming destructive actions when using Turbo. Renders a confirmation modal that intercepts `data-turbo-confirm` attributes.
+
+preview: |
+  <%= ui.btn "Delete", variant: :danger, url: "#", method: :delete, data: { turbo_confirm: "Are you sure you want to delete this?" } %>
+
+usage: |
+  # <% Add the component once in your layout %>
+  <%= render Ui::TurboConfirm::Component.new %>
+
+  # <% Then use data-turbo-confirm on any button or link %>
+  <%= ui.btn "Delete", variant: :danger, url: "/items/1", method: :delete, data: { turbo_confirm: "This action cannot be undone." } %>
+
+  # <% Or with a regular link %>
+  <%= link_to "Remove", item_path(@item), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+
+accepts_html_attributes: true
+
+props: []
+
+examples:
+  - name: Basic confirmation
+    description: A delete button with confirmation dialog.
+    code: |
+      <%= ui.btn "Delete", variant: :danger, url: "#", method: :delete, data: { turbo_confirm: "Blocking this account will prevent further interactions, and you have the option to unblock it later if needed." } %>

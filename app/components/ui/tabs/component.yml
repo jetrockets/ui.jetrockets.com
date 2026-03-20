@@ -1,0 +1,83 @@
+name: Tabs
+description: Navigation component for switching between different views or content sections.
+
+preview: |
+  <%= ui.tabs do %>
+    <%= ui.tabs_item "Tab 1", href: "#", active: true %>
+    <%= ui.tabs_item "Tab 2", href: "#" %>
+    <%= ui.tabs_item "Tab 3", href: "#" %>
+  <% end %>
+
+usage: |
+  <%= ui.tabs do %>
+    <%= ui.tabs_item "Profile", href: profile_path, active: true %>
+    <%= ui.tabs_item "Settings", href: settings_path %>
+    <%= ui.tabs_item "Notifications", href: notifications_path %>
+  <% end %>
+
+  <%= ui.tabs variant: :underline do %>
+    <%= ui.tabs_item "Tab 1", href: "#", active: true %>
+    <%= ui.tabs_item "Tab 2", href: "#" %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: variant
+    type: Symbol
+    default: ":pill"
+    values:
+      - ":pill"
+      - ":underline"
+    description: Visual style of the tabs.
+
+slots:
+  - name: tabs_item
+    component: Ui::Tabs::ItemComponent
+    description: Individual tab item rendered as a link.
+    props:
+      - name: href
+        type: String
+        required: true
+        description: URL the tab links to.
+
+      - name: icon
+        type: String
+        default: "nil"
+        description: Icon name to display before the tab text.
+
+      - name: active
+        type: Boolean
+        default: "false"
+        description: Whether this tab is currently active.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes for the link element.
+
+examples:
+  - name: Pill (default)
+    code: |
+      <%= ui.tabs do %>
+        <%= ui.tabs_item "Tab 1", href: "#", active: true %>
+        <%= ui.tabs_item "Tab 2", href: "#" %>
+        <%= ui.tabs_item "Tab 3", href: "#" %>
+      <% end %>
+
+  - name: Pill with icons
+    code: |
+      <%= ui.tabs do %>
+        <%= ui.tabs_item "Profile", href: "#", icon: "user" %>
+        <%= ui.tabs_item "Settings", href: "#", icon: "user", active: true %>
+        <%= ui.tabs_item "Notifications", href: "#", icon: "user" %>
+      <% end %>
+
+  - name: Underline
+    code: |
+      <%= ui.tabs variant: :underline do %>
+        <%= ui.tabs_item "Profile", href: "#", active: true %>
+        <%= ui.tabs_item "Dashboard", href: "#" %>
+        <%= ui.tabs_item "Settings", href: "#" %>
+        <%= ui.tabs_item "Contacts", href: "#" %>
+      <% end %>

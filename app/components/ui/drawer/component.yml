@@ -1,0 +1,169 @@
+name: Drawer
+description: Display content in a side panel that slides in from the right edge of the screen.
+
+preview: |
+  <%= ui.btn "Open Drawer", data: { drawers_target: "trigger", action: "click->drawers#show", id: "previewDrawer" } %>
+  <%= ui.drawer(title: "Drawer Title", id: "previewDrawer") do %>
+    <%= ui.drawer_body do %>
+      <p>Drawer content goes here.</p>
+    <% end %>
+    <%= ui.drawer_footer do %>
+      <%= ui.btn "Close", variant: :secondary %>
+    <% end %>
+  <% end %>
+
+usage: |
+  # <% Async drawer (loads content via Turbo Frame) %>
+  <%= ui.btn "Open Drawer", url: some_path, data: { turbo_frame: :drawer } %>
+
+  # <% Sync drawer (content already on page) %>
+  <%= ui.btn "Open Drawer", data: { drawers_target: "trigger", action: "click->drawers#show", id: "myDrawer" } %>
+  <%= ui.drawer(title: "Title", id: "myDrawer") do %>
+    <%= ui.drawer_body do %>
+      Content here
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: title
+    type: String
+    default: "nil"
+    description: Drawer title displayed in the header.
+
+  - name: subtitle
+    type: String
+    default: "nil"
+    description: Drawer subtitle displayed below the title.
+
+  - name: size
+    type: String
+    default: '"2xl"'
+    values:
+      - '"sm"'
+      - '"md"'
+      - '"lg"'
+      - '"xl"'
+      - '"2xl"'
+      - '"3xl"'
+      - '"4xl"'
+      - '"5xl"'
+      - '"6xl"'
+    description: Maximum width of the drawer panel.
+
+  - name: id
+    type: String
+    default: "nil"
+    description: Unique identifier for sync drawers. Required for drawers triggered by `drawers#show` action.
+
+slots:
+  - name: drawer_header
+    component: Ui::Drawer::HeaderComponent
+    description: Header section with title, subtitle, and close button. Automatically rendered when title/subtitle props are provided.
+    props:
+      - name: title
+        type: String
+        default: "nil"
+        description: Header title text.
+
+      - name: subtitle
+        type: String
+        default: "nil"
+        description: Header subtitle text.
+
+      - name: closable
+        type: Boolean
+        default: "true"
+        description: Whether to show the close button.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a bottom border on the header.
+
+      - name: id
+        type: String
+        default: "nil"
+        description: Dialog ID for close button targeting.
+
+  - name: drawer_body
+    component: Ui::Drawer::BodyComponent
+    description: Scrollable content area of the drawer.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: drawer_footer
+    component: Ui::Drawer::FooterComponent
+    description: Footer section typically containing action buttons.
+    props:
+      - name: direction
+        type: Symbol
+        default: ":row"
+        values:
+          - ":row"
+          - ":col"
+        description: Flex direction for footer content.
+
+      - name: align
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+        description: Vertical alignment of footer content.
+
+      - name: justify
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+          - ":between"
+        description: Horizontal alignment of footer content.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a top border on the footer.
+
+examples:
+  - name: Async Drawer
+    description: Load drawer content via Turbo Frame from another page.
+    code: |
+      <%= ui.btn "Async Drawer", url: terms_path, data: { turbo_frame: :drawer } %>
+
+  - name: Sync Drawer
+    description: Drawer with content already present on the page.
+    code: |
+      <%= ui.btn "Sync Drawer", data: { drawers_target: "trigger", action: "click->drawers#show", id: "drawer1" } %>
+      <%= ui.drawer(title: "Info", id: "drawer1") do %>
+        <%= ui.drawer_body do %>
+          <p class="mb-6">Drawer content goes here.</p>
+        <% end %>
+        <%= ui.drawer_footer do %>
+          <%= ui.btn "Learn more", href: "#" %>
+          <%= ui.btn "Get access", href: "#" %>
+        <% end %>
+      <% end %>
+
+  - name: With Body and Footer
+    description: Drawer with scrollable body content and footer actions.
+    code: |
+      <%= ui.btn "Open Drawer", data: { drawers_target: "trigger", action: "click->drawers#show", id: "drawer1" } %>
+      <%= ui.drawer(title: "Info", id: "drawer1") do %>
+        <%= ui.drawer_body do %>
+          <% 3.times do %>
+            <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <% end %>
+        <% end %>
+        <%= ui.drawer_footer do %>
+          <%= ui.btn "Learn more", href: "#" %>
+          <%= ui.btn "Get access", href: "#" %>
+        <% end %>
+      <% end %>

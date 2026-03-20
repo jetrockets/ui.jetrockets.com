@@ -1,0 +1,127 @@
+name: Dropdown
+description: Interactive dropdown menu for navigation and actions with toggle trigger and customizable menu items.
+
+preview: |
+  <%= ui.dropdown do %>
+    <%= ui.dropdown_trigger as: :btn do %>
+      Open Menu
+      <%= ui.icon "chevron-down" %>
+    <% end %>
+    <%= ui.dropdown_menu do %>
+      <%= ui.dropdown_link "Profile", url: "#" %>
+      <%= ui.dropdown_link "Settings", url: "#" %>
+      <%= ui.dropdown_divider %>
+      <%= ui.dropdown_link "Sign Out", url: "#" %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.dropdown do %>
+    <%= ui.dropdown_trigger as: :btn do %>
+      Dropdown
+      <%= ui.icon "chevron-down" %>
+    <% end %>
+    <%= ui.dropdown_menu do %>
+      <%= ui.dropdown_title "Title" %>
+      <%= ui.dropdown_link "Link 1", url: "#" %>
+      <%= ui.dropdown_link "Link 2", url: "#" %>
+      <%= ui.dropdown_divider %>
+      <%= ui.dropdown_link "Link 3", url: "#" %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+slots:
+  - name: dropdown_trigger
+    component: Ui::Dropdown::TriggerComponent
+    description: The clickable element that opens/closes the dropdown menu.
+    props:
+      - name: as
+        type: Symbol
+        default: "nil"
+        description: Render trigger as another UI component (e.g., :btn). When nil, renders as a span.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: dropdown_menu
+    component: Ui::Dropdown::MenuComponent
+    description: Container for dropdown menu items.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: dropdown_link
+    component: Ui::Dropdown::LinkComponent
+    description: A link item within the dropdown menu.
+    props:
+      - name: url
+        type: String
+        default: "nil"
+        description: The URL for the link.
+
+      - name: active
+        type: Boolean
+        default: "false"
+        description: Whether the link should appear in an active state.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: dropdown_button
+    component: Ui::Dropdown::ButtonComponent
+    description: A button item within the dropdown menu (uses button_to for form submissions).
+    props:
+      - name: href
+        type: String
+        default: "nil"
+        description: The URL for the button action.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: dropdown_title
+    component: Ui::Dropdown::TitleComponent
+    description: A title/header within the dropdown menu.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: dropdown_divider
+    component: Ui::Dropdown::DividerComponent
+    description: A visual separator line between dropdown items.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic dropdown
+    code: |
+      <%= ui.dropdown do %>
+        <%= ui.dropdown_trigger as: :btn do %>
+          Dropdown
+          <%= ui.icon "chevron-down" %>
+        <% end %>
+        <%= ui.dropdown_menu do %>
+          <%= ui.dropdown_title "Title" %>
+          <%= ui.dropdown_link "Settings", url: "#" %>
+          <%= ui.dropdown_link "Terms of Service", url: "#" %>
+          <%= ui.dropdown_link "Privacy Policy", url: "#" %>
+          <%= ui.dropdown_divider %>
+          <%= ui.dropdown_link "Sign Up", url: "#" %>
+          <%= ui.dropdown_link "Sign In", url: "#" %>
+        <% end %>
+      <% end %>

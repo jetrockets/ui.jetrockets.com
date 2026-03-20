@@ -1,0 +1,164 @@
+name: Modal
+description: Display content in a dialog overlay that requires user attention or interaction.
+
+preview: |
+  <%= ui.btn "Open Modal", data: { action: "click->modals#show", id: "previewModal" } %>
+  <%= ui.modal(title: "Modal Title", subtitle: "Modal Subtitle", id: "previewModal") do %>
+    <%= ui.modal_body do %>
+      <p>Modal content goes here.</p>
+    <% end %>
+    <%= ui.modal_footer do %>
+      <%= ui.btn "Close", variant: :secondary %>
+    <% end %>
+  <% end %>
+
+usage: |
+  # <% Async modal (loads content via Turbo Frame) %>
+  <%= ui.btn "Open Modal", url: some_path, data: { turbo_frame: :modal } %>
+
+  # <% Sync modal (content already on page) %>
+  <%= ui.btn "Open Modal", data: { action: "click->modals#show", id: "myModal" } %>
+  <%= ui.modal(title: "Title", id: "myModal") do %>
+    <%= ui.modal_body do %>
+      Content here
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: title
+    type: String
+    default: "nil"
+    description: Modal title displayed in the header.
+
+  - name: subtitle
+    type: String
+    default: "nil"
+    description: Modal subtitle displayed below the title.
+
+  - name: size
+    type: String
+    default: '"2xl"'
+    values:
+      - '"sm"'
+      - '"md"'
+      - '"lg"'
+      - '"xl"'
+      - '"2xl"'
+      - '"3xl"'
+      - '"4xl"'
+      - '"5xl"'
+      - '"6xl"'
+    description: Width of the modal dialog.
+
+  - name: id
+    type: String
+    default: "nil"
+    description: Unique identifier for sync modals. Required for modals triggered by `modals#show` action.
+
+slots:
+  - name: modal_header
+    component: Ui::Modal::HeaderComponent
+    description: Header section with title, subtitle, and close button. Automatically rendered when title/subtitle props are provided.
+    props:
+      - name: title
+        type: String
+        default: "nil"
+        description: Header title text.
+
+      - name: subtitle
+        type: String
+        default: "nil"
+        description: Header subtitle text.
+
+      - name: closable
+        type: Boolean
+        default: "true"
+        description: Whether to show the close button.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a bottom border on the header.
+
+      - name: id
+        type: String
+        default: "nil"
+        description: Dialog ID for close button targeting.
+
+  - name: modal_body
+    component: Ui::Modal::BodyComponent
+    description: Scrollable content area of the modal.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: modal_footer
+    component: Ui::Modal::FooterComponent
+    description: Footer section typically containing action buttons.
+    props:
+      - name: direction
+        type: Symbol
+        default: ":row"
+        values:
+          - ":row"
+          - ":col"
+        description: Flex direction for footer content.
+
+      - name: align
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+        description: Vertical alignment of footer content.
+
+      - name: justify
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+          - ":between"
+        description: Horizontal alignment of footer content.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a top border on the footer.
+
+examples:
+  - name: Async Modal
+    description: Load modal content via Turbo Frame from another page.
+    code: |
+      <%= ui.btn "Async Modal", url: privacy_path, data: { turbo_frame: :modal } %>
+
+  - name: Sync Modal
+    description: Modal with content already present on the page.
+    code: |
+      <%= ui.btn "Open Modal", data: { action: "click->modals#show", id: "dialog1" } %>
+
+      <%= ui.modal(title: "Modal Title", subtitle: "Modal Subtitle", id: "dialog1") do %>
+        <p class="p-4">Dialog content</p>
+      <% end %>
+
+  - name: Multiple Modals
+    description: Multiple modals on the same page with different IDs.
+    code: |
+      <div class="flex gap-2">
+        <%= ui.btn "One modal", data: { action: "click->modals#show", id: "dialog1" } %>
+        <%= ui.btn "Another modal", variant: :secondary, data: { action: "click->modals#show", id: "dialog2" } %>
+      </div>
+
+      <%= ui.modal(title: "One Modal Title", subtitle: "Modal Subtitle", id: "dialog1") do %>
+        <p class="p-4">Dialog content</p>
+      <% end %>
+
+      <%= ui.modal(title: "Another Modal Title", subtitle: "Another Subtitle", id: "dialog2") do %>
+        <p class="p-4">Dialog content 2</p>
+      <% end %>

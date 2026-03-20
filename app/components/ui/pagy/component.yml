@@ -1,0 +1,45 @@
+name: Pagy
+description: Pagination component powered by the Pagy gem. Displays page information and navigation controls. Only renders when there are multiple pages.
+
+preview: |
+  <% pagy = Pagy.new(count: 100, page: 1) %>
+  <%= ui.pagy(pagy: pagy) %>
+
+usage: |
+  # <% In your controller %>
+  @pagy, @items = pagy(Item.all)
+
+  # <% In your view %>
+  <%= ui.pagy(pagy: @pagy) %>
+
+accepts_html_attributes: true
+
+props:
+  - name: pagy
+    type: Pagy
+    required: true
+    description: A Pagy object containing pagination state (count, page, pages, etc.).
+
+  - name: class
+    type: String
+    default: "nil"
+    description: Additional CSS classes to apply to the pagination container.
+
+examples:
+  - name: Basic pagination
+    description: Standard pagination with 100 items, 20 per page.
+    code: |
+      <% pagy = Pagy.new(count: 100, page: 1) %>
+      <%= ui.pagy(pagy: pagy) %>
+
+  - name: Middle page
+    description: Pagination showing a middle page.
+    code: |
+      <% pagy = Pagy.new(count: 200, page: 5) %>
+      <%= ui.pagy(pagy: pagy) %>
+
+  - name: Custom items per page
+    description: Pagination with custom items per page.
+    code: |
+      <% pagy = Pagy.new(count: 500, page: 1, limit: 50) %>
+      <%= ui.pagy(pagy: pagy) %>

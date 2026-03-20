@@ -1,0 +1,46 @@
+name: Icon
+description: Display SVG icons from the icon set using CSS classes.
+
+preview: |
+  <%= ui.icon "information-circle", size: 6 %>
+
+usage: |
+  <%= ui.icon "check-circle" %>
+  <%= ui.icon "information-circle", size: 8, class: "text-blue-500" %>
+
+accepts_html_attributes: true
+
+props:
+  - name: name
+    type: String
+    required: true
+    description: Icon name (passed as first argument or content). Maps to CSS class `icon-{name}`.
+
+  - name: size
+    type: Integer
+    default: "nil"
+    description: Icon size. Adds `size-{n}` class for width and height.
+
+  - name: img
+    type: Boolean
+    default: "false"
+    description: When true, adds `icon-img` class for image-based icon styling.
+
+examples:
+  - name: Basic usage
+    code: |
+      <%= ui.icon "information-circle" %>
+      <%= ui.icon "check-circle" %>
+      <%= ui.icon "x-circle" %>
+
+  - name: With size
+    code: |
+      <%= ui.icon "information-circle", size: 6 %>
+      <%= ui.icon "information-circle", size: 8 %>
+      <%= ui.icon "information-circle", size: 10 %>
+
+  - name: With color
+    code: |
+      <%= ui.icon "information-circle", size: 6, class: "text-red-500" %>
+      <%= ui.icon "information-circle", size: 8, class: "text-green-500" %>
+      <%= ui.icon "information-circle", size: 10, class: "text-blue-500" %>

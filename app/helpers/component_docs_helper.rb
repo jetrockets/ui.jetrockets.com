@@ -7,10 +7,10 @@ module ComponentDocsHelper
   def render_component_preview(component_name)
     docs = component_docs(component_name)
     preview = docs&.fetch("preview", nil)
-    return nil if preview.blank?
+    return nil if preview.blank? || preview == false
 
     ui.card do
-      ui.card_body do
+      ui.card_body class: "flex items-start" do
         render(inline: preview)
       end
     end
@@ -37,9 +37,17 @@ module ComponentDocsHelper
   end
 
   def render_example_block(example)
+    show_preview = example.fetch("preview", true)
+
     content_tag :div, class: "flex flex-col gap-3" do
       concat content_tag(:h3, example["name"], class: "font-medium text-gray-900")
-      concat content_tag(:div, class: "flex flex-col gap-2") { render(inline: example["code"]) }
+      if show_preview
+        concat(ui.card do
+          ui.card_body class: "flex flex-wrap items-start gap-4" do
+            render(inline: example["code"])
+          end
+        end)
+      end
       concat content_tag(:pre, content_tag(:code, html_escape(example["code"].strip)), class: "text-sm")
     end
   end

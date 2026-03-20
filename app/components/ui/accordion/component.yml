@@ -1,0 +1,95 @@
+name: Accordion
+description: Collapsible content sections that expand and collapse on click. Uses native HTML details/summary elements.
+
+preview: |
+  <%= ui.accordion name: "faq", open: true do %>
+    <%= ui.accordion_summary "What is this?" %>
+    <%= ui.accordion_body do %>
+      <p>This is an accordion component for collapsible content.</p>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.accordion name: "faq" do %>
+    <%= ui.accordion_summary "Question 1" %>
+    <%= ui.accordion_body do %>
+      <p>Answer to question 1.</p>
+    <% end %>
+  <% end %>
+
+  <%= ui.accordion name: "faq" do %>
+    <%= ui.accordion_summary "Question 2" %>
+    <%= ui.accordion_body do %>
+      <p>Answer to question 2.</p>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: name
+    type: String
+    default: "nil"
+    description: Name attribute for grouping accordions. Accordions with the same name will close when another opens (exclusive behavior).
+
+  - name: open
+    type: Boolean
+    default: "false"
+    description: Whether the accordion is initially expanded.
+
+slots:
+  - name: accordion_summary
+    component: Ui::Accordion::SummaryComponent
+    description: The clickable header that toggles the accordion open/closed.
+    props:
+      - name: icon
+        type: String
+        default: '"chevron-down"'
+        description: Icon name to display. Set to nil to hide the icon.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: accordion_body
+    component: Ui::Accordion::BodyComponent
+    description: The collapsible content area of the accordion.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Accordion group
+    code: |
+      <%= ui.accordion name: "tech-specs", open: true do %>
+        <%= ui.accordion_summary "First Item" %>
+        <%= ui.accordion_body do %>
+          <p>Content for the first accordion item.</p>
+        <% end %>
+      <% end %>
+
+      <%= ui.accordion name: "tech-specs" do %>
+        <%= ui.accordion_summary "Second Item" %>
+        <%= ui.accordion_body do %>
+          <p>Content for the second accordion item.</p>
+        <% end %>
+      <% end %>
+
+      <%= ui.accordion name: "tech-specs" do %>
+        <%= ui.accordion_summary "Third Item" %>
+        <%= ui.accordion_body do %>
+          <p>Content for the third accordion item.</p>
+        <% end %>
+      <% end %>
+
+  - name: Independent accordions
+    code: |
+      <%= ui.accordion do %>
+        <%= ui.accordion_summary "Standalone Accordion" %>
+        <%= ui.accordion_body do %>
+          <p>This accordion operates independently without a name group.</p>
+        <% end %>
+      <% end %>

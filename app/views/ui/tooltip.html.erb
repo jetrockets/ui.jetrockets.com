@@ -1,36 +1,33 @@
-<%
-  set_meta_tags(
-    title: "Tooltip - Rails UI Components",
-    description: "Tooltip component for contextual help and information.",
-    keywords: "Rails, UI Components, Tooltip"
-  )
-%>
+<% set_meta_tags(
+  title: "Tooltip - Rails UI Components",
+  description: "Tooltip component for contextual help and information.",
+  keywords: "Rails, UI Components, Tooltip"
+) %>
 <% breadcrumb :ui_tooltip %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Tooltip" %>
-      <%= ui.header_subtitle "Tooltip component for contextual help and information." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/tooltip", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Tooltip" %>
+    <%= ui.header_subtitle "Tooltip component for contextual help and information." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/tooltip", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("tooltip") %>
 
   <section class="flex flex-col gap-4">
-    <h2 class="h3">Example</h2>
-    <%= ui.tabs do %>
-      <%= ui.tabs_item "Preview", href: ui_tooltip_path, active: !params[:code] %>
-      <%= ui.tabs_item "Code", href: ui_tooltip_path(code: true), active: params[:code] %>
-    <% end %>
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("tooltip") %>
+  </section>
 
-    <div class="flex flex-col gap-2">
-      <% unless params[:code] %>
-        <%= render "ui/examples/tooltip" %>
-      <% else %>
-        <%= render_code_example("ui/examples/_tooltip") %>
-      <% end %>
-    </div>
+  <%= render_props_table("tooltip") %>
+  <%= render_subcomponents_table("tooltip") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("tooltip") %>
   </section>
 </article>

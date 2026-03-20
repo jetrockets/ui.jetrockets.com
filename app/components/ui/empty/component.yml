@@ -1,0 +1,111 @@
+name: Empty
+description: Empty state component for displaying placeholder content when no data is available.
+
+preview: |
+  <%= ui.empty do %>
+    <%= ui.empty_icon "user" %>
+    <%= ui.empty_title "No items found" %>
+    <%= ui.empty_description "Get started by creating a new item." %>
+    <%= ui.empty_actions do %>
+      <%= ui.btn "Create item", url: "#" %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.empty do %>
+    <%= ui.empty_icon "user" %>
+    <%= ui.empty_title "No results" %>
+    <%= ui.empty_description "Try adjusting your search." %>
+  <% end %>
+
+  <%= ui.empty do %>
+    <%= ui.empty_icon "user" %>
+    <%= ui.empty_title "No projects" %>
+    <%= ui.empty_description "Create your first project." %>
+    <%= ui.empty_actions do %>
+      <%= ui.btn "New project", url: "#" %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props: []
+
+slots:
+  - name: empty_icon
+    component: Ui::Empty::IconComponent
+    description: Icon displayed at the top of the empty state. Inherits from Ui::Icon::Component.
+    props:
+      - name: name
+        type: String
+        required: true
+        description: Icon name (e.g., "inbox", "folder", "github").
+
+      - name: size
+        type: Integer
+        default: "nil"
+        description: Icon size (adds `size-{n}` class).
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: empty_title
+    component: Ui::Empty::TitleComponent
+    description: Main title text for the empty state.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: empty_description
+    component: Ui::Empty::DescriptionComponent
+    description: Secondary description text with muted styling.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: empty_actions
+    component: Ui::Empty::ActionsComponent
+    description: Container for action buttons.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: With actions
+    code: |
+      <%= ui.empty do %>
+        <%= ui.empty_icon "github" %>
+        <%= ui.empty_title "No upcoming meetings" %>
+        <%= ui.empty_description "Create a meeting to get started." %>
+        <%= ui.empty_actions do %>
+          <%= ui.btn "Create meeting", url: "#" %>
+          <%= ui.btn "View docs", url: "#", variant: :outline %>
+        <% end %>
+      <% end %>
+
+  - name: Single action
+    code: |
+      <%= ui.empty do %>
+        <%= ui.empty_icon "github" %>
+        <%= ui.empty_title "No projects yet" %>
+        <%= ui.empty_description "Get started by creating a new project." %>
+        <%= ui.empty_actions do %>
+          <%= ui.btn "New project", url: "#" %>
+        <% end %>
+      <% end %>
+
+  - name: Without actions
+    code: |
+      <%= ui.empty do %>
+        <%= ui.empty_icon "github" %>
+        <%= ui.empty_title "No results found" %>
+        <%= ui.empty_description "Try adjusting your search or filter to find what you're looking for." %>
+      <% end %>

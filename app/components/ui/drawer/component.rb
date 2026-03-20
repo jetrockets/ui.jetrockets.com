@@ -39,14 +39,14 @@ class Ui::Drawer::Component < ApplicationComponent
       end
     # If not using Turbo Frame (open new tab for example), we should use a regular div instead of dialog
     else
-      content_tag :div, class: class_names("mx-auto bg-white", "max-w-#{@size}") do
+      content_tag :div, class: class_names("mx-auto bg-white", "w-#{@size}") do
         yield
       end
     end
   end
 
   def dialog_tag(options = {})
-    content_tag :dialog, tabindex: "-1", class: class_names("drawer", "animate-slide-left", "max-w-#{@size}"), **options do
+    content_tag :dialog, tabindex: "-1", class: class_names("drawer", "animate-slide-left", "w-#{@size}"), **options do
       yield
     end
   end

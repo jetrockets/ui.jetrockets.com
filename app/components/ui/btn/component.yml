@@ -1,0 +1,111 @@
+name: Button
+description: Button component for user actions and navigation.
+
+preview: |
+  <%= ui.btn "Click me", variant: :default %>
+
+usage: |
+  <%= ui.btn "Default" %>
+  <%= ui.btn "Outline", variant: :outline %>
+  <%= ui.btn "Link Button", url: "/path" %>
+
+accepts_html_attributes: true
+
+props:
+  - name: variant
+    type: Symbol
+    default: ":default"
+    values:
+      - ":default"
+      - ":outline"
+      - ":secondary"
+      - ":danger"
+      - ":ghost"
+      - ":link"
+    description: Visual style of the button.
+
+  - name: url
+    type: String
+    default: "nil"
+    description: URL to navigate to. Renders as a link when provided.
+
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":xs"
+      - ":sm"
+      - ":md"
+      - ":lg"
+      - ":icon_xs"
+      - ":icon_sm"
+      - ":icon_md"
+      - ":icon_lg"
+    description: Size of the button. Icon sizes are for icon-only buttons.
+
+  - name: rounded
+    type: Boolean
+    default: "false"
+    description: Apply fully rounded corners (pill shape).
+
+  - name: block
+    type: Boolean
+    default: "false"
+    description: Make button full width.
+
+  - name: circle
+    type: Boolean
+    default: "false"
+    description: Apply circular shape to the button.
+
+  - name: method
+    type: Symbol
+    default: "nil"
+    description: HTTP method for form submission (e.g., :delete, :post). Only works with `url`.
+
+examples:
+  - name: Basic Variants
+    code: |
+      <%= ui.btn "Default" %>
+      <%= ui.btn "Outline", variant: :outline %>
+      <%= ui.btn "Secondary", variant: :secondary %>
+      <%= ui.btn "Danger", variant: :danger %>
+      <%= ui.btn "Ghost", variant: :ghost %>
+      <%= ui.btn "Link", variant: :link %>
+
+  - name: Sizes
+    code: |
+      <%= ui.btn "Button XS", size: :xs %>
+      <%= ui.btn "Button SM", size: :sm %>
+      <%= ui.btn "Button MD", size: :md %>
+      <%= ui.btn "Button LG", size: :lg %>
+
+  - name: With Icons
+    code: |
+      <%= ui.btn size: :md do %>
+        <%= ui.icon "user" %>
+        Default
+      <% end %>
+
+  - name: Icon Only
+    code: |
+      <%= ui.btn ui.icon("user"), size: :icon_xs %>
+      <%= ui.btn ui.icon("user"), variant: :secondary, size: :icon_sm %>
+      <%= ui.btn ui.icon("user"), variant: :outline, size: :icon_md %>
+      <%= ui.btn ui.icon("user"), variant: :danger, size: :icon_lg %>
+
+  - name: Special Styles
+    code: |
+      <%= ui.btn "Rounded", size: :sm, rounded: true %>
+      <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
+      <%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %>
+      <%= ui.btn block: true, size: :lg do %>
+        <%= ui.icon("user", size: 6) %>
+        Block Button
+      <% end %>
+
+  - name: As Links
+    code: |
+      <%= ui.btn "Link Button", url: root_path %>
+      <%= ui.btn "Link", url: root_path, variant: :link %>
+      <%= ui.btn "Link Ghost", url: root_path, variant: :ghost %>

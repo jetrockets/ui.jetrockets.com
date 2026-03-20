@@ -1,163 +1,32 @@
-<%
-  set_meta_tags(
-    title: "Button - Rails UI Components",
-    description: "Button component for user actions and navigation.",
-    keywords: "Rails, UI Components, Button"
-  )
-%>
+<% set_meta_tags(
+  title: "Button - Rails UI Components",
+  description: "Button component for user actions and navigation.",
+  keywords: "Rails, UI Components, Button"
+) %>
 <% breadcrumb :ui_button %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Button" %>
-      <%= ui.header_subtitle "Button component for user actions and navigation." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/btn", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Button" %>
+    <%= ui.header_subtitle "Button component for user actions and navigation." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/btn", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="flex flex-col gap-2 mb-12">
-    <h2 class="h3">Basic Variants</h2>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("btn") %>
 
-    <%= ui.group sticky: false, class: "mb-4" do %>
-      <%= ui.btn "Default" %>
-      <%= ui.btn "Outline", variant: :outline %>
-      <%= ui.btn "Secondary", variant: :secondary %>
-      <%= ui.btn "Danger", variant: :danger %>
-      <%= ui.btn "Ghost", variant: :ghost %>
-      <%= ui.btn "Link", variant: :link %>
-    <% end %>
-
-    <pre><code>&lt;%= ui.btn "Default" %&gt;
-&lt;%= ui.btn "Outline", variant: :outline %&gt;
-&lt;%= ui.btn "Secondary", variant: :secondary %&gt;
-&lt;%= ui.btn "Danger", variant: :danger %&gt;
-&lt;%= ui.btn "Ghost", variant: :ghost %&gt;
-&lt;%= ui.btn "Link", variant: :link %&gt;</code></pre>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("btn") %>
   </section>
 
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Sizes</h2>
+  <%= render_props_table("btn") %>
 
-    <div class="flex flex-wrap items-end gap-1 mb-4">
-      <%= ui.btn "Button XS", size: :xs %>
-      <%= ui.btn "Button SM", size: :sm %>
-      <%= ui.btn "Button MD", size: :md %>
-      <%= ui.btn "Button LG", size: :lg %>
-    </div>
-
-    <pre><code>&lt;%= ui.btn "Button XS", size: :xs %&gt;
-&lt;%= ui.btn "Button SM", size: :sm %&gt;
-&lt;%= ui.btn "Button MD", size: :md %&gt;
-&lt;%= ui.btn "Button LG", size: :lg %&gt;</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">With Icons</h2>
-
-    <div class="flex flex-wrap items-end gap-1 mb-4">
-      <%= ui.btn size: :xs do %>
-        <%= ui.icon "user" %>
-        Default
-      <% end %>
-      <%= ui.btn size: :sm do %>
-        <%= ui.icon "user" %>
-        Default
-      <% end %>
-      <%= ui.btn size: :md do %>
-        <%= ui.icon "user" %>
-        Default
-      <% end %>
-      <%= ui.btn size: :lg do %>
-        <%= ui.icon "user" %>
-        Default
-      <% end %>
-    </div>
-    <pre><code>&lt;%= ui.btn size: :xs do %&gt;
-  &lt;%= ui.icon "user" %&gt;
-  Default
-&lt;% end %&gt;
-
-&lt;%= ui.btn size: :sm do %&gt;
-  &lt;%= ui.icon "user" %&gt;
-  Default
-&lt;% end %&gt;
-
-&lt;%= ui.btn size: :md do %&gt;
-  &lt;%= ui.icon "user" %&gt;
-  Default
-&lt;% end %&gt;
-
-&lt;%= ui.btn size: :lg do %&gt;
-  &lt;%= ui.icon "user" %&gt;
-  Default
-&lt;% end %&gt;
-</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Only Icon</h2>
-
-    <div class="flex flex-wrap items-end gap-1 mb-4">
-      <%= ui.btn ui.icon("user"), size: :icon_xs %>
-      <%= ui.btn ui.icon("user"), variant: :secondary, size: :icon_sm %>
-      <%= ui.btn ui.icon("user"), variant: :outline, size: :icon_md %>
-      <%= ui.btn ui.icon("user"), variant: :danger, size: :icon_lg %>
-      <%= ui.btn ui.icon("user"), variant: :ghost, size: :icon_lg %>
-      <%= ui.btn ui.icon("user"), variant: :link, size: :icon_lg %>
-    </div>
-
-    <pre><code>&lt;%= ui.btn ui.icon("user"), size: :icon_xs %&gt;
-&lt;%= ui.btn ui.icon("user"), variant: :secondary, size: :icon_sm %&gt;
-&lt;%= ui.btn ui.icon("user"), variant: :outline, size: :icon_md %&gt;
-&lt;%= ui.btn ui.icon("user"), variant: :danger, size: :icon_lg %&gt;
-&lt;%= ui.btn ui.icon("user"), variant: :ghost, size: :icon_lg %&gt;
-&lt;%= ui.btn ui.icon("user"), variant: :link, size: :icon_lg %&gt;</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">Special Styles</h2>
-
-    <div class="mb-4 space-y-3">
-      <div class="flex flex-wrap items-end gap-1 mb-4">
-        <%= ui.btn "Rounded", size: :sm, rounded: true %>
-        <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
-      </div>
-      <div class="flex flex-wrap items-end gap-1 mb-4">
-        <%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %>
-        <%= ui.btn ui.icon("user"), size: :icon_lg, rounded: true %>
-      </div>
-      <div>
-        <%= ui.btn block: true, size: :lg do %>
-          <%= ui.icon("user", size: 6) %>
-          Block Button
-        <% end %>
-      </div>
-    </div>
-
-    <pre><code>&lt;%= ui.btn "Rounded", size: :sm, rounded: true %&gt;
-&lt;%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %&gt;
-&lt;%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %&gt;
-&lt;%= ui.btn ui.icon("user"), size: :icon_lg, rounded: true %&gt;
-&lt;%= ui.btn block: true, size: :lg do %&gt;
-  &lt;%= ui.icon("user", size: 6) %&gt;
-  Block Button
-&lt;% end %&gt;</code></pre>
-  </section>
-
-  <section class="flex flex-col gap-2 my-12">
-    <h2 class="h3">As Links</h2>
-
-    <div class="mb-4 space-y-2">
-      <%= ui.btn "Link Button", url: "#" %>
-      <%= ui.btn "Link", url: "#", variant: :link %>
-      <%= ui.btn "Link Ghost", url: "#", variant: :ghost %>
-    </div>
-
-    <pre><code>&lt;%= ui.btn "Link Button", url: root_path %&gt;
-&lt;%= ui.btn "Link", url: root_path, variant: :link %&gt;
-&lt;%= ui.btn "Link Ghost", url: root_path, variant: :ghost %&gt;</code></pre>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("btn") %>
   </section>
 </article>

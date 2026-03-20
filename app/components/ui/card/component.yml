@@ -1,0 +1,199 @@
+name: Card
+description: Container component for displaying grouped content with optional header, body, and footer sections.
+
+preview: |
+  <%= ui.card do %>
+    <%= ui.card_header do %>
+      <%= ui.card_title "Card Title" %>
+      <%= ui.card_subtitle "Card subtitle" %>
+    <% end %>
+    <%= ui.card_body do %>
+      <p>This is the body content of the card.</p>
+    <% end %>
+    <%= ui.card_footer do %>
+      <%= ui.btn "Action" %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.card do %>
+    <%= ui.card_body do %>
+      Simple card content
+    <% end %>
+  <% end %>
+
+  <%= ui.card do %>
+    <%= ui.card_header do %>
+      <%= ui.card_title "Title" %>
+    <% end %>
+    <%= ui.card_body do %>
+      Card with header and body
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props: []
+
+slots:
+  - name: card_header
+    component: Ui::Card::HeaderComponent
+    description: Header section of the card with flexible layout options.
+    props:
+      - name: direction
+        type: Symbol
+        default: ":col"
+        values:
+          - ":col"
+          - ":row"
+        description: Layout direction of header content.
+
+      - name: align
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+        description: Vertical alignment of header content.
+
+      - name: justify
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+          - ":between"
+        description: Horizontal justification of header content.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a bottom border on the header.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: card_title
+    component: Ui::Card::TitleComponent
+    description: Styled title element for the card header.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: card_subtitle
+    component: Ui::Card::SubtitleComponent
+    description: Secondary text with muted styling for the card header.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: card_body
+    component: Ui::Card::BodyComponent
+    description: Main content area of the card.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: card_footer
+    component: Ui::Card::FooterComponent
+    description: Footer section of the card with flexible layout options.
+    props:
+      - name: direction
+        type: Symbol
+        default: ":row"
+        values:
+          - ":col"
+          - ":row"
+        description: Layout direction of footer content.
+
+      - name: align
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+        description: Vertical alignment of footer content.
+
+      - name: justify
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+          - ":between"
+        description: Horizontal justification of footer content.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a top border on the footer.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic Card
+    code: |
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Card Title" %>
+          <%= ui.card_subtitle "Card Subtitle" %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p>This is the body content of the card.</p>
+        <% end %>
+        <%= ui.card_footer do %>
+          <%= ui.btn "Action" %>
+        <% end %>
+      <% end %>
+
+  - name: Card without borders
+    code: |
+      <%= ui.card do %>
+        <%= ui.card_header align: :center, bordered: false do %>
+          <%= ui.card_title "Centered Title" %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p>Card content goes here...</p>
+        <% end %>
+        <%= ui.card_footer justify: :end, bordered: false do %>
+          <%= ui.btn "Action", variant: :secondary %>
+        <% end %>
+      <% end %>
+
+  - name: Header with Row Direction
+    code: |
+      <%= ui.card do %>
+        <%= ui.card_header direction: :row, justify: :between do %>
+          <%= ui.card_title "Title" %>
+          <%= ui.btn "Action", size: :sm %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p>Card content goes here...</p>
+        <% end %>
+      <% end %>
+
+  - name: Body Only Card
+    code: |
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-3 text-center" do %>
+          <%= ui.icon "information-circle", class: "mx-auto text-primary size-12" %>
+          <h3 class="text-lg font-semibold">Welcome!</h3>
+          <p class="text-gray-600">Thank you for joining our community.</p>
+          <%= ui.btn "Get Started", block: true, size: :lg %>
+        <% end %>
+      <% end %>

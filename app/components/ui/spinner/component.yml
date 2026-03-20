@@ -1,0 +1,41 @@
+name: Spinner
+description: Display a loading spinner indicator.
+
+preview: |
+  <%= ui.spinner %>
+
+usage: |
+  <%= ui.spinner %>
+  <%= ui.spinner size: 8 %>
+  <%= ui.spinner size: 10, class: "text-blue-500" %>
+
+accepts_html_attributes: true
+
+props:
+  - name: size
+    type: Integer
+    default: "6"
+    description: Size of the spinner in spacing units. Passed to the underlying icon component.
+
+examples:
+  - name: Default
+    code: |
+      <%= ui.spinner %>
+
+  - name: Different sizes
+    code: |
+      <%= ui.spinner size: 4 %>
+      <%= ui.spinner size: 6 %>
+      <%= ui.spinner size: 8 %>
+      <%= ui.spinner size: 10 %>
+
+  - name: With custom class
+    code: |
+      <%= ui.spinner size: 6, class: "text-blue-500" %>
+
+  - name: With Turbo Frame
+    description: "Use `spinner: true` to show a spinner while the frame is loading. Add `busy: true` to show the spinner immediately."
+    code: |
+      <%= turbo_frame_tag "loading_frame", spinner: true, busy: true, class: "h-40" do %>
+
+      <% end %>

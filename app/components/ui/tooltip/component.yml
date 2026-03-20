@@ -1,0 +1,68 @@
+name: Tooltip
+description: Display brief informational text when hovering over an element.
+
+preview: |
+  <%= ui.tooltip "Hover me", title: "Tooltip content", as: :btn %>
+
+usage: |
+  # <% As a button %>
+  <%= ui.tooltip "Hover me", title: "Tooltip text", as: :btn %>
+
+  # <% As a span (default) %>
+  <%= ui.tooltip title: "Help text" do %>
+    Hover over this text
+  <% end %>
+
+  # <% With placement %>
+  <%= ui.tooltip "Right tooltip", title: "Appears on right", as: :btn, placement: :right %>
+
+accepts_html_attributes: true
+
+props:
+  - name: title
+    type: String
+    required: true
+    description: The tooltip text to display on hover.
+
+  - name: as
+    type: Symbol
+    default: "nil"
+    description: Render as another UI component (e.g., `:btn`). If nil, renders as a span.
+
+  - name: placement
+    type: Symbol
+    default: ":top"
+    values:
+      - ":top"
+      - ":right"
+      - ":bottom"
+      - ":left"
+    description: Position of the tooltip relative to the target element.
+
+examples:
+  - name: Placements
+    description: Tooltips with different placement options.
+    code: |
+      <%= ui.group sticky: false do %>
+        <%= ui.tooltip "Top Tooltip", title: "Top Tooltip", as: :btn, placement: :top, variant: :secondary %>
+        <%= ui.tooltip "Right Tooltip", title: "Right Tooltip", as: :btn, placement: :right, variant: :danger %>
+        <%= ui.tooltip "Left Tooltip", title: "Left Tooltip", as: :btn, placement: :left %>
+        <%= ui.tooltip "Bottom Tooltip", title: "Bottom Tooltip", as: :btn, placement: :bottom %>
+      <% end %>
+
+  - name: Without Component
+    description: Using tooltip data attributes directly on any element.
+    code: |
+      <span>
+        Tooltip without component
+        <%= ui.icon "question-circle", size: 5, data: { controller: "tooltip", tooltip_content_value: "Without component" }, class: "cursor-help" %>
+      </span>
+
+  - name: With Button Variants
+    description: Tooltips on buttons with different variants.
+    code: |
+      <div class="flex gap-2">
+        <%= ui.tooltip "Default", title: "Default button tooltip", as: :btn %>
+        <%= ui.tooltip "Secondary", title: "Secondary button tooltip", as: :btn, variant: :secondary %>
+        <%= ui.tooltip "Outline", title: "Outline button tooltip", as: :btn, variant: :outline %>
+      </div>

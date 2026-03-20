@@ -1,0 +1,59 @@
+name: Avatar
+description: Display user profile images, initials, or placeholder icons.
+
+preview: |
+  <%= ui.avatar size: 12 %>
+
+usage: |
+  <%= ui.avatar %>
+  <%= ui.avatar user: current_user %>
+  <%= ui.avatar user: current_user, size: 16, variant: :rounded %>
+
+accepts_html_attributes: true
+
+props:
+  - name: user
+    type: Object
+    default: "nil"
+    description: User object with `full_name` and optionally `avatar` methods. When provided, displays user's avatar image or initials.
+
+  - name: size
+    type: Integer
+    default: "12"
+    description: Size of the avatar in spacing units. Sets both width and height.
+
+  - name: variant
+    type: Symbol
+    default: ":circle"
+    values:
+      - ":circle"
+      - ":rounded"
+      - ":square"
+    description: Shape of the avatar.
+
+examples:
+  - name: Default (no user)
+    code: |
+      <%= ui.avatar size: 8 %>
+      <%= ui.avatar size: 12 %>
+      <%= ui.avatar size: 16 %>
+      <%= ui.avatar size: 20 %>
+
+  - name: With user
+    code: |
+      <%= ui.avatar user: User.first, size: 8 %>
+      <%= ui.avatar user: User.first, size: 12 %>
+      <%= ui.avatar user: User.first, size: 16 %>
+      <%= ui.avatar user: User.first, size: 20 %>
+
+  - name: Rounded variant
+    code: |
+      <%= ui.avatar user: User.first, size: 8, variant: :rounded %>
+      <%= ui.avatar user: User.first, size: 12, variant: :rounded %>
+      <%= ui.avatar user: User.first, size: 16, variant: :rounded %>
+
+  - name: Square variant
+    code: |
+      <%= ui.avatar user: User.first, size: 8, variant: :square %>
+      <%= ui.avatar user: User.first, size: 12, variant: :square %>
+      <%= ui.avatar user: User.first, size: 16, variant: :square %>
