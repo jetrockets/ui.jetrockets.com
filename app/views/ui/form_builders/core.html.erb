@@ -1,36 +1,38 @@
-<%
-  set_meta_tags(
-    title: "Form Builder - Rails UI Components",
-    description: "Core Form Builder component.",
-    keywords: "Rails, UI Components, Form Builder"
-  )
-%>
+<% set_meta_tags(
+  title: "Core Form Builder - Rails UI Components",
+  description: "Rails form builder with just form fields. No error messages, no labels, no hints.",
+  keywords: "Rails, UI Components, Form Builder"
+) %>
 <% breadcrumb :ui_form_builders_core %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Core Form Builder" %>
-      <%= ui.header_subtitle "Rails form builder with just for form fields. No error messages, no labels, no hints." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/core_form_builder.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Core Form Builder" %>
+    <%= ui.header_subtitle "Rails form builder with just form fields. No error messages, no labels, no hints." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/core_form_builder.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <pre><code>&lt;%= form_with url: root_path, builder: FormBuilders::CoreFormBuilder do |f| %&gt;
+  &lt;%= f.text_field :name %&gt;
+  &lt;%= f.email_field :email %&gt;
+  &lt;%= f.submit "Save" %&gt;
+&lt;% end %&gt;</code></pre>
+  </section>
 
   <section class="flex flex-col gap-4">
     <h2 class="h3">Example</h2>
-    <%= ui.tabs do %>
-      <%= ui.tabs_item "Preview", href: ui_form_builders_core_path, active: !params[:code] %>
-      <%= ui.tabs_item "Code", href: ui_form_builders_core_path(code: true), active: params[:code] %>
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <%= render "ui/form_builders/examples/core_form_builder" %>
+      <% end %>
     <% end %>
 
-    <div class="flex flex-col gap-2">
-      <% unless params[:code] %>
-        <%= render "ui/form_builders/examples/core_form_builder" %>
-      <% else %>
-        <%= render_code_example("ui/form_builders/examples/_core_form_builder") %>
-      <% end %>
-    </div>
+    <pre><code><%= html_escape(File.read(Rails.root.join("app/views/ui/form_builders/examples/_core_form_builder.html.erb"))) %></code></pre>
   </section>
 </article>

@@ -10,7 +10,7 @@ module ComponentDocsHelper
     return nil if preview.blank? || preview == false
 
     ui.card do
-      ui.card_body class: "flex items-start" do
+      ui.card_body do
         render(inline: preview)
       end
     end
@@ -43,7 +43,7 @@ module ComponentDocsHelper
       concat content_tag(:h3, example["name"], class: "font-medium text-gray-900")
       if show_preview
         concat(ui.card do
-          ui.card_body class: "flex flex-wrap items-start gap-4" do
+          ui.card_body class: "flex flex-col gap-4" do
             render(inline: example["code"])
           end
         end)
@@ -112,8 +112,13 @@ module ComponentDocsHelper
   private
 
   def load_component_docs(component_name)
-    path = Rails.root.join("app/components/ui/#{component_name}/component.yml")
-    return nil unless File.exist?(path)
+    paths = [
+      Rails.root.join("app/components/ui/#{component_name}/component.yml"),
+      Rails.root.join("app/components/form_builders/#{component_name}/component.yml")
+    ]
+
+    path = paths.find { |p| File.exist?(p) }
+    return nil unless path
 
     YAML.safe_load(File.read(path))
   end

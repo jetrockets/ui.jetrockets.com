@@ -1,36 +1,38 @@
-<%
-  set_meta_tags(
-    title: "Form Builder - Rails UI Components",
-    description: "Form Builder component with enhanced form controls.",
-    keywords: "Rails, UI Components, Form Builder"
-  )
-%>
+<% set_meta_tags(
+  title: "Default Form Builder - Rails UI Components",
+  description: "Enhanced Rails form builder with automatic HTML structuring, labels, hints, and error handling.",
+  keywords: "Rails, UI Components, Form Builder"
+) %>
 <% breadcrumb :ui_form_builders_default %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Default Form Builder" %>
-      <%= ui.header_subtitle "Enhanced Rails form builder with automatic HTML structuring, with label, hint, error handling, consistent styling, and improved accessibility features." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/default_form_builder.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Default Form Builder" %>
+    <%= ui.header_subtitle "Enhanced Rails form builder with automatic HTML structuring, labels, hints, error handling, and improved accessibility." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/default_form_builder.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <pre><code>&lt;%= form_with url: root_path do |f| %&gt;
+  &lt;%= f.text_field :name %&gt;
+  &lt;%= f.email_field :email, hint: "We'll never share your email" %&gt;
+  &lt;%= f.submit "Save" %&gt;
+&lt;% end %&gt;</code></pre>
+  </section>
 
   <section class="flex flex-col gap-4">
     <h2 class="h3">Example</h2>
-    <%= ui.tabs do %>
-      <%= ui.tabs_item "Preview", href: ui_form_builders_default_path, active: !params[:code] %>
-      <%= ui.tabs_item "Code", href: ui_form_builders_default_path(code: true), active: params[:code] %>
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <%= render "ui/form_builders/examples/default_form_builder" %>
+      <% end %>
     <% end %>
 
-    <div class="flex flex-col gap-2">
-      <% unless params[:code] %>
-        <%= render "ui/form_builders/examples/default_form_builder" %>
-      <% else %>
-        <%= render_code_example("ui/form_builders/examples/_default_form_builder") %>
-      <% end %>
-    </div>
+    <pre><code><%= html_escape(File.read(Rails.root.join("app/views/ui/form_builders/examples/_default_form_builder.html.erb"))) %></code></pre>
   </section>
 </article>

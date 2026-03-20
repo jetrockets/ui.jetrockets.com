@@ -1,160 +1,32 @@
-<%
-  set_meta_tags(
-    title: "TextField Examples - Rails UI Components",
-    description: "TextField examples using DefaultFormBuilder with various field types, sizes, states, and validation examples.",
-    keywords: "Rails, UI Components, Form Builder, TextField"
-  )
-%>
+<% set_meta_tags(
+  title: "TextField - Rails UI Components",
+  description: "Text input fields with support for various HTML5 types, sizes, labels, hints, and validation.",
+  keywords: "Rails, UI Components, Form Builder, TextField"
+) %>
 <% breadcrumb :ui_form_builders_text_field %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title do %>Rails <code class="px-1 text-3xl bg-yellow-100">text_field</code> examples<% end %>
-      <%= ui.header_subtitle "Comprehensive examples of text field types, sizes, states, and validation using DefaultFormBuilder." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/text.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "TextField" %>
+    <%= ui.header_subtitle "Text input fields with support for various HTML5 types, sizes, labels, hints, and validation." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/text.rb", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="mb-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>TextField types<% end %>
-        <%= ui.card_subtitle do %>It supports all HTML5 input types<% end %>
-      <% end %>
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("text_field") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_field :first_name, required: true %>
-          <%= f.email_field :email, autocomplete: "email" %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
-          <%= f.phone_field :phone, placeholder: "+1 (555) 123-4567" %>
-          <%= f.submit %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :first_name, required: true %&gt;
-&lt;%= f.email_field :email, autocomplete: "email" %&gt;
-&lt;%= f.password_field :password, autocomplete: "current-password" %&gt;
-&lt;%= f.phone_field :phone, placeholder: "+1 (555) 123-4567" %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("text_field") %>
   </section>
 
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>TextField sizes<% end %>
-      <% end %>
+  <%= render_props_table("text_field") %>
 
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_field :large_field, size: :lg %>
-          <%= f.text_field :default_field %>
-          <%= f.text_field :small_field, size: :sm %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :large_field, size: :lg %&gt;
-&lt;%= f.text_field :default_field %&gt;
-&lt;%= f.text_field :small_field, size: :sm %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Label customization<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_field :custom_label, label: "Custom Label Text" %>
-          <%= f.text_field :no_label, label: false, placeholder: "Field without label" %>
-          <%= f.text_field :default_label %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :custom_label, label: "Custom Label Text" %&gt;
-&lt;%= f.text_field :no_label, label: false, placeholder: "Field without label" %&gt;
-&lt;%= f.text_field :default_label %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Hint messages<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_field :password, label: "Password", hint: "Must be at least 8 characters long" %>
-          <%= f.email_field :email, hint: "We'll never share your email with anyone else" %>
-          <%= f.text_field :username, hint: "Choose a unique username that represents you" %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :password, hint: "Must be at least 8 characters long" %&gt;
-&lt;%= f.email_field :email, hint: "We'll never share your email with anyone else" %&gt;
-&lt;%= f.text_field :username, hint: "Choose a unique username that represents you" %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Disabled State<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_field :disabled_field, value: "Disabled", disabled: true %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;%= f.text_field :disabled_field, value: "Disabled", disabled: true %&gt;</code></pre>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="my-12">
-    <%= ui.card do %>
-      <%= ui.card_header align: :left do %>
-        <%= ui.card_title do %>Validation<% end %>
-      <% end %>
-
-      <%= ui.card_body do %>
-        <% user = User.new %>
-        <% user.errors.add(:first_name, "is required") %>
-        <%= form_with model: user, url: root_path do |f| %>
-          <%= f.text_field :first_name, label: "Active Record Validations" %>
-        <% end %>
-
-        <%= form_with url: root_path do |f| %>
-          <%= f.text_field :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
-        <% end %>
-      <% end %>
-
-      <%= ui.card_footer do %>
-        <pre class="w-full"><code>&lt;!-- Active Record Validations works automatically --&gt;
-&lt;%= form_with model: @user, url: root_path do |f| %&gt;
-  &lt;%= f.text_field :first_name %&gt;
-&lt;% end %&gt;
-
-&lt;!-- You are able to add custom error messages --&gt;
-&lt;%= f.text_field :manual_error_field, error: "This field has a custom error" %&gt;</code></pre>
-      <% end %>
-    <% end %>
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("text_field") %>
   </section>
 </article>

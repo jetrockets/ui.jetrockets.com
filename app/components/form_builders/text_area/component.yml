@@ -1,0 +1,81 @@
+name: TextArea
+description: Textarea for multi-line text input with auto-grow functionality and hint support.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.text_area :bio, placeholder: "Enter your bio..." %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.text_area :bio %>
+    <%= f.text_area :comment, rows: 5 %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: rows
+    type: Integer
+    default: "3"
+    description: Number of visible text lines.
+
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the field.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the field.
+
+examples:
+  - name: Basic Text Area
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_area :bio %>
+        <%= f.text_area :comment, placeholder: "5 rows by default", rows: 5 %>
+      <% end %>
+
+  - name: Label customization
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_area :custom_label, label: "Custom Label Text" %>
+        <%= f.text_area :no_label, label: false, placeholder: "Field without label" %>
+      <% end %>
+
+  - name: Hint message
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_area :bio, hint: "Max 500 characters" %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_area :disabled_field, value: "This text area is disabled", disabled: true %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:bio, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.text_area :bio, label: "Active Record Validations" %>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <%= f.text_area :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
+      <% end %>

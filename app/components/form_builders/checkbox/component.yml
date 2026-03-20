@@ -1,0 +1,99 @@
+name: Checkbox
+description: Enhanced checkbox field with consistent styling, hint support, and improved accessibility.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.group class: "form__checkbox_collection" do %>
+      <%= f.check_box :newsletter %>
+      <%= f.check_box :free_shipping, checked: true %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.check_box :newsletter %>
+    <%= f.check_box :terms, checked: true %>
+    <%= f.check_boxes_collection(:country_id, countries, :id, :name) %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the checkbox.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: checked
+    type: Boolean
+    default: "false"
+    description: Pre-check the checkbox.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the checkbox.
+
+examples:
+  - name: Basic Checkbox
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.group class: "form__checkbox_collection" do %>
+          <%= f.check_box :newsletter %>
+          <%= f.check_box :free_shipping, checked: true %>
+        <% end %>
+      <% end %>
+
+  - name: CheckBox Collection
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.check_boxes_collection(:country_id, ISO3166::Country.find_all_countries_by_subregion("Northern America"), :alpha2, :common_name) %>
+      <% end %>
+
+  - name: Label customization
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.group class: "form__checkbox_collection" do %>
+          <%= f.check_box :custom_label, label: "Custom Label Text" %>
+          <%= f.check_box :with_link, label: "I agree to the #{link_to 'terms and conditions', '#', class: 'link'}".html_safe %>
+          <%= f.check_box :default_label %>
+        <% end %>
+      <% end %>
+
+  - name: Hint messages
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.check_box :receive_mails, hint: "Receive marketing emails" %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.group class: "form__checkbox_collection" do %>
+          <%= f.check_box :disabled_checkbox, disabled: true %>
+          <%= f.check_box :disabled_checkbox_checked, checked: true, disabled: true %>
+        <% end %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:terms_and_conditions, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.check_box :terms_and_conditions, label: "I agree to the terms and conditions" %>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <%= f.check_box :custom_error, error: "Custom error" %>
+      <% end %>

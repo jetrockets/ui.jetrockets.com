@@ -1,0 +1,127 @@
+name: Easepick
+description: Enhanced date picker field with powerful calendar functionality using the Easepick library.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.easepick :birthday %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.easepick :birthday %>
+    <%= f.easepick :appointment, data: { easepick_plugins: ["LockPlugin"] } %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of the date picker field.
+
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the field.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the field.
+
+  - name: "data-easepick_plugins"
+    type: Array
+    default: "[]"
+    description: "Easepick plugins to enable (e.g., LockPlugin, AmpPlugin)."
+
+  - name: "data-easepick_lock_min_date"
+    type: Date
+    default: "nil"
+    description: Minimum selectable date (requires LockPlugin).
+
+  - name: "data-easepick_amp_dropdown"
+    type: Hash
+    default: "nil"
+    description: "AmpPlugin dropdown configuration (months, years, minYear, maxYear)."
+
+examples:
+  - name: Basic Date Picker
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :birthday %>
+      <% end %>
+
+  - name: Easepick sizes
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :large_field, size: :lg %>
+        <%= f.easepick :default_field %>
+        <%= f.easepick :small_field, size: :sm %>
+      <% end %>
+
+  - name: Label customization
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :custom_label, label: "Custom Label Text" %>
+        <%= f.easepick :no_label, label: false %>
+      <% end %>
+
+  - name: Hint message
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :birthday_with_hint, hint: "Select your birth date" %>
+      <% end %>
+
+  - name: Date Picker with Plugins
+    description: Use plugins to extend functionality like date restrictions and dropdowns.
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :future_date, data: {
+          easepick_plugins: ["LockPlugin"],
+          easepick_lock_min_date: Date.current
+        }, hint: "Future dates only" %>
+
+        <%= f.easepick :appointment, data: {
+          easepick_plugins: ["LockPlugin", "AmpPlugin"],
+          easepick_amp_dropdown: {
+            months: true,
+            years: true,
+            maxYear: Time.zone.today.year + 2,
+            minYear: Time.zone.today.year
+          }
+        }, hint: "Select appointment date", required: true %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :disabled_field, value: Date.current, disabled: true %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:last_name, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.easepick :last_name, label: "Birthday" %>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <%= f.easepick :with_custom_error, error: "This field has a custom error" %>
+      <% end %>
