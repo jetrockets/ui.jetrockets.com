@@ -40,9 +40,6 @@
         <%= link_to "Button", ui_button_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_button_path)}" %>
       </li>
       <li>
-        <%= link_to "Button Group", ui_button_group_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_button_group_path)}" %>
-      </li>
-      <li>
         <%= link_to "Card", ui_card_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_card_path)}" %>
       </li>
       <li>
@@ -59,6 +56,9 @@
       </li>
       <li>
         <%= link_to "Flash Message", ui_flash_message_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_flash_message_path)}" %>
+      </li>
+      <li>
+        <%= link_to "Group", ui_group_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_group_path)}" %>
       </li>
       <li>
         <%= link_to "Icon", ui_icon_path, class: "sidebar__link #{'sidebar__link--active' if current_page?(ui_icon_path)}" %>

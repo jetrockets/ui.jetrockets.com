@@ -1,4 +1,4 @@
-class Ui::BtnGroup::Component < ApplicationComponent
+class Ui::Group::Component < ApplicationComponent
   def initialize(sticky: true, **options)
     @sticky = sticky
     @options = options
@@ -12,8 +12,8 @@ class Ui::BtnGroup::Component < ApplicationComponent
 
   def classes
     class_names(
-      "btn_group",
-      { "btn_group-sticky": @sticky },
+      "ui_group",
+      { "ui_group-sticky": @sticky },
       @options.delete(:class),
     )
   end

@@ -4,7 +4,7 @@ class Ui::Empty::ActionsComponent < ApplicationComponent
   end
 
   def call
-    helpers.ui.btn_group(content, class: classes, sticky: false, **@options)
+    helpers.ui.group(content, class: classes, sticky: false, **@options)
   end
 
   private

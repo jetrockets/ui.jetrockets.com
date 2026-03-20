@@ -1,11 +1,11 @@
 @reference "~/entrypoints/tailwind.css";
 
 @layer components {
-  .btn_group {
+  .ui_group {
     @apply inline-flex items-center gap-2;
   }
 
-  .btn_group-sticky {
+  .ui_group-sticky {
     @apply gap-0;
 
     /* First element */

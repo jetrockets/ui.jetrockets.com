@@ -41,8 +41,8 @@ crumb :ui_button do
   link "Button", ui_button_path
 end
 
-crumb :ui_button_group do
-  link "Button Group", ui_button_group_path
+crumb :ui_group do
+  link "Group", ui_group_path
 end
 
 crumb :ui_card do

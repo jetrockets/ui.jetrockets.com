@@ -21,7 +21,7 @@ class UiController < ApplicationController
   def button
   end
 
-  def button_group
+  def group
   end
 
   def card

@@ -17,7 +17,7 @@
         <%= ui.table_td number_to_currency(1200), class: "whitespace-nowrap" %>
         <%= ui.table_td I18n.l(Time.zone.now, format: :full_month), class: "whitespace-nowrap" %>
         <%= ui.table_td(actions: true) do %>
-          <%= ui.btn_group do %>
+          <%= ui.group do %>
             <%= ui.btn "Show", size: :sm, variant: :outline %>
             <%= ui.btn "Edit", size: :sm, variant: :outline %>
           <% end %>
@@ -53,7 +53,7 @@
         <%= ui.table_td number_to_currency(1200), class: "whitespace-nowrap" %>
         <%= ui.table_td I18n.l(Time.zone.now, format: :full_month), class: "whitespace-nowrap" %>
         <%= ui.table_td(actions: true) do %>
-          <%= ui.btn_group do %>
+          <%= ui.group do %>
             <%= ui.btn "Show", size: :xs, variant: :outline %>
             <%= ui.btn "Edit", size: :xs, variant: :outline %>
           <% end %>

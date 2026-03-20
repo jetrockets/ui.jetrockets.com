@@ -1,4 +1,4 @@
-<%= ui.btn_group sticky: false do %>
+<%= ui.group sticky: false do %>
   <%= link_to "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" do %>
     <%= ui.icon "github", class: "mr-2 size-7" %>
     <span class="sr-only">GitHub</span>
@@ -16,7 +16,7 @@
       <% end %>
     <% end %>
   <% else %>
-    <%= ui.btn_group sticky: false, class: "hidden" do %>
+    <%= ui.group sticky: false, class: "hidden" do %>
       <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :ghost, data: { turbo_frame: :modal } %>
       <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
     <% end %>

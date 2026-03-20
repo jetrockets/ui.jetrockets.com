@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-4">
-  <%= ui.btn_group do %>
+  <%= ui.group do %>
     <%= ui.btn "Button First", variant: :outline %>
 
     <%= ui.dropdown do %>
@@ -16,21 +16,20 @@
     <% end %>
   <% end %>
 
-  <%= ui.btn_group sticky: false do %>
+  <%= ui.group sticky: false do %>
     <%= ui.btn "Button With Gap", variant: :outline %>
     <%= ui.btn "Button With Gap", variant: :outline %>
     <%= ui.btn "Button With Gap", variant: :outline %>
   <% end %>
 
-  <%= ui.btn_group do %>
+  <%= ui.group do %>
     <%= ui.btn "Button First" %>
     <%= ui.btn "Button Second" %>
     <%= ui.btn "Button Third"  %>
   <% end %>
 
-  <%= ui.btn_group do %>
-    <%= ui.btn "Button First", variant: :secondary, rounded: true %>
-    <%= ui.btn "Button Second", variant: :secondary, rounded: true %>
-    <%= ui.btn "Button Third", variant: :secondary, rounded: true %>
+  <%= ui.group do %>
+    <input id="" type="text" class="form__field">
+    <%= ui.btn "Search", variant: :outline %>
   <% end %>
 </div>

@@ -1,9 +1,4 @@
-class Ui::Empty::IconComponent < ApplicationComponent
-  def initialize(name: nil, **options)
-    @name = name
-    @options = options
-  end
-
+class Ui::Empty::IconComponent < Ui::Icon::Component
   def call
     content_tag :div, class: classes, **@options do
       helpers.ui.icon(@name || content, size: 6)
