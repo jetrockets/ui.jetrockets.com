@@ -10,6 +10,17 @@ module ApplicationHelper
     class_names("body", @body_class)
   end
 
+  # Override turbo_frame_tag to include a spinner when the :spinner option is provided
+  def turbo_frame_tag(*ids, src: nil, target: nil, **attributes, &block)
+    content = super do
+      concat(capture(&block)) if block
+      if attributes.key?(:spinner)
+        concat(content_tag(:div, nil, class: "turbo_frame_spinner", tabindex: "-1"))
+      end
+    end
+    content
+  end
+
   # Picture tag
   def vite_asset_exists?(logical_path)
     File.exist?(Rails.root.join("app/assets", logical_path))

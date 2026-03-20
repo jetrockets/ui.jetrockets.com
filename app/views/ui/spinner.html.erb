@@ -1,0 +1,52 @@
+<%
+  set_meta_tags(
+    title: "Spinner - Rails UI Components",
+    description: "Spinner component for loading indicators.",
+    keywords: "Rails, UI Components, Spinner, Loading Indicator, Turbo Frame"
+  )
+%>
+<% breadcrumb :ui_spinner %>
+
+<article>
+  <header class="header">
+    <div class="header__heading">
+      <h1 class="header__title">Spinner</h1>
+      <p class="header__subtitle">
+        Spinner component for loading indicators.
+      </p>
+    </div>
+
+    <div class="header__actions">
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/spinner", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+    </div>
+  </header>
+
+  <section class="flex flex-col gap-2 mb-12">
+    <h2 class="h3">Basic Usage</h2>
+    <div class="flex items-center gap-4">
+      <%= ui.spinner size: 8 %>
+      <%= ui.spinner %>
+      <%= ui.spinner size: 4 %>
+    </div>
+
+    <pre class="w-full"><code>&lt;%= ui.spinner size: 8 %&gt;
+&lt;%= ui.spinner %&gt;
+&lt;%= ui.spinner size: 4 %&gt;</code></pre>
+  </section>
+
+
+  <section class="flex flex-col gap-2 mb-12">
+    <h2 class="h3">Turbo frame Usage</h2>
+    <%= ui.alert variant: :warning, class: "gap-2" do %>
+        <%= ui.alert__title "You can use the spinner in a turbo frame to indicate that the frame is busy loading content." %>
+        <pre class="w-full"><code>&lt;%= turbo_frame_tag :ui_spinner, spinner: true do %&gt;
+  &lt;!-- Your content here --&gt;
+&lt;% end %&gt;</code></pre>
+      <%= ui.alert__description "Every time the turbo frame is `busy`, the spinner will be displayed. Once the content is loaded, the spinner will disappear." %>
+    <% end %>
+
+    <%= turbo_frame_tag :ui_spinner, busy: true, spinner: true, class: "w-full h-80 bg-gray-50" do %>
+
+    <% end %>
+  </section>
+</article>

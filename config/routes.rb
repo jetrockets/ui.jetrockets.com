@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get "modal"
     get "pagy"
     get "popover"
+    get "spinner"
     get "table"
     get "tabs"
     get "tooltip"

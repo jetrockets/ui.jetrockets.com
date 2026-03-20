@@ -18,7 +18,7 @@
     @apply block px-3 py-1.5 text-gray-500 font-medium rounded-lg hover:text-black;
   }
 
-  .sidebar__link--active {
+  .sidebar__link-active {
     @apply bg-gray-100 font-semibold text-black;
   }
 

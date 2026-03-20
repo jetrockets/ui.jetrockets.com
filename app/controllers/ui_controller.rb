@@ -51,6 +51,9 @@ class UiController < ApplicationController
   def modal
   end
 
+  def spinner
+  end
+
   def pagy
   end
 

@@ -125,6 +125,10 @@ crumb :ui_popover do
   link "Popover", ui_popover_path
 end
 
+crumb :ui_spinner do
+  link "Spinner", ui_spinner_path
+end
+
 crumb :ui_table do
   link "Table", ui_table_path
 end

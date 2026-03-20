@@ -7,6 +7,7 @@
 @import "../stylesheets/components/header";
 @import "../stylesheets/components/link";
 @import "../stylesheets/components/sidebar";
+@import "../stylesheets/components/turbo_frame_spinner";
 @import "../stylesheets/components/submit";
 @import "../stylesheets/components/scroller";
 @import "../stylesheets/components/typography";
