@@ -1,0 +1,20 @@
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Page Title" %>
+    <%= ui.header_subtitle "A brief description of the page content." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "Primary Action" %>
+    <%= ui.btn "Secondary", variant: :secondary %>
+  <% end %>
+<% end %>
+
+<%= ui.header bordered: true do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Bordered Header" %>
+    <%= ui.header_subtitle "Header with a bottom border separator." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "Action", variant: :outline %>
+  <% end %>
+<% end %>

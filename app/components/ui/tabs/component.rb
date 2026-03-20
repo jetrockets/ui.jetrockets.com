@@ -1,10 +1,14 @@
 class Ui::Tabs::Component < ApplicationComponent
-  def initialize(**options)
+  VARIANTS = %i[pill underline].freeze
+  DEFAULT_VARIANT = :pill
+
+  def initialize(variant: DEFAULT_VARIANT, **options)
+    @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
     @options = options
   end
 
   erb_template <<~ERB
-    <div class="tabs">
+    <div class="<%= wrapper_classes %>">
       <ul class="<%= classes %>">
         <%= content %>
       </ul>
@@ -12,6 +16,13 @@ class Ui::Tabs::Component < ApplicationComponent
   ERB
 
   private
+
+  def wrapper_classes
+    class_names(
+      "tabs",
+      { "tabs-underline": @variant == :underline }
+    )
+  end
 
   def classes
     class_names(

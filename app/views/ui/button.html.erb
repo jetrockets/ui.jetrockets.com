@@ -8,18 +8,15 @@
 <% breadcrumb :ui_button %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Button</h1>
-      <p class="header__subtitle">
-        Button component for user actions and navigation.
-      </p>
-    </div>
-
-    <div class="header__actions">
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Button" %>
+      <%= ui.header_subtitle "Button component for user actions and navigation." %>
+    <% end %>
+    <%= ui.header_actions do %>
       <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/btn", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
   <section class="flex flex-col gap-2 mb-12">
     <h2 class="h3">Basic Variants</h2>

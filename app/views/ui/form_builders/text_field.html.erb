@@ -8,18 +8,15 @@
 <% breadcrumb :ui_form_builders_text_field %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Rails <code class="px-1 text-3xl bg-yellow-100">text_field</code> examples</h1>
-      <p class="header__subtitle">
-        Comprehensive examples of text field types, sizes, states, and validation using DefaultFormBuilder.
-      </p>
-    </div>
-
-    <div class="header__actions">
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title do %>Rails <code class="px-1 text-3xl bg-yellow-100">text_field</code> examples<% end %>
+      <%= ui.header_subtitle "Comprehensive examples of text field types, sizes, states, and validation using DefaultFormBuilder." %>
+    <% end %>
+    <%= ui.header_actions do %>
       <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/text.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
   <section class="mb-12">
     <%= ui.card do %>

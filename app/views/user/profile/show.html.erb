@@ -7,14 +7,12 @@
 <% breadcrumb :profile %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Your Profile</h1>
-      <p class="header__subtitle">
-        Manage your profile and settings.
-      </p>
-    </div>
-  </header>
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Your Profile" %>
+      <%= ui.header_subtitle "Manage your profile and settings." %>
+    <% end %>
+  <% end %>
 
   <section class="max-w-xl mx-auto">
     <%= render "user/profile/form", user: current_user %>

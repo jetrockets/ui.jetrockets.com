@@ -69,6 +69,10 @@ crumb :ui_flash_message do
   link "Flash Message", ui_flash_message_path
 end
 
+crumb :ui_header do
+  link "Header", ui_header_path
+end
+
 crumb :ui_form_builders_core do
   link "Core Form Builder", ui_form_builders_core_path
 end

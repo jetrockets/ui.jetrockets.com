@@ -8,18 +8,15 @@
 <% breadcrumb :ui_card %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Card</h1>
-      <p class="header__subtitle">
-        Card component for displaying grouped content.
-      </p>
-    </div>
-
-    <div class="header__actions">
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Card" %>
+      <%= ui.header_subtitle "Card component for displaying grouped content." %>
+    <% end %>
+    <%= ui.header_actions do %>
       <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/card", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
   <section class="flex flex-col gap-2 mb-12">
     <h2 class="h3">Basic Card</h2>

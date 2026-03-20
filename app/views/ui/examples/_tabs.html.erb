@@ -1,6 +1,29 @@
-<%= ui.tabs do %>
-  <%= ui.tabs_item(title: "Profile", href: "#", icon: "information-circle") %>
-  <%= ui.tabs_item(title: "Dashboard", href: "#", active: true, icon: "information-circle") %>
-  <%= ui.tabs_item(title: "Settings", href: "#", icon: "information-circle") %>
-  <%= ui.tabs_item(title: "Contacts", href: "#", icon: "information-circle") %>
-<% end %>
+<div class="flex flex-col gap-6">
+  <div>
+    <h3 class="h4 mb-2">Pill (default)</h3>
+    <%= ui.tabs do %>
+      <%= ui.tabs_item "Tab 1", href: "#", active: true %>
+      <%= ui.tabs_item "Tab 2", href: "#" %>
+      <%= ui.tabs_item "Tab 3", href: "#" %>
+    <% end %>
+  </div>
+
+  <div>
+    <h3 class="h4 mb-2">Pill with icons</h3>
+    <%= ui.tabs do %>
+      <%= ui.tabs_item "Profile", href: "#", icon: "user" %>
+      <%= ui.tabs_item "Settings", href: "#", icon: "user", active: true %>
+      <%= ui.tabs_item "Notifications", href: "#", icon: "user" %>
+    <% end %>
+  </div>
+
+  <div>
+    <h3 class="h4">Underline</h3>
+    <%= ui.tabs variant: :underline do %>
+      <%= ui.tabs_item "Profile", href: "#", active: true %>
+      <%= ui.tabs_item "Dashboard", href: "#" %>
+      <%= ui.tabs_item "Settings", href: "#" %>
+      <%= ui.tabs_item "Contacts", href: "#" %>
+    <% end %>
+  </div>
+</div>

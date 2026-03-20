@@ -2,24 +2,37 @@
 
 @layer components {
   .tabs {
-    @apply overflow-x-auto;
+    @apply overflow-x-auto mb-4;
   }
 
+  /* Pill variant (default) */
   .tabs__list {
-    @apply flex gap-6 text-sm text-center list-none border-b border-gray-200 gap-y-2;
-  }
-
-  .tabs__item {
-    @apply md:-mb-px;
+    @apply inline-flex gap-1 p-1 text-sm list-none bg-gray-100 rounded-lg;
   }
 
   .tabs__link {
-    @apply inline-flex items-center gap-2 py-4 text-gray-600 border-b-2 border-transparent rounded-t-lg w-max;
-    @apply hover:text-gray-800 hover:border-gray-300;
-    @apply focus:outline-none focus:border-primary/50 focus:text-primary/50;
+    @apply inline-flex items-center gap-2 px-3 py-1.5 font-medium text-gray-500 rounded-md transition-colors;
+    @apply hover:text-gray-700;
+    @apply focus:outline-none focus-visible:ring-2 focus:ring-gray-200;
   }
 
   .tabs__link-active {
-    @apply text-blue-600 hover:text-blue-600 border-blue-600 hover:border-blue-600
+    @apply text-gray-900 bg-white shadow-sm;
+    @apply hover:text-gray-900;
+  }
+
+  /* Underline variant */
+  .tabs-underline .tabs__list {
+    @apply w-full gap-6 p-0 bg-transparent rounded-none border-b border-gray-200;
+  }
+
+  .tabs-underline .tabs__link {
+    @apply px-0 py-4 rounded-none border-b-2 border-transparent -mb-px;
+    @apply hover:text-gray-800 hover:border-gray-300;
+  }
+
+  .tabs-underline .tabs__link-active {
+    @apply text-blue-600 bg-transparent shadow-none border-blue-600;
+    @apply hover:text-blue-600 hover:border-blue-600;
   }
 }

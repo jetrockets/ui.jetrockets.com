@@ -45,6 +45,9 @@ class UiController < ApplicationController
   def default_form_builder
   end
 
+  def header
+  end
+
   def icon
   end
 

@@ -8,20 +8,19 @@
 <% breadcrumb :ui_form_builders_choices %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Modern Rails <code class="px-1 text-3xl bg-yellow-100">select</code></h1>
-      <p class="header__subtitle">
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title do %>Modern Rails <code class="px-1 text-3xl bg-yellow-100">select</code><% end %>
+      <%= ui.header_subtitle do %>
         Enhanced select field with search functionality, multiple selection support, and custom options using
         <%= link_to "Choices.js", "https://github.com/Choices-js/Choices", class: "link", target: "_blank", rel: "noopener noreferrer" %>
         library. There are a lot of options available to customize the behavior and appearance of the select field.
-      </p>
-    </div>
-
-    <div class="header__actions">
+      <% end %>
+    <% end %>
+    <%= ui.header_actions do %>
       <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/lib/form_builders/fields/choices.rb", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
   <section class="mb-12">
     <%= ui.card do %>

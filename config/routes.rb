@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get "empty"
     get "flash_message"
     get "group"
+    get "header"
     get "icon"
     get "modal"
     get "pagy"

@@ -7,7 +7,8 @@
       <%= label_tag :user_avatar do %>
         <%= form.hidden_field :avatar, value: form.object.cached_avatar_data, id: nil %>
         <%= form.file_field :avatar, class: "avatar__input", hidden: true, accept: "image/*", data: { action: "change->autosave#save" } %>
-        <button type="button" class="btn btn-primary btn-outlined btn-sm submit">
+
+        <%= ui.btn class: "submit" do %>
           <span class="submit__btn">
             Upload a photo
           </span>
@@ -15,7 +16,7 @@
             <%= ui.icon "spinner", size: 5, class: "animate-spin" %>
             <span>Uploading…</span>
           </span>
-        </button>
+        <% end %>
         <%#= inline_errors_for(form.object, :avatar) %>
       <% end %>
     <% end %>

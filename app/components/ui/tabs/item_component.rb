@@ -1,6 +1,5 @@
 class Ui::Tabs::ItemComponent < ApplicationComponent
-  def initialize(title:, href:, icon: nil, active: false, **options)
-    @title = title
+  def initialize(href:, icon: nil, active: false, **options)
     @href = href
     @icon = icon
     @active = active
@@ -13,7 +12,7 @@ class Ui::Tabs::ItemComponent < ApplicationComponent
         <% if @icon %>
           <%= helpers.ui.icon(@icon, size: 4) %>
         <% end %>
-        <%= @title %>
+        <%= content %>
       <% end %>
     </li>
   ERB

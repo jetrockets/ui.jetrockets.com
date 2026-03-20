@@ -8,14 +8,12 @@
 <% breadcrumb :ui_getting_started %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Getting Started</h1>
-      <p class="header__subtitle">
-        Learn how to install, use, and customize Rails UI components in your projects.
-      </p>
-    </div>
-  </header>
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Getting Started" %>
+      <%= ui.header_subtitle "Learn how to install, use, and customize Rails UI components in your projects." %>
+    <% end %>
+  <% end %>
 
   <section class="flex flex-col gap-4 mb-12">
     <h2 class="mt-0 h2">Requirements</h2>

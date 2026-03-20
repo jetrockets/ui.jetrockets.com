@@ -8,28 +8,24 @@
 <% breadcrumb :ui_flash_message %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Flash message</h1>
-      <p class="header__subtitle">
-        Display brief notifications to users.
-      </p>
-    </div>
-
-    <div class="header__actions">
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Flash message" %>
+      <%= ui.header_subtitle "Display brief notifications to users." %>
+    <% end %>
+    <%= ui.header_actions do %>
       <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/flash", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
-  <section>
-    <div class="flex flex-col gap-4 mb-12">
+  <section class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4">
       <%= ui.alert title: "To use the Flash Message component, you need to render it in your layout", variant: :warning %>
       <pre><code>&lt;%= ui.flash %&gt;</code></pre>
     </div>
 
     <h2 class="h3">Example</h2>
-
-    <div class="flex flex-col gap-2 mt-6">
+    <div class="flex flex-col gap-2">
       <%= render "ui/examples/flash" %>
       <%= render_code_example("ui/examples/_flash") %>
     </div>

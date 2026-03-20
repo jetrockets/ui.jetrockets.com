@@ -8,14 +8,12 @@
 <% breadcrumb :ui %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Rails UI Components</h1>
-      <p class="header__subtitle">
-        A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
-      </p>
-    </div>
-  </header>
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Rails UI Components" %>
+      <%= ui.header_subtitle "A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects." %>
+    <% end %>
+  <% end %>
 
   <section class="flex flex-col gap-4 mb-12">
     <h2 class="h2">Key Technologies</h2>

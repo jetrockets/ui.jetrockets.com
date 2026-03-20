@@ -8,18 +8,15 @@
 <% breadcrumb :ui_form_builders_text_area %>
 
 <article>
-  <header class="header">
-    <div class="header__heading">
-      <h1 class="header__title">Rails <code class="px-1 text-3xl bg-yellow-100">text_area</code> examples</h1>
-      <p class="header__subtitle">
-        Textarea allows users to enter text in multiple lines. It supports auto-grow functionality and hint messages.
-      </p>
-    </div>
-
-    <div class="header__actions">
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title do %>Rails <code class="px-1 text-3xl bg-yellow-100">text_area</code> examples<% end %>
+      <%= ui.header_subtitle "Textarea allows users to enter text in multiple lines. It supports auto-grow functionality and hint messages." %>
+    <% end %>
+    <%= ui.header_actions do %>
       <%= link_to "View on GitHub", "https://github.com/jetrockets/ui.jetrockets.com/blob/88b28989cabce140900dbf5d39b8a5540532e975/app/lib/form_builders/core_form_builder.rb#L18", class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
   <section class="mb-12">
     <%= ui.card do %>
