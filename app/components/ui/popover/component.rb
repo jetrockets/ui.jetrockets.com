@@ -5,7 +5,7 @@ class Ui::Popover::Component < ApplicationComponent
   end
 
   erb_template <<~ERB
-    <%= content_tag :div, **attrs do %>
+    <%= content_tag :div, **attrs, class: 'w-fit' do %>
       <%= content %>
     <% end %>
   ERB
