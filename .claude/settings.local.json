@@ -7,7 +7,8 @@
       "Bash(bundle:*)",
       "Bash(npm cache clean:*)",
       "WebSearch",
-      "Bash(grep -r 'ui\\\\.icon.*size: :' /Users/solilin/Workspace/ui.jetrockets.com/app --include=*.erb --include=*.rb)"
+      "Bash(grep -r 'ui\\\\.icon.*size: :' /Users/solilin/Workspace/ui.jetrockets.com/app --include=*.erb --include=*.rb)",
+      "WebFetch(domain:ui.shadcn.com)"
     ],
     "deny": []
   }
