@@ -216,20 +216,26 @@ Same API as Modal, but slides from the right side.
 
 ### Tabs
 ```erb
-<%= render Ui::Tabs::Component.new do %>
-  <%= render Ui::Tabs::ItemComponent.new(title: "Tab 1", href: "/tab1", icon: "home", active: true) %>
-  <%= render Ui::Tabs::ItemComponent.new(title: "Tab 2", href: "/tab2") %>
+<%= render Ui::Tabs::Component.new(variant: :pill) do %>
+  <%= render Ui::Tabs::ItemComponent.new(href: "/tab1", icon: "home", active: true) { "Tab 1" } %>
+  <%= render Ui::Tabs::ItemComponent.new(href: "/tab2") { "Tab 2" } %>
 <% end %>
 ```
+
+**Tabs::Component:**
+
+| Attribute | Type | Default | Options |
+|-----------|------|---------|---------|
+| variant | Symbol | :pill | :pill, :underline |
 
 **Tabs::ItemComponent:**
 
 | Attribute | Type | Default | Options |
 |-----------|------|---------|---------|
-| title | String | required | Tab label |
 | href | String | required | Tab URL |
 | icon | String | nil | Icon name |
 | active | Boolean | false | Active state |
+| content | Block | required | Tab label text |
 
 ### Accordion
 ```erb
@@ -319,9 +325,9 @@ Same API as Modal, but slides from the right side.
 | tooltip_success | String | "Copied!" | Success tooltip |
 | as | Symbol | nil | Wrap with another component |
 
-### BtnGroup
+### Group
 ```erb
-<%= render Ui::BtnGroup::Component.new(sticky: true) do %>
+<%= render Ui::Group::Component.new(sticky: true) do %>
   <%= ui.btn("Save", variant: :default) %>
   <%= ui.btn("Cancel", variant: :secondary) %>
 <% end %>
@@ -348,6 +354,62 @@ Same API as Modal, but slides from the right side.
 | Attribute | Type | Default | Options |
 |-----------|------|---------|---------|
 | dismissible | Boolean | true | Auto-dismiss |
+
+### Empty (Empty State)
+```erb
+<%= render Ui::Empty::Component.new do %>
+  <%= render Ui::Empty::IconComponent.new(name: "inbox") %>
+  <%= render Ui::Empty::TitleComponent.new { "No items" } %>
+  <%= render Ui::Empty::DescriptionComponent.new { "Get started by creating a new item." } %>
+  <%= render Ui::Empty::ActionsComponent.new do %>
+    <%= ui.btn("Create Item", variant: :default) %>
+  <% end %>
+<% end %>
+```
+
+Subcomponents:
+- `Ui::Empty::IconComponent` - Empty state icon (name: icon name)
+- `Ui::Empty::TitleComponent` - Title text
+- `Ui::Empty::DescriptionComponent` - Description text
+- `Ui::Empty::ActionsComponent` - Action buttons container
+
+### Header (Page Header)
+```erb
+<%= render Ui::Header::Component.new(direction: :row, align: :start, justify: :between, sticky: false, bordered: false) do %>
+  <%= render Ui::Header::HeadingComponent.new do %>
+    <%= render Ui::Header::TitleComponent.new { "Page Title" } %>
+    <%= render Ui::Header::SubtitleComponent.new { "Optional subtitle" } %>
+  <% end %>
+  <%= render Ui::Header::ActionsComponent.new do %>
+    <%= ui.btn("Action", variant: :default) %>
+  <% end %>
+<% end %>
+```
+
+**Header::Component:**
+
+| Attribute | Type | Default | Options |
+|-----------|------|---------|---------|
+| direction | Symbol | :row | :col, :row |
+| align | Symbol | :start | :start, :center, :end |
+| justify | Symbol | :between | :start, :center, :end, :between |
+| sticky | Boolean | false | Sticky positioning at top |
+| bordered | Boolean | false | Show bottom border |
+
+Subcomponents:
+- `Ui::Header::HeadingComponent` - Container for title/subtitle (flex-1)
+- `Ui::Header::TitleComponent` - Main heading (h1)
+- `Ui::Header::SubtitleComponent` - Subtitle text
+- `Ui::Header::ActionsComponent` - Action buttons container
+
+### Spinner
+```erb
+<%= ui.spinner(size: :md) %>
+```
+
+| Attribute | Type | Default | Options |
+|-----------|------|---------|---------|
+| size | Symbol | :md | :xs, :sm, :md, :lg, :xl |
 
 ## Icons
 

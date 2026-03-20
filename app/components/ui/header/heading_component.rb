@@ -11,7 +11,7 @@ class Ui::Header::HeadingComponent < ApplicationComponent
 
   def classes
     class_names(
-      "relative flex-1",
+      "flex-1 flex flex-col gap-2",
       @options.delete(:class)
     )
   end

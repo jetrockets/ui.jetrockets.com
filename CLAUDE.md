@@ -50,9 +50,9 @@ The UI is built using a comprehensive component library located in `app/componen
 
 #### Available Components
 - **Navigation**: navbar, breadcrumbs, tabs, accordion
-- **Forms**: btn, btn_group, form controls with Stimulus integration
-- **Layout**: card, drawer, modal, table
-- **Feedback**: alert, flash, tooltip, popover
+- **Forms**: btn, group, form controls with Stimulus integration
+- **Layout**: card, drawer, modal, table, header, empty
+- **Feedback**: alert, flash, tooltip, popover, spinner
 - **Data**: table with pagination (pagy), clipboard
 - **Interactive**: dropdown, turbo_confirm
 
@@ -146,6 +146,31 @@ For components with subcomponents, use the `render` method:
   <% end %>
   <%= render Ui::Card::BodyComponent.new do %>
     Content
+  <% end %>
+<% end %>
+```
+
+#### Header Component (Page Header)
+```erb
+<%= render Ui::Header::Component.new(sticky: true, bordered: true) do %>
+  <%= render Ui::Header::HeadingComponent.new do %>
+    <%= render Ui::Header::TitleComponent.new { "Page Title" } %>
+    <%= render Ui::Header::SubtitleComponent.new { "Subtitle" } %>
+  <% end %>
+  <%= render Ui::Header::ActionsComponent.new do %>
+    <%= ui.btn("Action", variant: :default) %>
+  <% end %>
+<% end %>
+```
+
+#### Empty State Component
+```erb
+<%= render Ui::Empty::Component.new do %>
+  <%= render Ui::Empty::IconComponent.new(name: "inbox") %>
+  <%= render Ui::Empty::TitleComponent.new { "No items" } %>
+  <%= render Ui::Empty::DescriptionComponent.new { "Description text" } %>
+  <%= render Ui::Empty::ActionsComponent.new do %>
+    <%= ui.btn("Create", variant: :default) %>
   <% end %>
 <% end %>
 ```

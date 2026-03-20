@@ -1,20 +1,20 @@
 @font-face {
   font-weight: 400;
-  font-family: 'Inter';
-  src: url('../../fonts/Inter-Regular.ttf') format('truetype');
+  font-family: 'Geist';
+  src: url('../../fonts/Geist-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 500;
-  font-family: 'Inter';
-  src: url('../../fonts/Inter-Medium.ttf') format('truetype');
+  font-family: 'Geist';
+  src: url('../../fonts/Geist-Medium.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-weight: 600;
-  font-family: 'Inter';
-  src: url('../../fonts/Inter-SemiBold.ttf') format('truetype');
+  font-family: 'Geist';
+  src: url('../../fonts/Geist-SemiBold.ttf') format('truetype');
   font-display: swap;
 }

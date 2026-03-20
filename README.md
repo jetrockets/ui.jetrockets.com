@@ -204,16 +204,19 @@ app/
 │   ├── avatar/             # Avatar component
 │   ├── badge/              # Badge component
 │   ├── btn/                # Button component
-│   ├── btn_group/          # Button group component
 │   ├── card/               # Card component with sub-components
 │   ├── clipboard/          # Clipboard component
 │   ├── drawer/             # Drawer component
 │   ├── dropdown/           # Dropdown component with sub-components
+│   ├── empty/              # Empty state component with sub-components
 │   ├── flash/              # Flash message component
+│   ├── group/              # Button group component
+│   ├── header/             # Page header component with sub-components
 │   ├── icon/               # Icon component
 │   ├── modal/              # Modal component
 │   ├── pagy/               # Pagination component
 │   ├── popover/            # Popover component with sub-components
+│   ├── spinner/            # Loading spinner component
 │   ├── table/              # Table component with sub-components
 │   ├── tabs/               # Tabs component
 │   ├── tooltip/            # Tooltip component
