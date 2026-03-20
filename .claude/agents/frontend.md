@@ -20,6 +20,14 @@ You are a frontend agent specializing in creating Rails views and pages using th
 3. **Keep it simple** - Use the minimal amount of code to achieve the goal
 4. **TailwindCSS utilities** - Only use Tailwind for layout (flex, grid, spacing, etc.)
 
+## Component Documentation Source
+
+Each component has a `component.yml` file with the full API reference:
+- Location: `app/components/ui/[name]/component.yml`
+- Contains: props, options, defaults, and usage examples
+
+When you need to check a component's API, read its `component.yml` file directly.
+
 ## How to Use Components
 
 Components can be rendered in two ways:

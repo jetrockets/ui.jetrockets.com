@@ -70,9 +70,32 @@ Uses Rodauth for authentication with the following features enabled:
 - Multi-phase login support
 
 ### Development Tools
-- **Ui** - Component preview and documentation (available at `/ui` in development)
+- **Component Documentation** - Full component docs at `/ui/components/[name]` (e.g., `/ui/components/btn`)
 - **Letter Opener** - Preview emails in development
 - **Annotate** - Auto-generate model schema annotations
+
+### Component Documentation System
+Each component has a `component.yml` file with full API documentation:
+
+```yaml
+# app/components/ui/[name]/component.yml
+name: Component Name
+description: What it does
+props:
+  - name: variant
+    type: Symbol
+    default: ":default"
+    options: ":default, :outline, :secondary"
+    description: Visual style
+examples:
+  - name: Basic Usage
+    code: |
+      <%= ui.component_name("text", variant: :default) %>
+```
+
+Documentation URLs:
+- Components: `/ui/components/[name]` (btn, alert, card, etc.)
+- Forms: `/ui/forms/[name]` (text_field, text_area, select, etc.)
 
 ## File Organization
 
@@ -181,4 +204,26 @@ For components with subcomponents, use the `render` method:
 For creating pages and views using existing UI components, use the frontend agent:
 - Location: `.claude/agents/frontend.md`
 - Purpose: Create pages without writing new CSS, using only existing components
-- Documentation: Full component API reference with all attributes and options
+- Documentation: Full component API reference in `component.yml` files
+
+## Adding Component Documentation
+
+To add or update component documentation:
+
+1. Create/edit `app/components/ui/[name]/component.yml`:
+```yaml
+name: ComponentName
+description: Brief description
+props:
+  - name: variant
+    type: Symbol
+    default: ":default"
+    options: ":default, :outline"
+    description: What it controls
+examples:
+  - name: Basic
+    code: |
+      <%= ui.component_name("text") %>
+```
+
+2. Access documentation at `/ui/components/[name]` or `/ui/forms/[name]`
