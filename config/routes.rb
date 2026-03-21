@@ -43,6 +43,13 @@ Rails.application.routes.draw do
     get "tooltip"
     get "turbo_confirm"
     get "typography"
+    get "breadcrumbs"
+    get "divider"
+    get "sidebar"
+    get "stepper"
+    get "timeline"
+    get "stat"
+    get "list"
 
     namespace :form_builders do
       get "core"

@@ -1,0 +1,131 @@
+name: Stepper
+description: Multi-step wizard/progress indicator showing the current position in a sequence of steps.
+
+preview: |
+  <%= ui.stepper do %>
+    <%= ui.stepper_step "Cart", status: :completed %>
+    <%= ui.stepper_step "Shipping", status: :current %>
+    <%= ui.stepper_step "Payment", status: :pending %>
+  <% end %>
+
+usage: |
+  <%= ui.stepper do %>
+    <%= ui.stepper_step "Step 1", status: :completed %>
+    <%= ui.stepper_step "Step 2", status: :current %>
+    <%= ui.stepper_step "Step 3", status: :pending %>
+  <% end %>
+
+  <%= ui.stepper do %>
+    <%= ui.stepper_step "Account", number: 1, status: :completed, description: "Enter details" %>
+    <%= ui.stepper_step "Verification", number: 2, status: :current, description: "Verify email" %>
+    <%= ui.stepper_step "Finish", number: 3, status: :pending, description: "Complete setup" %>
+  <% end %>
+
+accepts_html_attributes: true
+
+content:
+  description: "stepper_step components."
+
+props: []
+
+slots:
+  - name: stepper_step
+    component: Ui::Stepper::StepComponent
+    description: Individual step in the stepper.
+    props:
+      - name: text
+        type: String
+        default: "nil"
+        description: Step title text. Can be passed as first argument or via block content.
+
+      - name: status
+        type: Symbol
+        default: ":pending"
+        values:
+          - ":pending"
+          - ":current"
+          - ":completed"
+        description: Current state of the step.
+
+      - name: number
+        type: Integer
+        default: "nil"
+        description: Step number to display in the indicator. If not provided, a dot is shown (or checkmark for completed).
+
+      - name: icon
+        type: String
+        default: "nil"
+        description: Icon name to display in the indicator instead of number or dot.
+
+      - name: description
+        type: String
+        default: "nil"
+        description: Additional description text displayed below the step title.
+
+      - name: url
+        type: String
+        default: "nil"
+        description: URL to navigate when clicking the step. Pending steps are not clickable.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes for the step element.
+
+examples:
+  - name: Basic
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Cart", status: :completed %>
+        <%= ui.stepper_step "Shipping", status: :current %>
+        <%= ui.stepper_step "Payment", status: :pending %>
+      <% end %>
+
+  - name: With numbers
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Account", number: 1, status: :completed %>
+        <%= ui.stepper_step "Profile", number: 2, status: :current %>
+        <%= ui.stepper_step "Review", number: 3, status: :pending %>
+      <% end %>
+
+  - name: With descriptions
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Account", number: 1, status: :completed, description: "Enter your details" %>
+        <%= ui.stepper_step "Verification", number: 2, status: :current, description: "Verify your email" %>
+        <%= ui.stepper_step "Finish", number: 3, status: :pending, description: "Complete your profile" %>
+      <% end %>
+
+  - name: With icons
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Cart", icon: "shopping-cart", status: :completed %>
+        <%= ui.stepper_step "Shipping", icon: "truck", status: :current %>
+        <%= ui.stepper_step "Payment", icon: "credit-card", status: :pending %>
+        <%= ui.stepper_step "Confirmation", icon: "check-circle", status: :pending %>
+      <% end %>
+
+  - name: All pending
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Step 1", status: :pending %>
+        <%= ui.stepper_step "Step 2", status: :pending %>
+        <%= ui.stepper_step "Step 3", status: :pending %>
+      <% end %>
+
+  - name: All completed
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Step 1", status: :completed %>
+        <%= ui.stepper_step "Step 2", status: :completed %>
+        <%= ui.stepper_step "Step 3", status: :completed %>
+      <% end %>
+
+  - name: With links
+    code: |
+      <%= ui.stepper do %>
+        <%= ui.stepper_step "Cart", status: :completed, url: "#cart" %>
+        <%= ui.stepper_step "Shipping", status: :current, url: "#shipping" %>
+        <%= ui.stepper_step "Payment", status: :pending, url: "#payment" %>
+      <% end %>

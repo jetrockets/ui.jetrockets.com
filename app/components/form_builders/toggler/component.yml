@@ -10,7 +10,7 @@ preview: |
 
 usage: |
   <%= form_with url: root_path do |f| %>
-    <%= f.toggler :dark_mode %>
+    <%= f.toggler :push_notifications %>
     <%= f.toggler :notifications, hint: "Enable notifications" %>
   <% end %>
 
@@ -32,10 +32,10 @@ examples:
     code: |
       <%= form_with url: root_path do |f| %>
         <%= f.group do %>
-          <%= f.toggler :dark_mode %>
+          <%= f.toggler :basic_push_notifications %>
         <% end %>
 
         <%= f.group do %>
-          <%= f.toggler :notifications, hint: "Here you can have a hint" %>
+          <%= f.toggler :basic_notifications, hint: "Here you can have a hint" %>
         <% end %>
       <% end %>

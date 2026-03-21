@@ -1,0 +1,80 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .timeline {
+    @apply relative flex flex-col;
+  }
+
+  .timeline-item {
+    @apply relative flex gap-4 pb-8;
+  }
+
+  .timeline-item:last-child {
+    @apply pb-0;
+  }
+
+  /* Connecting line */
+  .timeline-item:not(:last-child)::before {
+    @apply absolute left-[11px] top-6 bottom-0 w-0.5 bg-gray-200 content-[''];
+  }
+
+  /* Dot styles */
+  .timeline-dot {
+    @apply relative z-10 flex-shrink-0 size-6 rounded-full border-2 flex items-center justify-center;
+  }
+
+  .timeline-dot-default {
+    @apply bg-gray-100 border-gray-300;
+  }
+
+  .timeline-dot-info {
+    @apply bg-blue-100 border-blue-400;
+  }
+
+  .timeline-dot-success {
+    @apply bg-green-100 border-green-400;
+  }
+
+  .timeline-dot-warning {
+    @apply bg-yellow-100 border-yellow-400;
+  }
+
+  .timeline-dot-error {
+    @apply bg-red-100 border-red-400;
+  }
+
+  /* Dot with icon */
+  .timeline-dot-icon {
+    @apply size-6;
+  }
+
+  .timeline-dot-icon.timeline-dot-default {
+    @apply text-gray-600;
+  }
+
+  .timeline-dot-icon.timeline-dot-info {
+    @apply text-blue-600;
+  }
+
+  .timeline-dot-icon.timeline-dot-success {
+    @apply text-green-600;
+  }
+
+  .timeline-dot-icon.timeline-dot-warning {
+    @apply text-yellow-600;
+  }
+
+  .timeline-dot-icon.timeline-dot-error {
+    @apply text-red-600;
+  }
+
+  /* Content area */
+  .timeline-content {
+    @apply flex-1 pt-0.5;
+  }
+
+  /* Time label */
+  .timeline-time {
+    @apply block text-sm text-gray-500 mb-1;
+  }
+}

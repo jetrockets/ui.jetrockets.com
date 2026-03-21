@@ -2,11 +2,21 @@ name: Icon
 description: Display SVG icons from the icon set using CSS classes.
 
 preview: |
-  <%= ui.icon "information-circle", size: 6 %>
+  <div class="flex items-center gap-3">
+    <%= ui.icon "home", size: 6 %>
+    <%= ui.icon "user", size: 6 %>
+    <%= ui.icon "cog", size: 6 %>
+    <%= ui.icon "bell", size: 6 %>
+    <%= ui.icon "envelope", size: 6 %>
+    <%= ui.icon "calendar", size: 6 %>
+    <%= ui.icon "folder", size: 6 %>
+    <%= ui.icon "document", size: 6 %>
+  </div>
 
 usage: |
   <%= ui.icon "check-circle" %>
-  <%= ui.icon "information-circle", size: 8, class: "text-blue-500" %>
+  <%= ui.icon "arrow-right", size: 5 %>
+  <%= ui.icon "heart", size: 6, class: "text-red-500" %>
 
 accepts_html_attributes: true
 
@@ -30,14 +40,63 @@ props:
     description: When true, adds `icon-img` class for image-based icon styling.
 
 examples:
-  - name: Basic usage
+  - name: Sizes
     code: |
-      <%= ui.icon "information-circle", size: 6 %>
-      <%= ui.icon "information-circle", size: 8 %>
-      <%= ui.icon "information-circle", size: 10 %>
+      <div class="flex items-center gap-3">
+        <%= ui.icon "star", size: 4 %>
+        <%= ui.icon "star", size: 5 %>
+        <%= ui.icon "star", size: 6 %>
+        <%= ui.icon "star", size: 8 %>
+        <%= ui.icon "star", size: 10 %>
+      </div>
 
-  - name: With color
+  - name: With colors
     code: |
-      <%= ui.icon "information-circle", size: 6, class: "text-red-500" %>
-      <%= ui.icon "information-circle", size: 8, class: "text-green-500" %>
-      <%= ui.icon "information-circle", size: 10, class: "text-blue-500" %>
+      <div class="flex items-center gap-3">
+        <%= ui.icon "heart", size: 6, class: "text-red-500" %>
+        <%= ui.icon "check-circle", size: 6, class: "text-green-500" %>
+        <%= ui.icon "information-circle", size: 6, class: "text-blue-500" %>
+        <%= ui.icon "exclamation-triangle", size: 6, class: "text-yellow-500" %>
+        <%= ui.icon "x-circle", size: 6, class: "text-gray-500" %>
+      </div>
+
+  - name: Common actions
+    code: |
+      <div class="flex items-center gap-3">
+        <%= ui.icon "plus", size: 5 %>
+        <%= ui.icon "pencil", size: 5 %>
+        <%= ui.icon "trash", size: 5 %>
+        <%= ui.icon "arrow-down-tray", size: 5 %>
+        <%= ui.icon "share", size: 5 %>
+        <%= ui.icon "link", size: 5 %>
+        <%= ui.icon "clipboard", size: 5 %>
+      </div>
+
+  - name: Navigation
+    code: |
+      <div class="flex items-center gap-3">
+        <%= ui.icon "chevron-left", size: 5 %>
+        <%= ui.icon "chevron-right", size: 5 %>
+        <%= ui.icon "chevron-up", size: 5 %>
+        <%= ui.icon "chevron-down", size: 5 %>
+        <%= ui.icon "arrow-left", size: 5 %>
+        <%= ui.icon "arrow-right", size: 5 %>
+      </div>
+
+  - name: Status indicators
+    code: |
+      <div class="flex items-center gap-3">
+        <%= ui.icon "check", size: 5, class: "text-green-500" %>
+        <%= ui.icon "x-mark", size: 5, class: "text-red-500" %>
+        <%= ui.icon "clock", size: 5, class: "text-yellow-500" %>
+        <%= ui.icon "spinner", size: 5, class: "text-blue-500 animate-spin" %>
+      </div>
+
+  - name: Social & brands
+    code: |
+      <div class="flex items-center gap-3">
+        <%= ui.icon "github", size: 6 %>
+        <%= ui.icon "envelope", size: 6 %>
+        <%= ui.icon "phone", size: 6 %>
+        <%= ui.icon "globe-alt", size: 6 %>
+      </div>

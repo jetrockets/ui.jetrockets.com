@@ -22,7 +22,7 @@ class Ui::Modal::HeaderComponent < ApplicationComponent
 
       <% if @closable %>
         <button type="button" class="modal__close" data-action="click->modal#close click->modals#close" aria-label="Close" data-id="<%= @id %>">
-          <%= helpers.ui.icon "close", size: 6 %>
+          <%= helpers.ui.icon "x-mark", size: 6 %>
         </button>
       <% end %>
     </div>

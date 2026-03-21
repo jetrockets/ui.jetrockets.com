@@ -1,0 +1,180 @@
+name: List
+description: Styled list component for displaying items with optional icons, content, and actions.
+
+preview: |
+  <%= ui.list do %>
+    <%= ui.list_item do %>
+      <%= ui.list_icon "user" %>
+      <%= ui.list_content do %>
+        <strong>John Doe</strong>
+        <span class="text-gray-500 text-sm block">john@example.com</span>
+      <% end %>
+      <%= ui.list_action do %>
+        <%= ui.btn "Edit", size: :sm, variant: :ghost %>
+      <% end %>
+    <% end %>
+    <%= ui.list_item do %>
+      <%= ui.list_icon "user" %>
+      <%= ui.list_content do %>
+        <strong>Jane Smith</strong>
+        <span class="text-gray-500 text-sm block">jane@example.com</span>
+      <% end %>
+      <%= ui.list_action do %>
+        <%= ui.btn "Edit", size: :sm, variant: :ghost %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.list do %>
+    <%= ui.list_item do %>
+      <%= ui.list_icon "user" %>
+      <%= ui.list_content do %>
+        <strong>Title</strong>
+        <span class="text-gray-500">Description</span>
+      <% end %>
+      <%= ui.list_action do %>
+        <%= ui.btn "Action", size: :sm, variant: :ghost %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= ui.list variant: :divided do %>
+    <%= ui.list_item do %>Option 1<% end %>
+    <%= ui.list_item do %>Option 2<% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+content:
+  description: "list_item components containing list_icon, list_content, and list_action."
+
+props:
+  - name: variant
+    type: Symbol
+    default: ":default"
+    options: ":default, :divided"
+    description: Visual variant. The :divided variant adds separators between items.
+
+slots:
+  - name: list_item
+    component: Ui::List::ItemComponent
+    description: Individual list item container.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: list_icon
+    component: Ui::List::IconComponent
+    description: Icon displayed at the start of the list item.
+    props:
+      - name: name
+        type: String
+        required: true
+        description: Icon name (e.g., "user", "folder", "settings").
+
+      - name: size
+        type: Integer
+        default: "5"
+        description: Icon size (uses `size-{n}` class).
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: list_content
+    component: Ui::List::ContentComponent
+    description: Main content area that grows to fill available space.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: list_action
+    component: Ui::List::ActionComponent
+    description: Container for action buttons, positioned at the end of the item.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic list
+    code: |
+      <%= ui.list do %>
+        <%= ui.list_item do %>
+          <%= ui.list_icon "user" %>
+          <%= ui.list_content do %>
+            <strong>John Doe</strong>
+            <span class="text-gray-500 text-sm block">john@example.com</span>
+          <% end %>
+          <%= ui.list_action do %>
+            <%= ui.btn "Edit", size: :sm, variant: :ghost %>
+          <% end %>
+        <% end %>
+        <%= ui.list_item do %>
+          <%= ui.list_icon "user" %>
+          <%= ui.list_content do %>
+            <strong>Jane Smith</strong>
+            <span class="text-gray-500 text-sm block">jane@example.com</span>
+          <% end %>
+          <%= ui.list_action do %>
+            <%= ui.btn "Edit", size: :sm, variant: :ghost %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Divided list
+    code: |
+      <%= ui.list variant: :divided do %>
+        <%= ui.list_item do %>
+          <%= ui.list_icon "inbox" %>
+          <%= ui.list_content do %>
+            <strong>Inbox</strong>
+            <span class="text-gray-500 text-sm block">View your messages</span>
+          <% end %>
+        <% end %>
+        <%= ui.list_item do %>
+          <%= ui.list_icon "cog" %>
+          <%= ui.list_content do %>
+            <strong>Settings</strong>
+            <span class="text-gray-500 text-sm block">Manage your preferences</span>
+          <% end %>
+        <% end %>
+        <%= ui.list_item do %>
+          <%= ui.list_icon "arrow-right-on-rectangle" %>
+          <%= ui.list_content do %>
+            <strong>Sign out</strong>
+            <span class="text-gray-500 text-sm block">Log out of your account</span>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Simple list without icons
+    code: |
+      <%= ui.list variant: :divided do %>
+        <%= ui.list_item do %>Option 1<% end %>
+        <%= ui.list_item do %>Option 2<% end %>
+        <%= ui.list_item do %>Option 3<% end %>
+      <% end %>
+
+  - name: List with multiple actions
+    code: |
+      <%= ui.list do %>
+        <%= ui.list_item do %>
+          <%= ui.list_icon "document" %>
+          <%= ui.list_content do %>
+            <strong>Document.pdf</strong>
+            <span class="text-gray-500 text-sm block">2.4 MB</span>
+          <% end %>
+          <%= ui.list_action do %>
+            <%= ui.btn "Download", size: :sm, variant: :outline %>
+            <%= ui.btn "Delete", size: :sm, variant: :ghost %>
+          <% end %>
+        <% end %>
+      <% end %>

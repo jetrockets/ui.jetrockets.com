@@ -1,0 +1,40 @@
+name: Breadcrumbs
+description: Display navigation breadcrumbs using the Gretel gem. Renders the current page's breadcrumb trail with customizable separators.
+
+preview: |
+  <%= ui.breadcrumbs %>
+
+usage: |
+  <%= ui.breadcrumbs %>
+  <%= ui.breadcrumbs separator: ">" %>
+  <%= ui.breadcrumbs separator: "-", class: "hidden md:flex" %>
+
+accepts_html_attributes: true
+
+props:
+  - name: separator
+    type: String
+    default: '"/"'
+    description: The separator character or string displayed between breadcrumb items.
+
+  - name: display_single_fragment
+    type: Boolean
+    default: "true"
+    description: Whether to display breadcrumbs when there is only a single fragment.
+
+examples:
+  - name: Default
+    code: |
+      <%= ui.breadcrumbs %>
+
+  - name: Custom separator
+    code: |
+      <%= ui.breadcrumbs separator: ">" %>
+
+  - name: With custom classes
+    code: |
+      <%= ui.breadcrumbs class: "hidden md:flex" %>
+
+  - name: Hide single fragment
+    code: |
+      <%= ui.breadcrumbs display_single_fragment: false %>

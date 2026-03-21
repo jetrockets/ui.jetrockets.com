@@ -1,0 +1,34 @@
+<% set_meta_tags(
+  title: "Stat - Rails UI Components",
+  description: "Stat component for displaying metrics and statistics.",
+  keywords: "Rails, UI Components, Stat, Metrics, Dashboard"
+) %>
+<% breadcrumb :ui_stat %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Stat" %>
+    <%= ui.header_subtitle "Display statistics and metrics in card format." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/stat", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("stat") %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("stat") %>
+  </section>
+
+  <%= render_content_info("stat") %>
+  <%= render_props_table("stat") %>
+  <%= render_subcomponents_table("stat") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("stat") %>
+  </section>
+</article>

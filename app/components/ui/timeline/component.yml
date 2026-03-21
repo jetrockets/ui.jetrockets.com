@@ -1,0 +1,190 @@
+name: Timeline
+description: Displays a vertical timeline of events or activities with customizable dots/markers and connecting lines.
+
+preview: |
+  <%= ui.timeline do %>
+    <%= ui.timeline_item do %>
+      <%= ui.timeline_dot variant: :success %>
+      <%= ui.timeline_content do %>
+        <%= ui.timeline_time "2 hours ago" %>
+        <p>User signed up for the platform</p>
+      <% end %>
+    <% end %>
+
+    <%= ui.timeline_item do %>
+      <%= ui.timeline_dot variant: :info, icon: "check-circle" %>
+      <%= ui.timeline_content do %>
+        <%= ui.timeline_time "Yesterday" %>
+        <p>Order #1234 was completed</p>
+      <% end %>
+    <% end %>
+
+    <%= ui.timeline_item do %>
+      <%= ui.timeline_dot variant: :warning %>
+      <%= ui.timeline_content do %>
+        <%= ui.timeline_time "3 days ago" %>
+        <p>Payment pending review</p>
+      <% end %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.timeline do %>
+    <%= ui.timeline_item do %>
+      <%= ui.timeline_dot variant: :success %>
+      <%= ui.timeline_content do %>
+        <%= ui.timeline_time "2 hours ago" %>
+        <p>Event description here</p>
+      <% end %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+content:
+  description: "timeline_item components containing timeline_dot and timeline_content."
+
+props: []
+
+slots:
+  - name: timeline_item
+    component: Ui::Timeline::ItemComponent
+    description: A single item in the timeline. Contains a dot and content area.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: timeline_dot
+    component: Ui::Timeline::DotComponent
+    description: The dot/marker for a timeline item.
+    props:
+      - name: variant
+        type: Symbol
+        default: ":default"
+        options: ":default, :info, :success, :warning, :error"
+        description: The color variant of the dot.
+
+      - name: icon
+        type: String
+        default: "nil"
+        description: Icon name to display inside the dot.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: timeline_content
+    component: Ui::Timeline::ContentComponent
+    description: The content area for a timeline item.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: timeline_time
+    component: Ui::Timeline::TimeComponent
+    description: The time/date label for a timeline item.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic timeline
+    code: |
+      <%= ui.timeline do %>
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :success %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Today" %>
+            <p>Account created successfully</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Yesterday" %>
+            <p>Profile information updated</p>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Timeline with icons
+    code: |
+      <%= ui.timeline do %>
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :success, icon: "check" %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "2 hours ago" %>
+            <p class="font-medium">Order delivered</p>
+            <p class="text-sm text-gray-500">Package was signed by John Doe</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :info, icon: "truck" %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "1 day ago" %>
+            <p class="font-medium">Out for delivery</p>
+            <p class="text-sm text-gray-500">Driver assigned: Mike Smith</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :default, icon: "cube" %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "2 days ago" %>
+            <p class="font-medium">Shipped from warehouse</p>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: All variants
+    code: |
+      <%= ui.timeline do %>
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :default %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Default" %>
+            <p>Default variant</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :info %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Info" %>
+            <p>Info variant</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :success %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Success" %>
+            <p>Success variant</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :warning %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Warning" %>
+            <p>Warning variant</p>
+          <% end %>
+        <% end %>
+
+        <%= ui.timeline_item do %>
+          <%= ui.timeline_dot variant: :error %>
+          <%= ui.timeline_content do %>
+            <%= ui.timeline_time "Error" %>
+            <p>Error variant</p>
+          <% end %>
+        <% end %>
+      <% end %>

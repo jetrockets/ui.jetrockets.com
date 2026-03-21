@@ -1,164 +1,82 @@
-
-<nav class="body__sidebar sidebar" data-sidebar-target="menu">
+<%= ui.sidebar class: "body__sidebar", data: { sidebar_target: "menu" } do %>
   <div class="fixed right-4 top-4 md:hidden">
-    <%= ui.btn ui.icon("close"), variant: :ghost, size: :icon_lg, data: { action: "click->sidebar#toggle" } %>
+    <%= ui.btn ui.icon("x-mark"), variant: :ghost, size: :icon_lg, data: { action: "click->sidebar#toggle" } %>
   </div>
 
-  <!-- Basics Section -->
-  <div class="sidebar__section">
-    <h4 class="sidebar__title">Basics</h4>
-    <ul class="sidebar__menu">
-      <li>
-        <%= link_to "Introduction", ui_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Getting Started", ui_getting_started_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_getting_started_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Good to know", ui_good_to_know_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_good_to_know_path)}" %>
-      </li>
-    </ul>
-  </div>
+  <%= ui.sidebar_section do %>
+    <%= ui.sidebar_title "Basics" %>
+    <%= ui.sidebar_menu do %>
+      <%= ui.sidebar_link "Introduction", url: ui_path %>
+      <%= ui.sidebar_link "Getting Started", url: ui_getting_started_path %>
+      <%= ui.sidebar_link "Good to know", url: ui_good_to_know_path %>
+    <% end %>
+  <% end %>
 
-  <!-- Components Section -->
-  <div class="sidebar__section">
-    <h4 class="sidebar__title">Components</h4>
-    <ul class="sidebar__menu">
-      <li>
-        <%= link_to "Accordion", ui_accordion_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_accordion_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Alert", ui_alert_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_alert_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Avatar", ui_avatar_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_avatar_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Badge", ui_badge_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_badge_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Button", ui_button_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_button_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Card", ui_card_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_card_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Clipboard", ui_clipboard_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_clipboard_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Drawer", ui_drawer_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_drawer_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Dropdown", ui_dropdown_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_dropdown_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Empty", ui_empty_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_empty_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Flash Message", ui_flash_message_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_flash_message_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Group", ui_group_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_group_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Header", ui_header_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_header_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Icon", ui_icon_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_icon_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Modal", ui_modal_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_modal_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Pagy", ui_pagy_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_pagy_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Popover", ui_popover_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_popover_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Spinner", ui_spinner_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_spinner_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Table", ui_table_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_table_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Tabs", ui_tabs_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_tabs_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Tooltip", ui_tooltip_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_tooltip_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Turbo Confirm", ui_turbo_confirm_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_turbo_confirm_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Typography", ui_typography_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_typography_path)}" %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar__section">
-    <h4 class="sidebar__title">
-      Forms
-    </h4>
-    <ul class="sidebar__menu">
-      <li>
-        <%= link_to "Core Form Builder", ui_form_builders_core_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_core_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Default Form Builder", ui_form_builders_default_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_default_path)}" %>
-      </li>
-      <li>
-        <%= link_to "TextField", ui_form_builders_text_field_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_text_field_path)}" %>
-      </li>
-      <li>
-        <%= link_to "TextArea", ui_form_builders_text_area_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_text_area_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Select", ui_form_builders_select_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_select_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Choices Select", ui_form_builders_choices_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_choices_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Checkbox", ui_form_builders_checkbox_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_checkbox_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Radio Button", ui_form_builders_radio_button_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_radio_button_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Toggler", ui_form_builders_toggler_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_toggler_path)}" %>
-      </li>
-      <li>
-        <%= link_to "Easepick (date picker)", ui_form_builders_easepick_path, class: "sidebar__link #{'sidebar__link-active' if current_page?(ui_form_builders_easepick_path)}" %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar__section">
-    <h4 class="sidebar__title">
+  <%= ui.sidebar_section do %>
+    <%= ui.sidebar_title "Components" %>
+    <%= ui.sidebar_menu do %>
+      <%= ui.sidebar_link "Accordion", url: ui_accordion_path %>
+      <%= ui.sidebar_link "Alert", url: ui_alert_path %>
+      <%= ui.sidebar_link "Avatar", url: ui_avatar_path %>
+      <%= ui.sidebar_link "Badge", url: ui_badge_path %>
+      <%= ui.sidebar_link "Breadcrumbs", url: ui_breadcrumbs_path %>
+      <%= ui.sidebar_link "Button", url: ui_button_path %>
+      <%= ui.sidebar_link "Card", url: ui_card_path %>
+      <%= ui.sidebar_link "Clipboard", url: ui_clipboard_path %>
+      <%= ui.sidebar_link "Divider", url: ui_divider_path %>
+      <%= ui.sidebar_link "Drawer", url: ui_drawer_path %>
+      <%= ui.sidebar_link "Dropdown", url: ui_dropdown_path %>
+      <%= ui.sidebar_link "Empty", url: ui_empty_path %>
+      <%= ui.sidebar_link "Flash Message", url: ui_flash_message_path %>
+      <%= ui.sidebar_link "Group", url: ui_group_path %>
+      <%= ui.sidebar_link "Header", url: ui_header_path %>
+      <%= ui.sidebar_link "Icon", url: ui_icon_path %>
+      <%= ui.sidebar_link "List", url: ui_list_path %>
+      <%= ui.sidebar_link "Modal", url: ui_modal_path %>
+      <%= ui.sidebar_link "Pagy", url: ui_pagy_path %>
+      <%= ui.sidebar_link "Popover", url: ui_popover_path %>
+      <%= ui.sidebar_link "Sidebar", url: ui_sidebar_path %>
+      <%= ui.sidebar_link "Spinner", url: ui_spinner_path %>
+      <%= ui.sidebar_link "Stat", url: ui_stat_path %>
+      <%= ui.sidebar_link "Stepper", url: ui_stepper_path %>
+      <%= ui.sidebar_link "Table", url: ui_table_path %>
+      <%= ui.sidebar_link "Tabs", url: ui_tabs_path %>
+      <%= ui.sidebar_link "Timeline", url: ui_timeline_path %>
+      <%= ui.sidebar_link "Tooltip", url: ui_tooltip_path %>
+      <%= ui.sidebar_link "Turbo Confirm", url: ui_turbo_confirm_path %>
+      <%= ui.sidebar_link "Typography", url: ui_typography_path %>
+    <% end %>
+  <% end %>
+
+  <%= ui.sidebar_section do %>
+    <%= ui.sidebar_title "Forms" %>
+    <%= ui.sidebar_menu do %>
+      <%= ui.sidebar_link "Core Form Builder", url: ui_form_builders_core_path %>
+      <%= ui.sidebar_link "Default Form Builder", url: ui_form_builders_default_path %>
+      <%= ui.sidebar_link "TextField", url: ui_form_builders_text_field_path %>
+      <%= ui.sidebar_link "TextArea", url: ui_form_builders_text_area_path %>
+      <%= ui.sidebar_link "Select", url: ui_form_builders_select_path %>
+      <%= ui.sidebar_link "Choices Select", url: ui_form_builders_choices_path %>
+      <%= ui.sidebar_link "Checkbox", url: ui_form_builders_checkbox_path %>
+      <%= ui.sidebar_link "Radio Button", url: ui_form_builders_radio_button_path %>
+      <%= ui.sidebar_link "Toggler", url: ui_form_builders_toggler_path %>
+      <%= ui.sidebar_link "Easepick (date picker)", url: ui_form_builders_easepick_path %>
+    <% end %>
+  <% end %>
+
+  <%= ui.sidebar_section do %>
+    <%= ui.sidebar_title do %>
       Plugins
-      <%= ui.badge title: "Coming Soon", size: :xs, variant: :blue %>
-    </h4>
-    <ul class="sidebar__menu">
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">Charts</span>
-      </li>
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">Drag&Drop Sortable</span>
-      </li>
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">Dynamic Select</span>
-      </li>
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">File uploader</span>
-      </li>
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">Lexical WYSIWYG</span>
-      </li>
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">Nested Fields</span>
-      </li>
-      <li>
-        <span class="sidebar__link sidebar__link-disabled">Tagify</span>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <%= ui.badge "Coming Soon", size: :xs, variant: :info %>
+    <% end %>
+    <%= ui.sidebar_menu do %>
+      <%= ui.sidebar_link "Charts", disabled: true %>
+      <%= ui.sidebar_link "Drag&Drop Sortable", disabled: true %>
+      <%= ui.sidebar_link "Dynamic Select", disabled: true %>
+      <%= ui.sidebar_link "File uploader", disabled: true %>
+      <%= ui.sidebar_link "Lexical WYSIWYG", disabled: true %>
+      <%= ui.sidebar_link "Nested Fields", disabled: true %>
+      <%= ui.sidebar_link "Tagify", disabled: true %>
+    <% end %>
+  <% end %>
+<% end %>

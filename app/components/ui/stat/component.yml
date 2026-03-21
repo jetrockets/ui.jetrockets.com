@@ -1,0 +1,159 @@
+name: Stat
+description: Displays statistics and metrics in a card-like format. Commonly used in dashboards for KPIs.
+
+preview: |
+  <div class="grid grid-cols-3 gap-4">
+    <%= ui.stat do %>
+      <%= ui.stat_label "Total Revenue" %>
+      <%= ui.stat_value "$45,231.89" %>
+      <%= ui.stat_description "+20.1% from last month", variant: :success %>
+    <% end %>
+    <%= ui.stat do %>
+      <%= ui.stat_icon "users" %>
+      <%= ui.stat_label "Active Users" %>
+      <%= ui.stat_value "2,350" %>
+      <%= ui.stat_description "-4.5% from last week", variant: :error %>
+    <% end %>
+    <%= ui.stat do %>
+      <%= ui.stat_label "Pending Orders" %>
+      <%= ui.stat_value "12" %>
+      <%= ui.stat_description "Requires attention", variant: :warning %>
+    <% end %>
+  </div>
+
+usage: |
+  <%= ui.stat do %>
+    <%= ui.stat_label "Total Revenue" %>
+    <%= ui.stat_value "$45,231.89" %>
+    <%= ui.stat_description "+20.1% from last month", variant: :success %>
+  <% end %>
+
+  <%= ui.stat do %>
+    <%= ui.stat_icon "users" %>
+    <%= ui.stat_label "Active Users" %>
+    <%= ui.stat_value "2,350" %>
+    <%= ui.stat_description "-4.5%", variant: :error %>
+  <% end %>
+
+accepts_html_attributes: true
+
+content:
+  description: "stat_icon, stat_label, stat_value, stat_description components."
+
+props: []
+
+slots:
+  - name: stat_icon
+    component: Ui::Stat::IconComponent
+    description: Optional icon displayed at the top of the stat card.
+    props:
+      - name: name
+        type: String
+        required: true
+        description: Icon name (e.g., "users", "currency-dollar", "chart-bar").
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: stat_label
+    component: Ui::Stat::LabelComponent
+    description: Label text describing the statistic.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: stat_value
+    component: Ui::Stat::ValueComponent
+    description: The main statistic value displayed prominently.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: stat_description
+    component: Ui::Stat::DescriptionComponent
+    description: Additional context or trend information with optional variant styling.
+    props:
+      - name: variant
+        type: Symbol
+        default: ":default"
+        values:
+          - ":default"
+          - ":success"
+          - ":warning"
+          - ":error"
+        description: Visual style indicating trend direction. Success and error variants include arrow icons.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic Stat
+    code: |
+      <%= ui.stat do %>
+        <%= ui.stat_label "Total Revenue" %>
+        <%= ui.stat_value "$45,231.89" %>
+        <%= ui.stat_description "+20.1% from last month", variant: :success %>
+      <% end %>
+
+  - name: Stat with Icon
+    code: |
+      <%= ui.stat do %>
+        <%= ui.stat_icon "users" %>
+        <%= ui.stat_label "Active Users" %>
+        <%= ui.stat_value "2,350" %>
+        <%= ui.stat_description "-4.5% from last week", variant: :error %>
+      <% end %>
+
+  - name: Warning Variant
+    code: |
+      <%= ui.stat do %>
+        <%= ui.stat_icon "exclamation-triangle" %>
+        <%= ui.stat_label "Pending Orders" %>
+        <%= ui.stat_value "12" %>
+        <%= ui.stat_description "Requires attention", variant: :warning %>
+      <% end %>
+
+  - name: Default Description
+    code: |
+      <%= ui.stat do %>
+        <%= ui.stat_label "Total Items" %>
+        <%= ui.stat_value "1,234" %>
+        <%= ui.stat_description "All time" %>
+      <% end %>
+
+  - name: Dashboard Grid
+    code: |
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <%= ui.stat do %>
+          <%= ui.stat_icon "currency-dollar" %>
+          <%= ui.stat_label "Revenue" %>
+          <%= ui.stat_value "$45,231" %>
+          <%= ui.stat_description "+20.1%", variant: :success %>
+        <% end %>
+        <%= ui.stat do %>
+          <%= ui.stat_icon "users" %>
+          <%= ui.stat_label "Users" %>
+          <%= ui.stat_value "2,350" %>
+          <%= ui.stat_description "+180", variant: :success %>
+        <% end %>
+        <%= ui.stat do %>
+          <%= ui.stat_icon "shopping-cart" %>
+          <%= ui.stat_label "Orders" %>
+          <%= ui.stat_value "12,234" %>
+          <%= ui.stat_description "-4.5%", variant: :error %>
+        <% end %>
+        <%= ui.stat do %>
+          <%= ui.stat_icon "chart-bar" %>
+          <%= ui.stat_label "Conversion" %>
+          <%= ui.stat_value "3.2%" %>
+          <%= ui.stat_description "No change" %>
+        <% end %>
+      </div>

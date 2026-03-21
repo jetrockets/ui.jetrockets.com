@@ -1,0 +1,91 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .stepper {
+    @apply w-full;
+  }
+
+  .stepper__list {
+    @apply flex items-start list-none p-0 m-0;
+  }
+
+  .stepper__item {
+    @apply relative flex-1 flex flex-col items-center text-center;
+  }
+
+  /* Connecting line between steps */
+  .stepper__item:not(:last-child)::after {
+    content: "";
+    @apply absolute top-5 left-[calc(50%+1rem)] right-[calc(-50%+1rem)] h-0.5 bg-gray-200 z-0;
+  }
+
+  .stepper__item-completed:not(:last-child)::after {
+    @apply bg-primary;
+  }
+
+  .stepper__indicator {
+    @apply relative z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 bg-white;
+    @apply border-gray-200 text-gray-400;
+  }
+
+  .stepper__item-pending .stepper__indicator {
+    @apply border-gray-200 text-gray-400 bg-white;
+  }
+
+  .stepper__item-current .stepper__indicator {
+    @apply border-primary bg-primary text-white;
+  }
+
+  .stepper__item-completed .stepper__indicator {
+    @apply border-primary bg-primary text-white;
+  }
+
+  .stepper__icon {
+    @apply size-5;
+  }
+
+  .stepper__number {
+    @apply text-sm font-semibold;
+  }
+
+  .stepper__dot {
+    @apply size-2.5 rounded-full bg-current;
+  }
+
+  .stepper__content {
+    @apply mt-3 flex flex-col gap-0.5;
+  }
+
+  .stepper__title {
+    @apply text-sm font-medium;
+  }
+
+  .stepper__item-pending .stepper__title {
+    @apply text-gray-500;
+  }
+
+  .stepper__item-current .stepper__title {
+    @apply text-gray-900;
+  }
+
+  .stepper__item-completed .stepper__title {
+    @apply text-gray-900;
+  }
+
+  .stepper__description {
+    @apply text-xs text-gray-500;
+  }
+
+  /* Clickable steps */
+  .stepper__link {
+    @apply relative z-10 flex flex-col items-center no-underline transition-opacity hover:opacity-80;
+  }
+
+  .stepper__item-has-url:not(.stepper__item-pending) {
+    @apply cursor-pointer;
+  }
+
+  .stepper__item-has-url.stepper__item-pending {
+    @apply cursor-not-allowed;
+  }
+}

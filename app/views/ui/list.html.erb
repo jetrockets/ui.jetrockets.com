@@ -1,0 +1,34 @@
+<% set_meta_tags(
+  title: "List - Rails UI Components",
+  description: "List component for displaying items with icons and actions.",
+  keywords: "Rails, UI Components, List, Items"
+) %>
+<% breadcrumb :ui_list %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "List" %>
+    <%= ui.header_subtitle "Styled lists with icons, content, and actions." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/list", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("list") %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("list") %>
+  </section>
+
+  <%= render_content_info("list") %>
+  <%= render_props_table("list") %>
+  <%= render_subcomponents_table("list") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("list") %>
+  </section>
+</article>

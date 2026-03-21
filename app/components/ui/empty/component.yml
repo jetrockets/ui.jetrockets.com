@@ -3,7 +3,7 @@ description: Empty state component for displaying placeholder content when no da
 
 preview: |
   <%= ui.empty do %>
-    <%= ui.empty_icon "user" %>
+    <%= ui.empty_icon "inbox" %>
     <%= ui.empty_title "No items found" %>
     <%= ui.empty_description "Get started by creating a new item." %>
     <%= ui.empty_actions do %>
@@ -13,13 +13,13 @@ preview: |
 
 usage: |
   <%= ui.empty do %>
-    <%= ui.empty_icon "user" %>
+    <%= ui.empty_icon "magnifying-glass" %>
     <%= ui.empty_title "No results" %>
     <%= ui.empty_description "Try adjusting your search." %>
   <% end %>
 
   <%= ui.empty do %>
-    <%= ui.empty_icon "user" %>
+    <%= ui.empty_icon "folder" %>
     <%= ui.empty_title "No projects" %>
     <%= ui.empty_description "Create your first project." %>
     <%= ui.empty_actions do %>
@@ -85,7 +85,7 @@ examples:
   - name: With actions
     code: |
       <%= ui.empty do %>
-        <%= ui.empty_icon "github" %>
+        <%= ui.empty_icon "calendar" %>
         <%= ui.empty_title "No upcoming meetings" %>
         <%= ui.empty_description "Create a meeting to get started." %>
         <%= ui.empty_actions do %>
@@ -97,7 +97,7 @@ examples:
   - name: Single action
     code: |
       <%= ui.empty do %>
-        <%= ui.empty_icon "github" %>
+        <%= ui.empty_icon "folder" %>
         <%= ui.empty_title "No projects yet" %>
         <%= ui.empty_description "Get started by creating a new project." %>
         <%= ui.empty_actions do %>
@@ -108,7 +108,7 @@ examples:
   - name: Without actions
     code: |
       <%= ui.empty do %>
-        <%= ui.empty_icon "github" %>
+        <%= ui.empty_icon "magnifying-glass" %>
         <%= ui.empty_title "No results found" %>
         <%= ui.empty_description "Try adjusting your search or filter to find what you're looking for." %>
       <% end %>

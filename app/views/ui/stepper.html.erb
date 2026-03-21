@@ -1,0 +1,34 @@
+<% set_meta_tags(
+  title: "Stepper - Rails UI Components",
+  description: "Stepper component for multi-step wizards and progress.",
+  keywords: "Rails, UI Components, Stepper, Wizard, Progress"
+) %>
+<% breadcrumb :ui_stepper %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Stepper" %>
+    <%= ui.header_subtitle "Multi-step wizard and progress indicator." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/stepper", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("stepper") %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("stepper") %>
+  </section>
+
+  <%= render_content_info("stepper") %>
+  <%= render_props_table("stepper") %>
+  <%= render_subcomponents_table("stepper") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("stepper") %>
+  </section>
+</article>

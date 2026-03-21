@@ -1,0 +1,31 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .list {
+    @apply w-full;
+  }
+
+  .list__item {
+    @apply flex items-center gap-3 px-4 py-3;
+  }
+
+  .list--divided .list__item {
+    @apply border-b border-gray-200;
+  }
+
+  .list--divided .list__item:last-child {
+    @apply border-b-0;
+  }
+
+  .list__icon {
+    @apply flex-shrink-0 text-gray-500;
+  }
+
+  .list__content {
+    @apply flex-1 min-w-0;
+  }
+
+  .list__action {
+    @apply flex-shrink-0 ml-auto;
+  }
+}

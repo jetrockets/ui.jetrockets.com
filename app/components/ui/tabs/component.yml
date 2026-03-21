@@ -72,8 +72,8 @@ examples:
     code: |
       <%= ui.tabs do %>
         <%= ui.tabs_item "Profile", href: "#", icon: "user" %>
-        <%= ui.tabs_item "Settings", href: "#", icon: "user", active: true %>
-        <%= ui.tabs_item "Notifications", href: "#", icon: "user" %>
+        <%= ui.tabs_item "Settings", href: "#", icon: "cog", active: true %>
+        <%= ui.tabs_item "Notifications", href: "#", icon: "bell" %>
       <% end %>
 
   - name: Underline

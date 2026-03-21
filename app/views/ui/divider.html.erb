@@ -1,0 +1,74 @@
+<% set_meta_tags(
+  title: "Divider - Rails UI Components",
+  description: "Divider component for separating content.",
+  keywords: "Rails, UI Components, Divider, Separator"
+) %>
+<% breadcrumb :ui_divider %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Divider" %>
+    <%= ui.header_subtitle "Visual separator for content sections." %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= ui.card do %>
+    <%= ui.card_body do %>
+      <p>Content above</p>
+      <div class="divider"></div>
+      <p>Content below</p>
+    <% end %>
+  <% end %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <pre><code>&lt;div class="divider"&gt;&lt;/div&gt;
+
+&lt;!-- With text --&gt;
+&lt;div class="divider"&gt;or&lt;/div&gt;
+
+&lt;!-- Text aligned start --&gt;
+&lt;div class="divider divider-start"&gt;Section&lt;/div&gt;
+
+&lt;!-- Text aligned end --&gt;
+&lt;div class="divider divider-end"&gt;More&lt;/div&gt;</code></pre>
+  </section>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+
+    <div class="flex flex-col gap-3">
+      <h3 class="font-medium text-gray-900">Simple Divider</h3>
+      <%= ui.card do %>
+        <%= ui.card_body do %>
+          <p>First section</p>
+          <div class="divider"></div>
+          <p>Second section</p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <h3 class="font-medium text-gray-900">With Text</h3>
+      <%= ui.card do %>
+        <%= ui.card_body do %>
+          <p>Login with email</p>
+          <div class="divider">or</div>
+          <p>Login with social</p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <h3 class="font-medium text-gray-900">Text Alignment</h3>
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <div class="divider divider-start">Start</div>
+          <div class="divider">Center</div>
+          <div class="divider divider-end">End</div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+</article>

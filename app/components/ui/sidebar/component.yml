@@ -1,0 +1,164 @@
+name: Sidebar
+description: Navigation sidebar component for displaying grouped menu links. Uses existing CSS classes from sidebar.css and integrates with the sidebar Stimulus controller for scroll position persistence.
+
+preview: |
+  <%= ui.sidebar do %>
+    <%= ui.sidebar_section do %>
+      <%= ui.sidebar_title "Navigation" %>
+      <%= ui.sidebar_menu do %>
+        <%= ui.sidebar_link "Home", url: "/" %>
+        <%= ui.sidebar_link "Dashboard", url: "/dashboard" %>
+        <%= ui.sidebar_link "Coming Soon", disabled: true %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.sidebar do %>
+    <%= ui.sidebar_section do %>
+      <%= ui.sidebar_title "Section Title" %>
+      <%= ui.sidebar_menu do %>
+        <%= ui.sidebar_link "Link Text", url: path %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+content:
+  description: "sidebar_section components containing navigation groups."
+
+props:
+  - name: class
+    type: String
+    default: "nil"
+    description: Additional CSS classes to add to the sidebar nav element.
+
+  - name: data
+    type: Hash
+    default: "{ sidebar_target: 'menu' }"
+    description: Data attributes. Automatically includes sidebar_target for Stimulus controller integration.
+
+slots:
+  - name: sidebar_section
+    component: Ui::Sidebar::SectionComponent
+    description: A section container for grouping related navigation items.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: sidebar_title
+    component: Ui::Sidebar::TitleComponent
+    description: Section title/heading for a navigation group.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: sidebar_menu
+    component: Ui::Sidebar::MenuComponent
+    description: Container (ul) for sidebar links.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: sidebar_link
+    component: Ui::Sidebar::LinkComponent
+    description: Navigation link item. Automatically detects active state using current_page? helper.
+    props:
+      - name: url
+        type: String
+        default: "nil"
+        description: The URL/path for the link. Required unless disabled is true.
+
+      - name: disabled
+        type: Boolean
+        default: "false"
+        description: When true, renders a span instead of a link with disabled styling.
+
+      - name: active
+        type: Boolean
+        default: "nil"
+        description: Override automatic active detection. When nil, uses current_page? to determine active state.
+
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic Sidebar
+    code: |
+      <%= ui.sidebar do %>
+        <%= ui.sidebar_section do %>
+          <%= ui.sidebar_title "Menu" %>
+          <%= ui.sidebar_menu do %>
+            <%= ui.sidebar_link "Home", url: "/" %>
+            <%= ui.sidebar_link "About", url: "#" %>
+            <%= ui.sidebar_link "Contact", url: "#" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Multiple Sections
+    code: |
+      <%= ui.sidebar do %>
+        <%= ui.sidebar_section do %>
+          <%= ui.sidebar_title "Basics" %>
+          <%= ui.sidebar_menu do %>
+            <%= ui.sidebar_link "Introduction", url: ui_path %>
+            <%= ui.sidebar_link "Getting Started", url: ui_getting_started_path %>
+          <% end %>
+        <% end %>
+        <%= ui.sidebar_section do %>
+          <%= ui.sidebar_title "Components" %>
+          <%= ui.sidebar_menu do %>
+            <%= ui.sidebar_link "Button", url: ui_button_path %>
+            <%= ui.sidebar_link "Card", url: ui_card_path %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: With Disabled Links
+    code: |
+      <%= ui.sidebar do %>
+        <%= ui.sidebar_section do %>
+          <%= ui.sidebar_title "Plugins" %>
+          <%= ui.sidebar_menu do %>
+            <%= ui.sidebar_link "Charts", disabled: true %>
+            <%= ui.sidebar_link "File Uploader", disabled: true %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Manual Active State
+    code: |
+      <%= ui.sidebar do %>
+        <%= ui.sidebar_section do %>
+          <%= ui.sidebar_title "Navigation" %>
+          <%= ui.sidebar_menu do %>
+            <%= ui.sidebar_link "Always Active", url: "#", active: true %>
+            <%= ui.sidebar_link "Never Active", url: "#", active: false %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Title with Badge
+    description: You can include additional elements like badges within the title.
+    code: |
+      <%= ui.sidebar do %>
+        <%= ui.sidebar_section do %>
+          <%= ui.sidebar_title do %>
+            Plugins
+            <%= ui.badge "Coming Soon", size: :xs %>
+          <% end %>
+          <%= ui.sidebar_menu do %>
+            <%= ui.sidebar_link "Charts", disabled: true %>
+          <% end %>
+        <% end %>
+      <% end %>

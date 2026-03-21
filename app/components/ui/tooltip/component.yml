@@ -58,7 +58,7 @@ examples:
     code: |
       <span>
         Tooltip without component
-        <%= ui.icon "question-circle", size: 5, data: { controller: "tooltip", tooltip_content_value: "Without component" }, class: "cursor-help" %>
+        <%= ui.icon "question-mark-circle", size: 5, data: { controller: "tooltip", tooltip_content_value: "Without component" }, class: "cursor-help" %>
       </span>
 
   - name: With Button Variants

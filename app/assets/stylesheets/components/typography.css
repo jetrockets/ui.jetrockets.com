@@ -45,4 +45,39 @@
   .hr {
     @apply h-px my-8 bg-gray-200 border-0;
   }
+
+  /* Divider component */
+  .divider {
+    @apply flex items-center gap-4 text-sm text-gray-500 py-2;
+
+    &::before,
+    &::after {
+      @apply flex-1 h-px bg-gray-200 content-[''];
+    }
+
+    &:empty {
+      @apply gap-0;
+    }
+  }
+
+  .divider-vertical {
+    @apply flex-col h-full w-px mx-4;
+
+    &::before,
+    &::after {
+      @apply w-px h-auto flex-1;
+    }
+  }
+
+  .divider-start {
+    &::before {
+      @apply hidden;
+    }
+  }
+
+  .divider-end {
+    &::after {
+      @apply hidden;
+    }
+  }
 }

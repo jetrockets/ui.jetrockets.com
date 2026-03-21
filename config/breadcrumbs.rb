@@ -153,6 +153,34 @@ crumb :ui_typography do
   link "Typography", ui_typography_path
 end
 
+crumb :ui_breadcrumbs do
+  link "Breadcrumbs", ui_breadcrumbs_path
+end
+
+crumb :ui_divider do
+  link "Divider", ui_divider_path
+end
+
+crumb :ui_sidebar do
+  link "Sidebar", ui_sidebar_path
+end
+
+crumb :ui_stepper do
+  link "Stepper", ui_stepper_path
+end
+
+crumb :ui_timeline do
+  link "Timeline", ui_timeline_path
+end
+
+crumb :ui_stat do
+  link "Stat", ui_stat_path
+end
+
+crumb :ui_list do
+  link "List", ui_list_path
+end
+
 crumb :privacy_policy do
   link "Privacy Policy", privacy_path
   parent :root

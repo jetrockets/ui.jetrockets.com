@@ -86,27 +86,27 @@ examples:
   - name: With Icons
     code: |
       <%= ui.btn size: :md do %>
-        <%= ui.icon "user" %>
-        Default
+        <%= ui.icon "plus" %>
+        Create
       <% end %>
 
   - name: Icon Only
     code: |
-      <%= ui.btn ui.icon("user"), size: :icon_xs %>
-      <%= ui.btn ui.icon("user"), variant: :secondary, size: :icon_sm %>
-      <%= ui.btn ui.icon("user"), variant: :outline, size: :icon_md %>
-      <%= ui.btn ui.icon("user"), variant: :danger, size: :icon_lg %>
+      <%= ui.btn ui.icon("plus"), size: :icon_xs %>
+      <%= ui.btn ui.icon("pencil"), variant: :secondary, size: :icon_sm %>
+      <%= ui.btn ui.icon("cog"), variant: :outline, size: :icon_md %>
+      <%= ui.btn ui.icon("trash"), variant: :danger, size: :icon_lg %>
 
   - name: Special Styles
     code: |
       <div class="flex items-center gap-2">
         <%= ui.btn "Rounded", size: :sm, rounded: true %>
         <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
-        <%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %>
+        <%= ui.btn ui.icon("heart"), size: :icon_md, rounded: true %>
       </div>
       <%= ui.btn block: true, size: :lg, class: "mt-2" do %>
-        <%= ui.icon("user", size: 6) %>
-        Block Button
+        <%= ui.icon("arrow-down-tray", size: 6) %>
+        Download
       <% end %>
 
   - name: As Links
