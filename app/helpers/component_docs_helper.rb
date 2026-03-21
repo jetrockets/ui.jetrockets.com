@@ -43,12 +43,38 @@ module ComponentDocsHelper
       concat content_tag(:h3, example["name"], class: "font-medium text-gray-900")
       if show_preview
         concat(ui.card do
-          ui.card_body class: "flex flex-col gap-4" do
+          ui.card_body class: "" do
             render(inline: example["code"])
           end
         end)
       end
       concat content_tag(:pre, content_tag(:code, html_escape(example["code"].strip)), class: "text-sm")
+    end
+  end
+
+  def render_content_info(component_name)
+    docs = component_docs(component_name)
+    return nil unless docs
+
+    content = docs["content"]
+    return nil if content.nil?
+
+    if content == false
+      ui.alert(variant: :default) do
+        safe_join([
+          ui.alert_icon("information-circle", size: 5),
+          ui.alert_description("This component does not accept block content.")
+        ])
+      end
+    else
+      description = content.is_a?(Hash) ? content["description"] : content.to_s
+      ui.alert(variant: :info) do
+        safe_join([
+          ui.alert_icon("information-circle", size: 5, class: "text-blue-500"),
+          ui.alert_title("Content (block)"),
+          ui.alert_description(description)
+        ])
+      end
     end
   end
 

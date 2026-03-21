@@ -16,7 +16,7 @@ class Ui::Header::Component < ApplicationComponent
 
   def classes
     class_names(
-      "flex gap-y-2 gap-x-8 lg:gap-x-16 mb-4 py-3 md:py-6",
+      "flex gap-y-2 gap-x-8 lg:gap-x-16 py-3 md:py-6",
       direction_class,
       align_class,
       justify_class,

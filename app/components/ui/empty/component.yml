@@ -29,6 +29,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "empty_icon, empty_title, empty_description, empty_actions components."
+
 props: []
 
 slots:

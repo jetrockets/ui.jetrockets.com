@@ -11,6 +11,8 @@ usage: |
 
 accepts_html_attributes: true
 
+content: false
+
 props:
   - name: size
     type: Integer
@@ -36,6 +38,6 @@ examples:
   - name: With Turbo Frame
     description: "Use `spinner: true` to show a spinner while the frame is loading. Add `busy: true` to show the spinner immediately."
     code: |
-      <%= turbo_frame_tag "loading_frame", spinner: true, busy: true, class: "h-40" do %>
+      <%= turbo_frame_tag "loading_frame", spinner: true, busy: true, class: "flex flex-col h-40" do %>
 
       <% end %>

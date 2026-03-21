@@ -32,6 +32,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "header_heading and header_actions components."
+
 props:
   - name: direction
     type: Symbol

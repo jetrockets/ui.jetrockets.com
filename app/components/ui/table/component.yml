@@ -37,6 +37,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "table_thead, table_tbody, table_tfoot components."
+
 props:
   - name: bordered
     type: Boolean

@@ -19,6 +19,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "alert_icon, alert_title, alert_description components or any HTML."
+
 props:
   - name: title
     type: String
@@ -81,10 +84,12 @@ examples:
 
   - name: Variants
     code: |
-      <%= ui.alert title: "Info alert!", variant: :info %>
-      <%= ui.alert title: "Warning alert!", variant: :warning %>
-      <%= ui.alert title: "Danger alert!", variant: :error %>
-      <%= ui.alert title: "Success alert!", variant: :success %>
+      <div class="flex flex-col gap-2">
+        <%= ui.alert title: "Info alert!", variant: :info %>
+        <%= ui.alert title: "Warning alert!", variant: :warning %>
+        <%= ui.alert title: "Danger alert!", variant: :error %>
+        <%= ui.alert title: "Success alert!", variant: :success %>
+      </div>
 
   - name: With description
     code: |

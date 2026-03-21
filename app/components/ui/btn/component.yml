@@ -11,6 +11,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "Text, icons, or HTML. Alternative to passing text as first argument."
+
 props:
   - name: variant
     type: Symbol
@@ -96,10 +99,12 @@ examples:
 
   - name: Special Styles
     code: |
-      <%= ui.btn "Rounded", size: :sm, rounded: true %>
-      <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
-      <%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %>
-      <%= ui.btn block: true, size: :lg do %>
+      <div class="flex items-center gap-2">
+        <%= ui.btn "Rounded", size: :sm, rounded: true %>
+        <%= ui.btn "Rounded Secondary", variant: :secondary, size: :sm, rounded: true %>
+        <%= ui.btn ui.icon("user"), size: :icon_md, rounded: true %>
+      </div>
+      <%= ui.btn block: true, size: :lg, class: "mt-2" do %>
         <%= ui.icon("user", size: 6) %>
         Block Button
       <% end %>

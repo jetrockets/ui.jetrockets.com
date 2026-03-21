@@ -26,6 +26,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "accordion_summary and accordion_body components."
+
 props:
   - name: name
     type: String

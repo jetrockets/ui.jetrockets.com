@@ -10,6 +10,8 @@ usage: |
 
 accepts_html_attributes: true
 
+content: false
+
 props:
   - name: name
     type: String
@@ -28,12 +30,6 @@ props:
 
 examples:
   - name: Basic usage
-    code: |
-      <%= ui.icon "information-circle" %>
-      <%= ui.icon "check-circle" %>
-      <%= ui.icon "x-circle" %>
-
-  - name: With size
     code: |
       <%= ui.icon "information-circle", size: 6 %>
       <%= ui.icon "information-circle", size: 8 %>

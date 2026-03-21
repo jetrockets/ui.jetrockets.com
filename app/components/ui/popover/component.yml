@@ -27,6 +27,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "popover_trigger and popover_content components."
+
 props:
   - name: placement
     type: Symbol

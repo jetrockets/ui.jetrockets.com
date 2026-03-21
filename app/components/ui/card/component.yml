@@ -33,6 +33,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "card_header, card_body, card_footer components or any HTML."
+
 props: []
 
 slots:

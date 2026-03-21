@@ -16,6 +16,8 @@ usage: |
 
 accepts_html_attributes: true
 
+content: false
+
 props: []
 
 examples:

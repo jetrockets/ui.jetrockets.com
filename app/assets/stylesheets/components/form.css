@@ -68,7 +68,7 @@
   }
 
   .form__actions {
-    @apply mt-8 mb-6;
+    @apply mt-8;
   }
 
   /* Choices.js custom styles */

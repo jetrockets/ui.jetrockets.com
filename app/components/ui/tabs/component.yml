@@ -22,6 +22,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "tabs_item components."
+
 props:
   - name: variant
     type: Symbol

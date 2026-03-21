@@ -26,6 +26,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "drawer_header, drawer_body, drawer_footer components or any HTML."
+
 props:
   - name: title
     type: String

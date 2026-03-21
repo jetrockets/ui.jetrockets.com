@@ -32,6 +32,11 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "dropdown_trigger and dropdown_menu components."
+
+props: []
+
 slots:
   - name: dropdown_trigger
     component: Ui::Dropdown::TriggerComponent

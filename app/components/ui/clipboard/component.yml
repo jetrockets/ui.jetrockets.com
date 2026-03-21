@@ -17,6 +17,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "Text or HTML. Alternative to passing text as first argument."
+
 props:
   - name: as
     type: Symbol

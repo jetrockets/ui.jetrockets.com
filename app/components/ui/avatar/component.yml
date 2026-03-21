@@ -11,6 +11,8 @@ usage: |
 
 accepts_html_attributes: true
 
+content: false
+
 props:
   - name: user
     type: Object
@@ -34,26 +36,34 @@ props:
 examples:
   - name: Default (no user)
     code: |
-      <%= ui.avatar size: 8 %>
-      <%= ui.avatar size: 12 %>
-      <%= ui.avatar size: 16 %>
-      <%= ui.avatar size: 20 %>
+      <div class="flex items-center gap-2">
+        <%= ui.avatar size: 8 %>
+        <%= ui.avatar size: 12 %>
+        <%= ui.avatar size: 16 %>
+        <%= ui.avatar size: 20 %>
+      </div>
 
   - name: With user
     code: |
-      <%= ui.avatar user: User.first, size: 8 %>
-      <%= ui.avatar user: User.first, size: 12 %>
-      <%= ui.avatar user: User.first, size: 16 %>
-      <%= ui.avatar user: User.first, size: 20 %>
+      <div class="flex items-center gap-2">
+        <%= ui.avatar user: User.first, size: 8 %>
+        <%= ui.avatar user: User.first, size: 12 %>
+        <%= ui.avatar user: User.first, size: 16 %>
+        <%= ui.avatar user: User.first, size: 20 %>
+      </div>
 
   - name: Rounded variant
     code: |
-      <%= ui.avatar user: User.first, size: 8, variant: :rounded %>
-      <%= ui.avatar user: User.first, size: 12, variant: :rounded %>
-      <%= ui.avatar user: User.first, size: 16, variant: :rounded %>
+      <div class="flex items-center gap-2">
+        <%= ui.avatar user: User.first, size: 8, variant: :rounded %>
+        <%= ui.avatar user: User.first, size: 12, variant: :rounded %>
+        <%= ui.avatar user: User.first, size: 16, variant: :rounded %>
+      </div>
 
   - name: Square variant
     code: |
-      <%= ui.avatar user: User.first, size: 8, variant: :square %>
-      <%= ui.avatar user: User.first, size: 12, variant: :square %>
-      <%= ui.avatar user: User.first, size: 16, variant: :square %>
+      <div class="flex items-center gap-2">
+        <%= ui.avatar user: User.first, size: 8, variant: :square %>
+        <%= ui.avatar user: User.first, size: 12, variant: :square %>
+        <%= ui.avatar user: User.first, size: 16, variant: :square %>
+      </div>

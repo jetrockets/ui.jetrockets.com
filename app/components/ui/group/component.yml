@@ -22,6 +22,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "Buttons, inputs, dropdowns, or any elements to group together."
+
 props:
   - name: sticky
     type: Boolean

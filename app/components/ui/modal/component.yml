@@ -26,6 +26,9 @@ usage: |
 
 accepts_html_attributes: true
 
+content:
+  description: "modal_header, modal_body, modal_footer components or any HTML."
+
 props:
   - name: title
     type: String

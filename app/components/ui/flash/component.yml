@@ -13,6 +13,8 @@ usage: |
 
 accepts_html_attributes: true
 
+content: false
+
 props:
   - name: dismissible
     type: Boolean
