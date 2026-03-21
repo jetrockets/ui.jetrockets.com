@@ -10,7 +10,8 @@ usage: |
 
 accepts_html_attributes: true
 
-content: false
+content:
+  description: "Icon name. Alternative to the `name` prop."
 
 props:
   - name: name

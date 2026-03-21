@@ -53,26 +53,31 @@ module ComponentDocsHelper
   end
 
   def render_content_info(component_name)
+    # Show "Block content" card only for components WITHOUT slots
+    # Components WITH slots are handled by render_subcomponents_table
     docs = component_docs(component_name)
     return nil unless docs
 
-    content = docs["content"]
-    return nil if content.nil?
+    slots = docs.fetch("slots", []) || []
+    return nil if slots.present? # handled by render_subcomponents_table
 
-    if content == false
-      ui.alert(variant: :default) do
+    content_info = docs["content"]
+    return nil if content_info == false
+    return nil if content_info.nil?
+
+    subtitle = if content_info.is_a?(Hash)
+                 content_info["description"]
+               elsif content_info.is_a?(String)
+                 content_info
+               else
+                 "Accepts any HTML."
+               end
+
+    ui.card do
+      ui.card_header do
         safe_join([
-          ui.alert_icon("information-circle", size: 5),
-          ui.alert_description("This component does not accept block content.")
-        ])
-      end
-    else
-      description = content.is_a?(Hash) ? content["description"] : content.to_s
-      ui.alert(variant: :info) do
-        safe_join([
-          ui.alert_icon("information-circle", size: 5, class: "text-blue-500"),
-          ui.alert_title("Content (block)"),
-          ui.alert_description(description)
+          ui.card_title("Block content"),
+          ui.card_subtitle(subtitle)
         ])
       end
     end
@@ -110,13 +115,22 @@ module ComponentDocsHelper
   end
 
   def render_subcomponents_table(component_name)
+    # Show "Subcomponents" card only for components WITH slots
+    # Components WITHOUT slots are handled by render_content_info
     docs = component_docs(component_name)
-    slots = docs&.fetch("slots", [])
+    return nil unless docs
+
+    slots = docs.fetch("slots", []) || []
     return nil if slots.blank?
 
     ui.card do
       safe_join([
-        ui.card_header { ui.card_title("Subcomponents") },
+        ui.card_header do
+          safe_join([
+            ui.card_title("Subcomponents"),
+            ui.card_subtitle("Use subcomponents below or any HTML.")
+          ])
+        end,
         ui.card_body do
           ui.table(size: :xs) do
             safe_join([
@@ -159,9 +173,7 @@ module ComponentDocsHelper
           " ".html_safe +
           content_tag(:code, "data:,", class: "text-xs") +
           " ".html_safe +
-          content_tag(:code, "aria:,", class: "text-xs") +
-          " ".html_safe +
-          content_tag(:code, "class:", class: "text-xs") +
+          content_tag(:code, "aria:", class: "text-xs") +
           "). ".html_safe +
           content_tag(:code, "class:", class: "text-xs") +
           " is also supported for custom styling.".html_safe
