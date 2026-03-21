@@ -14,7 +14,7 @@ class Ui::Accordion::Component < ApplicationComponent
 
   def classes
     class_names(
-      "group border-b border-gray-200",
+      "group",
       @options.delete(:class)
     )
   end

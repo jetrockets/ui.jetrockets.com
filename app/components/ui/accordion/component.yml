@@ -67,26 +67,28 @@ slots:
 examples:
   - name: Accordion group
     code: |
-      <%= ui.accordion name: "tech-specs", open: true do %>
-        <%= ui.accordion_summary "First Item" %>
-        <%= ui.accordion_body do %>
-          <p>Content for the first accordion item.</p>
+      <div class="divide-y divide-gray-200">
+        <%= ui.accordion name: "tech-specs", open: true do %>
+          <%= ui.accordion_summary "First Item" %>
+          <%= ui.accordion_body do %>
+            <p>Content for the first accordion item.</p>
+          <% end %>
         <% end %>
-      <% end %>
 
-      <%= ui.accordion name: "tech-specs" do %>
-        <%= ui.accordion_summary "Second Item" %>
-        <%= ui.accordion_body do %>
-          <p>Content for the second accordion item.</p>
+        <%= ui.accordion name: "tech-specs" do %>
+          <%= ui.accordion_summary "Second Item" %>
+          <%= ui.accordion_body do %>
+            <p>Content for the second accordion item.</p>
+          <% end %>
         <% end %>
-      <% end %>
 
-      <%= ui.accordion name: "tech-specs" do %>
-        <%= ui.accordion_summary "Third Item" %>
-        <%= ui.accordion_body do %>
-          <p>Content for the third accordion item.</p>
+        <%= ui.accordion name: "tech-specs" do %>
+          <%= ui.accordion_summary "Third Item" %>
+          <%= ui.accordion_body do %>
+            <p>Content for the third accordion item.</p>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
 
   - name: Independent accordions
     code: |
