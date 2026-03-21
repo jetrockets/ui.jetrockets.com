@@ -1,0 +1,29 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .turbo_frame_spinner {
+    @apply hidden content-[''] absolute z-20 top-0 left-0 w-full h-full max-h-[90svh];
+  }
+
+  .turbo_frame_spinner::after {
+    @apply content-[''] block w-10 h-10 bg-cover absolute left-1/2 top-1/2 -mt-[26px] -ml-[24px] z-20;
+    animation: spinner 1.6s ease-in-out infinite backwards;
+    background-image: url('/images/icons/spinner.svg');
+  }
+}
+
+turbo-frame[spinner][busy] {
+  @apply relative;
+
+  > .turbo_frame_spinner {
+    @apply block;
+  }
+
+  > *:not(.turbo_frame_spinner) {
+    @apply opacity-15;
+  }
+}
+
+turbo-frame[spinner][busy]::after {
+  @apply content-[''] absolute inset-0 z-40;
+}

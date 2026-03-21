@@ -1,3 +1,5 @@
+@reference "~/entrypoints/tailwind.css";
+
 @layer components {
   .sidebar {
     @apply flex flex-col gap-y-8 overflow-y-auto md:pr-4 text-sm;
