@@ -1,0 +1,173 @@
+name: Navbar
+description: Responsive navigation bar with brand, content, and actions areas.
+
+preview: |
+  <%= ui.navbar do %>
+    <%= ui.navbar_brand do %>
+      <%= link_to ui.icon("cube", size: 6), "#" %>
+      <span class="font-semibold">App Name</span>
+    <% end %>
+    <%= ui.navbar_main do %>
+      <%= ui.navbar_content class: "hidden md:flex" do %>
+        <span class="text-sm text-gray-500">Navigation content</span>
+      <% end %>
+      <%= ui.navbar_actions do %>
+        <%= ui.btn "Sign In", url: "#", size: :sm, variant: :outline %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+usage: |
+  <%= ui.navbar do %>
+    <%= ui.navbar_brand do %>
+      <%= link_to "Logo", root_path %>
+    <% end %>
+    <%= ui.navbar_main do %>
+      <%= ui.navbar_content do %>
+        <%= ui.breadcrumbs %>
+      <% end %>
+      <%= ui.navbar_actions do %>
+        <%= ui.btn "Action", url: "#" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: true
+
+content:
+  description: "navbar_brand, navbar_main, navbar_content, navbar_actions components."
+
+props:
+  - name: sticky
+    type: Boolean
+    default: "true"
+    description: Whether the navbar sticks to the top of the viewport.
+
+slots:
+  - name: navbar_brand
+    component: Ui::Navbar::BrandComponent
+    description: Brand/logo area on the left side.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: navbar_main
+    component: Ui::Navbar::MainComponent
+    description: Main wrapper for content and actions. Required for proper grid alignment.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: navbar_content
+    component: Ui::Navbar::ContentComponent
+    description: Content area (breadcrumbs, search, etc.).
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: navbar_actions
+    component: Ui::Navbar::ActionsComponent
+    description: Actions area on the right (buttons, user menu, etc.).
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+examples:
+  - name: Basic
+    code: |
+      <%= ui.navbar do %>
+        <%= ui.navbar_brand do %>
+          <%= link_to ui.icon("cube", size: 6), "#" %>
+          <span class="font-semibold">App Name</span>
+        <% end %>
+        <%= ui.navbar_main do %>
+          <%= ui.navbar_actions do %>
+            <%= ui.btn "Sign In", url: "#", size: :sm, variant: :outline %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: With breadcrumbs
+    code: |
+      <%= ui.navbar do %>
+        <%= ui.navbar_brand do %>
+          <%= link_to ui.icon("cube", size: 6), "#" %>
+        <% end %>
+        <%= ui.navbar_main do %>
+          <%= ui.navbar_content class: "hidden md:flex" do %>
+            <nav class="flex items-center gap-2 text-sm text-gray-500">
+              <a href="#">Home</a>
+              <span>/</span>
+              <a href="#">Products</a>
+              <span>/</span>
+              <span class="text-gray-900">Details</span>
+            </nav>
+          <% end %>
+          <%= ui.navbar_actions do %>
+            <%= ui.btn "Settings", url: "#", size: :sm, variant: :ghost %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: With user menu
+    code: |
+      <%= ui.navbar do %>
+        <%= ui.navbar_brand do %>
+          <%= link_to "Brand", "#", class: "font-bold text-lg" %>
+        <% end %>
+        <%= ui.navbar_main do %>
+          <%= ui.navbar_actions do %>
+            <%= ui.dropdown do %>
+              <%= ui.dropdown_trigger do %>
+                <%= ui.avatar size: 8 %>
+              <% end %>
+              <%= ui.dropdown_menu do %>
+                <%= ui.dropdown_link "Profile", url: "#" %>
+                <%= ui.dropdown_link "Settings", url: "#" %>
+                <%= ui.dropdown_divider %>
+                <%= ui.dropdown_button "Sign Out", url: "#" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: Non-sticky
+    code: |
+      <%= ui.navbar sticky: false do %>
+        <%= ui.navbar_brand do %>
+          <%= link_to "Logo", "#", class: "font-bold" %>
+        <% end %>
+        <%= ui.navbar_main do %>
+          <%= ui.navbar_actions do %>
+            <%= ui.btn "Contact", url: "#", size: :sm %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+  - name: With mobile menu toggle
+    code: |
+      <%= ui.navbar do %>
+        <%= ui.navbar_brand do %>
+          <%= button_tag ui.icon("bars-2", size: 6), class: "md:hidden" %>
+          <%= link_to "App", "#", class: "font-bold" %>
+        <% end %>
+        <%= ui.navbar_main do %>
+          <%= ui.navbar_actions do %>
+            <%= ui.btn "Menu", url: "#", size: :sm, class: "md:hidden" %>
+            <div class="hidden md:flex gap-2">
+              <%= ui.btn "Features", url: "#", size: :sm, variant: :ghost %>
+              <%= ui.btn "Pricing", url: "#", size: :sm, variant: :ghost %>
+              <%= ui.btn "Sign In", url: "#", size: :sm, variant: :outline %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>

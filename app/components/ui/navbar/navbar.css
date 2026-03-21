@@ -1,0 +1,30 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .navbar {
+    @apply z-20 w-full h-navbar bg-white/90 backdrop-blur-xs;
+    @apply flex items-center justify-between gap-6;
+    @apply md:grid md:grid-cols-[256px_1fr];
+  }
+
+  .navbar-sticky {
+    @apply sticky top-0;
+  }
+
+  .navbar__brand {
+    @apply flex items-center gap-3;
+  }
+
+  .navbar__content {
+    @apply flex-1;
+  }
+
+  .navbar__actions {
+    @apply flex items-center gap-2 ml-auto;
+  }
+
+  /* Main area wrapper for content + actions */
+  .navbar__main {
+    @apply flex items-center justify-between;
+  }
+}

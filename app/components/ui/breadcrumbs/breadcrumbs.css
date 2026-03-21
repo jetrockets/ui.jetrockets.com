@@ -1,3 +1,5 @@
+@reference "~/entrypoints/tailwind.css";
+
 @layer components {
   .breadcrumbs {
     @apply flex text-sm text-gray-600;

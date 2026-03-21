@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get "timeline"
     get "stat"
     get "list"
+    get "navbar"
 
     namespace :form_builders do
       get "core"

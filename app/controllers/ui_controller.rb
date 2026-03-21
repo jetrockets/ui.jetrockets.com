@@ -82,4 +82,28 @@ class UiController < ApplicationController
 
   def empty
   end
+
+  def breadcrumbs
+  end
+
+  def divider
+  end
+
+  def sidebar
+  end
+
+  def stepper
+  end
+
+  def timeline
+  end
+
+  def stat
+  end
+
+  def list
+  end
+
+  def navbar
+  end
 end

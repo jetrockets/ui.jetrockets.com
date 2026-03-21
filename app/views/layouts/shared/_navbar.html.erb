@@ -1,13 +1,15 @@
-<header class="sticky top-0 z-20 w-full h-navbar bg-white/90 backdrop-blur-xs md:grid md:grid-cols-[256px_1fr] gap-6 items-center flex justify-between">
-  <div class="flex items-center gap-3">
+<%= ui.navbar do %>
+  <%= ui.navbar_brand do %>
     <%= button_tag ui.icon("bars-2", size: 6), class: "md:hidden", data: { action: "click->sidebar#toggle" } %>
     <%= link_to ui.icon("logo", class: "w-28 h-8", img: true), root_path, aria: { label: "JetRockets" } %>
-  </div>
+  <% end %>
 
-  <div class="flex items-center justify-between">
-    <%= ui.breadcrumbs class: "hidden md:flex" %>
+  <%= ui.navbar_main do %>
+    <%= ui.navbar_content class: "hidden md:flex" do %>
+      <%= ui.breadcrumbs %>
+    <% end %>
 
-    <%= ui.group sticky: false do %>
+    <%= ui.navbar_actions do %>
       <%= link_to "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" do %>
         <%= ui.icon "github", class: "mr-2 size-7" %>
         <span class="sr-only">GitHub</span>
@@ -33,5 +35,5 @@
         <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, data: { turbo_frame: :modal }, class: "md:hidden" %>
       <% end %>
     <% end %>
-  </div>
-</header>
+  <% end %>
+<% end %>

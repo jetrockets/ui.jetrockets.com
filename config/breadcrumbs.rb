@@ -181,6 +181,10 @@ crumb :ui_list do
   link "List", ui_list_path
 end
 
+crumb :ui_navbar do
+  link "Navbar", ui_navbar_path
+end
+
 crumb :privacy_policy do
   link "Privacy Policy", privacy_path
   parent :root

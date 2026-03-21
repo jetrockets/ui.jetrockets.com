@@ -1,0 +1,34 @@
+<% set_meta_tags(
+  title: "Navbar - Rails UI Components",
+  description: "Responsive navigation bar component.",
+  keywords: "Rails, UI Components, Navbar, Navigation, Header"
+) %>
+<% breadcrumb :ui_navbar %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Navbar" %>
+    <%= ui.header_subtitle "Responsive navigation bar with brand, content, and actions areas." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/navbar", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("navbar") %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("navbar") %>
+  </section>
+
+  <%= render_content_info("navbar") %>
+  <%= render_props_table("navbar") %>
+  <%= render_subcomponents_table("navbar") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("navbar") %>
+  </section>
+</article>
