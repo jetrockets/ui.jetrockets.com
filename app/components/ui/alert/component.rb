@@ -19,7 +19,7 @@ class Ui::Alert::Component < ApplicationComponent
 
   def classes
     class_names(
-      "grid items-center gap-x-2 px-3.5 py-3 rounded-[var(--radius-card)] border text-sm",
+      "grid items-center gap-x-2 px-3.5 py-3 rounded-card border text-sm",
       "has-[.icon]:grid-cols-[auto_1fr]",
       variant_classes,
       @options.delete(:class)

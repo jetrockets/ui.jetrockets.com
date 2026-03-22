@@ -7,7 +7,7 @@
 @import "../stylesheets/tailwind/fonts";
 @import "../stylesheets/tailwind/animations";
 @import "../stylesheets/tailwind/theme";
-@import "../stylesheets/tailwind/variables";
+@import "../stylesheets/tailwind/theme-semantic";
 @import "../stylesheets/tailwind/base";
 @import "../stylesheets/tailwind/icons";
 @import "../stylesheets/tailwind/utilities";

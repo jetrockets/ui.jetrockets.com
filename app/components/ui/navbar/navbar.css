@@ -4,7 +4,7 @@
   .navbar {
     @apply z-20 w-full h-navbar backdrop-blur-xs bg-background/90;
     @apply flex items-center justify-between gap-6;
-    @apply md:grid md:grid-cols-[256px_1fr];
+    @apply md:grid md:grid-cols-[var(--width-sidebar)_1fr];
   }
 
   .navbar-sticky {

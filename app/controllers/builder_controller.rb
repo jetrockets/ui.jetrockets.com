@@ -51,7 +51,7 @@ class BuilderController < ApplicationController
         --accent-hue: #{theme[:accent_hue]};
         --gray-chroma: #{theme[:gray_chroma]};
         --radius-base: #{radius_base};
-        --radius-form: #{radius_form};
+        --radius-field: #{radius_form};
       }
     CSS
 
@@ -77,16 +77,12 @@ class BuilderController < ApplicationController
         --color-accent-hover: oklch(calc(var(--accent-lightness) + 0.1) var(--accent-chroma) var(--accent-hue));
         --color-accent-active: oklch(var(--accent-lightness) var(--accent-chroma) var(--accent-hue));
         --color-accent-foreground: oklch(1 0 0);
-        --color-accent-soft: oklch(0.22 0.03 var(--accent-hue));
-        --color-accent-soft-hover: oklch(0.26 0.04 var(--accent-hue));
-        --color-accent-soft-foreground: oklch(0.75 0.15 var(--accent-hue));
 
         --color-muted: oklch(0.2 0.005 var(--accent-hue));
         --color-muted-hover: oklch(0.24 0.008 var(--accent-hue));
         --color-muted-foreground: oklch(0.6 0.01 var(--accent-hue));
 
         --color-border: oklch(0.28 0.008 var(--accent-hue));
-        --color-border-hover: oklch(0.35 0.01 var(--accent-hue));
         --color-input: oklch(0.32 0.008 var(--accent-hue));
         --color-input-focus: oklch(0.55 0.15 var(--accent-hue));
         --color-ring: oklch(0.5 0.12 var(--accent-hue) / 0.35);

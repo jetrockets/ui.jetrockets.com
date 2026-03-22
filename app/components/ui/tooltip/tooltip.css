@@ -3,7 +3,7 @@
 @layer components {
   .tooltip {
     @apply absolute z-20 px-3 py-2 text-xs text-center shadow-sm pointer-events-none;
-    @apply bg-tooltip text-tooltip-foreground rounded-[var(--radius-base)];
+    @apply bg-tooltip text-tooltip-foreground rounded-tooltip;
   }
 
   .tooltip::after {

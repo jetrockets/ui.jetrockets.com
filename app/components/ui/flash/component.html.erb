@@ -2,12 +2,12 @@
   <% flash.each do |key, message| %>
     <% next if message.blank? %>
 
-    <%= content_tag :div, class: "relative w-full py-3 pl-4 pr-12 text-white transition duration-300 rounded-xl md:max-w-lg md:w-fit hidden border border-border #{tailwind_classes_for(key)}", id: "flash-#{key}", **data_attrs do %>
+    <%= content_tag :div, class: "relative w-full py-3 pl-4 pr-12 transition duration-300 rounded-xl md:max-w-lg md:w-fit hidden #{tailwind_classes_for(key)}", id: "flash-#{key}", **data_attrs do %>
       <p class="flex-1">
         <%== message %>
       </p>
       <% if @dismissible %>
-        <button class="absolute top-2.5 right-3 text-white transition duration-300 focus:outline-none focus:text-white hover:text-white opacity-80 hover:opacity-100" type="button" data-action="flash#close" aria-label="Close">
+        <button class="absolute top-2.5 right-3 text-tooltip-foreground transition duration-300 focus:outline-none focus:text-tooltip-foreground hover:text-tooltip-foreground opacity-80 hover:opacity-100" type="button" data-action="flash#close" aria-label="Close">
           <%= helpers.ui.icon "x-mark", size: 5 %>
           <span class="sr-only">Close</span>
         </button>

@@ -1,13 +1,13 @@
 :host {
   --day-width: 29px;
   --day-height: 29px;
-  --color-fg-primary: var(--color-primary);
-  --color-fg-accent: var(--color-primary);
+  --color-fg-primary: var(--color-accent);
+  --color-fg-accent: var(--color-accent);
   --color-bg-unavailable: transparent;
   --color-fg-locked: #BDBDBD;
 }
 
-.container[data-theme=dark] {
+:host-context(.dark) .container {
   --color-bg-unavailable: transparent;
   --color-bg-default: var(--color-gray-800);
   --color-bg-secondary: var(--color-gray-700);
@@ -17,7 +17,7 @@
 
   --color-fg-default: var(--color-gray-200);
   --color-fg-primary: var(--color-blue-500);
-  --color-fg-secondary: var(--color-white);
+  --color-fg-secondary: var(--color-surface);
   --color-fg-muted: var(--color-gray-400);
   --color-fg-accent: var(--color-red-400);
   --color-fg-locked: var(--color-gray-400);
@@ -26,7 +26,7 @@
   --color-btn-primary-fg: var(--color-blue-500);
   --color-btn-primary-border: var(--color-blue-500);
   --color-btn-primary-hover-bg: var(--color-blue-400);
-  --color-btn-primary-hover-fg: var(--color-white);
+  --color-btn-primary-hover-fg: var(--color-surface);
   --color-btn-primary-hover-border: var(--color-blue-400);
 
   --color-btn-secondary-bg: var(--color-gray-900);

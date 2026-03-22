@@ -1,7 +1,7 @@
 @layer components {
   .wysiwyg {
     @apply prose prose-img:my-0 prose-p:mt-0;
-    @apply prose-li:marker:text-gray prose-li:leading-tight;
+    @apply prose-li:marker:text-muted-foreground prose-li:leading-tight;
     @apply prose-a:text-accent;
 
     @apply max-w-full text-foreground;

@@ -20,12 +20,11 @@ class Ui::Badge::Component < ApplicationComponent
       "font-semibold inline-flex items-center w-fit whitespace-nowrap",
       @options.delete(:class),
       variant_classes,
-      "px-1.5 py-0.5 text-[10px]": @size == :xs,
-      "px-2 py-1 text-[11px]": @size == :sm,
-      "px-3 py-1.5 text-xs": @size == :md,
-      "px-4 py-2 text-[13px]": @size == :lg,
-      "rounded-full": @rounded,
-      "rounded-[var(--radius-button)]": !@rounded
+      "px-1.5 py-0.5 text-[10px] rounded-btn-xs": @size == :xs,
+      "px-2 py-1 text-[11px] rounded-btn-sm": @size == :sm,
+      "px-3 py-1.5 text-xs rounded-btn-md": @size == :md,
+      "px-4 py-2 text-[13px] rounded-btn-lg": @size == :lg,
+      "rounded-full": @rounded
     )
   end
 

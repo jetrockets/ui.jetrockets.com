@@ -154,7 +154,7 @@
                 <%= ui.card_subtitle "Card subtitle" %>
               <% end %>
               <%= ui.card_body do %>
-                <p class="text-muted-foreground">This is the card body with some content to demonstrate the card component styling.</p>
+                <p class="text-gray-600">This is the card body with some content to demonstrate the card component styling.</p>
               <% end %>
               <%= ui.card_footer class: "flex justify-end gap-2" do %>
                 <%= ui.btn "Cancel", variant: :ghost, size: :sm %>
@@ -247,7 +247,7 @@
         <!-- Accordion -->
         <section class="flex flex-col gap-3">
           <h3 class="text-sm font-medium text-muted-foreground">Accordion</h3>
-          <div class="border border-border rounded-[var(--radius-card)] divide-y divide-border">
+          <div class="border border-border rounded-card divide-y divide-border">
             <%= ui.accordion name: "faq", open: true do %>
               <%= ui.accordion_summary(class: "px-4") { "What is your refund policy?" } %>
               <%= ui.accordion_body class: "px-4 pb-4 text-muted-foreground" do %>

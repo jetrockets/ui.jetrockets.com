@@ -9,7 +9,7 @@
   @import 'highlight.js/styles/atom-one-dark.css';
 
   .hljs {
-    @apply border border-border rounded-[var(--radius-card)];
+    @apply border border-border rounded-card;
   }
 
   .dark .hljs {

@@ -74,7 +74,7 @@ export default class BuilderController extends Controller {
       el.classList.toggle('btn-default', isActive)
       el.classList.toggle('btn-outline', !isActive)
     })
-    this.setProperty('--radius-form', this.radiusToRem(value))
+    this.setProperty('--radius-field', this.radiusToRem(value))
     this.updateDownloadUrl()
   }
 
@@ -105,7 +105,7 @@ export default class BuilderController extends Controller {
 
     const activeRadiusForm = this.radiusFormTargets.find(el => el.classList.contains('btn-default'))
     if (activeRadiusForm) {
-      this.setProperty('--radius-form', this.radiusToRem(activeRadiusForm.dataset.value))
+      this.setProperty('--radius-field', this.radiusToRem(activeRadiusForm.dataset.value))
     }
   }
 

@@ -9,33 +9,32 @@
   --accent-chroma: 0.245; /* 0 = gray/black, 0.245 = saturated */
   --accent-lightness: 0.55; /* 0.15 = black, 0.55 = normal, 0.9 = light */
   --gray-chroma: 0.006;
-  --radius-base: 0.375rem;   /* lg */
-  --radius-form: 0.375rem; /* md */
-
-  /* Form radius - for inputs only */
-  --radius-input: var(--radius-form);
-
-  /* Button radius - proportionally scaled from base */
-  --btn-radius-xs: calc(var(--radius-base) * 0.75);
-  --btn-radius-sm: calc(var(--radius-base) * 1);
-  --btn-radius-md: calc(var(--radius-base) * 1.125);
-  --btn-radius-lg: calc(var(--radius-base) * 1.25);
-
-  /* Container radius - larger scale from base (cards, modals, alerts) */
-  --radius-card: calc(var(--radius-base) * 1.5);
-  --radius-modal: calc(var(--radius-base) * 1.5);
-  --radius-dropdown: calc(var(--radius-base) * 1.5);
 }
 
 /* Register in Tailwind theme for utility classes */
 @theme {
-  /* Not tailwind */
+  --height-navbar: 54px;
+  --width-sidebar: 220px;
+  --background-image-chevron-left: url('/images/icons/chevron-left.svg');
+
   --spacing-navbar: var(--height-navbar);
   --spacing-sidebar: var(--width-sidebar);
 
-  --height-navbar: 54px;
-  --width-sidebar: 197px;
-  --background-image-chevron-left: url('/images/icons/chevron-left.svg');
+  /* Radius */
+  --radius-base: theme(--radius-md);
+
+  /* Button radius - proportionally scaled from base */
+  --radius-btn-xs: calc(theme(--radius-base) * 0.75);
+  --radius-btn-sm: calc(theme(--radius-base) * 1);
+  --radius-btn-md: calc(theme(--radius-base) * 1.125);
+  --radius-btn-lg: calc(theme(--radius-base) * 1.25);
+
+  /* Container radius - larger scale from base (cards, modals, alerts) */
+  --radius-card: calc(theme(--radius-base) * 1.5);
+  --radius-modal: calc(theme(--radius-base) * 1.5);
+  --radius-dropdown: calc(theme(--radius-base) * 1.5);
+  --radius-field: theme(--radius-md);
+  --radius-tooltip: theme(--radius-sm);
 
   /* Dynamic Gray Colors - tinted by accent hue */
   --color-gray-50: oklch(0.985 var(--gray-chroma) var(--accent-hue));
@@ -50,15 +49,8 @@
   --color-gray-900: oklch(0.21 var(--gray-chroma) var(--accent-hue));
   --color-gray-950: oklch(0.13 var(--gray-chroma) var(--accent-hue));
 
-  /* Radius */
-  --radius-button: var(--radius-form);
-  --radius-input: var(--radius-form);
-  --radius-card: var(--radius-base);
-  --radius-modal: var(--radius-base);
-  --radius-dropdown: var(--radius-base);
-
   /* Layout Colors - use dynamic grays */
-  --color-background: oklch(0.99 var(--gray-chroma) var(--accent-hue));
+  --color-background: var(--color-gray-50);
   --color-foreground: var(--color-gray-900);
   --color-surface: oklch(1 0 0);
   --color-surface-foreground: var(--color-gray-900);
@@ -69,9 +61,6 @@
   --color-accent-hover: oklch(calc(var(--accent-lightness) - 0.06) var(--accent-chroma) var(--accent-hue));
   --color-accent-active: oklch(calc(var(--accent-lightness) - 0.12) var(--accent-chroma) var(--accent-hue));
   --color-accent-foreground: oklch(1 0 0);
-  --color-accent-soft: oklch(0.97 0.014 var(--accent-hue));
-  --color-accent-soft-hover: oklch(0.932 0.032 var(--accent-hue));
-  --color-accent-soft-foreground: oklch(var(--accent-lightness) var(--accent-chroma) var(--accent-hue));
 
   /* Muted Colors - high lightness for near-white default, tintable when gray-chroma increases */
   --color-muted: oklch(0.97 var(--gray-chroma) var(--accent-hue));
@@ -80,7 +69,6 @@
 
   /* Border, Input & Ring */
   --color-border: var(--color-gray-200);
-  --color-border-hover: var(--color-gray-300);
   --color-input: var(--color-gray-300);
   --color-input-focus: oklch(0.809 0.105 var(--accent-hue));
   --color-ring: oklch(0.882 0.059 var(--accent-hue) / 0.5);
@@ -122,12 +110,12 @@
   --color-info-border: var(--color-blue-200);
 
   /* Link */
-  --color-link: oklch(var(--accent-lightness) var(--accent-chroma) var(--accent-hue));
-  --color-link-hover: oklch(calc(var(--accent-lightness) - 0.06) var(--accent-chroma) var(--accent-hue));
+  --color-link: theme(--color-accent);
+  --color-link-hover: theme(--color-accent-hover);
 
   /* Tooltip */
-  --color-tooltip: var(--color-gray-800);
-  --color-tooltip-foreground: oklch(1 0 0);
+  --color-tooltip: var(--color-info);
+  --color-tooltip-foreground: var(--color-info-foreground);
 }
 
 /*
@@ -136,11 +124,11 @@
  */
 .dark {
   /* Dark theme chroma multiplier - amplifies saturation for visibility on dark backgrounds */
-  --dark-chroma: calc(var(--gray-chroma) * 3);
+  --dark-chroma: calc(var(--gray-chroma) * 10);
 
   /* Layout Colors - inverted for dark mode */
   --color-background: oklch(0.13 var(--dark-chroma) var(--accent-hue));
-  --color-foreground: oklch(0.95 var(--dark-chroma) var(--accent-hue));
+  --color-foreground: oklch(0.85 var(--dark-chroma) var(--accent-hue));
   --color-surface: oklch(0.17 var(--dark-chroma) var(--accent-hue));
   --color-surface-foreground: oklch(0.95 var(--dark-chroma) var(--accent-hue));
   --color-overlay: oklch(0 0 0 / 0.7);
@@ -150,9 +138,6 @@
   --color-accent-hover: oklch(calc(var(--accent-lightness) - 0.1) calc(var(--accent-chroma) * 0.6) var(--accent-hue));
   --color-accent-active: oklch(calc(var(--accent-lightness) - 0.2) calc(var(--accent-chroma) * 0.5) var(--accent-hue));
   --color-accent-foreground: oklch(1 0 0);
-  --color-accent-soft: oklch(0.22 0.03 var(--accent-hue));
-  --color-accent-soft-hover: oklch(0.26 0.04 var(--accent-hue));
-  --color-accent-soft-foreground: oklch(0.75 0.15 var(--accent-hue));
 
   /* Muted Colors - subtle dark grays */
   --color-muted: oklch(0.2 var(--dark-chroma) var(--accent-hue));
@@ -161,7 +146,6 @@
 
   /* Border, Input & Ring */
   --color-border: oklch(0.28 var(--dark-chroma) var(--accent-hue));
-  --color-border-hover: oklch(0.35 var(--dark-chroma) var(--accent-hue));
   --color-input: oklch(0.32 var(--dark-chroma) var(--accent-hue));
   --color-input-focus: oklch(0.55 0.15 var(--accent-hue));
   --color-ring: oklch(0.5 0.12 var(--accent-hue) / 0.35);
@@ -202,24 +186,7 @@
   --color-info-soft-foreground: oklch(0.8 0.14 240);
   --color-info-border: oklch(0.35 0.08 240);
 
-  /* Link - brighter for dark */
-  --color-link: oklch(calc(var(--accent-lightness) + 0.1) var(--accent-chroma) var(--accent-hue));
-  --color-link-hover: oklch(calc(var(--accent-lightness) + 0.15) var(--accent-chroma) var(--accent-hue));
-
   /* Tooltip - inverted */
-  --color-tooltip: var(--color-surface);
-  --color-tooltip-foreground: var(--color-surface-foreground);
-
-  /* Gray scale for dark - uses dynamic gray-chroma */
-  --color-gray-50: oklch(0.97 var(--gray-chroma) var(--accent-hue));
-  --color-gray-100: oklch(0.93 var(--gray-chroma) var(--accent-hue));
-  --color-gray-200: oklch(0.87 var(--gray-chroma) var(--accent-hue));
-  --color-gray-300: oklch(0.75 var(--gray-chroma) var(--accent-hue));
-  --color-gray-400: oklch(0.6 var(--gray-chroma) var(--accent-hue));
-  --color-gray-500: oklch(0.5 var(--gray-chroma) var(--accent-hue));
-  --color-gray-600: oklch(0.4 var(--gray-chroma) var(--accent-hue));
-  --color-gray-700: oklch(0.32 var(--gray-chroma) var(--accent-hue));
-  --color-gray-800: oklch(0.23 var(--gray-chroma) var(--accent-hue));
-  --color-gray-900: oklch(0.17 var(--gray-chroma) var(--accent-hue));
-  --color-gray-950: oklch(0.12 var(--gray-chroma) var(--accent-hue));
+  --color-tooltip: var(--color-info);
+  --color-tooltip-foreground: var(--color-info-foreground);
 }

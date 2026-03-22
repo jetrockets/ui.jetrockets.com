@@ -3,7 +3,7 @@
 @layer components {
   .popover {
     @apply absolute z-10 w-64 text-sm transition-opacity duration-300 shadow-sm opacity-0 pointer-events-none;
-    @apply text-muted-foreground bg-surface border border-border rounded-[var(--radius-base)];
+    @apply text-muted-foreground bg-surface border border-border rounded-dropdown;
   }
 
   .popover::after {
@@ -29,8 +29,7 @@
 
   .popover__title {
     @apply px-3 py-3 font-semibold text-foreground bg-muted border-b border-border;
-    border-top-left-radius: var(--radius-base);
-    border-top-right-radius: var(--radius-base);
+    @apply rounded-tl-dropdown rounded-tr-dropdown;
   }
 
   .popover__body {

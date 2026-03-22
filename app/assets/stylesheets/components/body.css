@@ -13,7 +13,7 @@
   }
 
   .body__main-sidebarred {
-    @apply md:grid md:grid-cols-[256px_1fr] gap-6;
+    @apply md:grid md:grid-cols-[var(--width-sidebar)_1fr] gap-6;
   }
 
   .body__sidebar {

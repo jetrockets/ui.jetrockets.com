@@ -24,7 +24,7 @@
   }
 
   .timeline-dot-default {
-    @apply bg-muted border-border-hover;
+    @apply bg-muted border-border;
   }
 
   .timeline-dot-info {
