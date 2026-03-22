@@ -43,16 +43,16 @@
   }
 
   .hr {
-    @apply h-px my-8 bg-gray-200 border-0;
+    @apply h-px my-8 border-0 bg-border;
   }
 
   /* Divider component */
   .divider {
-    @apply flex items-center gap-4 text-sm text-gray-500 py-2;
+    @apply flex items-center gap-4 text-sm py-2 text-muted-foreground;
 
     &::before,
     &::after {
-      @apply flex-1 h-px bg-gray-200 content-[''];
+      @apply flex-1 h-px content-[''] bg-border;
     }
 
     &:empty {

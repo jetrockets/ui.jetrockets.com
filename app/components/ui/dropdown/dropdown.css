@@ -6,11 +6,12 @@
   }
 
   .dropdown__menu {
-    @apply absolute z-40 hidden overflow-auto py-1.5 text-gray bg-white rounded-lg shadow min-w-44 animate-fade-in max-w-96 max-h-96 border border-gray-200;
+    @apply absolute z-40 hidden overflow-auto py-1.5 shadow min-w-44 animate-fade-in max-w-96 max-h-96;
+    @apply bg-surface border border-border text-foreground rounded-[var(--radius-dropdown)];
   }
 
   .dropdown__title {
-    @apply px-4 py-1 font-semibold text-sm;
+    @apply px-4 py-1 font-semibold text-sm text-foreground;
   }
 
   .dropdown__item {
@@ -18,14 +19,15 @@
   }
 
   .dropdown__link {
-    @apply block w-full px-2 py-1.5 text-sm text-left rounded-md cursor-pointer hover:bg-gray-100;
+    @apply block w-full px-2 py-1.5 text-sm text-left cursor-pointer rounded-[var(--radius-button)];
+    @apply hover:bg-muted;
   }
 
   .dropdown__link-active {
-    @apply bg-gray-100;
+    @apply bg-muted;
   }
 
   .dropdown__divider {
-    @apply pb-2 mb-2 border-b border-gray-200;
+    @apply pb-2 mb-2 border-b border-border;
   }
 }

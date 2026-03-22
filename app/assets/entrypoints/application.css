@@ -3,6 +3,7 @@
 /* Components */
 @import "../stylesheets/components/body";
 @import "../stylesheets/components/form";
+@import "../stylesheets/components/highlight";
 @import "../stylesheets/components/link";
 @import "../stylesheets/components/submit";
 @import "../stylesheets/components/scroller";

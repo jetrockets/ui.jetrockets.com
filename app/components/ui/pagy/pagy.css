@@ -3,9 +3,25 @@
 @layer components {
   .pagy {
     @apply inline-flex;
+
     a:not(.gap) {
-      @apply relative flex items-center justify-center text-gray-600 border border-gray-200 size-8 hover:bg-gray-100 hover:border-gray-200;
-      @apply first:rounded-l-md last:rounded-r-md last:text-transparent first:text-transparent;
+      @apply relative flex items-center justify-center size-8 text-muted-foreground border border-border;
+
+      &:first-child {
+        @apply text-transparent;
+        border-top-left-radius: var(--radius-button);
+        border-bottom-left-radius: var(--radius-button);
+      }
+
+      &:last-child {
+        @apply text-transparent;
+        border-top-right-radius: var(--radius-button);
+        border-bottom-right-radius: var(--radius-button);
+      }
+
+      &:hover {
+        @apply bg-muted;
+      }
 
       &:not(:last-child) {
         @apply border-r-0;
@@ -20,16 +36,20 @@
       }
 
       &:not([href]) { /* disabled links */
-        @apply relative inline-flex items-center h-8 px-2 cursor-not-allowed hover:bg-none;
+        @apply relative inline-flex items-center h-8 px-2 cursor-not-allowed bg-transparent;
       }
+
       &.current {
-        @apply relative z-10 flex items-center justify-center text-white cursor-default size-8 bg-primary border-primary;
+        @apply relative z-10 flex items-center justify-center cursor-default size-8;
+        @apply bg-accent border-accent text-accent-foreground;
       }
     }
+
     label {
-      @apply inline-block whitespace-nowrap bg-gray-200 px-3 py-0.5;
+      @apply inline-block whitespace-nowrap px-3 py-0.5 bg-muted-hover;
+
       input {
-        @apply bg-gray-100 border;
+        @apply bg-muted border border-border;
       }
     }
   }

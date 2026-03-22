@@ -19,7 +19,7 @@ class Ui::Card::HeaderComponent < ApplicationComponent
       direction_class,
       align_class,
       justify_class,
-      { "pb-4 border-b border-gray-200": @bordered },
+      { "pb-4 border-b border-border": @bordered },
       @options.delete(:class)
     )
   end

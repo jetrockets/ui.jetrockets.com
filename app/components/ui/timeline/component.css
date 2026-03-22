@@ -15,7 +15,7 @@
 
   /* Connecting line */
   .timeline-item:not(:last-child)::before {
-    @apply absolute left-[11px] top-6 bottom-0 w-0.5 bg-gray-200 content-[''];
+    @apply absolute left-[11px] top-6 bottom-0 w-0.5 content-[''] bg-border;
   }
 
   /* Dot styles */
@@ -24,23 +24,23 @@
   }
 
   .timeline-dot-default {
-    @apply bg-gray-100 border-gray-300;
+    @apply bg-muted border-border-hover;
   }
 
   .timeline-dot-info {
-    @apply bg-blue-100 border-blue-400;
+    @apply bg-info-soft border-info;
   }
 
   .timeline-dot-success {
-    @apply bg-green-100 border-green-400;
+    @apply bg-success-soft border-success;
   }
 
   .timeline-dot-warning {
-    @apply bg-yellow-100 border-yellow-400;
+    @apply bg-warning-soft border-warning;
   }
 
   .timeline-dot-error {
-    @apply bg-red-100 border-red-400;
+    @apply bg-destructive-soft border-destructive;
   }
 
   /* Dot with icon */
@@ -49,23 +49,23 @@
   }
 
   .timeline-dot-icon.timeline-dot-default {
-    @apply text-gray-600;
+    @apply text-muted-foreground;
   }
 
   .timeline-dot-icon.timeline-dot-info {
-    @apply text-blue-600;
+    @apply text-info;
   }
 
   .timeline-dot-icon.timeline-dot-success {
-    @apply text-green-600;
+    @apply text-success;
   }
 
   .timeline-dot-icon.timeline-dot-warning {
-    @apply text-yellow-600;
+    @apply text-warning;
   }
 
   .timeline-dot-icon.timeline-dot-error {
-    @apply text-red-600;
+    @apply text-destructive;
   }
 
   /* Content area */
@@ -75,6 +75,6 @@
 
   /* Time label */
   .timeline-time {
-    @apply block text-sm text-gray-500 mb-1;
+    @apply block text-sm mb-1 text-muted-foreground;
   }
 }

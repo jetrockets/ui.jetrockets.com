@@ -11,7 +11,7 @@ class Ui::Header::SubtitleComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-base text-gray-500",
+      "text-base text-muted-foreground",
       @options.delete(:class)
     )
   end

@@ -11,7 +11,7 @@ class Ui::Stat::Component < ApplicationComponent
 
   def classes
     class_names(
-      "border border-gray-200 rounded-lg p-6",
+      "border border-border rounded-lg p-6",
       @options.delete(:class)
     )
   end

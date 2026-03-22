@@ -2,11 +2,12 @@
 
 @layer components {
   .tooltip {
-    @apply absolute z-20 px-3 py-2 text-xs text-center text-white bg-gray-700 rounded-lg shadow-sm pointer-events-none;
+    @apply absolute z-20 px-3 py-2 text-xs text-center shadow-sm pointer-events-none;
+    @apply bg-tooltip text-tooltip-foreground rounded-[var(--radius-base)];
   }
 
   .tooltip::after {
-    @apply absolute rotate-45 bg-gray-700 size-2;
+    @apply absolute rotate-45 size-2 bg-tooltip;
     content: "";
   }
 

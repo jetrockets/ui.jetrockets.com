@@ -1,10 +1,10 @@
 @layer base {
   dialog {
-    @apply text-black;
+    @apply text-foreground;
   }
 
   pre {
-    @apply max-w-full overflow-auto text-sm text-gray-200 bg-gray-900 rounded-md;
+    @apply max-w-full overflow-auto text-sm text-muted-foreground bg-muted rounded-md;
   }
 
   textarea {
@@ -46,6 +46,5 @@
 }
 
 .turbo-progress-bar {
-  height: 2px;
-  background: var(--color-primary);
+  @apply h-0.5 bg-accent;
 }

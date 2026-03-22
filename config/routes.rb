@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/terms", to: "home#terms"
 
   get "ui", to: "ui#index"
+  get "builder", to: "builder#index"
+  get "builder/download", to: "builder#download"
   # UI Documentation routes
   namespace :ui do
     get "getting_started"

@@ -7,7 +7,8 @@ import javascript from 'highlight.js/lib/languages/javascript'
 import erb from 'highlight.js/lib/languages/erb'
 import ruby from 'highlight.js/lib/languages/ruby'
 
-import 'highlight.js/styles/atom-one-dark.css'
+// Theme styles are in app/assets/stylesheets/components/highlight.css
+// with automatic light/dark mode switching
 
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('ruby', ruby)

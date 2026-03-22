@@ -11,7 +11,7 @@ class Ui::Card::Component < ApplicationComponent
 
   def classes
     class_names(
-      "border border-gray-200 rounded-lg",
+      "border border-border bg-surface rounded-[var(--radius-card)]",
       @options.delete(:class)
     )
   end

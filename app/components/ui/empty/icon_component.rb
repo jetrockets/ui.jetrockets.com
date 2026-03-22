@@ -9,7 +9,7 @@ class Ui::Empty::IconComponent < Ui::Icon::Component
 
   def classes
     class_names(
-      "flex items-center justify-center size-14 mb-4 bg-gray-100 rounded-xl",
+      "flex items-center justify-center size-14 mb-4 bg-muted text-muted-foreground rounded-xl",
       @options.delete(:class)
     )
   end

@@ -25,10 +25,10 @@ class Ui::Stat::DescriptionComponent < ApplicationComponent
 
   def variant_classes
     {
-      default: "text-gray-500",
-      success: "text-green-600",
-      warning: "text-yellow-600",
-      error: "text-red-600"
+      default: "text-muted-foreground",
+      success: "text-success",
+      warning: "text-warning",
+      error: "text-destructive"
     }[@variant]
   end
 

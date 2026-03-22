@@ -89,7 +89,7 @@ examples:
         <%= ui.icon "check", size: 5, class: "text-green-500" %>
         <%= ui.icon "x-mark", size: 5, class: "text-red-500" %>
         <%= ui.icon "clock", size: 5, class: "text-yellow-500" %>
-        <%= ui.icon "spinner", size: 5, class: "text-blue-500 animate-spin" %>
+        <%= ui.icon "spinner", size: 5, class: "text-blue-500" %>
       </div>
 
   - name: Social & brands

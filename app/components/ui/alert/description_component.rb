@@ -11,7 +11,7 @@ class Ui::Alert::DescriptionComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-gray-600 [.icon~&]:col-start-2",
+      "[.icon~&]:col-start-2",
       @options.delete(:class)
     )
   end

@@ -1,6 +1,6 @@
 @layer components {
   .body {
-    @apply relative min-h-svh antialiased text-black;
+    @apply relative min-h-svh antialiased text-foreground bg-background;
     @apply px-3 md:px-6 lg:px-8 xl:px-20;
   }
 
@@ -24,7 +24,7 @@
   }
 
   .body__sidebar-opened {
-    @apply visible translate-x-0 opacity-100 bg-white z-40 transition-all;
+    @apply visible translate-x-0 opacity-100 bg-background z-40 transition-all;
   }
 
   .body__content {

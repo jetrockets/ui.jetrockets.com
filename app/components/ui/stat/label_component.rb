@@ -11,7 +11,7 @@ class Ui::Stat::LabelComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-sm font-medium text-gray-500",
+      "text-sm font-medium text-muted-foreground",
       @options.delete(:class)
     )
   end

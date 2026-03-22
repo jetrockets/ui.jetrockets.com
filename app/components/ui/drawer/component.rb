@@ -39,7 +39,7 @@ class Ui::Drawer::Component < ApplicationComponent
       end
     # If not using Turbo Frame (open new tab for example), we should use a regular div instead of dialog
     else
-      content_tag :div, class: class_names("mx-auto bg-white", "w-#{@size}") do
+      content_tag :div, class: class_names("mx-auto bg-background", "w-#{@size}") do
         yield
       end
     end

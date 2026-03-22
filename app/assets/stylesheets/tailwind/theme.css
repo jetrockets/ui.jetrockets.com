@@ -231,12 +231,4 @@
   --animate-slide-down: slideDown 0.3s ease-in-out;
   --animate-slide-left: slideLeft 0.3s ease-in-out;
   --animate-slide-up: slideUp 0.3s ease-in-out;
-
-  /* Not tailwind */
-  --spacing-navbar: var(--height-navbar);
-  --spacing-sidebar: var(--width-sidebar);
-
-  --height-navbar: 54px;
-  --width-sidebar: 197px;
-  --background-image-chevron-left: url('/images/icons/chevron-left.svg');
 }

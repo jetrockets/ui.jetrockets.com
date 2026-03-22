@@ -14,7 +14,7 @@ class Ui::Stat::IconComponent < ApplicationComponent
 
   def classes
     class_names(
-      "flex items-center justify-center size-12 mb-3 bg-gray-100 rounded-lg",
+      "flex items-center justify-center size-12 mb-3 bg-muted text-muted-foreground rounded-lg",
       @options.delete(:class)
     )
   end

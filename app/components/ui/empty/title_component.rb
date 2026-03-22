@@ -11,7 +11,7 @@ class Ui::Empty::TitleComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-xl font-semibold text-gray-900",
+      "text-xl font-semibold text-foreground",
       @options.delete(:class)
     )
   end

@@ -2,10 +2,10 @@
 
 @layer components {
   .breadcrumbs {
-    @apply flex text-sm text-gray-600;
+    @apply flex text-sm text-muted-foreground;
 
     .current {
-      @apply text-black;
+      @apply text-foreground;
     }
   }
 

@@ -10,7 +10,7 @@
   }
 
   .list--divided .list__item {
-    @apply border-b border-gray-200;
+    @apply border-b border-border;
   }
 
   .list--divided .list__item:last-child {
@@ -18,7 +18,7 @@
   }
 
   .list__icon {
-    @apply flex-shrink-0 text-gray-500;
+    @apply flex-shrink-0 text-muted-foreground;
   }
 
   .list__content {

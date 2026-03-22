@@ -5,19 +5,19 @@
     @apply w-auto;
 
     thead {
-      @apply bg-white;
+      @apply bg-surface;
     }
 
     th, td {
-      @apply px-3 py-2 text-sm border-b border-gray-200;
+      @apply px-3 py-2 text-sm border-b border-border;
     }
 
     th {
-      @apply font-semibold text-left text-gray-700;
+      @apply font-semibold text-left text-foreground;
     }
 
     tfoot {
-      @apply font-semibold bg-gray-100;
+      @apply font-semibold bg-muted;
     }
   }
 
@@ -29,20 +29,20 @@
   .table-hovered {
     tbody tr:hover td,
     thead tr:hover th {
-      @apply bg-gray-50;
+      @apply bg-muted;
     }
   }
 
   /* Bordered */
   .table-bordered {
     th, td {
-      @apply border border-gray-200;
+      @apply border border-border;
     }
   }
 
   /* Sticky */
   .table__th_sticky {
-    @apply sticky z-10 bg-white hover:bg-gray-100;
+    @apply sticky z-10 bg-surface hover:bg-muted;
   }
 
   .table__th_sticky-left {
@@ -54,7 +54,7 @@
   }
 
   .table__td_sticky {
-    @apply sticky bg-white;
+    @apply sticky bg-surface;
   }
 
   .table__td_sticky-left {

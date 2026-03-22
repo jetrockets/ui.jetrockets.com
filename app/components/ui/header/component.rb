@@ -20,8 +20,8 @@ class Ui::Header::Component < ApplicationComponent
       direction_class,
       align_class,
       justify_class,
-      { "lg:sticky lg:z-30 lg:top-navbar bg-white/90 backdrop-blur-xs": @sticky },
-      { "pb-4 border-b border-gray-200": @bordered },
+      { "lg:sticky lg:z-30 lg:top-navbar bg-muted/90 backdrop-blur-xs": @sticky },
+      { "pb-4 border-b border-border": @bordered },
       @options.delete(:class)
     )
   end

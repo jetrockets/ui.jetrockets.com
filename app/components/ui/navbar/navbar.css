@@ -2,7 +2,7 @@
 
 @layer components {
   .navbar {
-    @apply z-20 w-full h-navbar bg-white/90 backdrop-blur-xs;
+    @apply z-20 w-full h-navbar backdrop-blur-xs bg-background/90;
     @apply flex items-center justify-between gap-6;
     @apply md:grid md:grid-cols-[256px_1fr];
   }

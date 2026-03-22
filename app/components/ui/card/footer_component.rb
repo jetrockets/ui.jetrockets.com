@@ -19,7 +19,7 @@ class Ui::Card::FooterComponent < ApplicationComponent
       direction_class,
       align_class,
       justify_class,
-      { "pt-4 border-t border-gray-200": @bordered },
+      { "pt-4 border-t border-border": @bordered },
       @options.delete(:class)
     )
   end

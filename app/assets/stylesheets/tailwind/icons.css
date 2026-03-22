@@ -32,6 +32,9 @@
 
   /* Images */
   .icon-logo { --svg: url("/images/logo.svg") };
+  .dark {
+    .icon-logo { --svg: url("/images/logo-white.svg") };
+  }
 
   /* Icons */
   .icon-academic-cap { --svg: url("/images/icons/academic-cap.svg") };

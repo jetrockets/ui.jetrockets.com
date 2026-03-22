@@ -1,0 +1,315 @@
+<%
+  set_meta_tags(
+    title: "Theme Builder - Rails UI Components",
+    description: "Create custom themes for your project"
+  )
+
+  defaults = {
+    accent_hue: 262,
+    gray_chroma: 0.006,
+    radius_base: "lg",
+    radius_form: "md"
+  }
+%>
+
+<div
+  class="min-h-screen"
+  data-controller="builder"
+  data-builder-defaults-value="<%= defaults.to_json %>"
+  data-builder-download-url-value="<%= builder_download_path %>"
+>
+  <div class="border-b border-border">
+    <div class="max-w-7xl px-4 mx-auto">
+      <%= ui.navbar class: "flex justify-between items-center" do %>
+        <div class="flex flex-col">
+          <h1 class="text-lg font-semibold">
+            Theme Builder
+          </h1>
+          <p class="text-sm text-muted-foreground">
+            Customize your theme and download the CSS
+          </p>
+        </div>
+
+        <%= ui.navbar_main do %>
+          <%= ui.navbar_actions do %>
+            <%= ui.btn "Reset", variant: :outline, size: :sm, data: { action: "click->builder#reset" } %>
+            <%= ui.btn "Download CSS", variant: :default, size: :sm, url: builder_download_path, data: { builder_target: "download" } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
+      <!-- Controls -->
+      <div class="flex flex-col gap-6 lg:sticky lg:top-8 lg:self-start">
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex flex-col gap-6" do %>
+            <!-- Theme Mode -->
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-foreground">Appearance</span>
+              <%= ui.btn size: :icon_sm, variant: :secondary, circle: true, data: { action: "click->builder#toggleTheme" } do %>
+                <%= ui.icon "sun", class: "size-5 hidden", data: { builder_target: "lightIcon" } %>
+                <%= ui.icon "moon", class: "size-5", data: { builder_target: "darkIcon" } %>
+              <% end %>
+            </div>
+
+            <!-- Accent Color -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between text-sm">
+                <span class="font-medium text-foreground">Accent Color</span>
+                <span class="text-muted-foreground" data-builder-target="hueValue"><%= @theme[:accent_hue] %></span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="360"
+                step="1"
+                value="<%= @theme[:accent_hue] %>"
+                class="w-full h-3 rounded-full appearance-none cursor-pointer"
+                style="background: linear-gradient(to right, oklch(0.6 0.25 0), oklch(0.6 0.25 60), oklch(0.6 0.25 120), oklch(0.6 0.25 180), oklch(0.6 0.25 240), oklch(0.6 0.25 300), oklch(0.6 0.25 360))"
+                data-builder-target="hue"
+                data-action="input->builder#updateHue"
+              >
+            </div>
+
+            <!-- Background Saturation -->
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between text-sm">
+                <span class="font-medium text-foreground">Background Saturation</span>
+                <span class="text-muted-foreground" data-builder-target="grayChromaValue"><%= @theme[:gray_chroma] %></span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="0.03"
+                step="0.001"
+                value="<%= @theme[:gray_chroma] %>"
+                class="w-full h-2 rounded-full appearance-none cursor-pointer bg-muted"
+                data-builder-target="grayChroma"
+                data-action="input->builder#updateGrayChroma"
+              >
+            </div>
+
+            <!-- Border Radius (cards, modals, alerts) -->
+            <div class="flex flex-col gap-2">
+              <span class="text-sm font-medium text-foreground">Border Radius</span>
+              <div class="flex gap-1">
+                <% %w[none sm md lg xl].each do |size| %>
+                  <%= ui.btn size.upcase,
+                      size: :sm,
+                      variant: @theme[:radius_base] == size ? :default : :outline,
+                      data: {
+                        builder_target: "radiusBase",
+                        action: "click->builder#updateRadiusBase",
+                        value: size
+                      } %>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Form Radius (buttons, inputs) -->
+            <div class="flex flex-col gap-2">
+              <span class="text-sm font-medium text-foreground">Form Radius</span>
+              <div class="flex gap-1">
+                <% %w[none sm md lg full].each do |size| %>
+                  <%= ui.btn size.upcase,
+                      size: :sm,
+                      variant: @theme[:radius_form] == size ? :default : :outline,
+                      data: {
+                        builder_target: "radiusForm",
+                        action: "click->builder#updateRadiusForm",
+                        value: size
+                      } %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- Preview -->
+      <div class="flex flex-col gap-8">
+        <!-- Buttons -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Buttons</h3>
+          <div class="flex flex-wrap items-center gap-3">
+            <%= ui.btn "Extra Small", variant: :default, size: :xs %>
+            <%= ui.btn "Small", variant: :default, size: :sm %>
+            <%= ui.btn "Medium", variant: :default, size: :md %>
+            <%= ui.btn "Large", variant: :default, size: :lg %>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <%= ui.btn "Secondary", variant: :secondary %>
+            <%= ui.btn "Outline", variant: :outline %>
+            <%= ui.btn "Ghost", variant: :ghost %>
+            <%= ui.btn "Danger", variant: :danger %>
+          </div>
+        </section>
+
+        <!-- Card -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Card</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <%= ui.card do %>
+              <%= ui.card_header do %>
+                <%= ui.card_title "Card Title" %>
+                <%= ui.card_subtitle "Card subtitle" %>
+              <% end %>
+              <%= ui.card_body do %>
+                <p class="text-muted-foreground">This is the card body with some content to demonstrate the card component styling.</p>
+              <% end %>
+              <%= ui.card_footer class: "flex justify-end gap-2" do %>
+                <%= ui.btn "Cancel", variant: :ghost, size: :sm %>
+                <%= ui.btn "Save", variant: :default, size: :sm %>
+              <% end %>
+            <% end %>
+            <%= ui.card do %>
+              <%= ui.card_header do %>
+                <%= ui.card_title "Another Card" %>
+              <% end %>
+              <%= ui.card_body do %>
+                <p class="text-muted-foreground">Cards respond to the Border Radius setting.</p>
+              <% end %>
+            <% end %>
+          </div>
+        </section>
+
+        <!-- Form Elements -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Form Elements</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1">
+              <label class="form__label">Text Input</label>
+              <input type="text" class="form__field" placeholder="Enter text...">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="form__label">Select</label>
+              <select class="form__field">
+                <option>Option 1</option>
+                <option>Option 2</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="form__checkbox" checked>
+              <span class="text-sm">Checkbox</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="radio" class="form__radio" checked>
+              <span class="text-sm">Radio 1</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="radio" class="form__radio">
+              <span class="text-sm">Radio 2</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Tabs -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Tabs</h3>
+          <%= ui.tabs do %>
+            <%= ui.tabs_item "Tab 1", href: "#", active: true %>
+            <%= ui.tabs_item "Tab 2", href: "#" %>
+            <%= ui.tabs_item "Tab 3", href: "#" %>
+          <% end %>
+        </section>
+
+        <!-- Badges -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Badges</h3>
+          <div class="flex flex-wrap gap-2">
+            <%= ui.badge "Default", size: :md %>
+            <%= ui.badge "Info", variant: :info, size: :md %>
+            <%= ui.badge "Success", variant: :success, size: :md %>
+            <%= ui.badge "Warning", variant: :warning, size: :md %>
+            <%= ui.badge "Error", variant: :error, size: :md %>
+          </div>
+        </section>
+
+        <!-- Dropdown -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Dropdown</h3>
+          <%= ui.dropdown do %>
+            <%= ui.dropdown_trigger do %>
+              <%= ui.btn variant: :outline do %>
+                Open Menu <%= ui.icon("chevron-down", class: "size-4") %>
+              <% end %>
+            <% end %>
+            <%= ui.dropdown_menu do %>
+              <%= ui.dropdown_link(url: "#") { "Profile" } %>
+              <%= ui.dropdown_link(url: "#") { "Settings" } %>
+              <%= ui.dropdown_divider %>
+              <%= ui.dropdown_link(url: "#") { "Sign out" } %>
+            <% end %>
+          <% end %>
+        </section>
+
+        <!-- Accordion -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Accordion</h3>
+          <div class="border border-border rounded-[var(--radius-card)] divide-y divide-border">
+            <%= ui.accordion name: "faq", open: true do %>
+              <%= ui.accordion_summary(class: "px-4") { "What is your refund policy?" } %>
+              <%= ui.accordion_body class: "px-4 pb-4 text-muted-foreground" do %>
+                We offer a 30-day money-back guarantee on all purchases.
+              <% end %>
+            <% end %>
+            <%= ui.accordion name: "faq" do %>
+              <%= ui.accordion_summary(class: "px-4") { "How do I contact support?" } %>
+              <%= ui.accordion_body class: "px-4 pb-4 text-muted-foreground" do %>
+                You can reach us via email at support@example.com.
+              <% end %>
+            <% end %>
+          </div>
+        </section>
+
+        <!-- Tooltip -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Tooltip</h3>
+          <div class="flex gap-4">
+            <%= ui.tooltip title: "Top tooltip", placement: :top do %>
+              <%= ui.btn "Top", variant: :outline, size: :sm %>
+            <% end %>
+            <%= ui.tooltip title: "Right tooltip", placement: :right do %>
+              <%= ui.btn "Right", variant: :outline, size: :sm %>
+            <% end %>
+            <%= ui.tooltip title: "Bottom tooltip", placement: :bottom do %>
+              <%= ui.btn "Bottom", variant: :outline, size: :sm %>
+            <% end %>
+            <%= ui.tooltip title: "Left tooltip", placement: :left do %>
+              <%= ui.btn "Left", variant: :outline, size: :sm %>
+            <% end %>
+          </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Alerts</h3>
+          <div class="flex flex-col gap-3">
+            <%= ui.alert(title: "Info", variant: :info) { "This is an info alert." } %>
+            <%= ui.alert(title: "Success", variant: :success) { "This is a success alert." } %>
+            <%= ui.alert(title: "Warning", variant: :warning) { "This is a warning alert." } %>
+            <%= ui.alert(title: "Error", variant: :error) { "This is an error alert." } %>
+          </div>
+        </section>
+
+        <!-- Avatar -->
+        <section class="flex flex-col gap-3">
+          <h3 class="text-sm font-medium text-muted-foreground">Avatar</h3>
+          <div class="flex items-center gap-4">
+            <%= ui.avatar size: 8 %>
+            <%= ui.avatar size: 10 %>
+            <%= ui.avatar size: 12 %>
+            <%= ui.avatar size: 14, variant: :rounded %>
+            <%= ui.avatar size: 14, variant: :square %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

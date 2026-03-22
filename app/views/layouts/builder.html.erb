@@ -32,21 +32,7 @@
     <%= yield(:head) %>
   </head>
 
-  <body class="<%= body_classes %>" data-controller="sidebar modals drawers highlight">
-    <%= render partial: "layouts/shared/navbar" %>
-    <div class="body__main body__main-sidebarred">
-      <%= render partial: "layouts/shared/sidebar" %>
-      <div class="body__content">
-        <main class="flex flex-col flex-1">
-          <%= yield %>
-        </main>
-        <%= render partial: "layouts/shared/footer" %>
-      </div>
-    </div>
-
-    <%= ui.flash %>
-    <%= ui.turbo_confirm %>
-    <%= turbo_frame_tag :drawer %>
-    <%= turbo_frame_tag :modal %>
+  <body class="text-foreground bg-background min-h-screen">
+    <%= yield %>
   </body>
 </html>

@@ -4,6 +4,6 @@
     @apply prose-li:marker:text-gray prose-li:leading-tight;
     @apply prose-a:text-primary;
 
-    @apply max-w-full text-black;
+    @apply max-w-full text-foreground;
   }
 }

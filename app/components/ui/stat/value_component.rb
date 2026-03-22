@@ -11,7 +11,7 @@ class Ui::Stat::ValueComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-2xl font-bold text-gray-900 mt-1",
+      "text-2xl font-bold text-foreground mt-1",
       @options.delete(:class)
     )
   end

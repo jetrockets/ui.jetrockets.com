@@ -10,6 +10,13 @@
     <% end %>
 
     <%= ui.navbar_actions do %>
+      <div data-controller="theme" class="mr-2">
+        <%= ui.btn size: :icon_sm, variant: :secondary, circle: true, data: { action: "click->theme#toggle" } do %>
+          <%= ui.icon "sun", class: "size-5 hidden", data: { theme_target: "light" } %>
+          <%= ui.icon "moon", class: "size-5", data: { theme_target: "dark" } %>
+        <% end %>
+      </div>
+
       <%= link_to "https://github.com/jetrockets/ui.jetrockets.com", target: "_blank", rel: "noopener noreferrer" do %>
         <%= ui.icon "github", class: "mr-2 size-7" %>
         <span class="sr-only">GitHub</span>

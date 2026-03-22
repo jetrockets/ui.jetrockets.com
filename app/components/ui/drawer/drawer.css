@@ -2,9 +2,10 @@
 
 @layer components {
   .drawer {
-    @apply fixed inset-0 left-auto flex flex-col hidden m-0;
-    @apply min-h-full shadow-sm rounded-l-2xl w-fit backdrop:bg-gray-900/50;
-    @apply w-2xl; /* Default width */
+    @apply fixed inset-0 left-auto flex flex-col hidden m-0 min-h-full shadow-sm w-fit w-2xl;
+    @apply bg-surface backdrop:bg-overlay;
+    border-top-left-radius: var(--radius-modal);
+    border-bottom-left-radius: var(--radius-modal);
   }
 
   .drawer[open] {
@@ -12,34 +13,36 @@
   }
 
   .drawer__header {
-    @apply sticky top-0 flex items-center justify-between p-4 px-6 bg-white/70 backdrop-blur-sm;
+    @apply sticky top-0 flex items-center justify-between p-4 px-6 backdrop-blur-sm bg-surface/70;
   }
 
   .drawer__header-bordered {
-    @apply border-b border-gray-200;
+    @apply border-b border-border;
   }
 
   .drawer__title {
-    @apply text-xl font-semibold leading-tight text-gray-900;
+    @apply text-xl font-semibold leading-tight text-foreground;
   }
 
   .drawer__subtitle {
-    @apply mt-1 text-sm text-gray-600;
+    @apply mt-1 text-sm text-muted-foreground;
   }
 
   .drawer__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full cursor-pointer hover:bg-gray-100 hover:text-gray-400;
+    @apply inline-flex items-center p-1 ml-auto text-sm transition-all duration-300 bg-transparent rounded-full cursor-pointer;
+    @apply text-muted-foreground hover:bg-muted;
   }
 
   .drawer__body {
-    @apply flex-1 p-6 text-gray-600;
+    @apply flex-1 p-6 text-muted-foreground;
   }
 
   .drawer__footer {
-    @apply sticky bottom-0 w-full p-4 rounded-bl-2xl bg-white/70 backdrop-blur-sm;
+    @apply sticky bottom-0 w-full p-4 backdrop-blur-sm bg-surface/70;
+    border-bottom-left-radius: var(--radius-modal);
   }
 
   .drawer__footer-bordered {
-    @apply border-t border-gray-200;
+    @apply border-t border-border;
   }
 }

@@ -11,7 +11,7 @@ class Ui::Card::SubtitleComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-sm text-gray-600",
+      "text-sm text-muted-foreground",
       @options.delete(:class)
     )
   end

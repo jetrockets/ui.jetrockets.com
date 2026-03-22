@@ -13,18 +13,20 @@
   }
 
   .sidebar__title {
-    @apply font-semibold;
+    @apply font-semibold text-foreground;
   }
 
   .sidebar__link {
-    @apply block px-3 py-1.5 text-gray-500 font-medium rounded-lg hover:text-black;
+    @apply block px-3 py-1.5 font-medium text-muted-foreground rounded-[var(--radius-base)];
+    @apply hover:text-foreground;
   }
 
   .sidebar__link-active {
-    @apply bg-gray-100 font-semibold text-black;
+    @apply font-semibold bg-muted text-foreground;
   }
 
   .sidebar__link-disabled {
-    @apply text-gray-400 cursor-not-allowed hover:text-gray-400 font-normal;
+    @apply cursor-not-allowed font-normal text-border-hover;
+    @apply hover:text-border-hover;
   }
 }

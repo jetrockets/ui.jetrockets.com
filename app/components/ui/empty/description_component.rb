@@ -11,7 +11,7 @@ class Ui::Empty::DescriptionComponent < ApplicationComponent
 
   def classes
     class_names(
-      "text-gray-500 mt-1",
+      "text-muted-foreground mt-1",
       @options.delete(:class)
     )
   end

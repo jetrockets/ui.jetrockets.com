@@ -2,8 +2,8 @@
 
 @layer components {
   .modal {
-    @apply p-0 m-auto rounded-lg shadow-sm max-w-11/12 h-fit w-fit backdrop:bg-gray-900/50;
-    @apply w-2xl;  /* default width */
+    @apply p-0 m-auto shadow-sm max-w-11/12 h-fit w-fit w-2xl;
+    @apply bg-surface rounded-[var(--radius-modal)] backdrop:bg-overlay;
   }
 
   .modal-page {
@@ -11,35 +11,38 @@
   }
 
   .modal__header {
-    @apply sticky top-0 flex items-start justify-between p-4 px-6 bg-white/70 backdrop-blur-sm;
+    @apply sticky top-0 flex items-start justify-between p-4 px-6 backdrop-blur-sm bg-surface/70;
   }
 
   .modal__header-bordered {
-    @apply border-b border-gray-200;
+    @apply border-b border-border;
   }
 
   .modal__title {
-    @apply text-xl font-semibold leading-tight text-gray-900;
+    @apply text-xl font-semibold leading-tight text-foreground;
   }
 
   .modal__subtitle {
-    @apply mt-1 text-sm text-gray-600
+    @apply mt-1 text-sm text-muted-foreground;
   }
 
   .modal__close {
-    @apply inline-flex items-center p-1 ml-auto text-sm text-gray-400 transition-all duration-300 bg-transparent rounded-full cursor-pointer hover:bg-gray-100 hover:text-gray-400;
+    @apply inline-flex items-center p-1 ml-auto text-sm transition-all duration-300 bg-transparent rounded-full cursor-pointer;
+    @apply text-muted-foreground hover:bg-muted;
   }
 
   .modal__body {
-    @apply px-6 py-6 overflow-auto rounded-lg;
+    @apply px-6 py-6 overflow-auto rounded-[var(--radius-modal)];
   }
 
   .modal__footer {
-    @apply sticky bottom-0 w-full p-4 rounded-b-lg bg-white/70 backdrop-blur-sm;
+    @apply sticky bottom-0 w-full p-4 backdrop-blur-sm bg-surface/70;
+    border-bottom-left-radius: var(--radius-modal);
+    border-bottom-right-radius: var(--radius-modal);
   }
 
   .modal__footer-bordered {
-    @apply border-t border-gray-200;
+    @apply border-t border-border;
   }
 
   .modal__footer-end {

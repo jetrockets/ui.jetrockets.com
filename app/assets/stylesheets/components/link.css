@@ -1,5 +1,6 @@
 @layer components {
   .link {
-    @apply underline text-primary hover:no-underline underline-offset-2;
+    @apply underline underline-offset-2 text-link;
+    @apply hover:no-underline hover:text-link-hover;
   }
 }

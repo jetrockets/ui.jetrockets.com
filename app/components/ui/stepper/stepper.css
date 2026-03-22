@@ -16,28 +16,28 @@
   /* Connecting line between steps */
   .stepper__item:not(:last-child)::after {
     content: "";
-    @apply absolute top-5 left-[calc(50%+1rem)] right-[calc(-50%+1rem)] h-0.5 bg-gray-200 z-0;
+    @apply absolute top-5 left-[calc(50%+1rem)] right-[calc(-50%+1rem)] h-0.5 z-0 bg-border;
   }
 
   .stepper__item-completed:not(:last-child)::after {
-    @apply bg-primary;
+    @apply bg-accent;
   }
 
   .stepper__indicator {
-    @apply relative z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 bg-white;
-    @apply border-gray-200 text-gray-400;
+    @apply relative z-10 flex items-center justify-center w-10 h-10 rounded-full border-2;
+    @apply bg-surface border-border text-muted-foreground;
   }
 
   .stepper__item-pending .stepper__indicator {
-    @apply border-gray-200 text-gray-400 bg-white;
+    @apply bg-surface border-border text-muted-foreground;
   }
 
   .stepper__item-current .stepper__indicator {
-    @apply border-primary bg-primary text-white;
+    @apply bg-accent border-accent text-accent-foreground;
   }
 
   .stepper__item-completed .stepper__indicator {
-    @apply border-primary bg-primary text-white;
+    @apply bg-accent border-accent text-accent-foreground;
   }
 
   .stepper__icon {
@@ -61,19 +61,19 @@
   }
 
   .stepper__item-pending .stepper__title {
-    @apply text-gray-500;
+    @apply text-muted-foreground;
   }
 
   .stepper__item-current .stepper__title {
-    @apply text-gray-900;
+    @apply text-foreground;
   }
 
   .stepper__item-completed .stepper__title {
-    @apply text-gray-900;
+    @apply text-foreground;
   }
 
   .stepper__description {
-    @apply text-xs text-gray-500;
+    @apply text-xs text-muted-foreground;
   }
 
   /* Clickable steps */

@@ -2,11 +2,12 @@
 
 @layer components {
   .popover {
-    @apply absolute z-10 w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 pointer-events-none;
+    @apply absolute z-10 w-64 text-sm transition-opacity duration-300 shadow-sm opacity-0 pointer-events-none;
+    @apply text-muted-foreground bg-surface border border-border rounded-[var(--radius-base)];
   }
 
   .popover::after {
-    @apply absolute rotate-45 bg-white border border-gray-200 size-2.5;
+    @apply absolute rotate-45 size-2.5 bg-surface border border-border;
     content: "";
   }
 
@@ -15,7 +16,7 @@
   }
 
   .popover[data-placement^="bottom"]::after {
-    @apply top-0 -translate-x-1/2 -translate-y-1/2 bg-gray-100 border-b-0 border-r-0 left-1/2;
+    @apply top-0 -translate-x-1/2 -translate-y-1/2 border-b-0 border-r-0 left-1/2 bg-muted;
   }
 
   .popover[data-placement^="left"]::after {
@@ -27,7 +28,9 @@
   }
 
   .popover__title {
-    @apply px-3 py-3 font-semibold text-black bg-gray-100 border-b border-gray-200 rounded-t-lg;
+    @apply px-3 py-3 font-semibold text-foreground bg-muted border-b border-border;
+    border-top-left-radius: var(--radius-base);
+    border-top-right-radius: var(--radius-base);
   }
 
   .popover__body {
