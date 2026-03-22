@@ -2,7 +2,7 @@
   <% flash.each do |key, message| %>
     <% next if message.blank? %>
 
-    <%= content_tag :div, class: "relative w-full py-3 pl-4 pr-12 text-white transition duration-300 rounded-xl md:max-w-lg md:w-fit hidden #{tailwind_classes_for(key)}", id: "flash-#{key}", **data_attrs do %>
+    <%= content_tag :div, class: "relative w-full py-3 pl-4 pr-12 text-white transition duration-300 rounded-xl md:max-w-lg md:w-fit hidden border border-border #{tailwind_classes_for(key)}", id: "flash-#{key}", **data_attrs do %>
       <p class="flex-1">
         <%== message %>
       </p>

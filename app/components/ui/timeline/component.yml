@@ -123,7 +123,7 @@ examples:
           <%= ui.timeline_content do %>
             <%= ui.timeline_time "2 hours ago" %>
             <p class="font-medium">Order delivered</p>
-            <p class="text-sm text-gray-500">Package was signed by John Doe</p>
+            <p class="text-sm text-muted-foreground">Package was signed by John Doe</p>
           <% end %>
         <% end %>
 
@@ -132,7 +132,7 @@ examples:
           <%= ui.timeline_content do %>
             <%= ui.timeline_time "1 day ago" %>
             <p class="font-medium">Out for delivery</p>
-            <p class="text-sm text-gray-500">Driver assigned: Mike Smith</p>
+            <p class="text-sm text-muted-foreground">Driver assigned: Mike Smith</p>
           <% end %>
         <% end %>
 

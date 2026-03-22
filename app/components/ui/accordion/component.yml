@@ -67,7 +67,7 @@ slots:
 examples:
   - name: Accordion group
     code: |
-      <div class="divide-y divide-gray-200">
+      <div class="divide-y divide-border">
         <%= ui.accordion name: "tech-specs", open: true do %>
           <%= ui.accordion_summary "First Item" %>
           <%= ui.accordion_body do %>

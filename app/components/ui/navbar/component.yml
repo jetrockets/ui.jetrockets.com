@@ -9,7 +9,7 @@ preview: |
     <% end %>
     <%= ui.navbar_main do %>
       <%= ui.navbar_content class: "hidden md:flex" do %>
-        <span class="text-sm text-gray-500">Navigation content</span>
+        <span class="text-sm text-muted-foreground">Navigation content</span>
       <% end %>
       <%= ui.navbar_actions do %>
         <%= ui.btn "Sign In", url: "#", size: :sm, variant: :outline %>
@@ -103,7 +103,7 @@ examples:
         <% end %>
         <%= ui.navbar_main do %>
           <%= ui.navbar_content class: "hidden md:flex" do %>
-            <nav class="flex items-center gap-2 text-sm text-gray-500">
+            <nav class="flex items-center gap-2 text-sm text-muted-foreground">
               <a href="#">Home</a>
               <span>/</span>
               <a href="#">Products</a>

@@ -28,7 +28,12 @@
       }
 
       &:first-child::before, &:last-child::before {
-        @apply absolute size-2 bg-center bg-no-repeat content-[''] bg-chevron-left;
+        @apply absolute size-4 content-[''] text-muted-foreground;
+        background-color: currentColor;
+        mask-image: url('/images/icons/chevron-left.svg');
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: 100%;
       }
 
       &:last-child::before {

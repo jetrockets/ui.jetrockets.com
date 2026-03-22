@@ -40,7 +40,7 @@ module ComponentDocsHelper
     show_preview = example.fetch("preview", true)
 
     content_tag :div, class: "flex flex-col gap-3" do
-      concat content_tag(:h3, example["name"], class: "font-medium text-gray-900")
+      concat content_tag(:h3, example["name"], class: "font-medium text-muted-foreground")
       if show_preview
         concat(ui.card do
           ui.card_body class: "" do
@@ -165,7 +165,7 @@ module ComponentDocsHelper
 
   def render_html_attributes_footer
     ui.card_footer do
-      content_tag(:p, class: "text-sm text-gray-500") do
+      content_tag(:p, class: "text-sm text-muted-foreground") do
         "Also accepts any HTML attributes via ".html_safe +
           content_tag(:code, "**options", class: "text-xs") +
           " (e.g., ".html_safe +
@@ -186,7 +186,7 @@ module ComponentDocsHelper
       safe_join([
         ui.table_td { content_tag(:code, prop["name"], class: "text-pink-600") },
         ui.table_td { render_prop_type(prop) },
-        ui.table_td { content_tag(:code, prop["default"] || "-", class: "text-gray-500 text-xs") },
+        ui.table_td { content_tag(:code, prop["default"] || "-", class: "text-muted-foreground text-xs") },
         ui.table_td(prop["description"])
       ])
     end
@@ -196,7 +196,7 @@ module ComponentDocsHelper
     type_html = content_tag(:code, prop["type"], class: "text-blue-600 text-xs")
 
     if prop["values"].present?
-      values_html = prop["values"].map { |v| content_tag(:code, v, class: "text-xs text-gray-500") }.join(" | ").html_safe
+      values_html = prop["values"].map { |v| content_tag(:code, v, class: "text-xs text-muted-foreground") }.join(" | ").html_safe
       safe_join([type_html, tag.br, values_html])
     else
       type_html
@@ -207,7 +207,7 @@ module ComponentDocsHelper
     ui.table_tr do
       safe_join([
         ui.table_td { content_tag(:code, slot["name"], class: "text-pink-600") },
-        ui.table_td { content_tag(:code, "ui.#{slot['name']}", class: "text-xs text-gray-500") },
+        ui.table_td { content_tag(:code, "ui.#{slot['name']}", class: "text-xs text-muted-foreground") },
         ui.table_td(slot["description"])
       ])
     end

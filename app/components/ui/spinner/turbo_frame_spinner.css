@@ -6,9 +6,11 @@
   }
 
   .turbo_frame_spinner::after {
-    @apply content-[''] block w-10 h-10 bg-cover absolute left-1/2 top-1/2 -mt-[26px] -ml-[24px] z-20;
+    @apply content-[''] block w-10 h-10 absolute left-1/2 top-1/2 -mt-[26px] -ml-[24px] z-20;
     animation: spinner 1.6s ease-in-out infinite backwards;
-    background-image: url('/images/icons/spinner.svg');
+    background-color: currentColor;
+    mask-image: url('/images/icons/spinner.svg');
+    mask-size: cover;
   }
 }
 

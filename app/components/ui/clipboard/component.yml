@@ -10,7 +10,7 @@ usage: |
 
   # <% Copy from an element by ID %>
   <input id="my_input" type="text" value="Copy this!" readonly>
-  <%= ui.clipboard "Copy", as: :btn, source_id: "my_input", variant: :secondary %>
+  <%= ui.clipboard "Copy", as: :btn, source_id: "my_input", variant: :outline %>
 
   # <% With tooltip feedback %>
   <%= ui.clipboard "Copy", source_id: "text_element", tooltip: "Click to copy", success_text: "Copied!" %>
@@ -61,7 +61,7 @@ examples:
     code: |
       <%= ui.group do %>
         <input id="clipboard_input" type="text" class="form__field form__field-readonly" value="Copy this!" readonly>
-        <%= ui.clipboard "Copy", as: :btn, source_id: "clipboard_input", variant: :secondary, class: "min-w-32" %>
+        <%= ui.clipboard "Copy", as: :btn, source_id: "clipboard_input", variant: :outline, class: "min-w-32" %>
       <% end %>
 
   - name: Copy with tooltip

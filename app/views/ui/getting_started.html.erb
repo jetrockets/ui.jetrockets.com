@@ -113,17 +113,19 @@ yarn install</code></pre>
 
     <p class="mt-4">But you can copy only what you need from this template to your Rails project:</p>
 
-    <div class="p-4 bg-gray-100 rounded-lg">
-      <p>
-        📁 Copy <code>app/components/ui/</code> folder or individual component folders to your project.
-      </p>
-      <p>
-        📁 Copy <code>app/assets/controllers/</code> folder or individual Stimulus controllers to your project.
-      </p>
-      <p class="mb-0">
-        📁 Copy <code>app/assets/stylesheets/components/ui/</code> folder for component-specific styles.
-      </p>
-    </div>
+    <%= ui.card do %>
+      <%= ui.card__body do %>
+        <p>
+          📁 Copy <code>app/components/ui/</code> folder or individual component folders to your project.
+        </p>
+        <p>
+          📁 Copy <code>app/assets/controllers/</code> folder or individual Stimulus controllers to your project.
+        </p>
+        <p class="mb-0">
+          📁 Copy <code>app/assets/stylesheets/components/ui/</code> folder for component-specific styles.
+        </p>
+      <% end %>
+    <% end %>
 
     <h3 class="mt-4 h3">5. Start Development</h3>
 
@@ -145,8 +147,8 @@ yarn dev</code></pre>
   </section>
 
   <section class="flex flex-col gap-4 my-12">
-    <h2 class="text-2xl font-semibold text-gray-900">Component Structure</h2>
-    <p class="text-gray-600">Each component follows a consistent pattern:</p>
+    <h4 class="h3">Component Structure</h2>
+    <p class="text-muted-foreground">Each component follows a consistent pattern:</p>
 
     <pre><code>app/components/ui/[component_name]/
 ├── component.rb              # Main component class
@@ -167,7 +169,7 @@ yarn dev</code></pre>
   </section>
 
   <section class="flex flex-col gap-4 my-12">
-    <h2 class="text-2xl font-semibold text-gray-900">What's Next?</h2>
+    <h4 class="h3">What's Next?</h2>
 
     <div class="not-prose">
       <%= ui.alert variant: :info do %>

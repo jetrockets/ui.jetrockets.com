@@ -57,7 +57,7 @@ examples:
         <%= ui.icon "check-circle", size: 6, class: "text-green-500" %>
         <%= ui.icon "information-circle", size: 6, class: "text-blue-500" %>
         <%= ui.icon "exclamation-triangle", size: 6, class: "text-yellow-500" %>
-        <%= ui.icon "x-circle", size: 6, class: "text-gray-500" %>
+        <%= ui.icon "x-circle", size: 6, class: "text-muted-foreground" %>
       </div>
 
   - name: Common actions

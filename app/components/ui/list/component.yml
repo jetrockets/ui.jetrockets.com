@@ -7,7 +7,7 @@ preview: |
       <%= ui.list_icon "user" %>
       <%= ui.list_content do %>
         <strong>John Doe</strong>
-        <span class="text-gray-500 text-sm block">john@example.com</span>
+        <span class="text-muted-foreground text-sm block">john@example.com</span>
       <% end %>
       <%= ui.list_action do %>
         <%= ui.btn "Edit", size: :sm, variant: :ghost %>
@@ -17,7 +17,7 @@ preview: |
       <%= ui.list_icon "user" %>
       <%= ui.list_content do %>
         <strong>Jane Smith</strong>
-        <span class="text-gray-500 text-sm block">jane@example.com</span>
+        <span class="text-muted-foreground text-sm block">jane@example.com</span>
       <% end %>
       <%= ui.list_action do %>
         <%= ui.btn "Edit", size: :sm, variant: :ghost %>
@@ -31,7 +31,7 @@ usage: |
       <%= ui.list_icon "user" %>
       <%= ui.list_content do %>
         <strong>Title</strong>
-        <span class="text-gray-500">Description</span>
+        <span class="text-muted-foreground">Description</span>
       <% end %>
       <%= ui.list_action do %>
         <%= ui.btn "Action", size: :sm, variant: :ghost %>
@@ -111,7 +111,7 @@ examples:
           <%= ui.list_icon "user" %>
           <%= ui.list_content do %>
             <strong>John Doe</strong>
-            <span class="text-gray-500 text-sm block">john@example.com</span>
+            <span class="text-muted-foreground text-sm block">john@example.com</span>
           <% end %>
           <%= ui.list_action do %>
             <%= ui.btn "Edit", size: :sm, variant: :ghost %>
@@ -121,7 +121,7 @@ examples:
           <%= ui.list_icon "user" %>
           <%= ui.list_content do %>
             <strong>Jane Smith</strong>
-            <span class="text-gray-500 text-sm block">jane@example.com</span>
+            <span class="text-muted-foreground text-sm block">jane@example.com</span>
           <% end %>
           <%= ui.list_action do %>
             <%= ui.btn "Edit", size: :sm, variant: :ghost %>
@@ -136,21 +136,21 @@ examples:
           <%= ui.list_icon "inbox" %>
           <%= ui.list_content do %>
             <strong>Inbox</strong>
-            <span class="text-gray-500 text-sm block">View your messages</span>
+            <span class="text-muted-foreground text-sm block">View your messages</span>
           <% end %>
         <% end %>
         <%= ui.list_item do %>
           <%= ui.list_icon "cog" %>
           <%= ui.list_content do %>
             <strong>Settings</strong>
-            <span class="text-gray-500 text-sm block">Manage your preferences</span>
+            <span class="text-muted-foreground text-sm block">Manage your preferences</span>
           <% end %>
         <% end %>
         <%= ui.list_item do %>
           <%= ui.list_icon "arrow-right-on-rectangle" %>
           <%= ui.list_content do %>
             <strong>Sign out</strong>
-            <span class="text-gray-500 text-sm block">Log out of your account</span>
+            <span class="text-muted-foreground text-sm block">Log out of your account</span>
           <% end %>
         <% end %>
       <% end %>
@@ -170,7 +170,7 @@ examples:
           <%= ui.list_icon "document" %>
           <%= ui.list_content do %>
             <strong>Document.pdf</strong>
-            <span class="text-gray-500 text-sm block">2.4 MB</span>
+            <span class="text-muted-foreground text-sm block">2.4 MB</span>
           <% end %>
           <%= ui.list_action do %>
             <%= ui.btn "Download", size: :sm, variant: :outline %>

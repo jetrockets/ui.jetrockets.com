@@ -45,26 +45,28 @@ end</code></pre>
 
     <h3 class="mt-4 h3">2. CSS Class Strategy</h3>
     <p>Components use a hybrid approach:</p>
-    <div class="flex flex-col gap-2 p-6 bg-gray-100 rounded-lg">
-      <div class="flex flex-col gap-1">
-        <h4 class="h4">Base Classes</h4>
-        <p>Core component styling using TailwindCSS utilities</p>
-        <pre><code>@apply px-4 py-2 rounded-md font-medium transition-colors</code></pre>
-      </div>
-      <div class="flex flex-col gap-1">
-        <h4 class="mt-4 h4">Modifier Classes</h4>
-        <p>BEM-like naming for variants and states</p>
-        <pre><code>.btn-primary, .btn-lg, .btn-outlined</code></pre>
-      </div>
-      <div class="flex flex-col gap-1">
-        <h4 class="mt-4 h4">Dynamic Classes</h4>
-        <p>Rails' <code>class_names</code> helper for conditional styling</p>
-        <pre><code>class_names("btn", "btn-#{variant}", "btn-loading": loading)</code></pre>
-      </div>
-    </div>
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <div class="flex flex-col gap-1">
+          <h4 class="h4">Base Classes</h4>
+          <p>Core component styling using TailwindCSS utilities</p>
+          <pre><code>@apply px-4 py-2 rounded-md font-medium transition-colors</code></pre>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h4 class="mt-4 h4">Modifier Classes</h4>
+          <p>BEM-like naming for variants and states</p>
+          <pre><code>.btn-primary, .btn-lg, .btn-outlined</code></pre>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h4 class="mt-4 h4">Dynamic Classes</h4>
+          <p>Rails' <code>class_names</code> helper for conditional styling</p>
+          <pre><code>class_names("btn", "btn-#{variant}", "btn-loading": loading)</code></pre>
+        </div>
+      <% end %>
+    <% end %>
 
     <h3 class="mt-4 h3">3. Composable Components</h3>
-    <p class="mb-3 text-gray-600">Complex components use composition pattern with ui helper:</p>
+    <p class="mb-3 text-muted-foreground">Complex components use composition pattern with ui helper:</p>
 
     <pre><code># Usage via ui helper
 &lt;%= ui.card do %&gt;

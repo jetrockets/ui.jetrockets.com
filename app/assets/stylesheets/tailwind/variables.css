@@ -204,8 +204,8 @@
   --color-link-hover: oklch(calc(var(--accent-lightness) + 0.15) var(--accent-chroma) var(--accent-hue));
 
   /* Tooltip - inverted */
-  --color-tooltip: oklch(0.92 0.01 var(--accent-hue));
-  --color-tooltip-foreground: oklch(0.15 0.01 var(--accent-hue));
+  --color-tooltip: var(--color-surface);
+  --color-tooltip-foreground: var(--color-surface-foreground);
 
   /* Gray scale for dark - override with low chroma */
   --color-gray-50: oklch(0.97 0.005 var(--accent-hue));
