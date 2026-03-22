@@ -145,10 +145,10 @@
   --color-surface-foreground: oklch(0.95 var(--dark-chroma) var(--accent-hue));
   --color-overlay: oklch(0 0 0 / 0.7);
 
-  /* Accent Colors - slightly brighter for dark backgrounds */
-  --color-accent: oklch(calc(var(--accent-lightness) + 0.05) var(--accent-chroma) var(--accent-hue));
-  --color-accent-hover: oklch(calc(var(--accent-lightness) + 0.1) var(--accent-chroma) var(--accent-hue));
-  --color-accent-active: oklch(var(--accent-lightness) var(--accent-chroma) var(--accent-hue));
+  /* Accent Colors - muted for dark backgrounds */
+  --color-accent: oklch(calc(var(--accent-lightness) - 0.15) calc(var(--accent-chroma) * 0.55) var(--accent-hue));
+  --color-accent-hover: oklch(calc(var(--accent-lightness) - 0.1) calc(var(--accent-chroma) * 0.6) var(--accent-hue));
+  --color-accent-active: oklch(calc(var(--accent-lightness) - 0.2) calc(var(--accent-chroma) * 0.5) var(--accent-hue));
   --color-accent-foreground: oklch(1 0 0);
   --color-accent-soft: oklch(0.22 0.03 var(--accent-hue));
   --color-accent-soft-hover: oklch(0.26 0.04 var(--accent-hue));
@@ -166,13 +166,13 @@
   --color-input-focus: oklch(0.55 0.15 var(--accent-hue));
   --color-ring: oklch(0.5 0.12 var(--accent-hue) / 0.35);
 
-  /* Destructive (red) - softer for dark mode */
-  --color-destructive: oklch(0.65 0.22 25);
-  --color-destructive-hover: oklch(0.7 0.24 25);
+  /* Destructive (red) - muted for dark mode */
+  --color-destructive: oklch(0.5 0.12 25);
+  --color-destructive-hover: oklch(0.55 0.14 25);
   --color-destructive-foreground: oklch(1 0 0);
   --color-destructive-soft: oklch(0.2 0.04 25);
   --color-destructive-soft-hover: oklch(0.24 0.05 25);
-  --color-destructive-soft-foreground: oklch(0.8 0.18 25);
+  --color-destructive-soft-foreground: oklch(0.75 0.14 25);
   --color-destructive-border: oklch(0.35 0.08 25);
 
   /* Success (green) - softer for dark mode */
