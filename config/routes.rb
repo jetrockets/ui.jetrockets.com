@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get "tooltip"
     get "turbo_confirm"
     get "typography"
+    get "colors"
     get "breadcrumbs"
     get "divider"
     get "sidebar"

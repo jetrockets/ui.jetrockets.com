@@ -1,0 +1,153 @@
+<%
+  set_meta_tags(
+    title: "Colors - Rails UI Components",
+    description: "Color palette and design tokens used across all components.",
+    keywords: "Rails, UI Components, Colors, Palette, Design Tokens"
+  )
+%>
+<% breadcrumb :ui_colors %>
+
+<%
+  color_scales = {
+    "Primary" => {
+      prefix: "primary",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    },
+    "Secondary" => {
+      prefix: "secondary",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    },
+    "Gray" => {
+      prefix: "gray",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    },
+    "Red" => {
+      prefix: "red",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    },
+    "Yellow" => {
+      prefix: "yellow",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    },
+    "Green" => {
+      prefix: "green",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    },
+    "Blue" => {
+      prefix: "blue",
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    }
+  }
+%>
+
+<article>
+  <%= ui.header do %>
+    <%= ui.header_heading do %>
+      <%= ui.header_title "Colors" %>
+      <%= ui.header_subtitle "Color palette and design tokens used across all components." %>
+    <% end %>
+    <%= ui.header_actions do %>
+      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/tailwind/theme.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+    <% end %>
+  <% end %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <pre><code>&lt;!-- Background colors --&gt;
+&lt;div class="bg-primary-500"&gt;...&lt;/div&gt;
+&lt;div class="bg-secondary-100"&gt;...&lt;/div&gt;
+
+&lt;!-- Text colors --&gt;
+&lt;span class="text-red-600"&gt;Error&lt;/span&gt;
+&lt;span class="text-green-600"&gt;Success&lt;/span&gt;
+
+&lt;!-- Border colors --&gt;
+&lt;div class="border border-gray-300"&gt;...&lt;/div&gt;</code></pre>
+  </section>
+
+  <% color_scales.each do |name, config| %>
+    <section class="flex flex-col gap-4 mt-10">
+      <h2 class="h3"><%= name %></h2>
+      <div class="grid grid-cols-11 gap-1">
+        <% config[:shades].each do |shade| %>
+          <div class="flex flex-col">
+            <div class="aspect-square rounded-lg shadow-sm border border-gray-200/50 bg-<%= config[:prefix] %>-<%= shade %>"></div>
+            <div class="mt-2 text-center">
+              <p class="text-sm font-medium text-gray-900"><%= shade %></p>
+              <p class="text-xs text-gray-500 font-mono"><%= config[:prefix] %>-<%= shade %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <section class="flex flex-col gap-4 mt-10">
+    <h2 class="h3">Special Colors</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="flex flex-col">
+        <div class="h-20 rounded-lg shadow-sm border border-gray-200 bg-white"></div>
+        <div class="mt-2">
+          <p class="text-sm font-medium text-gray-900">White</p>
+          <p class="text-xs text-gray-500 font-mono">white</p>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="h-20 rounded-lg shadow-sm bg-black"></div>
+        <div class="mt-2">
+          <p class="text-sm font-medium text-gray-900">Black</p>
+          <p class="text-xs text-gray-500 font-mono">black</p>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="h-20 rounded-lg shadow-sm bg-primary"></div>
+        <div class="mt-2">
+          <p class="text-sm font-medium text-gray-900">Primary</p>
+          <p class="text-xs text-gray-500 font-mono">primary (600)</p>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="h-20 rounded-lg shadow-sm bg-secondary"></div>
+        <div class="mt-2">
+          <p class="text-sm font-medium text-gray-900">Secondary</p>
+          <p class="text-xs text-gray-500 font-mono">secondary (700)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex flex-col gap-4 mt-10">
+    <h2 class="h3">Semantic Colors</h2>
+    <p class="text-gray-600">Common color combinations for UI feedback states.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="flex flex-col gap-2 p-4 rounded-lg bg-green-50 border border-green-200">
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded-full bg-green-500"></div>
+          <span class="font-medium text-green-800">Success</span>
+        </div>
+        <p class="text-sm text-green-700">bg-green-50, border-green-200, text-green-800</p>
+      </div>
+      <div class="flex flex-col gap-2 p-4 rounded-lg bg-red-50 border border-red-200">
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded-full bg-red-500"></div>
+          <span class="font-medium text-red-800">Error</span>
+        </div>
+        <p class="text-sm text-red-700">bg-red-50, border-red-200, text-red-800</p>
+      </div>
+      <div class="flex flex-col gap-2 p-4 rounded-lg bg-yellow-50 border border-yellow-200">
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded-full bg-yellow-500"></div>
+          <span class="font-medium text-yellow-800">Warning</span>
+        </div>
+        <p class="text-sm text-yellow-700">bg-yellow-50, border-yellow-200, text-yellow-800</p>
+      </div>
+      <div class="flex flex-col gap-2 p-4 rounded-lg bg-blue-50 border border-blue-200">
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded-full bg-blue-500"></div>
+          <span class="font-medium text-blue-800">Info</span>
+        </div>
+        <p class="text-sm text-blue-700">bg-blue-50, border-blue-200, text-blue-800</p>
+      </div>
+    </div>
+  </section>
+</article>

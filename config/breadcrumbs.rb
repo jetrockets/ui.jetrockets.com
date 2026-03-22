@@ -153,6 +153,10 @@ crumb :ui_typography do
   link "Typography", ui_typography_path
 end
 
+crumb :ui_colors do
+  link "Colors", ui_colors_path
+end
+
 crumb :ui_breadcrumbs do
   link "Breadcrumbs", ui_breadcrumbs_path
 end

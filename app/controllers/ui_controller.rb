@@ -80,6 +80,9 @@ class UiController < ApplicationController
   def typography
   end
 
+  def colors
+  end
+
   def empty
   end
 
