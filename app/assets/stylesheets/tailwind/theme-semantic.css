@@ -24,17 +24,17 @@
   --radius-base: theme(--radius-md);
 
   /* Button radius - proportionally scaled from base */
-  --radius-btn-xs: calc(theme(--radius-base) * 0.75);
-  --radius-btn-sm: calc(theme(--radius-base) * 1);
-  --radius-btn-md: calc(theme(--radius-base) * 1.125);
-  --radius-btn-lg: calc(theme(--radius-base) * 1.25);
+  --radius-btn-xs: calc(var(--radius-base) * 0.75);
+  --radius-btn-sm: calc(var(--radius-base) * 1);
+  --radius-btn-md: calc(var(--radius-base) * 1.125);
+  --radius-btn-lg: calc(var(--radius-base) * 1.25);
 
   /* Container radius - larger scale from base (cards, modals, alerts) */
-  --radius-card: calc(theme(--radius-base) * 1.5);
-  --radius-modal: calc(theme(--radius-base) * 1.5);
-  --radius-dropdown: calc(theme(--radius-base) * 1.5);
-  --radius-field: theme(--radius-md);
-  --radius-tooltip: theme(--radius-sm);
+  --radius-card: calc(var(--radius-base) * 1.5);
+  --radius-modal: calc(var(--radius-base) * 1.5);
+  --radius-dropdown: calc(var(--radius-base) * 1.5);
+  --radius-field: var(--radius-md);
+  --radius-tooltip: var(--radius-sm);
 
   /* Dynamic Gray Colors - tinted by accent hue */
   --color-gray-50: oklch(0.985 var(--gray-chroma) var(--accent-hue));
@@ -110,8 +110,8 @@
   --color-info-border: var(--color-blue-200);
 
   /* Link */
-  --color-link: theme(--color-accent);
-  --color-link-hover: theme(--color-accent-hover);
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
 
   /* Tooltip */
   --color-tooltip: var(--color-info);
