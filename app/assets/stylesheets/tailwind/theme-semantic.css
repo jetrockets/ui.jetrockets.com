@@ -124,7 +124,7 @@
  */
 .dark {
   /* Dark theme chroma multiplier - amplifies saturation for visibility on dark backgrounds */
-  --dark-chroma: calc(var(--gray-chroma) * 10);
+  --dark-chroma: calc(var(--gray-chroma) * 6);
 
   /* Layout Colors - inverted for dark mode */
   --color-background: oklch(0.13 var(--dark-chroma) var(--accent-hue));
