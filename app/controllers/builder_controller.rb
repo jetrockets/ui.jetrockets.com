@@ -22,10 +22,10 @@ class BuilderController < ApplicationController
 
   def download
     theme = DEFAULTS.merge(theme_params.to_h.symbolize_keys)
-    css_content = generate_variables_css(theme)
+    css_content = generate_theme_css(theme)
 
     send_data css_content,
-              filename: "variables.css",
+              filename: "theme.css",
               type: "text/css",
               disposition: "attachment"
   end
@@ -36,7 +36,7 @@ class BuilderController < ApplicationController
     params.permit(:accent_hue, :gray_chroma, :radius_base, :radius_form, :theme)
   end
 
-  def generate_variables_css(theme)
+  def generate_theme_css(theme)
     radius_base = RADIUS_VALUES[theme[:radius_base]] || RADIUS_VALUES["lg"]
     radius_form = RADIUS_VALUES[theme[:radius_form]] || RADIUS_VALUES["md"]
     include_dark = theme[:theme] == "dark"

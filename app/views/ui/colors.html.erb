@@ -1,7 +1,7 @@
 <%
   set_meta_tags(
     title: "Colors - Rails UI Components",
-    description: "Semantic color tokens and design system variables.",
+    description: "Semantic color tokens and design system theme.",
     keywords: "Rails, UI Components, Colors, Design Tokens, Semantic Colors"
   )
 %>
@@ -11,17 +11,17 @@
   <%= ui.header do %>
     <%= ui.header_heading do %>
       <%= ui.header_title "Colors" %>
-      <%= ui.header_subtitle "Semantic color tokens and design system variables." %>
+      <%= ui.header_subtitle "Semantic color tokens and design system theme." %>
     <% end %>
     <%= ui.header_actions do %>
-      <%= ui.btn "View variables.css", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/tailwind/variables.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+      <%= ui.btn "View theme.css", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/tailwind/theme.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
     <% end %>
   <% end %>
 
   <section class="flex flex-col gap-4">
     <h2 class="h3">Semantic Tokens</h2>
     <p style="color: var(--color-muted-foreground)">Use semantic tokens instead of raw color values. They adapt to theme changes automatically.</p>
-    <pre><code>/* CSS Variables - use in custom styles */
+    <pre><code>/* CSS Theme - use in custom styles */
 background-color: var(--color-accent);
 color: var(--color-foreground);
 border-color: var(--color-border);</code></pre>
