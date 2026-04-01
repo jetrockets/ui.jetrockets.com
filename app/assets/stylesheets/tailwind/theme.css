@@ -73,7 +73,6 @@
   /* Success */
   --color-success: var(--success);
   --color-success-hover: oklch(from var(--success) calc(l - 0.06) c h);
-  --color-success-foreground: var(--success-foreground);
   --color-success-soft: oklch(from var(--success) l c h / 10%);
   --color-success-soft-hover: oklch(from var(--success) l c h / 15%);
   --color-success-soft-foreground: var(--success);
@@ -82,7 +81,6 @@
   /* Warning */
   --color-warning: var(--warning);
   --color-warning-hover: oklch(from var(--warning) calc(l - 0.06) c h);
-  --color-warning-foreground: var(--warning-foreground);
   --color-warning-soft: oklch(from var(--warning) l c h / 10%);
   --color-warning-soft-hover: oklch(from var(--warning) l c h / 15%);
   --color-warning-soft-foreground: var(--warning);
@@ -91,7 +89,6 @@
   /* Info */
   --color-info: var(--info);
   --color-info-hover: oklch(from var(--info) calc(l - 0.06) c h);
-  --color-info-foreground: var(--info-foreground);
   --color-info-soft: oklch(from var(--info) l c h / 10%);
   --color-info-soft-hover: oklch(from var(--info) l c h / 15%);
   --color-info-soft-foreground: var(--info);
