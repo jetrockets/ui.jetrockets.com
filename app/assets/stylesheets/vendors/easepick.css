@@ -1,43 +1,43 @@
 :host {
   --day-width: 29px;
   --day-height: 29px;
-  --color-fg-primary: var(--color-accent);
-  --color-fg-accent: var(--color-accent);
+  --color-fg-primary: var(--color-primary);
+  --color-fg-accent: var(--color-primary);
   --color-bg-unavailable: transparent;
   --color-fg-locked: #BDBDBD;
 }
 
 :host-context(.dark) .container {
   --color-bg-unavailable: transparent;
-  --color-bg-default: var(--color-gray-800);
-  --color-bg-secondary: var(--color-gray-700);
+  --color-bg-default: var(--color-muted);
+  --color-bg-secondary: var(--color-card);
   --color-bg-inrange: var(--color-blue-300);
   --color-bg-locked: var(--color-red-400);
-  --color-bg-tooltip: var(--color-gray-300);
+  --color-bg-tooltip: var(--color-input);
 
-  --color-fg-default: var(--color-gray-200);
+  --color-fg-default: var(--color-border);
   --color-fg-primary: var(--color-blue-500);
-  --color-fg-secondary: var(--color-surface);
-  --color-fg-muted: var(--color-gray-400);
+  --color-fg-secondary: var(--color-card);
+  --color-fg-muted: var(--color-muted-foreground);
   --color-fg-accent: var(--color-red-400);
-  --color-fg-locked: var(--color-gray-400);
+  --color-fg-locked: var(--color-muted-foreground);
 
-  --color-btn-primary-bg: var(--color-gray-800);
+  --color-btn-primary-bg: var(--color-muted);
   --color-btn-primary-fg: var(--color-blue-500);
   --color-btn-primary-border: var(--color-blue-500);
   --color-btn-primary-hover-bg: var(--color-blue-400);
-  --color-btn-primary-hover-fg: var(--color-surface);
+  --color-btn-primary-hover-fg: var(--color-card);
   --color-btn-primary-hover-border: var(--color-blue-400);
 
-  --color-btn-secondary-bg: var(--color-gray-900);
-  --color-btn-secondary-fg: var(--color-gray-200);
-  --color-btn-secondary-border: var(--color-gray-200);
-  --color-btn-secondary-hover-bg: var(--color-gray-200);
-  --color-btn-secondary-hover-fg: var(--color-gray-900);
-  --color-btn-secondary-hover-border: var(--color-gray-200);
+  --color-btn-secondary-bg: var(--color-background);
+  --color-btn-secondary-fg: var(--color-border);
+  --color-btn-secondary-border: var(--color-border);
+  --color-btn-secondary-hover-bg: var(--color-border);
+  --color-btn-secondary-hover-fg: var(--color-background);
+  --color-btn-secondary-hover-border: var(--color-border);
 
-  --color-border-default: var(--color-gray-800);
-  --color-border-locked: var(--color-gray-900);
+  --color-border-default: var(--color-muted);
+  --color-border-locked: var(--color-background);
 }
 
 .container {

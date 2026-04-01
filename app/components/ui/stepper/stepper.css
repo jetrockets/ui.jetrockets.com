@@ -20,24 +20,24 @@
   }
 
   .stepper__item-completed:not(:last-child)::after {
-    @apply bg-accent;
+    @apply bg-primary;
   }
 
   .stepper__indicator {
     @apply relative z-10 flex items-center justify-center w-10 h-10 rounded-full border-2;
-    @apply bg-surface border-border text-muted-foreground;
+    @apply bg-card border-border text-muted-foreground;
   }
 
   .stepper__item-pending .stepper__indicator {
-    @apply bg-surface border-border text-muted-foreground;
+    @apply bg-card border-border text-muted-foreground;
   }
 
   .stepper__item-current .stepper__indicator {
-    @apply bg-accent border-accent text-accent-foreground;
+    @apply bg-primary border-primary text-primary-foreground;
   }
 
   .stepper__item-completed .stepper__indicator {
-    @apply bg-accent border-accent text-accent-foreground;
+    @apply bg-primary border-primary text-primary-foreground;
   }
 
   .stepper__icon {

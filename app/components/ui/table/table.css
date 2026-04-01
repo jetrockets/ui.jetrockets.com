@@ -5,7 +5,7 @@
     @apply w-auto;
 
     thead {
-      @apply bg-surface;
+      @apply bg-card;
     }
 
     th, td {
@@ -42,7 +42,7 @@
 
   /* Sticky */
   .table__th_sticky {
-    @apply sticky z-10 bg-surface hover:bg-muted;
+    @apply sticky z-10 bg-card hover:bg-muted;
   }
 
   .table__th_sticky-left {
@@ -54,7 +54,7 @@
   }
 
   .table__td_sticky {
-    @apply sticky bg-surface;
+    @apply sticky bg-card;
   }
 
   .table__td_sticky-left {

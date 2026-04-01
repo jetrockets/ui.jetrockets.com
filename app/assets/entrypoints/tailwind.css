@@ -1,8 +1,7 @@
-@import "tailwindcss" source("../../");
+@import "tailwindcss";
 
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
-
 
 @import "../stylesheets/tailwind/fonts";
 @import "../stylesheets/tailwind/animations";

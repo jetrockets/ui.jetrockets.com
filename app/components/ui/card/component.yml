@@ -194,9 +194,9 @@ examples:
     code: |
       <%= ui.card do %>
         <%= ui.card_body class: "flex flex-col gap-3 text-center" do %>
-          <%= ui.icon "information-circle", class: "mx-auto text-accent size-12" %>
+          <%= ui.icon "information-circle", class: "mx-auto text-primary size-12" %>
           <h3 class="text-lg font-semibold">Welcome!</h3>
-          <p class="text-gray-600">Thank you for joining our community.</p>
+          <p class="text-muted-foreground">Thank you for joining our community.</p>
           <%= ui.btn "Get Started", block: true, size: :lg %>
         <% end %>
       <% end %>

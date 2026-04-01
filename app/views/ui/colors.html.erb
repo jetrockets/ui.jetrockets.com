@@ -22,7 +22,7 @@
     <h2 class="h3">Semantic Tokens</h2>
     <p style="color: var(--color-muted-foreground)">Use semantic tokens instead of raw color values. They adapt to theme changes automatically.</p>
     <pre><code>/* CSS Theme - use in custom styles */
-background-color: var(--color-accent);
+background-color: var(--color-primary);
 color: var(--color-foreground);
 border-color: var(--color-border);</code></pre>
   </section>
@@ -45,10 +45,10 @@ border-color: var(--color-border);</code></pre>
         </div>
       </div>
       <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm border" style="background-color: var(--color-surface); border-color: var(--color-border)"></div>
+        <div class="h-16 rounded-lg shadow-sm border" style="background-color: var(--color-card); border-color: var(--color-border)"></div>
         <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Surface</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-surface</p>
+          <p class="text-sm font-medium" style="color: var(--color-foreground)">Card</p>
+          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-card</p>
         </div>
       </div>
       <div class="flex flex-col">
@@ -76,27 +76,41 @@ border-color: var(--color-border);</code></pre>
   </section>
 
   <section class="flex flex-col gap-6 mt-10">
-    <h2 class="h3">Accent</h2>
+    <h2 class="h3">Primary & Secondary</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
       <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-accent)"></div>
+        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-primary)"></div>
         <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Accent</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-accent</p>
+          <p class="text-sm font-medium" style="color: var(--color-foreground)">Primary</p>
+          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-primary</p>
         </div>
       </div>
       <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-accent-hover)"></div>
+        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-primary-hover)"></div>
         <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Accent Hover</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-accent-hover</p>
+          <p class="text-sm font-medium" style="color: var(--color-foreground)">Primary Hover</p>
+          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-primary-hover</p>
         </div>
       </div>
       <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-accent-foreground)"></div>
+        <div class="h-16 rounded-lg shadow-sm border" style="background-color: var(--color-primary-foreground); border-color: var(--color-border)"></div>
         <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Accent FG</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-accent-foreground</p>
+          <p class="text-sm font-medium" style="color: var(--color-foreground)">Primary FG</p>
+          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-primary-foreground</p>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-secondary)"></div>
+        <div class="mt-2">
+          <p class="text-sm font-medium" style="color: var(--color-foreground)">Secondary</p>
+          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-secondary</p>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-secondary-foreground)"></div>
+        <div class="mt-2">
+          <p class="text-sm font-medium" style="color: var(--color-foreground)">Secondary FG</p>
+          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-secondary-foreground</p>
         </div>
       </div>
       <div class="flex flex-col">
@@ -188,11 +202,24 @@ border-color: var(--color-border);</code></pre>
     <p style="color: var(--color-muted-foreground)">These base variables control the entire theme and will be adjustable in the Builder.</p>
     <div class="p-6 rounded-lg" style="background-color: var(--color-muted)">
       <pre><code>:root {
-  --accent-hue: 262;        /* Accent color hue (0-360) */
-  --accent-chroma: 0.245;   /* Accent color saturation */
-  --gray-chroma: 0.006;     /* Amount of color in grays */
-  --radius-base: 0.375rem;  /* Base border radius */
-  --radius-field: 0.375rem;  /* Form elements radius */
+  /* Primary — main action, paste from Figma */
+  --color-primary: oklch(0.55 0.245 264);
+  --color-primary-foreground: oklch(1 0 0);
+  /* hover/active auto-derived via relative-color-syntax */
+
+  /* Secondary — secondary action buttons */
+  --color-secondary: oklch(0.95 0.006 264);
+  --color-secondary-foreground: oklch(0.21 0.006 264);
+
+  /* Background */
+  --color-background: oklch(0.985 0.003 264);
+}
+
+.dark {
+  --color-primary: oklch(0.65 0.22 264);
+  --color-secondary: oklch(0.24 0.014 264);
+  --color-secondary-foreground: oklch(0.93 0.003 264);
+  --color-background: oklch(0.13 0.014 264);
 }</code></pre>
     </div>
   </section>

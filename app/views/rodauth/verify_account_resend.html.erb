@@ -2,7 +2,7 @@
 
 <%= ui.modal(title: "Please verify your email", size: :md) do %>
   <%= ui.modal_body do %>
-    <p class="mb-4 text-gray-600">
+    <p class="mb-4 text-muted-foreground">
       If you no longer have the email to verify the account, you can request that it be resent to you:
     </p>
 
@@ -17,7 +17,7 @@
         <%= form.submit rodauth.verify_account_resend_button, block: true %>
       </div>
 
-      <ul class="text-sm text-gray-600">
+      <ul class="text-sm text-muted-foreground">
         <li>
           Return to
           <%= link_to "Sign in", rodauth.login_path, class: "link no-underline" %>

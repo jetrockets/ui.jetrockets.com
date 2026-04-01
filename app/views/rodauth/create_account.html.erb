@@ -2,7 +2,7 @@
 
 <%= ui.modal(title: "Sign Up", size: :lg) do %>
   <%= ui.modal_body do %>
-    <p class="mb-4 text-gray-600">
+    <p class="mb-4 text-muted-foreground">
       Create your <%= site_name %>'s account
     </p>
 
@@ -25,7 +25,7 @@
         <%= form.submit rodauth.create_account_button, block: true %>
       </div>
 
-      <ul class="text-sm text-gray-600">
+      <ul class="text-sm text-muted-foreground">
         <li>
           Already have an account?
           <%= link_to "Sign in", rodauth.login_path, class: "link no-underline text-sm" %>

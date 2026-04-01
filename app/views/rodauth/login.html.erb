@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Sign In", description: "Welcome back to #{site_name}. Please Sign in to access your account") %>
 <%= ui.modal(title: "Sign In", size: :lg) do %>
   <%= ui.modal_body do %>
-    <p class="mb-4 text-gray-600">
+    <p class="mb-4 text-muted-foreground">
       By continuing, you agree to our <%= link_to "Terms of Service", terms_path, data: { turbo_frame: :drawer }, class: "link no-underline" %>, and acknowledge that you understand the <%= link_to "Privacy Policy", privacy_path, class: "link no-underline", data: { turbo: false }, target: :_blank %>.
     </p>
 

@@ -46,5 +46,5 @@
 }
 
 .turbo-progress-bar {
-  @apply h-0.5 bg-accent;
+  @apply h-0.5 bg-primary;
 }

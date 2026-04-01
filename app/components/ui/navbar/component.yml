@@ -108,7 +108,7 @@ examples:
               <span>/</span>
               <a href="#">Products</a>
               <span>/</span>
-              <span class="text-gray-900">Details</span>
+              <span class="text-foreground">Details</span>
             </nav>
           <% end %>
           <%= ui.navbar_actions do %>

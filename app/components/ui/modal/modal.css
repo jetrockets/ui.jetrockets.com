@@ -3,7 +3,7 @@
 @layer components {
   .modal {
     @apply p-0 m-auto shadow-sm max-w-11/12 h-fit w-fit w-2xl;
-    @apply bg-surface rounded-modal backdrop:bg-overlay;
+    @apply bg-card rounded-modal backdrop:bg-overlay;
   }
 
   .modal-page {
@@ -11,7 +11,7 @@
   }
 
   .modal__header {
-    @apply sticky top-0 flex items-start justify-between p-4 px-6 backdrop-blur-sm bg-surface/70;
+    @apply sticky top-0 flex items-start justify-between p-4 px-6 backdrop-blur-sm bg-card/70;
   }
 
   .modal__header-bordered {
@@ -28,7 +28,7 @@
 
   .modal__close {
     @apply inline-flex items-center p-1 ml-auto text-sm transition-all duration-300 bg-transparent rounded-full cursor-pointer;
-    @apply text-muted-foreground hover:bg-muted;
+    @apply text-muted-foreground hover:bg-accent;
   }
 
   .modal__body {
@@ -36,7 +36,7 @@
   }
 
   .modal__footer {
-    @apply sticky bottom-0 w-full p-4 backdrop-blur-sm bg-surface/70;
+    @apply sticky bottom-0 w-full p-4 backdrop-blur-sm bg-card/70;
     border-bottom-left-radius: var(--radius-modal);
     border-bottom-right-radius: var(--radius-modal);
   }

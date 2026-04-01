@@ -13,7 +13,7 @@
 
   .form__field {
     @apply block w-full px-3 text-sm min-h-10 border border-input rounded-field;
-    @apply bg-surface text-foreground;
+    @apply bg-card text-foreground;
     @apply focus:border-input-focus focus:ring-3 focus:ring-ring focus:outline-none;
     @apply disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed;
   }
@@ -42,10 +42,10 @@
 
   .form__radio,
   .form__checkbox {
-    @apply cursor-pointer size-5 border border-input bg-surface;
+    @apply cursor-pointer size-5 border border-input bg-card;
     @apply focus:ring-3 focus:ring-ring focus:border-input-focus;
-    @apply checked:bg-accent checked:border-accent checked:hover:bg-accent-hover;
-    @apply checked:focus:bg-accent checked:focus:border-accent;
+    @apply checked:bg-primary checked:border-primary checked:hover:bg-primary-hover;
+    @apply checked:focus:bg-primary checked:focus:border-primary;
     @apply disabled:cursor-not-allowed disabled:bg-muted disabled:border-border;
     @apply disabled:checked:bg-muted-hover disabled:checked:border-border;
   }
@@ -76,7 +76,7 @@
     }
 
     .peer:checked ~ & {
-      @apply bg-accent;
+      @apply bg-primary;
 
       &::after {
         @apply translate-x-full border-background;
@@ -120,11 +120,11 @@
     @apply appearance-none cursor-pointer;
 
     &::-webkit-slider-thumb {
-      @apply appearance-none w-4 h-4 rounded-full bg-accent border-2 border-background shadow-sm cursor-pointer;
+      @apply appearance-none w-4 h-4 rounded-full bg-primary border-2 border-background shadow-sm cursor-pointer;
     }
 
     &::-moz-range-thumb {
-      @apply w-4 h-4 rounded-full bg-accent border-2 border-background shadow-sm cursor-pointer;
+      @apply w-4 h-4 rounded-full bg-primary border-2 border-background shadow-sm cursor-pointer;
     }
 
     &:focus {

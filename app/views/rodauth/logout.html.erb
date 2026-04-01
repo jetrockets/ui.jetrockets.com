@@ -3,7 +3,7 @@
 <%= ui.modal(title: "Logout", size: :lg) do %>
   <%= form_with url: rodauth.logout_path, method: :post, data: { turbo: false }, class: "form" do |form| %>
     <%= ui.modal_body do %>
-      <p class="mb-3 text-gray-600">
+      <p class="mb-3 text-muted-foreground">
         Logout from <%= site_name %>
       </p>
 

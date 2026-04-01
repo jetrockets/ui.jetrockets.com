@@ -85,7 +85,7 @@ export default class ChoicesController extends Controller {
               ${data.label}
               ${data.value && data.customProperties?.desc
                 ? `
-                <div class="text-sm text-gray-800">
+                <div class="text-sm text-foreground">
                 ${data.customProperties.desc}
                 </div>
                 `
@@ -173,7 +173,7 @@ export default class ChoicesController extends Controller {
 
   #dropdownFooterTemplate () {
     return `
-      <a href="${this.newPath}" data-turbo-frame="drawer" class="choices__item choices__item--choice flex items-center gap-2 hover:bg-surface" tabindex="-1">
+      <a href="${this.newPath}" data-turbo-frame="drawer" class="choices__item choices__item--choice flex items-center gap-2 hover:bg-accent" tabindex="-1">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2.8125 9H15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M9 2.8125V15.1875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

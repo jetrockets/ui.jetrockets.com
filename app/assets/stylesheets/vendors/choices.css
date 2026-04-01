@@ -5,8 +5,8 @@
   --choices-border-radius: 0.375rem;
   --choices-border-radius-item: 20px;
 
-  --choices-bg-color: var(--color-surface);
-  --choices-bg-color-dropdown: var(--color-surface);
+  --choices-bg-color: var(--color-card);
+  --choices-bg-color-dropdown: var(--color-card);
 
   --choices-text-color: var(--color-foreground);
   --choices-keyline-color: var(--color-input);

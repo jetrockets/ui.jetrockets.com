@@ -18,7 +18,7 @@
   }
 
   .tabs__link-active {
-    @apply shadow-sm text-foreground bg-surface;
+    @apply shadow-sm text-foreground bg-card;
     @apply hover:text-foreground;
   }
 
@@ -33,7 +33,7 @@
   }
 
   .tabs-underline .tabs__link-active {
-    @apply bg-transparent shadow-none text-accent border-accent;
-    @apply hover:text-accent hover:border-accent;
+    @apply bg-transparent shadow-none text-primary border-primary;
+    @apply hover:text-primary hover:border-primary;
   }
 }

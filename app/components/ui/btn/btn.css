@@ -10,18 +10,18 @@
   }
 
   .btn-default {
-    @apply bg-accent text-accent-foreground;
-    @apply hover:bg-accent-hover;
+    @apply bg-primary text-primary-foreground;
+    @apply hover:bg-primary-hover;
   }
 
   .btn-outline {
     @apply text-foreground border border-input;
-    @apply hover:bg-muted;
+    @apply hover:bg-accent;
   }
 
   .btn-secondary {
-    @apply bg-muted text-foreground;
-    @apply hover:bg-muted-hover;
+    @apply bg-secondary text-secondary-foreground;
+    @apply hover:bg-secondary-hover;
   }
 
   .btn-danger {
@@ -31,7 +31,7 @@
 
   .btn-ghost {
     @apply text-foreground;
-    @apply hover:bg-muted;
+    @apply hover:bg-accent;
   }
 
   .btn-link {

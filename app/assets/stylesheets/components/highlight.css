@@ -13,6 +13,6 @@
   }
 
   .dark .hljs {
-    @apply bg-surface;
+    @apply bg-card;
   }
 }

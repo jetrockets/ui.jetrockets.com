@@ -5,8 +5,12 @@
   )
 
   defaults = {
-    accent_hue: 262,
-    gray_chroma: 0.006,
+    primary: "#6d28d9",
+    primary_dark: "#8b5cf6",
+    secondary: "#f0eef5",
+    secondary_dark: "#2a2640",
+    background: "#f9f9fb",
+    background_dark: "#1a1625",
     radius_base: "lg",
     radius_form: "md"
   }
@@ -51,41 +55,154 @@
               <% end %>
             </div>
 
-            <!-- Accent Color -->
-            <div class="flex flex-col gap-2">
-              <div class="flex justify-between text-sm">
-                <span class="font-medium text-foreground">Accent Color</span>
-                <span class="text-muted-foreground" data-builder-target="hueValue"><%= @theme[:accent_hue] %></span>
+            <!-- Primary Color (Light) -->
+            <div class="flex flex-col gap-2" data-builder-target="lightPrimarySection">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-foreground">Primary Color</span>
+                <span class="text-xs text-muted-foreground font-mono" data-builder-target="primaryOklch"></span>
               </div>
-              <input
-                type="range"
-                min="0"
-                max="360"
-                step="1"
-                value="<%= @theme[:accent_hue] %>"
-                class="w-full h-3 rounded-full appearance-none cursor-pointer"
-                style="background: linear-gradient(to right, oklch(0.6 0.25 0), oklch(0.6 0.25 60), oklch(0.6 0.25 120), oklch(0.6 0.25 180), oklch(0.6 0.25 240), oklch(0.6 0.25 300), oklch(0.6 0.25 360))"
-                data-builder-target="hue"
-                data-action="input->builder#updateHue"
-              >
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value="<%= defaults[:primary] %>"
+                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  data-builder-target="primaryColor"
+                  data-action="input->builder#updatePrimaryColor"
+                >
+                <input
+                  type="text"
+                  value="<%= defaults[:primary] %>"
+                  class="form__field text-sm font-mono flex-1"
+                  placeholder="#6d28d9"
+                  data-builder-target="primaryHex"
+                  data-action="change->builder#updatePrimaryFromHex"
+                >
+              </div>
             </div>
 
-            <!-- Background Saturation -->
-            <div class="flex flex-col gap-2">
-              <div class="flex justify-between text-sm">
-                <span class="font-medium text-foreground">Background Saturation</span>
-                <span class="text-muted-foreground" data-builder-target="grayChromaValue"><%= @theme[:gray_chroma] %></span>
+            <!-- Primary Color (Dark) -->
+            <div class="flex flex-col gap-2 hidden" data-builder-target="darkPrimarySection">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-foreground">Dark Primary Color</span>
+                <span class="text-xs text-muted-foreground font-mono" data-builder-target="darkPrimaryOklch"></span>
               </div>
-              <input
-                type="range"
-                min="0"
-                max="0.03"
-                step="0.001"
-                value="<%= @theme[:gray_chroma] %>"
-                class="w-full h-2 rounded-full appearance-none cursor-pointer bg-muted"
-                data-builder-target="grayChroma"
-                data-action="input->builder#updateGrayChroma"
-              >
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value="<%= defaults[:primary_dark] %>"
+                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  data-builder-target="darkPrimaryColor"
+                  data-action="input->builder#updateDarkPrimaryColor"
+                >
+                <input
+                  type="text"
+                  value="<%= defaults[:primary_dark] %>"
+                  class="form__field text-sm font-mono flex-1"
+                  placeholder="#8b5cf6"
+                  data-builder-target="darkPrimaryHex"
+                  data-action="change->builder#updateDarkPrimaryFromHex"
+                >
+              </div>
+            </div>
+
+            <!-- Secondary Color (Light) -->
+            <div class="flex flex-col gap-2" data-builder-target="lightSecondarySection">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-foreground">Secondary Color</span>
+                <span class="text-xs text-muted-foreground font-mono" data-builder-target="secondaryOklch"></span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value="<%= defaults[:secondary] %>"
+                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  data-builder-target="secondaryColor"
+                  data-action="input->builder#updateSecondaryColor"
+                >
+                <input
+                  type="text"
+                  value="<%= defaults[:secondary] %>"
+                  class="form__field text-sm font-mono flex-1"
+                  placeholder="#f0eef5"
+                  data-builder-target="secondaryHex"
+                  data-action="change->builder#updateSecondaryFromHex"
+                >
+              </div>
+            </div>
+
+            <!-- Secondary Color (Dark) -->
+            <div class="flex flex-col gap-2 hidden" data-builder-target="darkSecondarySection">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-foreground">Dark Secondary Color</span>
+                <span class="text-xs text-muted-foreground font-mono" data-builder-target="darkSecondaryOklch"></span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value="<%= defaults[:secondary_dark] %>"
+                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  data-builder-target="darkSecondaryColor"
+                  data-action="input->builder#updateDarkSecondaryColor"
+                >
+                <input
+                  type="text"
+                  value="<%= defaults[:secondary_dark] %>"
+                  class="form__field text-sm font-mono flex-1"
+                  placeholder="#2a2640"
+                  data-builder-target="darkSecondaryHex"
+                  data-action="change->builder#updateDarkSecondaryFromHex"
+                >
+              </div>
+            </div>
+
+            <!-- Background Color (Light) -->
+            <div class="flex flex-col gap-2" data-builder-target="lightBackgroundSection">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-foreground">Background Color</span>
+                <span class="text-xs text-muted-foreground font-mono" data-builder-target="backgroundOklch"></span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value="<%= defaults[:background] %>"
+                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  data-builder-target="backgroundColor"
+                  data-action="input->builder#updateBackgroundColor"
+                >
+                <input
+                  type="text"
+                  value="<%= defaults[:background] %>"
+                  class="form__field text-sm font-mono flex-1"
+                  placeholder="#f9f9fb"
+                  data-builder-target="backgroundHex"
+                  data-action="change->builder#updateBackgroundFromHex"
+                >
+              </div>
+            </div>
+
+            <!-- Background Color (Dark) -->
+            <div class="flex flex-col gap-2 hidden" data-builder-target="darkBackgroundSection">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-foreground">Dark Background Color</span>
+                <span class="text-xs text-muted-foreground font-mono" data-builder-target="darkBackgroundOklch"></span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value="<%= defaults[:background_dark] %>"
+                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  data-builder-target="darkBackgroundColor"
+                  data-action="input->builder#updateDarkBackgroundColor"
+                >
+                <input
+                  type="text"
+                  value="<%= defaults[:background_dark] %>"
+                  class="form__field text-sm font-mono flex-1"
+                  placeholder="#1a1625"
+                  data-builder-target="darkBackgroundHex"
+                  data-action="change->builder#updateDarkBackgroundFromHex"
+                >
+              </div>
             </div>
 
             <!-- Border Radius (cards, modals, alerts) -->
@@ -95,7 +212,7 @@
                 <% %w[none sm md lg xl].each do |size| %>
                   <%= ui.btn size.upcase,
                       size: :sm,
-                      variant: @theme[:radius_base] == size ? :default : :outline,
+                      variant: defaults[:radius_base] == size ? :default : :outline,
                       data: {
                         builder_target: "radiusBase",
                         action: "click->builder#updateRadiusBase",
@@ -112,7 +229,7 @@
                 <% %w[none sm md lg full].each do |size| %>
                   <%= ui.btn size.upcase,
                       size: :sm,
-                      variant: @theme[:radius_form] == size ? :default : :outline,
+                      variant: defaults[:radius_form] == size ? :default : :outline,
                       data: {
                         builder_target: "radiusForm",
                         action: "click->builder#updateRadiusForm",
@@ -154,7 +271,7 @@
                 <%= ui.card_subtitle "Card subtitle" %>
               <% end %>
               <%= ui.card_body do %>
-                <p class="text-gray-600">This is the card body with some content to demonstrate the card component styling.</p>
+                <p class="text-muted-foreground">This is the card body with some content to demonstrate the card component styling.</p>
               <% end %>
               <%= ui.card_footer class: "flex justify-end gap-2" do %>
                 <%= ui.btn "Cancel", variant: :ghost, size: :sm %>

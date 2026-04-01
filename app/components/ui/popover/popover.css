@@ -3,11 +3,11 @@
 @layer components {
   .popover {
     @apply absolute z-10 w-64 text-sm transition-opacity duration-300 shadow-sm opacity-0 pointer-events-none;
-    @apply text-muted-foreground bg-surface border border-border rounded-dropdown;
+    @apply text-muted-foreground bg-popover border border-border rounded-dropdown;
   }
 
   .popover::after {
-    @apply absolute rotate-45 size-2.5 bg-surface border border-border;
+    @apply absolute rotate-45 size-2.5 bg-popover border border-border;
     content: "";
   }
 
