@@ -28,6 +28,7 @@
   --muted-foreground: oklch(0.556 0 0);
 
   --border: oklch(0.922 0 0);
+
   --input: oklch(0.922 0 0);
   --input-focus: oklch(from var(--primary) l c h / 40%);
   --input-ring: oklch(from var(--primary) l c h / 10%);

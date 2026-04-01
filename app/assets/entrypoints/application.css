@@ -1,6 +1,6 @@
 @reference "./tailwind";
 
-/* Theme brand */
+/* Theme and brand */
 @import "../stylesheets/brand";
 
 /* Components */
