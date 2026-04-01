@@ -2,7 +2,7 @@
 
 @layer components {
   .tooltip {
-    --tooltip-bg: var(--color-gray-800);
+    --tooltip-bg: var(--color-gray-900);
 
     @apply absolute z-20 px-3 py-2 text-xs text-center shadow-sm pointer-events-none;
     @apply text-white rounded-tooltip;
