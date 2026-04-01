@@ -2,7 +2,7 @@
 
 <%= ui.modal(title: "Remember Me", size: :lg) do %>
   <%= ui.modal_body do %>
-    <%= form_with url: rodauth.remember_path, method: :post, class: "form" do |form| %>
+    <%= form_with url: rodauth.remember_path, method: :post do |form| %>
       <%= f.group class: "flex flex-col gap-2" do %>
         <%= form.radio_button rodauth.remember_param, rodauth.remember_remember_param_value, id: "remember-remember", label: rodauth.remember_remember_label %>
         <%= form.radio_button rodauth.remember_param, rodauth.remember_forget_param_value, id: "remember-forget", label: rodauth.remember_forget_label %>

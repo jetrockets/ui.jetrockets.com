@@ -6,7 +6,7 @@
       <strong>Deleting an account</strong> is a permanent action that cannot be undone.
     <% end %>
 
-    <%= form_with url: rodauth.close_account_path, method: :post, class: "form" do |form| %>
+    <%= form_with url: rodauth.close_account_path, method: :post do |form| %>
       <% if rodauth.close_account_requires_password? %>
         <%= form.password_field rodauth.password_param, value: "", autocomplete: rodauth.password_field_autocomplete_value, required: true, error: rodauth.field_error(rodauth.password_param) %>
       <% end %>

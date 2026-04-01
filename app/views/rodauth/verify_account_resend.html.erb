@@ -6,7 +6,7 @@
       If you no longer have the email to verify the account, you can request that it be resent to you:
     </p>
 
-    <%= form_with url: rodauth.verify_account_resend_path, data: { turbo: false }, method: :post, class: "form" do |form| %>
+    <%= form_with url: rodauth.verify_account_resend_path, data: { turbo: false }, method: :post do |form| %>
       <% if params[rodauth.login_param] %>
         <%= form.hidden_field rodauth.login_param, value: params[rodauth.login_param] %>
       <% else %>

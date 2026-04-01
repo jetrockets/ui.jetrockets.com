@@ -6,7 +6,7 @@
       Create your <%= site_name %>'s account
     </p>
 
-    <%= form_with url: rodauth.create_account_path, method: :post, class: "form" do |form| %>
+    <%= form_with url: rodauth.create_account_path, method: :post do |form| %>
       <%= form.email_field rodauth.login_param, autofocus: true, value: params[rodauth.login_param], autocomplete: "email", required: true, error: rodauth.field_error(rodauth.login_param) %>
 
       <% if rodauth.require_login_confirmation? %>
