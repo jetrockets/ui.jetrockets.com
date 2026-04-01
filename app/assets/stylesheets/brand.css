@@ -5,6 +5,9 @@
  */
 
 :root {
+  --radius-base: theme(--radius-md);
+  --radius-field: theme(--radius-md);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --overlay: oklch(0.21 0.006 264 / 0.5);

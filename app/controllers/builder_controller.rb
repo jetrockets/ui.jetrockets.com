@@ -21,10 +21,18 @@ class BuilderController < ApplicationController
 
   def download
     theme = parse_theme_brand
-    # Merge builder params into theme
+    # Merge builder color params
     EDITABLE_VARS.each do |var|
       theme[:light][var] = oklch_from_hex(params[var]) if params[var].present?
       theme[:dark][var] = oklch_from_hex(params["#{var}_dark"]) if params["#{var}_dark"].present?
+    end
+
+    # Merge builder radius params
+    if params[:radius_base].present?
+      theme[:light]["radius-base"] = RADIUS_VALUES[params[:radius_base]] || theme[:light]["radius-base"]
+    end
+    if params[:radius_form].present?
+      theme[:light]["radius-field"] = RADIUS_VALUES[params[:radius_form]] || theme[:light]["radius-field"]
     end
 
     send_data generate_theme_css(theme),
@@ -61,7 +69,11 @@ class BuilderController < ApplicationController
       hex["#{var}_dark"] = oklch_to_hex(dark[var]) if dark[var]
     end
 
-    { light: light, dark: dark, hex: hex, radius_base: "lg", radius_form: "md" }
+    # Resolve radius defaults from brand.css values
+    radius_base = resolve_radius_name(light["radius-base"])
+    radius_field = resolve_radius_name(light["radius-field"])
+
+    { light: light, dark: dark, hex: hex, radius_base: radius_base, radius_form: radius_field }
   end
 
   def generate_theme_css(theme)
@@ -82,6 +94,16 @@ class BuilderController < ApplicationController
       #{lines_dark}
       }
     CSS
+  end
+
+  def resolve_radius_name(value)
+    return "md" unless value
+    # Match "theme(--radius-md)" format
+    if (m = value.match(/theme\(--radius-(\w+)\)/))
+      return m[1]
+    end
+    # Match raw value like "0.375rem"
+    RADIUS_VALUES.key(value) || "md"
   end
 
   def oklch_from_hex(hex)

@@ -13,24 +13,21 @@
   --animate-slide-down: slideDown 0.3s ease-in-out;
   --animate-slide-left: slideLeft 0.3s ease-in-out;
   --animate-slide-up: slideUp 0.3s ease-in-out;
-
-  /* Radius */
-  --radius-base: theme(--radius-md);
-
-  --radius-btn-xs: calc(var(--radius-base) * 0.75);
-  --radius-btn-sm: calc(var(--radius-base) * 1);
-  --radius-btn-md: calc(var(--radius-base) * 1.125);
-  --radius-btn-lg: calc(var(--radius-base) * 1.25);
-
-  --radius-card: calc(var(--radius-base) * 1.5);
-  --radius-modal: calc(var(--radius-base) * 1.5);
-  --radius-dropdown: calc(var(--radius-base) * 1.5);
-  --radius-field: var(--radius-md);
-  --radius-tooltip: var(--radius-sm);
 }
 
 /* Map raw variables to Tailwind utility classes */
 @theme inline {
+  /* Radius — derived from --radius-base (set in brand.css) */
+  --radius-btn-xs: calc(var(--radius-base) * 0.75);
+  --radius-btn-sm: var(--radius-base);
+  --radius-btn-md: calc(var(--radius-base) * 1.125);
+  --radius-btn-lg: calc(var(--radius-base) * 1.25);
+  --radius-card: calc(var(--radius-base) * 1.5);
+  --radius-modal: calc(var(--radius-base) * 1.5);
+  --radius-dropdown: calc(var(--radius-base) * 1.5);
+  --radius-field: var(--radius-field);
+  --radius-tooltip: calc(var(--radius-base) * 0.5);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-overlay: var(--overlay);
