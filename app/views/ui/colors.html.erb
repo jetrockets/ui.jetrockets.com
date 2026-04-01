@@ -7,26 +7,43 @@
 %>
 <% breadcrumb :ui_colors %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Colors" %>
-      <%= ui.header_subtitle "Semantic color tokens and design system theme." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "Theme Builder", url: builder_path, variant: :default, size: :sm %>
-      <%= ui.btn "View brand.css", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/brand.css", variant: :secondary, size: :sm, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Colors" %>
+    <%= ui.header_subtitle "Semantic color tokens that adapt to light and dark themes automatically." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "Theme Builder", url: builder_path, variant: :default %>
+    <%= ui.btn "View brand.css", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/brand.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="flex flex-col gap-4">
-    <h2 class="h3">How it works</h2>
-    <p class="text-muted-foreground">Colors are defined in two layers:</p>
-    <ul class="list-disc list-inside text-muted-foreground space-y-1">
-      <li><strong class="text-foreground">brand.css</strong> &mdash; raw variables (<code class="bg-muted px-1 py-0.5 rounded text-sm">--primary</code>, <code class="bg-muted px-1 py-0.5 rounded text-sm">--background</code>, etc.) with light and dark values</li>
-      <li><strong class="text-foreground">theme.css</strong> &mdash; maps them to Tailwind utilities via <code class="bg-muted px-1 py-0.5 rounded text-sm">@theme inline</code> and auto-generates hover/soft/border variants</li>
-    </ul>
-    <pre><code>/* Use Tailwind utilities in templates */
+<article class="flex flex-col gap-12">
+  <%# How it works %>
+  <section>
+    <h2 class="h3 mb-4">How it works</h2>
+    <div class="grid gap-4 lg:grid-cols-3">
+      <% [
+        { title: "brand.css", desc: "Define raw color variables with light and dark values", icon: "paint-brush" },
+        { title: "theme.css", desc: "Maps variables to Tailwind utilities via @theme inline", icon: "swatch" },
+        { title: "Templates", desc: "Use semantic classes like bg-primary, text-foreground", icon: "code-bracket" },
+      ].each do |item| %>
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex gap-4" do %>
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon item[:icon], size: 5, class: "text-primary" %>
+            </div>
+            <div>
+              <h3 class="text-foreground font-semibold"><%= item[:title] %></h3>
+              <p class="text-muted-foreground mt-1 text-sm"><%= item[:desc] %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="mt-6">
+      <pre><code>/* Use Tailwind utilities in templates */
 bg-primary text-primary-foreground
 bg-destructive-soft text-destructive-soft-foreground
 border-border
@@ -34,11 +51,13 @@ border-border
 /* Or CSS variables in custom styles */
 background-color: var(--color-primary);
 color: var(--color-foreground);</code></pre>
+    </div>
   </section>
 
-  <section class="flex flex-col gap-6 mt-10">
-    <h2 class="h3">Layout</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+  <%# Layout Colors %>
+  <section>
+    <h2 class="h3 mb-4">Layout</h2>
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
       <% [
         ["Background", "--background", "--color-background"],
         ["Foreground", "--foreground", "--color-foreground"],
@@ -48,19 +67,20 @@ color: var(--color-foreground);</code></pre>
         ["Border", "--border", "--color-border"]
       ].each do |label, raw, token| %>
         <div class="flex flex-col">
-          <div class="h-16 rounded-lg shadow-sm border border-border" style="background-color: var(<%= token %>)"></div>
+          <div class="h-16 rounded-lg border border-border shadow-sm" style="background-color: var(<%= token %>)"></div>
           <div class="mt-2">
             <p class="text-sm font-medium"><%= label %></p>
-            <p class="text-xs font-mono text-muted-foreground"><%= raw %></p>
+            <p class="font-mono text-xs text-muted-foreground"><%= raw %></p>
           </div>
         </div>
       <% end %>
     </div>
   </section>
 
-  <section class="flex flex-col gap-6 mt-10">
-    <h2 class="h3">Primary & Secondary</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+  <%# Primary & Secondary %>
+  <section>
+    <h2 class="h3 mb-4">Primary & Secondary</h2>
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
       <% [
         ["Primary", "--color-primary"],
         ["Primary Hover", "--color-primary-hover"],
@@ -70,71 +90,67 @@ color: var(--color-foreground);</code></pre>
         ["Accent", "--color-accent"]
       ].each do |label, token| %>
         <div class="flex flex-col">
-          <div class="h-16 rounded-lg shadow-sm border border-border" style="background-color: var(<%= token %>)"></div>
+          <div class="h-16 rounded-lg border border-border shadow-sm" style="background-color: var(<%= token %>)"></div>
           <div class="mt-2">
             <p class="text-sm font-medium"><%= label %></p>
-            <p class="text-xs font-mono text-muted-foreground"><%= token.delete_prefix("--color-") %></p>
+            <p class="font-mono text-xs text-muted-foreground"><%= token.delete_prefix("--color-") %></p>
           </div>
         </div>
       <% end %>
     </div>
   </section>
 
-  <section class="flex flex-col gap-6 mt-10">
-    <h2 class="h3">Status Colors</h2>
-    <p class="text-muted-foreground">Base colors are set in <code class="bg-muted px-1 py-0.5 rounded text-sm">brand.css</code>. Soft, border and hover variants are auto-generated via <code class="bg-muted px-1 py-0.5 rounded text-sm">relative-color-syntax</code> (opacity-based, adapts to light/dark).</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <%# Status Colors %>
+  <section>
+    <h2 class="h3 mb-2">Status Colors</h2>
+    <p class="text-muted-foreground mb-6 text-sm">Soft, border and hover variants are auto-generated via <code class="bg-muted rounded px-1 py-0.5 text-xs">relative-color-syntax</code>.</p>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <% %w[destructive success warning info].each do |status| %>
-        <div class="flex flex-col gap-3">
-          <h4 class="font-semibold capitalize"><%= status %></h4>
-          <div class="grid grid-cols-3 gap-2">
-            <div class="flex flex-col">
-              <div class="h-12 rounded-lg" style="background-color: var(--color-<%= status %>)"></div>
-              <p class="text-xs font-mono mt-1 text-muted-foreground">base</p>
+        <%= ui.card do %>
+          <%= ui.card_body do %>
+            <h4 class="mb-3 font-semibold capitalize"><%= status %></h4>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="flex flex-col">
+                <div class="h-12 rounded-lg bg-<%= status %>"></div>
+                <p class="mt-1 font-mono text-xs text-muted-foreground">base</p>
+              </div>
+              <div class="flex flex-col">
+                <div class="h-12 rounded-lg border bg-<%= status %>-soft border-<%= status %>-border"></div>
+                <p class="mt-1 font-mono text-xs text-muted-foreground">soft</p>
+              </div>
             </div>
-            <div class="flex flex-col">
-              <div class="h-12 rounded-lg border" style="background-color: var(--color-<%= status %>-soft); border-color: var(--color-<%= status %>-border)"></div>
-              <p class="text-xs font-mono mt-1 text-muted-foreground">soft</p>
-            </div>
-            <div class="flex flex-col">
-              <div class="h-12 rounded-lg" style="background-color: var(--color-<%= status %>-soft-foreground)"></div>
-              <p class="text-xs font-mono mt-1 text-muted-foreground">soft-fg</p>
-            </div>
-          </div>
-        </div>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </section>
 
-  <section class="flex flex-col gap-6 mt-10">
-    <h2 class="h3">Brand File</h2>
-    <p class="text-muted-foreground">Create your own <code class="bg-muted px-1 py-0.5 rounded text-sm">brand.css</code> to customize the theme. Only raw variables &mdash; no computed values needed.</p>
-    <div class="p-6 rounded-lg bg-muted">
-      <pre><code>:root {
+  <%# Brand File %>
+  <section>
+    <h2 class="h3 mb-4">Brand File</h2>
+    <p class="text-muted-foreground mb-4 text-sm">Create your own <code class="bg-muted rounded px-1 py-0.5 text-xs">brand.css</code> to customize the theme. Only raw variables — no computed values needed.</p>
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <pre class="text-sm"><code>:root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
+  --overlay: oklch(0.21 0.006 264 / 0.5);
   --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--foreground);
-
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
-
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --input-focus: oklch(from var(--primary) l c h / 40%);
   --input-ring: oklch(from var(--primary) l c h / 10%);
-
   --destructive: oklch(0.577 0.245 27);
   --success: oklch(0.6 0.19 145);
   --warning: oklch(0.8 0.16 85);
@@ -146,32 +162,7 @@ color: var(--color-foreground);</code></pre>
   --foreground: oklch(0.985 0 0);
   /* ... override all variables for dark mode */
 }</code></pre>
-    </div>
-  </section>
-
-  <section class="flex flex-col gap-4 mt-10">
-    <h2 class="h3">Component Preview</h2>
-    <p class="text-muted-foreground">All components use semantic tokens and adapt to theme changes automatically.</p>
-    <div class="flex flex-wrap gap-3">
-      <%= ui.btn "Default Button", variant: :default %>
-      <%= ui.btn "Secondary", variant: :secondary %>
-      <%= ui.btn "Outline", variant: :outline %>
-      <%= ui.btn "Ghost", variant: :ghost %>
-      <%= ui.btn "Danger", variant: :danger %>
-      <%= ui.btn "Link Style", variant: :link %>
-    </div>
-    <div class="flex flex-wrap gap-2 mt-4">
-      <%= ui.badge "Default", size: :md %>
-      <%= ui.badge "Info", variant: :info, size: :md %>
-      <%= ui.badge "Success", variant: :success, size: :md %>
-      <%= ui.badge "Warning", variant: :warning, size: :md %>
-      <%= ui.badge "Error", variant: :error, size: :md %>
-    </div>
-    <div class="flex flex-col gap-3 mt-4">
-      <%= ui.alert(title: "Info", variant: :info) { "This is an info alert." } %>
-      <%= ui.alert(title: "Success", variant: :success) { "Action completed successfully." } %>
-      <%= ui.alert(title: "Warning", variant: :warning) { "Please review before continuing." } %>
-      <%= ui.alert(title: "Error", variant: :error) { "Something went wrong." } %>
-    </div>
+      <% end %>
+    <% end %>
   </section>
 </article>

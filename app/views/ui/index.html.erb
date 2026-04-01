@@ -7,104 +7,182 @@
 %>
 <% breadcrumb :ui %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Rails UI Components" %>
-      <%= ui.header_subtitle "A comprehensive Rails 8 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects." %>
+<%# Hero %>
+<section class="py-12 lg:py-20">
+  <div class="mx-auto max-w-3xl text-center">
+    <%= ui.badge "Open Source", variant: :info, size: :sm, rounded: true %>
+    <h1 class="text-foreground mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+      Rails UI Components
+    </h1>
+    <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg leading-relaxed">
+      A comprehensive component library built with ViewComponent, TailwindCSS 4.0, and Stimulus.
+      Copy, paste, and customize — it's your code.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <%= ui.btn url: ui_getting_started_path, size: :lg do %>
+        Get Started
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+      <%= ui.btn "Browse Components", url: ui_button_path, variant: :outline, size: :lg %>
+    </div>
+  </div>
+</section>
+
+<%# Stats %>
+<section class="py-8">
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <%= ui.stat do %>
+      <%= ui.stat_value "29+" %>
+      <%= ui.stat_label "UI Components" %>
     <% end %>
-  <% end %>
+    <%= ui.stat do %>
+      <%= ui.stat_value "8" %>
+      <%= ui.stat_label "Form Fields" %>
+    <% end %>
+    <%= ui.stat do %>
+      <%= ui.stat_value "61+" %>
+      <%= ui.stat_label "Kit Blocks" %>
+    <% end %>
+    <%= ui.stat do %>
+      <%= ui.stat_value "9" %>
+      <%= ui.stat_label "Block Categories" %>
+    <% end %>
+  </div>
+</section>
 
-  <section class="flex flex-col gap-4 mb-12">
-    <h2 class="h2">Key Technologies</h2>
+<%# Key Technologies %>
+<section class="py-12">
+  <div class="text-center">
+    <h2 class="text-foreground text-2xl font-bold tracking-tight">Built on solid foundations</h2>
+    <p class="text-muted-foreground mt-2">Modern stack, battle-tested libraries, zero lock-in.</p>
+  </div>
 
-    <div class="grid gap-4 lg:grid-cols-2">
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <% [
+      { icon: "code-bracket", title: "Rails 7+", desc: "Backend framework with modern features and conventions." },
+      { icon: "cube-transparent", title: "ViewComponent", desc: "Component-based architecture for testable, encapsulated views." },
+      { icon: "paint-brush", title: "TailwindCSS 4.0", desc: "Utility-first CSS with semantic design tokens and dark mode." },
+      { icon: "bolt", title: "Stimulus", desc: "Modest JavaScript for progressive enhancement." },
+      { icon: "rocket-launch", title: "Vite", desc: "Lightning-fast builds with HMR for rapid development." },
+      { icon: "globe-alt", title: "Turbo", desc: "SPA-like navigation without writing JavaScript." },
+    ].each do |item| %>
       <%= ui.card do %>
-        <%= ui.card_header bordered: false do %>
-          <%= ui.card_title do %>Rails 7 or higher<% end %>
-        <% end %>
-        <%= ui.card_body do %>
-          <p>
-            <%= link_to "Backend framework", "https://rubyonrails.org/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
-            with modern features
-          </p>
+        <%= ui.card_body class: "flex gap-4" do %>
+          <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+            <%= ui.icon item[:icon], size: 5, class: "text-primary" %>
+          </div>
+          <div>
+            <h3 class="text-foreground font-semibold"><%= item[:title] %></h3>
+            <p class="text-muted-foreground mt-1 text-sm"><%= item[:desc] %></p>
+          </div>
         <% end %>
       <% end %>
+    <% end %>
+  </div>
+</section>
 
-      <%= ui.card do %>
-        <%= ui.card_header bordered: false do %>
-          <%= ui.card_title do %>ViewComponent<% end %>
+<%# What's Inside %>
+<section class="py-12">
+  <div class="text-center">
+    <h2 class="text-foreground text-2xl font-bold tracking-tight">What's inside</h2>
+    <p class="text-muted-foreground mt-2">Everything you need to build production-ready Rails applications.</p>
+  </div>
+
+  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+    <%# Components %>
+    <%= ui.card do %>
+      <%= ui.card_header do %>
+        <%= ui.card_title do %>
+          <%= ui.icon "squares-2x2", size: 5, class: "text-primary" %>
+          Components
         <% end %>
-        <%= ui.card_body do %>
-          <p>
-            <%= link_to "Component-based architecture", "https://viewcomponent.org/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
-            for views
-          </p>
-        <% end %>
+        <%= ui.card_subtitle "29+ reusable UI components" %>
       <% end %>
-
-      <%= ui.card do %>
-        <%= ui.card_header bordered: false do %>
-          <%= ui.card_title do %>TailwindCSS 4.0<% end %>
-        <% end %>
-        <%= ui.card_body do %>
-          <p>
-            <%= link_to "Utility-first CSS framework", "https://tailwindcss.com/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
-            for rapid UI development
-          </p>
-        <% end %>
-      <% end %>
-
-      <%= ui.card do %>
-        <%= ui.card_header bordered: false do %>
-          <%= ui.card_title do %>Stimulus<% end %>
-        <% end %>
-        <%= ui.card_body do %>
-          <p>
-            <%= link_to "Modest JavaScript framework", "https://stimulus.hotwired.dev/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
-            for enhancing HTML with minimal JavaScript
-          </p>
-        <% end %>
-      <% end %>
-
-      <%= ui.card do %>
-        <%= ui.card_header bordered: false do %>
-          <%= ui.card_title do %>Vite<% end %>
-        <% end %>
-        <%= ui.card_body do %>
-          <p>
-            <%= link_to "Fast build tool", "https://vitejs.dev/", target: "_blank", rel: "noopener noreferrer", class: "link" %>
-            for frontend assets
-          </p>
-        <% end %>
-      <% end %>
-    </div>
-  </section>
-
-  <section class="flex flex-col gap-4 my-12">
-    <h2 class="h2">Next Steps</h2>
-
-    <div class="flex flex-col gap-3">
-      <div class="flex items-center gap-3">
-        <div class="flex items-center justify-center text-sm font-semibold text-primary-foreground rounded-full size-8 bg-primary shrink-0">1</div>
-        <div>
-          <%= link_to "Read Getting Started guide", ui_getting_started_path, class: "link" %> to learn how to use and customize components.
+      <%= ui.card_body do %>
+        <div class="flex flex-wrap gap-1.5">
+          <% %w[Button Card Modal Drawer Dropdown Table Tabs Accordion Alert Badge Avatar Tooltip Popover Spinner Stat Timeline Stepper].each do |name| %>
+            <%= ui.badge name, size: :xs %>
+          <% end %>
         </div>
-      </div>
+      <% end %>
+      <%= ui.card_footer do %>
+        <%= ui.btn "Browse components", variant: :ghost, size: :sm, url: ui_button_path do %>
+          Browse components
+          <%= ui.icon "arrow-right", size: 4 %>
+        <% end %>
+      <% end %>
+    <% end %>
 
-      <div class="flex items-center gap-3">
-        <div class="flex items-center justify-center text-sm font-semibold text-primary-foreground rounded-full size-8 bg-primary shrink-0">2</div>
-        <div>
-          Explore the <strong>Components</strong> section in the sidebar to see detailed examples and usage patterns.
+    <%# Forms %>
+    <%= ui.card do %>
+      <%= ui.card_header do %>
+        <%= ui.card_title do %>
+          <%= ui.icon "pencil-square", size: 5, class: "text-primary" %>
+          Form Builder
+        <% end %>
+        <%= ui.card_subtitle "8 form fields with validation" %>
+      <% end %>
+      <%= ui.card_body do %>
+        <div class="flex flex-wrap gap-1.5">
+          <% %w[TextField TextArea Select Choices Checkbox RadioButton Toggler Easepick].each do |name| %>
+            <%= ui.badge name, size: :xs %>
+          <% end %>
         </div>
-      </div>
+      <% end %>
+      <%= ui.card_footer do %>
+        <%= ui.btn variant: :ghost, size: :sm, url: ui_form_builders_text_field_path do %>
+          Browse form fields
+          <%= ui.icon "arrow-right", size: 4 %>
+        <% end %>
+      <% end %>
+    <% end %>
 
-      <div class="flex items-center gap-3">
-        <div class="flex items-center justify-center text-sm font-semibold text-primary-foreground rounded-full size-8 bg-primary shrink-0">3</div>
-        <div>
-          Check <%= link_to "Good to know", ui_good_to_know_path, class: "link" %> for best practices and architectural decisions.
+    <%# Kit %>
+    <%= ui.card class: "border-primary/30" do %>
+      <%= ui.card_header do %>
+        <%= ui.card_title do %>
+          <%= ui.icon "rectangle-group", size: 5, class: "text-primary" %>
+          UI Kit
+          <%= ui.badge "New", size: :xs, variant: :success %>
+        <% end %>
+        <%= ui.card_subtitle "61+ ready-made page blocks" %>
+      <% end %>
+      <%= ui.card_body do %>
+        <div class="flex flex-wrap gap-1.5">
+          <% ["Hero Sections", "Features", "Pricing", "CTA", "Testimonials", "Forms", "Tables", "Footers", "Team"].each do |name| %>
+            <%= ui.badge name, size: :xs %>
+          <% end %>
         </div>
-      </div>
-    </div>
-  </section>
-</article>
+      <% end %>
+      <%= ui.card_footer do %>
+        <%= ui.btn variant: :ghost, size: :sm, url: ui_kit_index_path do %>
+          Browse blocks
+          <%= ui.icon "arrow-right", size: 4 %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<%# Getting Started Steps %>
+<section class="py-12">
+  <div class="text-center">
+    <h2 class="text-foreground text-2xl font-bold tracking-tight">Get started in minutes</h2>
+    <p class="text-muted-foreground mt-2">Three simple steps to start building.</p>
+  </div>
+
+  <div class="mt-8">
+    <%= ui.stepper do %>
+      <%= ui.stepper_step "Read the guide", status: :current, description: "Learn how to install and configure" %>
+      <%= ui.stepper_step "Explore components", status: :pending, description: "Browse the sidebar for examples" %>
+      <%= ui.stepper_step "Copy & build", status: :pending, description: "Paste into your project and ship" %>
+    <% end %>
+  </div>
+
+  <div class="mt-8 flex justify-center">
+    <%= ui.btn url: ui_getting_started_path, size: :lg do %>
+      Read Getting Started
+      <%= ui.icon "arrow-right", size: 5 %>
+    <% end %>
+  </div>
+</section>

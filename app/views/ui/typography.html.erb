@@ -7,52 +7,193 @@
 %>
 <% breadcrumb :ui_typography %>
 
-<article>
-  <%= ui.header do %>
-    <%= ui.header_heading do %>
-      <%= ui.header_title "Typography" %>
-      <%= ui.header_subtitle "Typography styles and text formatting utilities." %>
-    <% end %>
-    <%= ui.header_actions do %>
-      <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/components/typography.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
-    <% end %>
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Typography" %>
+    <%= ui.header_subtitle "Consistent type scale, text formatting, and prose utilities." %>
   <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/components/typography.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
 
-  <section class="flex flex-col gap-4">
-    <h2 class="h3">Usage</h2>
+<article class="flex flex-col gap-12">
+  <%# Usage %>
+  <section>
+    <h2 class="h3 mb-4">Usage</h2>
+    <p class="text-muted-foreground mb-4 text-sm">Add class names matching the HTML tag for consistent styling:</p>
     <pre><code>&lt;h1 class="h1"&gt;Heading 1&lt;/h1&gt;
 &lt;h2 class="h2"&gt;Heading 2&lt;/h2&gt;
 &lt;h3 class="h3"&gt;Heading 3&lt;/h3&gt;
-&lt;h4 class="h4"&gt;Heading 4&lt;/h4&gt;
-&lt;h5 class="h5"&gt;Heading 5&lt;/h5&gt;
-&lt;h6 class="h6"&gt;Heading 6&lt;/h6&gt;
 &lt;p class="p"&gt;Paragraph text&lt;/p&gt;
 &lt;ul class="ul"&gt;&lt;li&gt;List item&lt;/li&gt;&lt;/ul&gt;
-&lt;ol class="ol"&gt;&lt;li&gt;List item&lt;/li&gt;&lt;/ol&gt;
-&lt;hr class="hr"&gt;</code></pre>
+&lt;ol class="ol"&gt;&lt;li&gt;Ordered item&lt;/li&gt;&lt;/ol&gt;</code></pre>
   </section>
 
-  <section class="flex flex-col gap-4 mt-8">
-    <h2 class="h3">Example</h2>
+  <%# Headings %>
+  <section>
+    <h2 class="h3 mb-4">Headings</h2>
     <%= ui.card do %>
-      <%= ui.card_body class: "flex flex-col gap-2" do %>
-        <h1 class="h1">Heading 1</h1>
-        <h2 class="h2">Heading 2</h2>
-        <h3 class="h3">Heading 3</h3>
-        <h4 class="h4">Heading 4</h4>
-        <h5 class="h5">Heading 5</h5>
-        <h6 class="h6">Heading 6</h6>
-        <p class="p">This is a paragraph with some example text to demonstrate the typography styles.</p>
-        <ul class="ul">
-          <li>Unordered list item 1</li>
-          <li>Unordered list item 2</li>
-          <li>Unordered list item 3</li>
-        </ul>
-        <ol class="ol">
-          <li>Ordered list item 1</li>
-          <li>Ordered list item 2</li>
-          <li>Ordered list item 3</li>
-        </ol>
+      <%= ui.card_body do %>
+        <%= ui.table size: :md do %>
+          <%= ui.table_thead do %>
+            <%= ui.table_tr do %>
+              <%= ui.table_th "Element" %>
+              <%= ui.table_th "Class" %>
+              <%= ui.table_th "Preview" %>
+            <% end %>
+          <% end %>
+          <%= ui.table_tbody do %>
+            <% [
+              { tag: "h1", class: "h1", text: "Heading One" },
+              { tag: "h2", class: "h2", text: "Heading Two" },
+              { tag: "h3", class: "h3", text: "Heading Three" },
+              { tag: "h4", class: "h4", text: "Heading Four" },
+              { tag: "h5", class: "h5", text: "Heading Five" },
+              { tag: "h6", class: "h6", text: "Heading Six" },
+            ].each do |item| %>
+              <%= ui.table_tr do %>
+                <%= ui.table_td do %>
+                  <code class="text-sm text-muted-foreground">&lt;<%= item[:tag] %>&gt;</code>
+                <% end %>
+                <%= ui.table_td do %>
+                  <%= ui.badge ".#{item[:class]}", size: :xs %>
+                <% end %>
+                <%= ui.table_td do %>
+                  <span class="<%= item[:class] %>"><%= item[:text] %></span>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </section>
+
+  <%# Body Text %>
+  <section>
+    <h2 class="h3 mb-4">Body Text</h2>
+    <div class="grid gap-4 lg:grid-cols-2">
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Paragraph" %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="p">This is a paragraph with the <code class="bg-muted rounded px-1 py-0.5 text-xs">.p</code> class applied. It provides comfortable reading with proper line-height and spacing for body copy.</p>
+        <% end %>
+      <% end %>
+
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Muted text" %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="text-muted-foreground">Use <code class="bg-muted rounded px-1 py-0.5 text-xs">text-muted-foreground</code> for secondary information, descriptions, and helper text that shouldn't compete with primary content.</p>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <%# Lists %>
+  <section>
+    <h2 class="h3 mb-4">Lists</h2>
+    <div class="grid gap-4 lg:grid-cols-2">
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Unordered List" %>
+          <%= ui.card_subtitle do %>
+            <code class="text-xs">.ul</code>
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <ul class="ul">
+            <li>Design system fundamentals</li>
+            <li>Component architecture patterns</li>
+            <li>Theming and customization
+              <ul class="ul">
+                <li>Color tokens</li>
+                <li>Typography scale</li>
+              </ul>
+            </li>
+            <li>Accessibility guidelines</li>
+          </ul>
+        <% end %>
+      <% end %>
+
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Ordered List" %>
+          <%= ui.card_subtitle do %>
+            <code class="text-xs">.ol</code>
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <ol class="ol">
+            <li>Install the component library</li>
+            <li>Configure your brand colors</li>
+            <li>Copy the components you need</li>
+            <li>Start building your application</li>
+          </ol>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <%# Inline Elements %>
+  <section>
+    <h2 class="h3 mb-4">Inline Elements</h2>
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <%= ui.table size: :md do %>
+          <%= ui.table_thead do %>
+            <%= ui.table_tr do %>
+              <%= ui.table_th "Element" %>
+              <%= ui.table_th "Preview" %>
+            <% end %>
+          <% end %>
+          <%= ui.table_tbody do %>
+            <%= ui.table_tr do %>
+              <%= ui.table_td do %>
+                <code class="text-sm text-muted-foreground">&lt;strong&gt;</code>
+              <% end %>
+              <%= ui.table_td do %>
+                <strong>Bold text for emphasis</strong>
+              <% end %>
+            <% end %>
+            <%= ui.table_tr do %>
+              <%= ui.table_td do %>
+                <code class="text-sm text-muted-foreground">&lt;em&gt;</code>
+              <% end %>
+              <%= ui.table_td do %>
+                <em>Italic text for emphasis</em>
+              <% end %>
+            <% end %>
+            <%= ui.table_tr do %>
+              <%= ui.table_td do %>
+                <code class="text-sm text-muted-foreground">&lt;code&gt;</code>
+              <% end %>
+              <%= ui.table_td do %>
+                Inline <code class="bg-muted rounded px-1 py-0.5 text-sm">code snippets</code> for technical content
+              <% end %>
+            <% end %>
+            <%= ui.table_tr do %>
+              <%= ui.table_td do %>
+                <code class="text-sm text-muted-foreground">&lt;a class="link"&gt;</code>
+              <% end %>
+              <%= ui.table_td do %>
+                <a href="#" class="link">A clickable link</a> with proper styling
+              <% end %>
+            <% end %>
+            <%= ui.table_tr do %>
+              <%= ui.table_td do %>
+                <code class="text-sm text-muted-foreground">&lt;hr class="hr"&gt;</code>
+              <% end %>
+              <%= ui.table_td do %>
+                <hr class="hr">
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </section>

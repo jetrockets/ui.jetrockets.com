@@ -5,28 +5,62 @@
 ) %>
 <% breadcrumb :ui_kit %>
 
-<%= ui.header do %>
-  <%= ui.header_heading do %>
-    <%= ui.header_title "UI Kit" %>
-    <%= ui.header_subtitle "Beautiful, ready-to-use page sections built with Rails UI Components. Copy and paste into your project." %>
-  <% end %>
-<% end %>
+<%# Hero %>
+<section class="py-10 lg:py-16">
+  <div class="mx-auto max-w-2xl text-center">
+    <%= ui.badge "61+ blocks", variant: :info, size: :sm, rounded: true %>
+    <h1 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">UI Kit</h1>
+    <p class="text-muted-foreground mx-auto mt-3 max-w-xl text-lg leading-relaxed">
+      Beautiful, ready-to-use page sections built with Rails UI Components.
+      Browse, click <strong class="text-foreground">View code</strong>, and paste into your project.
+    </p>
+  </div>
+</section>
 
-<article class="flex flex-col gap-8">
+<%# Categories Grid %>
+<section class="pb-12">
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <% Ui::KitController::CATEGORIES.each do |key, cat| %>
+      <% count = Dir.glob(Rails.root.join("app/views/ui/kit/#{key}/_variant_*.html.erb")).count %>
       <%= link_to ui_kit_category_path(key), class: "group" do %>
-        <%= ui.card class: "h-full transition-shadow hover:shadow-md" do %>
-          <%= ui.card_body class: "flex flex-col gap-2" do %>
-            <h3 class="font-semibold text-foreground group-hover:text-primary transition-colors"><%= cat[:title] %></h3>
-            <p class="text-sm text-muted-foreground"><%= cat[:description] %></p>
-            <% count = Dir.glob(Rails.root.join("app/views/ui/kit/#{key}/_variant_*.html.erb")).count %>
-            <% if count > 0 %>
-              <%= ui.badge "#{count} variants", size: :xs %>
-            <% end %>
+        <%= ui.card class: "h-full transition-all hover:shadow-md hover:border-primary/30" do %>
+          <%= ui.card_body class: "flex flex-col gap-3" do %>
+            <div class="flex items-center justify-between">
+              <h3 class="text-foreground font-semibold group-hover:text-primary transition-colors"><%= cat[:title] %></h3>
+              <% if count > 0 %>
+                <%= ui.badge "#{count}", size: :xs, variant: :info, rounded: true %>
+              <% end %>
+            </div>
+            <p class="text-muted-foreground text-sm"><%= cat[:description] %></p>
+            <div class="flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+              Browse variants
+              <%= ui.icon "arrow-right", size: 4 %>
+            </div>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
   </div>
-</article>
+</section>
+
+<%# How it works %>
+<section class="border-t border-border py-12">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-foreground text-xl font-bold">How it works</h2>
+  </div>
+  <div class="mt-8 grid gap-6 sm:grid-cols-3">
+    <% [
+      { step: "1", title: "Browse", desc: "Find the block you need from any category", icon: "magnifying-glass" },
+      { step: "2", title: "View code", desc: "Click the button to see the ERB source", icon: "code-bracket" },
+      { step: "3", title: "Paste & ship", desc: "Copy into your project — it just works", icon: "rocket-launch" },
+    ].each do |item| %>
+      <div class="flex flex-col items-center text-center">
+        <div class="flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon item[:icon], size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-3 font-semibold"><%= item[:title] %></h3>
+        <p class="text-muted-foreground mt-1 text-sm"><%= item[:desc] %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
