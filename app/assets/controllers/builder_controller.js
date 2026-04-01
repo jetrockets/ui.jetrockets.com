@@ -91,8 +91,11 @@ export default class BuilderController extends Controller {
 
   updateThemeIcons () {
     if (this.hasLightIconTarget && this.hasDarkIconTarget) {
-      this.lightIconTarget.classList.toggle('hidden', this.currentTheme !== 'dark')
-      this.darkIconTarget.classList.toggle('hidden', this.currentTheme !== 'light')
+      const showLight = this.currentTheme === 'dark'
+      this.lightIconTarget.classList.toggle('hidden', !showLight)
+      this.lightIconTarget.classList.toggle('inline-flex', showLight)
+      this.darkIconTarget.classList.toggle('hidden', showLight)
+      this.darkIconTarget.classList.toggle('inline-flex', !showLight)
     }
   }
 

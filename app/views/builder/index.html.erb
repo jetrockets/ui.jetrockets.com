@@ -16,354 +16,370 @@
   }
 %>
 
-<div class="min-h-screen"
+<div class="min-h-screen pb-36"
      data-controller="builder"
      data-builder-defaults-value="<%= defaults.to_json %>"
      data-builder-download-url-value="<%= builder_download_path %>">
 
-  <div class="border-b border-border sticky top-0">
-    <div class="max-w-7xl px-4 mx-auto">
+  <%# Sticky top navbar %>
+  <div class="border-b border-border sticky top-0 z-20 bg-background">
+    <div class="max-w-[1600px] px-6 mx-auto">
       <%= ui.navbar class: "flex justify-between items-center" do %>
-        <h1 class="text-xl font-semibold">
-          Theme Builder
-        </h1>
-
-        <%= ui.navbar_main do %>
-          <%= ui.navbar_actions do %>
-            <%= ui.btn "Reset", variant: :outline, size: :sm, data: { action: "click->builder#reset" } %>
-            <%= ui.btn "Download CSS", variant: :default, size: :sm, url: builder_download_path, data: { builder_target: "download" } %>
-          <% end %>
-        <% end %>
+        <h1 class="text-xl font-semibold">Theme Builder</h1>
       <% end %>
     </div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <%# Examples grid %>
+  <div class="max-w-[1600px] mx-auto px-6 py-8">
+    <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
 
-    <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
-      <!-- Controls -->
-      <div class="flex flex-col gap-6 lg:sticky lg:top-[calc(var(--height-navbar)+2.5rem)] lg:self-start">
+      <%# — Login Card — %>
+      <div class="break-inside-avoid">
         <%= ui.card do %>
-          <%= ui.card_body class: "form" do %>
-            <!-- Theme Mode -->
-            <div class="flex items-center justify-between">
-              <span class="text-sm font-medium text-foreground">Appearance</span>
-              <%= ui.btn size: :icon_sm, variant: :secondary, circle: true, data: { action: "click->builder#toggleTheme" } do %>
-                <%= ui.icon "sun", class: "size-5 hidden", data: { builder_target: "lightIcon" } %>
-                <%= ui.icon "moon", class: "size-5", data: { builder_target: "darkIcon" } %>
+          <%= ui.card_header class: "text-center" do %>
+            <%= ui.card_title "Sign in" %>
+            <%= ui.card_subtitle "Enter your credentials to continue" %>
+          <% end %>
+          <%= ui.card_body class: "form flex flex-col gap-3" do %>
+            <div class="form__group">
+              <label class="form__label">Email</label>
+              <input autocomplete="off" type="email" class="form__field" placeholder="name@example.com">
+            </div>
+            <div class="form__group">
+              <label class="form__label">Password</label>
+              <input autocomplete="off" type="password" class="form__field" placeholder="********">
+            </div>
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="form__checkbox">
+              <span class="text-sm">Remember me</span>
+            </label>
+            <%= ui.btn "Sign in", variant: :default, class: "w-full" %>
+            <p class="text-center text-sm text-muted-foreground">Don't have an account? <a href="#" class="text-primary font-medium">Sign up</a></p>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Stats Cards — %>
+      <div class="break-inside-avoid">
+        <div class="grid grid-cols-2 gap-3">
+          <%= ui.card do %>
+            <%= ui.card_body do %>
+              <p class="text-sm text-muted-foreground">Revenue</p>
+              <p class="text-2xl font-bold">$45,231</p>
+              <p class="text-xs text-emerald-600">+20.1%</p>
+            <% end %>
+          <% end %>
+          <%= ui.card do %>
+            <%= ui.card_body do %>
+              <p class="text-sm text-muted-foreground">Users</p>
+              <p class="text-2xl font-bold">2,350</p>
+              <p class="text-xs text-emerald-600">+180.1%</p>
+            <% end %>
+          <% end %>
+          <%= ui.card do %>
+            <%= ui.card_body do %>
+              <p class="text-sm text-muted-foreground">Orders</p>
+              <p class="text-2xl font-bold">12,234</p>
+              <p class="text-xs text-rose-600">-2.5%</p>
+            <% end %>
+          <% end %>
+          <%= ui.card do %>
+            <%= ui.card_body do %>
+              <p class="text-sm text-muted-foreground">Active</p>
+              <p class="text-2xl font-bold">573</p>
+              <p class="text-xs text-emerald-600">+4.3%</p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <%# — Buttons Showcase — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Buttons" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col gap-3" do %>
+            <div class="flex flex-wrap gap-2">
+              <%= ui.btn "Primary", variant: :default, size: :sm %>
+              <%= ui.btn "Secondary", variant: :secondary, size: :sm %>
+              <%= ui.btn "Outline", variant: :outline, size: :sm %>
+              <%= ui.btn "Ghost", variant: :ghost, size: :sm %>
+              <%= ui.btn "Danger", variant: :danger, size: :sm %>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <%= ui.btn "Extra Small", variant: :default, size: :xs %>
+              <%= ui.btn "Small", variant: :default, size: :sm %>
+              <%= ui.btn "Medium", variant: :default, size: :md %>
+              <%= ui.btn "Large", variant: :default, size: :lg %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — User Profile Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex items-center gap-4" do %>
+            <%= ui.avatar size: 12 %>
+            <div class="flex-1 min-w-0">
+              <p class="font-semibold truncate">Aleksei Solilin</p>
+              <p class="text-sm text-muted-foreground truncate">aleksei@jetrockets.com</p>
+            </div>
+            <%= ui.btn "Edit", variant: :outline, size: :sm %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Notifications List — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Notifications" %>
+            <%= ui.card_subtitle "You have 3 unread messages." %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col divide-y divide-border -my-1" do %>
+            <% [
+              { title: "New comment on PR #42", time: "2 min ago", unread: true },
+              { title: "Deploy succeeded", time: "1 hour ago", unread: true },
+              { title: "New team member joined", time: "3 hours ago", unread: true },
+              { title: "Weekly report ready", time: "Yesterday", unread: false },
+            ].each do |n| %>
+              <div class="flex items-start gap-3 py-3">
+                <div class="mt-1.5 size-2 rounded-full shrink-0 <%= n[:unread] ? 'bg-primary' : 'bg-transparent' %>"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium truncate"><%= n[:title] %></p>
+                  <p class="text-xs text-muted-foreground"><%= n[:time] %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Badges — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Badges" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-wrap gap-2" do %>
+            <%= ui.badge "Default", size: :md %>
+            <%= ui.badge "Info", variant: :info, size: :md %>
+            <%= ui.badge "Success", variant: :success, size: :md %>
+            <%= ui.badge "Warning", variant: :warning, size: :md %>
+            <%= ui.badge "Error", variant: :error, size: :md %>
+            <%= ui.badge "Rounded", variant: :info, size: :md, rounded: true %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Settings Form — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Settings" %>
+            <%= ui.card_subtitle "Manage your account preferences." %>
+          <% end %>
+          <%= ui.card_body class: "form flex flex-col gap-3" do %>
+            <div class="form__group">
+              <label class="form__label">Display Name</label>
+              <input autocomplete="off" type="text" class="form__field" value="Aleksei Solilin">
+            </div>
+            <div class="form__group">
+              <label class="form__label">Language</label>
+              <select class="form__field">
+                <option>English</option>
+                <option>Russian</option>
+                <option>Spanish</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Bio</label>
+              <textarea class="form__field" rows="2" placeholder="Tell us about yourself..."></textarea>
+            </div>
+          <% end %>
+          <%= ui.card_footer class: "flex justify-end gap-2" do %>
+            <%= ui.btn "Cancel", variant: :ghost, size: :sm %>
+            <%= ui.btn "Save changes", variant: :default, size: :sm %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Pricing Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card class: "border-primary" do %>
+          <%= ui.card_header do %>
+            <%= ui.badge "Popular", variant: :info, size: :sm, rounded: true %>
+            <%= ui.card_title "Pro Plan" %>
+            <%= ui.card_subtitle "Best for growing teams" %>
+          <% end %>
+          <%= ui.card_body do %>
+            <div class="flex items-baseline gap-1 mb-4">
+              <span class="text-4xl font-bold">$29</span>
+              <span class="text-muted-foreground">/month</span>
+            </div>
+            <ul class="space-y-2 text-sm">
+              <% ["Unlimited projects", "Priority support", "Advanced analytics", "Custom integrations", "Team collaboration"].each do |feature| %>
+                <li class="flex items-center gap-2">
+                  <%= ui.icon "check", size: 4, class: "text-primary" %>
+                  <span><%= feature %></span>
+                </li>
               <% end %>
-            </div>
+            </ul>
+          <% end %>
+          <%= ui.card_footer do %>
+            <%= ui.btn "Get started", variant: :default, class: "w-full" %>
+          <% end %>
+        <% end %>
+      </div>
 
-            <!-- Primary Color (Light) -->
-            <div class="form__group" data-builder-target="lightPrimarySection">
-              <span class="form__label">Primary Color</span>
-              <div class="flex items-center gap-3">
-                <input autocomplete="off" type="text" value="<%= defaults[:primary] %>" class="form__field" placeholder="#6d28d9" data-builder-target="primaryHex" data-action="change->builder#updatePrimaryFromHex">
-                <input
-                  autocomplete="off"
-                  type="color"
-                  value="<%= defaults[:primary] %>"
-                  class="size-11 shrink-0"
-                  data-builder-target="primaryColor"
-                  data-action="input->builder#updatePrimaryColor">
-              </div>
-              <p class="text-xs text-muted-foreground font-mono" data-builder-target="primaryOklch"></p>
-            </div>
+      <%# — Alerts — %>
+      <div class="break-inside-avoid">
+        <div class="flex flex-col gap-3">
+          <%= ui.alert(title: "Heads up!", variant: :info) { "New version available. Update now for latest features." } %>
+          <%= ui.alert(title: "Success", variant: :success) { "Your changes have been saved." } %>
+          <%= ui.alert(title: "Warning", variant: :warning) { "Your trial ends in 3 days." } %>
+          <%= ui.alert(title: "Error", variant: :error) { "Something went wrong. Please try again." } %>
+        </div>
+      </div>
 
-            <!-- Primary Color (Dark) -->
-            <div class="form__group hidden" data-builder-target="darkPrimarySection">
-              <span class="form__label">Dark Primary Color</span>
-              <div class="flex items-center gap-3">
-                <input
-                  autocomplete="off"
-                  type="text"
-                  value="<%= defaults[:primary_dark] %>"
-                  class="form__field"
-                  placeholder="#8b5cf6"
-                  data-builder-target="darkPrimaryHex"
-                  data-action="change->builder#updateDarkPrimaryFromHex">
-                <input
-                  autocomplete="off"
-                  type="color"
-                  value="<%= defaults[:primary_dark] %>"
-                  class="size-11 shrink-0"
-                  data-builder-target="darkPrimaryColor"
-                  data-action="input->builder#updateDarkPrimaryColor">
-              </div>
-              <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkPrimaryOklch"></p>
-            </div>
-
-            <!-- Secondary Color (Light) -->
-            <div class="form__group" data-builder-target="lightSecondarySection">
-              <span class="form__label">Secondary Color</span>
-              <div class="flex items-center gap-3">
-                <input
-                  autocomplete="off"
-                  type="text"
-                  value="<%= defaults[:secondary] %>"
-                  class="form__field"
-                  placeholder="#f0eef5"
-                  data-builder-target="secondaryHex"
-                  data-action="change->builder#updateSecondaryFromHex">
-                <input
-                  autocomplete="off"
-                  type="color"
-                  value="<%= defaults[:secondary] %>"
-                  class="size-11 shrink-0"
-                  data-builder-target="secondaryColor"
-                  data-action="input->builder#updateSecondaryColor">
-              </div>
-              <p class="text-xs text-muted-foreground font-mono" data-builder-target="secondaryOklch"></p>
-            </div>
-
-            <!-- Secondary Color (Dark) -->
-            <div class="form__group hidden" data-builder-target="darkSecondarySection">
-              <span class="form__label">Dark Secondary Color</span>
-              <div class="flex items-center gap-3">
-                <input
-                  autocomplete="off"
-                  type="text"
-                  value="<%= defaults[:secondary_dark] %>"
-                  class="form__field"
-                  placeholder="#2a2640"
-                  data-builder-target="darkSecondaryHex"
-                  data-action="change->builder#updateDarkSecondaryFromHex">
-                <input
-                  autocomplete="off"
-                  type="color"
-                  value="<%= defaults[:secondary_dark] %>"
-                  class="size-11 shrink-0"
-                  data-builder-target="darkSecondaryColor"
-                  data-action="input->builder#updateDarkSecondaryColor">
-              </div>
-              <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkSecondaryOklch"></p>
-            </div>
-
-            <!-- Background Color (Light) -->
-            <div class="form__group" data-builder-target="lightBackgroundSection">
-              <span class="form__label">Background Color</span>
-              <div class="flex items-center gap-3">
-                <input
-                  autocomplete="off"
-                  type="text"
-                  value="<%= defaults[:background] %>"
-                  class="form__field"
-                  placeholder="#f9f9fb"
-                  data-builder-target="backgroundHex"
-                  data-action="change->builder#updateBackgroundFromHex">
-                <input
-                  autocomplete="off"
-                  type="color"
-                  value="<%= defaults[:background] %>"
-                  class="size-11 shrink-0"
-                  data-builder-target="backgroundColor"
-                  data-action="input->builder#updateBackgroundColor">
-              </div>
-              <p class="text-xs text-muted-foreground font-mono" data-builder-target="backgroundOklch"></p>
-            </div>
-
-            <!-- Background Color (Dark) -->
-            <div class="form__group hidden" data-builder-target="darkBackgroundSection">
-              <span class="form__label">Dark Background Color</span>
-              <div class="flex items-center gap-3">
-                <input
-                  autocomplete="off"
-                  type="text"
-                  value="<%= defaults[:background_dark] %>"
-                  class="form__field"
-                  placeholder="#1a1625"
-                  data-builder-target="darkBackgroundHex"
-                  data-action="change->builder#updateDarkBackgroundFromHex">
-                <input
-                  autocomplete="off"
-                  type="color"
-                  value="<%= defaults[:background_dark] %>"
-                  class="size-11 shrink-0"
-                  data-builder-target="darkBackgroundColor"
-                  data-action="input->builder#updateDarkBackgroundColor">
-              </div>
-              <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkBackgroundOklch"></p>
-            </div>
-
-            <!-- Border Radius (cards, modals, alerts) -->
-            <div class="form__group">
-              <span class="form__label">Border Radius</span>
-              <div class="ui_group ui_group-sticky">
-                <% %w[none sm md lg xl].each do |size| %>
-                  <%= ui.btn size.upcase,
-                      size: :sm,
-                      variant: defaults[:radius_base] == size ? :default : :outline,
-                      data: {
-                        builder_target: "radiusBase",
-                        action: "click->builder#updateRadiusBase",
-                        value: size
-                      } %>
+      <%# — Team Members Table — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Team" %>
+          <% end %>
+          <%= ui.table size: :sm do %>
+            <%= ui.table_thead do %>
+              <%= ui.table_tr do %>
+                <%= ui.table_th "Name" %>
+                <%= ui.table_th "Role" %>
+                <%= ui.table_th "Status" %>
+              <% end %>
+            <% end %>
+            <%= ui.table_tbody do %>
+              <% [
+                { name: "Alice Chen", role: "Engineer", status: "Active", variant: :success },
+                { name: "Bob Smith", role: "Designer", status: "Active", variant: :success },
+                { name: "Carol Wu", role: "PM", status: "Away", variant: :warning },
+                { name: "Dave Kim", role: "Engineer", status: "Offline", variant: :error },
+              ].each do |member| %>
+                <%= ui.table_tr do %>
+                  <%= ui.table_td class: "font-medium" do %><%= member[:name] %><% end %>
+                  <%= ui.table_td class: "text-muted-foreground" do %><%= member[:role] %><% end %>
+                  <%= ui.table_td do %><%= ui.badge member[:status], variant: member[:variant], size: :sm %><% end %>
                 <% end %>
-              </div>
-            </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
 
-            <!-- Form Radius (buttons, inputs) -->
-            <div class="form__group">
-              <span class="form__label">Form Radius</span>
-              <div class="ui_group ui_group-sticky">
-                <% %w[none sm md lg full].each do |size| %>
-                  <%= ui.btn size.upcase,
-                      size: :sm,
-                      variant: defaults[:radius_form] == size ? :default : :outline,
-                      data: {
-                        builder_target: "radiusForm",
-                        action: "click->builder#updateRadiusForm",
-                        value: size
-                      } %>
-                <% end %>
+      <%# — Tabs + Content — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.tabs do %>
+              <%= ui.tabs_item "Overview", href: "#", active: true %>
+              <%= ui.tabs_item "Analytics", href: "#" %>
+              <%= ui.tabs_item "Reports", href: "#" %>
+            <% end %>
+          <% end %>
+          <%= ui.card_body do %>
+            <p class="text-sm text-muted-foreground">Your overview dashboard shows key metrics and recent activity across all projects.</p>
+            <div class="mt-4 grid grid-cols-3 gap-3">
+              <div class="text-center">
+                <p class="text-2xl font-bold">128</p>
+                <p class="text-xs text-muted-foreground">Projects</p>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-bold">1.4k</p>
+                <p class="text-xs text-muted-foreground">Commits</p>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-bold">99.9%</p>
+                <p class="text-xs text-muted-foreground">Uptime</p>
               </div>
             </div>
           <% end %>
         <% end %>
       </div>
 
-      <!-- Preview -->
-      <div class="flex flex-col gap-8">
-        <!-- Buttons -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Buttons</h3>
-          <div class="flex flex-wrap items-center gap-3">
-            <%= ui.btn "Extra Small", variant: :default, size: :xs %>
-            <%= ui.btn "Small", variant: :default, size: :sm %>
-            <%= ui.btn "Medium", variant: :default, size: :md %>
-            <%= ui.btn "Large", variant: :default, size: :lg %>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <%= ui.btn "Secondary", variant: :secondary %>
-            <%= ui.btn "Outline", variant: :outline %>
-            <%= ui.btn "Ghost", variant: :ghost %>
-            <%= ui.btn "Danger", variant: :danger %>
-          </div>
-        </section>
-
-        <!-- Card -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Card</h3>
-          <div class="grid grid-cols-2 gap-4">
-            <%= ui.card do %>
-              <%= ui.card_header do %>
-                <%= ui.card_title "Card Title" %>
-                <%= ui.card_subtitle "Card subtitle" %>
-              <% end %>
-              <%= ui.card_body do %>
-                <p class="text-muted-foreground">This is the card body with some content to demonstrate the card component styling.</p>
-              <% end %>
-              <%= ui.card_footer class: "flex justify-end gap-2" do %>
-                <%= ui.btn "Cancel", variant: :ghost, size: :sm %>
-                <%= ui.btn "Save", variant: :default, size: :sm %>
-              <% end %>
-            <% end %>
-            <%= ui.card do %>
-              <%= ui.card_header do %>
-                <%= ui.card_title "Another Card" %>
-              <% end %>
-              <%= ui.card_body do %>
-                <p class="text-muted-foreground">Cards respond to the Border Radius setting.</p>
-              <% end %>
-            <% end %>
-          </div>
-        </section>
-
-        <!-- Form Elements -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Form Elements</h3>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="flex flex-col gap-1">
-              <label class="form__label">Text Input</label>
-              <input autocomplete="off" type="text" class="form__field" placeholder="Enter text...">
-            </div>
-            <div class="flex flex-col gap-1">
-              <label class="form__label">Select</label>
-              <select class="form__field">
-                <option>Option 1</option>
-                <option>Option 2</option>
-              </select>
-            </div>
-          </div>
-          <div class="flex items-center gap-6">
-            <label class="flex items-center gap-2">
-              <input type="checkbox" class="form__checkbox" checked>
-              <span class="text-sm">Checkbox</span>
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="radio" class="form__radio" checked>
-              <span class="text-sm">Radio 1</span>
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="radio" class="form__radio">
-              <span class="text-sm">Radio 2</span>
-            </label>
-          </div>
-        </section>
-
-        <!-- Tabs -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Tabs</h3>
-          <%= ui.tabs do %>
-            <%= ui.tabs_item "Tab 1", href: "#", active: true %>
-            <%= ui.tabs_item "Tab 2", href: "#" %>
-            <%= ui.tabs_item "Tab 3", href: "#" %>
+      <%# — Dropdown — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Dropdown" %>
           <% end %>
-        </section>
-
-        <!-- Badges -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Badges</h3>
-          <div class="flex flex-wrap gap-2">
-            <%= ui.badge "Default", size: :md %>
-            <%= ui.badge "Info", variant: :info, size: :md %>
-            <%= ui.badge "Success", variant: :success, size: :md %>
-            <%= ui.badge "Warning", variant: :warning, size: :md %>
-            <%= ui.badge "Error", variant: :error, size: :md %>
-          </div>
-        </section>
-
-        <!-- Dropdown -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Dropdown</h3>
-          <%= ui.dropdown do %>
-            <%= ui.dropdown_trigger do %>
-              <%= ui.btn variant: :outline do %>
-                Open Menu <%= ui.icon("chevron-down", class: "size-4") %>
+          <%= ui.card_body class: "flex gap-3" do %>
+            <%= ui.dropdown do %>
+              <%= ui.dropdown_trigger do %>
+                <%= ui.btn variant: :outline, size: :sm do %>
+                  Actions <%= ui.icon("chevron-down", class: "size-4") %>
+                <% end %>
+              <% end %>
+              <%= ui.dropdown_menu do %>
+                <%= ui.dropdown_link(url: "#") { "Edit" } %>
+                <%= ui.dropdown_link(url: "#") { "Duplicate" } %>
+                <%= ui.dropdown_divider %>
+                <%= ui.dropdown_link(url: "#") { "Delete" } %>
               <% end %>
             <% end %>
-            <%= ui.dropdown_menu do %>
-              <%= ui.dropdown_link(url: "#") { "Profile" } %>
-              <%= ui.dropdown_link(url: "#") { "Settings" } %>
-              <%= ui.dropdown_divider %>
-              <%= ui.dropdown_link(url: "#") { "Sign out" } %>
+            <%= ui.dropdown do %>
+              <%= ui.dropdown_trigger do %>
+                <%= ui.btn variant: :default, size: :sm do %>
+                  Menu <%= ui.icon("chevron-down", class: "size-4") %>
+                <% end %>
+              <% end %>
+              <%= ui.dropdown_menu do %>
+                <%= ui.dropdown_link(url: "#") { "Profile" } %>
+                <%= ui.dropdown_link(url: "#") { "Settings" } %>
+                <%= ui.dropdown_divider %>
+                <%= ui.dropdown_link(url: "#") { "Sign out" } %>
+              <% end %>
             <% end %>
           <% end %>
-        </section>
+        <% end %>
+      </div>
 
-        <!-- Accordion -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Accordion</h3>
-          <div class="border border-border rounded-card divide-y divide-border">
-            <%= ui.accordion name: "faq", open: true do %>
-              <%= ui.accordion_summary(class: "px-4") { "What is your refund policy?" } %>
-              <%= ui.accordion_body class: "px-4 pb-4 text-muted-foreground" do %>
-                We offer a 30-day money-back guarantee on all purchases.
+      <%# — Accordion / FAQ — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "FAQ" %>
+          <% end %>
+          <div class="divide-y divide-border">
+            <%= ui.accordion name: "builder-faq", open: true do %>
+              <%= ui.accordion_summary(class: "px-4") { "Is it accessible?" } %>
+              <%= ui.accordion_body class: "px-4 pb-4 text-sm text-muted-foreground" do %>
+                Yes. It adheres to the WAI-ARIA design pattern.
               <% end %>
             <% end %>
-            <%= ui.accordion name: "faq" do %>
-              <%= ui.accordion_summary(class: "px-4") { "How do I contact support?" } %>
-              <%= ui.accordion_body class: "px-4 pb-4 text-muted-foreground" do %>
-                You can reach us via email at support@example.com.
+            <%= ui.accordion name: "builder-faq" do %>
+              <%= ui.accordion_summary(class: "px-4") { "Is it styled?" } %>
+              <%= ui.accordion_body class: "px-4 pb-4 text-sm text-muted-foreground" do %>
+                Yes. It comes with default styles that match your theme.
+              <% end %>
+            <% end %>
+            <%= ui.accordion name: "builder-faq" do %>
+              <%= ui.accordion_summary(class: "px-4") { "Is it animated?" } %>
+              <%= ui.accordion_body class: "px-4 pb-4 text-sm text-muted-foreground" do %>
+                Yes. It's animated by default with smooth transitions.
               <% end %>
             <% end %>
           </div>
-        </section>
+        <% end %>
+      </div>
 
-        <!-- Tooltip -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Tooltip</h3>
-          <div class="flex gap-4">
+      <%# — Tooltip Showcase — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Tooltips" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-wrap gap-3" do %>
             <%= ui.tooltip title: "Top tooltip", placement: :top do %>
               <%= ui.btn "Top", variant: :outline, size: :sm %>
             <% end %>
@@ -376,31 +392,390 @@
             <%= ui.tooltip title: "Left tooltip", placement: :left do %>
               <%= ui.btn "Left", variant: :outline, size: :sm %>
             <% end %>
-          </div>
-        </section>
+          <% end %>
+        <% end %>
+      </div>
 
-        <!-- Alerts -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Alerts</h3>
-          <div class="flex flex-col gap-3">
-            <%= ui.alert(title: "Info", variant: :info) { "This is an info alert." } %>
-            <%= ui.alert(title: "Success", variant: :success) { "This is a success alert." } %>
-            <%= ui.alert(title: "Warning", variant: :warning) { "This is a warning alert." } %>
-            <%= ui.alert(title: "Error", variant: :error) { "This is an error alert." } %>
-          </div>
-        </section>
+      <%# — Sign Up Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header class: "text-center" do %>
+            <%= ui.card_title "Create account" %>
+            <%= ui.card_subtitle "Start your 14-day free trial" %>
+          <% end %>
+          <%= ui.card_body class: "form flex flex-col gap-3" do %>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="form__group">
+                <label class="form__label">First name</label>
+                <input autocomplete="off" type="text" class="form__field" placeholder="John">
+              </div>
+              <div class="form__group">
+                <label class="form__label">Last name</label>
+                <input autocomplete="off" type="text" class="form__field" placeholder="Doe">
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Email</label>
+              <input autocomplete="off" type="email" class="form__field" placeholder="john@example.com">
+            </div>
+            <div class="form__group">
+              <label class="form__label">Password</label>
+              <input autocomplete="off" type="password" class="form__field" placeholder="Create a password">
+            </div>
+            <label class="flex items-start gap-2">
+              <input type="checkbox" class="form__checkbox mt-0.5">
+              <span class="text-xs text-muted-foreground">I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a></span>
+            </label>
+            <%= ui.btn "Create account", variant: :default, class: "w-full" %>
+          <% end %>
+        <% end %>
+      </div>
 
-        <!-- Avatar -->
-        <section class="flex flex-col gap-3">
-          <h3 class="text-sm font-medium text-muted-foreground">Avatar</h3>
-          <div class="flex items-center gap-4">
-            <%= ui.avatar size: 8 %>
-            <%= ui.avatar size: 10 %>
-            <%= ui.avatar size: 12 %>
-            <%= ui.avatar size: 14, variant: :rounded %>
-            <%= ui.avatar size: 14, variant: :square %>
+      <%# — Avatars — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Avatars" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col gap-4" do %>
+            <div class="flex items-center gap-3">
+              <%= ui.avatar size: 8 %>
+              <%= ui.avatar size: 10 %>
+              <%= ui.avatar size: 12 %>
+              <%= ui.avatar size: 14 %>
+            </div>
+            <div class="flex items-center gap-3">
+              <%= ui.avatar size: 10, variant: :rounded %>
+              <%= ui.avatar size: 10, variant: :square %>
+              <%= ui.avatar size: 10 %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Invoice / Payment Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Recent Payments" %>
+          <% end %>
+          <%= ui.table size: :sm do %>
+            <%= ui.table_thead do %>
+              <%= ui.table_tr do %>
+                <%= ui.table_th "Invoice" %>
+                <%= ui.table_th "Status" %>
+                <%= ui.table_th "Amount", class: "text-right" %>
+              <% end %>
+            <% end %>
+            <%= ui.table_tbody do %>
+              <% [
+                { id: "INV-001", status: "Paid", amount: "$250.00", variant: :success },
+                { id: "INV-002", status: "Pending", amount: "$150.00", variant: :warning },
+                { id: "INV-003", status: "Paid", amount: "$350.00", variant: :success },
+                { id: "INV-004", status: "Failed", amount: "$450.00", variant: :error },
+                { id: "INV-005", status: "Paid", amount: "$550.00", variant: :success },
+              ].each do |inv| %>
+                <%= ui.table_tr do %>
+                  <%= ui.table_td class: "font-medium" do %><%= inv[:id] %><% end %>
+                  <%= ui.table_td do %><%= ui.badge inv[:status], variant: inv[:variant], size: :sm %><% end %>
+                  <%= ui.table_td class: "text-right" do %><%= inv[:amount] %><% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Form Elements — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Form Elements" %>
+          <% end %>
+          <%= ui.card_body class: "form flex flex-col gap-3" do %>
+            <div class="form__group">
+              <label class="form__label">Text Input</label>
+              <input autocomplete="off" type="text" class="form__field" placeholder="Enter text...">
+            </div>
+            <div class="form__group">
+              <label class="form__label">Select</label>
+              <select class="form__field">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="flex items-center gap-6">
+              <label class="flex items-center gap-2">
+                <input type="checkbox" class="form__checkbox" checked>
+                <span class="text-sm">Checkbox</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="builder-radio" class="form__radio" checked>
+                <span class="text-sm">Radio 1</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="builder-radio" class="form__radio">
+                <span class="text-sm">Radio 2</span>
+              </label>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Empty State — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_body class: "py-10 text-center" do %>
+            <div class="flex flex-col items-center gap-3">
+              <%= ui.icon "inbox", size: 10, class: "text-muted-foreground" %>
+              <div>
+                <p class="font-semibold">No results found</p>
+                <p class="text-sm text-muted-foreground mt-1">Try adjusting your search or filters.</p>
+              </div>
+              <%= ui.btn "Clear filters", variant: :outline, size: :sm %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Activity Feed — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Activity" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col gap-4" do %>
+            <% [
+              { user: "Alice", action: "pushed to", target: "main", time: "2m ago" },
+              { user: "Bob", action: "opened PR", target: "#128", time: "15m ago" },
+              { user: "Carol", action: "commented on", target: "#125", time: "1h ago" },
+              { user: "Dave", action: "merged PR", target: "#124", time: "3h ago" },
+            ].each do |item| %>
+              <div class="flex items-center gap-3">
+                <%= ui.avatar size: 7 %>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm"><strong><%= item[:user] %></strong> <span class="text-muted-foreground"><%= item[:action] %></span> <strong><%= item[:target] %></strong></p>
+                </div>
+                <span class="text-xs text-muted-foreground shrink-0"><%= item[:time] %></span>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Feature Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex flex-col gap-4" do %>
+            <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon "bolt", size: 5, class: "text-primary" %>
+            </div>
+            <div>
+              <h3 class="font-semibold">Lightning Fast</h3>
+              <p class="text-sm text-muted-foreground mt-1">Optimized for speed with server-rendered components and minimal JavaScript overhead.</p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Testimonial — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex flex-col gap-4" do %>
+            <div class="flex gap-1">
+              <% 5.times do %>
+                <%= ui.icon "star", size: 4, class: "text-amber-400 fill-amber-400" %>
+              <% end %>
+            </div>
+            <p class="text-sm italic text-muted-foreground">"This component library saved us weeks of development. Clean, accessible, and beautifully designed."</p>
+            <div class="flex items-center gap-3">
+              <%= ui.avatar size: 8 %>
+              <div>
+                <p class="text-sm font-semibold">Sarah Johnson</p>
+                <p class="text-xs text-muted-foreground">CTO at TechCorp</p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Progress / Stepper — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Project Progress" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col gap-3" do %>
+            <% [
+              { name: "Design", pct: 100 },
+              { name: "Frontend", pct: 72 },
+              { name: "Backend", pct: 45 },
+              { name: "Testing", pct: 10 },
+            ].each do |item| %>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span><%= item[:name] %></span>
+                  <span class="text-muted-foreground"><%= item[:pct] %>%</span>
+                </div>
+                <div class="h-2 rounded-full bg-secondary">
+                  <div class="h-2 rounded-full bg-primary" style="width: <%= item[:pct] %>%"></div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — Calendar / Date Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Upcoming Events" %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col divide-y divide-border -my-1" do %>
+            <% [
+              { date: "Apr 2", title: "Team standup", time: "9:00 AM" },
+              { date: "Apr 3", title: "Design review", time: "2:00 PM" },
+              { date: "Apr 5", title: "Sprint demo", time: "11:00 AM" },
+              { date: "Apr 7", title: "Retro", time: "4:00 PM" },
+            ].each do |event| %>
+              <div class="flex items-center gap-4 py-3">
+                <div class="text-center shrink-0 w-10">
+                  <p class="text-xs text-muted-foreground"><%= event[:date].split(" ").first %></p>
+                  <p class="text-lg font-bold"><%= event[:date].split(" ").last %></p>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium"><%= event[:title] %></p>
+                  <p class="text-xs text-muted-foreground"><%= event[:time] %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# — CTA Card — %>
+      <div class="break-inside-avoid">
+        <%= ui.card class: "bg-primary text-primary-foreground" do %>
+          <%= ui.card_body class: "flex flex-col items-center text-center gap-4 py-8" do %>
+            <h3 class="text-xl font-bold">Ready to get started?</h3>
+            <p class="text-sm opacity-90">Join thousands of developers building beautiful interfaces.</p>
+            <div class="flex gap-3">
+              <%= ui.btn "Get Started", variant: :secondary, size: :sm %>
+              <%= ui.btn "Learn More", variant: :outline, size: :sm, class: "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <%# ========================================= %>
+  <%# Sticky bottom toolbar — theme controls    %>
+  <%# ========================================= %>
+  <div class="dark fixed bottom-3 inset-x-3 z-30 rounded-2xl border border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 text-foreground shadow-2xl">
+    <div class="px-5 py-3">
+      <%# Row 1: Colors %>
+      <div class="flex items-center gap-5 overflow-x-auto">
+        <%# — Primary Color — %>
+        <div class="flex items-center gap-2 shrink-0" data-builder-target="lightPrimarySection">
+          <span class="text-xs font-medium text-white whitespace-nowrap">Primary</span>
+          <input autocomplete="off" type="color" value="<%= defaults[:primary] %>" class="size-7 shrink-0 rounded cursor-pointer" data-builder-target="primaryColor" data-action="input->builder#updatePrimaryColor">
+          <input autocomplete="off" type="text" value="<%= defaults[:primary] %>" class="form__field !py-1 !text-xs w-[86px] font-mono" data-builder-target="primaryHex" data-action="change->builder#updatePrimaryFromHex">
+          <p class="text-xs text-muted-foreground font-mono hidden xl:block" data-builder-target="primaryOklch"></p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 hidden" data-builder-target="darkPrimarySection">
+          <span class="text-xs font-medium text-white whitespace-nowrap">Primary</span>
+          <input autocomplete="off" type="color" value="<%= defaults[:primary_dark] %>" class="size-7 shrink-0 rounded cursor-pointer" data-builder-target="darkPrimaryColor" data-action="input->builder#updateDarkPrimaryColor">
+          <input autocomplete="off" type="text" value="<%= defaults[:primary_dark] %>" class="form__field !py-1 !text-xs w-[86px] font-mono" data-builder-target="darkPrimaryHex" data-action="change->builder#updateDarkPrimaryFromHex">
+          <p class="text-xs text-muted-foreground font-mono hidden xl:block" data-builder-target="darkPrimaryOklch"></p>
+        </div>
+
+        <div class="w-px h-5 bg-border/50 shrink-0"></div>
+
+        <%# — Secondary Color — %>
+        <div class="flex items-center gap-2 shrink-0" data-builder-target="lightSecondarySection">
+          <span class="text-xs font-medium text-white whitespace-nowrap">Secondary</span>
+          <input autocomplete="off" type="color" value="<%= defaults[:secondary] %>" class="size-7 shrink-0 rounded cursor-pointer" data-builder-target="secondaryColor" data-action="input->builder#updateSecondaryColor">
+          <input autocomplete="off" type="text" value="<%= defaults[:secondary] %>" class="form__field !py-1 !text-xs w-[86px] font-mono" data-builder-target="secondaryHex" data-action="change->builder#updateSecondaryFromHex">
+          <p class="text-xs text-muted-foreground font-mono hidden xl:block" data-builder-target="secondaryOklch"></p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 hidden" data-builder-target="darkSecondarySection">
+          <span class="text-xs font-medium text-white whitespace-nowrap">Secondary</span>
+          <input autocomplete="off" type="color" value="<%= defaults[:secondary_dark] %>" class="size-7 shrink-0 rounded cursor-pointer" data-builder-target="darkSecondaryColor" data-action="input->builder#updateDarkSecondaryColor">
+          <input autocomplete="off" type="text" value="<%= defaults[:secondary_dark] %>" class="form__field !py-1 !text-xs w-[86px] font-mono" data-builder-target="darkSecondaryHex" data-action="change->builder#updateDarkSecondaryFromHex">
+          <p class="text-xs text-muted-foreground font-mono hidden xl:block" data-builder-target="darkSecondaryOklch"></p>
+        </div>
+
+        <div class="w-px h-5 bg-border/50 shrink-0"></div>
+
+        <%# — Background Color — %>
+        <div class="flex items-center gap-2 shrink-0" data-builder-target="lightBackgroundSection">
+          <span class="text-xs font-medium text-white whitespace-nowrap">Background</span>
+          <input autocomplete="off" type="color" value="<%= defaults[:background] %>" class="size-7 shrink-0 rounded cursor-pointer" data-builder-target="backgroundColor" data-action="input->builder#updateBackgroundColor">
+          <input autocomplete="off" type="text" value="<%= defaults[:background] %>" class="form__field !py-1 !text-xs w-[86px] font-mono" data-builder-target="backgroundHex" data-action="change->builder#updateBackgroundFromHex">
+          <p class="text-xs text-muted-foreground font-mono hidden xl:block" data-builder-target="backgroundOklch"></p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 hidden" data-builder-target="darkBackgroundSection">
+          <span class="text-xs font-medium text-white whitespace-nowrap">Background</span>
+          <input autocomplete="off" type="color" value="<%= defaults[:background_dark] %>" class="size-7 shrink-0 rounded cursor-pointer" data-builder-target="darkBackgroundColor" data-action="input->builder#updateDarkBackgroundColor">
+          <input autocomplete="off" type="text" value="<%= defaults[:background_dark] %>" class="form__field !py-1 !text-xs w-[86px] font-mono" data-builder-target="darkBackgroundHex" data-action="change->builder#updateDarkBackgroundFromHex">
+          <p class="text-xs text-muted-foreground font-mono hidden xl:block" data-builder-target="darkBackgroundOklch"></p>
+        </div>
+
+        <%# — Theme toggle — %>
+        <div class="self-end ml-auto">
+          <%= ui.btn variant: :ghost, size: :sm, data: { action: "click->builder#toggleTheme" } do %>
+            <span class="hidden items-center gap-1.5" data-builder-target="lightIcon">
+              <%= ui.icon "sun" %>
+              Light
+            </span>
+            <span class="inline-flex items-center gap-1.5" data-builder-target="darkIcon">
+              <%= ui.icon "moon" %>
+              Dark
+            </span>
+          <% end %>
+        </div>
+      </div>
+
+      <%# Divider between rows %>
+      <div class="border-t border-border/50 my-2.5"></div>
+
+      <%# Row 2: Radius + Actions %>
+      <div class="flex items-center justify-between gap-5 overflow-x-auto">
+        <div class="flex items-center gap-5">
+          <%# — Border Radius — %>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs font-medium text-white whitespace-nowrap">Radius</span>
+            <div class="ui_group ui_group-sticky">
+              <% %w[none sm md lg xl].each do |size| %>
+                <%= ui.btn size.upcase, size: :xs, variant: defaults[:radius_base] == size ? :default : :outline,
+                    data: { builder_target: "radiusBase", action: "click->builder#updateRadiusBase", value: size } %>
+              <% end %>
+            </div>
           </div>
-        </section>
+
+          <div class="w-px h-5 bg-border/50 shrink-0"></div>
+
+          <%# — Form Radius — %>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs font-medium text-white whitespace-nowrap">Form</span>
+            <div class="ui_group ui_group-sticky">
+              <% %w[none sm md lg full].each do |size| %>
+                <%= ui.btn size.upcase, size: :xs, variant: defaults[:radius_form] == size ? :default : :outline,
+                    data: { builder_target: "radiusForm", action: "click->builder#updateRadiusForm", value: size } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <%# — Actions — %>
+        <div class="flex items-center gap-2 shrink-0">
+          <%= ui.btn "Reset", variant: :ghost, size: :sm, data: { action: "click->builder#reset" } %>
+          <%= ui.btn "Download CSS", variant: :default, size: :sm, url: builder_download_path, data: { builder_target: "download" } %>
+        </div>
       </div>
     </div>
   </div>
