@@ -14,219 +14,144 @@
       <%= ui.header_subtitle "Semantic color tokens and design system theme." %>
     <% end %>
     <%= ui.header_actions do %>
-      <%= ui.btn "View theme.css", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/tailwind/theme.css", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+      <%= ui.btn "Theme Builder", url: builder_path, variant: :default, size: :sm %>
+      <%= ui.btn "View brand.css", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/assets/stylesheets/brand.css", variant: :secondary, size: :sm, target: "_blank", rel: "noopener noreferrer" %>
     <% end %>
   <% end %>
 
   <section class="flex flex-col gap-4">
-    <h2 class="h3">Semantic Tokens</h2>
-    <p style="color: var(--color-muted-foreground)">Use semantic tokens instead of raw color values. They adapt to theme changes automatically.</p>
-    <pre><code>/* CSS Theme - use in custom styles */
+    <h2 class="h3">How it works</h2>
+    <p class="text-muted-foreground">Colors are defined in two layers:</p>
+    <ul class="list-disc list-inside text-muted-foreground space-y-1">
+      <li><strong class="text-foreground">brand.css</strong> &mdash; raw variables (<code class="bg-muted px-1 py-0.5 rounded text-sm">--primary</code>, <code class="bg-muted px-1 py-0.5 rounded text-sm">--background</code>, etc.) with light and dark values</li>
+      <li><strong class="text-foreground">theme.css</strong> &mdash; maps them to Tailwind utilities via <code class="bg-muted px-1 py-0.5 rounded text-sm">@theme inline</code> and auto-generates hover/soft/border variants</li>
+    </ul>
+    <pre><code>/* Use Tailwind utilities in templates */
+bg-primary text-primary-foreground
+bg-destructive-soft text-destructive-soft-foreground
+border-border
+
+/* Or CSS variables in custom styles */
 background-color: var(--color-primary);
-color: var(--color-foreground);
-border-color: var(--color-border);</code></pre>
+color: var(--color-foreground);</code></pre>
   </section>
 
   <section class="flex flex-col gap-6 mt-10">
     <h2 class="h3">Layout</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm border" style="background-color: var(--color-background); border-color: var(--color-border)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Background</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-background</p>
+      <% [
+        ["Background", "--background", "--color-background"],
+        ["Foreground", "--foreground", "--color-foreground"],
+        ["Card", "--card", "--color-card"],
+        ["Popover", "--popover", "--color-popover"],
+        ["Muted", "--muted", "--color-muted"],
+        ["Border", "--border", "--color-border"]
+      ].each do |label, raw, token| %>
+        <div class="flex flex-col">
+          <div class="h-16 rounded-lg shadow-sm border border-border" style="background-color: var(<%= token %>)"></div>
+          <div class="mt-2">
+            <p class="text-sm font-medium"><%= label %></p>
+            <p class="text-xs font-mono text-muted-foreground"><%= raw %></p>
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-foreground)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Foreground</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-foreground</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm border" style="background-color: var(--color-card); border-color: var(--color-border)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Card</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-card</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-muted)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Muted</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-muted</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-border)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Border</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-border</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-overlay)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Overlay</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-overlay</p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </section>
 
   <section class="flex flex-col gap-6 mt-10">
     <h2 class="h3">Primary & Secondary</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-primary)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Primary</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-primary</p>
+      <% [
+        ["Primary", "--color-primary"],
+        ["Primary Hover", "--color-primary-hover"],
+        ["Primary FG", "--color-primary-foreground"],
+        ["Secondary", "--color-secondary"],
+        ["Secondary FG", "--color-secondary-foreground"],
+        ["Accent", "--color-accent"]
+      ].each do |label, token| %>
+        <div class="flex flex-col">
+          <div class="h-16 rounded-lg shadow-sm border border-border" style="background-color: var(<%= token %>)"></div>
+          <div class="mt-2">
+            <p class="text-sm font-medium"><%= label %></p>
+            <p class="text-xs font-mono text-muted-foreground"><%= token.delete_prefix("--color-") %></p>
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-primary-hover)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Primary Hover</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-primary-hover</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm border" style="background-color: var(--color-primary-foreground); border-color: var(--color-border)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Primary FG</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-primary-foreground</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-secondary)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Secondary</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-secondary</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-secondary-foreground)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Secondary FG</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-secondary-foreground</p>
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="h-16 rounded-lg shadow-sm" style="background-color: var(--color-ring)"></div>
-        <div class="mt-2">
-          <p class="text-sm font-medium" style="color: var(--color-foreground)">Ring</p>
-          <p class="text-xs font-mono" style="color: var(--color-muted-foreground)">--color-ring</p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </section>
 
   <section class="flex flex-col gap-6 mt-10">
     <h2 class="h3">Status Colors</h2>
+    <p class="text-muted-foreground">Base colors are set in <code class="bg-muted px-1 py-0.5 rounded text-sm">brand.css</code>. Soft, border and hover variants are auto-generated via <code class="bg-muted px-1 py-0.5 rounded text-sm">relative-color-syntax</code> (opacity-based, adapts to light/dark).</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="flex flex-col gap-3">
-        <h4 class="font-semibold" style="color: var(--color-foreground)">Destructive</h4>
-        <div class="grid grid-cols-3 gap-2">
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-destructive)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">destructive</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg border" style="background-color: var(--color-destructive-soft); border-color: var(--color-destructive-border)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-destructive-soft-foreground)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft-fg</p>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <h4 class="font-semibold" style="color: var(--color-foreground)">Success</h4>
-        <div class="grid grid-cols-3 gap-2">
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-success)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">success</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg border" style="background-color: var(--color-success-soft); border-color: var(--color-success-border)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-success-soft-foreground)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft-fg</p>
+      <% %w[destructive success warning info].each do |status| %>
+        <div class="flex flex-col gap-3">
+          <h4 class="font-semibold capitalize"><%= status %></h4>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="flex flex-col">
+              <div class="h-12 rounded-lg" style="background-color: var(--color-<%= status %>)"></div>
+              <p class="text-xs font-mono mt-1 text-muted-foreground">base</p>
+            </div>
+            <div class="flex flex-col">
+              <div class="h-12 rounded-lg border" style="background-color: var(--color-<%= status %>-soft); border-color: var(--color-<%= status %>-border)"></div>
+              <p class="text-xs font-mono mt-1 text-muted-foreground">soft</p>
+            </div>
+            <div class="flex flex-col">
+              <div class="h-12 rounded-lg" style="background-color: var(--color-<%= status %>-soft-foreground)"></div>
+              <p class="text-xs font-mono mt-1 text-muted-foreground">soft-fg</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <h4 class="font-semibold" style="color: var(--color-foreground)">Warning</h4>
-        <div class="grid grid-cols-3 gap-2">
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-warning)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">warning</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg border" style="background-color: var(--color-warning-soft); border-color: var(--color-warning-border)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-warning-soft-foreground)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft-fg</p>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col gap-3">
-        <h4 class="font-semibold" style="color: var(--color-foreground)">Info</h4>
-        <div class="grid grid-cols-3 gap-2">
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-info)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">info</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg border" style="background-color: var(--color-info-soft); border-color: var(--color-info-border)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft</p>
-          </div>
-          <div class="flex flex-col">
-            <div class="h-12 rounded-lg" style="background-color: var(--color-info-soft-foreground)"></div>
-            <p class="text-xs font-mono mt-1" style="color: var(--color-muted-foreground)">soft-fg</p>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </section>
 
   <section class="flex flex-col gap-6 mt-10">
-    <h2 class="h3">Builder Configuration</h2>
-    <p style="color: var(--color-muted-foreground)">These base variables control the entire theme and will be adjustable in the Builder.</p>
-    <div class="p-6 rounded-lg" style="background-color: var(--color-muted)">
+    <h2 class="h3">Brand File</h2>
+    <p class="text-muted-foreground">Create your own <code class="bg-muted px-1 py-0.5 rounded text-sm">brand.css</code> to customize the theme. Only raw variables &mdash; no computed values needed.</p>
+    <div class="p-6 rounded-lg bg-muted">
       <pre><code>:root {
-  /* Primary — main action, paste from Figma */
-  --color-primary: oklch(0.55 0.245 264);
-  --color-primary-foreground: oklch(1 0 0);
-  /* hover/active auto-derived via relative-color-syntax */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
 
-  /* Secondary — secondary action buttons */
-  --color-secondary: oklch(0.95 0.006 264);
-  --color-secondary-foreground: oklch(0.21 0.006 264);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
 
-  /* Background */
-  --color-background: oklch(0.985 0.003 264);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --input-focus: oklch(from var(--primary) l c h / 40%);
+  --input-ring: oklch(from var(--primary) l c h / 10%);
+
+  --destructive: oklch(0.577 0.245 27);
+  --success: oklch(0.6 0.19 145);
+  --warning: oklch(0.8 0.16 85);
+  --info: oklch(0.6 0.19 240);
 }
 
 .dark {
-  --color-primary: oklch(0.65 0.22 264);
-  --color-secondary: oklch(0.24 0.014 264);
-  --color-secondary-foreground: oklch(0.93 0.003 264);
-  --color-background: oklch(0.13 0.014 264);
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  /* ... override all variables for dark mode */
 }</code></pre>
     </div>
   </section>
 
   <section class="flex flex-col gap-4 mt-10">
     <h2 class="h3">Component Preview</h2>
-    <p style="color: var(--color-muted-foreground)">All components use semantic tokens and will adapt to theme changes.</p>
+    <p class="text-muted-foreground">All components use semantic tokens and adapt to theme changes automatically.</p>
     <div class="flex flex-wrap gap-3">
       <%= ui.btn "Default Button", variant: :default %>
       <%= ui.btn "Secondary", variant: :secondary %>
@@ -234,6 +159,19 @@ border-color: var(--color-border);</code></pre>
       <%= ui.btn "Ghost", variant: :ghost %>
       <%= ui.btn "Danger", variant: :danger %>
       <%= ui.btn "Link Style", variant: :link %>
+    </div>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <%= ui.badge "Default", size: :md %>
+      <%= ui.badge "Info", variant: :info, size: :md %>
+      <%= ui.badge "Success", variant: :success, size: :md %>
+      <%= ui.badge "Warning", variant: :warning, size: :md %>
+      <%= ui.badge "Error", variant: :error, size: :md %>
+    </div>
+    <div class="flex flex-col gap-3 mt-4">
+      <%= ui.alert(title: "Info", variant: :info) { "This is an info alert." } %>
+      <%= ui.alert(title: "Success", variant: :success) { "Action completed successfully." } %>
+      <%= ui.alert(title: "Warning", variant: :warning) { "Please review before continuing." } %>
+      <%= ui.alert(title: "Error", variant: :error) { "Something went wrong." } %>
     </div>
   </section>
 </article>
