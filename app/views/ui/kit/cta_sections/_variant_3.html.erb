@@ -11,17 +11,15 @@
         </p>
       </div>
       <div class="w-full max-w-md">
-        <form class="flex flex-col gap-3 sm:flex-row">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            class="bg-background border-border text-foreground placeholder:text-muted-foreground flex-1 rounded-md border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-          >
-          <%= ui.btn size: :lg, url: "#" do %>
-            Subscribe
-            <%= ui.icon "envelope", size: 5 %>
+        <%= form_with url: root_path do |f| %>
+          <%= ui.group do %>
+            <%= f.email_field :email, label: false, placeholder: "Enter your email" %>
+            <%= ui.btn size: :lg do %>
+              Subscribe
+              <%= ui.icon "envelope", size: 5 %>
+            <% end %>
           <% end %>
-        </form>
+        <% end %>
         <p class="text-muted-foreground mt-3 text-sm">
           We respect your privacy. Unsubscribe at any time.
         </p>

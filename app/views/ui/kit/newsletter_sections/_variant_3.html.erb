@@ -14,13 +14,15 @@
             We are building something new. Be the first to know when it is ready. Drop your email and we will keep you posted on our progress.
           </p>
         </div>
-        <form class="flex w-full flex-col items-center gap-3 sm:flex-row sm:max-w-md">
-          <input type="email" placeholder="you@example.com" class="bg-background border-border text-foreground placeholder:text-muted-foreground w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
-          <%= ui.btn url: "#" do %>
-            Notify me
-            <%= ui.icon "bell", size: 5 %>
+        <%= form_with url: root_path, class: "w-full sm:max-w-md" do |f| %>
+          <%= ui.group do %>
+            <%= f.email_field :email, label: false, placeholder: "you@example.com" %>
+            <%= ui.btn do %>
+              Notify me
+              <%= ui.icon "bell", size: 5 %>
+            <% end %>
           <% end %>
-        </form>
+        <% end %>
         <p class="text-muted-foreground text-xs">
           Join 3,200+ subscribers. We send updates once a month.
         </p>

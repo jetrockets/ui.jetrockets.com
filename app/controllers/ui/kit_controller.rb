@@ -32,7 +32,7 @@ class Ui::KitController < ApplicationController
     dir = Rails.root.join("app/views/ui/kit/#{category}")
     return [] unless Dir.exist?(dir)
 
-    Dir.glob(dir.join("_variant_*.html.erb")).sort.map do |path|
+    Dir.glob(dir.join("_variant_*.html.erb")).sort_by { |p| File.basename(p)[/\d+/].to_i }.map do |path|
       filename = File.basename(path, ".html.erb").delete_prefix("_")
       number = filename.delete_prefix("variant_").to_i
       {

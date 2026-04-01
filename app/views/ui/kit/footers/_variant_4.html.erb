@@ -9,10 +9,12 @@
         </p>
       </div>
       <div class="flex items-start justify-start lg:justify-end">
-        <form class="flex w-full max-w-md gap-3">
-          <input type="email" placeholder="Enter your email" class="bg-background border-border text-foreground placeholder:text-muted-foreground flex-1 rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
-          <%= ui.btn "Subscribe", url: "#" %>
-        </form>
+        <%= form_with url: root_path, class: "w-full max-w-md" do |f| %>
+          <%= ui.group do %>
+            <%= f.email_field :email, label: false, placeholder: "Enter your email" %>
+            <%= ui.btn "Subscribe" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
@@ -61,9 +63,9 @@
     <div class="mt-12 border-t border-border pt-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
       <div class="flex items-center gap-2">
         <%= ui.icon "cube", size: 6, class: "text-primary" %>
-        <span class="text-foreground text-sm font-semibold">Acme Inc</span>
+        <span class="text-foreground text-sm font-semibold">JetRockets</span>
       </div>
-      <p class="text-muted-foreground text-sm">&copy; 2026 Acme Inc. All rights reserved.</p>
+      <p class="text-muted-foreground text-sm">&copy; 2026 JetRockets. All rights reserved.</p>
     </div>
   </div>
 </footer>

@@ -3,7 +3,8 @@ module ApplicationHelper
   ActionView::Base.default_form_builder = FormBuilders::DefaultFormBuilder
 
   def form_with(**options, &block)
-    options[:html] = (options[:html] || {}).reverse_merge(class: "form")
+    classes = class_names("form", options.delete(:class))
+    options[:html] = (options[:html] || {}).reverse_merge(class: classes)
     super(**options, &block)
   end
 

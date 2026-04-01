@@ -26,20 +26,14 @@
       </div>
 
       <div class="lg:pl-12">
-        <form class="flex flex-col gap-4">
-          <div>
-            <label for="newsletter-name" class="text-foreground mb-1.5 block text-sm font-medium">Full name</label>
-            <input type="text" id="newsletter-name" placeholder="Jane Doe" class="bg-background border-border text-foreground placeholder:text-muted-foreground w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
-          </div>
-          <div>
-            <label for="newsletter-email" class="text-foreground mb-1.5 block text-sm font-medium">Email address</label>
-            <input type="email" id="newsletter-email" placeholder="jane@example.com" class="bg-background border-border text-foreground placeholder:text-muted-foreground w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
-          </div>
-          <%= ui.btn "Subscribe", block: true, url: "#" %>
+        <%= form_with url: root_path, class: "flex flex-col gap-4" do |f| %>
+          <%= f.text_field :name, label: "Full name", placeholder: "Jane Doe" %>
+          <%= f.email_field :email, label: "Email address", placeholder: "jane@example.com" %>
+          <%= ui.btn "Subscribe", block: true %>
           <p class="text-muted-foreground text-xs">
             No spam. Unsubscribe at any time.
           </p>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>

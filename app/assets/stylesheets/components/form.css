@@ -4,7 +4,7 @@
   }
 
   .form__group {
-    @apply flex flex-col gap-1.5;
+    @apply flex flex-col gap-1.5 flex-1;
   }
 
   .form__label {
