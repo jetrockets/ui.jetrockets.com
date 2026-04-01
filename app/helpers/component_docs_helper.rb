@@ -74,7 +74,7 @@ module ComponentDocsHelper
                end
 
     ui.card do
-      ui.card_header do
+      ui.card_header bordered: false, class: "pb-4" do
         safe_join([
           ui.card_title("Block content"),
           ui.card_subtitle(subtitle)
