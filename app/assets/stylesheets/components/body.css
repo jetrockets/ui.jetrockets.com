@@ -1,6 +1,6 @@
 @layer components {
   .body {
-    @apply relative min-h-svh antialiased text-foreground bg-background;
+    @apply relative min-h-svh antialiased font-sans text-foreground bg-background;
     @apply px-3 md:px-6 lg:px-8 xl:px-20;
   }
 

@@ -1,5 +1,8 @@
 @reference "./tailwind";
 
+/* Theme brand */
+@import "../stylesheets/brand";
+
 /* Components */
 @import "../stylesheets/components/body";
 @import "../stylesheets/components/form";
@@ -12,4 +15,4 @@
 @import "../stylesheets/components/wysiwyg";
 
 /* Vendors */
-@import '../stylesheets/vendors/choices'
+@import "../stylesheets/vendors/choices";

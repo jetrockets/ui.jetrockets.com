@@ -5,24 +5,23 @@
   )
 
   defaults = {
-    primary: "#6d28d9",
-    primary_dark: "#8b5cf6",
-    secondary: "#f0eef5",
-    secondary_dark: "#2a2640",
-    background: "#f9f9fb",
-    background_dark: "#1a1625",
-    radius_base: "lg",
-    radius_form: "md"
+    primary: @theme[:hex]["primary"],
+    primary_dark: @theme[:hex]["primary_dark"],
+    secondary: @theme[:hex]["secondary"],
+    secondary_dark: @theme[:hex]["secondary_dark"],
+    background: @theme[:hex]["background"],
+    background_dark: @theme[:hex]["background_dark"],
+    radius_base: @theme[:radius_base],
+    radius_form: @theme[:radius_form]
   }
 %>
 
-<div
-  class="min-h-screen"
-  data-controller="builder"
-  data-builder-defaults-value="<%= defaults.to_json %>"
-  data-builder-download-url-value="<%= builder_download_path %>"
->
-  <div class="border-b border-border">
+<div class="min-h-screen"
+     data-controller="builder"
+     data-builder-defaults-value="<%= defaults.to_json %>"
+     data-builder-download-url-value="<%= builder_download_path %>">
+
+  <div class="border-b border-border sticky top-0">
     <div class="max-w-7xl px-4 mx-auto">
       <%= ui.navbar class: "flex justify-between items-center" do %>
         <h1 class="text-xl font-semibold">
@@ -43,9 +42,9 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
       <!-- Controls -->
-      <div class="flex flex-col gap-6 lg:sticky lg:top-8 lg:self-start">
+      <div class="flex flex-col gap-6 lg:sticky lg:top-20 lg:self-start">
         <%= ui.card do %>
-          <%= ui.card_body class: "flex flex-col gap-6" do %>
+          <%= ui.card_body class: "form" do %>
             <!-- Theme Mode -->
             <div class="flex items-center justify-between">
               <span class="text-sm font-medium text-foreground">Appearance</span>
@@ -56,14 +55,15 @@
             </div>
 
             <!-- Primary Color (Light) -->
-            <div class="flex flex-col gap-1" data-builder-target="lightPrimarySection">
+            <div class="form__group" data-builder-target="lightPrimarySection">
               <span class="form__label">Primary Color</span>
               <div class="flex items-center gap-3">
-                <input type="text" value="<%= defaults[:primary] %>" class="form__field" placeholder="#6d28d9" data-builder-target="primaryHex" data-action="change->builder#updatePrimaryFromHex">
+                <input autocomplete="off" type="text" value="<%= defaults[:primary] %>" class="form__field" placeholder="#6d28d9" data-builder-target="primaryHex" data-action="change->builder#updatePrimaryFromHex">
                 <input
+                  autocomplete="off"
                   type="color"
                   value="<%= defaults[:primary] %>"
-                  class="size-10 border-none shrink-0 rounded-field"
+                  class="size-11 shrink-0"
                   data-builder-target="primaryColor"
                   data-action="input->builder#updatePrimaryColor">
               </div>
@@ -71,124 +71,124 @@
             </div>
 
             <!-- Primary Color (Dark) -->
-            <div class="flex flex-col gap-1 hidden" data-builder-target="darkPrimarySection">
+            <div class="form__group hidden" data-builder-target="darkPrimarySection">
               <span class="form__label">Dark Primary Color</span>
               <div class="flex items-center gap-3">
                 <input
+                  autocomplete="off"
                   type="text"
                   value="<%= defaults[:primary_dark] %>"
                   class="form__field"
                   placeholder="#8b5cf6"
                   data-builder-target="darkPrimaryHex"
-                  data-action="change->builder#updateDarkPrimaryFromHex"
-                >
+                  data-action="change->builder#updateDarkPrimaryFromHex">
                 <input
+                  autocomplete="off"
                   type="color"
                   value="<%= defaults[:primary_dark] %>"
-                  class="size-10 border-none shrink-0 rounded-field"
+                  class="size-11 shrink-0"
                   data-builder-target="darkPrimaryColor"
-                  data-action="input->builder#updateDarkPrimaryColor"
-                >
+                  data-action="input->builder#updateDarkPrimaryColor">
               </div>
               <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkPrimaryOklch"></p>
             </div>
 
             <!-- Secondary Color (Light) -->
-            <div class="flex flex-col gap-1" data-builder-target="lightSecondarySection">
+            <div class="form__group" data-builder-target="lightSecondarySection">
               <span class="form__label">Secondary Color</span>
               <div class="flex items-center gap-3">
                 <input
+                  autocomplete="off"
                   type="text"
                   value="<%= defaults[:secondary] %>"
                   class="form__field"
                   placeholder="#f0eef5"
                   data-builder-target="secondaryHex"
-                  data-action="change->builder#updateSecondaryFromHex"
-                >
+                  data-action="change->builder#updateSecondaryFromHex">
                 <input
+                  autocomplete="off"
                   type="color"
                   value="<%= defaults[:secondary] %>"
-                  class="size-10 border-none shrink-0 rounded-field"
+                  class="size-11 shrink-0"
                   data-builder-target="secondaryColor"
-                  data-action="input->builder#updateSecondaryColor"
-                >
+                  data-action="input->builder#updateSecondaryColor">
               </div>
               <p class="text-xs text-muted-foreground font-mono" data-builder-target="secondaryOklch"></p>
             </div>
 
             <!-- Secondary Color (Dark) -->
-            <div class="flex flex-col gap-1 hidden" data-builder-target="darkSecondarySection">
+            <div class="form__group hidden" data-builder-target="darkSecondarySection">
               <span class="form__label">Dark Secondary Color</span>
               <div class="flex items-center gap-3">
                 <input
+                  autocomplete="off"
                   type="text"
                   value="<%= defaults[:secondary_dark] %>"
                   class="form__field"
                   placeholder="#2a2640"
                   data-builder-target="darkSecondaryHex"
-                  data-action="change->builder#updateDarkSecondaryFromHex"
-                >
+                  data-action="change->builder#updateDarkSecondaryFromHex">
                 <input
+                  autocomplete="off"
                   type="color"
                   value="<%= defaults[:secondary_dark] %>"
-                  class="size-10 border-none shrink-0 rounded-field"
+                  class="size-11 shrink-0"
                   data-builder-target="darkSecondaryColor"
-                  data-action="input->builder#updateDarkSecondaryColor"
-                >
+                  data-action="input->builder#updateDarkSecondaryColor">
               </div>
               <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkSecondaryOklch"></p>
             </div>
 
             <!-- Background Color (Light) -->
-            <div class="flex flex-col gap-1" data-builder-target="lightBackgroundSection">
+            <div class="form__group" data-builder-target="lightBackgroundSection">
               <span class="form__label">Background Color</span>
               <div class="flex items-center gap-3">
                 <input
+                  autocomplete="off"
                   type="text"
                   value="<%= defaults[:background] %>"
                   class="form__field"
                   placeholder="#f9f9fb"
                   data-builder-target="backgroundHex"
-                  data-action="change->builder#updateBackgroundFromHex"
-                >
+                  data-action="change->builder#updateBackgroundFromHex">
                 <input
+                  autocomplete="off"
                   type="color"
                   value="<%= defaults[:background] %>"
-                  class="size-10 border-none shrink-0 rounded-field"
+                  class="size-11 shrink-0"
                   data-builder-target="backgroundColor"
-                  data-action="input->builder#updateBackgroundColor"
-                >
+                  data-action="input->builder#updateBackgroundColor">
               </div>
               <p class="text-xs text-muted-foreground font-mono" data-builder-target="backgroundOklch"></p>
             </div>
 
             <!-- Background Color (Dark) -->
-            <div class="flex flex-col gap-1 hidden" data-builder-target="darkBackgroundSection">
+            <div class="form__group hidden" data-builder-target="darkBackgroundSection">
               <span class="form__label">Dark Background Color</span>
               <div class="flex items-center gap-3">
                 <input
+                  autocomplete="off"
                   type="text"
                   value="<%= defaults[:background_dark] %>"
                   class="form__field"
                   placeholder="#1a1625"
                   data-builder-target="darkBackgroundHex"
-                  data-action="change->builder#updateDarkBackgroundFromHex"
-                >
+                  data-action="change->builder#updateDarkBackgroundFromHex">
                 <input
+                  autocomplete="off"
                   type="color"
                   value="<%= defaults[:background_dark] %>"
-                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  class="size-11 shrink-0"
                   data-builder-target="darkBackgroundColor"
-                  data-action="input->builder#updateDarkBackgroundColor"
-                >
+                  data-action="input->builder#updateDarkBackgroundColor">
               </div>
               <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkBackgroundOklch"></p>
             </div>
 
             <!-- Border Radius (cards, modals, alerts) -->
-            <div class="flex flex-col gap-2">
-              <span class="text-sm font-medium text-foreground">Border Radius</span>
-              <div class="flex gap-1">
+            <div class="form__group">
+              <span class="form__label">Border Radius</span>
+              <div class="ui_group ui_group-sticky">
                 <% %w[none sm md lg xl].each do |size| %>
                   <%= ui.btn size.upcase,
                       size: :sm,
@@ -203,9 +203,9 @@
             </div>
 
             <!-- Form Radius (buttons, inputs) -->
-            <div class="flex flex-col gap-2">
-              <span class="text-sm font-medium text-foreground">Form Radius</span>
-              <div class="flex gap-1">
+            <div class="form__group">
+              <span class="form__label">Form Radius</span>
+              <div class="ui_group ui_group-sticky">
                 <% %w[none sm md lg full].each do |size| %>
                   <%= ui.btn size.upcase,
                       size: :sm,
@@ -275,7 +275,7 @@
           <div class="grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-1">
               <label class="form__label">Text Input</label>
-              <input type="text" class="form__field" placeholder="Enter text...">
+              <input autocomplete="off" type="text" class="form__field" placeholder="Enter text...">
             </div>
             <div class="flex flex-col gap-1">
               <label class="form__label">Select</label>

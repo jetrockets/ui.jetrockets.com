@@ -23,7 +23,7 @@
   --choices-input-height: 40px;
   --choices-width: 100%;
   --choices-base-border: 1px solid var(--choices-keyline-color);
-  --choices-border-color-focus: var(--color-primary);
+  --choices-border-color-focus: var(--color-input-focus);
   --choices-ring-shadow-focus: 0 0 0 3px var(--color-ring);
 
   --choices-multiple-item-padding: 4px 10px;

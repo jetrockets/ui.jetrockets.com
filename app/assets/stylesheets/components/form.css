@@ -18,7 +18,7 @@
   .form__field {
     @apply block w-full px-3 text-sm min-h-10 border border-input rounded-field;
     @apply bg-card text-foreground;
-    @apply focus:border-primary focus:ring-3 focus:ring-ring focus:outline-none;
+    @apply focus:border-input-focus focus:ring-3 focus:ring-ring focus:outline-none;
     @apply disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed;
   }
 
