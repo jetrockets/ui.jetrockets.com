@@ -35,8 +35,8 @@
   }
 
   .btn-link {
-    @apply text-link;
-    @apply hover:text-link-hover;
+    @apply text-primary;
+    @apply hover:text-primary-hover;
   }
 
   /* Sizes - with proportional radius */

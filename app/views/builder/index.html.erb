@@ -56,137 +56,124 @@
             </div>
 
             <!-- Primary Color (Light) -->
-            <div class="flex flex-col gap-2" data-builder-target="lightPrimarySection">
-              <div class="flex justify-between items-center text-sm">
-                <span class="font-medium text-foreground">Primary Color</span>
-                <span class="text-xs text-muted-foreground font-mono" data-builder-target="primaryOklch"></span>
-              </div>
+            <div class="flex flex-col gap-1" data-builder-target="lightPrimarySection">
+              <span class="form__label">Primary Color</span>
               <div class="flex items-center gap-3">
+                <input type="text" value="<%= defaults[:primary] %>" class="form__field" placeholder="#6d28d9" data-builder-target="primaryHex" data-action="change->builder#updatePrimaryFromHex">
                 <input
                   type="color"
                   value="<%= defaults[:primary] %>"
-                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
+                  class="size-10 border-none shrink-0 rounded-field"
                   data-builder-target="primaryColor"
-                  data-action="input->builder#updatePrimaryColor"
-                >
-                <input
-                  type="text"
-                  value="<%= defaults[:primary] %>"
-                  class="form__field text-sm font-mono flex-1"
-                  placeholder="#6d28d9"
-                  data-builder-target="primaryHex"
-                  data-action="change->builder#updatePrimaryFromHex"
-                >
+                  data-action="input->builder#updatePrimaryColor">
               </div>
+              <p class="text-xs text-muted-foreground font-mono" data-builder-target="primaryOklch"></p>
             </div>
 
             <!-- Primary Color (Dark) -->
-            <div class="flex flex-col gap-2 hidden" data-builder-target="darkPrimarySection">
-              <div class="flex justify-between items-center text-sm">
-                <span class="font-medium text-foreground">Dark Primary Color</span>
-                <span class="text-xs text-muted-foreground font-mono" data-builder-target="darkPrimaryOklch"></span>
-              </div>
+            <div class="flex flex-col gap-1 hidden" data-builder-target="darkPrimarySection">
+              <span class="form__label">Dark Primary Color</span>
               <div class="flex items-center gap-3">
-                <input
-                  type="color"
-                  value="<%= defaults[:primary_dark] %>"
-                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
-                  data-builder-target="darkPrimaryColor"
-                  data-action="input->builder#updateDarkPrimaryColor"
-                >
                 <input
                   type="text"
                   value="<%= defaults[:primary_dark] %>"
-                  class="form__field text-sm font-mono flex-1"
+                  class="form__field"
                   placeholder="#8b5cf6"
                   data-builder-target="darkPrimaryHex"
                   data-action="change->builder#updateDarkPrimaryFromHex"
                 >
+                <input
+                  type="color"
+                  value="<%= defaults[:primary_dark] %>"
+                  class="size-10 border-none shrink-0 rounded-field"
+                  data-builder-target="darkPrimaryColor"
+                  data-action="input->builder#updateDarkPrimaryColor"
+                >
               </div>
+              <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkPrimaryOklch"></p>
             </div>
 
             <!-- Secondary Color (Light) -->
-            <div class="flex flex-col gap-2" data-builder-target="lightSecondarySection">
-              <div class="flex justify-between items-center text-sm">
-                <span class="font-medium text-foreground">Secondary Color</span>
-                <span class="text-xs text-muted-foreground font-mono" data-builder-target="secondaryOklch"></span>
-              </div>
+            <div class="flex flex-col gap-1" data-builder-target="lightSecondarySection">
+              <span class="form__label">Secondary Color</span>
               <div class="flex items-center gap-3">
-                <input
-                  type="color"
-                  value="<%= defaults[:secondary] %>"
-                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
-                  data-builder-target="secondaryColor"
-                  data-action="input->builder#updateSecondaryColor"
-                >
                 <input
                   type="text"
                   value="<%= defaults[:secondary] %>"
-                  class="form__field text-sm font-mono flex-1"
+                  class="form__field"
                   placeholder="#f0eef5"
                   data-builder-target="secondaryHex"
                   data-action="change->builder#updateSecondaryFromHex"
                 >
+                <input
+                  type="color"
+                  value="<%= defaults[:secondary] %>"
+                  class="size-10 border-none shrink-0 rounded-field"
+                  data-builder-target="secondaryColor"
+                  data-action="input->builder#updateSecondaryColor"
+                >
               </div>
+              <p class="text-xs text-muted-foreground font-mono" data-builder-target="secondaryOklch"></p>
             </div>
 
             <!-- Secondary Color (Dark) -->
-            <div class="flex flex-col gap-2 hidden" data-builder-target="darkSecondarySection">
-              <div class="flex justify-between items-center text-sm">
-                <span class="font-medium text-foreground">Dark Secondary Color</span>
-                <span class="text-xs text-muted-foreground font-mono" data-builder-target="darkSecondaryOklch"></span>
-              </div>
+            <div class="flex flex-col gap-1 hidden" data-builder-target="darkSecondarySection">
+              <span class="form__label">Dark Secondary Color</span>
               <div class="flex items-center gap-3">
-                <input
-                  type="color"
-                  value="<%= defaults[:secondary_dark] %>"
-                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
-                  data-builder-target="darkSecondaryColor"
-                  data-action="input->builder#updateDarkSecondaryColor"
-                >
                 <input
                   type="text"
                   value="<%= defaults[:secondary_dark] %>"
-                  class="form__field text-sm font-mono flex-1"
+                  class="form__field"
                   placeholder="#2a2640"
                   data-builder-target="darkSecondaryHex"
                   data-action="change->builder#updateDarkSecondaryFromHex"
                 >
+                <input
+                  type="color"
+                  value="<%= defaults[:secondary_dark] %>"
+                  class="size-10 border-none shrink-0 rounded-field"
+                  data-builder-target="darkSecondaryColor"
+                  data-action="input->builder#updateDarkSecondaryColor"
+                >
               </div>
+              <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkSecondaryOklch"></p>
             </div>
 
             <!-- Background Color (Light) -->
-            <div class="flex flex-col gap-2" data-builder-target="lightBackgroundSection">
-              <div class="flex justify-between items-center text-sm">
-                <span class="font-medium text-foreground">Background Color</span>
-                <span class="text-xs text-muted-foreground font-mono" data-builder-target="backgroundOklch"></span>
-              </div>
+            <div class="flex flex-col gap-1" data-builder-target="lightBackgroundSection">
+              <span class="form__label">Background Color</span>
               <div class="flex items-center gap-3">
-                <input
-                  type="color"
-                  value="<%= defaults[:background] %>"
-                  class="w-10 h-10 rounded-field border border-border cursor-pointer p-0.5"
-                  data-builder-target="backgroundColor"
-                  data-action="input->builder#updateBackgroundColor"
-                >
                 <input
                   type="text"
                   value="<%= defaults[:background] %>"
-                  class="form__field text-sm font-mono flex-1"
+                  class="form__field"
                   placeholder="#f9f9fb"
                   data-builder-target="backgroundHex"
                   data-action="change->builder#updateBackgroundFromHex"
                 >
+                <input
+                  type="color"
+                  value="<%= defaults[:background] %>"
+                  class="size-10 border-none shrink-0 rounded-field"
+                  data-builder-target="backgroundColor"
+                  data-action="input->builder#updateBackgroundColor"
+                >
               </div>
+              <p class="text-xs text-muted-foreground font-mono" data-builder-target="backgroundOklch"></p>
             </div>
 
             <!-- Background Color (Dark) -->
-            <div class="flex flex-col gap-2 hidden" data-builder-target="darkBackgroundSection">
-              <div class="flex justify-between items-center text-sm">
-                <span class="font-medium text-foreground">Dark Background Color</span>
-                <span class="text-xs text-muted-foreground font-mono" data-builder-target="darkBackgroundOklch"></span>
-              </div>
+            <div class="flex flex-col gap-1 hidden" data-builder-target="darkBackgroundSection">
+              <span class="form__label">Dark Background Color</span>
               <div class="flex items-center gap-3">
+                <input
+                  type="text"
+                  value="<%= defaults[:background_dark] %>"
+                  class="form__field"
+                  placeholder="#1a1625"
+                  data-builder-target="darkBackgroundHex"
+                  data-action="change->builder#updateDarkBackgroundFromHex"
+                >
                 <input
                   type="color"
                   value="<%= defaults[:background_dark] %>"
@@ -194,15 +181,8 @@
                   data-builder-target="darkBackgroundColor"
                   data-action="input->builder#updateDarkBackgroundColor"
                 >
-                <input
-                  type="text"
-                  value="<%= defaults[:background_dark] %>"
-                  class="form__field text-sm font-mono flex-1"
-                  placeholder="#1a1625"
-                  data-builder-target="darkBackgroundHex"
-                  data-action="change->builder#updateDarkBackgroundFromHex"
-                >
               </div>
+              <p class="text-xs text-muted-foreground font-mono" data-builder-target="darkBackgroundOklch"></p>
             </div>
 
             <!-- Border Radius (cards, modals, alerts) -->

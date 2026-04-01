@@ -3,11 +3,11 @@
 @layer components {
   .tooltip {
     @apply absolute z-20 px-3 py-2 text-xs text-center shadow-sm pointer-events-none;
-    @apply bg-tooltip text-tooltip-foreground rounded-tooltip;
+    @apply bg-info text-info-foreground rounded-tooltip;
   }
 
   .tooltip::after {
-    @apply absolute rotate-45 size-2 bg-tooltip;
+    @apply absolute rotate-45 size-2 bg-info;
     content: "";
   }
 

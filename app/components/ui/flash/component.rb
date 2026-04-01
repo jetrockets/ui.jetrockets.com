@@ -28,8 +28,8 @@ class Ui::Flash::Component < ApplicationComponent
 
   def tailwind_classes_for(flash_type)
     {
-      notice: "bg-tooltip text-tooltip-foreground",
-      success: "bg-tooltip text-tooltip-foreground",
+      notice: "bg-info text-info-foreground",
+      success: "bg-info text-info-foreground",
       alert: "bg-destructive text-destructive-foreground",
       error: "bg-destructive text-destructive-foreground"
     }.stringify_keys[flash_type.to_s] || flash_type.to_s

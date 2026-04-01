@@ -14,7 +14,7 @@
   .form__field {
     @apply block w-full px-3 text-sm min-h-10 border border-input rounded-field;
     @apply bg-card text-foreground;
-    @apply focus:border-input-focus focus:ring-3 focus:ring-ring focus:outline-none;
+    @apply focus:border-primary focus:ring-3 focus:ring-ring focus:outline-none;
     @apply disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed;
   }
 
@@ -43,7 +43,7 @@
   .form__radio,
   .form__checkbox {
     @apply cursor-pointer size-5 border border-input bg-card;
-    @apply focus:ring-3 focus:ring-ring focus:border-input-focus;
+    @apply focus:ring-3 focus:ring-ring focus:border-primary;
     @apply checked:bg-primary checked:border-primary checked:hover:bg-primary-hover;
     @apply checked:focus:bg-primary checked:focus:border-primary;
     @apply disabled:cursor-not-allowed disabled:bg-muted disabled:border-border;

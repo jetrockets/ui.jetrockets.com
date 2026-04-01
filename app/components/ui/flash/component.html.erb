@@ -7,7 +7,7 @@
         <%== message %>
       </p>
       <% if @dismissible %>
-        <button class="absolute top-2.5 right-3 text-tooltip-foreground transition duration-300 focus:outline-none focus:text-tooltip-foreground hover:text-tooltip-foreground opacity-80 hover:opacity-100" type="button" data-action="flash#close" aria-label="Close">
+        <button class="absolute top-2.5 right-3 text-info-foreground transition duration-300 focus:outline-none focus:text-info-foreground hover:text-info-foreground opacity-80 hover:opacity-100" type="button" data-action="flash#close" aria-label="Close">
           <%= helpers.ui.icon "x-mark", size: 5 %>
           <span class="sr-only">Close</span>
         </button>
