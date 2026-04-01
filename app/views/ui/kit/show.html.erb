@@ -1,0 +1,32 @@
+<% set_meta_tags(
+  title: "#{@category[:title]} - UI Kit",
+  description: @category[:description],
+  keywords: "Rails, UI Kit, #{@category[:title]}"
+) %>
+<% breadcrumb :ui_kit_category, @category[:title] %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title @category[:title] %>
+    <%= ui.header_subtitle @category[:description] %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.badge "#{@variants.size} variants", variant: :info %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-16">
+  <% @variants.each do |variant| %>
+    <%= render_kit_block(variant, @category_key) %>
+  <% end %>
+
+  <% if @variants.empty? %>
+    <%= render Ui::Empty::Component.new do %>
+      <div class="flex flex-col items-center gap-2">
+        <span class="icon icon-cube text-4xl text-muted-foreground"></span>
+        <h3 class="font-semibold">Coming soon</h3>
+        <p class="text-sm text-muted-foreground">Blocks for this category are being designed.</p>
+      </div>
+    <% end %>
+  <% end %>
+</article>

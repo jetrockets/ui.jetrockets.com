@@ -1,0 +1,166 @@
+<%# Variant 6: Tiered with gradient -- 3 tiers with subtle gradient bg on the featured plan, large price numbers %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "Pricing", variant: :default, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        Invest in your growth
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        From solo makers to enterprise teams, we have you covered.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+      <%# Solo Plan %>
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-8 p-8 lg:p-10" do %>
+          <div class="text-center">
+            <div class="bg-muted mx-auto mb-4 flex size-12 items-center justify-center rounded-full">
+              <%= ui.icon "user", size: 6, class: "text-foreground" %>
+            </div>
+            <h3 class="text-foreground text-xl font-semibold">Solo</h3>
+            <p class="text-muted-foreground mt-1 text-sm">For individual creators</p>
+          </div>
+          <div class="text-center">
+            <span class="text-foreground text-6xl font-bold tracking-tight">$0</span>
+            <p class="text-muted-foreground mt-2 text-sm">Free forever</p>
+          </div>
+          <div class="border-border border-t pt-8">
+            <ul class="flex flex-col gap-4 text-sm">
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">5 projects</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">2 GB storage</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Basic analytics</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Community support</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "minus", size: 5, class: "text-muted-foreground shrink-0" %>
+                <span class="text-muted-foreground">Team features</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "minus", size: 5, class: "text-muted-foreground shrink-0" %>
+                <span class="text-muted-foreground">API access</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-auto">
+            <%= ui.btn "Start for free", variant: :outline, block: true, size: :lg, url: "#" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%# Growth Plan (Featured with gradient) %>
+      <div class="relative">
+        <div class="from-primary/5 via-primary/10 to-primary/5 absolute inset-0 rounded-xl bg-gradient-to-b"></div>
+        <%= ui.card class: "relative border-primary ring-primary/20 ring-2" do %>
+          <%= ui.card_body class: "flex flex-col gap-8 p-8 lg:p-10" do %>
+            <div class="text-center">
+              <div class="bg-primary mx-auto mb-4 flex size-12 items-center justify-center rounded-full">
+                <%= ui.icon "rocket-launch", size: 6, class: "text-primary-foreground" %>
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <h3 class="text-foreground text-xl font-semibold">Growth</h3>
+                <%= ui.badge "Most popular", variant: :default, size: :xs, rounded: true %>
+              </div>
+              <p class="text-muted-foreground mt-1 text-sm">For teams ready to scale</p>
+            </div>
+            <div class="text-center">
+              <span class="text-foreground text-6xl font-bold tracking-tight">$49</span>
+              <p class="text-muted-foreground mt-2 text-sm">per month, billed monthly</p>
+            </div>
+            <div class="border-border border-t pt-8">
+              <ul class="flex flex-col gap-4 text-sm">
+                <li class="flex items-center gap-3">
+                  <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                  <span class="text-foreground">Unlimited projects</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                  <span class="text-foreground">100 GB storage</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                  <span class="text-foreground">Advanced analytics</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                  <span class="text-foreground">Priority support</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                  <span class="text-foreground">Team collaboration</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                  <span class="text-foreground">API access & webhooks</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-auto">
+              <%= ui.btn "Start 14-day trial", block: true, size: :lg, url: "#" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# Enterprise Plan %>
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-8 p-8 lg:p-10" do %>
+          <div class="text-center">
+            <div class="bg-muted mx-auto mb-4 flex size-12 items-center justify-center rounded-full">
+              <%= ui.icon "shield-check", size: 6, class: "text-foreground" %>
+            </div>
+            <h3 class="text-foreground text-xl font-semibold">Enterprise</h3>
+            <p class="text-muted-foreground mt-1 text-sm">For large organizations</p>
+          </div>
+          <div class="text-center">
+            <span class="text-foreground text-6xl font-bold tracking-tight">$249</span>
+            <p class="text-muted-foreground mt-2 text-sm">per month, billed monthly</p>
+          </div>
+          <div class="border-border border-t pt-8">
+            <ul class="flex flex-col gap-4 text-sm">
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Unlimited everything</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">1 TB storage</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Custom reports & dashboards</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">24/7 dedicated support</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">SSO, SAML & audit logs</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Custom SLA & contracts</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-auto">
+            <%= ui.btn "Contact sales", variant: :outline, block: true, size: :lg, url: "#" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

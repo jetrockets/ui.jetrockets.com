@@ -1,0 +1,45 @@
+<%# Variant 5: With rating stars — testimonials with 5-star ratings shown as star icons %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Rated 5 stars by our users
+      </h2>
+      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
+        Real reviews from real teams using our platform every day.
+      </p>
+    </div>
+
+    <%
+      testimonials = [
+        { quote: "The best developer tool I have used in years. It simplified our entire build process and gave us back hours every week.", name: "Olivia Martinez", role: "Staff Engineer, Helix", stars: 5 },
+        { quote: "Incredible value for the price. The free tier alone covers most of what small teams need. Upgrading was a no-brainer.", name: "Ben Walker", role: "Co-founder, Stackable", stars: 5 },
+        { quote: "Rock-solid reliability. We have not had a single incident since switching. Our uptime has never been better.", name: "Aisha Okafor", role: "SRE Lead, Overture", stars: 5 }
+      ]
+    %>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <% testimonials.each do |testimonial| %>
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex flex-col gap-4" do %>
+            <div class="flex gap-0.5">
+              <% testimonial[:stars].times do %>
+                <%= ui.icon "star", size: 5, class: "text-primary" %>
+              <% end %>
+            </div>
+            <p class="text-muted-foreground text-base leading-relaxed">
+              "<%= testimonial[:quote] %>"
+            </p>
+            <div class="flex items-center gap-3 mt-auto">
+              <%= ui.avatar size: 10 %>
+              <div>
+                <p class="text-foreground text-sm font-semibold"><%= testimonial[:name] %></p>
+                <p class="text-muted-foreground text-sm"><%= testimonial[:role] %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

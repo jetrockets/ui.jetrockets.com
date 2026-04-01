@@ -1,0 +1,124 @@
+<%# Variant 2: 2-column simple -- Starter and Pro only, clean minimal design %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Two plans, zero complexity
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Start free, upgrade when you need more. No credit card required.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-2">
+      <%# Starter Plan %>
+      <%= ui.card do %>
+        <%= ui.card_header bordered: false, class: "pb-0" do %>
+          <div class="flex items-center gap-3">
+            <div class="bg-muted flex items-center justify-center rounded-lg p-2">
+              <%= ui.icon "rocket-launch", size: 5, class: "text-foreground" %>
+            </div>
+            <div>
+              <%= ui.card_title "Starter" %>
+              <%= ui.card_subtitle "Perfect for side projects" %>
+            </div>
+          </div>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-6" do %>
+          <div class="flex items-baseline gap-1">
+            <span class="text-foreground text-5xl font-bold tracking-tight">$0</span>
+            <span class="text-muted-foreground text-sm">/month</span>
+          </div>
+          <div class="border-border border-t pt-6">
+            <p class="text-muted-foreground mb-4 text-xs font-medium uppercase tracking-wider">What's included</p>
+            <ul class="flex flex-col gap-3 text-sm">
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Up to 5 projects</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">5 GB storage</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Basic integrations</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Community support</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Standard analytics</span>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        <%= ui.card_footer bordered: false do %>
+          <%= ui.btn "Get started free", variant: :outline, block: true, size: :lg, url: "#" %>
+        <% end %>
+      <% end %>
+
+      <%# Pro Plan %>
+      <%= ui.card class: "border-primary" do %>
+        <%= ui.card_header bordered: false, class: "pb-0" do %>
+          <div class="flex items-center gap-3">
+            <div class="bg-primary flex items-center justify-center rounded-lg p-2">
+              <%= ui.icon "sparkles", size: 5, class: "text-primary-foreground" %>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <%= ui.card_title "Pro" %>
+                <%= ui.badge "Recommended", variant: :default, size: :xs, rounded: true %>
+              </div>
+              <%= ui.card_subtitle "For teams and businesses" %>
+            </div>
+          </div>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-6" do %>
+          <div class="flex items-baseline gap-1">
+            <span class="text-foreground text-5xl font-bold tracking-tight">$29</span>
+            <span class="text-muted-foreground text-sm">/month per seat</span>
+          </div>
+          <div class="border-border border-t pt-6">
+            <p class="text-muted-foreground mb-4 text-xs font-medium uppercase tracking-wider">Everything in Starter, plus</p>
+            <ul class="flex flex-col gap-3 text-sm">
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Unlimited projects</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">100 GB storage</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Advanced integrations & API</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Priority email & chat support</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Advanced analytics & exports</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Team collaboration tools</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <%= ui.icon "check", size: 5, class: "text-primary shrink-0" %>
+                <span class="text-foreground">Custom branding</span>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        <%= ui.card_footer bordered: false do %>
+          <%= ui.btn "Start 14-day free trial", block: true, size: :lg, url: "#" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+<%# Variant 4: With newsletter — footer with email signup integrated in top row %>
+<footer class="bg-background border-t border-border py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <div>
+        <h3 class="text-foreground text-lg font-semibold">Stay in the loop</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Get product updates, company news, and engineering insights delivered to your inbox every two weeks.
+        </p>
+      </div>
+      <div class="flex items-start justify-start lg:justify-end">
+        <form class="flex w-full max-w-md gap-3">
+          <input type="email" placeholder="Enter your email" class="bg-background border-border text-foreground placeholder:text-muted-foreground flex-1 rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+          <%= ui.btn "Subscribe", url: "#" %>
+        </form>
+      </div>
+    </div>
+
+    <div class="mt-16 border-t border-border pt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Product</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Features</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Pricing</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Integrations</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Company</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">About</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Blog</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Careers</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Press</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Resources</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Documentation</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Help Center</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Community</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Guides</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Legal</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Privacy</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Terms</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Cookie Policy</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Licenses</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-border pt-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <div class="flex items-center gap-2">
+        <%= ui.icon "cube", size: 6, class: "text-primary" %>
+        <span class="text-foreground text-sm font-semibold">Acme Inc</span>
+      </div>
+      <p class="text-muted-foreground text-sm">&copy; 2026 Acme Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

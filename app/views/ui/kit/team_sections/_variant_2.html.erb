@@ -1,0 +1,35 @@
+<%# Variant 2: 3-column with bio — larger cards with avatar, name, role, short bio text %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Leadership team
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Experienced leaders who have built and scaled products used by millions of people worldwide.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <% [
+        { name: "Sarah Chen", role: "CEO & Co-founder", bio: "Former VP of Product at Stripe. Sarah has spent 15 years building developer tools and scaling engineering organizations from startup to IPO." },
+        { name: "Marcus Johnson", role: "CTO & Co-founder", bio: "Previously a principal engineer at Google Cloud. Marcus leads our technical vision and ensures we build infrastructure that scales reliably." },
+        { name: "Elena Rodriguez", role: "Head of Design", bio: "Award-winning designer who led design systems at Figma. Elena shapes the product experience and champions user-centered thinking across the team." },
+        { name: "David Kim", role: "Head of Engineering", bio: "Former engineering lead at Vercel. David drives technical excellence across our platform, from the frontend experience to backend infrastructure." },
+        { name: "Aisha Patel", role: "VP of Marketing", bio: "Growth leader who scaled acquisition at Notion. Aisha oversees brand strategy, content, and demand generation to reach new audiences." },
+        { name: "Tom Wilson", role: "VP of Sales", bio: "Enterprise sales veteran with a decade at Salesforce. Tom leads our go-to-market strategy and builds relationships with our largest customers." }
+      ].each do |member| %>
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex flex-col items-center text-center gap-4" do %>
+            <%= ui.avatar size: 20 %>
+            <div>
+              <h3 class="text-foreground text-base font-semibold"><%= member[:name] %></h3>
+              <p class="text-primary mt-1 text-sm font-medium"><%= member[:role] %></p>
+            </div>
+            <p class="text-muted-foreground text-sm leading-relaxed"><%= member[:bio] %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

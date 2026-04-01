@@ -1,0 +1,33 @@
+<%# Variant 1: Grid with avatars — 4-column grid of team cards with avatar, name, role %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "Our Team", variant: :info, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        Meet the people behind the product
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        A diverse group of builders, designers, and thinkers dedicated to making your work easier.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <% [
+        { name: "Sarah Chen", role: "CEO & Co-founder" },
+        { name: "Marcus Johnson", role: "CTO & Co-founder" },
+        { name: "Elena Rodriguez", role: "Head of Design" },
+        { name: "David Kim", role: "Head of Engineering" },
+        { name: "Aisha Patel", role: "Product Manager" },
+        { name: "Tom Wilson", role: "Lead Developer" },
+        { name: "Mia Thompson", role: "UX Researcher" },
+        { name: "James Lee", role: "DevOps Engineer" }
+      ].each do |member| %>
+        <div class="flex flex-col items-center text-center">
+          <%= ui.avatar size: 20 %>
+          <h3 class="text-foreground mt-4 text-base font-semibold"><%= member[:name] %></h3>
+          <p class="text-muted-foreground mt-1 text-sm"><%= member[:role] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

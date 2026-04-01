@@ -1,0 +1,18 @@
+<%# Variant 1: Single large quote — one big centered testimonial with avatar, name, role, quote %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-6 text-center">
+    <div class="mb-8">
+      <%= ui.icon "chat-bubble-left-right", size: 10, class: "text-primary mx-auto" %>
+    </div>
+    <blockquote class="text-foreground text-2xl font-medium leading-relaxed sm:text-3xl lg:text-4xl">
+      "This platform completely changed how our team collaborates. We shipped our last product in half the time and with far fewer bugs. It is, without a doubt, the best investment we have made."
+    </blockquote>
+    <div class="mt-10 flex flex-col items-center gap-4">
+      <%= ui.avatar size: 16 %>
+      <div>
+        <p class="text-foreground text-base font-semibold">Sarah Chen</p>
+        <p class="text-muted-foreground text-sm">VP of Engineering, Streamline</p>
+      </div>
+    </div>
+  </div>
+</section>

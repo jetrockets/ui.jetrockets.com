@@ -1,0 +1,81 @@
+<%# Variant 2: 2-column alternating — alternating rows: text left/image right, then text right/image left %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "How it works", variant: :info, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        A better way to manage projects
+      </h2>
+    </div>
+
+    <%# Row 1: Text left, visual right %>
+    <div class="mt-20 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+          <%= ui.icon "rocket-launch", size: 5, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-2xl font-bold tracking-tight">
+          Launch projects in minutes
+        </h3>
+        <p class="text-muted-foreground mt-4 text-base leading-relaxed">
+          Pre-built templates and smart defaults get you from zero to production in record time. No configuration headaches, no boilerplate. Just describe what you need and start building.
+        </p>
+        <ul class="mt-6 flex flex-col gap-3">
+          <li class="flex items-center gap-3 text-sm text-foreground">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary shrink-0" %>
+            One-click project scaffolding
+          </li>
+          <li class="flex items-center gap-3 text-sm text-foreground">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary shrink-0" %>
+            Automatic environment setup
+          </li>
+          <li class="flex items-center gap-3 text-sm text-foreground">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary shrink-0" %>
+            Built-in CI/CD pipelines
+          </li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-border bg-muted p-8 lg:p-12">
+        <div class="flex flex-col items-center justify-center gap-4 py-12 text-center">
+          <%= ui.icon "rocket-launch", size: 10, class: "text-muted-foreground" %>
+          <p class="text-sm text-muted-foreground">Project launch dashboard</p>
+        </div>
+      </div>
+    </div>
+
+    <%# Row 2: Visual left, text right %>
+    <div class="mt-20 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="rounded-xl border border-border bg-muted p-8 lg:order-1 lg:p-12">
+        <div class="flex flex-col items-center justify-center gap-4 py-12 text-center">
+          <%= ui.icon "chart-bar", size: 10, class: "text-muted-foreground" %>
+          <p class="text-sm text-muted-foreground">Analytics overview</p>
+        </div>
+      </div>
+      <div class="lg:order-2">
+        <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+          <%= ui.icon "chart-bar", size: 5, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-2xl font-bold tracking-tight">
+          Measure what matters
+        </h3>
+        <p class="text-muted-foreground mt-4 text-base leading-relaxed">
+          Every decision backed by data. Our analytics engine tracks performance, usage patterns, and team velocity so you always know where to focus next.
+        </p>
+        <ul class="mt-6 flex flex-col gap-3">
+          <li class="flex items-center gap-3 text-sm text-foreground">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary shrink-0" %>
+            Custom dashboards and reports
+          </li>
+          <li class="flex items-center gap-3 text-sm text-foreground">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary shrink-0" %>
+            Automated anomaly detection
+          </li>
+          <li class="flex items-center gap-3 text-sm text-foreground">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary shrink-0" %>
+            Export to any BI tool
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

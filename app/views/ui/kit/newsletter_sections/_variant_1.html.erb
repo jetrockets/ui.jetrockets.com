@@ -1,0 +1,22 @@
+<%# Variant 1: Centered simple — centered headline, subtitle, email input + button %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-2xl px-6 text-center">
+    <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+      Stay up to date
+    </h2>
+    <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+      Get the latest product updates, engineering insights, and company news delivered straight to your inbox. No spam, unsubscribe anytime.
+    </p>
+    <form class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+      <input type="email" placeholder="Enter your email address" class="bg-background border-border text-foreground placeholder:text-muted-foreground w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary sm:max-w-xs" />
+      <%= ui.btn url: "#" do %>
+        Subscribe
+        <%= ui.icon "paper-airplane", size: 5 %>
+      <% end %>
+    </form>
+    <p class="text-muted-foreground mt-4 text-xs">
+      We care about your data. Read our
+      <a href="#" class="text-foreground underline underline-offset-4 hover:text-primary">privacy policy</a>.
+    </p>
+  </div>
+</section>

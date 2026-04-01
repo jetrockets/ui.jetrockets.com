@@ -1,0 +1,31 @@
+<%# Variant 3: Split CTA — text on left, email input + button on right %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="flex flex-col items-center gap-10 lg:flex-row lg:justify-between">
+      <div class="max-w-xl text-center lg:text-left">
+        <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+          Stay ahead of the curve
+        </h2>
+        <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+          Get weekly insights on product development, design systems, and engineering best practices delivered straight to your inbox.
+        </p>
+      </div>
+      <div class="w-full max-w-md">
+        <form class="flex flex-col gap-3 sm:flex-row">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="bg-background border-border text-foreground placeholder:text-muted-foreground flex-1 rounded-md border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+          <%= ui.btn size: :lg, url: "#" do %>
+            Subscribe
+            <%= ui.icon "envelope", size: 5 %>
+          <% end %>
+        </form>
+        <p class="text-muted-foreground mt-3 text-sm">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

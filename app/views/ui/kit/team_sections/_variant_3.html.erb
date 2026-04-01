@@ -1,0 +1,32 @@
+<%# Variant 3: Compact list — horizontal list/row of team members, minimal info %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Built by a world-class team
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Engineers, designers, and operators from leading technology companies.
+      </p>
+    </div>
+
+    <div class="mt-16 flex flex-wrap items-center justify-center gap-10 lg:gap-16">
+      <% [
+        { name: "Sarah Chen", role: "CEO" },
+        { name: "Marcus Johnson", role: "CTO" },
+        { name: "Elena Rodriguez", role: "Design" },
+        { name: "David Kim", role: "Engineering" },
+        { name: "Aisha Patel", role: "Product" },
+        { name: "Tom Wilson", role: "Sales" }
+      ].each do |member| %>
+        <div class="flex items-center gap-3">
+          <%= ui.avatar size: 12 %>
+          <div>
+            <p class="text-foreground text-sm font-semibold"><%= member[:name] %></p>
+            <p class="text-muted-foreground text-xs"><%= member[:role] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

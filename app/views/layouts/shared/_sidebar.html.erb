@@ -52,6 +52,25 @@
   <% end %>
 
   <%= ui.sidebar_section do %>
+    <%= ui.sidebar_title do %>
+      Kit
+      <%= ui.badge "New", size: :xs, variant: :success %>
+    <% end %>
+    <%= ui.sidebar_menu do %>
+      <%= ui.sidebar_link "All Blocks", url: ui_kit_index_path %>
+      <%= ui.sidebar_link "Hero Sections", url: ui_kit_category_path(:hero_sections) %>
+      <%= ui.sidebar_link "Feature Sections", url: ui_kit_category_path(:feature_sections) %>
+      <%= ui.sidebar_link "Pricing Tables", url: ui_kit_category_path(:pricing_tables) %>
+      <%= ui.sidebar_link "Call to Action", url: ui_kit_category_path(:cta_sections) %>
+      <%= ui.sidebar_link "Testimonials", url: ui_kit_category_path(:testimonials) %>
+      <%= ui.sidebar_link "Team Sections", url: ui_kit_category_path(:team_sections) %>
+      <%= ui.sidebar_link "Stats & Logos", url: ui_kit_category_path(:stats_sections) %>
+      <%= ui.sidebar_link "Newsletter", url: ui_kit_category_path(:newsletter_sections) %>
+      <%= ui.sidebar_link "Footers", url: ui_kit_category_path(:footers) %>
+    <% end %>
+  <% end %>
+
+  <%= ui.sidebar_section do %>
     <%= ui.sidebar_title "Forms" %>
     <%= ui.sidebar_menu do %>
       <%= ui.sidebar_link "Core Form Builder", url: ui_form_builders_core_path %>

@@ -1,0 +1,95 @@
+<%# Variant 4: Large feature spotlight — one big feature with large image/screenshot and description beside it %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <%= ui.badge "New in v4.0", variant: :success, rounded: true %>
+        <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+          AI-powered code review that actually helps
+        </h2>
+        <p class="text-muted-foreground mt-6 text-lg leading-relaxed">
+          Stop wasting hours on repetitive review comments. Our AI understands your codebase, your style guide, and your team's conventions to deliver feedback that makes every pull request better.
+        </p>
+        <div class="mt-8 flex flex-col gap-6">
+          <div class="flex gap-4">
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon "sparkles", size: 5, class: "text-primary" %>
+            </div>
+            <div>
+              <h3 class="text-foreground text-sm font-semibold">Context-aware suggestions</h3>
+              <p class="text-muted-foreground mt-1 text-sm leading-relaxed">
+                Understands the full context of your changes, not just the diff. Catches bugs that traditional linters miss.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon "command-line", size: 5, class: "text-primary" %>
+            </div>
+            <div>
+              <h3 class="text-foreground text-sm font-semibold">One-click fixes</h3>
+              <p class="text-muted-foreground mt-1 text-sm leading-relaxed">
+                Apply suggested improvements directly from the review interface. No copy-pasting, no context switching.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon "eye", size: 5, class: "text-primary" %>
+            </div>
+            <div>
+              <h3 class="text-foreground text-sm font-semibold">Learns your patterns</h3>
+              <p class="text-muted-foreground mt-1 text-sm leading-relaxed">
+                Adapts to your team's coding style over time. The more you use it, the smarter it gets.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <%= ui.btn size: :lg, url: "#" do %>
+            Try it free
+            <%= ui.icon "arrow-right", size: 5 %>
+          <% end %>
+          <%= ui.btn "Watch demo", variant: :ghost, size: :lg, url: "#" %>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-border bg-muted">
+        <div class="p-6 lg:p-8">
+          <div class="rounded-lg border border-border bg-background p-6">
+            <div class="flex items-center gap-3 border-b border-border pb-4">
+              <div class="size-3 rounded-full bg-muted-foreground/30"></div>
+              <div class="size-3 rounded-full bg-muted-foreground/30"></div>
+              <div class="size-3 rounded-full bg-muted-foreground/30"></div>
+              <span class="ml-2 text-xs text-muted-foreground">code-review.ts</span>
+            </div>
+            <div class="mt-4 flex flex-col gap-3">
+              <div class="flex items-start gap-3">
+                <%= ui.icon "sparkles", size: 5, class: "text-primary shrink-0 mt-0.5" %>
+                <div>
+                  <p class="text-xs font-medium text-foreground">Potential null reference on line 42</p>
+                  <p class="mt-1 text-xs text-muted-foreground">
+                    The variable <code class="rounded bg-muted px-1 py-0.5">user.profile</code> may be undefined when accessed before the async fetch completes.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <%= ui.icon "sparkles", size: 5, class: "text-primary shrink-0 mt-0.5" %>
+                <div>
+                  <p class="text-xs font-medium text-foreground">Consider extracting to a shared utility</p>
+                  <p class="mt-1 text-xs text-muted-foreground">
+                    This formatting logic appears in 3 other files. A shared helper would reduce duplication.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-2 flex gap-2">
+                <%= ui.btn "Apply fix", size: :xs %>
+                <%= ui.btn "Dismiss", variant: :ghost, size: :xs %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

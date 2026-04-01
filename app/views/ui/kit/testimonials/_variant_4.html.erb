@@ -1,0 +1,47 @@
+<%# Variant 4: Wall of testimonials — masonry-like grid of many small quotes %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Hear from our community
+      </h2>
+      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
+        Thousands of developers and teams trust us every day.
+      </p>
+    </div>
+
+    <%
+      testimonials = [
+        { quote: "Absolutely love the developer experience. Everything just works out of the box.", name: "Alex Turner", role: "Senior Developer, Basecamp" },
+        { quote: "We migrated our entire stack in a weekend. The documentation is phenomenal and the migration guides saved us weeks of work.", name: "Priya Sharma", role: "Tech Lead, Finley" },
+        { quote: "Best-in-class support. The team goes above and beyond every single time.", name: "Tom Bradley", role: "Founder, Launchpad" },
+        { quote: "The analytics dashboard alone is worth the price. We finally have real visibility into our application performance.", name: "Nina Petrova", role: "Product Manager, Datawise" },
+        { quote: "I have tried every tool out there. This is the one that actually sticks. Simple, powerful, reliable.", name: "James Kofi", role: "Full-Stack Developer" },
+        { quote: "Our deployment frequency went from weekly to multiple times a day. The CI/CD pipeline integration is seamless.", name: "Laura Chen", role: "DevOps Lead, Scaleforce" },
+        { quote: "Clean API, great docs, responsive team. What more could you ask for?", name: "Ryan Mitchell", role: "Backend Engineer, Optio" },
+        { quote: "Saved us at least 20 hours per sprint. The automated testing and preview environments changed our workflow completely.", name: "Sophie Dubois", role: "Engineering Manager, Collective" }
+      ]
+    %>
+
+    <div class="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3">
+      <% testimonials.each do |testimonial| %>
+        <div class="mb-6 break-inside-avoid">
+          <%= ui.card do %>
+            <%= ui.card_body class: "flex flex-col gap-4" do %>
+              <p class="text-muted-foreground text-sm leading-relaxed">
+                "<%= testimonial[:quote] %>"
+              </p>
+              <div class="flex items-center gap-3">
+                <%= ui.avatar size: 8 %>
+                <div>
+                  <p class="text-foreground text-sm font-semibold"><%= testimonial[:name] %></p>
+                  <p class="text-muted-foreground text-xs"><%= testimonial[:role] %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

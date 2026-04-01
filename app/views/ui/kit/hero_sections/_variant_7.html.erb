@@ -1,0 +1,38 @@
+<%# Variant 7: With video placeholder — centered text, play button overlay on video placeholder %>
+<section class="bg-background py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+        See what's possible in<br class="hidden sm:block"> under two minutes
+      </h1>
+      <p class="text-muted-foreground mx-auto mt-6 max-w-xl text-lg leading-relaxed">
+        Watch how leading teams use our platform to streamline their
+        entire product development lifecycle.
+      </p>
+    </div>
+
+    <%# Video placeholder with play button %>
+    <div class="relative mx-auto mt-14 max-w-4xl">
+      <div class="bg-muted group relative cursor-pointer overflow-hidden rounded-2xl border border-border">
+        <div class="aspect-video flex items-center justify-center">
+          <%# Play button overlay %>
+          <div class="relative z-10 flex flex-col items-center gap-4">
+            <div class="bg-primary text-primary-foreground flex size-20 items-center justify-center rounded-full shadow-lg transition-transform group-hover:scale-110">
+              <%= ui.icon "play", size: 8 %>
+            </div>
+            <span class="text-muted-foreground text-sm font-medium">Watch the 2-minute overview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# CTAs below video %>
+    <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <%= ui.btn size: :lg, url: "#" do %>
+        Start your free trial
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+      <%= ui.btn "Read the docs", variant: :outline, size: :lg, url: "#" %>
+    </div>
+  </div>
+</section>

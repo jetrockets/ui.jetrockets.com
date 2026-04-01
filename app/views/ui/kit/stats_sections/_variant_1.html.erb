@@ -1,0 +1,27 @@
+<%# Variant 1: 4-column numbers — simple row of 4 big stat numbers with labels %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Trusted by teams worldwide
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Our platform powers collaboration for thousands of organizations, from startups to enterprises.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-2 gap-8 lg:grid-cols-4">
+      <% [
+        { value: "10,000+", label: "Active teams" },
+        { value: "2.4M", label: "Projects created" },
+        { value: "99.99%", label: "Uptime SLA" },
+        { value: "150+", label: "Countries served" }
+      ].each do |stat| %>
+        <div class="text-center">
+          <p class="text-foreground text-4xl font-bold tracking-tight sm:text-5xl"><%= stat[:value] %></p>
+          <p class="text-muted-foreground mt-2 text-sm font-medium"><%= stat[:label] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

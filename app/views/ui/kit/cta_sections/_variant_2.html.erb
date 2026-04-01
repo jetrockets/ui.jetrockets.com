@@ -1,0 +1,21 @@
+<%# Variant 2: With background — bg-muted section with bold headline and 2 buttons %>
+<section class="bg-muted py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-6 text-center">
+    <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+      Start building something amazing
+    </h2>
+    <p class="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-relaxed">
+      Whether you are a startup finding product-market fit or an enterprise scaling globally, our platform adapts to your needs.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <%= ui.btn size: :lg, url: "#" do %>
+        Start free trial
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+      <%= ui.btn "Schedule a demo", variant: :outline, size: :lg, url: "#" %>
+    </div>
+    <p class="text-muted-foreground mt-6 text-sm">
+      No credit card required. 14-day free trial.
+    </p>
+  </div>
+</section>

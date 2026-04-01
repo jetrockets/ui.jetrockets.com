@@ -1,0 +1,42 @@
+<%# Variant 8: Minimal with stats — minimal headline + subtitle, row of 3-4 stat numbers below %>
+<section class="bg-background py-20 lg:py-28">
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="max-w-2xl">
+      <h1 class="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+        Infrastructure that scales with you
+      </h1>
+      <p class="text-muted-foreground mt-6 text-xl leading-relaxed">
+        Reliable, fast, and secure. We power the backends of the world's
+        fastest-growing companies so they can focus on what they do best.
+      </p>
+      <div class="mt-8">
+        <%= ui.btn size: :lg, url: "#" do %>
+          Get started
+          <%= ui.icon "arrow-right", size: 5 %>
+        <% end %>
+      </div>
+    </div>
+
+    <%# Stats row %>
+    <div class="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-12 lg:grid-cols-4">
+      <%
+        stats = [
+          { value: "99.99%", label: "Uptime SLA" },
+          { value: "150ms", label: "Avg. response time" },
+          { value: "50M+", label: "API requests / day" },
+          { value: "2,500+", label: "Companies worldwide" }
+        ]
+      %>
+      <% stats.each do |stat| %>
+        <div>
+          <div class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+            <%= stat[:value] %>
+          </div>
+          <div class="text-muted-foreground mt-1 text-sm">
+            <%= stat[:label] %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<%# Variant 3: Split left text / right image %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <%# Left: Text content %>
+      <div>
+        <p class="text-primary text-sm font-semibold uppercase tracking-wider">
+          Developer-first platform
+        </p>
+        <h1 class="text-foreground mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+          Ship production-ready apps in half the time
+        </h1>
+        <p class="text-muted-foreground mt-6 text-lg leading-relaxed">
+          Stop wrestling with infrastructure. Our platform handles the heavy lifting so your
+          team can focus on building features that matter to your users.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <%= ui.btn size: :lg, url: "#" do %>
+            <%= ui.icon "rocket-launch", size: 5 %>
+            Start free trial
+          <% end %>
+          <%= ui.btn "View documentation", variant: :outline, size: :lg, url: "#" %>
+        </div>
+        <div class="text-muted-foreground mt-6 flex items-center gap-2 text-sm">
+          <%= ui.icon "check-circle", size: 5 %>
+          <span>No credit card required. Free for up to 3 projects.</span>
+        </div>
+      </div>
+
+      <%# Right: Image placeholder %>
+      <div class="bg-muted relative overflow-hidden rounded-2xl border border-border">
+        <div class="aspect-[4/3] flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-muted-foreground/40 mb-2">
+              <%= ui.icon "photo", size: 10 %>
+            </div>
+            <p class="text-muted-foreground text-sm">App screenshot</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

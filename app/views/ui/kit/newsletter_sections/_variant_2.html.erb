@@ -1,0 +1,46 @@
+<%# Variant 2: Split layout — text on left, form on right %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+          Subscribe to our newsletter
+        </h2>
+        <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+          Join over 10,000 subscribers who receive weekly insights on product development, design systems, and scaling engineering teams.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-center gap-2">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+            <span class="text-muted-foreground text-sm">Weekly curated content from our engineering blog</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+            <span class="text-muted-foreground text-sm">Early access to new features and beta programs</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+            <span class="text-muted-foreground text-sm">Exclusive invites to webinars and live events</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:pl-12">
+        <form class="flex flex-col gap-4">
+          <div>
+            <label for="newsletter-name" class="text-foreground mb-1.5 block text-sm font-medium">Full name</label>
+            <input type="text" id="newsletter-name" placeholder="Jane Doe" class="bg-background border-border text-foreground placeholder:text-muted-foreground w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div>
+            <label for="newsletter-email" class="text-foreground mb-1.5 block text-sm font-medium">Email address</label>
+            <input type="email" id="newsletter-email" placeholder="jane@example.com" class="bg-background border-border text-foreground placeholder:text-muted-foreground w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <%= ui.btn "Subscribe", block: true, url: "#" %>
+          <p class="text-muted-foreground text-xs">
+            No spam. Unsubscribe at any time.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

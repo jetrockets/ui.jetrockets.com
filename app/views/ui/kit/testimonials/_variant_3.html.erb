@@ -1,0 +1,41 @@
+<%# Variant 3: Carousel style — single testimonial displayed prominently (static) %>
+<section class="bg-muted py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-6">
+    <div class="text-center">
+      <p class="text-primary text-sm font-semibold uppercase tracking-wider">Testimonials</p>
+      <h2 class="text-foreground mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        What our customers say
+      </h2>
+    </div>
+
+    <div class="mt-12">
+      <%= ui.card do %>
+        <%= ui.card_body class: "p-8 sm:p-12" do %>
+          <div class="flex flex-col items-center text-center">
+            <div class="flex gap-1 mb-6">
+              <% 5.times do %>
+                <%= ui.icon "star", size: 6, class: "text-primary" %>
+              <% end %>
+            </div>
+            <blockquote class="text-foreground text-xl font-medium leading-relaxed sm:text-2xl">
+              "Switching to this platform was a turning point for our company. The developer experience is unmatched, and the performance gains we saw were immediate. Our page load times dropped by 60% in the first week."
+            </blockquote>
+            <div class="mt-8 flex flex-col items-center gap-4">
+              <%= ui.avatar size: 14 %>
+              <div>
+                <p class="text-foreground text-base font-semibold">Jessica Williams</p>
+                <p class="text-muted-foreground text-sm">Head of Product, Prism Analytics</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="mt-8 flex items-center justify-center gap-2">
+      <span class="bg-primary size-2.5 rounded-full"></span>
+      <span class="bg-border size-2.5 rounded-full"></span>
+      <span class="bg-border size-2.5 rounded-full"></span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<%# Variant 3: In cards — each stat in its own card, using the stat component %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Platform metrics
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Real-time performance data from our infrastructure and community.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <%= ui.stat do %>
+        <%= ui.stat_icon "users" %>
+        <%= ui.stat_label "Active Users" %>
+        <%= ui.stat_value "24,500" %>
+        <%= ui.stat_description "+12.3% from last month", variant: :success %>
+      <% end %>
+
+      <%= ui.stat do %>
+        <%= ui.stat_icon "document" %>
+        <%= ui.stat_label "Projects Created" %>
+        <%= ui.stat_value "1.2M" %>
+        <%= ui.stat_description "+8.1% from last month", variant: :success %>
+      <% end %>
+
+      <%= ui.stat do %>
+        <%= ui.stat_icon "clock" %>
+        <%= ui.stat_label "Avg. Response Time" %>
+        <%= ui.stat_value "45ms" %>
+        <%= ui.stat_description "-15% from last week", variant: :success %>
+      <% end %>
+
+      <%= ui.stat do %>
+        <%= ui.stat_icon "star" %>
+        <%= ui.stat_label "Satisfaction Score" %>
+        <%= ui.stat_value "4.9/5" %>
+        <%= ui.stat_description "Based on 12,000 reviews" %>
+      <% end %>
+    </div>
+  </div>
+</section>

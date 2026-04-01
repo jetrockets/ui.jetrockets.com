@@ -55,6 +55,11 @@ Rails.application.routes.draw do
     get "list"
     get "navbar"
 
+    namespace :kit do
+      get "/", action: :index, as: :index
+      get "/:category", action: :show, as: :category
+    end
+
     namespace :form_builders do
       get "core"
       get "default"

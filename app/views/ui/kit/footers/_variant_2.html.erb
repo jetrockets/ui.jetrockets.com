@@ -1,0 +1,34 @@
+<%# Variant 2: Simple centered — centered logo, single row of links, social icons, copyright %>
+<footer class="bg-background border-t border-border py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 text-center lg:px-8">
+    <div class="flex items-center justify-center gap-2">
+      <%= ui.icon "cube", size: 7, class: "text-primary" %>
+      <span class="text-foreground text-lg font-bold">Acme Inc</span>
+    </div>
+
+    <nav class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Features</a>
+      <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Pricing</a>
+      <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">About</a>
+      <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Blog</a>
+      <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Docs</a>
+      <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Contact</a>
+    </nav>
+
+    <div class="mt-8 flex items-center justify-center gap-4">
+      <a href="#" class="text-muted-foreground hover:text-foreground transition">
+        <%= ui.icon "github", size: 5 %>
+      </a>
+      <a href="#" class="text-muted-foreground hover:text-foreground transition">
+        <%= ui.icon "globe-alt", size: 5 %>
+      </a>
+      <a href="#" class="text-muted-foreground hover:text-foreground transition">
+        <%= ui.icon "envelope", size: 5 %>
+      </a>
+    </div>
+
+    <div class="mt-8 border-t border-border pt-8">
+      <p class="text-muted-foreground text-sm">&copy; 2026 Acme Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

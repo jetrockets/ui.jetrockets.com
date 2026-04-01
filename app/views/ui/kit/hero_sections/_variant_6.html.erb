@@ -1,0 +1,30 @@
+<%# Variant 6: Gradient background — subtle gradient bg, centered text, glowing CTA %>
+<section class="relative overflow-hidden bg-primary py-24 lg:py-36">
+  <%# Decorative gradient orbs %>
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-primary-foreground/5 blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-primary-foreground/10 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-3xl px-6 text-center">
+    <h1 class="text-primary-foreground text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+      Where great ideas become great products
+    </h1>
+    <p class="text-primary-foreground/70 mx-auto mt-6 max-w-2xl text-lg leading-relaxed">
+      Join thousands of makers, founders, and teams who use our platform
+      to turn their vision into reality. No complexity, no compromise.
+    </p>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <%= ui.btn "Get started for free", variant: :secondary, size: :lg, url: "#" %>
+      <%= ui.btn variant: :ghost, size: :lg, url: "#", class: "text-primary-foreground hover:text-primary-foreground border border-primary-foreground/20 hover:bg-primary-foreground/10" do %>
+        <%= ui.icon "play", size: 5 %>
+        Watch the tour
+      <% end %>
+    </div>
+
+    <p class="text-primary-foreground/50 mt-8 text-sm">
+      Free forever for personal projects. No credit card needed.
+    </p>
+  </div>
+</section>

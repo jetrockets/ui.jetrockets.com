@@ -1,0 +1,51 @@
+<%# Variant 4: Split right text / left image (reversed layout of #3) %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <%# Left: Image placeholder %>
+      <div class="order-2 lg:order-1">
+        <div class="bg-muted relative overflow-hidden rounded-2xl border border-border">
+          <div class="aspect-[4/3] flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-muted-foreground/40 mb-2">
+                <%= ui.icon "chart-bar", size: 10 %>
+              </div>
+              <p class="text-muted-foreground text-sm">Dashboard preview</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%# Right: Text content %>
+      <div class="order-1 lg:order-2">
+        <%= ui.badge "Analytics", variant: :success, size: :sm, rounded: true %>
+        <h1 class="text-foreground mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+          Understand your users like never before
+        </h1>
+        <p class="text-muted-foreground mt-6 text-lg leading-relaxed">
+          Real-time analytics, cohort tracking, and predictive insights that help you
+          make data-driven decisions. No SQL required.
+        </p>
+
+        <ul class="mt-8 space-y-3">
+          <% ["Real-time event streaming", "Custom dashboards in minutes", "Privacy-first by default"].each do |feature| %>
+            <li class="flex items-center gap-3">
+              <span class="text-primary flex-shrink-0">
+                <%= ui.icon "check", size: 5 %>
+              </span>
+              <span class="text-foreground"><%= feature %></span>
+            </li>
+          <% end %>
+        </ul>
+
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <%= ui.btn "Explore analytics", size: :lg, url: "#" %>
+          <%= ui.btn "Live demo", variant: :link, size: :lg, url: "#" do %>
+            Live demo
+            <%= ui.icon "arrow-right", size: 5 %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

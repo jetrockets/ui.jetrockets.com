@@ -189,6 +189,16 @@ crumb :ui_navbar do
   link "Navbar", ui_navbar_path
 end
 
+# Kit breadcrumbs
+crumb :ui_kit do
+  link "UI Kit", ui_kit_index_path
+end
+
+crumb :ui_kit_category do |title|
+  link title, request.path
+  parent :ui_kit
+end
+
 crumb :privacy_policy do
   link "Privacy Policy", privacy_path
   parent :root

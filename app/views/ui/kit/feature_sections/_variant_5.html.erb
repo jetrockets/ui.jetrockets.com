@@ -1,0 +1,129 @@
+<%# Variant 5: Bento grid — modern bento-style grid with mixed-size cards, icons and descriptions %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "Capabilities", variant: :info, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        One platform, endless possibilities
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Every feature designed to work together seamlessly, so your team can focus on what matters most.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <%# Large card spanning 2 columns %>
+      <div class="rounded-xl border border-border bg-muted p-8 md:col-span-2">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-12">
+          <div class="flex-1">
+            <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon "chart-bar", size: 5, class: "text-primary" %>
+            </div>
+            <h3 class="text-foreground mt-4 text-xl font-bold">Advanced analytics dashboard</h3>
+            <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+              Real-time metrics, custom reports, and predictive insights all in one place. Drill down into any data point to understand the story behind the numbers.
+            </p>
+            <div class="mt-4">
+              <%= ui.btn "Explore analytics", variant: :link, size: :sm, url: "#" %>
+            </div>
+          </div>
+          <div class="flex-1 rounded-lg border border-border bg-background p-6">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-muted-foreground">Active users</span>
+                <span class="text-xs font-semibold text-foreground">12,847</span>
+              </div>
+              <div class="h-2 rounded-full bg-muted">
+                <div class="h-2 w-4/5 rounded-full bg-primary"></div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-muted-foreground">Conversion rate</span>
+                <span class="text-xs font-semibold text-foreground">4.2%</span>
+              </div>
+              <div class="h-2 rounded-full bg-muted">
+                <div class="h-2 w-2/5 rounded-full bg-primary"></div>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-muted-foreground">Revenue</span>
+                <span class="text-xs font-semibold text-foreground">$284k</span>
+              </div>
+              <div class="h-2 rounded-full bg-muted">
+                <div class="h-2 w-3/5 rounded-full bg-primary"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%# Tall card %>
+      <div class="row-span-2 rounded-xl border border-border bg-muted p-8">
+        <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+          <%= ui.icon "shield-check", size: 5, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-xl font-bold">Security center</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Comprehensive security monitoring with threat detection, compliance tracking, and automated incident response.
+        </p>
+        <div class="mt-6 flex flex-col gap-4">
+          <div class="rounded-lg border border-border bg-background p-4">
+            <div class="flex items-center gap-3">
+              <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+              <div>
+                <p class="text-xs font-medium text-foreground">SOC 2 Type II</p>
+                <p class="text-xs text-muted-foreground">Compliant</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg border border-border bg-background p-4">
+            <div class="flex items-center gap-3">
+              <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+              <div>
+                <p class="text-xs font-medium text-foreground">GDPR</p>
+                <p class="text-xs text-muted-foreground">Compliant</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg border border-border bg-background p-4">
+            <div class="flex items-center gap-3">
+              <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+              <div>
+                <p class="text-xs font-medium text-foreground">ISO 27001</p>
+                <p class="text-xs text-muted-foreground">Certified</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg border border-border bg-background p-4">
+            <div class="flex items-center gap-3">
+              <%= ui.icon "check-circle", size: 5, class: "text-primary" %>
+              <div>
+                <p class="text-xs font-medium text-foreground">HIPAA</p>
+                <p class="text-xs text-muted-foreground">Ready</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%# Two regular cards on the bottom left %>
+      <div class="rounded-xl border border-border bg-muted p-8">
+        <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+          <%= ui.icon "bolt", size: 5, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-lg font-bold">Instant deployments</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Push to main and watch your changes go live in under 30 seconds with zero-downtime deployments.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-border bg-muted p-8">
+        <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+          <%= ui.icon "globe-alt", size: 5, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-lg font-bold">Edge computing</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Run serverless functions at the edge for sub-millisecond response times across every continent.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

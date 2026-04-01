@@ -1,0 +1,57 @@
+<%# Variant 9: Split with feature list — text + checklist of features on left, image on right %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <%# Left: Text + feature checklist %>
+      <div>
+        <%= ui.badge "All-in-one platform", variant: :default, size: :sm, rounded: true %>
+        <h1 class="text-foreground mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+          Everything you need to launch and grow
+        </h1>
+        <p class="text-muted-foreground mt-6 text-lg leading-relaxed">
+          Replace your patchwork of tools with one cohesive platform.
+          From deployment to monitoring, we have you covered.
+        </p>
+
+        <%# Feature checklist %>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          <%
+            features = [
+              { icon: "bolt", text: "Instant deployments" },
+              { icon: "shield-check", text: "Enterprise-grade security" },
+              { icon: "globe-alt", text: "Global CDN included" },
+              { icon: "chart-bar", text: "Built-in analytics" },
+              { icon: "users", text: "Team collaboration" },
+              { icon: "clock", text: "24/7 expert support" }
+            ]
+          %>
+          <% features.each do |feature| %>
+            <div class="flex items-start gap-3">
+              <span class="text-primary mt-0.5 flex-shrink-0">
+                <%= ui.icon feature[:icon], size: 5 %>
+              </span>
+              <span class="text-foreground text-sm font-medium"><%= feature[:text] %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+          <%= ui.btn "Start free trial", size: :lg, url: "#" %>
+          <%= ui.btn "Compare plans", variant: :outline, size: :lg, url: "#" %>
+        </div>
+      </div>
+
+      <%# Right: Image placeholder %>
+      <div class="bg-muted relative overflow-hidden rounded-2xl border border-border">
+        <div class="aspect-square flex items-center justify-center lg:aspect-[4/5]">
+          <div class="text-center">
+            <div class="text-muted-foreground/40 mb-2">
+              <%= ui.icon "squares-2x2", size: 10 %>
+            </div>
+            <p class="text-muted-foreground text-sm">Product interface</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

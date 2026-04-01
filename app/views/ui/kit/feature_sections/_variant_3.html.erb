@@ -1,0 +1,96 @@
+<%# Variant 3: Centered features list — centered section header, then 4-column grid of icon + text features %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "Platform", variant: :info, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        Built for modern development teams
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        From ideation to production, every tool you need is already here. No plugins, no add-ons, no surprises.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "cloud-arrow-up", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Cloud-native deploys</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Push to deploy with zero-downtime rollouts and automatic rollback on failure.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "lock-closed", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Secure by default</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Secrets management, network policies, and vulnerability scanning out of the box.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "cpu-chip", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Auto-scaling</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Handles traffic spikes gracefully with intelligent resource allocation and scaling policies.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "globe-alt", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Global edge network</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Content delivered from 200+ edge locations for sub-50ms latency worldwide.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "code-bracket", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Developer-first API</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          RESTful and GraphQL APIs with comprehensive SDKs for every major language.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "bell", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Smart alerts</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Context-aware notifications that reduce noise and surface only what matters.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "puzzle-piece", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">100+ integrations</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Connect with Slack, GitHub, Jira, Linear, and every tool your team already uses.
+        </p>
+      </div>
+
+      <div class="text-center">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
+          <%= ui.icon "server-stack", size: 6, class: "text-primary" %>
+        </div>
+        <h3 class="text-foreground mt-4 text-base font-semibold">Managed databases</h3>
+        <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+          Postgres, Redis, and object storage with automated backups and point-in-time recovery.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

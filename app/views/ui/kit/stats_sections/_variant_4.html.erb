@@ -1,0 +1,37 @@
+<%# Variant 4: Split stats + text — description on left, stat grid on right %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      <div>
+        <%= ui.badge "Our Impact", variant: :info, rounded: true %>
+        <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+          Helping teams deliver faster, together
+        </h2>
+        <p class="text-muted-foreground mt-6 text-lg leading-relaxed">
+          Since launching in 2021, we have helped thousands of engineering teams reduce their deployment time, improve code quality, and collaborate more effectively across time zones.
+        </p>
+        <div class="mt-8">
+          <%= ui.btn size: :lg, url: "#" do %>
+            Read our story
+            <%= ui.icon "arrow-right", size: 5 %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6">
+        <% [
+          { value: "10,000+", label: "Teams onboarded", description: "+2,400 this quarter" },
+          { value: "3.5M", label: "Deployments", description: "Across all customers" },
+          { value: "58%", label: "Faster releases", description: "Average improvement" },
+          { value: "99.99%", label: "Uptime", description: "Over the past 12 months" }
+        ].each do |stat| %>
+          <div class="rounded-lg border border-border bg-background p-6">
+            <p class="text-foreground text-3xl font-bold tracking-tight"><%= stat[:value] %></p>
+            <p class="text-foreground mt-2 text-sm font-semibold"><%= stat[:label] %></p>
+            <p class="text-muted-foreground mt-1 text-xs"><%= stat[:description] %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+<%# Variant 4: Featured + grid — one large featured member + grid of smaller ones %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Our team
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Passionate people building the future of collaboration.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <%# Featured member %>
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col items-center text-center gap-6 p-8" do %>
+          <%= ui.avatar size: 28 %>
+          <div>
+            <h3 class="text-foreground text-xl font-bold">Sarah Chen</h3>
+            <p class="text-primary mt-1 text-sm font-medium">CEO & Co-founder</p>
+          </div>
+          <p class="text-muted-foreground text-sm leading-relaxed max-w-md">
+            Sarah founded Acme in 2021 with a mission to make professional tools accessible to every team. Before Acme, she spent a decade building developer platforms at Stripe and led a 200-person product organization.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="#" class="text-muted-foreground hover:text-foreground transition">
+              <%= ui.icon "github", size: 5 %>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-foreground transition">
+              <%= ui.icon "globe-alt", size: 5 %>
+            </a>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%# Grid of other members %>
+      <div class="grid grid-cols-2 gap-8 content-center">
+        <% [
+          { name: "Marcus Johnson", role: "CTO" },
+          { name: "Elena Rodriguez", role: "Head of Design" },
+          { name: "David Kim", role: "Head of Engineering" },
+          { name: "Aisha Patel", role: "Product Manager" },
+          { name: "Tom Wilson", role: "Lead Developer" },
+          { name: "Mia Thompson", role: "UX Researcher" }
+        ].each do |member| %>
+          <div class="flex flex-col items-center text-center">
+            <%= ui.avatar size: 16 %>
+            <h3 class="text-foreground mt-3 text-sm font-semibold"><%= member[:name] %></h3>
+            <p class="text-muted-foreground mt-1 text-xs"><%= member[:role] %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+<%# Variant 2: Centered with badge — badge on top, headline, description, 2 CTAs, trusted-by logos row %>
+<section class="bg-background py-20 lg:py-32">
+  <div class="mx-auto max-w-4xl px-6 text-center">
+    <div class="mb-6 inline-flex">
+      <%= ui.badge variant: :info, size: :md, rounded: true do %>
+        <%= ui.icon "sparkles", size: 4 %>
+        <span class="ml-1">New: AI-powered workflows just launched</span>
+      <% end %>
+    </div>
+
+    <h1 class="text-foreground text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+      The platform that grows<br class="hidden sm:block"> with your ambition
+    </h1>
+    <p class="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-relaxed">
+      From your first prototype to your millionth user, we provide the infrastructure,
+      tools, and support you need at every stage.
+    </p>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <%= ui.btn size: :lg, url: "#" do %>
+        Start building today
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+      <%= ui.btn "Talk to sales", variant: :ghost, size: :lg, url: "#" %>
+    </div>
+
+    <div class="mt-16 border-t border-border pt-10">
+      <p class="text-muted-foreground mb-8 text-sm font-medium uppercase tracking-wider">
+        Trusted by teams at
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+        <% ["Acme Corp", "Globex", "Initech", "Hooli", "Piedmont"].each do |name| %>
+          <div class="text-muted-foreground/50 text-lg font-bold tracking-tight">
+            <%= name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

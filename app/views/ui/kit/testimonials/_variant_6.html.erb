@@ -1,0 +1,43 @@
+<%# Variant 6: Logo + quote — company logo placeholder + quote + person info %>
+<section class="bg-muted py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Trusted by industry leaders
+      </h2>
+      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
+        Leading companies rely on our platform to power their products.
+      </p>
+    </div>
+
+    <%
+      testimonials = [
+        { quote: "Moving to this platform cut our infrastructure costs by 40% while improving performance across the board. The ROI was immediate.", name: "Katherine Lee", role: "CTO", company: "Meridian" },
+        { quote: "The collaboration features are a game-changer. Our distributed team feels more connected than ever, and code reviews happen twice as fast.", name: "Robert Andersen", role: "VP of Engineering", company: "Elevate" },
+        { quote: "We evaluated a dozen solutions before choosing this one. Six months later, it remains the best technical decision we have made this year.", name: "Fatima Al-Rashid", role: "Director of Technology", company: "Crestline" }
+      ]
+    %>
+
+    <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <% testimonials.each do |testimonial| %>
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex flex-col gap-6 p-8" do %>
+            <div class="text-muted-foreground/50 text-xl font-bold tracking-tight">
+              <%= testimonial[:company] %>
+            </div>
+            <p class="text-muted-foreground text-base leading-relaxed flex-1">
+              "<%= testimonial[:quote] %>"
+            </p>
+            <div class="border-border flex items-center gap-3 border-t pt-6">
+              <%= ui.avatar size: 10 %>
+              <div>
+                <p class="text-foreground text-sm font-semibold"><%= testimonial[:name] %></p>
+                <p class="text-muted-foreground text-sm"><%= testimonial[:role] %>, <%= testimonial[:company] %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

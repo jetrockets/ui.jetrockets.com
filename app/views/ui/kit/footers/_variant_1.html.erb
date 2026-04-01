@@ -1,0 +1,60 @@
+<%# Variant 1: 4-column links — logo + 4 columns of links (Product, Company, Resources, Legal) + copyright %>
+<footer class="bg-background border-t border-border py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-5">
+      <div class="col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2">
+          <%= ui.icon "cube", size: 7, class: "text-primary" %>
+          <span class="text-foreground text-lg font-bold">Acme Inc</span>
+        </div>
+        <p class="text-muted-foreground mt-4 text-sm leading-relaxed">
+          Building tools that help teams ship faster and work smarter.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Product</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Features</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Pricing</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Integrations</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Company</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">About</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Blog</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Careers</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Resources</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Documentation</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Help Center</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Community</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">API Reference</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-foreground text-sm font-semibold">Legal</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Privacy Policy</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Terms of Service</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Cookie Policy</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Licenses</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 border-t border-border pt-8">
+      <p class="text-muted-foreground text-sm">&copy; 2026 Acme Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

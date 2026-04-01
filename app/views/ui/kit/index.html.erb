@@ -1,0 +1,32 @@
+<% set_meta_tags(
+  title: "UI Kit - Ready-made Blocks",
+  description: "Beautiful, ready-to-use page sections built with Rails UI Components.",
+  keywords: "Rails, UI Kit, Blocks, Sections, Landing Page"
+) %>
+<% breadcrumb :ui_kit %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "UI Kit" %>
+    <%= ui.header_subtitle "Beautiful, ready-to-use page sections built with Rails UI Components. Copy and paste into your project." %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-8">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <% Ui::KitController::CATEGORIES.each do |key, cat| %>
+      <%= link_to ui_kit_category_path(key), class: "group" do %>
+        <%= ui.card class: "h-full transition-shadow hover:shadow-md" do %>
+          <%= ui.card_body class: "flex flex-col gap-2" do %>
+            <h3 class="font-semibold text-foreground group-hover:text-primary transition-colors"><%= cat[:title] %></h3>
+            <p class="text-sm text-muted-foreground"><%= cat[:description] %></p>
+            <% count = Dir.glob(Rails.root.join("app/views/ui/kit/#{key}/_variant_*.html.erb")).count %>
+            <% if count > 0 %>
+              <%= ui.badge "#{count} variants", size: :xs %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</article>

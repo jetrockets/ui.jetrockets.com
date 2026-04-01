@@ -1,0 +1,66 @@
+<%# Variant 6: Features with numbers — numbered features (01, 02, 03, 04) in a stacked layout %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4">
+        <%= ui.badge "Process", variant: :info, rounded: true %>
+        <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+          From idea to production in four steps
+        </h2>
+        <p class="text-muted-foreground mt-4 text-base leading-relaxed">
+          We stripped away the complexity so you can focus on building great products. Here is how it works.
+        </p>
+        <div class="mt-8">
+          <%= ui.btn size: :lg, url: "#" do %>
+            Get started
+            <%= ui.icon "arrow-right", size: 5 %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="flex flex-col gap-8">
+          <div class="group flex gap-6 rounded-xl border border-border p-6 transition-colors hover:bg-muted">
+            <span class="text-3xl font-bold text-primary/30">01</span>
+            <div>
+              <h3 class="text-foreground text-lg font-semibold">Connect your repository</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Link your GitHub, GitLab, or Bitbucket repository with a single click. We automatically detect your framework, language, and build configuration.
+              </p>
+            </div>
+          </div>
+
+          <div class="group flex gap-6 rounded-xl border border-border p-6 transition-colors hover:bg-muted">
+            <span class="text-3xl font-bold text-primary/30">02</span>
+            <div>
+              <h3 class="text-foreground text-lg font-semibold">Configure your environment</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Set environment variables, configure secrets, and define your infrastructure requirements. Our smart defaults handle 90% of the work for you.
+              </p>
+            </div>
+          </div>
+
+          <div class="group flex gap-6 rounded-xl border border-border p-6 transition-colors hover:bg-muted">
+            <span class="text-3xl font-bold text-primary/30">03</span>
+            <div>
+              <h3 class="text-foreground text-lg font-semibold">Deploy with confidence</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Every push triggers automated tests, security scans, and preview deployments. Promote to production when you are ready with a single approval.
+              </p>
+            </div>
+          </div>
+
+          <div class="group flex gap-6 rounded-xl border border-border p-6 transition-colors hover:bg-muted">
+            <span class="text-3xl font-bold text-primary/30">04</span>
+            <div>
+              <h3 class="text-foreground text-lg font-semibold">Monitor and iterate</h3>
+              <p class="text-muted-foreground mt-2 text-sm leading-relaxed">
+                Real-time performance monitoring, error tracking, and user analytics help you understand impact and plan your next move with data, not guesses.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

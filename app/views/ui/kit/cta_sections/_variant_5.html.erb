@@ -1,0 +1,33 @@
+<%# Variant 5: With stats — CTA section with 3 stat numbers above the button %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-6 text-center">
+    <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+      Trusted by developers worldwide
+    </h2>
+    <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg leading-relaxed">
+      Our platform powers the next generation of web applications. See why teams choose us.
+    </p>
+
+    <div class="border-border mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 border-y py-10 sm:grid-cols-3">
+      <div>
+        <p class="text-primary text-4xl font-bold">10K+</p>
+        <p class="text-muted-foreground mt-2 text-sm font-medium">Active teams</p>
+      </div>
+      <div>
+        <p class="text-primary text-4xl font-bold">99.9%</p>
+        <p class="text-muted-foreground mt-2 text-sm font-medium">Uptime SLA</p>
+      </div>
+      <div>
+        <p class="text-primary text-4xl font-bold">2.5M</p>
+        <p class="text-muted-foreground mt-2 text-sm font-medium">Deployments per month</p>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <%= ui.btn size: :lg, url: "#" do %>
+        Join these teams
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+    </div>
+  </div>
+</section>

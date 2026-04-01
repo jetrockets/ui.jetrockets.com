@@ -1,0 +1,138 @@
+<%# Variant 8: Tabs-style features — section with visual tabs/pills showing different feature categories %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "Product", variant: :info, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        Tools for every stage of your workflow
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        From planning to monitoring, we have you covered at every step.
+      </p>
+    </div>
+
+    <%# Tab pills %>
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-2">
+      <%= ui.btn size: :sm, rounded: true do %>
+        <%= ui.icon "code-bracket", size: 4 %>
+        Development
+      <% end %>
+      <%= ui.btn variant: :secondary, size: :sm, rounded: true do %>
+        <%= ui.icon "rocket-launch", size: 4 %>
+        Deployment
+      <% end %>
+      <%= ui.btn variant: :secondary, size: :sm, rounded: true do %>
+        <%= ui.icon "chart-bar", size: 4 %>
+        Monitoring
+      <% end %>
+      <%= ui.btn variant: :secondary, size: :sm, rounded: true do %>
+        <%= ui.icon "shield-check", size: 4 %>
+        Security
+      <% end %>
+    </div>
+
+    <%# Tab content: Development (shown by default) %>
+    <div class="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h3 class="text-foreground text-2xl font-bold tracking-tight">
+          Write better code, faster
+        </h3>
+        <p class="text-muted-foreground mt-4 text-base leading-relaxed">
+          A development environment that understands your project. Intelligent autocomplete, inline documentation, and real-time collaboration make every keystroke count.
+        </p>
+        <div class="mt-8 flex flex-col gap-5">
+          <div class="flex items-start gap-4">
+            <div class="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10">
+              <%= ui.icon "sparkles", size: 4, class: "text-primary" %>
+            </div>
+            <div>
+              <h4 class="text-foreground text-sm font-semibold">AI code completion</h4>
+              <p class="text-muted-foreground mt-1 text-sm">
+                Context-aware suggestions trained on your codebase and coding patterns.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10">
+              <%= ui.icon "command-line", size: 4, class: "text-primary" %>
+            </div>
+            <div>
+              <h4 class="text-foreground text-sm font-semibold">Integrated terminal</h4>
+              <p class="text-muted-foreground mt-1 text-sm">
+                Full terminal access with command history, aliases, and environment management.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10">
+              <%= ui.icon "eye", size: 4, class: "text-primary" %>
+            </div>
+            <div>
+              <h4 class="text-foreground text-sm font-semibold">Live preview</h4>
+              <p class="text-muted-foreground mt-1 text-sm">
+                See your changes rendered in real-time as you type, with hot module replacement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%# Visual panel %>
+      <div class="rounded-xl border border-border bg-muted p-6">
+        <div class="rounded-lg border border-border bg-background">
+          <%# Mock code editor %>
+          <div class="flex items-center gap-2 border-b border-border px-4 py-3">
+            <div class="size-2.5 rounded-full bg-muted-foreground/30"></div>
+            <div class="size-2.5 rounded-full bg-muted-foreground/30"></div>
+            <div class="size-2.5 rounded-full bg-muted-foreground/30"></div>
+            <span class="ml-2 text-xs text-muted-foreground">app.tsx</span>
+          </div>
+          <div class="p-4">
+            <div class="flex flex-col gap-2 font-mono text-xs">
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">1</span>
+                <span class="text-muted-foreground">import</span>
+                <span class="text-foreground">{ Dashboard }</span>
+                <span class="text-muted-foreground">from</span>
+                <span class="text-foreground">'./components'</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">2</span>
+                <span class="text-foreground">&nbsp;</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">3</span>
+                <span class="text-muted-foreground">export default function</span>
+                <span class="text-foreground">App() {</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">4</span>
+                <span class="text-foreground">&nbsp;&nbsp;return &lt;Dashboard</span>
+              </div>
+              <div class="flex gap-3 rounded bg-primary/5 px-1">
+                <span class="select-none text-muted-foreground">5</span>
+                <span class="text-primary">&nbsp;&nbsp;&nbsp;&nbsp;metrics={['revenue', 'users']}</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">6</span>
+                <span class="text-foreground">&nbsp;&nbsp;&nbsp;&nbsp;refresh={30}</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">7</span>
+                <span class="text-foreground">&nbsp;&nbsp;/&gt;</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="select-none text-muted-foreground">8</span>
+                <span class="text-foreground">}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center gap-2">
+          <%= ui.icon "sparkles", size: 4, class: "text-primary" %>
+          <span class="text-xs text-muted-foreground">AI suggestion: Add error boundary for production resilience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

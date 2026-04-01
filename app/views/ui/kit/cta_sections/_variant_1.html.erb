@@ -1,0 +1,17 @@
+<%# Variant 1: Simple centered — headline + subtitle + single CTA button %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-3xl px-6 text-center">
+    <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+      Ready to transform your workflow?
+    </h2>
+    <p class="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-relaxed">
+      Join thousands of teams who have already streamlined their processes and boosted productivity. Start your free trial today.
+    </p>
+    <div class="mt-10">
+      <%= ui.btn size: :lg, url: "#" do %>
+        Get started for free
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+    </div>
+  </div>
+</section>

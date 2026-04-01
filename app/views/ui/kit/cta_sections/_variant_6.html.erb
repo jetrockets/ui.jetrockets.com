@@ -1,0 +1,27 @@
+<%# Variant 6: Card CTA — CTA wrapped in a card with icon and description %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-2xl px-6">
+    <%= ui.card do %>
+      <%= ui.card_body class: "flex flex-col items-center gap-6 p-10 text-center" do %>
+        <div class="bg-muted flex size-16 items-center justify-center rounded-full">
+          <%= ui.icon "sparkles", size: 8, class: "text-primary" %>
+        </div>
+        <div>
+          <h3 class="text-foreground text-2xl font-bold">
+            Upgrade to Pro
+          </h3>
+          <p class="text-muted-foreground mx-auto mt-3 max-w-md text-base leading-relaxed">
+            Unlock advanced analytics, priority support, and unlimited team members. Everything you need to scale your business.
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-3 sm:flex-row">
+          <%= ui.btn size: :lg, url: "#" do %>
+            Upgrade now
+            <%= ui.icon "arrow-right", size: 5 %>
+          <% end %>
+          <%= ui.btn "Compare plans", variant: :ghost, size: :lg, url: "#" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

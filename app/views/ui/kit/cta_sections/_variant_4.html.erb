@@ -1,0 +1,24 @@
+<%# Variant 4: Banner style — narrow horizontal banner with text and CTA inline %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="bg-muted border-border flex flex-col items-center justify-between gap-6 rounded-lg border px-8 py-6 sm:flex-row">
+      <div class="flex items-center gap-4 text-center sm:text-left">
+        <div class="hidden sm:block">
+          <%= ui.icon "rocket-launch", size: 8, class: "text-primary" %>
+        </div>
+        <div>
+          <h3 class="text-foreground text-lg font-semibold">
+            Ready to launch your next project?
+          </h3>
+          <p class="text-muted-foreground mt-1 text-sm">
+            Get up and running in under 5 minutes with our quickstart guide.
+          </p>
+        </div>
+      </div>
+      <%= ui.btn size: :md, url: "#" do %>
+        Get started
+        <%= ui.icon "arrow-right", size: 5 %>
+      <% end %>
+    </div>
+  </div>
+</section>

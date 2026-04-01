@@ -1,0 +1,52 @@
+<%# Variant 1: 3-column grid with icons — section title + 3 feature cards, each with icon, title, description %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <%= ui.badge "Features", variant: :info, rounded: true %>
+      <h2 class="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        Everything you need to scale
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Powerful tools designed to help your team move faster, collaborate better, and deliver with confidence.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <div class="flex size-12 items-center justify-center rounded-lg bg-primary/10">
+            <%= ui.icon "bolt", size: 6, class: "text-primary" %>
+          </div>
+          <h3 class="text-foreground text-lg font-semibold">Lightning fast builds</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Incremental compilation and smart caching reduce build times by up to 90%. Deploy in seconds, not minutes.
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <div class="flex size-12 items-center justify-center rounded-lg bg-primary/10">
+            <%= ui.icon "shield-check", size: 6, class: "text-primary" %>
+          </div>
+          <h3 class="text-foreground text-lg font-semibold">Enterprise-grade security</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            SOC 2 compliant with end-to-end encryption, role-based access control, and audit logging built in from day one.
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= ui.card do %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <div class="flex size-12 items-center justify-center rounded-lg bg-primary/10">
+            <%= ui.icon "chart-bar", size: 6, class: "text-primary" %>
+          </div>
+          <h3 class="text-foreground text-lg font-semibold">Real-time analytics</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Track every metric that matters with customizable dashboards, alerts, and automated reporting for your entire team.
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

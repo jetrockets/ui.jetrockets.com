@@ -1,0 +1,151 @@
+<%# Variant 4: Comparison table -- Full feature comparison table with check/x marks %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+        Compare plans side by side
+      </h2>
+      <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
+        Find the perfect plan for your needs. Every feature laid out clearly.
+      </p>
+    </div>
+
+    <%# Plan headers %>
+    <div class="mt-12 overflow-x-auto">
+      <table class="w-full min-w-[640px]">
+        <thead>
+          <tr class="border-border border-b">
+            <th class="text-foreground w-2/5 pb-6 text-left text-sm font-medium">Features</th>
+            <th class="w-1/5 pb-6 text-center">
+              <div class="flex flex-col items-center gap-1">
+                <span class="text-foreground text-lg font-semibold">Starter</span>
+                <span class="text-foreground text-3xl font-bold">$0</span>
+                <span class="text-muted-foreground text-xs">/month</span>
+                <div class="mt-2"><%= ui.btn "Get started", variant: :outline, size: :sm, url: "#" %></div>
+              </div>
+            </th>
+            <th class="w-1/5 pb-6 text-center">
+              <div class="flex flex-col items-center gap-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-foreground text-lg font-semibold">Pro</span>
+                  <%= ui.badge "Popular", variant: :default, size: :xs, rounded: true %>
+                </div>
+                <span class="text-foreground text-3xl font-bold">$29</span>
+                <span class="text-muted-foreground text-xs">/month</span>
+                <div class="mt-2"><%= ui.btn "Start trial", size: :sm, url: "#" %></div>
+              </div>
+            </th>
+            <th class="w-1/5 pb-6 text-center">
+              <div class="flex flex-col items-center gap-1">
+                <span class="text-foreground text-lg font-semibold">Enterprise</span>
+                <span class="text-foreground text-3xl font-bold">$99</span>
+                <span class="text-muted-foreground text-xs">/month</span>
+                <div class="mt-2"><%= ui.btn "Contact us", variant: :outline, size: :sm, url: "#" %></div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          <%# Section: Usage %>
+          <tr>
+            <td colspan="4" class="text-foreground pb-2 pt-8 text-xs font-semibold uppercase tracking-wider">Usage</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Projects</td>
+            <td class="text-muted-foreground py-3 text-center">3</td>
+            <td class="text-foreground py-3 text-center font-medium">Unlimited</td>
+            <td class="text-foreground py-3 text-center font-medium">Unlimited</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Storage</td>
+            <td class="text-muted-foreground py-3 text-center">1 GB</td>
+            <td class="text-foreground py-3 text-center font-medium">50 GB</td>
+            <td class="text-foreground py-3 text-center font-medium">500 GB</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Team members</td>
+            <td class="text-muted-foreground py-3 text-center">1</td>
+            <td class="text-foreground py-3 text-center font-medium">Up to 20</td>
+            <td class="text-foreground py-3 text-center font-medium">Unlimited</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">API requests / month</td>
+            <td class="text-muted-foreground py-3 text-center">1,000</td>
+            <td class="text-foreground py-3 text-center font-medium">100,000</td>
+            <td class="text-foreground py-3 text-center font-medium">Unlimited</td>
+          </tr>
+
+          <%# Section: Features %>
+          <tr>
+            <td colspan="4" class="text-foreground pb-2 pt-8 text-xs font-semibold uppercase tracking-wider">Features</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Basic analytics</td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Advanced analytics</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Custom domains</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Custom workflows</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">White-label branding</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+
+          <%# Section: Security & Support %>
+          <tr>
+            <td colspan="4" class="text-foreground pb-2 pt-8 text-xs font-semibold uppercase tracking-wider">Security & Support</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Two-factor authentication</td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">SSO / SAML</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Audit logs</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="py-3 text-center"><%= ui.icon "check", size: 5, class: "text-primary mx-auto" %></td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">Support level</td>
+            <td class="text-muted-foreground py-3 text-center">Community</td>
+            <td class="text-foreground py-3 text-center font-medium">Priority</td>
+            <td class="text-foreground py-3 text-center font-medium">24/7 Dedicated</td>
+          </tr>
+          <tr class="border-border border-b">
+            <td class="text-foreground py-3">SLA guarantee</td>
+            <td class="py-3 text-center"><%= ui.icon "x-mark", size: 5, class: "text-muted-foreground mx-auto" %></td>
+            <td class="text-muted-foreground py-3 text-center">99.9%</td>
+            <td class="text-foreground py-3 text-center font-medium">99.99%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

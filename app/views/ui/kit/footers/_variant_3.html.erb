@@ -1,0 +1,68 @@
+<%# Variant 3: 2-column — company info on left, link columns on right %>
+<footer class="bg-background border-t border-border py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <%= ui.icon "cube", size: 7, class: "text-primary" %>
+          <span class="text-foreground text-lg font-bold">Acme Inc</span>
+        </div>
+        <p class="text-muted-foreground mt-4 max-w-md text-sm leading-relaxed">
+          We help teams build better products faster. Our platform combines powerful development tools with intuitive design, so you can focus on what matters most.
+        </p>
+        <div class="mt-6 flex items-center gap-4">
+          <a href="#" class="text-muted-foreground hover:text-foreground transition">
+            <%= ui.icon "github", size: 5 %>
+          </a>
+          <a href="#" class="text-muted-foreground hover:text-foreground transition">
+            <%= ui.icon "globe-alt", size: 5 %>
+          </a>
+          <a href="#" class="text-muted-foreground hover:text-foreground transition">
+            <%= ui.icon "envelope", size: 5 %>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        <div>
+          <h3 class="text-foreground text-sm font-semibold">Product</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Features</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Pricing</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Integrations</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-foreground text-sm font-semibold">Company</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">About</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Blog</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Careers</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-foreground text-sm font-semibold">Support</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Help Center</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Documentation</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">API Reference</a></li>
+            <li><a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 border-t border-border pt-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <p class="text-muted-foreground text-sm">&copy; 2026 Acme Inc. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Privacy</a>
+        <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Terms</a>
+        <a href="#" class="text-muted-foreground hover:text-foreground text-sm transition">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
