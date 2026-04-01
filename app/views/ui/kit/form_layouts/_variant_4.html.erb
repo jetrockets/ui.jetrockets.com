@@ -1,0 +1,43 @@
+<%# Variant 4: Stepped form with tabs — onboarding / wizard style %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-3xl px-6">
+    <div class="mb-8 text-center">
+      <h2 class="text-foreground text-2xl font-bold tracking-tight">Create Your Account</h2>
+      <p class="text-muted-foreground mt-1 text-sm">Complete your profile to get started.</p>
+    </div>
+
+    <%# Step indicators %>
+    <%= ui.stepper class: "mb-10" do %>
+      <%= ui.stepper_step "Personal", status: :completed %>
+      <%= ui.stepper_step "Company", status: :current %>
+      <%= ui.stepper_step "Preferences", status: :pending %>
+    <% end %>
+
+    <%= ui.card do %>
+      <%= ui.card_header do %>
+        <%= ui.card_title "Company Details" %>
+        <%= ui.card_subtitle "Tell us about your organization." %>
+      <% end %>
+      <%= ui.card_body class: "flex flex-col gap-4" do %>
+        <%= form_with url: root_path, class: "flex flex-col gap-4" do |f| %>
+          <%= f.text_field :company_name, label: "Company name", placeholder: "Acme Inc." %>
+          <%= f.url_field :website, label: "Website", placeholder: "https://example.com" %>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.select :industry, options_for_select(["Technology", "Finance", "Healthcare", "Education", "E-commerce", "Other"]), { include_blank: "Select industry..." }, { label: "Industry" } %>
+            <%= f.select :company_size, options_for_select(["1-10", "11-50", "51-200", "201-1000", "1000+"]), { include_blank: "Select size..." }, { label: "Company size" } %>
+          </div>
+          <%= f.text_area :about, label: "About", placeholder: "Brief description of your company...", rows: 3 %>
+        <% end %>
+      <% end %>
+      <%= ui.card_footer do %>
+        <div class="flex w-full justify-between">
+          <%= ui.btn "Back", variant: :secondary %>
+          <%= ui.btn do %>
+            Continue
+            <%= ui.icon "arrow-right", size: 5 %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

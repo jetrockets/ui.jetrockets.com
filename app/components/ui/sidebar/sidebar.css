@@ -13,7 +13,7 @@
   }
 
   .sidebar__title {
-    @apply font-semibold text-foreground;
+    @apply flex items-center justify-between gap-2 font-semibold text-foreground;
   }
 
   .sidebar__link {

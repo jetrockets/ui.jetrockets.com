@@ -1,0 +1,61 @@
+<%# Variant 2: Card-based form — form sections in separate cards %>
+<section class="bg-muted/30 py-16 lg:py-24">
+  <div class="mx-auto max-w-3xl px-6">
+    <div class="mb-8">
+      <h2 class="text-foreground text-2xl font-bold tracking-tight">Create Project</h2>
+      <p class="text-muted-foreground mt-1 text-sm">Set up a new project with all the details.</p>
+    </div>
+
+    <%= form_with url: root_path, class: "flex flex-col gap-6" do |f| %>
+      <%# General %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "General" %>
+          <%= ui.card_subtitle "Basic project information" %>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <%= f.text_field :name, label: "Project name", placeholder: "My Awesome Project" %>
+          <%= f.text_area :description, label: "Description", placeholder: "Describe what this project is about...", hint: "Markdown is supported" %>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.select :category, options_for_select([["Engineering", "eng"], ["Design", "design"], ["Marketing", "mkt"], ["Product", "product"]]), { include_blank: "Select category..." }, { label: "Category" } %>
+            <%= f.select :priority, options_for_select([["Low", "low"], ["Medium", "medium"], ["High", "high"], ["Critical", "critical"]]), { include_blank: "Select..." }, { label: "Priority" } %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%# Timeline %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Timeline" %>
+          <%= ui.card_subtitle "Set project dates and milestones" %>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.date_field :start_date, label: "Start date" %>
+            <%= f.date_field :end_date, label: "End date" %>
+          </div>
+          <%= f.text_field :budget, label: "Budget", placeholder: "$0.00", hint: "Optional — leave blank if not applicable" %>
+        <% end %>
+      <% end %>
+
+      <%# Access %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Access & Visibility" %>
+          <%= ui.card_subtitle "Control who can see and edit this project" %>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <%= f.select :visibility, options_for_select([["Public — anyone in workspace", "public"], ["Private — invite only", "private"], ["Team — team members only", "team"]]), {}, { label: "Visibility" } %>
+          <%= f.toggler :allow_comments, label: "Allow comments", hint: "Team members can leave comments on tasks" %>
+          <%= f.toggler :send_notifications, label: "Send notifications", hint: "Notify team members about project updates" %>
+        <% end %>
+      <% end %>
+
+      <%# Actions %>
+      <div class="flex justify-end gap-3">
+        <%= ui.btn "Cancel", variant: :secondary %>
+        <%= ui.btn "Create project" %>
+      </div>
+    <% end %>
+  </div>
+</section>

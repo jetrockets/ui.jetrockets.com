@@ -1,0 +1,148 @@
+<%# Variant 4: Detail page — user profile with activity and info cards %>
+<section class="bg-background py-8 lg:py-12">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <%# Breadcrumb %>
+    <div class="mb-6 flex items-center gap-2 text-sm">
+      <a href="#" class="text-muted-foreground hover:text-foreground transition">Users</a>
+      <span class="text-muted-foreground">/</span>
+      <span class="text-foreground font-medium">Sarah Johnson</span>
+    </div>
+
+    <%# Profile Header %>
+    <%= ui.card class: "mb-6" do %>
+      <%= ui.card_body class: "flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between" do %>
+        <div class="flex items-center gap-4">
+          <div class="flex size-16 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary">
+            SJ
+          </div>
+          <div>
+            <h1 class="text-foreground text-xl font-bold">Sarah Johnson</h1>
+            <p class="text-muted-foreground text-sm">sarah@example.com</p>
+            <div class="mt-1 flex items-center gap-2">
+              <%= ui.badge "Admin", size: :xs, variant: :info %>
+              <%= ui.badge "Active", size: :xs, variant: :success %>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <%= ui.btn variant: :secondary do %>
+            <%= ui.icon "envelope", size: 5 %>
+            Message
+          <% end %>
+          <%= ui.btn do %>
+            <%= ui.icon "pencil-square", size: 5 %>
+            Edit profile
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <%# Left column — info %>
+      <div class="flex flex-col gap-6">
+        <%# Details card %>
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Details" %>
+          <% end %>
+          <%= ui.card_body do %>
+            <dl class="flex flex-col gap-4">
+              <% [
+                { label: "Full Name", value: "Sarah Elizabeth Johnson" },
+                { label: "Email", value: "sarah@example.com" },
+                { label: "Phone", value: "+1 (555) 123-4567" },
+                { label: "Department", value: "Engineering" },
+                { label: "Location", value: "San Francisco, CA" },
+                { label: "Joined", value: "January 12, 2024" },
+              ].each do |item| %>
+                <div class="flex justify-between">
+                  <dt class="text-muted-foreground text-sm"><%= item[:label] %></dt>
+                  <dd class="text-foreground text-sm font-medium"><%= item[:value] %></dd>
+                </div>
+              <% end %>
+            </dl>
+          <% end %>
+        <% end %>
+
+        <%# Permissions card %>
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title "Permissions" %>
+          <% end %>
+          <%= ui.card_body do %>
+            <div class="flex flex-col gap-3">
+              <% [
+                { perm: "User management", granted: true },
+                { perm: "Content editing", granted: true },
+                { perm: "Billing access", granted: false },
+                { perm: "API keys", granted: true },
+                { perm: "Audit logs", granted: false },
+              ].each do |item| %>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-foreground"><%= item[:perm] %></span>
+                  <% if item[:granted] %>
+                    <%= ui.icon "check-circle", size: 5, class: "text-success" %>
+                  <% else %>
+                    <%= ui.icon "x-circle", size: 5, class: "text-muted-foreground" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# Right column — activity %>
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        <%# Stats %>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <%= ui.stat do %>
+            <%= ui.stat_label "Projects" %>
+            <%= ui.stat_value "12" %>
+          <% end %>
+          <%= ui.stat do %>
+            <%= ui.stat_label "Tasks Done" %>
+            <%= ui.stat_value "248" %>
+          <% end %>
+          <%= ui.stat do %>
+            <%= ui.stat_label "Comments" %>
+            <%= ui.stat_value "1,024" %>
+          <% end %>
+          <%= ui.stat do %>
+            <%= ui.stat_label "Uptime" %>
+            <%= ui.stat_value "99.8%" %>
+          <% end %>
+        </div>
+
+        <%# Recent activity %>
+        <%= ui.card do %>
+          <%= ui.card_header(justify: :between, align: :center, direction: :row) do %>
+            <%= ui.card_title "Recent Activity" %>
+            <%= ui.btn "View all", variant: :ghost, size: :sm %>
+          <% end %>
+          <%= ui.card_body do %>
+            <%= ui.timeline do %>
+              <% [
+                { action: "Deployed", desc: "v2.4.1 to production", time: "2 hours ago", variant: :success },
+                { action: "Merged", desc: "PR #847 — Fix authentication flow", time: "5 hours ago", variant: :info },
+                { action: "Commented", desc: "on Issue #312 — API rate limiting", time: "Yesterday", variant: :default },
+                { action: "Created", desc: "new project — Dashboard Redesign", time: "2 days ago", variant: :info },
+                { action: "Updated", desc: "team permissions for Engineering", time: "3 days ago", variant: :warning },
+              ].each do |event| %>
+                <%= ui.timeline_item do %>
+                  <%= ui.timeline_dot variant: event[:variant] %>
+                  <%= ui.timeline_content do %>
+                    <%= ui.timeline_time event[:time] %>
+                    <p class="text-foreground text-sm">
+                      <strong><%= event[:action] %></strong> <%= event[:desc] %>
+                    </p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

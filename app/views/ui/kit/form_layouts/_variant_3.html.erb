@@ -1,0 +1,24 @@
+<%# Variant 3: Compact single-card form — contact / support form %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-xl px-6">
+    <%= ui.card do %>
+      <%= ui.card_header do %>
+        <%= ui.card_title "Contact Us" %>
+        <%= ui.card_subtitle "Fill out the form below and we'll get back to you within 24 hours." %>
+      <% end %>
+      <%= ui.card_body class: "flex flex-col gap-4" do %>
+        <%= form_with url: root_path, class: "flex flex-col gap-4" do |f| %>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.text_field :first_name, label: "First name", placeholder: "Jane" %>
+            <%= f.text_field :last_name, label: "Last name", placeholder: "Doe" %>
+          </div>
+          <%= f.email_field :email, label: "Email", placeholder: "jane@example.com" %>
+          <%= f.select :subject, options_for_select(["General inquiry", "Technical support", "Billing question", "Partnership", "Other"]), { include_blank: "Select a topic..." }, { label: "Subject" } %>
+          <%= f.text_area :message, label: "Message", placeholder: "Tell us how we can help...", rows: 5 %>
+          <%= f.check_box :agree, label: "I agree to the privacy policy and terms of service" %>
+          <%= ui.btn "Send message", block: true %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>

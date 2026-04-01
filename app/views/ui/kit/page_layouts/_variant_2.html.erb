@@ -1,0 +1,129 @@
+<%# Variant 2: Dashboard page with stats + table — orders overview %>
+<section class="bg-background py-8 lg:py-12">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <%# Page Header %>
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 class="text-foreground text-2xl font-bold tracking-tight">Orders</h1>
+        <p class="text-muted-foreground mt-1 text-sm">Track and manage all customer orders.</p>
+      </div>
+      <%= ui.tabs variant: :pill do %>
+        <%= ui.tabs_item "All", href: "#", active: true %>
+        <%= ui.tabs_item "Pending", href: "#" %>
+        <%= ui.tabs_item "Completed", href: "#" %>
+        <%= ui.tabs_item "Cancelled", href: "#" %>
+      <% end %>
+    </div>
+
+    <%# Stats Row %>
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <%= ui.stat do %>
+        <%= ui.stat_label "Total Orders" %>
+        <%= ui.stat_value "3,456" %>
+        <%= ui.stat_description "+12.5% from last month", variant: :success %>
+      <% end %>
+      <%= ui.stat do %>
+        <%= ui.stat_label "Revenue" %>
+        <%= ui.stat_value "$128,430" %>
+        <%= ui.stat_description "+8.2% from last month", variant: :success %>
+      <% end %>
+      <%= ui.stat do %>
+        <%= ui.stat_label "Avg. Order Value" %>
+        <%= ui.stat_value "$37.15" %>
+        <%= ui.stat_description "-2.1% from last month", variant: :error %>
+      <% end %>
+      <%= ui.stat do %>
+        <%= ui.stat_label "Pending Fulfillment" %>
+        <%= ui.stat_value "23" %>
+        <%= ui.stat_description "5 urgent", variant: :warning %>
+      <% end %>
+    </div>
+
+    <%# Filters + Search %>
+    <div class="mt-6">
+      <%= form_with url: root_path, method: :get, class: "!flex-row !flex-wrap !items-end !gap-3" do |f| %>
+        <div class="w-full sm:w-auto sm:flex-1 sm:min-w-[200px]">
+          <%= f.search_field :query, label: false, placeholder: "Search orders..." %>
+        </div>
+        <%= f.select :date_range, options_for_select(["Last 7 days", "Last 30 days", "Last 90 days", "This year", "All time"]), { include_blank: false }, { label: false } %>
+        <%= ui.btn variant: :secondary do %>
+          <%= ui.icon "funnel", size: 5 %>
+          More filters
+        <% end %>
+      <% end %>
+    </div>
+
+    <%# Active Filters %>
+    <div class="mt-3 flex flex-wrap items-center gap-2">
+      <span class="text-muted-foreground text-sm font-medium">Active Filters:</span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        Date: Last 30 days
+        <button type="button" class="hover:text-primary/70 transition"><%= ui.icon "x-mark", size: 3 %></button>
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        Status: Pending
+        <button type="button" class="hover:text-primary/70 transition"><%= ui.icon "x-mark", size: 3 %></button>
+      </span>
+    </div>
+
+    <%# Orders Table %>
+    <div class="mt-6">
+      <%= ui.card do %>
+        <%= ui.table size: :sm, hovered: true do %>
+          <%= ui.table_thead do %>
+            <%= ui.table_tr do %>
+              <%= ui.table_th "Order" %>
+              <%= ui.table_th "Customer" %>
+              <%= ui.table_th "Items" %>
+              <%= ui.table_th "Total" %>
+              <%= ui.table_th "Status" %>
+              <%= ui.table_th "Date" %>
+              <%= ui.table_th "" %>
+            <% end %>
+          <% end %>
+          <%= ui.table_tbody do %>
+            <% [
+              { id: "#ORD-7291", customer: "Sarah Johnson", items: 3, total: "$124.00", status: "Completed", status_v: :success, date: "Mar 28, 2024" },
+              { id: "#ORD-7290", customer: "Michael Chen", items: 1, total: "$59.99", status: "Pending", status_v: :warning, date: "Mar 28, 2024" },
+              { id: "#ORD-7289", customer: "Emily Rodriguez", items: 5, total: "$287.50", status: "Completed", status_v: :success, date: "Mar 27, 2024" },
+              { id: "#ORD-7288", customer: "James Wilson", items: 2, total: "$89.00", status: "Processing", status_v: :info, date: "Mar 27, 2024" },
+              { id: "#ORD-7287", customer: "Lisa Anderson", items: 1, total: "$34.99", status: "Cancelled", status_v: :error, date: "Mar 26, 2024" },
+              { id: "#ORD-7286", customer: "David Kim", items: 4, total: "$199.00", status: "Completed", status_v: :success, date: "Mar 26, 2024" },
+            ].each do |order| %>
+              <%= ui.table_tr do %>
+                <%= ui.table_td do %>
+                  <span class="font-medium text-foreground"><%= order[:id] %></span>
+                <% end %>
+                <%= ui.table_td order[:customer] %>
+                <%= ui.table_td do %>
+                  <span class="text-muted-foreground"><%= order[:items] %> item<%= order[:items] > 1 ? "s" : "" %></span>
+                <% end %>
+                <%= ui.table_td do %>
+                  <span class="font-medium text-foreground"><%= order[:total] %></span>
+                <% end %>
+                <%= ui.table_td do %>
+                  <%= ui.badge order[:status], size: :xs, variant: order[:status_v] %>
+                <% end %>
+                <%= ui.table_td order[:date] %>
+                <%= ui.table_td actions: true do %>
+                  <%= ui.btn "View", variant: :ghost, size: :xs %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <div class="flex items-center justify-between border-t border-border px-6 py-4">
+          <p class="text-muted-foreground text-sm">Showing <strong class="text-foreground">1-6</strong> of <strong class="text-foreground">3,456</strong> orders</p>
+          <div class="flex gap-1">
+            <%= ui.btn ui.icon("chevron-left"), variant: :secondary, size: :icon_sm %>
+            <%= ui.btn "1", variant: :default, size: :sm %>
+            <%= ui.btn "2", variant: :secondary, size: :sm %>
+            <%= ui.btn "3", variant: :secondary, size: :sm %>
+            <%= ui.btn ui.icon("chevron-right"), variant: :secondary, size: :icon_sm %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

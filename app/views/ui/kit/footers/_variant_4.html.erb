@@ -9,7 +9,7 @@
         </p>
       </div>
       <div class="flex items-start justify-start lg:justify-end">
-        <%= form_with url: root_path, class: "w-full max-w-md" do |f| %>
+        <%= form_with url: root_path, class: "w-full max-w-md !gap-0" do |f| %>
           <%= ui.group do %>
             <%= f.email_field :email, label: false, placeholder: "Enter your email" %>
             <%= ui.btn "Subscribe" %>

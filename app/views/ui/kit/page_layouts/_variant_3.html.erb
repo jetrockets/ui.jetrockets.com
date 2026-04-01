@@ -1,0 +1,175 @@
+<%# Variant 3: Sidebar filters + content area — products catalog %>
+<section class="bg-background py-8 lg:py-12">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <%# Page Header %>
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 class="text-foreground text-2xl font-bold tracking-tight">Products</h1>
+        <p class="text-muted-foreground mt-1 text-sm">Browse and manage your product catalog.</p>
+      </div>
+      <div class="flex gap-2">
+        <%= ui.btn variant: :secondary do %>
+          <%= ui.icon "arrow-up-tray", size: 5 %>
+          Import
+        <% end %>
+        <%= ui.btn do %>
+          <%= ui.icon "plus", size: 5 %>
+          Add product
+        <% end %>
+      </div>
+    </div>
+
+    <%# Active Filters %>
+    <div class="mt-4 flex flex-wrap items-center gap-2">
+      <span class="text-muted-foreground text-sm font-medium">Active Filters:</span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        Category: Electronics
+        <button type="button" class="hover:text-primary/70 transition"><%= ui.icon "x-mark", size: 3 %></button>
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        Price: $50 – $500
+        <button type="button" class="hover:text-primary/70 transition"><%= ui.icon "x-mark", size: 3 %></button>
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        In Stock
+        <button type="button" class="hover:text-primary/70 transition"><%= ui.icon "x-mark", size: 3 %></button>
+      </span>
+      <%= ui.btn "Clear all", variant: :link, size: :xs %>
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-4">
+      <%# Sidebar Filters %>
+      <div class="lg:col-span-1">
+        <%= ui.card do %>
+          <%= ui.card_header do %>
+            <%= ui.card_title do %>
+              <%= ui.icon "funnel", size: 5 %>
+              Filters
+            <% end %>
+          <% end %>
+          <%= ui.card_body class: "flex flex-col gap-6" do %>
+            <%= form_with url: root_path, method: :get, class: "flex flex-col gap-6" do |f| %>
+              <%= f.search_field :query, label: false, placeholder: "Search products..." %>
+
+              <div>
+                <p class="text-foreground mb-3 text-sm font-medium">Category</p>
+                <%= f.group class: "form__checkbox_collection" do %>
+                  <%= f.check_box :electronics, label: "Electronics" %>
+                  <%= f.check_box :clothing, label: "Clothing" %>
+                  <%= f.check_box :home_garden, label: "Home & Garden" %>
+                  <%= f.check_box :books, label: "Books" %>
+                  <%= f.check_box :sports, label: "Sports & Outdoors" %>
+                <% end %>
+              </div>
+
+              <div>
+                <p class="text-foreground mb-3 text-sm font-medium">Price Range</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <%= f.number_field :price_min, label: false, placeholder: "Min" %>
+                  <%= f.number_field :price_max, label: false, placeholder: "Max" %>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-foreground mb-3 text-sm font-medium">Status</p>
+                <%= f.group class: "form__checkbox_collection" do %>
+                  <%= f.check_box :in_stock, label: "In Stock" %>
+                  <%= f.check_box :on_sale, label: "On Sale" %>
+                  <%= f.check_box :featured, label: "Featured" %>
+                <% end %>
+              </div>
+
+              <div>
+                <%= f.select :sort_by, options_for_select(["Newest first", "Price: Low to High", "Price: High to Low", "Best selling", "Name A-Z"]), { include_blank: false }, { label: "Sort by" } %>
+              </div>
+
+              <%= ui.btn "Apply filters", block: true %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# Product table %>
+      <div class="lg:col-span-3">
+        <div class="mb-4 flex items-center justify-between">
+          <p class="text-muted-foreground text-sm"><strong class="text-foreground">156</strong> products found</p>
+          <div class="flex gap-1">
+            <%= ui.btn ui.icon("list-bullet"), variant: :default, size: :icon_sm %>
+            <%= ui.btn ui.icon("squares-2x2"), variant: :secondary, size: :icon_sm %>
+          </div>
+        </div>
+
+        <%= ui.card do %>
+          <%= ui.table size: :sm, hovered: true do %>
+            <%= ui.table_thead do %>
+              <%= ui.table_tr do %>
+                <%= ui.table_th "Product" %>
+                <%= ui.table_th "SKU" %>
+                <%= ui.table_th "Price" %>
+                <%= ui.table_th "Stock" %>
+                <%= ui.table_th "Status" %>
+                <%= ui.table_th "" %>
+              <% end %>
+            <% end %>
+            <%= ui.table_tbody do %>
+              <% [
+                { name: "Wireless Headphones Pro", sku: "WHP-001", price: "$199.99", stock: 45, status: "Active", status_v: :success },
+                { name: "USB-C Hub 7-in-1", sku: "UCH-042", price: "$49.99", stock: 128, status: "Active", status_v: :success },
+                { name: "Mechanical Keyboard", sku: "MKB-015", price: "$149.00", stock: 0, status: "Out of stock", status_v: :error },
+                { name: "Portable Monitor 15\"", sku: "PM-108", price: "$329.99", stock: 12, status: "Low stock", status_v: :warning },
+                { name: "Webcam 4K Ultra", sku: "WC-067", price: "$89.99", stock: 67, status: "Active", status_v: :success },
+                { name: "Smart Desk Lamp", sku: "SDL-023", price: "$75.00", stock: 34, status: "Active", status_v: :success },
+                { name: "Noise Canceling Earbuds", sku: "NCE-091", price: "$129.99", stock: 8, status: "Low stock", status_v: :warning },
+              ].each do |product| %>
+                <%= ui.table_tr do %>
+                  <%= ui.table_td do %>
+                    <div class="flex items-center gap-3">
+                      <div class="flex size-10 items-center justify-center rounded-lg bg-muted">
+                        <%= ui.icon "cube", size: 5, class: "text-muted-foreground" %>
+                      </div>
+                      <span class="font-medium text-foreground"><%= product[:name] %></span>
+                    </div>
+                  <% end %>
+                  <%= ui.table_td do %>
+                    <code class="text-xs text-muted-foreground"><%= product[:sku] %></code>
+                  <% end %>
+                  <%= ui.table_td do %>
+                    <span class="font-medium text-foreground"><%= product[:price] %></span>
+                  <% end %>
+                  <%= ui.table_td do %>
+                    <span class="text-muted-foreground"><%= product[:stock] %> units</span>
+                  <% end %>
+                  <%= ui.table_td do %>
+                    <%= ui.badge product[:status], size: :xs, variant: product[:status_v] %>
+                  <% end %>
+                  <%= ui.table_td actions: true do %>
+                    <%= ui.dropdown do %>
+                      <%= ui.dropdown_trigger ui.icon("ellipsis-vertical"), as: :btn, variant: :ghost, size: :icon_sm %>
+                      <%= ui.dropdown_menu do %>
+                        <%= ui.dropdown_link "Edit", url: "#" %>
+                        <%= ui.dropdown_link "Duplicate", url: "#" %>
+                        <%= ui.dropdown_divider %>
+                        <%= ui.dropdown_link "Archive", url: "#", class: "text-destructive" %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <div class="flex items-center justify-between border-t border-border px-6 py-4">
+            <p class="text-muted-foreground text-sm">Page <strong class="text-foreground">1</strong> of <strong class="text-foreground">16</strong></p>
+            <div class="flex gap-1">
+              <%= ui.btn ui.icon("chevron-left"), variant: :secondary, size: :icon_sm %>
+              <%= ui.btn "1", variant: :default, size: :sm %>
+              <%= ui.btn "2", variant: :secondary, size: :sm %>
+              <%= ui.btn "3", variant: :secondary, size: :sm %>
+              <%= ui.btn ui.icon("chevron-right"), variant: :secondary, size: :icon_sm %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -11,7 +11,7 @@
         </p>
       </div>
       <div class="w-full max-w-md">
-        <%= form_with url: root_path do |f| %>
+        <%= form_with url: root_path, class: "!gap-0" do |f| %>
           <%= ui.group do %>
             <%= f.email_field :email, label: false, placeholder: "Enter your email" %>
             <%= ui.btn size: :lg do %>

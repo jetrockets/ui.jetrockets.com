@@ -1,0 +1,62 @@
+<%# Variant 1: Profile settings — classic 2-column layout with sidebar labels %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-6">
+    <div class="mb-8">
+      <h2 class="text-foreground text-2xl font-bold tracking-tight">Profile Settings</h2>
+      <p class="text-muted-foreground mt-1 text-sm">Manage your account information and preferences.</p>
+    </div>
+
+    <%= form_with url: root_path, class: "!gap-0 divide-y divide-border" do |f| %>
+      <%# Personal Information %>
+      <div class="grid grid-cols-1 gap-x-8 gap-y-6 py-8 lg:grid-cols-3">
+        <div>
+          <h3 class="text-foreground font-semibold">Personal Information</h3>
+          <p class="text-muted-foreground mt-1 text-sm">Update your name and contact details.</p>
+        </div>
+        <div class="lg:col-span-2 flex flex-col gap-4">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.text_field :first_name, label: "First name", placeholder: "Jane" %>
+            <%= f.text_field :last_name, label: "Last name", placeholder: "Doe" %>
+          </div>
+          <%= f.email_field :email, label: "Email address", placeholder: "jane@example.com" %>
+          <%= f.phone_field :phone, label: "Phone number", placeholder: "+1 (555) 123-4567" %>
+        </div>
+      </div>
+
+      <%# Address %>
+      <div class="grid grid-cols-1 gap-x-8 gap-y-6 py-8 lg:grid-cols-3">
+        <div>
+          <h3 class="text-foreground font-semibold">Address</h3>
+          <p class="text-muted-foreground mt-1 text-sm">Your billing and shipping address.</p>
+        </div>
+        <div class="lg:col-span-2 flex flex-col gap-4">
+          <%= f.text_field :street, label: "Street address", placeholder: "123 Main St" %>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <%= f.text_field :city, label: "City", placeholder: "San Francisco" %>
+            <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select..." }, { label: "State" } %>
+            <%= f.text_field :zip, label: "ZIP code", placeholder: "94102" %>
+          </div>
+        </div>
+      </div>
+
+      <%# Notifications %>
+      <div class="grid grid-cols-1 gap-x-8 gap-y-6 py-8 lg:grid-cols-3">
+        <div>
+          <h3 class="text-foreground font-semibold">Notifications</h3>
+          <p class="text-muted-foreground mt-1 text-sm">Choose how you want to be notified.</p>
+        </div>
+        <div class="lg:col-span-2 flex flex-col gap-4">
+          <%= f.toggler :email_notifications, label: "Email notifications", hint: "Receive updates about your account via email" %>
+          <%= f.toggler :sms_notifications, label: "SMS notifications", hint: "Get text messages for important alerts" %>
+          <%= f.toggler :marketing_emails, label: "Marketing emails", hint: "Receive tips, product updates and promotions" %>
+        </div>
+      </div>
+
+      <%# Actions %>
+      <div class="flex justify-end gap-3 pt-8">
+        <%= ui.btn "Cancel", variant: :secondary %>
+        <%= ui.btn "Save changes" %>
+      </div>
+    <% end %>
+  </div>
+</section>

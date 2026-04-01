@@ -1,0 +1,88 @@
+<%# Variant 5: Account settings — tabs + form with danger zone %>
+<section class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-6">
+    <div class="mb-8">
+      <h2 class="text-foreground text-2xl font-bold tracking-tight">Account Settings</h2>
+      <p class="text-muted-foreground mt-1 text-sm">Manage your account preferences and security.</p>
+    </div>
+
+    <%= ui.tabs variant: :underline, class: "mb-8" do %>
+      <%= ui.tabs_item "General", href: "#", icon: "user", active: true %>
+      <%= ui.tabs_item "Security", href: "#", icon: "shield-check" %>
+      <%= ui.tabs_item "Billing", href: "#", icon: "credit-card" %>
+      <%= ui.tabs_item "Notifications", href: "#", icon: "bell" %>
+    <% end %>
+
+    <%= form_with url: root_path, class: "flex flex-col gap-8" do |f| %>
+      <%# Profile %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Profile" %>
+          <%= ui.card_subtitle "Your public profile information" %>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-5" do %>
+          <div class="flex items-center gap-4">
+            <div class="flex size-16 items-center justify-center rounded-full bg-muted">
+              <%= ui.icon "user", size: 8, class: "text-muted-foreground" %>
+            </div>
+            <div>
+              <%= ui.btn "Upload photo", variant: :secondary, size: :sm %>
+              <p class="text-muted-foreground mt-1 text-xs">JPG, PNG or GIF. Max 2MB.</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.text_field :display_name, label: "Display name", placeholder: "Jane Doe" %>
+            <%= f.text_field :username, label: "Username", placeholder: "janedoe" %>
+          </div>
+          <%= f.email_field :email, label: "Email", placeholder: "jane@example.com" %>
+          <%= f.text_area :bio, label: "Bio", placeholder: "Tell us about yourself...", rows: 3, hint: "Brief description for your profile. Max 160 characters." %>
+        <% end %>
+        <%= ui.card_footer do %>
+          <div class="flex w-full justify-end gap-3">
+            <%= ui.btn "Cancel", variant: :secondary %>
+            <%= ui.btn "Update profile" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%# Password %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title "Change Password" %>
+          <%= ui.card_subtitle "Update your password to keep your account secure" %>
+        <% end %>
+        <%= ui.card_body class: "flex flex-col gap-4" do %>
+          <%= f.password_field :current_password, label: "Current password" %>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <%= f.password_field :new_password, label: "New password", hint: "Minimum 8 characters" %>
+            <%= f.password_field :confirm_password, label: "Confirm new password" %>
+          </div>
+        <% end %>
+        <%= ui.card_footer do %>
+          <div class="flex w-full justify-end">
+            <%= ui.btn "Update password" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%# Danger zone %>
+      <%= ui.card class: "border-destructive/50" do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>
+            <span class="text-destructive">Danger Zone</span>
+          <% end %>
+          <%= ui.card_subtitle "Irreversible actions — proceed with caution" %>
+        <% end %>
+        <%= ui.card_body do %>
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="text-foreground text-sm font-medium">Delete account</p>
+              <p class="text-muted-foreground text-sm">Permanently delete your account and all associated data. This action cannot be undone.</p>
+            </div>
+            <%= ui.btn "Delete account", variant: :danger, size: :sm %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>

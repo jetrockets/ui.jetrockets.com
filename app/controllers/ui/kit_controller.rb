@@ -8,7 +8,9 @@ class Ui::KitController < ApplicationController
     footers: { title: "Footers", description: "Page footer layouts with links and info" },
     team_sections: { title: "Team Sections", description: "Showcase team members and roles" },
     newsletter_sections: { title: "Newsletter", description: "Email subscription and newsletter signup blocks" },
-    stats_sections: { title: "Stats & Logos", description: "Statistics, metrics and partner logos" }
+    stats_sections: { title: "Stats & Logos", description: "Statistics, metrics and partner logos" },
+    form_layouts: { title: "Form Layouts", description: "Multi-field form structures for settings, onboarding, and CRUD views" },
+    page_layouts: { title: "Page Layouts", description: "Full page layouts with tables, filters, and data views" }
   }.freeze
 
   def index

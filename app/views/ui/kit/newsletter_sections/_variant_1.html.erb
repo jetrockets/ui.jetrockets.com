@@ -7,7 +7,7 @@
     <p class="text-muted-foreground mt-4 text-lg leading-relaxed">
       Get the latest product updates, engineering insights, and company news delivered straight to your inbox. No spam, unsubscribe anytime.
     </p>
-    <%= form_with url: root_path, class: "mt-8 flex justify-center" do |f| %>
+    <%= form_with url: root_path, class: "mt-8 !flex-row justify-center !gap-0" do |f| %>
       <%= ui.group do %>
         <%= f.email_field :email, label: false, placeholder: "Enter your email address" %>
         <%= ui.btn do %>

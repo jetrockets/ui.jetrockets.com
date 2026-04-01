@@ -14,7 +14,7 @@
             We are building something new. Be the first to know when it is ready. Drop your email and we will keep you posted on our progress.
           </p>
         </div>
-        <%= form_with url: root_path, class: "w-full sm:max-w-md" do |f| %>
+        <%= form_with url: root_path, class: "w-full sm:max-w-md !gap-0" do |f| %>
           <%= ui.group do %>
             <%= f.email_field :email, label: false, placeholder: "you@example.com" %>
             <%= ui.btn do %>
