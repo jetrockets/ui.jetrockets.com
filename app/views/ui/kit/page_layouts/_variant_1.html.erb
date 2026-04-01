@@ -132,17 +132,8 @@
         <% end %>
 
         <%# Pagination footer %>
-        <div class="flex items-center justify-between border-t border-border px-6 py-4">
-          <p class="text-muted-foreground text-sm">Showing <strong class="text-foreground">1-8</strong> of <strong class="text-foreground">248</strong> users</p>
-          <div class="flex gap-1">
-            <%= ui.btn ui.icon("chevron-left"), variant: :secondary, size: :icon_sm %>
-            <%= ui.btn "1", variant: :default, size: :sm %>
-            <%= ui.btn "2", variant: :secondary, size: :sm %>
-            <%= ui.btn "3", variant: :secondary, size: :sm %>
-            <%= ui.btn "...", variant: :ghost, size: :sm %>
-            <%= ui.btn "31", variant: :secondary, size: :sm %>
-            <%= ui.btn ui.icon("chevron-right"), variant: :secondary, size: :icon_sm %>
-          </div>
+        <div class="border-t border-border px-6 py-4">
+          <%= ui.pagy(pagy: Pagy.new(count: 248, page: 1, limit: 8)) %>
         </div>
       <% end %>
     </div>
