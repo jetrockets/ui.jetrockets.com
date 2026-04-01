@@ -1,6 +1,10 @@
 @layer components {
+  .form {
+    @apply flex flex-col gap-6;
+  }
+
   .form__group {
-    @apply flex flex-col gap-1 mb-6;
+    @apply flex flex-col gap-1.5;
   }
 
   .form__label {
@@ -93,7 +97,7 @@
   }
 
   .form__actions {
-    @apply mt-8;
+    @apply mt-4;
   }
 
   /* Choices.js custom styles */

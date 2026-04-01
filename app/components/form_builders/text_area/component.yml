@@ -74,8 +74,5 @@ examples:
       <% user.errors.add(:bio, "is required") %>
       <%= form_with model: user, url: root_path do |f| %>
         <%= f.text_area :bio, label: "Active Record Validations" %>
-      <% end %>
-
-      <%= form_with url: root_path do |f| %>
-        <%= f.text_area :manual_error_field, label: "Manual validation error", error: "This field has a custom error", value: "Invalid Value" %>
+        <%= f.text_area :manual_error_field, error: "This field has a custom error", value: "Invalid Value" %>
       <% end %>

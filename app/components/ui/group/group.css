@@ -32,17 +32,17 @@
     /* Dividers for solid buttons (default, secondary, danger) */
     > *:not(:last-child) .btn-default,
     > .btn-default:not(:last-child) {
-      @apply border-r border-r-surface/25;
+      @apply border-r border-background/25;
     }
 
     > *:not(:last-child) .btn-secondary,
     > .btn-secondary:not(:last-child) {
-      @apply border-r border-r-surface/25;
+      @apply border-r border-background/25;
     }
 
     > *:not(:last-child) .btn-danger,
     > .btn-danger:not(:last-child) {
-      @apply border-r border-r-surface/25;
+      @apply border-r border-background/25;
     }
 
     /* Middle elements (not first, not last) */

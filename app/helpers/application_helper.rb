@@ -2,6 +2,11 @@ module ApplicationHelper
   include Pagy::Frontend
   ActionView::Base.default_form_builder = FormBuilders::DefaultFormBuilder
 
+  def form_with(**options, &block)
+    options[:html] = (options[:html] || {}).reverse_merge(class: "form")
+    super(**options, &block)
+  end
+
   def set_body_class(classes)
     @body_class = classes
   end

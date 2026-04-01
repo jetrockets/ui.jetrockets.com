@@ -92,8 +92,5 @@ examples:
       <% user.errors.add(:terms_and_conditions, "is required") %>
       <%= form_with model: user, url: root_path do |f| %>
         <%= f.check_box :terms_and_conditions, label: "I agree to the terms and conditions" %>
-      <% end %>
-
-      <%= form_with url: root_path do |f| %>
         <%= f.check_box :custom_error, error: "Custom error" %>
       <% end %>

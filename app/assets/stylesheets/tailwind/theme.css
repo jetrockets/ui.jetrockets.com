@@ -1,30 +1,28 @@
 /*
  * Semantic Color Theme (shadcn-compatible)
  * Raw variables in :root/.dark, mapped to Tailwind via @theme inline.
+ * Status soft/border/hover variants are auto-generated via relative-color-syntax.
  */
 
 :root {
-  --background: oklch(0.985 0.003 264);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.21 0.006 264);
   --overlay: oklch(0.21 0.006 264 / 0.5);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.006 264);
+  --card-foreground: var(--foreground);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.006 264);
+  --popover-foreground: var(--foreground);
 
   --primary: oklch(0.55 0.245 264);
-  --primary-hover: oklch(from var(--primary) calc(l - 0.06) c h);
-  --primary-active: oklch(from var(--primary) calc(l - 0.12) c h);
   --primary-foreground: oklch(1 0 0);
 
   --secondary: oklch(0.95 0.006 264);
-  --secondary-hover: oklch(from var(--secondary) calc(l - 0.03) c h);
-  --secondary-foreground: oklch(0.21 0.006 264);
+  --secondary-foreground: var(--foreground);
 
   --accent: oklch(0.97 0.003 264);
-  --accent-foreground: oklch(0.21 0.006 264);
+  --accent-foreground: var(--foreground);
 
   --muted: oklch(0.97 0.003 264);
   --muted-foreground: oklch(0.551 0.006 264);
@@ -34,37 +32,9 @@
   --ring: oklch(0.882 0.059 264 / 0.5);
 
   --destructive: oklch(0.577 0.245 27);
-  --destructive-hover: oklch(from var(--destructive) calc(l - 0.06) c h);
-  --destructive-foreground: oklch(1 0 0);
-  --destructive-soft: oklch(0.97 0.015 27);
-  --destructive-soft-hover: oklch(from var(--destructive-soft) calc(l - 0.03) c h);
-  --destructive-soft-foreground: oklch(0.45 0.2 27);
-  --destructive-border: oklch(0.92 0.04 27);
-
   --success: oklch(0.6 0.19 145);
-  --success-hover: oklch(from var(--success) calc(l - 0.06) c h);
-  --success-foreground: oklch(1 0 0);
-  --success-soft: oklch(0.97 0.015 145);
-  --success-soft-hover: oklch(from var(--success-soft) calc(l - 0.03) c h);
-  --success-soft-foreground: oklch(0.4 0.15 145);
-  --success-border: oklch(0.92 0.04 145);
-
   --warning: oklch(0.8 0.16 85);
-  --warning-hover: oklch(from var(--warning) calc(l - 0.06) c h);
-  --warning-foreground: oklch(0.3 0.04 85);
-  --warning-soft: oklch(0.97 0.015 85);
-  --warning-soft-hover: oklch(from var(--warning-soft) calc(l - 0.03) c h);
-  --warning-soft-foreground: oklch(0.45 0.12 85);
-  --warning-border: oklch(0.92 0.04 85);
-
   --info: oklch(0.6 0.19 240);
-  --info-hover: oklch(from var(--info) calc(l - 0.06) c h);
-  --info-foreground: oklch(1 0 0);
-  --info-soft: oklch(0.97 0.015 240);
-  --info-soft-hover: oklch(from var(--info-soft) calc(l - 0.03) c h);
-  --info-soft-foreground: oklch(0.45 0.18 240);
-  --info-border: oklch(0.92 0.04 240);
-
 }
 
 .dark {
@@ -73,19 +43,19 @@
   --overlay: oklch(0 0 0 / 0.7);
 
   --card: oklch(0.17 0.014 264);
-  --card-foreground: oklch(0.95 0.003 264);
+  --card-foreground: var(--foreground);
 
   --popover: oklch(0.17 0.014 264);
-  --popover-foreground: oklch(0.95 0.003 264);
+  --popover-foreground: var(--foreground);
 
   --primary: oklch(0.65 0.22 264);
-  --primary-foreground: oklch(1 0 0);
+  --primary-foreground: var(--foreground);
 
   --secondary: oklch(0.24 0.014 264);
-  --secondary-foreground: oklch(0.93 0.003 264);
+  --secondary-foreground: var(--foreground);
 
   --accent: oklch(0.20 0.014 264);
-  --accent-foreground: oklch(0.93 0.003 264);
+  --accent-foreground: var(--foreground);
 
   --muted: oklch(0.20 0.014 264);
   --muted-foreground: oklch(0.60 0.010 264);
@@ -95,29 +65,9 @@
   --ring: oklch(0.50 0.12 264 / 0.35);
 
   --destructive: oklch(0.65 0.2 25);
-  --destructive-foreground: oklch(1 0 0);
-  --destructive-soft: oklch(0.20 0.04 25);
-  --destructive-soft-foreground: oklch(0.80 0.14 25);
-  --destructive-border: oklch(0.35 0.08 25);
-
   --success: oklch(0.70 0.19 145);
-  --success-foreground: oklch(0.15 0.04 145);
-  --success-soft: oklch(0.20 0.035 145);
-  --success-soft-foreground: oklch(0.80 0.16 145);
-  --success-border: oklch(0.35 0.07 145);
-
   --warning: oklch(0.80 0.16 85);
-  --warning-foreground: oklch(0.20 0.04 85);
-  --warning-soft: oklch(0.22 0.035 85);
-  --warning-soft-foreground: oklch(0.85 0.14 85);
-  --warning-border: oklch(0.38 0.07 85);
-
   --info: oklch(0.70 0.16 240);
-  --info-foreground: oklch(1 0 0);
-  --info-soft: oklch(0.20 0.04 240);
-  --info-soft-foreground: oklch(0.80 0.14 240);
-  --info-border: oklch(0.35 0.08 240);
-
 }
 
 /* Static theme values */
@@ -157,7 +107,6 @@
 
 /* Map raw variables to Tailwind utility classes */
 @theme inline {
-
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-overlay: var(--overlay);
@@ -169,55 +118,57 @@
   --color-popover-foreground: var(--popover-foreground);
 
   --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-primary-active: var(--primary-active);
+  --color-primary-hover: oklch(from var(--primary) calc(l - 0.06) c h);
+  --color-primary-active: oklch(from var(--primary) calc(l - 0.12) c h);
   --color-primary-foreground: var(--primary-foreground);
 
   --color-secondary: var(--secondary);
-  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-hover: oklch(from var(--secondary) calc(l - 0.03) c h);
   --color-secondary-foreground: var(--secondary-foreground);
 
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
   --color-muted: var(--muted);
+  --color-muted-hover: oklch(from var(--muted) calc(l - 0.03) c h);
   --color-muted-foreground: var(--muted-foreground);
 
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Destructive */
   --color-destructive: var(--destructive);
-  --color-destructive-hover: var(--destructive-hover);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-destructive-soft: var(--destructive-soft);
-  --color-destructive-soft-hover: var(--destructive-soft-hover);
-  --color-destructive-soft-foreground: var(--destructive-soft-foreground);
-  --color-destructive-border: var(--destructive-border);
+  --color-destructive-hover: oklch(from var(--destructive) calc(l - 0.06) c h);
+  --color-destructive-soft: oklch(from var(--destructive) l c h / 10%);
+  --color-destructive-soft-hover: oklch(from var(--destructive) l c h / 15%);
+  --color-destructive-soft-foreground: var(--destructive);
+  --color-destructive-border: oklch(from var(--destructive) l c h / 25%);
 
+  /* Success */
   --color-success: var(--success);
-  --color-success-hover: var(--success-hover);
+  --color-success-hover: oklch(from var(--success) calc(l - 0.06) c h);
   --color-success-foreground: var(--success-foreground);
-  --color-success-soft: var(--success-soft);
-  --color-success-soft-hover: var(--success-soft-hover);
-  --color-success-soft-foreground: var(--success-soft-foreground);
-  --color-success-border: var(--success-border);
+  --color-success-soft: oklch(from var(--success) l c h / 10%);
+  --color-success-soft-hover: oklch(from var(--success) l c h / 15%);
+  --color-success-soft-foreground: var(--success);
+  --color-success-border: oklch(from var(--success) l c h / 25%);
 
+  /* Warning */
   --color-warning: var(--warning);
-  --color-warning-hover: var(--warning-hover);
+  --color-warning-hover: oklch(from var(--warning) calc(l - 0.06) c h);
   --color-warning-foreground: var(--warning-foreground);
-  --color-warning-soft: var(--warning-soft);
-  --color-warning-soft-hover: var(--warning-soft-hover);
-  --color-warning-soft-foreground: var(--warning-soft-foreground);
-  --color-warning-border: var(--warning-border);
+  --color-warning-soft: oklch(from var(--warning) l c h / 10%);
+  --color-warning-soft-hover: oklch(from var(--warning) l c h / 15%);
+  --color-warning-soft-foreground: var(--warning);
+  --color-warning-border: oklch(from var(--warning) l c h / 25%);
 
+  /* Info */
   --color-info: var(--info);
-  --color-info-hover: var(--info-hover);
+  --color-info-hover: oklch(from var(--info) calc(l - 0.06) c h);
   --color-info-foreground: var(--info-foreground);
-  --color-info-soft: var(--info-soft);
-  --color-info-soft-hover: var(--info-soft-hover);
-  --color-info-soft-foreground: var(--info-soft-foreground);
-  --color-info-border: var(--info-border);
-
-  --color-muted-hover: var(--muted-hover, oklch(from var(--muted) calc(l - 0.03) c h));
+  --color-info-soft: oklch(from var(--info) l c h / 10%);
+  --color-info-soft-hover: oklch(from var(--info) l c h / 15%);
+  --color-info-soft-foreground: var(--info);
+  --color-info-border: oklch(from var(--info) l c h / 25%);
 }

@@ -84,8 +84,5 @@ examples:
       <% user.errors.add(:state, "is required") %>
       <%= form_with model: user, url: root_path do |f| %>
         <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." } %>
-      <% end %>
-
-      <%= form_with url: root_path do |f| %>
         <%= f.select :state, options_for_select([["California", "CA"], ["New York", "NY"], ["Texas", "TX"]]), { include_blank: "Select state..." }, { error: "This field has a custom error" } %>
       <% end %>
