@@ -72,7 +72,7 @@
     <%# ========================================= %>
     <%# Left sidebar — theme controls             %>
     <%# ========================================= %>
-    <aside class="w-72 shrink-0 border-r border-border bg-muted overflow-y-auto sticky top-0 h-screen flex flex-col">
+    <aside class="w-52 md:w-64 lg:w-72 shrink-0 border-r border-border bg-muted overflow-y-auto sticky top-0 h-screen flex flex-col">
       <%# Sidebar header %>
       <div class="px-4 py-3 border-b border-border flex items-center justify-between sticky top-0 bg-muted z-10">
         <h1 class="text-base font-semibold">Theme Builder</h1>
@@ -205,8 +205,8 @@
     <%# ========================================= %>
     <main class="flex-1 min-w-0 overflow-hidden h-screen">
       <style>
-        .builder-marquee { overflow: hidden; height: 100vh; display: flex; gap: 1rem; padding: 1rem; }
-        .builder-col { display: flex; flex-direction: column; gap: 1rem; flex: 1; min-w: 0; animation-timing-function: linear; animation-iteration-count: infinite; }
+        .builder-marquee { overflow-x: auto; overflow-y: hidden; height: 100vh; display: flex; gap: 1rem; padding: 1rem; }
+        .builder-col { display: flex; flex-direction: column; gap: 1rem; flex: 1 0 280px; min-width: 280px; }
         .builder-col-up { animation: marquee-up 60s linear infinite; }
         .builder-col-down { animation: marquee-down 60s linear infinite; }
         .builder-col:nth-child(2) { animation-duration: 75s; }
@@ -215,6 +215,10 @@
         @keyframes marquee-up { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
         @keyframes marquee-down { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
         .builder-item { flex-shrink: 0; width: 100%; }
+        @media (min-width: 1024px) {
+          .builder-col { flex: 1; min-width: 0; }
+          .builder-marquee { overflow: hidden; }
+        }
       </style>
 
       <div class="builder-marquee">
@@ -371,6 +375,115 @@
                 <%= ui.badge "Warning", variant: :warning, size: :md %>
                 <%= ui.badge "Error", variant: :error, size: :md %>
                 <%= ui.badge "Rounded", variant: :info, size: :md, rounded: true %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <%# — Alerts — %>
+          <div class="builder-item">
+            <div class="flex flex-col gap-3">
+              <%= ui.alert variant: :info do %>
+                <%= ui.alert_icon "information-circle", size: 5 %>
+                <%= ui.alert_title "Heads up!" %>
+                <%= ui.alert_description "New version available. Update now for latest features." %>
+              <% end %>
+              <%= ui.alert variant: :success do %>
+                <%= ui.alert_icon "check-circle", size: 5 %>
+                <%= ui.alert_title "Success" %>
+                <%= ui.alert_description "Your changes have been saved." %>
+              <% end %>
+              <%= ui.alert variant: :warning do %>
+                <%= ui.alert_icon "exclamation-triangle", size: 5 %>
+                <%= ui.alert_title "Warning" %>
+                <%= ui.alert_description "Your trial ends in 3 days." %>
+              <% end %>
+              <%= ui.alert variant: :error do %>
+                <%= ui.alert_icon "x-circle", size: 5 %>
+                <%= ui.alert_title "Error" %>
+                <%= ui.alert_description "Something went wrong. Please try again." %>
+              <% end %>
+            </div>
+          </div>
+
+          <%# — Timeline — %>
+          <div class="builder-item">
+            <%= ui.card do %>
+              <%= ui.card_header do %>
+                <%= ui.card_title "Activity" %>
+              <% end %>
+              <%= ui.card_body do %>
+                <%= ui.timeline do %>
+                  <%= ui.timeline_item do %>
+                    <%= ui.timeline_dot variant: :success, icon: "check" %>
+                    <%= ui.timeline_content do %>
+                      <%= ui.timeline_time "2 hours ago" %>
+                      <p class="font-medium">Order delivered</p>
+                      <p class="text-sm text-muted-foreground">Package signed by John Doe</p>
+                    <% end %>
+                  <% end %>
+                  <%= ui.timeline_item do %>
+                    <%= ui.timeline_dot variant: :info, icon: "truck" %>
+                    <%= ui.timeline_content do %>
+                      <%= ui.timeline_time "1 day ago" %>
+                      <p class="font-medium">Out for delivery</p>
+                    <% end %>
+                  <% end %>
+                  <%= ui.timeline_item do %>
+                    <%= ui.timeline_dot variant: :warning %>
+                    <%= ui.timeline_content do %>
+                      <%= ui.timeline_time "2 days ago" %>
+                      <p class="font-medium">Payment pending</p>
+                    <% end %>
+                  <% end %>
+                  <%= ui.timeline_item do %>
+                    <%= ui.timeline_dot %>
+                    <%= ui.timeline_content do %>
+                      <%= ui.timeline_time "3 days ago" %>
+                      <p class="font-medium">Order placed</p>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <%# — List — %>
+          <div class="builder-item">
+            <%= ui.card do %>
+              <%= ui.card_header do %>
+                <%= ui.card_title "Files" %>
+              <% end %>
+              <%= ui.list variant: :divided do %>
+                <%= ui.list_item do %>
+                  <%= ui.list_icon "document" %>
+                  <%= ui.list_content do %>
+                    <strong>Report.pdf</strong>
+                    <span class="text-muted-foreground text-sm block">2.4 MB</span>
+                  <% end %>
+                  <%= ui.list_action do %>
+                    <%= ui.btn "Download", size: :sm, variant: :outline %>
+                  <% end %>
+                <% end %>
+                <%= ui.list_item do %>
+                  <%= ui.list_icon "photo" %>
+                  <%= ui.list_content do %>
+                    <strong>Screenshot.png</strong>
+                    <span class="text-muted-foreground text-sm block">1.1 MB</span>
+                  <% end %>
+                  <%= ui.list_action do %>
+                    <%= ui.btn "Download", size: :sm, variant: :outline %>
+                  <% end %>
+                <% end %>
+                <%= ui.list_item do %>
+                  <%= ui.list_icon "code-bracket" %>
+                  <%= ui.list_content do %>
+                    <strong>App.tsx</strong>
+                    <span class="text-muted-foreground text-sm block">4.2 KB</span>
+                  <% end %>
+                  <%= ui.list_action do %>
+                    <%= ui.btn "Download", size: :sm, variant: :outline %>
+                  <% end %>
+                <% end %>
               <% end %>
             <% end %>
           </div>
