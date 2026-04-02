@@ -1,10 +1,6 @@
 @reference "~/entrypoints/tailwind.css";
 
 @layer components {
-  .tabs {
-    @apply overflow-x-auto;
-  }
-
   /* Pill variant (default) */
   .tabs__list {
     @apply inline-flex gap-1 p-1 text-sm list-none bg-muted rounded-btn-md;

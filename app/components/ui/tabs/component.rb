@@ -20,6 +20,7 @@ class Ui::Tabs::Component < ApplicationComponent
   def wrapper_classes
     class_names(
       "tabs",
+      "scroller scroller-x w-full",
       { "tabs-underline": @variant == :underline }
     )
   end
