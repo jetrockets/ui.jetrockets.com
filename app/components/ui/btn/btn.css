@@ -15,7 +15,7 @@
   }
 
   .btn-outline {
-    @apply text-foreground border border-input;
+    @apply text-foreground border border-border;
     @apply hover:bg-accent;
   }
 
