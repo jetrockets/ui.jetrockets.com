@@ -1,0 +1,269 @@
+<%
+  set_meta_tags(
+    title: "VS Code Extension - Rails UI Components",
+    description: "Intelligent autocomplete, hover documentation, and prop suggestions for JetRockets UI components right in your editor.",
+    keywords: "Rails, UI, Components, VS Code, Extension, Autocomplete, IntelliSense"
+  )
+%>
+<% breadcrumb :ui_vscode %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title do %>
+      VS Code Extension
+      <%= ui.badge "New", size: :sm, variant: :success %>
+    <% end %>
+    <%= ui.header_subtitle "Intelligent autocomplete, hover docs, and prop suggestions for JetRockets UI components right in your editor." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn url: "https://github.com/jetrockets/ui.jetrockets.vscode", target: :_blank, rel: "noopener noreferrer" do %>
+      <%= ui.icon "arrow-top-right-on-square", size: 5 %>
+      View on GitHub
+    <% end %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%# Hero Banner %>
+  <%= ui.alert variant: :default, class: "lg:p-8 p-6" do %>
+    <%= ui.alert_icon "bolt", size: 8 %>
+    <%= ui.alert_title "Stop memorizing component APIs", class: "text-foreground text-lg font-bold" %>
+    <%= ui.alert_description class: "text-muted-foreground mt-2 leading-relaxed" do %>
+      The JetRockets UI Autocomplete extension reads your <code class="text-xs">component.yml</code> files and brings
+      component names, props, slots, and documentation directly into your VS Code workflow.
+      No more switching between editor and docs.
+    <% end %>
+  <% end %>
+
+  <%# Key Features %>
+  <section>
+    <h2 class="h2 mb-6">Features</h2>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <% [
+        {
+          icon: "command-line",
+          title: "Component Autocomplete",
+          desc: "Type ui. to see all available components with descriptions. Instantly discover what's available."
+        },
+        {
+          icon: "puzzle-piece",
+          title: "Slot Suggestions",
+          desc: "Access nested slots like ui.alert_title through autocomplete. Navigate complex component hierarchies with ease."
+        },
+        {
+          icon: "adjustments-horizontal",
+          title: "Prop Suggestions",
+          desc: "Get contextual property suggestions with types and default values displayed inline as you type."
+        },
+        {
+          icon: "list-bullet",
+          title: "Enum Value Hints",
+          desc: "Properties with predefined values show dropdown suggestions automatically, e.g. variant: :default, :outline, :danger."
+        },
+        {
+          icon: "document-text",
+          title: "Hover Documentation",
+          desc: "Hover over any ui.component_name to see full docs: description, props table, and usage examples."
+        },
+        {
+          icon: "arrow-path",
+          title: "Auto-Refresh",
+          desc: "Automatically detects changes to component.yml files and re-indexes without manual reloads."
+        },
+      ].each do |item| %>
+        <%= ui.card do %>
+          <%= ui.card_body class: "flex gap-4" do %>
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <%= ui.icon item[:icon], size: 5, class: "text-primary" %>
+            </div>
+            <div>
+              <h3 class="text-foreground font-semibold"><%= item[:title] %></h3>
+              <p class="text-muted-foreground mt-1 text-sm"><%= item[:desc] %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <%# How it works %>
+  <section>
+    <h2 class="h2 mb-6">How it works</h2>
+
+    <div class="flex flex-col gap-8">
+      <%# Step 1 %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+            Type <code class="text-sm">ui.</code> to trigger autocomplete
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="text-muted-foreground text-sm">
+            As soon as you type <code class="text-xs">ui.</code> in any ERB file, the extension shows a list of all available components
+            with their descriptions, pulled directly from your <code class="text-xs">component.yml</code> files.
+          </p>
+        <% end %>
+      <% end %>
+
+      <%# Step 2 %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+            Pick a component and get prop suggestions
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="text-muted-foreground text-sm">
+            After selecting a component, the extension suggests all available properties with their types and defaults.
+            Enum properties like <code class="text-xs">variant</code> or <code class="text-xs">size</code> show all valid options.
+          </p>
+        <% end %>
+      <% end %>
+
+      <%# Step 3 %>
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+            Hover for full documentation
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="text-muted-foreground text-sm">
+            Hover over any <code class="text-xs">ui.component_name</code> call to see comprehensive documentation
+            including a description, full properties table, and usage examples — all without leaving your editor.
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <%# Supported features %>
+  <section>
+    <h2 class="h2 mb-6">What's supported</h2>
+
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <% [
+            "Component name autocomplete",
+            "Slot name suggestions",
+            "Typed property hints",
+            "Enumerated value dropdowns",
+            "Boolean property support",
+            "String & Integer properties",
+            "HTML attribute suggestions",
+            "Hover documentation",
+            "File watching & auto-refresh",
+          ].each do |feature| %>
+            <div class="flex items-center gap-2 text-sm">
+              <%= ui.icon "check-circle", size: 4, class: "text-success shrink-0" %>
+              <span class="text-muted-foreground"><%= feature %></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+
+  <%# Installation %>
+  <section>
+    <h2 class="h2 mb-6">Installation</h2>
+
+    <div class="flex flex-col gap-8">
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+            Install from VS Code Marketplace
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="text-muted-foreground mb-4 text-sm">
+            Search for <strong class="text-foreground">JetRockets UI Autocomplete</strong> in the VS Code Extensions panel, or install directly:
+          </p>
+          <pre><code>code --install-extension JetRocketsUI.jetrockets-ui-autocomplete</code></pre>
+          <div class="mt-4">
+            <%= ui.btn url: "https://marketplace.visualstudio.com/items?itemName=JetRocketsUI.jetrockets-ui-autocomplete", target: :_blank, rel: "noopener noreferrer", variant: :outline, size: :sm do %>
+              <%= ui.icon "arrow-top-right-on-square", size: 4 %>
+              Open in VS Code Marketplace
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= ui.card do %>
+        <%= ui.card_header do %>
+          <%= ui.card_title do %>
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+            Configure (optional)
+          <% end %>
+        <% end %>
+        <%= ui.card_body do %>
+          <p class="text-muted-foreground mb-4 text-sm">
+            Customize the extension in your VS Code <code class="text-xs">settings.json</code>:
+          </p>
+          <pre><code>{
+  "jetrocketsUI.componentsPath": "app/components/ui",
+  "jetrocketsUI.helperPrefix": "ui."
+}</code></pre>
+          <div class="mt-4">
+            <%= ui.alert variant: :info do %>
+              <%= ui.alert_title "Defaults work out of the box" %>
+              <%= ui.alert_description "If your project follows the standard JetRockets UI structure, no configuration is needed." %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <%# YAML Structure %>
+  <section>
+    <h2 class="h2 mb-4">Component YAML structure</h2>
+    <p class="text-muted-foreground mb-4">
+      The extension reads <code class="text-xs">component.yml</code> files to power autocomplete.
+      Every component in this library already includes one.
+    </p>
+
+    <%= ui.card do %>
+      <%= ui.card_body do %>
+        <pre><code># app/components/ui/btn/component.yml
+name: Button
+description: A clickable button with variants and sizes
+props:
+  - name: variant
+    type: Symbol
+    default: ":default"
+    values: ":default, :outline, :secondary, :danger, :ghost, :link"
+    description: Visual style of the button
+  - name: size
+    type: Symbol
+    default: ":md"
+    values: ":xs, :sm, :md, :lg"
+    description: Size of the button
+slots:
+  - name: icon
+    description: Icon slot for the button
+accepts_html_attributes: true</code></pre>
+      <% end %>
+    <% end %>
+  </section>
+
+  <%# CTA %>
+  <section class="text-center">
+    <h2 class="text-foreground text-2xl font-bold tracking-tight">Ready to supercharge your workflow?</h2>
+    <p class="text-muted-foreground mt-2">Get the extension and start building faster.</p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <%= ui.btn url: "https://marketplace.visualstudio.com/items?itemName=JetRocketsUI.jetrockets-ui-autocomplete", target: :_blank, rel: "noopener noreferrer", size: :lg do %>
+        <%= ui.icon "arrow-top-right-on-square", size: 5 %>
+        Install from Marketplace
+      <% end %>
+      <%= ui.btn "Browse Components", url: ui_button_path, variant: :outline, size: :lg %>
+    </div>
+  </section>
+</article>

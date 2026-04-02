@@ -164,6 +164,39 @@
   </div>
 </section>
 
+<%# VS Code Extension %>
+<section class="py-12">
+  <div class="text-center">
+    <h2 class="text-foreground text-2xl font-bold tracking-tight">Developer experience</h2>
+    <p class="text-muted-foreground mt-2">Tools that make working with components a breeze.</p>
+  </div>
+
+  <div class="mt-8">
+    <%= ui.card class: "border-primary/30" do %>
+      <%= ui.card_body class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between lg:p-8 p-6" do %>
+        <div class="flex gap-4">
+          <div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+            <%= ui.icon "code-bracket-square", size: 6, class: "text-primary" %>
+          </div>
+          <div>
+            <h3 class="text-foreground text-lg font-semibold">
+              VS Code Extension
+              <%= ui.badge "New", size: :xs, variant: :success %>
+            </h3>
+            <p class="text-muted-foreground mt-1 text-sm">
+              Autocomplete, prop suggestions, enum values, and hover documentation for all components — right in your editor.
+            </p>
+          </div>
+        </div>
+        <%= ui.btn url: ui_vscode_path, variant: :outline do %>
+          Learn more
+          <%= ui.icon "arrow-right", size: 4 %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
 <%# Getting Started Steps %>
 <section class="py-12">
   <div class="text-center">

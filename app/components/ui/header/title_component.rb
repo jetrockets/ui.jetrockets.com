@@ -11,7 +11,7 @@ class Ui::Header::TitleComponent < ApplicationComponent
 
   def classes
     class_names(
-      "flex-1 font-semibold tracking-light text-3xl",
+      "flex items-center gap-2 flex-1 font-semibold tracking-light text-3xl",
       @options.delete(:class)
     )
   end

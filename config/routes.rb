@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :ui do
     get "getting_started"
     get "good_to_know"
+    get "vscode"
 
     # Component pages
     get "accordion"

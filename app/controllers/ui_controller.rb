@@ -5,6 +5,9 @@ class UiController < ApplicationController
   def good_to_know
   end
 
+  def vscode
+  end
+
   # Component pages
   def accordion
   end

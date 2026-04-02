@@ -20,6 +20,10 @@ crumb :ui_good_to_know do
   link "Good to know", ui_good_to_know_path
 end
 
+crumb :ui_vscode do
+  link "VS Code Extension", ui_vscode_path
+end
+
 # Component breadcrumbs
 crumb :ui_accordion do
   link "Accordion", ui_accordion_path
