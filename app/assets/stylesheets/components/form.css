@@ -46,7 +46,7 @@
 
   .form__radio,
   .form__checkbox {
-    @apply cursor-pointer size-5 border border-input bg-card;
+    @apply cursor-pointer size-5 border border-input bg-card text-foreground;
     @apply focus:ring-3 focus:ring-ring focus:border-primary;
     @apply checked:bg-primary checked:border-primary checked:hover:bg-primary-hover;
     @apply checked:focus:bg-primary checked:focus:border-primary;

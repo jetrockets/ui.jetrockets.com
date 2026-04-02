@@ -41,33 +41,44 @@ function formatOklch (l, c, h) {
   return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(1)})`
 }
 
+/*
+ * Generic builder controller.
+ *
+ * Color pickers use data attributes instead of named targets:
+ *   data-color-var="primary"       — CSS variable name (--primary)
+ *   data-color-mode="light|dark"   — which theme this picker controls
+ *   data-color-role="picker|hex"   — input type
+ *
+ * Each color row is a <div data-color-var="..." data-color-mode="...">.
+ * Inside it: input[type=color] (picker) + input[type=text] (hex).
+ */
 export default class BuilderController extends Controller {
   static targets = [
-    'primaryColor', 'primaryHex', 'primaryOklch',
-    'darkPrimaryColor', 'darkPrimaryHex', 'darkPrimaryOklch',
-    'secondaryColor', 'secondaryHex', 'secondaryOklch',
-    'darkSecondaryColor', 'darkSecondaryHex', 'darkSecondaryOklch',
-    'backgroundColor', 'backgroundHex', 'backgroundOklch',
-    'darkBackgroundColor', 'darkBackgroundHex', 'darkBackgroundOklch',
-    'lightPrimarySection', 'darkPrimarySection',
-    'lightSecondarySection', 'darkSecondarySection',
-    'lightBackgroundSection', 'darkBackgroundSection',
-    'radiusBase', 'radiusBtn', 'radiusForm',
-    'lightIcon', 'darkIcon',
+    'colorRow',
+    'radiusBase',
+    'radiusBtn',
+    'radiusForm',
+    'lightIcon',
+    'darkIcon',
     'download'
   ]
 
-  static values = { defaults: Object, downloadUrl: String }
+  static values = {
+    defaults: Object,
+    downloadUrl: String
+  }
 
   connect () {
     this.currentTheme = this.getSavedTheme()
     this.applyThemeClass()
     this.updateThemeIcons()
-    this.updateThemeSections()
+    this.showActiveColorRows()
     this.applyAllColors()
     this.applyRadius()
     this.updateDownloadUrl()
   }
+
+  // --- Theme ---
 
   getSavedTheme () {
     const saved = window.localStorage.getItem('theme')
@@ -79,7 +90,7 @@ export default class BuilderController extends Controller {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark'
     this.applyThemeClass()
     this.updateThemeIcons()
-    this.updateThemeSections()
+    this.showActiveColorRows()
     this.applyAllColors()
     window.localStorage.setItem('theme', this.currentTheme)
     this.updateDownloadUrl()
@@ -99,171 +110,89 @@ export default class BuilderController extends Controller {
     }
   }
 
-  updateThemeSections () {
-    const isDark = this.currentTheme === 'dark'
-    const pairs = [
-      ['lightPrimarySection', 'darkPrimarySection'],
-      ['lightSecondarySection', 'darkSecondarySection'],
-      ['lightBackgroundSection', 'darkBackgroundSection']
-    ]
-    pairs.forEach(([light, dark]) => {
-      if (this[`has${light[0].toUpperCase() + light.slice(1)}Target`]) {
-        this[`${light}Target`].classList.toggle('hidden', isDark)
-      }
-      if (this[`has${dark[0].toUpperCase() + dark.slice(1)}Target`]) {
-        this[`${dark}Target`].classList.toggle('hidden', !isDark)
+  // --- Color rows visibility ---
+
+  showActiveColorRows () {
+    this.colorRowTargets.forEach(row => {
+      const mode = row.dataset.colorMode
+      if (mode === 'light') {
+        row.classList.toggle('hidden', this.currentTheme === 'dark')
+      } else if (mode === 'dark') {
+        row.classList.toggle('hidden', this.currentTheme !== 'dark')
       }
     })
   }
 
+  // --- Generic color handler ---
+
+  oklchFromRow (row) {
+    const picker = row.querySelector('input[type="color"]')
+    if (!picker) return null
+    const alphaInput = row.querySelector('[data-role="alpha"]')
+    const { l, c, h } = hexToOklch(picker.value)
+    const base = formatOklch(l, c, h)
+    if (alphaInput) {
+      const a = parseInt(alphaInput.value, 10)
+      if (!isNaN(a) && a < 100) {
+        return base.replace(')', ' / ' + a + '%)')
+      }
+    }
+    return base
+  }
+
+  updateColor (event) {
+    const row = event.currentTarget.closest('[data-builder-target="colorRow"]')
+    if (!row) return
+    const picker = row.querySelector('input[type="color"]')
+    const hex = row.querySelector('input[type="text"]')
+    const cssVar = row.dataset.colorVar
+    const mode = row.dataset.colorMode
+
+    // Sync picker <-> hex (skip for alpha input)
+    if (event.currentTarget.type === 'color') {
+      hex.value = picker.value
+    } else if (event.currentTarget.type === 'text') {
+      if (/^#[0-9a-f]{6}$/i.test(hex.value)) {
+        picker.value = hex.value
+      } else {
+        return
+      }
+    }
+
+    // Apply to CSS if this row's mode matches current theme
+    if (mode === this.currentTheme || !mode) {
+      this.setProperty(`--${cssVar}`, this.oklchFromRow(row))
+    }
+
+    this.updateDownloadUrl()
+  }
+
   applyAllColors () {
-    const isDark = this.currentTheme === 'dark'
+    // Clear all inline color overrides first (restore CSS defaults)
+    const seen = new Set()
+    this.colorRowTargets.forEach(row => {
+      const cssVar = row.dataset.colorVar
+      if (cssVar && !seen.has(cssVar)) {
+        document.documentElement.style.removeProperty(`--${cssVar}`)
+        seen.add(cssVar)
+      }
+    })
 
-    // Primary
-    const primaryTarget = isDark ? 'darkPrimaryColor' : 'primaryColor'
-    const primaryOklch = isDark ? 'darkPrimaryOklch' : 'primaryOklch'
-    this.applyColorPicker(primaryTarget, primaryOklch, '--primary')
+    // Re-apply only values that differ from defaults
+    this.colorRowTargets.forEach(row => {
+      const picker = row.querySelector('input[type="color"]')
+      const cssVar = row.dataset.colorVar
+      const mode = row.dataset.colorMode
+      if (!picker || !cssVar) return
+      if (mode !== this.currentTheme) return
 
-    // Secondary
-    const secondaryTarget = isDark ? 'darkSecondaryColor' : 'secondaryColor'
-    const secondaryOklch = isDark ? 'darkSecondaryOklch' : 'secondaryOklch'
-    this.applyColorPicker(secondaryTarget, secondaryOklch, '--secondary')
+      const paramKey = cssVar.replace(/-/g, '_')
+      const defaultKey = mode === 'dark' ? `${paramKey}_dark` : paramKey
+      const defaultVal = this.defaultsValue[defaultKey]
+      if (picker.value === defaultVal) return
 
-    // Background
-    const bgTarget = isDark ? 'darkBackgroundColor' : 'backgroundColor'
-    const bgOklch = isDark ? 'darkBackgroundOklch' : 'backgroundOklch'
-    this.applyColorPicker(bgTarget, bgOklch, '--background')
-
-    // Also display oklch for the hidden side
-    if (!isDark) {
-      this.applyOklchDisplay('darkPrimaryColor', 'darkPrimaryOklch')
-      this.applyOklchDisplay('darkSecondaryColor', 'darkSecondaryOklch')
-      this.applyOklchDisplay('darkBackgroundColor', 'darkBackgroundOklch')
-    } else {
-      this.applyOklchDisplay('primaryColor', 'primaryOklch')
-      this.applyOklchDisplay('secondaryColor', 'secondaryOklch')
-      this.applyOklchDisplay('backgroundColor', 'backgroundOklch')
-    }
-  }
-
-  // --- Generic color picker handler ---
-
-  applyColorPicker (colorTarget, oklchTarget, cssProperty) {
-    const targetName = `${colorTarget}Target`
-    if (!this[`has${colorTarget[0].toUpperCase() + colorTarget.slice(1)}Target`]) return
-    const colorEl = this[targetName]
-    const { l, c, h } = hexToOklch(colorEl.value)
-    const oklchStr = formatOklch(l, c, h)
-    const oklchName = `${oklchTarget}Target`
-    if (this[`has${oklchTarget[0].toUpperCase() + oklchTarget.slice(1)}Target`]) {
-      this[oklchName].textContent = oklchStr
-    }
-    this.setProperty(cssProperty, oklchStr)
-  }
-
-  applyOklchDisplay (colorTarget, oklchTarget) {
-    const colorName = `${colorTarget}Target`
-    const oklchName = `${oklchTarget}Target`
-    if (!this[`has${colorTarget[0].toUpperCase() + colorTarget.slice(1)}Target`]) return
-    if (!this[`has${oklchTarget[0].toUpperCase() + oklchTarget.slice(1)}Target`]) return
-    const { l, c, h } = hexToOklch(this[colorName].value)
-    this[oklchName].textContent = formatOklch(l, c, h)
-  }
-
-  // --- Primary Color ---
-
-  updatePrimaryColor () {
-    this.primaryHexTarget.value = this.primaryColorTarget.value
-    this.applyColorPicker('primaryColor', 'primaryOklch', '--primary')
-    this.updateDownloadUrl()
-  }
-
-  updatePrimaryFromHex () {
-    const hex = this.primaryHexTarget.value
-    if (/^#[0-9a-f]{6}$/i.test(hex)) {
-      this.primaryColorTarget.value = hex
-      this.applyColorPicker('primaryColor', 'primaryOklch', '--primary')
-      this.updateDownloadUrl()
-    }
-  }
-
-  updateDarkPrimaryColor () {
-    this.darkPrimaryHexTarget.value = this.darkPrimaryColorTarget.value
-    this.applyColorPicker('darkPrimaryColor', 'darkPrimaryOklch', '--primary')
-    this.updateDownloadUrl()
-  }
-
-  updateDarkPrimaryFromHex () {
-    const hex = this.darkPrimaryHexTarget.value
-    if (/^#[0-9a-f]{6}$/i.test(hex)) {
-      this.darkPrimaryColorTarget.value = hex
-      this.applyColorPicker('darkPrimaryColor', 'darkPrimaryOklch', '--primary')
-      this.updateDownloadUrl()
-    }
-  }
-
-  // --- Secondary Color ---
-
-  updateSecondaryColor () {
-    this.secondaryHexTarget.value = this.secondaryColorTarget.value
-    this.applyColorPicker('secondaryColor', 'secondaryOklch', '--secondary')
-    this.updateDownloadUrl()
-  }
-
-  updateSecondaryFromHex () {
-    const hex = this.secondaryHexTarget.value
-    if (/^#[0-9a-f]{6}$/i.test(hex)) {
-      this.secondaryColorTarget.value = hex
-      this.applyColorPicker('secondaryColor', 'secondaryOklch', '--secondary')
-      this.updateDownloadUrl()
-    }
-  }
-
-  updateDarkSecondaryColor () {
-    this.darkSecondaryHexTarget.value = this.darkSecondaryColorTarget.value
-    this.applyColorPicker('darkSecondaryColor', 'darkSecondaryOklch', '--secondary')
-    this.updateDownloadUrl()
-  }
-
-  updateDarkSecondaryFromHex () {
-    const hex = this.darkSecondaryHexTarget.value
-    if (/^#[0-9a-f]{6}$/i.test(hex)) {
-      this.darkSecondaryColorTarget.value = hex
-      this.applyColorPicker('darkSecondaryColor', 'darkSecondaryOklch', '--secondary')
-      this.updateDownloadUrl()
-    }
-  }
-
-  // --- Background Color ---
-
-  updateBackgroundColor () {
-    this.backgroundHexTarget.value = this.backgroundColorTarget.value
-    this.applyColorPicker('backgroundColor', 'backgroundOklch', '--background')
-    this.updateDownloadUrl()
-  }
-
-  updateBackgroundFromHex () {
-    const hex = this.backgroundHexTarget.value
-    if (/^#[0-9a-f]{6}$/i.test(hex)) {
-      this.backgroundColorTarget.value = hex
-      this.applyColorPicker('backgroundColor', 'backgroundOklch', '--background')
-      this.updateDownloadUrl()
-    }
-  }
-
-  updateDarkBackgroundColor () {
-    this.darkBackgroundHexTarget.value = this.darkBackgroundColorTarget.value
-    this.applyColorPicker('darkBackgroundColor', 'darkBackgroundOklch', '--background')
-    this.updateDownloadUrl()
-  }
-
-  updateDarkBackgroundFromHex () {
-    const hex = this.darkBackgroundHexTarget.value
-    if (/^#[0-9a-f]{6}$/i.test(hex)) {
-      this.darkBackgroundColorTarget.value = hex
-      this.applyColorPicker('darkBackgroundColor', 'darkBackgroundOklch', '--background')
-      this.updateDownloadUrl()
-    }
+      this.setProperty(`--${cssVar}`, this.oklchFromRow(row))
+    })
   }
 
   // --- Radius ---
@@ -339,21 +268,30 @@ export default class BuilderController extends Controller {
   updateDownloadUrl () {
     if (!this.hasDownloadTarget) return
 
+    const params = new URLSearchParams()
+
+    // Collect all color values + alpha
+    this.colorRowTargets.forEach(row => {
+      const picker = row.querySelector('input[type="color"]')
+      const alphaInput = row.querySelector('[data-role="alpha"]')
+      const cssVar = row.dataset.colorVar
+      const mode = row.dataset.colorMode
+      if (!picker || !cssVar) return
+      const paramKey = cssVar.replace(/-/g, '_')
+      const suffix = mode === 'dark' ? '_dark' : ''
+      params.set(paramKey + suffix, picker.value)
+      if (alphaInput) {
+        params.set(paramKey + suffix + '_alpha', alphaInput.value)
+      }
+    })
+
+    // Radius
     const activeRadiusBase = this.radiusBaseTargets.find(el => el.classList.contains('btn-default'))
     const activeRadiusBtn = this.radiusBtnTargets.find(el => el.classList.contains('btn-default'))
     const activeRadiusForm = this.radiusFormTargets.find(el => el.classList.contains('btn-default'))
-
-    const params = new URLSearchParams({
-      primary: this.primaryColorTarget.value,
-      primary_dark: this.hasDarkPrimaryColorTarget ? this.darkPrimaryColorTarget.value : '',
-      secondary: this.hasSecondaryColorTarget ? this.secondaryColorTarget.value : '',
-      secondary_dark: this.hasDarkSecondaryColorTarget ? this.darkSecondaryColorTarget.value : '',
-      background: this.hasBackgroundColorTarget ? this.backgroundColorTarget.value : '',
-      background_dark: this.hasDarkBackgroundColorTarget ? this.darkBackgroundColorTarget.value : '',
-      radius_base: activeRadiusBase?.dataset.value || 'lg',
-      radius_btn: activeRadiusBtn?.dataset.value || '',
-      radius_form: activeRadiusForm?.dataset.value || 'md'
-    })
+    params.set('radius_base', activeRadiusBase?.dataset.value || 'md')
+    params.set('radius_btn', activeRadiusBtn?.dataset.value || '')
+    params.set('radius_form', activeRadiusForm?.dataset.value || 'md')
 
     this.downloadTarget.href = `${this.downloadUrlValue}?${params.toString()}`
   }
@@ -361,42 +299,35 @@ export default class BuilderController extends Controller {
   reset () {
     const defaults = this.defaultsValue
 
-    // Reset primary
-    this.primaryColorTarget.value = defaults.primary
-    this.primaryHexTarget.value = defaults.primary
-    if (this.hasDarkPrimaryColorTarget) {
-      this.darkPrimaryColorTarget.value = defaults.primary_dark
-      this.darkPrimaryHexTarget.value = defaults.primary_dark
-    }
-
-    // Reset secondary
-    if (this.hasSecondaryColorTarget) {
-      this.secondaryColorTarget.value = defaults.secondary
-      this.secondaryHexTarget.value = defaults.secondary
-    }
-    if (this.hasDarkSecondaryColorTarget) {
-      this.darkSecondaryColorTarget.value = defaults.secondary_dark
-      this.darkSecondaryHexTarget.value = defaults.secondary_dark
-    }
-
-    // Reset background
-    if (this.hasBackgroundColorTarget) {
-      this.backgroundColorTarget.value = defaults.background
-      this.backgroundHexTarget.value = defaults.background
-    }
-    if (this.hasDarkBackgroundColorTarget) {
-      this.darkBackgroundColorTarget.value = defaults.background_dark
-      this.darkBackgroundHexTarget.value = defaults.background_dark
-    }
+    // Reset all color rows (including alpha)
+    this.colorRowTargets.forEach(row => {
+      const picker = row.querySelector('input[type="color"]')
+      const hex = row.querySelector('input[type="text"]')
+      const alphaInput = row.querySelector('[data-role="alpha"]')
+      const cssVar = row.dataset.colorVar
+      const mode = row.dataset.colorMode
+      if (!picker || !cssVar) return
+      const paramKey = cssVar.replace(/-/g, '_')
+      const defaultKey = mode === 'dark' ? `${paramKey}_dark` : paramKey
+      const defaultVal = defaults[defaultKey]
+      if (defaultVal) {
+        picker.value = defaultVal
+        if (hex) hex.value = defaultVal
+      }
+      if (alphaInput) {
+        const alphaKey = defaultKey + '_alpha'
+        alphaInput.value = defaults[alphaKey] || alphaInput.defaultValue
+      }
+    })
 
     // Reset radius
     this.radiusBaseTargets.forEach(el => {
-      const isActive = el.dataset.value === (defaults.radius_base || 'lg')
+      const isActive = el.dataset.value === (defaults.radius_base || 'md')
       el.classList.toggle('btn-default', isActive)
       el.classList.toggle('btn-outline', !isActive)
     })
     this.radiusBtnTargets.forEach(el => {
-      const isActive = el.dataset.value === (defaults.radius_btn || defaults.radius_base || 'lg')
+      const isActive = el.dataset.value === (defaults.radius_btn || defaults.radius_base || 'md')
       el.classList.toggle('btn-default', isActive)
       el.classList.toggle('btn-outline', !isActive)
     })
@@ -410,7 +341,7 @@ export default class BuilderController extends Controller {
     this.currentTheme = 'light'
     this.applyThemeClass()
     this.updateThemeIcons()
-    this.updateThemeSections()
+    this.showActiveColorRows()
     window.localStorage.setItem('theme', 'light')
 
     this.applyAllColors()

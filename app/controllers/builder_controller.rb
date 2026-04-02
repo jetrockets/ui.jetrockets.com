@@ -12,8 +12,18 @@ class BuilderController < ApplicationController
     "full" => "9999px"
   }.freeze
 
-  # Variables editable in builder (mapped to hex color pickers)
-  EDITABLE_VARS = %w[primary secondary background].freeze
+  # Color variables editable in builder (mapped to hex color pickers)
+  # Each entry becomes a color picker pair (light + dark)
+  EDITABLE_VARS = %w[
+    background foreground
+    card card-foreground
+    primary primary-foreground
+    secondary secondary-foreground
+    accent accent-foreground
+    muted muted-foreground
+    border input input-focus input-ring
+    destructive success warning info
+  ].freeze
 
   def index
     @theme = parse_theme_brand
@@ -21,10 +31,22 @@ class BuilderController < ApplicationController
 
   def download
     theme = parse_theme_brand
-    # Merge builder color params
+    # Merge builder color params (param keys use underscores, CSS vars use dashes)
     EDITABLE_VARS.each do |var|
-      theme[:light][var] = oklch_from_hex(params[var]) if params[var].present?
-      theme[:dark][var] = oklch_from_hex(params["#{var}_dark"]) if params["#{var}_dark"].present?
+      param_key = var.tr("-", "_")
+      if params[param_key].present?
+        oklch = oklch_from_hex(params[param_key])
+        alpha = params["#{param_key}_alpha"]
+        oklch = oklch.sub(")", " / #{alpha}%)") if alpha.present? && alpha.to_s != "100"
+        theme[:light][var] = oklch
+      end
+      dark_key = "#{param_key}_dark"
+      if params[dark_key].present?
+        oklch = oklch_from_hex(params[dark_key])
+        alpha = params["#{dark_key}_alpha"]
+        oklch = oklch.sub(")", " / #{alpha}%)") if alpha.present? && alpha.to_s != "100"
+        theme[:dark][var] = oklch
+      end
     end
 
     # Merge builder radius params
@@ -65,19 +87,40 @@ class BuilderController < ApplicationController
       end
     end
 
-    # Convert editable vars to hex for color pickers
+    # Convert editable vars to hex for color pickers, extract alpha where present
     hex = {}
+    alpha = {}
     EDITABLE_VARS.each do |var|
-      hex[var] = oklch_to_hex(light[var]) if light[var]
-      hex["#{var}_dark"] = oklch_to_hex(dark[var]) if dark[var]
+      light_val = resolve_color_value(light, var)
+      dark_val = resolve_color_value(dark, var) || resolve_color_value(light, var)
+      if light_val
+        hex[var] = oklch_to_hex(light_val[:oklch])
+        alpha[var] = light_val[:alpha] if light_val[:alpha]
+      end
+      if dark_val
+        hex["#{var}_dark"] = oklch_to_hex(dark_val[:oklch])
+        alpha["#{var}_dark"] = dark_val[:alpha] if dark_val[:alpha]
+      end
     end
+
+    # Fallback: input-focus and input-ring derive from primary when not directly set
+    %w[input-focus input-ring].each do |var|
+      key = var.tr("-", "_")
+      hex[key] ||= hex["primary"]
+      hex["#{key}_dark"] ||= hex["primary_dark"]
+    end
+    # Default alpha for input-focus/input-ring from brand.css
+    alpha["input_focus"] ||= 40
+    alpha["input_focus_dark"] ||= 40
+    alpha["input_ring"] ||= 10
+    alpha["input_ring_dark"] ||= 10
 
     # Resolve radius defaults from brand.css values
     radius_base = resolve_radius_name(light["radius-base"]) || "md"
     radius_btn = resolve_radius_name(light["radius-btn"])
     radius_field = resolve_radius_name(light["radius-field"]) || "md"
 
-    { light: light, dark: dark, hex: hex, radius_base: radius_base, radius_btn: radius_btn, radius_form: radius_field }
+    { light: light, dark: dark, hex: hex, alpha: alpha, radius_base: radius_base, radius_btn: radius_btn, radius_form: radius_field }
   end
 
   def generate_theme_css(theme)
@@ -98,6 +141,28 @@ class BuilderController < ApplicationController
       #{lines_dark}
       }
     CSS
+  end
+
+  # Returns { oklch: "oklch(L C H)", alpha: N } or nil
+  def resolve_color_value(vars, name)
+    value = vars[name]
+    return nil unless value
+    # Resolve "var(--foreground)" to the actual value
+    if (m = value.match(/\Avar\(--(.+?)\)\z/))
+      value = vars[m[1]]
+      return nil unless value
+    end
+    # Skip relative color syntax — oklch(from ...)
+    return nil if value.include?("from var(") || value.include?("from ")
+    return nil unless value.start_with?("oklch(")
+    # Extract alpha if present: "oklch(1 0 0 / 10%)" → oklch + alpha
+    if (alpha_match = value.match(%r{\s*/\s*([\d.]+)%?\s*\)}))
+      alpha = alpha_match[1].to_f
+      oklch = value.sub(%r{\s*/\s*[\d.]+%?\s*\)}, ")")
+      { oklch: oklch, alpha: alpha.round }
+    else
+      { oklch: value }
+    end
   end
 
   def resolve_radius_name(value)
