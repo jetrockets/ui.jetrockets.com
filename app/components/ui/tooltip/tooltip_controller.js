@@ -40,7 +40,8 @@ export default class TooltipController extends Controller {
     this.tooltip.className = 'tooltip'
     this.tooltip.role = 'tooltip'
     this.tooltip.innerHTML = this.contentValue
-    document.body.appendChild(this.tooltip)
+    const container = this.element.closest('dialog') || document.body
+    container.appendChild(this.tooltip)
   }
 
   async #updatePosition () {
