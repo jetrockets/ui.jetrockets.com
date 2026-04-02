@@ -182,7 +182,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.19.3)
-    kamal (2.7.0)
+    kamal (2.11.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -518,7 +518,7 @@ DEPENDENCIES
   fastimage
   gretel
   image_processing
-  kamal (~> 2.7.0)
+  kamal (~> 2.11.0)
   letter_opener
   meta-tags
   mjml-rails
