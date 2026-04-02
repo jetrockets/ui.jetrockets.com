@@ -11,7 +11,7 @@ class Ui::Card::Component < ApplicationComponent
 
   def classes
     class_names(
-      "border border-border bg-card text-card-foreground rounded-card overflow-clip",
+      "border border-border bg-card text-card-foreground rounded-card",
       @options.delete(:class)
     )
   end
