@@ -31,6 +31,9 @@ class BuilderController < ApplicationController
     if params[:radius_base].present?
       theme[:light]["radius-base"] = RADIUS_VALUES[params[:radius_base]] || theme[:light]["radius-base"]
     end
+    if params[:radius_btn].present?
+      theme[:light]["radius-btn"] = RADIUS_VALUES[params[:radius_btn]] || theme[:light]["radius-btn"]
+    end
     if params[:radius_form].present?
       theme[:light]["radius-field"] = RADIUS_VALUES[params[:radius_form]] || theme[:light]["radius-field"]
     end
@@ -70,10 +73,11 @@ class BuilderController < ApplicationController
     end
 
     # Resolve radius defaults from brand.css values
-    radius_base = resolve_radius_name(light["radius-base"])
-    radius_field = resolve_radius_name(light["radius-field"])
+    radius_base = resolve_radius_name(light["radius-base"]) || "md"
+    radius_btn = resolve_radius_name(light["radius-btn"])
+    radius_field = resolve_radius_name(light["radius-field"]) || "md"
 
-    { light: light, dark: dark, hex: hex, radius_base: radius_base, radius_form: radius_field }
+    { light: light, dark: dark, hex: hex, radius_base: radius_base, radius_btn: radius_btn, radius_form: radius_field }
   end
 
   def generate_theme_css(theme)
@@ -97,11 +101,13 @@ class BuilderController < ApplicationController
   end
 
   def resolve_radius_name(value)
-    return "md" unless value
+    return nil unless value
     # Match "theme(--radius-md)" format
     if (m = value.match(/theme\(--radius-(\w+)\)/))
       return m[1]
     end
+    # Match "var(--radius-base)" — inherits from base, return nil
+    return nil if value.match?(/var\(--radius/)
     # Match raw value like "0.375rem"
     RADIUS_VALUES.key(value) || "md"
   end

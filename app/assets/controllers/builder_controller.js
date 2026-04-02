@@ -52,7 +52,7 @@ export default class BuilderController extends Controller {
     'lightPrimarySection', 'darkPrimarySection',
     'lightSecondarySection', 'darkSecondarySection',
     'lightBackgroundSection', 'darkBackgroundSection',
-    'radiusBase', 'radiusForm',
+    'radiusBase', 'radiusBtn', 'radiusForm',
     'lightIcon', 'darkIcon',
     'download'
   ]
@@ -279,6 +279,17 @@ export default class BuilderController extends Controller {
     this.updateDownloadUrl()
   }
 
+  updateRadiusBtn (event) {
+    const value = event.currentTarget.dataset.value
+    this.radiusBtnTargets.forEach(el => {
+      const isActive = el.dataset.value === value
+      el.classList.toggle('btn-default', isActive)
+      el.classList.toggle('btn-outline', !isActive)
+    })
+    this.setProperty('--radius-btn', this.radiusToRem(value))
+    this.updateDownloadUrl()
+  }
+
   updateRadiusForm (event) {
     const value = event.currentTarget.dataset.value
     this.radiusFormTargets.forEach(el => {
@@ -308,6 +319,11 @@ export default class BuilderController extends Controller {
       this.setProperty('--radius-base', this.radiusToRem(activeRadiusBase.dataset.value))
     }
 
+    const activeRadiusBtn = this.radiusBtnTargets.find(el => el.classList.contains('btn-default'))
+    if (activeRadiusBtn) {
+      this.setProperty('--radius-btn', this.radiusToRem(activeRadiusBtn.dataset.value))
+    }
+
     const activeRadiusForm = this.radiusFormTargets.find(el => el.classList.contains('btn-default'))
     if (activeRadiusForm) {
       this.setProperty('--radius-field', this.radiusToRem(activeRadiusForm.dataset.value))
@@ -324,6 +340,7 @@ export default class BuilderController extends Controller {
     if (!this.hasDownloadTarget) return
 
     const activeRadiusBase = this.radiusBaseTargets.find(el => el.classList.contains('btn-default'))
+    const activeRadiusBtn = this.radiusBtnTargets.find(el => el.classList.contains('btn-default'))
     const activeRadiusForm = this.radiusFormTargets.find(el => el.classList.contains('btn-default'))
 
     const params = new URLSearchParams({
@@ -334,6 +351,7 @@ export default class BuilderController extends Controller {
       background: this.hasBackgroundColorTarget ? this.backgroundColorTarget.value : '',
       background_dark: this.hasDarkBackgroundColorTarget ? this.darkBackgroundColorTarget.value : '',
       radius_base: activeRadiusBase?.dataset.value || 'lg',
+      radius_btn: activeRadiusBtn?.dataset.value || '',
       radius_form: activeRadiusForm?.dataset.value || 'md'
     })
 
@@ -374,6 +392,11 @@ export default class BuilderController extends Controller {
     // Reset radius
     this.radiusBaseTargets.forEach(el => {
       const isActive = el.dataset.value === (defaults.radius_base || 'lg')
+      el.classList.toggle('btn-default', isActive)
+      el.classList.toggle('btn-outline', !isActive)
+    })
+    this.radiusBtnTargets.forEach(el => {
+      const isActive = el.dataset.value === (defaults.radius_btn || defaults.radius_base || 'lg')
       el.classList.toggle('btn-default', isActive)
       el.classList.toggle('btn-outline', !isActive)
     })

@@ -12,6 +12,7 @@
     background: @theme[:hex]["background"],
     background_dark: @theme[:hex]["background_dark"],
     radius_base: @theme[:radius_base],
+    radius_btn: @theme[:radius_btn],
     radius_form: @theme[:radius_form]
   }
 %>
@@ -101,14 +102,14 @@
             <%= ui.card_title "Buttons" %>
           <% end %>
           <%= ui.card_body class: "flex flex-col gap-3" do %>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <%= ui.btn "Primary", variant: :default, size: :sm %>
               <%= ui.btn "Secondary", variant: :secondary, size: :sm %>
               <%= ui.btn "Outline", variant: :outline, size: :sm %>
               <%= ui.btn "Ghost", variant: :ghost, size: :sm %>
               <%= ui.btn "Danger", variant: :danger, size: :sm %>
             </div>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <%= ui.btn "Extra Small", variant: :default, size: :xs %>
               <%= ui.btn "Small", variant: :default, size: :sm %>
               <%= ui.btn "Medium", variant: :default, size: :md %>
@@ -753,6 +754,19 @@
               <% %w[none sm md lg xl].each do |size| %>
                 <%= ui.btn size.upcase, size: :xs, variant: defaults[:radius_base] == size ? :default : :outline,
                     data: { builder_target: "radiusBase", action: "click->builder#updateRadiusBase", value: size } %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="w-px h-5 bg-border/50 shrink-0"></div>
+
+          <%# — Button Radius — %>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs font-medium text-white whitespace-nowrap">Buttons</span>
+            <div class="ui_group ui_group-sticky">
+              <% %w[none sm md lg xl full].each do |size| %>
+                <%= ui.btn size.upcase, size: :xs, variant: (defaults[:radius_btn] || defaults[:radius_base]) == size ? :default : :outline,
+                    data: { builder_target: "radiusBtn", action: "click->builder#updateRadiusBtn", value: size } %>
               <% end %>
             </div>
           </div>

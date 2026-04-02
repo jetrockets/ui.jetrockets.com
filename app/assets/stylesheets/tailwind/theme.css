@@ -17,13 +17,13 @@
 
 /* Map raw variables to Tailwind utility classes */
 @theme inline {
-  /* Radius — derived from --radius-base (set in brand.css) */
-  --radius-btn-xs: calc(var(--radius-base) * 0.75);
-  --radius-btn-sm: var(--radius-base);
-  --radius-btn-md: calc(var(--radius-base) * 1.125);
-  --radius-btn-lg: calc(var(--radius-base) * 1.25);
-  --radius-card: calc(var(--radius-base) * 1.5);
-  --radius-modal: calc(var(--radius-base) * 1.5);
+  /* Radius — derived from --radius-base and --radius-btn (set in brand.css) */
+  --radius-btn-xs: calc(var(--radius-btn) * 0.75);
+  --radius-btn-sm: calc(var(--radius-btn) * 0.875);
+  --radius-btn-md: var(--radius-btn);
+  --radius-btn-lg: calc(var(--radius-btn) * 1.25);
+  --radius-card: calc(var(--radius-base) * 2);
+  --radius-modal: calc(var(--radius-base) * 3);
   --radius-dropdown: calc(var(--radius-base) * 1.5);
   --radius-field: var(--radius-field);
   --radius-tooltip: calc(var(--radius-base) * 0.5);

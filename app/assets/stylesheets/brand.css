@@ -6,6 +6,7 @@
 
 :root {
   --radius-base: theme(--radius-md);
+  --radius-btn: var(--radius-base);
   --radius-field: theme(--radius-md);
 
   --background: oklch(1 0 0);

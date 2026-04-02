@@ -2,10 +2,8 @@
 
 @layer components {
   .drawer {
-    @apply fixed inset-0 left-auto flex flex-col hidden m-0 min-h-full shadow-sm w-fit w-2xl;
-    @apply bg-card backdrop:bg-overlay;
-    border-top-left-radius: var(--radius-modal);
-    border-bottom-left-radius: var(--radius-modal);
+    @apply fixed inset-0 left-auto flex-col hidden m-0 min-h-full shadow-sm w-2xl;
+    @apply bg-card backdrop:bg-overlay rounded-tl-modal rounded-bl-modal;
   }
 
   .drawer[open] {
