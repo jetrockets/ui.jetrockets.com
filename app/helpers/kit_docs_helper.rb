@@ -26,7 +26,14 @@ module KitDocsHelper
         end,
         ui.modal(title: "Variant #{variant[:number]} — Source code", id: modal_id, size: "5xl") do
           ui.modal_body do
-            content_tag(:pre, content_tag(:code, html_escape(code)), class: "text-sm")
+            content_tag(:div, class: "relative group") do
+              safe_join([
+                content_tag(:pre, content_tag(:code, html_escape(code)), class: "text-sm"),
+                content_tag(:div, class: "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity") do
+                  ui.clipboard(ui.icon("clipboard"), value: code, as: :btn, variant: :secondary, size: :icon_xs, tooltip: "Copy code")
+                end
+              ])
+            end
           end
         end
       ])

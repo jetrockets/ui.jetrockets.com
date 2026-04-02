@@ -21,7 +21,7 @@ module ComponentDocsHelper
     usage = docs&.fetch("usage", nil)
     return nil if usage.blank?
 
-    content_tag(:pre, content_tag(:code, html_escape(usage.strip)))
+    render_code_block(usage.strip)
   end
 
   def render_component_examples(component_name)
@@ -48,7 +48,7 @@ module ComponentDocsHelper
           end
         end)
       end
-      concat content_tag(:pre, content_tag(:code, html_escape(example["code"].strip)), class: "text-sm")
+      concat render_code_block(example["code"].strip)
     end
   end
 
@@ -150,6 +150,17 @@ module ComponentDocsHelper
   end
 
   private
+
+  def render_code_block(code)
+    content_tag(:div, class: "relative group") do
+      safe_join([
+        content_tag(:pre, content_tag(:code, html_escape(code)), class: "text-sm"),
+        content_tag(:div, class: "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity") do
+          ui.clipboard(ui.icon("clipboard"), value: code, as: :btn, variant: :secondary, size: :icon_xs, tooltip: "Copy code")
+        end
+      ])
+    end
+  end
 
   def load_component_docs(component_name)
     paths = [
