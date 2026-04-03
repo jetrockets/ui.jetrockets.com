@@ -54,13 +54,13 @@ cat app/components/ui/card/component.yml
 <%= ui.spinner(size: :md) %>
 ```
 
-### 2. Using `render` with component class (for complex components)
+### 2. Using the `ui` helper for complex components
 ```erb
-<%= render Ui::Card::Component.new do %>
-  <%= render Ui::Card::HeaderComponent.new(justify: :between) do %>
-    <%= render Ui::Card::TitleComponent.new { "Title" } %>
+<%= ui.card do %>
+  <%= ui.card_header(justify: :between) do %>
+    <%= ui.card_title("Title") %>
   <% end %>
-  <%= render Ui::Card::BodyComponent.new do %>
+  <%= ui.card_body do %>
     Content
   <% end %>
 <% end %>
@@ -78,20 +78,20 @@ cat app/components/ui/card/component.yml
 - `ui.tooltip` - Tooltips
 - `ui.clipboard` - Copy to clipboard
 
-### Complex Components (use `render`)
-- `Ui::Card` - Cards with header, body, footer
-- `Ui::Table` - Data tables
-- `Ui::Modal` - Modal dialogs
-- `Ui::Drawer` - Side drawers
-- `Ui::Tabs` - Tab navigation
-- `Ui::Accordion` - Collapsible sections
-- `Ui::Dropdown` - Dropdown menus
-- `Ui::Popover` - Popovers
-- `Ui::Empty` - Empty states
-- `Ui::Header` - Page headers
-- `Ui::Group` - Button groups
-- `Ui::Pagy` - Pagination
-- `Ui::Flash` - Flash messages
+### Complex Components (use `ui` helper with subcomponents)
+- `ui.card` - Cards with `ui.card_header`, `ui.card_body`, `ui.card_footer`
+- `ui.table` - Data tables with `ui.table_thead`, `ui.table_tbody`, `ui.table_tr`, `ui.table_th`, `ui.table_td`
+- `ui.modal` - Modal dialogs with `ui.modal_body`, `ui.modal_footer`
+- `ui.drawer` - Side drawers
+- `ui.tabs` - Tab navigation
+- `ui.accordion` - Collapsible sections
+- `ui.dropdown` - Dropdown menus
+- `ui.popover` - Popovers
+- `ui.empty` - Empty states with `ui.empty_icon`, `ui.empty_title`, `ui.empty_description`, `ui.empty_actions`
+- `ui.header` - Page headers with `ui.header_heading`, `ui.header_title`, `ui.header_subtitle`, `ui.header_actions`
+- `ui.group` - Button groups
+- `ui.pagy` - Pagination
+- `ui.flash` - Flash messages
 
 ### Form Components
 Located in `app/components/ui/form/`:
@@ -106,11 +106,11 @@ Located in `app/components/ui/form/`:
 
 ### Page with Header
 ```erb
-<%= render Ui::Header::Component.new(sticky: true, bordered: true) do %>
-  <%= render Ui::Header::HeadingComponent.new do %>
-    <%= render Ui::Header::TitleComponent.new { "Page Title" } %>
+<%= ui.header(sticky: true, bordered: true) do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title("Page Title") %>
   <% end %>
-  <%= render Ui::Header::ActionsComponent.new do %>
+  <%= ui.header_actions do %>
     <%= ui.btn("Action", variant: :default) %>
   <% end %>
 <% end %>
@@ -118,11 +118,11 @@ Located in `app/components/ui/form/`:
 
 ### Empty State
 ```erb
-<%= render Ui::Empty::Component.new do %>
-  <%= render Ui::Empty::IconComponent.new(name: "user") %>
-  <%= render Ui::Empty::TitleComponent.new { "No items" } %>
-  <%= render Ui::Empty::DescriptionComponent.new { "Get started" } %>
-  <%= render Ui::Empty::ActionsComponent.new do %>
+<%= ui.empty do %>
+  <%= ui.empty_icon(name: "user") %>
+  <%= ui.empty_title("No items") %>
+  <%= ui.empty_description("Get started") %>
+  <%= ui.empty_actions do %>
     <%= ui.btn("Create", variant: :default) %>
   <% end %>
 <% end %>
@@ -130,11 +130,11 @@ Located in `app/components/ui/form/`:
 
 ### Modal
 ```erb
-<%= render Ui::Modal::Component.new(title: "Title", size: :lg) do %>
-  <%= render Ui::Modal::BodyComponent.new do %>
+<%= ui.modal(title: "Title", size: :lg) do %>
+  <%= ui.modal_body do %>
     Content
   <% end %>
-  <%= render Ui::Modal::FooterComponent.new(justify: :end) do %>
+  <%= ui.modal_footer(justify: :end) do %>
     <%= ui.btn("Cancel", variant: :secondary) %>
     <%= ui.btn("Save", variant: :default) %>
   <% end %>

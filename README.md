@@ -109,29 +109,29 @@ end
 
 ### Table with Pagination
 ```erb
-<%= render Ui::Table::Component.new do %>
-  <%= render Ui::Table::Thead::Component.new do %>
-    <%= render Ui::Table::Tr::Component.new do %>
-      <%= render Ui::Table::Th::Component.new { "Name" } %>
-      <%= render Ui::Table::Th::Component.new { "Email" } %>
-      <%= render Ui::Table::Th::Component.new { "Actions" } %>
+<%= ui.table do %>
+  <%= ui.table_thead do %>
+    <%= ui.table_tr do %>
+      <%= ui.table_th { "Name" } %>
+      <%= ui.table_th { "Email" } %>
+      <%= ui.table_th { "Actions" } %>
     <% end %>
   <% end %>
 
-  <%= render Ui::Table::Tbody::Component.new do %>
+  <%= ui.table_tbody do %>
     <% @users.each do |user| %>
-      <%= render Ui::Table::Tr::Component.new do %>
-        <%= render Ui::Table::Td::Component.new { user.name } %>
-        <%= render Ui::Table::Td::Component.new { user.email } %>
-        <%= render Ui::Table::Td::Component.new do %>
-          <%= render Ui::Btn::Component.new(size: :sm, variant: :outline) { "Edit" } %>
+      <%= ui.table_tr do %>
+        <%= ui.table_td { user.name } %>
+        <%= ui.table_td { user.email } %>
+        <%= ui.table_td do %>
+          <%= ui.btn("Edit", size: :sm, variant: :outline) %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
 <% end %>
 
-<%= render Ui::Pagy::Component.new(pagy: @pagy) %>
+<%= ui.pagy(pagy: @pagy) %>
 ```
 
 ## 🛠️ Development Workflow

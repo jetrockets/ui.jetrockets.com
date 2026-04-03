@@ -12,7 +12,7 @@ class Ui::Modal::Component < ApplicationComponent
 
   erb_template <<~ERB
     <%= container_tag do %>
-      <%= render Ui::Modal::HeaderComponent.new(title: @title, subtitle: @subtitle, closable: closable?, id: @id) %>
+      <%= helpers.ui.modal_header(title: @title, subtitle: @subtitle, closable: closable?, id: @id) %>
       <%= content %>
     <% end %>
   ERB

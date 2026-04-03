@@ -5,7 +5,7 @@ preview: false
 
 usage: |
   # <% In your layout or view %>
-  <%= render Ui::Flash::Component.new %>
+  <%= ui.flash %>
 
   # <% In your controller %>
   flash[:notice] = "Changes saved successfully."
@@ -26,16 +26,16 @@ examples:
     preview: false
     code: |
       <% flash[:notice] = "This is a notice flash message." %>
-      <%= render Ui::Flash::Component.new %>
+      <%= ui.flash %>
 
   - name: Alert flash
     preview: false
     code: |
       <% flash[:alert] = "This is an alert flash message." %>
-      <%= render Ui::Flash::Component.new %>
+      <%= ui.flash %>
 
   - name: Non-dismissible
     preview: false
     code: |
       <% flash[:notice] = "This message cannot be dismissed." %>
-      <%= render Ui::Flash::Component.new(dismissible: false) %>
+      <%= ui.flash(dismissible: false) %>

@@ -21,12 +21,10 @@
   <% end %>
 
   <% if @variants.empty? %>
-    <%= render Ui::Empty::Component.new do %>
-      <div class="flex flex-col items-center gap-2">
-        <span class="icon icon-cube text-4xl text-muted-foreground"></span>
-        <h3 class="font-semibold">Coming soon</h3>
-        <p class="text-sm text-muted-foreground">Blocks for this category are being designed.</p>
-      </div>
+    <%= ui.empty do %>
+      <%= ui.empty_icon "cube" %>
+      <%= ui.empty_title "Coming soon" %>
+      <%= ui.empty_description "Blocks for this category are being designed." %>
     <% end %>
   <% end %>
 </article>

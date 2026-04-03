@@ -161,13 +161,13 @@ Components can be rendered using the `ui` helper for a cleaner syntax:
 ```
 
 ### Rendering Complex Components
-For components with subcomponents, use the `render` method:
+Complex components with subcomponents also use the `ui` helper:
 ```erb
-<%= render Ui::Card::Component.new do %>
-  <%= render Ui::Card::HeaderComponent.new(justify: :between) do %>
-    <%= render Ui::Card::TitleComponent.new { "Title" } %>
+<%= ui.card do %>
+  <%= ui.card_header(justify: :between) do %>
+    <%= ui.card_title("Title") %>
   <% end %>
-  <%= render Ui::Card::BodyComponent.new do %>
+  <%= ui.card_body do %>
     Content
   <% end %>
 <% end %>
@@ -175,12 +175,12 @@ For components with subcomponents, use the `render` method:
 
 #### Header Component (Page Header)
 ```erb
-<%= render Ui::Header::Component.new(sticky: true, bordered: true) do %>
-  <%= render Ui::Header::HeadingComponent.new do %>
-    <%= render Ui::Header::TitleComponent.new { "Page Title" } %>
-    <%= render Ui::Header::SubtitleComponent.new { "Subtitle" } %>
+<%= ui.header(sticky: true, bordered: true) do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title("Page Title") %>
+    <%= ui.header_subtitle("Subtitle") %>
   <% end %>
-  <%= render Ui::Header::ActionsComponent.new do %>
+  <%= ui.header_actions do %>
     <%= ui.btn("Action", variant: :default) %>
   <% end %>
 <% end %>
@@ -188,11 +188,11 @@ For components with subcomponents, use the `render` method:
 
 #### Empty State Component
 ```erb
-<%= render Ui::Empty::Component.new do %>
-  <%= render Ui::Empty::IconComponent.new(name: "user") %>
-  <%= render Ui::Empty::TitleComponent.new { "No items" } %>
-  <%= render Ui::Empty::DescriptionComponent.new { "Description text" } %>
-  <%= render Ui::Empty::ActionsComponent.new do %>
+<%= ui.empty do %>
+  <%= ui.empty_icon(name: "user") %>
+  <%= ui.empty_title("No items") %>
+  <%= ui.empty_description("Description text") %>
+  <%= ui.empty_actions do %>
     <%= ui.btn("Create", variant: :default) %>
   <% end %>
 <% end %>

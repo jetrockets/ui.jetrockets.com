@@ -6,7 +6,7 @@ preview: |
 
 usage: |
   # <% Add the component once in your layout %>
-  <%= render Ui::TurboConfirm::Component.new %>
+  <%= ui.turbo_confirm %>
 
   # <% Then use data-turbo-confirm on any button or link %>
   <%= ui.btn "Delete", variant: :danger, url: "/items/1", method: :delete, data: { turbo_confirm: "This action cannot be undone." } %>
