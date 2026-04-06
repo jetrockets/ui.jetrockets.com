@@ -4,7 +4,7 @@ ruby file: ".ruby-version"
 
 gem "rails", "~> 8.1.3"
 
-gem "kamal", "~> 2.7.0"
+gem "kamal", "~> 2.11.0"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "countries"
