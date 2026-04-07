@@ -252,7 +252,7 @@ When using this template:
 
 ## 📄 License
 
-This template is open source and available for use in your projects. Components can be freely copied, modified, and distributed.
+This project is released under the [MIT License](LICENSE).
 
 ## 🤝 Support
 
