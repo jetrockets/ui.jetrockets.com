@@ -34,5 +34,7 @@
 
   <body class="text-foreground bg-background min-h-screen">
     <%= yield %>
+
+    <%= render partial: "layouts/shared/gtm" if Rails.env.production? %>
   </body>
 </html>

@@ -48,5 +48,7 @@
     <%= ui.turbo_confirm %>
     <%= turbo_frame_tag :drawer %>
     <%= turbo_frame_tag :modal %>
+
+    <%= render partial: "layouts/shared/gtm" if Rails.env.production? %>
   </body>
 </html>
