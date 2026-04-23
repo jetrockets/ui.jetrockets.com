@@ -56,6 +56,8 @@ export default class ChoicesController extends Controller {
   }
 
   #setup = () => {
+    const controller = this
+
     this.choices = new Choices(this.selectTarget, {
       searchPlaceholderValue: 'Search',
       searchFloor: 1,
@@ -70,31 +72,7 @@ export default class ChoicesController extends Controller {
       allowHTML: true,
       ...this.#options(),
       callbackOnCreateTemplates: function (template) {
-        return {
-          choice: ({ classNames }, data) => {
-            return template(`
-              <div class="${classNames.item} ${classNames.itemChoice} ${
-              data.disabled ? classNames.itemDisabled : classNames.itemSelectable
-            }" data-select-text="${this.config.itemSelectText}" data-choice ${
-              data.disabled
-                ? 'data-choice-disabled aria-disabled="true"'
-                : 'data-choice-selectable'
-            } data-id="${data.id}" data-value="${data.value}" ${
-              data.groupId > 0 ? 'role="treeitem"' : 'role="option"'
-            }>
-              ${data.label}
-              ${data.value && data.customProperties?.desc
-                ? `
-                <div class="text-sm text-foreground">
-                ${data.customProperties.desc}
-                </div>
-                `
-                : ''
-              }
-            </div>
-            `)
-          }
-        }
+        return controller.#template(template, this)
       }
     })
     this.input = this.element.querySelector('input')
@@ -157,6 +135,44 @@ export default class ChoicesController extends Controller {
     }
   }
 
+  #template (template, choices) {
+    return {
+      choice: (args, data) =>
+        this.#choiceTemplate(template, choices, args, data)
+      // item: (args, data) =>
+      //   this.#itemTemplate(template, args, data)
+    }
+  }
+
+  #choiceTemplate (template, choices, { classNames }, data) {
+    const id = this.#escape(data.id)
+    const value = this.#escape(data.value)
+    const label = this.#escape(data.label)
+    const desc = data.customProperties?.desc ? this.#escape(data.customProperties.desc) : ''
+
+    return template(`
+      <div class="${classNames.item} ${classNames.itemChoice} ${
+      data.disabled ? classNames.itemDisabled : classNames.itemSelectable
+    }" data-select-text="${choices.config.itemSelectText}" data-choice ${
+      data.disabled
+        ? 'data-choice-disabled aria-disabled="true"'
+        : 'data-choice-selectable'
+    } data-id="${id}" data-value="${value}" ${
+      data.groupId > 0 ? 'role="treeitem"' : 'role="option"'
+    }>
+      ${label}
+      ${value && desc
+        ? `
+        <div class="text-sm text-foreground">
+        ${desc}
+        </div>
+        `
+        : ''
+      }
+    </div>
+    `)
+  }
+
   #options = () => {
     return 'silent renderChoiceLimit maxItemCount addItems removeItems removeItemButton editItems duplicateItemsAllowed delimiter paste searchEnabled searchChoices searchFloor searchResultLimit position resetScrollPosition addItemFilter shouldSort shouldSortItems placeholder placeholderValue prependValue appendValue searchPlaceholderValue renderSelectedChoices loadingText noResultsText noChoicesText itemSelectText addItemText maxItemText'
       .split(' ')
@@ -181,6 +197,16 @@ export default class ChoicesController extends Controller {
         <span>New</span>
       </a>
     `
+  }
+
+  #escape (value) {
+    return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char]))
   }
 }
 
