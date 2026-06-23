@@ -36,6 +36,17 @@
     .icon-logo { --svg: url("/images/logo-white.svg") };
   }
 
+  .icon-logo-jr { --svg: url("/images/logo-jr.svg") };
+  .dark {
+    .icon-logo-jr { --svg: url("/images/logo-jr-white.svg") };
+  }
+
+
+  .icon-logo-jr-square { --svg: url("/images/logo-jr-square.svg") };
+  .dark {
+    .icon-logo-jr-square { --svg: url("/images/logo-jr-square-white.svg") };
+  }
+
   /* Icons */
   .icon-academic-cap { --svg: url("/images/icons/academic-cap.svg") };
   .icon-adjustments-horizontal { --svg: url("/images/icons/adjustments-horizontal.svg") };

@@ -1,7 +1,7 @@
 <%= ui.navbar do %>
   <%= ui.navbar_brand do %>
     <%= button_tag ui.icon("bars-2", size: 6), class: "md:hidden", data: { action: "click->sidebar#toggle" } %>
-    <%= link_to ui.icon("logo", class: "w-28 h-8", img: true), root_path, aria: { label: "JetRockets" } %>
+    <%= link_to ui.icon("logo", class: "w-[100px] h-[36px]", img: true), root_path, aria: { label: "JetUI" } %>
   <% end %>
 
   <%= ui.navbar_main do %>
@@ -22,24 +22,28 @@
         <span class="sr-only">GitHub</span>
       <% end %>
 
-      <% if rodauth.logged_in? %>
-        <%= ui.dropdown do %>
-          <%= ui.dropdown_trigger do %>
-            <%= ui.avatar size: 8, user: current_user %>
-          <% end %>
-          <%= ui.dropdown_menu do %>
-            <%= ui.dropdown_link "Profile", url: user_profile_path, active: current_page?(user_profile_path) %>
-            <%= ui.dropdown_divider %>
-            <%= ui.dropdown_button "Sign Out", url: rodauth.logout_path, data: { turbo: false, turbo_method: :post } %>
-          <% end %>
-        <% end %>
-      <% else %>
-        <%= ui.group sticky: false, class: "hidden md:flex" do %>
-          <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :ghost, data: { turbo_frame: :modal } %>
-          <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
-        <% end %>
+      <%= link_to ui.icon("logo-jr-square", class: "size-8", img: true), "https://jetrockets.com", target: "_blank", rel: "noopener" %>
 
-        <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, data: { turbo_frame: :modal }, class: "md:hidden" %>
+      <% if false %>
+        <% if rodauth.logged_in? %>
+          <%= ui.dropdown do %>
+            <%= ui.dropdown_trigger do %>
+              <%= ui.avatar size: 8, user: current_user %>
+            <% end %>
+            <%= ui.dropdown_menu do %>
+              <%= ui.dropdown_link "Profile", url: user_profile_path, active: current_page?(user_profile_path) %>
+              <%= ui.dropdown_divider %>
+              <%= ui.dropdown_button "Sign Out", url: rodauth.logout_path, data: { turbo: false, turbo_method: :post } %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= ui.group sticky: false, class: "hidden md:flex" do %>
+            <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :ghost, data: { turbo_frame: :modal } %>
+            <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
+          <% end %>
+
+          <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, data: { turbo_frame: :modal }, class: "md:hidden" %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
