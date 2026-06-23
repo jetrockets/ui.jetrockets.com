@@ -1,16 +1,15 @@
 # Rails UI Component Library
 
-A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
+A comprehensive Rails 8 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
 
 ## 🚀 Quick Start
 
 ### Requirements
 
-- **Ruby** 3.4.4+
-- **Rails** 7.0+
-- **Node.js** 18+
-- **ViewComponent** gem
-- **TailwindCSS** 4.0
+- **Ruby** 3.4+
+- **Rails** 8.1+
+- **Node.js** 22+
+- **Yarn** Classic
 
 ### Installation
 
@@ -71,7 +70,7 @@ end
 Components are namespaced under the `Ui::` module:
 
 ```ruby
-class Ui::Button::Component < ApplicationComponent
+class Ui::Btn::Component < ApplicationComponent
   def initialize(variant: :default, size: :md, **options)
     @variant = variant
     @size = size
@@ -198,29 +197,10 @@ bundle exec erb_lint         # ERB template linting
 
 ```
 app/
-├── components/ui/           # UI Components library
-│   ├── accordion/          # Accordion component
-│   ├── alert/              # Alert component
-│   ├── avatar/             # Avatar component
-│   ├── badge/              # Badge component
-│   ├── btn/                # Button component
-│   ├── card/               # Card component with sub-components
-│   ├── clipboard/          # Clipboard component
-│   ├── drawer/             # Drawer component
-│   ├── dropdown/           # Dropdown component with sub-components
-│   ├── empty/              # Empty state component with sub-components
-│   ├── flash/              # Flash message component
-│   ├── group/              # Button group component
-│   ├── header/             # Page header component with sub-components
-│   ├── icon/               # Icon component
-│   ├── modal/              # Modal component
-│   ├── pagy/               # Pagination component
-│   ├── popover/            # Popover component with sub-components
-│   ├── spinner/            # Loading spinner component
-│   ├── table/              # Table component with sub-components
-│   ├── tabs/               # Tabs component
-│   ├── tooltip/            # Tooltip component
-│   └── turbo_confirm/      # Turbo confirmation component
+├── components/ui/           # UI component library (one folder per component)
+│   ├── btn/                # Each component: component.rb, component.css,
+│   ├── card/               # component.yml, plus *_component.rb sub-components
+│   └── .../                # and component_controller.js when interactive
 ├── assets/
 │   ├── controllers/        # Stimulus controllers
 │   ├── entrypoints/        # Vite entry points
@@ -229,9 +209,11 @@ app/
     └── layouts/            # Application layouts
 ```
 
+Browse `app/components/ui/` for the full set of components, or see the live docs under `/ui`.
+
 ## 🎯 Key Technologies
 
-- **Rails 8.0** - Backend framework with modern features
+- **Rails 8.1** - Backend framework with modern features
 - **ViewComponent** - Component-based architecture for views
 - **Vite** - Fast build tool for frontend assets
 - **TailwindCSS 4.0** - Utility-first CSS framework
