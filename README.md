@@ -1,13 +1,13 @@
 # Rails UI Component Library
 
-A comprehensive Rails 7 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
+A comprehensive Rails 8 component library built with ViewComponent, TailwindCSS 4.0, and Stimulus. This template provides a complete set of reusable UI components that developers can copy and customize for their projects.
 
 ## 🚀 Quick Start
 
 ### Requirements
 
 - **Ruby** 3.4.4+
-- **Rails** 7.0+
+- **Rails** 8.1+
 - **Node.js** 18+
 - **ViewComponent** gem
 - **TailwindCSS** 4.0
@@ -231,7 +231,7 @@ app/
 
 ## 🎯 Key Technologies
 
-- **Rails 8.0** - Backend framework with modern features
+- **Rails 8.1** - Backend framework with modern features
 - **ViewComponent** - Component-based architecture for views
 - **Vite** - Fast build tool for frontend assets
 - **TailwindCSS 4.0** - Utility-first CSS framework

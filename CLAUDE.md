@@ -23,10 +23,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture Overview
 
-This is a Rails 7 application using ViewComponent for component-based UI architecture. The frontend is built with Vite, TailwindCSS, and Stimulus.
+This is a Rails 8 application using ViewComponent for component-based UI architecture. The frontend is built with Vite, TailwindCSS, and Stimulus.
 
 ### Key Technologies
-- **Rails 7.0.8** - Backend framework
+- **Rails 8.1** - Backend framework
 - **ViewComponent** - Component-based view layer
 - **Vite** - Frontend build tool and dev server
 - **TailwindCSS 4.0** - Utility-first CSS framework
