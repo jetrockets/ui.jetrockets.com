@@ -139,15 +139,10 @@ Corner radii follow the anchored edges (`:right` → `rounded-l-modal`, `:bottom
 
 ### 4.3 Triggers
 
-**Async — unchanged link syntax.** The position/size of the dialog is declared on the *trigger*,
-because the server response only knows about its own content:
+**Async — unchanged link syntax:**
 
 ```erb
-<%= ui.btn "Edit", url: edit_post_path(post),
-      data: { turbo_frame: :dialog, dialog_position: :right, dialog_size: :lg } %>
-
-<%# sugar, expands to exactly the data attributes above %>
-<%= ui.btn "Edit", url: edit_post_path(post), dialog: { position: :right, size: :lg } %>
+<%= ui.btn "Edit", url: edit_post_path(post), data: { turbo_frame: :dialog } %>
 
 <%# still works — presets position, deprecated %>
 <%= ui.btn "Edit", url: edit_post_path(post), data: { turbo_frame: :modal } %>

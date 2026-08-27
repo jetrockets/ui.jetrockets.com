@@ -24,7 +24,7 @@ preview: |
 
 usage: |
   # <% Async dialog (loads content via Turbo Frame) %>
-  <%= ui.btn "Edit", url: edit_post_path(post), data: { turbo_frame: :dialog, dialog_position: :right } %>
+  <%= ui.btn "Edit", url: edit_post_path(post), data: { turbo_frame: :dialog } %>
 
   # <% Sync dialog (content already on page) %>
   <%= ui.btn "Open Dialog", data: { action: "click->dialogs#open", id: "myDialog" } %>
