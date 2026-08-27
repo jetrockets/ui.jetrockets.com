@@ -1,0 +1,234 @@
+name: Dialog
+description: Display content in a native dialog overlay — centered like a modal, or anchored to an edge like a drawer. Any number of dialogs can be opened on top of each other.
+
+preview: |
+  <div class="flex flex-wrap gap-2">
+    <%= ui.btn "Open Dialog", data: { action: "click->dialogs#open", id: "previewDialog" } %>
+  </div>
+
+  <%= ui.dialog(title: "Dialog Title", subtitle: "Centered by default", id: "previewDialog") do %>
+    <%= ui.dialog_body do %>
+      <p class="mb-4">This is a centered dialog. Open another one from inside it — dialogs stack.</p>
+      <%= ui.btn "Open nested dialog", variant: :secondary, data: { action: "click->dialogs#open", id: "previewDialogNested" } %>
+    <% end %>
+    <%= ui.dialog_footer justify: :end do %>
+      <%= ui.btn "Close", variant: :secondary, data: { action: "click->dialog#close" } %>
+    <% end %>
+  <% end %>
+
+  <%= ui.dialog(title: "Nested Dialog", position: :right, size: "4xl", id: "previewDialogNested") do %>
+    <%= ui.dialog_body do %>
+      <p>Anchored to the right, opened on top of the first dialog — only the bottom-most dialog dims the page.</p>
+    <% end %>
+  <% end %>
+
+usage: |
+  # <% Async dialog (loads content via Turbo Frame) %>
+  <%= ui.btn "Edit", url: edit_post_path(post), data: { turbo_frame: :dialog, dialog_position: :right } %>
+
+  # <% Sync dialog (content already on page) %>
+  <%= ui.btn "Open Dialog", data: { action: "click->dialogs#open", id: "myDialog" } %>
+  <%= ui.dialog(title: "Title", id: "myDialog") do %>
+    <%= ui.dialog_body do %>
+      Content here
+    <% end %>
+  <% end %>
+
+accepts_html_attributes: false
+
+content:
+  description: "dialog_header, dialog_body, dialog_footer components or any HTML."
+
+props:
+  - name: title
+    type: String
+    default: "nil"
+    description: Dialog title displayed in the header.
+
+  - name: subtitle
+    type: String
+    default: "nil"
+    description: Dialog subtitle displayed below the title.
+
+  - name: position
+    type: Symbol
+    default: ":center"
+    values:
+      - ":center"
+      - ":left"
+      - ":right"
+      - ":top"
+      - ":bottom"
+    description: Where the dialog is anchored. ":center" behaves like a modal; the edge positions behave like a drawer sliding in from that edge.
+
+  - name: size
+    type: String
+    default: '"2xl"'
+    values:
+      - '"sm"'
+      - '"md"'
+      - '"lg"'
+      - '"xl"'
+      - '"2xl"'
+      - '"3xl"'
+      - '"4xl"'
+      - '"5xl"'
+      - '"6xl"'
+    description: 'Controls width for ":center"/":left"/":right", height for ":top"/":bottom".'
+
+  - name: id
+    type: String
+    default: "nil"
+    description: Unique identifier for sync dialogs. Required for dialogs triggered by `dialogs#open`.
+
+  - name: closable
+    type: Boolean
+    default: "true"
+    description: Whether to render the × close button in the header.
+
+  - name: dismissible
+    type: Boolean
+    default: "true"
+    description: Whether Esc and a backdrop click close the dialog. The close button always closes it regardless of this setting.
+
+  - name: swipe
+    type: Boolean
+    default: "true"
+    description: Whether touch swipe-to-dismiss is enabled. Only applies to edge positions (":left", ":right", ":top", ":bottom") — ignored for ":center".
+
+slots:
+  - name: dialog_header
+    component: Ui::Dialog::HeaderComponent
+    description: Header section with title, subtitle, and close button. Automatically rendered when title/subtitle props are provided.
+    props:
+      - name: title
+        type: String
+        default: "nil"
+        description: Header title text.
+
+      - name: subtitle
+        type: String
+        default: "nil"
+        description: Header subtitle text.
+
+      - name: closable
+        type: Boolean
+        default: "true"
+        description: Whether to show the close button.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a bottom border on the header.
+
+  - name: dialog_body
+    component: Ui::Dialog::BodyComponent
+    description: Scrollable content area of the dialog.
+    props:
+      - name: class
+        type: String
+        default: "nil"
+        description: Additional CSS classes.
+
+  - name: dialog_footer
+    component: Ui::Dialog::FooterComponent
+    description: Footer section typically containing action buttons.
+    props:
+      - name: direction
+        type: Symbol
+        default: ":row"
+        values:
+          - ":row"
+          - ":col"
+        description: Flex direction for footer content.
+
+      - name: align
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+        description: Vertical alignment of footer content.
+
+      - name: justify
+        type: Symbol
+        default: ":start"
+        values:
+          - ":start"
+          - ":center"
+          - ":end"
+          - ":between"
+        description: Horizontal alignment of footer content.
+
+      - name: bordered
+        type: Boolean
+        default: "true"
+        description: Whether to show a top border on the footer.
+
+examples:
+  - name: Async Dialog
+    description: Load dialog content via Turbo Frame from another page. Position and size are set on the trigger, since the response only knows about its own content.
+    code: |
+      <%= ui.btn "Async Dialog", url: privacy_path, data: { turbo_frame: :dialog } %>
+
+  - name: Sync Dialog
+    description: Dialog with content already present on the page.
+    code: |
+      <%= ui.btn "Open Dialog", data: { action: "click->dialogs#open", id: "dialog1" } %>
+
+      <%= ui.dialog(title: "Dialog Title", subtitle: "Dialog Subtitle", id: "dialog1") do %>
+        <%= ui.dialog_body do %>
+          <p>Dialog content</p>
+        <% end %>
+      <% end %>
+
+  - name: Positions
+    description: 'Every edge position — :left, :right, :top, :bottom — plus the default :center.'
+    code: |
+      <div class="flex flex-wrap gap-2">
+        <%= ui.btn "Center", data: { action: "click->dialogs#open", id: "posCenter" } %>
+        <%= ui.btn "Left", variant: :secondary, data: { action: "click->dialogs#open", id: "posLeft" } %>
+        <%= ui.btn "Right", variant: :secondary, data: { action: "click->dialogs#open", id: "posRight" } %>
+        <%= ui.btn "Top", variant: :secondary, data: { action: "click->dialogs#open", id: "posTop" } %>
+        <%= ui.btn "Bottom", variant: :secondary, data: { action: "click->dialogs#open", id: "posBottom" } %>
+      </div>
+
+      <%= ui.dialog(title: "Center", id: "posCenter") { ui.dialog_body { "Default position." } } %>
+      <%= ui.dialog(title: "Left", position: :left, id: "posLeft") { ui.dialog_body { "Slides in from the left." } } %>
+      <%= ui.dialog(title: "Right", position: :right, id: "posRight") { ui.dialog_body { "Slides in from the right." } } %>
+      <%= ui.dialog(title: "Top", position: :top, size: :sm, id: "posTop") { ui.dialog_body { "Slides in from the top." } } %>
+      <%= ui.dialog(title: "Bottom", position: :bottom, size: :sm, id: "posBottom") { ui.dialog_body { "Slides in from the bottom." } } %>
+
+  - name: Nested Dialogs
+    description: Any number of dialogs can be opened on top of each other — each closes independently and only the bottom-most one dims the page.
+    code: |
+      <%= ui.btn "Open first dialog", data: { action: "click->dialogs#open", id: "nested1" } %>
+
+      <%= ui.dialog(title: "Level 1", id: "nested1") do %>
+        <%= ui.dialog_body do %>
+          <%= ui.btn "Open second dialog", variant: :secondary, data: { action: "click->dialogs#open", id: "nested2" } %>
+        <% end %>
+      <% end %>
+
+      <%= ui.dialog(title: "Level 2", position: :right, id: "nested2") do %>
+        <%= ui.dialog_body do %>
+          <%= ui.btn "Open third dialog", variant: :secondary, data: { action: "click->dialogs#open", id: "nested3" } %>
+        <% end %>
+      <% end %>
+
+      <%= ui.dialog(title: "Level 3", position: :bottom, size: :sm, id: "nested3") do %>
+        <%= ui.dialog_body { "As deep as you like." } %>
+      <% end %>
+
+  - name: Not Dismissible
+    description: Disable Esc and backdrop-click dismissal for dialogs that require an explicit action (the close button still works).
+    code: |
+      <%= ui.btn "Open", data: { action: "click->dialogs#open", id: "notDismissible" } %>
+
+      <%= ui.dialog(title: "Confirm your action", dismissible: false, id: "notDismissible") do %>
+        <%= ui.dialog_body { "This dialog only closes via the button below." } %>
+        <%= ui.dialog_footer justify: :end do %>
+          <%= ui.btn "Close", data: { action: "click->dialog#close" } %>
+        <% end %>
+      <% end %>

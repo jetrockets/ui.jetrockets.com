@@ -1,0 +1,134 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  /*
+   * .dialog is a pure, invisible positioning shell: fixed, sized, anchored to an edge (or
+   * centered). It must never carry a background, shadow, rounded corners, overflow-hidden, or
+   * — most importantly — transform/filter/perspective/contain/will-change, because any of
+   * those would make it a containing block for position: fixed descendants, breaking the
+   * flash portal (see dialogs_controller.js's #portalFlash — .dialog__flash-slot is a sibling
+   * of .dialog__panel for exactly this reason, not a descendant of it).
+   *
+   * All visible chrome (background, shadow, rounded corners, clipping) and the enter animation
+   * live on .dialog__panel instead, so the whole visible card animates as one piece instead of
+   * the chrome popping in instantly while only the content inside it slides/fades.
+   */
+  .dialog {
+    @apply fixed hidden p-0 m-0 border-0 bg-transparent;
+    @apply animate-slide-up;
+  }
+
+  .dialog[open] {
+    @apply flex flex-col;
+  }
+
+  .dialog::backdrop {
+    @apply bg-overlay;
+  }
+
+  .dialog-center {
+    @apply inset-0 m-auto h-fit min-h-24 max-w-11/12 max-h-11/12;
+  }
+
+  .dialog-left {
+    @apply animate-slide-right;
+    @apply inset-y-0 left-0 right-auto h-full max-h-full;
+    max-width: min(90%, 1280px);
+  }
+
+  .dialog-right {
+    @apply animate-slide-left;
+    @apply inset-y-0 left-auto right-0 h-full max-h-full;
+    max-width: min(90%, 1280px);
+  }
+
+  .dialog-top {
+    @apply animate-slide-down;
+    @apply inset-x-0 bottom-auto top-0 w-full max-h-11/12 max-w-full;
+  }
+
+  .dialog-bottom {
+    @apply animate-slide-up;
+    @apply inset-x-0 bottom-0 top-auto w-full max-h-11/12 max-w-full;
+  }
+
+  /*
+   * A remote dialog's content arrives inside a <turbo-frame id="dialog">, which sits between
+   * .dialog and its children — make it transparent to layout so .dialog__panel and
+   * .dialog__flash-slot still behave as .dialog's direct flex children.
+   */
+  .dialog > turbo-frame {
+    display: contents;
+  }
+
+  .dialog__panel {
+    @apply relative flex flex-col flex-1 overflow-hidden;
+    @apply shadow-sm bg-card rounded-dialog;
+  }
+
+  .dialog-left .dialog__panel {
+    @apply rounded-l-none;
+  }
+
+  .dialog-right .dialog__panel {
+    @apply rounded-r-none;
+  }
+
+  .dialog-top .dialog__panel {
+    @apply rounded-t-none;
+  }
+
+  .dialog-bottom .dialog__panel {
+    @apply rounded-b-none;
+  }
+
+  .dialog__header {
+    @apply flex items-start justify-between flex-shrink-0 p-4 px-6 backdrop-blur-sm bg-card/70;
+  }
+
+  .dialog__header-bordered {
+    @apply border-b border-border;
+  }
+
+  .dialog__title {
+    @apply text-xl font-semibold leading-tight text-foreground;
+  }
+
+  .dialog__subtitle {
+    @apply mt-1 text-sm text-muted-foreground;
+  }
+
+  .dialog__close {
+    @apply inline-flex items-center p-1 ml-auto text-sm transition-all duration-300 bg-transparent rounded-full cursor-pointer outline-0;
+    @apply text-muted-foreground hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .dialog__body {
+    @apply flex-1 min-h-0 px-6 py-6 overflow-auto;
+  }
+
+  .dialog__footer {
+    @apply flex-shrink-0 w-full p-4 backdrop-blur-sm bg-card/70;
+  }
+
+  .dialog__footer-bordered {
+    @apply border-t border-border;
+  }
+
+  /*
+   * Zero-size anchor the flash frame is portaled into (see dialogs_controller.js) so it is
+   * painted inside the topmost dialog's top-layer subtree. Deliberately a *sibling* of
+   * .dialog__panel, not nested inside it — .dialog__panel carries the enter animation
+   * (transform), which would otherwise turn it into a containing block for the portaled
+   * flash frame's position: fixed. display:contents keeps this slot itself out of the
+   * flex flow entirely.
+   */
+  .dialog__flash-slot {
+    display: contents;
+  }
+
+  /* Direct (non-Turbo-Frame, non-dialog) page render — e.g. a dialog URL visited directly. */
+  .dialog__page {
+    @apply mt-4 mx-auto;
+  }
+}

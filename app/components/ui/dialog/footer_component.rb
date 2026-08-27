@@ -1,5 +1,4 @@
-class Ui::Modal::FooterComponent < ApplicationComponent
-
+class Ui::Dialog::FooterComponent < ApplicationComponent
   def initialize(direction: :row, align: :start, justify: :start, bordered: true, **options)
     @direction = direction
     @align = align
@@ -16,8 +15,8 @@ class Ui::Modal::FooterComponent < ApplicationComponent
 
   def classes
     class_names(
-      "modal__footer",
-      { "modal__footer-bordered": @bordered },
+      "dialog__footer",
+      { "dialog__footer-bordered": @bordered },
       direction_class,
       align_class,
       justify_class,

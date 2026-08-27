@@ -11,21 +11,24 @@
     /* First element */
     > .btn:first-child,
     > *:first-child .btn,
-    > .form__field:first-child {
+    > .form__field:first-child,
+    > *:first-child .form__field {
       @apply rounded-r-none;
     }
 
     /* Last element */
     > .btn:last-child,
     > *:last-child .btn,
-    > .form__field:last-child {
+    > .form__field:last-child,
+    > *:last-child .form__field {
       @apply rounded-l-none;
     }
 
     /* Middle elements — border handling for outline */
     > *:not(:last-child) .btn-outline,
     > .btn-outline:not(:last-child),
-    > .form__field:not(:last-child) {
+    > .form__field:not(:last-child),
+    > *:not(:last-child) .form__field {
       @apply border-r-0;
     }
 
@@ -48,7 +51,8 @@
     /* Middle elements (not first, not last) */
     > *:not(:first-child):not(:last-child) .btn,
     > .btn:not(:first-child):not(:last-child),
-    > .form__field:not(:first-child):not(:last-child) {
+    > .form__field:not(:first-child):not(:last-child),
+    > *:not(:first-child):not(:last-child) .form__field {
       @apply rounded-none;
     }
   }

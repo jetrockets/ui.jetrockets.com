@@ -1,9 +1,8 @@
-class Ui::Modal::HeaderComponent < ApplicationComponent
-  def initialize(title: nil, subtitle: nil, closable: true, id: nil, bordered: true, **options)
+class Ui::Dialog::HeaderComponent < ApplicationComponent
+  def initialize(title: nil, subtitle: nil, closable: true, bordered: true, **options)
     @title = title
     @subtitle = subtitle
     @closable = closable
-    @id = id
     @bordered = bordered
     @options = options
   end
@@ -12,16 +11,16 @@ class Ui::Modal::HeaderComponent < ApplicationComponent
     <div class="<%= classes %>">
       <div>
         <% if @title %>
-          <h3 class="modal__title"><%= @title %></h3>
+          <h3 class="dialog__title"><%= @title %></h3>
         <% end %>
         <% if @subtitle %>
-          <div class="modal__subtitle"><%= @subtitle %></div>
+          <div class="dialog__subtitle"><%= @subtitle %></div>
         <% end %>
         <%= content %>
       </div>
 
       <% if @closable %>
-        <button type="button" class="modal__close" data-action="click->modal#close click->modals#close" aria-label="Close" data-id="<%= @id %>">
+        <button type="button" class="dialog__close" data-action="click->dialog#close" aria-label="Close">
           <%= helpers.ui.icon "x-mark", size: 6 %>
         </button>
       <% end %>
@@ -32,8 +31,8 @@ class Ui::Modal::HeaderComponent < ApplicationComponent
 
   def classes
     class_names(
-      "modal__header",
-      { "modal__header-bordered": @bordered },
+      "dialog__header",
+      { "dialog__header-bordered": @bordered },
       @options.delete(:class)
     )
   end

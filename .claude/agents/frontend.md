@@ -81,8 +81,7 @@ cat app/components/ui/card/component.yml
 ### Complex Components (use `ui` helper with subcomponents)
 - `ui.card` - Cards with `ui.card_header`, `ui.card_body`, `ui.card_footer`
 - `ui.table` - Data tables with `ui.table_thead`, `ui.table_tbody`, `ui.table_tr`, `ui.table_th`, `ui.table_td`
-- `ui.modal` - Modal dialogs with `ui.modal_body`, `ui.modal_footer`
-- `ui.drawer` - Side drawers
+- `ui.dialog` - Native `<dialog>` overlays with `ui.dialog_body`, `ui.dialog_footer` — centered (modal-like) by default, or edge-anchored via `position: :left/:right/:top/:bottom` (drawer-like)
 - `ui.tabs` - Tab navigation
 - `ui.accordion` - Collapsible sections
 - `ui.dropdown` - Dropdown menus
@@ -128,18 +127,22 @@ Located in `app/components/ui/form/`:
 <% end %>
 ```
 
-### Modal
+### Dialog
 ```erb
-<%= ui.modal(title: "Title", size: :lg) do %>
-  <%= ui.modal_body do %>
+<%= ui.btn("Open Dialog", data: { action: "click->dialogs#open", id: "myDialog" }) %>
+
+<%= ui.dialog(title: "Title", size: :lg, id: "myDialog") do %>
+  <%= ui.dialog_body do %>
     Content
   <% end %>
-  <%= ui.modal_footer(justify: :end) do %>
+  <%= ui.dialog_footer(justify: :end) do %>
     <%= ui.btn("Cancel", variant: :secondary) %>
     <%= ui.btn("Save", variant: :default) %>
   <% end %>
 <% end %>
 ```
+
+Use `position: :left`/`:right`/`:top`/`:bottom` for an edge-anchored (drawer-like) dialog instead of the default centered one.
 
 ## Layout Guidelines
 
