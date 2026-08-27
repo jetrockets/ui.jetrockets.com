@@ -168,6 +168,8 @@ export default class DialogsController extends Controller {
     this.#stack.push(dialog)
     this.#renumber()
 
+    if (this.#stack.length === 1) this.element.classList.add('body-overflow')
+
     dialog.addEventListener('close', this.#handleDialogClosed, { once: true })
     dialog.showModal()
 
@@ -185,6 +187,8 @@ export default class DialogsController extends Controller {
 
     this.#stack.splice(index, 1)
     this.#renumber()
+
+    if (this.#stack.length === 0) this.element.classList.remove('body-overflow')
 
     dialog.dispatchEvent(new CustomEvent('jet-ui:dialog:closed', { bubbles: true }))
 

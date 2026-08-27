@@ -32,6 +32,6 @@
     </article>
   <% end %>
   <%= ui.dialog_footer do %>
-    <%= ui.btn "Agree", type: :button %>
+    <%= ui.btn "Terms of Service", url: terms_path, data: { turbo_frame: :dialog } %>
   <% end %>
 <% end %>
