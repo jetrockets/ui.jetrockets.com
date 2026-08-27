@@ -9,8 +9,18 @@
    * lives on .dialog__panel instead.
    */
   .dialog {
-    @apply fixed p-0 m-0 border-0 shadow-sm flex flex-col overflow-hidden;
+    @apply fixed hidden p-0 m-0 border-0 shadow-sm flex-col overflow-hidden;
     @apply bg-card rounded-dialog backdrop:bg-overlay;
+  }
+
+  /*
+   * Author CSS beats the UA stylesheet regardless of specificity, so an unconditional
+   * `display: flex` above would override the native `dialog:not([open]) { display: none }`
+   * rule and leave every closed dialog (e.g. turbo-confirm on every page load) visibly
+   * rendered — just without the top-layer promotion that gives it a backdrop and inertness.
+   */
+  .dialog[open] {
+    @apply flex;
   }
 
   .dialog::backdrop {
