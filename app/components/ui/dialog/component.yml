@@ -16,7 +16,7 @@ preview: |
     <% end %>
   <% end %>
 
-  <%= ui.dialog(title: "Nested Dialog", position: :right, id: "previewDialogNested") do %>
+  <%= ui.dialog(title: "Nested Dialog", position: :right, size: "4xl", id: "previewDialogNested") do %>
     <%= ui.dialog_body do %>
       <p>Anchored to the right, opened on top of the first dialog — only the bottom-most dialog dims the page.</p>
     <% end %>

@@ -62,6 +62,7 @@ export default class DialogsController extends Controller {
     const frameName = this.#resolveFrameName(event)
     if (frameName !== FRAME_ALIAS) return
     if (!this.hasSentinelTarget) return
+    if (this.#opensInNewTab(event)) return
 
     const sentinel = this.sentinelTarget
     if (sentinel.dataset.pending === 'true') return // already adopted, let Turbo re-navigate it
@@ -78,6 +79,22 @@ export default class DialogsController extends Controller {
     this.rootTarget.append(shell)
 
     this.#push(shell, { remote: true })
+  }
+
+  // A modified click (Cmd/Ctrl/Shift/Alt, middle-click) or a link with target/download makes
+  // the browser open a new tab/window instead of navigating in place — Turbo itself ignores
+  // these clicks and lets the browser handle them, so we must too, or we'd adopt the sentinel
+  // and show an overlay for a navigation that never actually happens on this page.
+  #opensInNewTab (event) {
+    if (event.type !== 'click') return false
+    if (event.button !== 0) return true
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return true
+
+    const trigger = this.#resolveTrigger(event)
+    const target = trigger?.getAttribute?.('target')
+    if (target && target !== '_self') return true
+
+    return trigger?.hasAttribute?.('download') ?? false
   }
 
   #resolveFrameName (event) {
@@ -104,7 +121,7 @@ export default class DialogsController extends Controller {
 
     const dialog = document.createElement('dialog')
     dialog.tabIndex = -1
-    dialog.className = `dialog dialog--${position} ${horizontal ? 'h' : 'w'}-${size}`
+    dialog.className = `dialog dialog-${position} ${horizontal ? 'h' : 'w'}-${size}`
     dialog.dataset.controller = 'dialog'
     dialog.dataset.dialogPositionValue = position
     dialog.dataset.dialogDismissibleValue = String(dismissible)

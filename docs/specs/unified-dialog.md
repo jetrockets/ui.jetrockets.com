@@ -179,7 +179,7 @@ app/components/ui/dialog/
 ├── header_component.rb
 ├── body_component.rb
 ├── footer_component.rb
-├── dialog.css              # .dialog, .dialog--<position>, .dialog__{header,body,footer,close}
+├── dialog.css              # .dialog, .dialog-<position>, .dialog__{header,body,footer,close}
 ├── dialog_controller.js    # per-<dialog> behaviour: backdrop click, swipe, close, cleanup
 ├── dialogs_controller.js   # stack manager on <body>: frame adoption, depth, flash portal
 └── component.yml
@@ -230,7 +230,7 @@ be found. Instead of creating a frame, we **adopt the existing sentinel into a f
    * calls `shell.showModal()`, pushes onto `stack`, re-portals flash (§6).
 
    ```html
-   <dialog class="dialog dialog--right" data-controller="dialog"
+   <dialog class="dialog dialog-right" data-controller="dialog"
            data-dialog-position-value="right" data-dialog-depth-value="1"
            data-dialog-remote-value="true">
      <div class="dialog__panel">

@@ -46,13 +46,7 @@
 
     <%= ui.flash %>
     <%= ui.turbo_confirm %>
-
-    <%# Async dialogs (data: { turbo_frame: :dialog }) are opened by adopting this sentinel
-        frame into a freshly built <dialog> shell before Turbo navigates it — see
-        app/components/ui/dialog/dialogs_controller.js and docs/specs/unified-dialog.md §5.3. %>
-    <div id="dialogs" data-dialogs-target="root" data-turbo-permanent data-turbo-cache="false">
-      <%= turbo_frame_tag :dialog, data: { dialogs_target: "sentinel" } %>
-    </div>
+    <%= ui.dialogs %>
 
     <%= render partial: "layouts/shared/gtm" if Rails.env.production? %>
   </body>

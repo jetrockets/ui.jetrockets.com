@@ -52,7 +52,7 @@ class Ui::Dialog::Component < ApplicationComponent
       end
     # Not a Turbo Frame request (direct visit, new tab) — render as a plain page section.
     else
-      content_tag :div, class: class_names("dialog-page", size_class) do
+      content_tag :div, class: class_names("dialog__page", size_class) do
         yield
       end
     end
@@ -65,7 +65,7 @@ class Ui::Dialog::Component < ApplicationComponent
   end
 
   def dialog_classes
-    class_names("dialog", "dialog--#{@position}", size_class)
+    class_names("dialog", "dialog-#{@position}", size_class)
   end
 
   def dialog_data(extra)
