@@ -51,7 +51,7 @@ The UI is built using a comprehensive component library located in `app/componen
 #### Available Components
 - **Navigation**: navbar, breadcrumbs, tabs, accordion
 - **Forms**: btn, group, form controls with Stimulus integration
-- **Layout**: card, drawer, modal, table, header, empty
+- **Layout**: card, dialog, table, header, empty
 - **Feedback**: alert, flash, tooltip, popover, spinner
 - **Data**: table with pagination (pagy), clipboard
 - **Interactive**: dropdown, turbo_confirm
