@@ -61,8 +61,16 @@
     display: contents;
   }
 
+  /*
+   * flex-auto (flex-basis: auto), not flex-1 (flex-basis: 0%) — .dialog's height is intrinsic
+   * (h-fit) for :center, and resolving a 0% flex-basis child against an indefinite flex
+   * container's main size is a known Safari/WebKit interop gap: it collapses .dialog__panel
+   * toward zero height instead of sizing to content. flex-auto keeps the same flex-grow (so
+   * the panel still stretches to fill .dialog once max-h-11/12 makes the height definite) while
+   * using the panel's own content size as the basis, sidestepping the indefinite-container case.
+   */
   .dialog__panel {
-    @apply relative flex flex-col flex-1 overflow-hidden;
+    @apply relative flex flex-col flex-auto overflow-hidden;
     @apply shadow-sm bg-card rounded-dialog;
   }
 
