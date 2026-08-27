@@ -1,4 +1,4 @@
-class Ui::Modal::BodyComponent < ApplicationComponent
+class Ui::Dialog::BodyComponent < ApplicationComponent
   def initialize(**options)
     @options = options
   end
@@ -11,7 +11,7 @@ class Ui::Modal::BodyComponent < ApplicationComponent
 
   def classes
     class_names(
-      "modal__body",
+      "dialog__body",
       @options.delete(:class)
     )
   end

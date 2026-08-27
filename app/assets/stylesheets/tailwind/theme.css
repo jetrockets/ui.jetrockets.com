@@ -6,12 +6,25 @@
   --width-sidebar: 220px;
   --background-image-chevron-left: url('/images/icons/chevron-left.svg');
 
+  /* Mirrors the --container-* width scale so top/bottom dialogs can size by height (h-sm..h-6xl)
+     the same way center/left/right dialogs size by width (w-sm..w-6xl). */
+  --height-sm: var(--container-sm);
+  --height-md: var(--container-md);
+  --height-lg: var(--container-lg);
+  --height-xl: var(--container-xl);
+  --height-2xl: var(--container-2xl);
+  --height-3xl: var(--container-3xl);
+  --height-4xl: var(--container-4xl);
+  --height-5xl: var(--container-5xl);
+  --height-6xl: var(--container-6xl);
+
   --spacing-navbar: var(--height-navbar);
   --spacing-sidebar: var(--width-sidebar);
 
   --animate-fade-in: fadeIn 0.15s ease-in-out;
   --animate-slide-down: slideDown 0.3s ease-in-out;
   --animate-slide-left: slideLeft 0.3s ease-in-out;
+  --animate-slide-right: slideRight 0.3s ease-in-out;
   --animate-slide-up: slideUp 0.3s ease-in-out;
 }
 
@@ -23,7 +36,7 @@
   --radius-btn-md: var(--radius-btn);
   --radius-btn-lg: calc(var(--radius-btn) * 1.25);
   --radius-card: calc(var(--radius-base) * 2);
-  --radius-modal: calc(var(--radius-base) * 3);
+  --radius-dialog: calc(var(--radius-base) * 3);
   --radius-dropdown: calc(var(--radius-base) * 1.5);
   --radius-field: var(--radius-field);
   --radius-tooltip: calc(var(--radius-base) * 0.5);

@@ -1,0 +1,34 @@
+<% set_meta_tags(
+  title: "Dialog - Rails UI Components",
+  description: "Dialog component for modal and drawer overlays, built on the native <dialog> element.",
+  keywords: "Rails, UI Components, Dialog, Modal, Drawer"
+) %>
+<% breadcrumb :ui_dialog %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Dialog" %>
+    <%= ui.header_subtitle "Dialog component for modal and drawer overlays, built on the native <dialog> element. Any number of dialogs can be opened on top of each other." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/dialog", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("dialog") %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("dialog") %>
+  </section>
+
+  <%= render_content_info("dialog") %>
+  <%= render_props_table("dialog") %>
+  <%= render_subcomponents_table("dialog") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("dialog") %>
+  </section>
+</article>

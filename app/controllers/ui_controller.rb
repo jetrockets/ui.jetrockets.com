@@ -33,7 +33,7 @@ class UiController < ApplicationController
   def clipboard
   end
 
-  def drawer
+  def dialog
   end
 
   def dropdown
@@ -54,9 +54,6 @@ class UiController < ApplicationController
   end
 
   def icon
-  end
-
-  def modal
   end
 
   def spinner

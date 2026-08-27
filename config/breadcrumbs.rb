@@ -57,8 +57,8 @@ crumb :ui_clipboard do
   link "Clipboard", ui_clipboard_path
 end
 
-crumb :ui_drawer do
-  link "Drawer", ui_drawer_path
+crumb :ui_dialog do
+  link "Dialog", ui_dialog_path
 end
 
 crumb :ui_dropdown do
@@ -119,10 +119,6 @@ end
 
 crumb :ui_icon do
   link "Icon", ui_icon_path
-end
-
-crumb :ui_modal do
-  link "Modal", ui_modal_path
 end
 
 crumb :ui_pagy do

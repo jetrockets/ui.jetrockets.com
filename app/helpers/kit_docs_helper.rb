@@ -2,7 +2,7 @@ module KitDocsHelper
   def render_kit_block(variant, category_key)
     source_path = Rails.root.join("app/views/ui/kit/#{category_key}/#{variant[:filename]}")
     code = File.read(source_path).strip
-    modal_id = "code-#{category_key}-#{variant[:number]}"
+    dialog_id = "code-#{category_key}-#{variant[:number]}"
 
     content_tag :div, class: "kit-block", id: "variant-#{variant[:number]}" do
       safe_join([
@@ -11,7 +11,7 @@ module KitDocsHelper
             ui.card_header(justify: :between, align: :center, direction: :row) do
               safe_join([
                 ui.card_title("Variant #{variant[:number]}"),
-                ui.btn(variant: :secondary, size: :sm, data: { action: "click->modals#show", id: modal_id }) do
+                ui.btn(variant: :secondary, size: :sm, data: { action: "click->dialogs#open", id: dialog_id }) do
                   safe_join([
                     ui.icon("code-bracket", class: "size-4"),
                     content_tag(:span, "View code")
@@ -24,8 +24,8 @@ module KitDocsHelper
             }
           ])
         end,
-        ui.modal(title: "Variant #{variant[:number]} — Source code", id: modal_id, size: "5xl") do
-          ui.modal_body do
+        ui.dialog(title: "Variant #{variant[:number]} — Source code", id: dialog_id, size: "5xl") do
+          ui.dialog_body do
             content_tag(:div, class: "relative group") do
               safe_join([
                 content_tag(:pre, content_tag(:code, html_escape(code)), class: "text-sm"),

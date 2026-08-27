@@ -38,11 +38,11 @@
           <% end %>
         <% else %>
           <%= ui.group sticky: false, class: "hidden md:flex" do %>
-            <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :ghost, data: { turbo_frame: :modal } %>
-            <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :outline, data: { turbo_frame: :modal } %>
+            <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, variant: :ghost, data: { turbo_frame: :dialog } %>
+            <%= ui.btn "Sign Up", url: rodauth.create_account_path, size: :sm, variant: :outline, data: { turbo_frame: :dialog } %>
           <% end %>
 
-          <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, data: { turbo_frame: :modal }, class: "md:hidden" %>
+          <%= ui.btn "Sign In", url: rodauth.login_path, size: :sm, data: { turbo_frame: :dialog }, class: "md:hidden" %>
         <% end %>
       <% end %>
     <% end %>

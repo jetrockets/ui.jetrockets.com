@@ -206,14 +206,13 @@ app/
 │   ├── btn/                # Button component
 │   ├── card/               # Card component with sub-components
 │   ├── clipboard/          # Clipboard component
-│   ├── drawer/             # Drawer component
+│   ├── dialog/             # Dialog component (modal + drawer, unlimited nesting)
 │   ├── dropdown/           # Dropdown component with sub-components
 │   ├── empty/              # Empty state component with sub-components
 │   ├── flash/              # Flash message component
 │   ├── group/              # Button group component
 │   ├── header/             # Page header component with sub-components
 │   ├── icon/               # Icon component
-│   ├── modal/              # Modal component
 │   ├── pagy/               # Pagination component
 │   ├── popover/            # Popover component with sub-components
 │   ├── spinner/            # Loading spinner component

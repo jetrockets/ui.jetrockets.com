@@ -1,7 +1,7 @@
 <% set_meta_tags(title: "Are you sure?") %>
 
-<%= ui.modal(title: "Are you sure?", size: :lg) do %>
-  <%= ui.modal_body do %>
+<%= ui.dialog(title: "Are you sure?", size: :lg) do %>
+  <%= ui.dialog_body do %>
     <%= ui.alert variant: :info, class: "mb-4" do |alert| %>
       <strong>Deleting an account</strong> is a permanent action that cannot be undone.
     <% end %>

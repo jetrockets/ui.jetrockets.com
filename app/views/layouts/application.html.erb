@@ -32,7 +32,7 @@
     <%= yield(:head) %>
   </head>
 
-  <body class="<%= body_classes %>" data-controller="sidebar modals drawers highlight">
+  <body class="<%= body_classes %>" data-controller="sidebar dialogs highlight">
     <%= render partial: "layouts/shared/navbar" %>
     <div class="body__main body__main-sidebarred">
       <%= render partial: "layouts/shared/sidebar" %>
@@ -46,8 +46,13 @@
 
     <%= ui.flash %>
     <%= ui.turbo_confirm %>
-    <%= turbo_frame_tag :drawer %>
-    <%= turbo_frame_tag :modal %>
+
+    <%# Async dialogs (data: { turbo_frame: :dialog }) are opened by adopting this sentinel
+        frame into a freshly built <dialog> shell before Turbo navigates it — see
+        app/components/ui/dialog/dialogs_controller.js and docs/specs/unified-dialog.md §5.3. %>
+    <div id="dialogs" data-dialogs-target="root" data-turbo-permanent data-turbo-cache="false">
+      <%= turbo_frame_tag :dialog, data: { dialogs_target: "sentinel" } %>
+    </div>
 
     <%= render partial: "layouts/shared/gtm" if Rails.env.production? %>
   </body>

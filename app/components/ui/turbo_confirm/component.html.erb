@@ -1,10 +1,10 @@
-<%= helpers.ui.modal id: "turbo-confirm", title: "Are you absolutely sure?" do %>
+<%= helpers.ui.dialog id: "turbo-confirm", title: "Are you absolutely sure?" do %>
   <form method="dialog">
-    <%= helpers.ui.modal_body do %>
+    <%= helpers.ui.dialog_body do %>
       <p>This cannot be undone.</p>
     <% end %>
 
-    <%= helpers.ui.modal_footer justify: :end do %>
+    <%= helpers.ui.dialog_footer justify: :end do %>
       <%= helpers.ui.btn "Cancel", type: :submit, variant: :outline, value: "cancel" %>
       <%= helpers.ui.btn "Yes, I'm sure", type: :submit, variant: :danger, value: "confirm" %>
     <% end %>
