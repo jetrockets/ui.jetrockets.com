@@ -8,7 +8,9 @@ on:
         type: boolean
         default: true
   schedule:
-    - cron: "55 4 * * 6" # Every Saturday
+    # Sunday, a day apart from jetrockets.com: it shares this DigitalOcean
+    # account, and the registry rejects deletes while its cleanup collects garbage.
+    - cron: "55 4 * * 0"
 
 permissions: {}
 
@@ -21,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
+      REGISTRY: ui-jetrockets
       REPOSITORY: ui-jetrockets
       KEEP_LAST: 10
       # Tags kamal deploys and rolls back from. Never deleted, whatever their age.
@@ -37,7 +40,12 @@ jobs:
       - name: Delete outdated tags
         shell: bash -eo pipefail {0}
         run: |
-          doctl registry repository list-tags "$REPOSITORY" --output json > tags.json
+          if ! doctl registry repository list-tags "$REPOSITORY" \
+               --registry "$REGISTRY" --output json > tags.json 2> list-error.txt; then
+            echo "Could not list the tags of $REPOSITORY in $REGISTRY:"
+            cat list-error.txt tags.json
+            exit 1
+          fi
 
           KEPT=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
             [ .[] | select(.tag != null) | select(.tag | test($protected) | not) ]
@@ -70,10 +78,10 @@ jobs:
             exit 0
           fi
 
-          echo "$TAGS" | xargs -r doctl registry repository delete-tag "$REPOSITORY" --force
+          echo "$TAGS" | xargs -r doctl registry repository delete-tag "$REPOSITORY" --registry "$REGISTRY" --force
 
       - name: Collect garbage
         # Puts the registry into read-only mode while it runs, so keep it off deploy hours.
         # Fails if automatic garbage collection is enabled or a collection is already running.
         continue-on-error: true
-        run: doctl registry garbage-collection start --include-untagged-manifests --force
+        run: doctl registry garbage-collection start "$REGISTRY" --include-untagged-manifests --force
