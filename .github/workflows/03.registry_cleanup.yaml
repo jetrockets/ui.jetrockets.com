@@ -10,6 +10,12 @@ on:
   schedule:
     - cron: "55 4 * * 6" # Every Saturday
 
+permissions: {}
+
+concurrency:
+  group: registry-cleanup
+  cancel-in-progress: false
+
 jobs:
   cleanup_registry:
     runs-on: ubuntu-latest
