@@ -6,7 +6,7 @@ on:
       dry_run:
         description: "Only print the tags that would be deleted"
         type: boolean
-        default: false
+        default: true
   schedule:
     - cron: "55 4 * * 6" # Every Saturday
 
@@ -23,27 +23,46 @@ jobs:
     env:
       REPOSITORY: ui-jetrockets
       KEEP_LAST: 10
+      # Tags kamal deploys and rolls back from. Never deleted, whatever their age.
+      PROTECTED_TAGS: "^(latest|latest-.*|production|staging|main|master)$"
       DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
     steps:
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
-          token: ${{ secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}
+          # Deleting tags needs a token with registry write access. Set
+          # DO_REGISTRY_CLEANUP_TOKEN if the deploy token is read-only.
+          token: ${{ secrets.DO_REGISTRY_CLEANUP_TOKEN || secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}
 
       - name: Delete outdated tags
         shell: bash -eo pipefail {0}
         run: |
-          TAGS=$(doctl registry repository list-tags "$REPOSITORY" --format Tag,UpdatedAt --no-header \
-                 | sort -k2 -r \
-                 | tail -n +$((KEEP_LAST + 1)) \
-                 | awk '{print $1}')
+          doctl registry repository list-tags "$REPOSITORY" --output json > tags.json
+
+          KEPT=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
+            [ .[] | select(.tag | test($protected) | not) ]
+            | sort_by(.updated_at) | reverse | .[:$keep] | .[].tag' tags.json)
+
+          TAGS=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
+            [ .[] | select(.tag | test($protected) | not) ]
+            | sort_by(.updated_at) | reverse | .[$keep:] | .[].tag' tags.json)
+
+          PROTECTED=$(jq -r --arg protected "$PROTECTED_TAGS" '
+            [ .[] | select(.tag | test($protected)) ] | .[].tag' tags.json)
+
+          echo "Protected, never deleted:"
+          echo "${PROTECTED:-  none}"
+          echo
+          echo "Keeping the $KEEP_LAST most recent tags:"
+          echo "$KEPT"
+          echo
 
           if [ -z "$TAGS" ]; then
-            echo "Nothing to delete, $REPOSITORY has at most $KEEP_LAST tags"
+            echo "Nothing to delete"
             exit 0
           fi
 
-          echo "Outdated tags:"
+          echo "Deleting:"
           echo "$TAGS"
 
           if [ "$DRY_RUN" = "true" ]; then
