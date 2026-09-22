@@ -1,0 +1,54 @@
+name: 03. Cleanup Container Registry
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only print the tags that would be deleted"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "55 4 * * 6" # Every Saturday
+
+jobs:
+  cleanup_registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      REPOSITORY: ui-jetrockets
+      KEEP_LAST: 10
+      DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}
+
+      - name: Delete outdated tags
+        shell: bash -eo pipefail {0}
+        run: |
+          TAGS=$(doctl registry repository list-tags "$REPOSITORY" --format Tag,UpdatedAt --no-header \
+                 | sort -k2 -r \
+                 | tail -n +$((KEEP_LAST + 1)) \
+                 | awk '{print $1}')
+
+          if [ -z "$TAGS" ]; then
+            echo "Nothing to delete, $REPOSITORY has at most $KEEP_LAST tags"
+            exit 0
+          fi
+
+          echo "Outdated tags:"
+          echo "$TAGS"
+
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "Dry run, nothing was deleted"
+            exit 0
+          fi
+
+          echo "$TAGS" | xargs -r doctl registry repository delete-tag "$REPOSITORY" --force
+
+      - name: Collect garbage
+        # Puts the registry into read-only mode while it runs, so keep it off deploy hours.
+        # Fails if automatic garbage collection is enabled or a collection is already running.
+        continue-on-error: true
+        run: doctl registry garbage-collection start --include-untagged-manifests --force
