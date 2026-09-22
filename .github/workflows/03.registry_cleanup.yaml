@@ -1,0 +1,79 @@
+name: 03. Cleanup Container Registry
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only print the tags that would be deleted"
+        type: boolean
+        default: true
+  schedule:
+    - cron: "55 4 * * 6" # Every Saturday
+
+permissions: {}
+
+concurrency:
+  group: registry-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup_registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      REPOSITORY: ui-jetrockets
+      KEEP_LAST: 10
+      # Tags kamal deploys and rolls back from. Never deleted, whatever their age.
+      PROTECTED_TAGS: "^(latest|latest-.*|production|staging|main|master)$"
+      DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          # Needs read, create, update and delete scopes on registry: delete for
+          # the tags, create and update to start the garbage collection.
+          token: ${{ secrets.DO_REGISTRY_CLEANUP_TOKEN }}
+
+      - name: Delete outdated tags
+        shell: bash -eo pipefail {0}
+        run: |
+          doctl registry repository list-tags "$REPOSITORY" --output json > tags.json
+
+          KEPT=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
+            [ .[] | select(.tag != null) | select(.tag | test($protected) | not) ]
+            | sort_by(.updated_at // "") | reverse | .[:$keep] | .[].tag' tags.json)
+
+          TAGS=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
+            [ .[] | select(.tag != null) | select(.tag | test($protected) | not) ]
+            | sort_by(.updated_at // "") | reverse | .[$keep:] | .[].tag' tags.json)
+
+          PROTECTED=$(jq -r --arg protected "$PROTECTED_TAGS" '
+            [ .[] | select(.tag != null) | select(.tag | test($protected)) ] | .[].tag' tags.json)
+
+          echo "Protected, never deleted:"
+          echo "${PROTECTED:-  none}"
+          echo
+          echo "Keeping the $KEEP_LAST most recent tags:"
+          echo "$KEPT"
+          echo
+
+          if [ -z "$TAGS" ]; then
+            echo "Nothing to delete"
+            exit 0
+          fi
+
+          echo "Deleting:"
+          echo "$TAGS"
+
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "Dry run, nothing was deleted"
+            exit 0
+          fi
+
+          echo "$TAGS" | xargs -r doctl registry repository delete-tag "$REPOSITORY" --force
+
+      - name: Collect garbage
+        # Puts the registry into read-only mode while it runs, so keep it off deploy hours.
+        # Fails if automatic garbage collection is enabled or a collection is already running.
+        continue-on-error: true
+        run: doctl registry garbage-collection start --include-untagged-manifests --force
