@@ -40,15 +40,15 @@ jobs:
           doctl registry repository list-tags "$REPOSITORY" --output json > tags.json
 
           KEPT=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
-            [ .[] | select(.tag | test($protected) | not) ]
-            | sort_by(.updated_at) | reverse | .[:$keep] | .[].tag' tags.json)
+            [ .[] | select(.tag != null) | select(.tag | test($protected) | not) ]
+            | sort_by(.updated_at // "") | reverse | .[:$keep] | .[].tag' tags.json)
 
           TAGS=$(jq -r --argjson keep "$KEEP_LAST" --arg protected "$PROTECTED_TAGS" '
-            [ .[] | select(.tag | test($protected) | not) ]
-            | sort_by(.updated_at) | reverse | .[$keep:] | .[].tag' tags.json)
+            [ .[] | select(.tag != null) | select(.tag | test($protected) | not) ]
+            | sort_by(.updated_at // "") | reverse | .[$keep:] | .[].tag' tags.json)
 
           PROTECTED=$(jq -r --arg protected "$PROTECTED_TAGS" '
-            [ .[] | select(.tag | test($protected)) ] | .[].tag' tags.json)
+            [ .[] | select(.tag != null) | select(.tag | test($protected)) ] | .[].tag' tags.json)
 
           echo "Protected, never deleted:"
           echo "${PROTECTED:-  none}"
