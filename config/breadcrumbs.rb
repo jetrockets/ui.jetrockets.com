@@ -189,6 +189,10 @@ crumb :ui_navbar do
   link "Navbar", ui_navbar_path
 end
 
+crumb :ui_chat do
+  link "Chat", ui_chat_path
+end
+
 # Kit breadcrumbs
 crumb :ui_kit do
   link "UI Kit", ui_kit_index_path

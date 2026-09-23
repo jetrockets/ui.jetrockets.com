@@ -30,6 +30,9 @@ class UiController < ApplicationController
   def card
   end
 
+  def chat
+  end
+
   def clipboard
   end
 

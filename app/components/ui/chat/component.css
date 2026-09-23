@@ -1,0 +1,112 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .chat {
+    @apply flex flex-col min-h-0 h-[32rem] max-h-full overflow-hidden border border-border bg-card text-card-foreground rounded-card;
+  }
+
+  /* Scrollable list of messages */
+  .chat__messages {
+    @apply flex flex-col gap-4 flex-1 min-h-0 overflow-y-auto p-4;
+  }
+
+  /* A single message row */
+  .chat__message {
+    @apply flex items-end gap-2 max-w-[85%];
+  }
+
+  .chat__message-start {
+    @apply self-start;
+  }
+
+  .chat__message-end {
+    @apply self-end flex-row-reverse;
+  }
+
+  /* Message bubble */
+  .chat__bubble {
+    @apply flex flex-col gap-0.5 px-3 py-2 text-sm leading-snug rounded-2xl shadow-sm break-words min-w-[3rem];
+  }
+
+  .chat__message-start .chat__bubble {
+    @apply rounded-bl-sm;
+  }
+
+  .chat__message-end .chat__bubble {
+    @apply rounded-br-sm;
+  }
+
+  .chat__bubble-default {
+    @apply bg-muted text-foreground;
+  }
+
+  .chat__bubble-muted {
+    @apply bg-background text-muted-foreground border border-border;
+  }
+
+  .chat__bubble-primary {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Applied by the chat controller to messages authored by the current viewer.
+     Lets a broadcast ship one neutral rendering to every recipient: the author
+     and avatar are rendered for everyone and hidden for the viewer's own. */
+  .chat__message-own {
+    @apply self-end flex-row-reverse;
+  }
+
+  .chat__message-own .chat__bubble {
+    @apply bg-primary text-primary-foreground rounded-bl-2xl rounded-br-sm;
+  }
+
+  .chat__message-own > :not(.chat__bubble),
+  .chat__message-own .chat__author {
+    @apply hidden;
+  }
+
+  /* Author and timestamp */
+  .chat__author {
+    @apply text-xs font-semibold opacity-90;
+  }
+
+  .chat__time {
+    @apply self-end mt-0.5 text-[0.6875rem] leading-none opacity-60;
+  }
+
+  /* Footer / input area */
+  .chat__footer {
+    @apply flex-shrink-0 border-t border-border p-3;
+  }
+
+  /* Typing indicator */
+  .chat__typing {
+    @apply inline-flex items-center gap-1 w-fit px-3 py-2.5 bg-muted rounded-2xl rounded-bl-sm;
+  }
+
+  .chat__typing-dot {
+    @apply size-1.5 rounded-full bg-muted-foreground;
+    animation: chat-typing 1.4s infinite ease-in-out both;
+  }
+
+  .chat__typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .chat__typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes chat-typing {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}

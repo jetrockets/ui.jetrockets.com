@@ -45,3 +45,7 @@ node_modules
 
 .DS_Store
 *.local
+
+# Local AI assistant tooling
+/.claude/skills
+/.serena

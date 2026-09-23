@@ -1,0 +1,34 @@
+<% set_meta_tags(
+  title: "Chat - Rails UI Components",
+  description: "Composable chat component with message bubbles, avatars, typing indicator and realtime Turbo Streams support.",
+  keywords: "Rails, UI Components, Chat, Messages, Turbo Streams, Realtime"
+) %>
+<% breadcrumb :ui_chat %>
+
+<%= ui.header do %>
+  <%= ui.header_heading do %>
+    <%= ui.header_title "Chat" %>
+    <%= ui.header_subtitle "Composable chat with message bubbles, typing indicator and realtime updates." %>
+  <% end %>
+  <%= ui.header_actions do %>
+    <%= ui.btn "View on GitHub", url: "https://github.com/jetrockets/ui.jetrockets.com/tree/main/app/components/ui/chat", variant: :secondary, target: "_blank", rel: "noopener noreferrer" %>
+  <% end %>
+<% end %>
+
+<article class="flex flex-col gap-12">
+  <%= render_component_preview("chat") %>
+
+  <section class="flex flex-col gap-4">
+    <h2 class="h3">Usage</h2>
+    <%= render_component_usage("chat") %>
+  </section>
+
+  <%= render_content_info("chat") %>
+  <%= render_props_table("chat") %>
+  <%= render_subcomponents_table("chat") %>
+
+  <section class="flex flex-col gap-6">
+    <h2 class="h3">Examples</h2>
+    <%= render_component_examples("chat") %>
+  </section>
+</article>

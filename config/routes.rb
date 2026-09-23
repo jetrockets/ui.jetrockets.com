@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get "badge"
     get "button"
     get "card"
+    get "chat"
     get "clipboard"
     get "dialog"
     get "dropdown"
