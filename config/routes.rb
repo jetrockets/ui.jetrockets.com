@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   get "ui", to: "ui#index"
   get "builder", to: "builder#index"
   get "builder/download", to: "builder#download"
+
+  # LLM-native documentation (generated live from component.yml files)
+  get "llms.txt", to: "llms#index", as: :llms, format: false
+  get "llms-full.txt", to: "llms#full", as: :llms_full, format: false
+  get "ui/components/:name", to: "llms#component", as: :llms_component, constraints: { format: "md" }
+
   # UI Documentation routes
   namespace :ui do
     get "getting_started"
