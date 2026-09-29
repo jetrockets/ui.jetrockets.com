@@ -41,7 +41,7 @@ props:
   - name: accept
     type: String | Array
     default: "nil"
-    description: 'Accepted types, in `accept` syntax (e.g. `"image/*,.pdf"`). Filters the file dialog and rejects dropped files.'
+    description: 'Accepted types, in `accept` syntax (e.g. `"image/*,.pdf"` or `["image/*", ".pdf"]`). Filters the file dialog and rejects dropped files.'
 
   - name: max_file_size
     type: Integer
@@ -51,22 +51,22 @@ props:
   - name: max_files
     type: Integer
     default: "nil"
-    description: "Maximum number of files. Only applies together with `multiple: true`."
+    description: "Maximum number of files. Ignored unless `multiple: true`."
 
   - name: prompt
     type: String
-    default: '"Click to upload"'
-    description: Main line of text inside the drop area.
+    default: '"Click to upload", or "Click to upload files" when multiple'
+    description: "Main line of text inside the drop area. Only used by the `:dropzone` variant."
 
   - name: caption
-    type: String
-    default: "generated from the restrictions"
-    description: Secondary line of text. Generated from `max_file_size` and `max_files` when omitted; pass `false`-y text to replace it.
+    type: String | false
+    default: "generated from `max_file_size` and `max_files`"
+    description: "Secondary line of text, e.g. `Up to 8 MB · max 5 files`. Pass your own text to replace it, or `false` to hide it."
 
   - name: button_label
     type: String
-    default: '"Choose file"'
-    description: Label of the trigger button in the `:button` variant.
+    default: '"Choose file", or "Choose files" when multiple'
+    description: "Label of the trigger button. Only used by the `:button` variant."
 
   - name: label
     type: String | false
@@ -87,7 +87,6 @@ props:
     type: Boolean
     default: "false"
     description: Disable the field. Picking and dropping files are both turned off.
-
 
 examples:
   - name: Basic Uploader
@@ -126,9 +125,11 @@ examples:
       <% end %>
 
   - name: Custom Texts
+    description: The caption is generated from the restrictions; pass your own text to replace it, or `false` to hide it.
     code: |
       <%= form_with url: root_path do |f| %>
         <%= f.uploader :invoice, label: "Invoice", prompt: "Upload the signed invoice", caption: "Scan or photo, PDF preferred" %>
+        <%= f.uploader :receipt, max_file_size: 4.megabytes, caption: false %>
         <%= f.uploader :no_label, label: false %>
       <% end %>
 

@@ -22,7 +22,7 @@ export default class UploaderController extends Controller {
 
   connect () {
     this.uppy = new Uppy({ autoProceed: false, restrictions: this.#restrictions() })
-      .on('file-added', this.#handleFileAdded)
+      .on('files-added', this.#handleFilesAdded)
       .on('file-removed', this.#handleFileRemoved)
       .on('restriction-failed', this.#handleRestrictionFailed)
 
@@ -51,6 +51,10 @@ export default class UploaderController extends Controller {
     const files = Array.from(this.inputTarget.files || [])
     if (files.length === 0) return
 
+    // Cleared before handing over to Uppy, never after: restriction failures are
+    // reported during the add, so clearing afterwards would erase them.
+    this.#clearError()
+
     try {
       this.uppy.addFiles(files.map((file) => ({ name: file.name, type: file.type, data: file, source: 'input' })))
     } catch (error) {
@@ -72,22 +76,17 @@ export default class UploaderController extends Controller {
     }
   }
 
-  #handleFileAdded = (file) => {
-    if (!this.multipleValue) {
-      this.uppy.getFiles()
-        .filter(({ id }) => id !== file.id)
-        .forEach(({ id }) => this.uppy.removeFile(id))
-    }
+  #handleFilesAdded = (files) => {
+    if (!this.multipleValue) this.#keepOnly(files[files.length - 1])
 
-    this.#clearError()
-    this.filesTarget.append(this.#buildRow(file))
+    this.#render()
     this.#syncInput()
-    this.dispatch('added', { detail: { file } })
+    this.dispatch('added', { detail: { files } })
   }
 
   #handleFileRemoved = (file) => {
-    this.#row(file.id)?.remove()
     this.#revokePreview(file.id)
+    this.#render()
     this.#syncInput()
     this.dispatch('removed', { detail: { file } })
   }
@@ -98,6 +97,15 @@ export default class UploaderController extends Controller {
     this.#showError(named ? `${file.name}: ${error.message}` : error.message)
     this.#syncInput()
     this.dispatch('rejected', { detail: { file, error } })
+  }
+
+  #keepOnly (file) {
+    const stale = this.uppy.getFiles().filter(({ id }) => id !== file.id).map(({ id }) => id)
+    if (stale.length > 0) this.uppy.removeFiles(stale)
+  }
+
+  #render () {
+    this.filesTarget.replaceChildren(...this.uppy.getFiles().map((file) => this.#buildRow(file)))
   }
 
   #syncInput () {
@@ -113,7 +121,6 @@ export default class UploaderController extends Controller {
   #buildRow (file) {
     const row = this.templateTarget.content.firstElementChild.cloneNode(true)
 
-    row.dataset.fileId = file.id
     row.querySelector('.uploader__file_name').textContent = file.name
     row.querySelector('.uploader__file_meta').textContent = formatBytes(file.size)
     row.querySelector('.uploader__file_icon').classList.add(`icon-${fileIcon(file.type)}`)
@@ -127,12 +134,10 @@ export default class UploaderController extends Controller {
   #renderPreview (row, file) {
     if (!file.type?.startsWith('image/')) return
 
-    const url = URL.createObjectURL(file.data)
     const image = row.querySelector('.uploader__file_image')
     const icon = row.querySelector('.uploader__file_icon')
 
-    this.#previews.set(file.id, url)
-    image.src = url
+    image.src = this.#previewUrl(file)
     image.hidden = false
     icon.hidden = true
 
@@ -142,16 +147,20 @@ export default class UploaderController extends Controller {
     }, { once: true })
   }
 
+  #previewUrl (file) {
+    if (!this.#previews.has(file.id)) {
+      this.#previews.set(file.id, URL.createObjectURL(file.data))
+    }
+
+    return this.#previews.get(file.id)
+  }
+
   #revokePreview (id) {
     const url = this.#previews.get(id)
     if (!url) return
 
     URL.revokeObjectURL(url)
     this.#previews.delete(id)
-  }
-
-  #row (id) {
-    return this.filesTarget.querySelector(`[data-file-id="${id}"]`)
   }
 
   #showError (message) {
@@ -166,6 +175,7 @@ export default class UploaderController extends Controller {
 
   #handleDragEnter = (event) => {
     if (!this.#isFileDrag(event)) return
+    if (this.#dragDepth === 0) this.#clearError()
 
     this.#dragDepth += 1
     this.element.classList.add(DRAG_CLASS)

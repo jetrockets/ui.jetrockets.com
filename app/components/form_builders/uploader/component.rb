@@ -41,7 +41,7 @@ class FormBuilders::Uploader::Component < ApplicationComponent
   end
 
   def caption
-    return @caption if @caption
+    return @caption unless @caption.nil?
 
     parts = []
     parts << "Up to #{helpers.number_to_human_size(@max_file_size)}" if @max_file_size
