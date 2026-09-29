@@ -117,6 +117,10 @@ crumb :ui_form_builders_easepick do
   link "Easepick", ui_form_builders_easepick_path
 end
 
+crumb :ui_form_builders_uploader do
+  link "Uploader", ui_form_builders_uploader_path
+end
+
 crumb :ui_icon do
   link "Icon", ui_icon_path
 end
