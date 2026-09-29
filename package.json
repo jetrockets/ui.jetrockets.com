@@ -5,6 +5,8 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.2",
     "@rails/request.js": "^0.0.9",
+    "@uppy/core": "^6.1.0",
+    "@uppy/drop-target": "^5.0.0",
     "choices.js": "^11.1.0",
     "highlight.js": "^11.11.1",
     "imask": "^7.6.1",

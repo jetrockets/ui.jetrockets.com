@@ -71,6 +71,7 @@ Rails.application.routes.draw do
       get "radio_button"
       get "toggler"
       get "easepick"
+      get "uploader"
     end
   end
 

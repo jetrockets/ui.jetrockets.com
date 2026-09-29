@@ -1,0 +1,46 @@
+<%= tag.div class: classes, data: data, **@options do %>
+  <%= tag.input(**input_options) %>
+
+  <% if dropzone? %>
+    <button type="button" class="uploader__dropzone" data-action="uploader#browse" <%= "disabled" if @disabled %>>
+      <%= helpers.ui.icon "cloud-arrow-up", class: "uploader__icon" %>
+      <span class="uploader__prompt">
+        <span class="uploader__prompt_action"><%= prompt %></span>
+        <span>or drag and drop</span>
+      </span>
+      <% if caption %>
+        <span class="uploader__caption"><%= caption %></span>
+      <% end %>
+    </button>
+  <% else %>
+    <div class="uploader__trigger">
+      <%= helpers.ui.btn variant: :secondary, size: button_size, disabled: @disabled, data: { action: "uploader#browse" } do %>
+        <%= helpers.ui.icon "paper-clip" %>
+        <%= button_label %>
+      <% end %>
+      <% if caption %>
+        <span class="uploader__caption"><%= caption %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <p class="uploader__error" data-uploader-target="error" role="alert" hidden></p>
+
+  <ul class="uploader__files" data-uploader-target="files"></ul>
+
+  <template data-uploader-target="template">
+    <li class="uploader__file">
+      <span class="uploader__file_preview">
+        <span class="uploader__file_icon icon"></span>
+        <img class="uploader__file_image" alt="" hidden>
+      </span>
+      <span class="uploader__file_info">
+        <span class="uploader__file_name"></span>
+        <span class="uploader__file_meta"></span>
+      </span>
+      <button type="button" class="uploader__remove" data-action="uploader#remove" aria-label="Remove file">
+        <%= helpers.ui.icon "x-mark" %>
+      </button>
+    </li>
+  </template>
+<% end %>

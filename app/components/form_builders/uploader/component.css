@@ -1,0 +1,156 @@
+@reference "~/entrypoints/tailwind.css";
+
+@layer components {
+  .uploader {
+    @apply relative flex flex-col gap-2;
+  }
+
+  /*
+   * The real, submitted field. Kept in the layout (not `hidden`) but invisible, so that a
+   * `required` uploader stays focusable and the browser can anchor its validation bubble to
+   * it — the same trick .choices uses for its required select in vendors/choices.css.
+   */
+  .uploader__input {
+    @apply absolute bottom-0 left-0 opacity-0 pointer-events-none size-px;
+  }
+
+  .uploader__dropzone {
+    @apply flex flex-col items-center justify-center w-full gap-1 px-4 py-6 text-center cursor-pointer;
+    @apply border border-dashed border-input rounded-field bg-card;
+    @apply transition-colors hover:border-input-focus hover:bg-accent/40;
+    @apply focus-visible:border-input-focus focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none;
+  }
+
+  .uploader__icon {
+    @apply text-muted-foreground;
+    --icon-size: calc(var(--spacing) * 6);
+  }
+
+  .uploader__prompt {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .uploader__prompt_action {
+    @apply font-medium text-foreground;
+  }
+
+  .uploader__caption {
+    @apply text-xs text-muted-foreground;
+  }
+
+  .uploader__trigger {
+    @apply flex flex-wrap items-center gap-3;
+  }
+
+  .uploader__error {
+    @apply text-sm text-destructive-soft-foreground;
+  }
+
+  /* No files picked yet — collapse the list instead of leaving a gap behind. */
+  .uploader__files:empty {
+    @apply hidden;
+  }
+
+  .uploader__files {
+    @apply flex flex-col gap-2;
+  }
+
+  .uploader__file {
+    @apply flex items-center gap-3 p-2 pr-3 text-sm border border-border rounded-field bg-card;
+  }
+
+  .uploader__file_preview {
+    @apply relative flex items-center justify-center overflow-hidden size-10 shrink-0;
+    @apply rounded-md bg-muted text-muted-foreground;
+  }
+
+  .uploader__file_icon {
+    --icon-size: calc(var(--spacing) * 5);
+  }
+
+  .uploader__file_image {
+    @apply object-cover size-full;
+  }
+
+  .uploader__file_info {
+    @apply flex flex-col flex-1 min-w-0;
+  }
+
+  .uploader__file_name {
+    @apply font-medium truncate text-foreground;
+  }
+
+  .uploader__file_meta {
+    @apply text-xs text-muted-foreground;
+  }
+
+  .uploader__remove {
+    @apply inline-flex items-center p-1.5 ml-auto transition-colors bg-transparent rounded-full cursor-pointer outline-0;
+    @apply text-muted-foreground hover:bg-accent hover:text-accent-foreground;
+    @apply focus-visible:ring-3 focus-visible:ring-ring;
+    --icon-size: calc(var(--spacing) * 4);
+  }
+
+  /* Files are being dragged over the field — the class is toggled by uploader_controller.js. */
+  .uploader-dragover .uploader__dropzone {
+    @apply border-input-focus bg-accent ring-3 ring-ring;
+  }
+
+  .uploader-button.uploader-dragover {
+    @apply rounded-field outline-2 outline-offset-4 outline-dashed outline-input-focus;
+  }
+
+  .uploader-errored .uploader__dropzone {
+    @apply border-destructive bg-destructive-soft text-destructive-soft-foreground;
+    @apply hover:border-destructive focus-visible:border-destructive focus-visible:ring-destructive-border;
+  }
+
+  .uploader-errored .uploader__prompt_action {
+    @apply text-destructive-soft-foreground;
+  }
+
+  .uploader-disabled .uploader__dropzone {
+    @apply cursor-not-allowed bg-muted text-muted-foreground;
+    @apply hover:border-input hover:bg-muted;
+  }
+
+  .uploader-sm .uploader__dropzone {
+    @apply gap-0.5 px-3 py-4;
+  }
+
+  .uploader-sm .uploader__icon {
+    --icon-size: calc(var(--spacing) * 5);
+  }
+
+  .uploader-sm .uploader__prompt {
+    @apply text-xs;
+  }
+
+  .uploader-sm .uploader__file {
+    @apply text-xs;
+  }
+
+  .uploader-sm .uploader__file_preview {
+    @apply size-8;
+  }
+
+  .uploader-lg .uploader__dropzone {
+    @apply px-6 py-8;
+  }
+
+  .uploader-lg .uploader__icon {
+    --icon-size: calc(var(--spacing) * 8);
+  }
+
+  .uploader-lg .uploader__prompt {
+    @apply text-base;
+  }
+
+  .uploader-lg .uploader__file {
+    @apply text-base;
+  }
+
+  .uploader-lg .uploader__file_preview {
+    @apply size-12;
+  }
+}

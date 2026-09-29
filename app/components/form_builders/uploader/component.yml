@@ -1,0 +1,149 @@
+name: Uploader
+description: File field with drag & drop, client-side restrictions and previews, powered by a headless Uppy core.
+
+preview: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.uploader :attachment, accept: "image/*,application/pdf", max_file_size: 8.megabytes, hint: "Drop a file or pick one from your computer" %>
+  <% end %>
+
+usage: |
+  <%= form_with url: root_path do |f| %>
+    <%= f.uploader :avatar, accept: "image/*", max_file_size: 8.megabytes %>
+    <%= f.uploader :documents, multiple: true, max_files: 5 %>
+    <%= f.uploader :report, variant: :button %>
+  <% end %>
+
+accepts_html_attributes: true
+
+props:
+  - name: variant
+    type: Symbol
+    default: ":dropzone"
+    values:
+      - ":dropzone"
+      - ":button"
+    description: Large drag & drop area or a compact button. Files can be dropped on the field in both cases.
+
+  - name: size
+    type: Symbol
+    default: ":md"
+    values:
+      - ":sm"
+      - ":md"
+      - ":lg"
+    description: Size of the field.
+
+  - name: multiple
+    type: Boolean
+    default: "false"
+    description: Accept several files. In single mode a new pick replaces the previous file.
+
+  - name: accept
+    type: String | Array
+    default: "nil"
+    description: 'Accepted types, in `accept` syntax (e.g. `"image/*,.pdf"`). Filters the file dialog and rejects dropped files.'
+
+  - name: max_file_size
+    type: Integer
+    default: "nil"
+    description: Maximum size of a single file, in bytes (e.g. `8.megabytes`).
+
+  - name: max_files
+    type: Integer
+    default: "nil"
+    description: "Maximum number of files. Only applies together with `multiple: true`."
+
+  - name: prompt
+    type: String
+    default: '"Click to upload"'
+    description: Main line of text inside the drop area.
+
+  - name: caption
+    type: String
+    default: "generated from the restrictions"
+    description: Secondary line of text. Generated from `max_file_size` and `max_files` when omitted; pass `false`-y text to replace it.
+
+  - name: button_label
+    type: String
+    default: '"Choose file"'
+    description: Label of the trigger button in the `:button` variant.
+
+  - name: label
+    type: String | false
+    default: "humanized attribute name"
+    description: "Custom label text. Set to `false` to hide the label."
+
+  - name: hint
+    type: String
+    default: "nil"
+    description: Helper text displayed below the field.
+
+  - name: error
+    type: String
+    default: "nil"
+    description: Manual error message. ActiveRecord errors are displayed automatically.
+
+  - name: disabled
+    type: Boolean
+    default: "false"
+    description: Disable the field. Picking and dropping files are both turned off.
+
+
+examples:
+  - name: Basic Uploader
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :attachment %>
+      <% end %>
+
+  - name: Multiple Files
+    description: Restrictions are enforced on the client — rejected files are reported above the list.
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :documents, multiple: true, max_files: 3, max_file_size: 2.megabytes, accept: ".pdf,.doc,.docx" %>
+      <% end %>
+
+  - name: Images Only
+    description: Image files get a local thumbnail, everything else falls back to an icon for its type.
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :cover, accept: "image/*", max_file_size: 8.megabytes, hint: "Square JPG or PNG works best" %>
+      <% end %>
+
+  - name: Button Variant
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :report, variant: :button %>
+        <%= f.uploader :screenshots, variant: :button, multiple: true, button_label: "Attach screenshots", accept: "image/*" %>
+      <% end %>
+
+  - name: Uploader Sizes
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :large_field, size: :lg %>
+        <%= f.uploader :default_field %>
+        <%= f.uploader :small_field, size: :sm %>
+      <% end %>
+
+  - name: Custom Texts
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :invoice, label: "Invoice", prompt: "Upload the signed invoice", caption: "Scan or photo, PDF preferred" %>
+        <%= f.uploader :no_label, label: false %>
+      <% end %>
+
+  - name: Disabled State
+    code: |
+      <%= form_with url: root_path do |f| %>
+        <%= f.uploader :locked_field, disabled: true, hint: "Attachments are closed for this record" %>
+      <% end %>
+
+  - name: Validation
+    description: ActiveRecord errors are displayed automatically. You can also set custom error messages.
+    code: |
+      <% user = User.new %>
+      <% user.errors.add(:avatar, "is required") %>
+      <%= form_with model: user, url: root_path do |f| %>
+        <%= f.uploader :avatar, accept: "image/*" %>
+        <%= f.uploader :avatar, error: "This field has a custom error" %>
+      <% end %>

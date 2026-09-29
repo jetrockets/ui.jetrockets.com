@@ -24,6 +24,10 @@ module FormBuilders
       Fields::Easepick.new(self, method, options).render
     end
 
+    def uploader(method, options = {})
+      Fields::Uploader.new(self, method, options).render
+    end
+
     def select(method, choices = nil, options = {}, html_options = {}, &block)
       Fields::Select.new(self, method, choices, options, html_options).render
     end
